@@ -5,7 +5,7 @@ process.env.PWD = process.cwd()
 
 console.log('PWD', process.env.PWD);
 
-app.use(express.static(process.env.PWD + '/_site'));
+app.use(express.static(process.env.PWD + '/public'));
 
 // Set up a URL route
 /*
