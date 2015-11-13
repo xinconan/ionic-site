@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Welcome Perry Govier to the Framework Team</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -77,16 +77,16 @@
   </div>
 
 <div style="height: 200px; width: 200px; border-radius: 600px; border: 6px solid #4e8ef7; overflow: hidden; margin: 15px auto"> 
-  <img src="/img/blog/perrygovier.jpg" alt="Perry Govier">
+  <img src="/img/blog/perrygovier.jpg" alt="Perry Govier" />
 </div>
 
-<p>I&#39;m thrilled to introduce Perry Govier (<a href="https://twitter.com/perrygovier">@perrygovier</a> on Twitter and <a href="http://forum.ionicframework.com/users/perry/activity">@perry</a> on the Forum) as our newest core framework developer on Ionic! Perry has extensive experience building hybrid mobile apps professionally. He&#39;s built many Cordova apps and recently fell in love with AngularJS.</p>
+<p>I’m thrilled to introduce Perry Govier (<a href="https://twitter.com/perrygovier">@perrygovier</a> on Twitter and <a href="http://forum.ionicframework.com/users/perry/activity">@perry</a> on the Forum) as our newest core framework developer on Ionic! Perry has extensive experience building hybrid mobile apps professionally. He’s built many Cordova apps and recently fell in love with AngularJS.</p>
 
 <!-- more -->
 
-<p>A well-versed nerd (like the rest of us), Perry&#39;s been fascinated with technology his whole life. In grade school, he&#39;d circle his block with a red wagon and pick up electronics from people&#39;s curbs to take home and fix. In highschool and college, he worked as a music show technician doing sound, video, and stage work. According to him, it&#39;s &quot;not that different than programming. Lots of components to build and connect together to create something awesome. Tinkering and geekery is in my DNA.&quot;</p>
+<p>A well-versed nerd (like the rest of us), Perry’s been fascinated with technology his whole life. In grade school, he’d circle his block with a red wagon and pick up electronics from people’s curbs to take home and fix. In highschool and college, he worked as a music show technician doing sound, video, and stage work. According to him, it’s “not that different than programming. Lots of components to build and connect together to create something awesome. Tinkering and geekery is in my DNA.”</p>
 
-<p>Perry loves meeting and chatting with other developers. He&#39;s organized several meetups and attends many more. At home, he&#39;s been building a beer brewing machine with Arduinos, playing around with bluetooth in Objective C, and beginning to learn GoLang. Outside of hacking, he loves to explore- walking, hiking, traveling, and trying new food are among some of his favorite activities.</p>
+<p>Perry loves meeting and chatting with other developers. He’s organized several meetups and attends many more. At home, he’s been building a beer brewing machine with Arduinos, playing around with bluetooth in Objective C, and beginning to learn GoLang. Outside of hacking, he loves to explore- walking, hiking, traveling, and trying new food are among some of his favorite activities.</p>
 
 <p>Expect to see more of Perry helping out on the <a href="http://forum.ionicframework.com">Forum</a> and on <a href="http://github.com/driftyco/ionic">GitHub</a> triaging (and closing!) issues. He’ll be working straight out of the Ionic headquarters in Madison, WI!</p>
 
@@ -180,8 +180,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

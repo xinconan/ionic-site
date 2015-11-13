@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Split View Lands in Ionic</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/495587171332403200/tO9oMmCn.png" class="author-icon"><a href="https://twitter.com/mhartington">Mike</a> on September 11, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/splitpane-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/splitpane-header.png" /></p>
 
 <p>Any app that wants to stand out among the billions of apps out there needs to be able to adapt to different screen sizes, a fact with which all developers have to deal. Since Cordova is a web-view, devs can rely on responsive web design (RWD) to deal with this. However, some things need a little extra attention, like side-menus, since its interaction can vary depending on the screen size.</p>
 
@@ -85,23 +85,27 @@
 <!-- more -->
 
 <p>A frequently requested feature, Split View allows developers to expose a side-menu when the viewport is a certain width. To do this, all that needs to be added is the <code>expose-aside-when</code> attribute directive to the <code>ion-side-menu</code>:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ion-side-menus&gt;</span>
-  <span class="c">&lt;!-- Center content --&gt;</span>
-  <span class="nt">&lt;ion-side-menu-content&gt;</span>
-  <span class="nt">&lt;/ion-side-menu-content&gt;</span>
 
-  <span class="c">&lt;!-- Left menu --&gt;</span>
-  <span class="nt">&lt;ion-side-menu</span> <span class="na">expose-aside-when=</span><span class="s">&quot;large&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-side-menu&gt;</span>
-<span class="nt">&lt;/ion-side-menus&gt;</span>
-</code></pre></div>
-<p>As you can see, it is <em>extremely difficult</em> to do d(-_^).  </p>
+<pre><code class="language-html">&lt;ion-side-menus&gt;
+  &lt;!-- Center content --&gt;
+  &lt;ion-side-menu-content&gt;
+  &lt;/ion-side-menu-content&gt;
 
-<p>The <code>expose-aside-when=&quot;large&quot;</code> attribute will keep the side menu hidden when the viewport&#39;s width is less than 768px, but when the viewport&#39;s width is 768px or greater, the menu will always be shown and can no longer be opened or closed, like it could when it was hidden for smaller viewports.</p>
+  &lt;!-- Left menu --&gt;
+  &lt;ion-side-menu expose-aside-when="large"&gt;
+  &lt;/ion-side-menu&gt;
+&lt;/ion-side-menus&gt;
+</code></pre>
 
-<p>Using “large” as the attribute&#39;s value is simply an alias to <code>(min-width:768px)</code>, since it is the most common use-case. However, for added flexibility, any valid media query could be added as the value, such as <code>(min-width:600px)</code>, or even multiple queries, such as <code>(min-width:750px) and (max-width:1200px)</code>.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ion-side-menu</span> <span class="na">expose-aside-when=</span><span class="s">&quot;(min-width:750px) and (max-width:1200px)&quot;</span>
-</code></pre></div>
+<p>As you can see, it is <em>extremely difficult</em> to do d(-_^).</p>
+
+<p>The <code>expose-aside-when="large"</code> attribute will keep the side menu hidden when the viewport’s width is less than 768px, but when the viewport’s width is 768px or greater, the menu will always be shown and can no longer be opened or closed, like it could when it was hidden for smaller viewports.</p>
+
+<p>Using “large” as the attribute’s value is simply an alias to <code>(min-width:768px)</code>, since it is the most common use-case. However, for added flexibility, any valid media query could be added as the value, such as <code>(min-width:600px)</code>, or even multiple queries, such as <code>(min-width:750px) and (max-width:1200px)</code>.</p>
+
+<pre><code class="language-html">&lt;ion-side-menu expose-aside-when="(min-width:750px) and (max-width:1200px)"
+</code></pre>
+
 <p>With this addition to Ionic, apps can now adapt much better when going between phones and tablets of varying sizes. Check out the <a href="http://codepen.io/ionic/pen/cDbFg">codepen demo</a> to see Splitview in action, and check out the <a href="http://ionicframework.com/docs/api/directive/exposeAsideWhen/">docs</a> for more information.</p>
 
 
@@ -192,8 +196,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

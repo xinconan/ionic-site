@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Tinder for X with Ionic</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,29 +76,31 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on October 19, 2014</time>
   </div>
 
-<p>When we released the <a href="http://github.com/driftyco/ionic-contrib-swipe-cards">Swipe Cards</a> ion (our term for Ionic add-ons/widgets), Tinder wasn&#39;t really on our radar. At the time, we were impressed by some of the unique UX elements in the app <a href="http://jelly.co/">Jellyfish</a> and wanted to prove they could be built just as well in Ionic and with the power of HTML5.</p>
+<p>When we released the <a href="http://github.com/driftyco/ionic-contrib-swipe-cards">Swipe Cards</a> ion (our term for Ionic add-ons/widgets), Tinder wasn’t really on our radar. At the time, we were impressed by some of the unique UX elements in the app <a href="http://jelly.co/">Jellyfish</a> and wanted to prove they could be built just as well in Ionic and with the power of HTML5.</p>
 
-<p>However, the #1 request we&#39;ve had since the release was support for Tinder-style swipe cards. While we can&#39;t say whether or not we have any experience with Tinder, we do love the way Tinder makes it easy to process a large list of items, indicating a positive or negative reaction.</p>
+<p>However, the #1 request we’ve had since the release was support for Tinder-style swipe cards. While we can’t say whether or not we have any experience with Tinder, we do love the way Tinder makes it easy to process a large list of items, indicating a positive or negative reaction.</p>
 
-<p>It&#39;s amazing how broadly applicable the swipe card interface is, and this &quot;Tinder for X&quot; phenomenon was something we wanted to help Ionic developers jump on.</p>
+<p>It’s amazing how broadly applicable the swipe card interface is, and this “Tinder for X” phenomenon was something we wanted to help Ionic developers jump on.</p>
 
 <!-- more -->
 
-<p>Today we are happy to release the Ionic Tinder-style Cards ion. This ion has support for swiping cards left and right, and also animating the stack of cards underneath
+<p>Today we are happy to release the Ionic Tinder-style Cards ion. This ion has support for swiping cards left and right, and also animating the stack of cards underneath<br />
 the current card. Try it out below!</p>
 
 <div style="margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: 70px; width: 320px">
-   <p data-height="568" data-width="320" data-theme-id="3572" data-slug-hash="nxEdH" data-default-tab="result" data-user="ionic" class='codepen'>See the Pen <a href='http://codepen.io/ionic/pen/nxEdH/'>Ionic Ion: Tinder Cards</a> by Ionic (<a href='http://codepen.io/ionic'>@ionic</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-  <script async src="//codepen.io/assets/embed/ei.js"></script> 
+   <p data-height="568" data-width="320" data-theme-id="3572" data-slug-hash="nxEdH" data-default-tab="result" data-user="ionic" class="codepen">See the Pen <a href="http://codepen.io/ionic/pen/nxEdH/">Ionic Ion: Tinder Cards</a> by Ionic (<a href="http://codepen.io/ionic">@ionic</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+  <script async="" src="//codepen.io/assets/embed/ei.js"></script> 
 </div>
 
 <p>This also marks the first usage of our <a href="https://github.com/driftyco/collide">collide</a> animation library for support for physics-style animations like springs and gravity. Notice how if you drag too little and let go, the cards spring back into place!</p>
 
-<h3>Getting started</h3>
+<h3 id="getting-started">Getting started</h3>
 
 <p>To get started, use bower to add the ion to your project:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install ionic-contrib-tinder-cards
-</code></pre></div>
+
+<pre><code class="language-bash">$ bower install ionic-contrib-tinder-cards
+</code></pre>
+
 <p>Take a look at the demo for a full example of how to use this ion: <a href="https://github.com/driftyco/ionic-contrib-tinder-cards/tree/master/demo">https://github.com/driftyco/ionic-contrib-tinder-cards/tree/master/demo</a></p>
 
 
@@ -189,8 +191,20 @@ the current card. Try it out below!</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

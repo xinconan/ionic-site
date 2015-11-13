@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Announcing ngCordova: Simple AngularJS Cordova Extensions</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,33 +76,35 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on June 03, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/ngCordova-ionic-header.jpg"></p>
+<p><img class="showcase-image" src="/img/blog/ngCordova-ionic-header.jpg" /></p>
 
 <p>Today I am incredibly excited to announce the very first release of <a href="http://ngcordova.com/">ngCordova</a>, an open-source collection of AngularJS services and extensions that make it incredibly easy to use Cordova plugins and native features in your hybrid apps.</p>
 
 <p>With ngCordova, instead of calling Cordova plugins directly and having to figure out the proper object or plugin name, or to check if the plugin is actually installed, you can just call a simple AngularJS service like this:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$cordovaCamera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">imageData</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// Process camera data</span>
+<pre><code class="language-javascript">$cordovaCamera.getPicture(options)
+  .then(function(imageData) {
+   
+    // Process camera data
 
-  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  }, function(error) {
 
-    <span class="c1">// Show an error to the user</span>
+    // Show an error to the user
 
-  <span class="p">});</span>
-</code></pre></div>
+  });
+</code></pre>
+
 <p>The services support promises to make it easier to deal with their asynchronous nature and ensure scope data is properly updated. And with support for <strong>14</strong> plugins at the time of this writing, ngCordova provides a centralized way to add lots of native functionality to your app!</p>
 
 <!-- more -->
 
-<p>We&#39;ve got big plans for ngCordova. Soon, it will possible to mock the services for testing outside of a Cordova app in case cordova.js isn&#39;t available, and to simulate data such as geolocation, accelerometer, and network changes.</p>
+<p>We’ve got big plans for ngCordova. Soon, it will possible to mock the services for testing outside of a Cordova app in case cordova.js isn’t available, and to simulate data such as geolocation, accelerometer, and network changes.</p>
 
 <p>As Ionic projects go, ngCordova was a unique one. Created only a <strong>day and a half ago</strong> as a fun hack, the project grew out of the suggestion of community member <a href="https://github.com/pbernasconi">Paolo Bernasconi</a> to make it easier for people to use Cordova plugins in Ionic projects. He noted a lot of Ionic developers on the forum having issues using Cordova plugins due to the lack of centralized documentation and confusing APIs, and figured simple AngularJS wrappers would help.</p>
 
 <p>After creating the <a href="https://github.com/driftyco/ng-cordova">ng-cordova</a> repo on github with a simple Camera plugin wrapper, the project immediately recieved 6 pull requests with wrappers for various other plugins (thanks <a href="https://github.com/gdi2290">PatrickJS</a>!). It seems it struck a chord with hybrid developers!</p>
 
-<p>So, go ahead and check out version <a href="https://github.com/driftyco/ng-cordova/releases/tag/v0.1.1-alpha">0.1.1-alpha</a> and let us know what you think! Are there any other plugins you&#39;d like to see simple wrappers for? We&#39;d also love some help building out tests and mocking systems for common plugins.</p>
+<p>So, go ahead and check out version <a href="https://github.com/driftyco/ng-cordova/releases/tag/v0.1.1-alpha">0.1.1-alpha</a> and let us know what you think! Are there any other plugins you’d like to see simple wrappers for? We’d also love some help building out tests and mocking systems for common plugins.</p>
 
 <p>Start adding powerful native functionality to your hybrid and Ionic apps today, with ngCordova and the power of AngularJS.</p>
 
@@ -194,8 +196,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Handling CORS issues in Ionic</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,36 +76,38 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/378800000732074456/9d7a839f5c3d9e6f98b390b795909af8.jpeg" class="author-icon"><a href="https://twitter.com/jbavari">Josh</a> on February 24, 2015</time>
   </div>
 
-<p>If you&#39;ve used <code>ionic serve</code> or <code>ionic run</code> with live reload and accessing external API endpoints, chances are you&#39;ve run into some <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>
+<p>If you’ve used <code>ionic serve</code> or <code>ionic run</code> with live reload and accessing external API endpoints, chances are you’ve run into some <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a><br />
 issues. They usually look something like this:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">XMLHttpRequest cannot load http://api.ionic.com/endpoint.
-No <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span> header is present on the requested resource.
-Origin <span class="s1">&#39;http://localhost:8100&#39;</span> is therefore not allowed access.
-</code></pre></div>
+
+<pre><code class="language-bash">XMLHttpRequest cannot load http://api.ionic.com/endpoint.
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Origin 'http://localhost:8100' is therefore not allowed access.
+</code></pre>
+
 <p>So what is CORS, and why is it a problem?</p>
 
 <!-- more -->
 
-<h3>What is CORS?</h3>
+<h3 id="what-is-cors">What is CORS?</h3>
 
 <p>CORS = Cross origin resource sharing.</p>
 
-<p>The <code>origin</code> is the host you are currently viewing.
-Since you&#39;re at <code>http://ionicframework.com/blog/handling-cors-issues-in-ionic</code>, the <code>origin</code> is <code>ionicframework.com</code>.</p>
+<p>The <code>origin</code> is the host you are currently viewing.<br />
+Since you’re at <code>http://ionicframework.com/blog/handling-cors-issues-in-ionic</code>, the <code>origin</code> is <code>ionicframework.com</code>.</p>
 
 <p>Say we send an AJAX request to <code>http://cors.api.com/api</code>,  your host origin will be specified by the Origin header that is automatically included for CORS requests by the browser. Since <code>ionicframework.com</code> does not match the host of <code>api.com</code>, our request from <code>ionicframework.com</code> must ask the server for approval before we can access the resource, in the form of an HTTP OPTIONS request header.</p>
 
 <p>If we get the error above, then we may not access the resource from the server.</p>
 
-<p>Let’s take a look what your <code>origin</code> will be when you&#39;re running your app via <code>ionic serve</code>, <code>ionic run</code>, or <code>ionic run -l</code>.</p>
+<p>Let’s take a look what your <code>origin</code> will be when you’re running your app via <code>ionic serve</code>, <code>ionic run</code>, or <code>ionic run -l</code>.</p>
 
-<h3>Running in the browser</h3>
+<h3 id="running-in-the-browser">Running in the browser</h3>
 
 <p>What happens when you run <code>ionic serve</code>?</p>
 
 <ul>
-<li>A local web server is started up.</li>
-<li>Your browser is opened to point at the local server address.</li>
+  <li>A local web server is started up.</li>
+  <li>Your browser is opened to point at the local server address.</li>
 </ul>
 
 <p>This starts you off looking at your app loaded in a browser on your computer with the address <code>http://localhost:8100</code> (if you chose localhost).</p>
@@ -114,55 +116,55 @@ Since you&#39;re at <code>http://ionicframework.com/blog/handling-cors-issues-in
 
 <p>Any AJAX request sent out to a host other than <code>localhost:8100</code> will have <code>localhost:8100</code> as its origin and thus will require a CORS preflight request to see if it can access the resource.</p>
 
-<h3>Running on a device</h3>
+<h3 id="running-on-a-device">Running on a device</h3>
 
 <p>What happens when you run <code>ionic run</code>?</p>
 
 <ul>
-<li>Your files for the app are copied to the device (or simulator).</li>
-<li>The app runs, thus firing a browser on the phone/simulator to run the files that were copied over, something like: <code>file://some/path/www/index.html</code>.</li>
+  <li>Your files for the app are copied to the device (or simulator).</li>
+  <li>The app runs, thus firing a browser on the phone/simulator to run the files that were copied over, something like: <code>file://some/path/www/index.html</code>.</li>
 </ul>
 
 <p>Your <code>origin</code> will not exist, since you are running off of a <code>file://</code> URI; therefore, any request outwards will <em>not</em> require a CORS request.</p>
 
-<h3>Running on a device with livereload</h3>
+<h3 id="running-on-a-device-with-livereload">Running on a device with livereload</h3>
 
 <p>What happens when you run <code>ionic run -l</code>?</p>
 
 <ul>
-<li>A local web server is started up.</li>
-<li>The app runs, thus firing a browser on the phone/simulator to run the files from the server <code>http://192.168.1.1:8100</code> (or whatever your local IP address is).</li>
+  <li>A local web server is started up.</li>
+  <li>The app runs, thus firing a browser on the phone/simulator to run the files from the server <code>http://192.168.1.1:8100</code> (or whatever your local IP address is).</li>
 </ul>
 
 <p>Your <code>origin</code> will be <code>192.168.1.1:8100</code>.</p>
 
 <p>Any AJAX request sent out to a host other than  <code>192.168.1.1:8100</code> will require a CORS preflight request to see if it can access the resource.</p>
 
-<h3>Dealing with CORS in Ionic</h3>
+<h3 id="dealing-with-cors-in-ionic">Dealing with CORS in Ionic</h3>
 
 <p>CORS is only an issue when we are running or testing our app when running <code>ionic serve</code> or <code>ionic run -l</code>.</p>
 
-<p>There are two ways to solve the issue: The first, and easier, solution is to just allow all origins from your API endpoint. However, we can&#39;t always control the endpoint we are accessing. What we need, then, is a request that does not specify an <code>origin</code>.</p>
+<p>There are two ways to solve the issue: The first, and easier, solution is to just allow all origins from your API endpoint. However, we can’t always control the endpoint we are accessing. What we need, then, is a request that does not specify an <code>origin</code>.</p>
 
-<p>We can do this by using a proxy server. Let&#39;s look how the Ionic CLI provides
+<p>We can do this by using a proxy server. Let’s look how the Ionic CLI provides<br />
 an easily configurable proxy server.</p>
 
-<h3>The Ionic CLI proxy server</h3>
+<h3 id="the-ionic-cli-proxy-server">The Ionic CLI proxy server</h3>
 
 <p>A quick definition about proxies:</p>
 
 <blockquote>
-<p>In computer networks, a proxy server is a server (a computer system or an application) that acts as an intermediary for requests from clients seeking resources from other servers.</p>
+  <p>In computer networks, a proxy server is a server (a computer system or an application) that acts as an intermediary for requests from clients seeking resources from other servers.</p>
 </blockquote>
 
-<p>What we&#39;d need to do to get around these CORS issues is have a proxy server that
+<p>What we’d need to do to get around these CORS issues is have a proxy server that<br />
 will take our requests, issue a new request to the API endpoint, receive the response, and forward it back to our app so we can get around CORS issues.</p>
 
 <p>The Ionic CLI introduced the ability to have a proxy server issue requests for you to get around any CORS issues you may have.</p>
 
 <p>Since the server is sending a fresh request to your destination, there will be no <code>origin</code> and therefore, no CORS needed. It is important to note that the browser adds in the Origin header.</p>
 
-<h3>Setting up the proxy server</h3>
+<h3 id="setting-up-the-proxy-server">Setting up the proxy server</h3>
 
 <p><em>Please note, these are only needed for <code>ionic serve</code> and <code>ionic run -l</code>.</em></p>
 
@@ -172,115 +174,123 @@ will take our requests, issue a new request to the API endpoint, receive the res
 
 <p>We can make this a bit easier by using some gulp tasks using the replace module to swap out the URLs.</p>
 
-<p>The suggested method is to set up an Angular Constant to point at the API we&#39;re trying to proxy out.</p>
+<p>The suggested method is to set up an Angular Constant to point at the API we’re trying to proxy out.</p>
 
 <p>This is the approach we will take below. We will also set up an Angular Service to use that API Endpoint to get data.</p>
 
-<h3>Setting up the proxy urls</h3>
+<h3 id="setting-up-the-proxy-urls">Setting up the proxy urls</h3>
 
-<p>Let&#39;s say we want to access <code>http://cors.api.com/api</code>, which is not allowing our origin from <code>localhost</code>.</p>
+<p>Let’s say we want to access <code>http://cors.api.com/api</code>, which is not allowing our origin from <code>localhost</code>.</p>
 
-<p>The proxies settings contain two things: the <code>path</code> you use to access them on your local Ionic server, and the <code>proxyUrl</code> you&#39;d ultimately like to reach from the API call.</p>
+<p>The proxies settings contain two things: the <code>path</code> you use to access them on your local Ionic server, and the <code>proxyUrl</code> you’d ultimately like to reach from the API call.</p>
 
 <p>Set up your <code>ionic.project</code> file to be something like:</p>
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;proxy-example&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;app_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;proxies&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/api&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;proxyUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://cors.api.com/api&quot;</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
+
+<pre><code class="language-json">{
+  "name": "proxy-example",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ]
+}
+</code></pre>
+
 <p>Run your server with <code>ionic serve</code>.</p>
 
 <p>As we specified above, when you access the ionic server at the path <code>http://localhost:8100/api</code>, it will proxy requests out to <code>http://cors.api.com/api</code> on your behalf.</p>
 
 <p>Thus, no CORS is required.</p>
 
-<h3>Set up Angular Constant</h3>
+<h3 id="set-up-angular-constant">Set up Angular Constant</h3>
 
-<p>It&#39;s quite easy to set up your API endpoints as Angular Constants.</p>
+<p>It’s quite easy to set up your API endpoints as Angular Constants.</p>
 
-<p>Below, we&#39;ve specified the ApiEndpoint to be our proxied URL right now.</p>
+<p>Below, we’ve specified the ApiEndpoint to be our proxied URL right now.</p>
 
 <p>Later, we can use our production url as a constant.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ionic&#39;</span><span class="p">,</span> <span class="s1">&#39;starter.controllers&#39;</span><span class="p">,</span> <span class="s1">&#39;starter.services&#39;</span><span class="p">])</span>
-<span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">&#39;ApiEndpoint&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8100/api&#39;</span>
-<span class="p">})</span>
-<span class="c1">// For the real endpoint, we&#39;d use this</span>
-<span class="c1">// .constant(&#39;ApiEndpoint&#39;, {</span>
-<span class="c1">//  url: &#39;http://cors.api.com/api&#39;</span>
-<span class="c1">// })</span>
-</code></pre></div>
-<p>Once this is done, you can use the constant anywhere in your app, by including
+
+<pre><code class="language-javascript">angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+.constant('ApiEndpoint', {
+  url: 'http://localhost:8100/api'
+})
+// For the real endpoint, we'd use this
+// .constant('ApiEndpoint', {
+//  url: 'http://cors.api.com/api'
+// })
+</code></pre>
+
+<p>Once this is done, you can use the constant anywhere in your app, by including<br />
 <code>ApiEndpoint</code> as a dependency, as shown below in the service.</p>
 
-<h3>Setting up Angular Service</h3>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter.services&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<h3 id="setting-up-angular-service">Setting up Angular Service</h3>
 
-<span class="c1">//NOTE: We are including the constant `ApiEndpoint` to be used here.</span>
-<span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;Api&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">ApiEndpoint</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ApiEndpoint&#39;</span><span class="p">,</span> <span class="nx">ApiEndpoint</span><span class="p">)</span>
+<pre><code class="language-javascript">angular.module('starter.services', [])
 
-  <span class="kd">var</span> <span class="nx">getApiData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">ApiEndpoint</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s1">&#39;/tasks&#39;</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Got some data: &#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-      <span class="p">});</span>
-  <span class="p">};</span>
+//NOTE: We are including the constant `ApiEndpoint` to be used here.
+.factory('Api', function($http, ApiEndpoint) {
+  console.log('ApiEndpoint', ApiEndpoint)
 
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">getApiData</span><span class="o">:</span> <span class="nx">getApiData</span>
-  <span class="p">};</span>
-<span class="p">})</span>
-</code></pre></div>
-<h3>Automating URL switches with Gulp</h3>
+  var getApiData = function() {
+    return $http.get(ApiEndpoint.url + '/tasks')
+      .then(function(data) {
+        console.log('Got some data: ', data);
+        return data;
+      });
+  };
 
-<p>For this process, we&#39;ll need to modify our <code>gulpfile.js</code> to add in two tasks to add our proxy url or remove our proxy url.</p>
+  return {
+    getApiData: getApiData
+  };
+})
+</code></pre>
+
+<h3 id="automating-url-switches-with-gulp">Automating URL switches with Gulp</h3>
+
+<p>For this process, we’ll need to modify our <code>gulpfile.js</code> to add in two tasks to add our proxy url or remove our proxy url.</p>
 
 <p>Start by first installing the <code>replace</code> module - <code>npm install --save replace</code>.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// `npm install --save replace`</span>
-<span class="kd">var</span> <span class="nx">replace</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">replaceFiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;./www/js/app.js&#39;</span><span class="p">];</span>
 
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;add-proxy&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">replace</span><span class="p">({</span>
-    <span class="nx">regex</span><span class="o">:</span> <span class="s2">&quot;http://cors.api.com/api&quot;</span><span class="p">,</span>
-    <span class="nx">replacement</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8100/api&quot;</span><span class="p">,</span>
-    <span class="nx">paths</span><span class="o">:</span> <span class="nx">replaceFiles</span><span class="p">,</span>
-    <span class="nx">recursive</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">silent</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="p">});</span>
-<span class="p">})</span>
+<pre><code class="language-javascript">// `npm install --save replace`
+var replace = require('replace');
+var replaceFiles = ['./www/js/app.js'];
 
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;remove-proxy&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">replace</span><span class="p">({</span>
-    <span class="nx">regex</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8100/api&quot;</span><span class="p">,</span>
-    <span class="nx">replacement</span><span class="o">:</span> <span class="s2">&quot;http://cors.api.com/api&quot;</span><span class="p">,</span>
-    <span class="nx">paths</span><span class="o">:</span> <span class="nx">replaceFiles</span><span class="p">,</span>
-    <span class="nx">recursive</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">silent</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="p">});</span>
-<span class="p">})</span>
-</code></pre></div>
-<h3>Final Words</h3>
+gulp.task('add-proxy', function() {
+  return replace({
+    regex: "http://cors.api.com/api",
+    replacement: "http://localhost:8100/api",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
+
+gulp.task('remove-proxy', function() {
+  return replace({
+    regex: "http://localhost:8100/api",
+    replacement: "http://cors.api.com/api",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
+</code></pre>
+
+<h3 id="final-words">Final Words</h3>
 
 <p>This tutorial showed you one way to handle your CORS issues when running <code>ionic serve</code> or <code>ionic run -l</code>.</p>
 
 <p>We know that it can be a hassle to swap out your API url endpoints when switching between <code>ionic serve</code> and <code>ionic run -l</code>. One thing that could be suggested is to have a gulp startup process.</p>
 
-<p>The easiest way to handle the CORS problem is to ultimately ask your API provider to allow all hosts. However, this isn&#39;t always an option.</p>
+<p>The easiest way to handle the CORS problem is to ultimately ask your API provider to allow all hosts. However, this isn’t always an option.</p>
 
 <p>Using the Angular constant and the replace module will give us a happy medium, in which we can work around CORS.</p>
 
 <p>If you need a solid example, take a look <a href="http://github.com/driftyco/ionic-proxy-example">at this sample project</a>.</p>
 
-<p>This is everything you&#39;d need to access an API server that restricts CORS.</p>
+<p>This is everything you’d need to access an API server that restricts CORS.</p>
 
 <p>If you have any questions, issues, or ideas, please leave a comment below or contact us <a href="http://twitter.com/ionicframework">on twitter</a> or <a href="http://github.com/driftyco/ionic-cli">github</a>.</p>
 
@@ -372,8 +382,20 @@ will take our requests, issue a new request to the API endpoint, receive the res
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Automating Icons and Splash Screens</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,77 +76,78 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/495587171332403200/tO9oMmCn.png" class="author-icon"><a href="https://twitter.com/mhartington">Mike</a> on January 05, 2015</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/splash-header.jpg" style="margin-top:-20px;"></p>
+<p><img class="showcase-image" src="/img/blog/splash-header.jpg" style="margin-top:-20px;" /></p>
 
 <p>What’s the first thing users see when they download your app? What about after they install it and start the app?</p>
 
-<p>An app icon and splash screen (launch image) are important parts of any app, yet making them used to be incredibly
-tedious. You needed numerous icons for iOS and Android, and then you had to deal with splash screens and all their
+<p>An app icon and splash screen (launch image) are important parts of any app, yet making them used to be incredibly<br />
+tedious. You needed numerous icons for iOS and Android, and then you had to deal with splash screens and all their<br />
 different sizes.</p>
 
-<p>To save you the stress of dealing with all that, we’ve made it possible for you to generate app icons and splash screens
+<p>To save you the stress of dealing with all that, we’ve made it possible for you to generate app icons and splash screens<br />
 via the Ionic CLI.</p>
 
 <!-- more -->
-
-<h3>Generate those Resources</h3>
-
-<p>With the new CLI, all you need is a resource directory and two images. These images can be  <code>.png</code> files, Photoshop
-<code>.psd</code> files, or Illustrator <code>.ai</code> files, named icon.png (for example) and splash.png. With the images in a resources
-directory, <code>./resources</code>, the <code>ionic resources</code> command will generate the icons and splash screen images for  each
-platform setup in the project, sending them to Ionic&#39;s image resizing and cropping server, so you don&#39;t have to  install
+<p>### Generate those Resources<br />
+With the new CLI, all you need is a resource directory and two images. These images can be  <code>.png</code> files, Photoshop<br />
+<code>.psd</code> files, or Illustrator <code>.ai</code> files, named icon.png (for example) and splash.png. With the images in a resources<br />
+directory, <code>./resources</code>, the <code>ionic resources</code> command will generate the icons and splash screen images for  each<br />
+platform setup in the project, sending them to Ionic’s image resizing and cropping server, so you don’t have to  install<br />
 extra dependencies.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic resources
-</code></pre></div>
-<p>After the images are generated, the CLI will update the <code>config.xml</code> to <a href="http://cordova.apache.org/docs/en/4.0.0/config_ref_images.md.html#Icons%20and%20Splash%20Screens">include the icons and splash
-screens</a>, so they
-will be transferred over in Cordova&#39;s build process. NOTE: This process requires Cordova CLI version 3.6 or higher.</p>
 
-<p>If you only need to update one of the resources, or you only want to generate icons and not both, the <code>ionic resources</code>
+<pre><code class="language-bash">$ ionic resources
+</code></pre>
+
+<p>After the images are generated, the CLI will update the <code>config.xml</code> to <a href="http://cordova.apache.org/docs/en/4.0.0/config_ref_images.md.html#Icons%20and%20Splash%20Screens">include the icons and splash<br />
+screens</a>, so they<br />
+will be transferred over in Cordova’s build process. NOTE: This process requires Cordova CLI version 3.6 or higher.</p>
+
+<p>If you only need to update one of the resources, or you only want to generate icons and not both, the <code>ionic resources</code><br />
 command has two flags that allow you to target each asset, instead of generating both.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic resources --icon
-<span class="nv">$ </span>ionic resources --splash
-</code></pre></div>
-<h3>Image Sizes</h3>
 
-<p>In order to be able to crop and resize images to fit the various needs of each platform, icons and splash screen images
+<pre><code class="language-bash">$ ionic resources --icon
+$ ionic resources --splash
+</code></pre>
+
+<h3 id="image-sizes">Image Sizes</h3>
+<p>In order to be able to crop and resize images to fit the various needs of each platform, icons and splash screen images<br />
 should meet a minimum size requirement.</p>
 
-<p>The icon image&#39;s minimum dimensions should be 192x192 px and should have no rounded corners. Note that each platform
-will apply its own mask and effects to the icons. For example, iOS will automatically apply its custom rounded corners,
+<p>The icon image’s minimum dimensions should be 192x192 px and should have no rounded corners. Note that each platform<br />
+will apply its own mask and effects to the icons. For example, iOS will automatically apply its custom rounded corners,<br />
 so the source file should not already come with rounded corners.</p>
 
-<p>Splash screen dimensions vary for each platform, device, and orientation, so a square source image is required to
-generate each of the various screen sizes. The source image&#39;s minimum dimensions should be 2208x2208 px, and the artwork
-should be centered within the square, because each generated image will be center cropped into landscape and portrait
-images.
-The splash screen&#39;s artwork should roughly fit within a center square (1200x1200 px). This
-<a href="http://code.ionicframework.com/resources/splash.psd">template</a> provides the recommended size and guidelines about
-artwork&#39;s safe zone.</p>
+<p>Splash screen dimensions vary for each platform, device, and orientation, so a square source image is required to<br />
+generate each of the various screen sizes. The source image’s minimum dimensions should be 2208x2208 px, and the artwork<br />
+should be centered within the square, because each generated image will be center cropped into landscape and portrait<br />
+images.<br />
+The splash screen’s artwork should roughly fit within a center square (1200x1200 px). This<br />
+<a href="http://code.ionicframework.com/resources/splash.psd">template</a> provides the recommended size and guidelines about<br />
+artwork’s safe zone.</p>
 
-<h3>Platform Specifics</h3>
-
-<p>Want different icons for the iOS and Android versions of your app? No problem; we’ve got that covered, too. To use
-different source images for individual platforms, place the source image in the respective platform&#39;s directory. To use
-a different icon for Android, the image should follow this path: <code>resources/android/icon.png</code>, and the image for iOS
-should use this path: <code>resources/ios/icon.png</code>. This way, you can have an iOS icon with native rounded corners and an
+<h3 id="platform-specifics">Platform Specifics</h3>
+<p>Want different icons for the iOS and Android versions of your app? No problem; we’ve got that covered, too. To use<br />
+different source images for individual platforms, place the source image in the respective platform’s directory. To use<br />
+a different icon for Android, the image should follow this path: <code>resources/android/icon.png</code>, and the image for iOS<br />
+should use this path: <code>resources/ios/icon.png</code>. This way, you can have an iOS icon with native rounded corners and an<br />
 Android icon with a transparent background.</p>
 
-<p>This is just one more way Ionic aims to make developers’ lives easier, not to mention more fun. Update your CLI and try
+<p>This is just one more way Ionic aims to make developers’ lives easier, not to mention more fun. Update your CLI and try<br />
 out the resource generator today.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g ionic
-</code></pre></div>
-<h3>What&#39;s Next</h3>
 
-<p>As we mentioned in our Beta 14 blog post, we&#39;ve been working on adding Crosswalk integration for Android into our CLI.
+<pre><code class="language-bash">$ npm install -g ionic
+</code></pre>
+<p>### What’s Next<br />
+As we mentioned in our Beta 14 blog post, we’ve been working on adding Crosswalk integration for Android into our CLI.<br />
 Josh has been hard at work on this, and it will be landing in the CLI as a beta feature soon. Keep an eye on the CLI!</p>
 
 <ul>
-<li><a href="https://github.com/driftyco/ionic-cli#icon-and-splash-screen-image-generation">Ionic-CLI Resource Generator Docs</a></li>
-<li><a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens">Cordova Icons and Splash Screens
+  <li><a href="https://github.com/driftyco/ionic-cli#icon-and-splash-screen-image-generation">Ionic-CLI Resource Generator Docs</a></li>
+  <li><a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens">Cordova Icons and Splash Screens<br />
 Docs</a></li>
-<li><a href="http://code.ionicframework.com/resources/splash.psd">Splash screen photoshop template</a></li>
+  <li><a href="http://code.ionicframework.com/resources/splash.psd">Splash screen photoshop template</a></li>
 </ul>
+
 
 
   <div class="share-bottom">
@@ -236,8 +237,20 @@ Docs</a></li>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

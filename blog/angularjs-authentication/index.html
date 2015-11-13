@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Cookie-based Authentication in AngularJS</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -80,7 +80,7 @@
 
 <p>Depending on where you build and release your AngularJS app, there are different ways to handle authentication and I hope this post clears some of that up.</p>
 
-<h3>CORS</h3>
+<h3 id="cors">CORS</h3>
 
 <p>CORS is an oft-misunderstood feature of new browsers that is configured by a remote server. CORS stands for Cross-Origin-Resource-Sharing, and was designed to make it possible to access services outside of the current origin (or domain) of the current page.</p>
 
@@ -90,77 +90,83 @@
 
 <p>That means certain browsers do not enforce it, so it is not relevant there. One large example is a native Web View for things like Cordova and Phonegap (and hence, Ionic apps). However, these tools often have configuration options for whitelisting domains so you can add some security that way.</p>
 
-<h3>Configuring CORS on the Server</h3>
+<h3 id="configuring-cors-on-the-server">Configuring CORS on the Server</h3>
 
 <p>The way CORS works is the server decides which domains it will accept as clients. This means an open API like Twitter might allow any clients, or a closed API might decide to only allow access from the domain of the running client app.</p>
 
-<p>I won&#39;t get into the details of configuring CORS on the server side, but it&#39;s really just setting some headers. Here&#39;s how you might do it <a href="https://gist.github.com/michiel/1064640">in nginx</a>.</p>
+<p>I won’t get into the details of configuring CORS on the server side, but it’s really just setting some headers. Here’s how you might do it <a href="https://gist.github.com/michiel/1064640">in nginx</a>.</p>
 
 <p>There is one header in particular you must have if you want to do session based authentication in a single page app: <code>Access-Control-Allow-Credentials: true</code> which we show next.</p>
 
-<h3>AngularJS Auth</h3>
+<h3 id="angularjs-auth">AngularJS Auth</h3>
 
-<p>If you use the standard <code>$http</code> service to access remote APIs, it will Just Work as long as the server is configured to allow requests from your domain and you don&#39;t need to store cookies.</p>
+<p>If you use the standard <code>$http</code> service to access remote APIs, it will Just Work as long as the server is configured to allow requests from your domain and you don’t need to store cookies.</p>
 
-<p>But for many applications, we also need to set and store cookie information for things like logins. By default this is not allowed in most browsers and you&#39;ll be smashing your head wondering why the cookie information isn&#39;t being saved!</p>
+<p>But for many applications, we also need to set and store cookie information for things like logins. By default this is not allowed in most browsers and you’ll be smashing your head wondering why the cookie information isn’t being saved!</p>
 
 <p>Enter: <code>withCredentials</code>. <code>withCredentials</code> is a flag set on a low-level <code>XMLHttpRequest</code> (AJAX) object, but in Angular we can configure our <code>$http</code> requests to set this flag for everything by doing:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">)</span>
 
-<span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$httpProvider&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}])</span>
-</code></pre></div>
-<h3>CSRF</h3>
+<pre><code class="language-javascript">angular.module('myApp')
+
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.withCredentials = true;
+}])
+</code></pre>
+
+<h3 id="csrf">CSRF</h3>
 
 <p>Many servers use CSRF as a security feature and you can certainly keep this feature in a hybrid app if you wish. CSRF is a way to ensure the client making a request is the same one that the server expects to make the request. This keeps someone from sniffing your cookie session data and making requests pretending to be you (and changing your password, for example).</p>
 
 <p>To make for CSRF, we can tell <code>$http</code> to set the correct header for CSRF (might depend on your server framework, this one is for Django) using the specific cookie name:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngCookies&#39;</span><span class="p">])</span>
 
-<span class="p">.</span><span class="nx">run</span><span class="p">([</span><span class="s1">&#39;$http&#39;</span><span class="p">,</span> <span class="s1">&#39;$cookies&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$cookies</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$http</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">post</span><span class="p">[</span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$cookies</span><span class="p">.</span><span class="nx">csrftoken</span><span class="p">;</span>
-<span class="p">}]);</span>
-</code></pre></div>
-<p>While I&#39;ve found this to work pretty well, if the CSRF token changes mid-session (for example if a new user signs up) the token won&#39;t update. To fix this, we can use an HTTP Interceptor to always set the correct CSRF header value before each request:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">)</span>
+<pre><code class="language-javascript">angular.module('myApp', ['ngCookies'])
 
-<span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s1">&#39;myCSRF&#39;</span><span class="p">,[</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="kd">var</span> <span class="nx">headerName</span> <span class="o">=</span> <span class="s1">&#39;X-CSRFToken&#39;</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">cookieName</span> <span class="o">=</span> <span class="s1">&#39;csrftoken&#39;</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">allowedMethods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">];</span>
+.run(['$http', '$cookies', function($http, $cookies) {
+  $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+}]);
+</code></pre>
 
-  <span class="k">this</span><span class="p">.</span><span class="nx">setHeaderName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">headerName</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">setCookieName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">cookieName</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">setAllowedMethods</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">allowedMethods</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">$get</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$cookies&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$cookies</span><span class="p">){</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="s1">&#39;request&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">allowedMethods</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">method</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-          <span class="c1">// do something on success</span>
-          <span class="nx">config</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="nx">headerName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$cookies</span><span class="p">[</span><span class="nx">cookieName</span><span class="p">];</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}];</span>
-<span class="p">}]).</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;myCSRF&#39;</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>This will set the CSRF request header to the current value of the CSRF cookie for any request type not in <code>allowedMethods</code>. </p>
+<p>While I’ve found this to work pretty well, if the CSRF token changes mid-session (for example if a new user signs up) the token won’t update. To fix this, we can use an HTTP Interceptor to always set the correct CSRF header value before each request:</p>
 
-<h3>Credentials and CORS</h3>
+<pre><code class="language-javascript">angular.module('myApp')
 
-<p>One thing to note when using <code>withCredentials: true</code> in your app and configuring the server for CORS is that you may not have your <code>Access-Control-Allow-Origin</code> header set to <code>&#39;*&#39;</code>. It must be configured to a few select origins. If you absolutely must have this set to <code>*</code>, then I suggest doing something beyond cookie based authentication, such as token-based authentication.</p>
+.provider('myCSRF',[function(){
+  var headerName = 'X-CSRFToken';
+  var cookieName = 'csrftoken';
+  var allowedMethods = ['GET'];
 
-<h3>Token Auth</h3>
+  this.setHeaderName = function(n) {
+    headerName = n;
+  }
+  this.setCookieName = function(n) {
+    cookieName = n;
+  }
+  this.setAllowedMethods = function(n) {
+    allowedMethods = n;
+  }
+  this.$get = ['$cookies', function($cookies){
+    return {
+      'request': function(config) {
+        if(allowedMethods.indexOf(config.method) === -1) {
+          // do something on success
+          config.headers[headerName] = $cookies[cookieName];
+        }
+        return config;
+      }
+    }
+  }];
+}]).config(function($httpProvider) {
+  $httpProvider.interceptors.push('myCSRF');
+});
+</code></pre>
+
+<p>This will set the CSRF request header to the current value of the CSRF cookie for any request type not in <code>allowedMethods</code>.</p>
+
+<h3 id="credentials-and-cors">Credentials and CORS</h3>
+
+<p>One thing to note when using <code>withCredentials: true</code> in your app and configuring the server for CORS is that you may not have your <code>Access-Control-Allow-Origin</code> header set to <code>'*'</code>. It must be configured to a few select origins. If you absolutely must have this set to <code>*</code>, then I suggest doing something beyond cookie based authentication, such as token-based authentication.</p>
+
+<h3 id="token-auth">Token Auth</h3>
 
 <p>The methods described above work for cookie-based authentication that is common in most server-side setups. However, some APIs expect HTTP Basic Authentication or use a token-based system.</p>
 
@@ -256,8 +262,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

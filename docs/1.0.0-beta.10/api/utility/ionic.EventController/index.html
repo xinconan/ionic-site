@@ -15,7 +15,7 @@
     
 
     <title>ionic.EventController - Utility in module ionic -  Ionic Framework</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -49,16 +49,33 @@
           <img src="/img/ionic-logo-white.svg" width="123" height="43" alt="Ionic Framework">
         
       </a>
+      <a href="http://blog.ionic.io/announcing-ionic-1-0/" target="_blank">
+      <img src="/img/ionic1-tag.png" alt="Ionic 1.0 is out!" width="28" height="32" style="margin-left: 140px; margin-top:22px; display:block">
+      </a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="products-nav nav-link" href="http://ionic.io/">Products</a></li>
         <li><a class="getting-started-nav nav-link" href="/getting-started/">Getting Started</a></li>
         <li><a class="docs-nav nav-link" href="/docs/">Docs</a></li>
-        <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+        <li><a class="nav-link" href="http://ionic.io/support">Support</a></li>
+        <li><a class="blog-nav nav-link" href="http://blog.ionic.io/">Blog <span id="blog-badge">1</span></a></li>
         <li><a class="nav-link" href="http://forum.ionicframework.com/">Forum</a></li>
-        <li><a class="blog-nav nav-link" href="/blog/">Blog <span id="blog-badge">1</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle nav-link " data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <div class="arrow-up"></div>
+            <li><a class="products-nav nav-link" href="http://ionic.io/">Ionic Platform</a></li>
+            <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+            <li><a class="nav-link" href="http://jobs.ionic.io/">Job Board</a></li>
+            <li><a class="nav-link" href="http://market.ionic.io/">Market</a></li>
+            <li><a class="nav-link" href="http://ionicworldwide.herokuapp.com/">Ionic Worldwide</a></li>
+            <li><a class="nav-link" href="http://play.ionic.io/">Playground</a></li>
+            <li><a class="nav-link" href="http://creator.ionic.io/">Creator</a></li>
+            <li><a class="nav-link" href="http://shop.ionic.io/">Shop</a></li>
+            <!--<li><a class="nav-link" href="http://ngcordova.com/">ngCordova</a></li>-->
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -75,65 +92,23 @@
           <div class="row">
             <div class="col-sm-8 news-col">
               <div class="picker">
-                <select onchange="window.location.href=this.options[this.selectedIndex].value">
+                <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/nightly/api/utility/ionic.EventController/"
+   value="/docs/v2/nightly/api/utility/ionic.EventController/"
    >
     nightly 
   </option>
 
   <option
-   value="/docs/api/utility/ionic.EventController/"
+   value="/docs/v2/api/utility/ionic.EventController/"
    >
-    1.0.0-rc.2 (latest)
-  </option>
-
-  <option
-   value="/docs/1.0.0-rc.1/api/utility/ionic.EventController/"
-   >
-    1.0.0-rc.1 
-  </option>
-
-  <option
-   value="/docs/1.0.0-rc.0/api/utility/ionic.EventController/"
-   >
-    1.0.0-rc.0 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.14/api/utility/ionic.EventController/"
-   >
-    1.0.0-beta.14 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.13/api/utility/ionic.EventController/"
-   >
-    1.0.0-beta.13 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.12/api/utility/ionic.EventController/"
-   >
-    1.0.0-beta.12 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.11/api/utility/ionic.EventController/"
-   >
-    1.0.0-beta.11 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.10/api/utility/ionic.EventController/"
-   selected>
-    1.0.0-beta.10 
+    2.0.0 (latest)
   </option>
 
 </select>
-
-
 
               </div>
             </div>
@@ -187,6 +162,12 @@
               </li>
             </ul>
 
+            <ul class="nav left-menu">
+              <li class="menu-title">
+                <a href="/docs/platform-customization/">Platform Customization</a>
+              </li>
+            </ul>
+
             <!-- Docs: JavaScript -->
             <ul class="nav left-menu active-menu">
               <li class="menu-title">
@@ -195,10 +176,10 @@
                 </a>
               </li>
               
-  
-    
 
-    
+
+
+
   
   <!-- Tabs -->
   <li class="menu-section">
@@ -749,7 +730,7 @@
     </ul>
   </li>
 
-  
+
 
 
 
@@ -795,11 +776,11 @@
 
         <div class="col-md-10 col-sm-9 main-content">
           <div class="improve-docs">
-  <a href='http://github.com/driftyco/ionic/tree/master/js/utils/events.js#L44'>
+  <a href="http://github.com/driftyco/ionic/tree/master/js/utils/events.js#L44">
     View Source
   </a>
   &nbsp;
-  <a href='http://github.com/driftyco/ionic/edit/master/js/utils/events.js#L44'>
+  <a href="http://github.com/driftyco/ionic/edit/master/js/utils/events.js#L44">
     Improve this doc
   </a>
 </div>
@@ -812,10 +793,9 @@
 
 </h1>
 
-<h2>Methods</h2>
+<h2 id="methods">Methods</h2>
 
 <div id="trigger"></div>
-
 <h2>
   <code>trigger(eventType, data, [bubbles], [cancelable])</code><small>(alias: ionic.trigger)</small>
 
@@ -904,7 +884,6 @@
 </table>
 
 <div id="on"></div>
-
 <h2>
   <code>on(type, callback, element)</code><small>(alias: ionic.on)</small>
 
@@ -977,7 +956,6 @@
 </table>
 
 <div id="off"></div>
-
 <h2>
   <code>off(type, callback, element)</code><small>(alias: ionic.off)</small>
 
@@ -1047,7 +1025,6 @@
 </table>
 
 <div id="onGesture"></div>
-
 <h2>
   <code>onGesture(eventType, callback, element)</code><small>(alias: ionic.onGesture)</small>
 
@@ -1057,9 +1034,9 @@
 
 <p>Available eventTypes (from <a href="http://eightmedia.github.io/hammer.js/">hammer.js</a>):</p>
 
-<p><code>hold</code>, <code>tap</code>, <code>doubletap</code>, <code>drag</code>, <code>dragstart</code>, <code>dragend</code>, <code>dragup</code>, <code>dragdown</code>, <br/>
-<code>dragleft</code>, <code>dragright</code>, <code>swipe</code>, <code>swipeup</code>, <code>swipedown</code>, <code>swipeleft</code>, <code>swiperight</code>, <br/>
-<code>transform</code>, <code>transformstart</code>, <code>transformend</code>, <code>rotate</code>, <code>pinch</code>, <code>pinchin</code>, <code>pinchout</code>, </br>
+<p><code>hold</code>, <code>tap</code>, <code>doubletap</code>, <code>drag</code>, <code>dragstart</code>, <code>dragend</code>, <code>dragup</code>, <code>dragdown</code>, <br /><br />
+<code>dragleft</code>, <code>dragright</code>, <code>swipe</code>, <code>swipeup</code>, <code>swipedown</code>, <code>swipeleft</code>, <code>swiperight</code>, <br /><br />
+<code>transform</code>, <code>transformstart</code>, <code>transformend</code>, <code>rotate</code>, <code>pinch</code>, <code>pinchin</code>, <code>pinchout</code>, &lt;/br&gt;<br />
 <code>touch</code>, <code>release</code></p>
 
 <table class="table" style="margin:0;">
@@ -1128,7 +1105,6 @@ happens.</p>
 </table>
 
 <div id="offGesture"></div>
-
 <h2>
   <code>offGesture(eventType, callback, element)</code><small>(alias: ionic.offGesture)</small>
 
@@ -1200,6 +1176,7 @@ happens.</p>
   </tbody>
 </table>
 
+
         </div>
 
       </div>
@@ -1265,12 +1242,12 @@ happens.</p>
       <dd><a href="http://ionicframework.com/present-ionic/">Present Ionic</a></dd>
       <dd><a href="http://ionicframework.com/contribute/">Contribute</a></dd>
       <dd><a href="https://github.com/driftyco/ionic-learn/issues/new">Write for us</a></dd>
-      <dd><a href="http://www.stickermule.com/user/1070630560/stickers">Ionic Swag</a></dd>
+      <dd><a href="http://shop.ionic.io/">Ionic Shop</a></dd>
     </dl>
 
     <dl class="small-break">
       <dt>About</dt>
-      <dd><a href="http://ionicframework.com/blog/">Blog</a></dd>
+      <dd><a href="http://blog.ionic.io/">Blog</a></dd>
       <dd><a href="http://ionic.io">Services</a></dd>
       <dd><a href="http://drifty.com">Company</a></dd>
       <dd><a href="https://s3.amazonaws.com/ionicframework.com/logo-pack.zip">Logo Pack</a></dd>
@@ -1316,7 +1293,7 @@ happens.</p>
         Code licensed under <a href="/docs/#license">MIT</a>.
         Docs under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a>
         <span>|</span>
-        &copy; 2014 <a href="http://drifty.com/">Drifty Co</a>
+        &copy; 2013-2015 <a href="http://drifty.com/">Drifty Co</a>
       </p>
     </div>
   </div>
@@ -1347,8 +1324,20 @@ happens.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

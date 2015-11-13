@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Ionic at AngularMN, Plus Drinks!</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,11 +76,11 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on April 01, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="http://photos1.meetupstatic.com/photos/theme_body/e/5/7/6/full_4198742.jpeg" style="width: 50%; margin: auto; display: block"></p>
+<p><img class="showcase-image" src="http://photos1.meetupstatic.com/photos/theme_body/e/5/7/6/full_4198742.jpeg" style="width: 50%; margin: auto; display: block" /></p>
 
-<p>Tomorrow night, <a href="http://twitter.com/maxlynch">@maxlynch</a> will be presenting Ionic at the <a href="http://www.meetup.com/AngularMN/events/169844302/">AngularMN</a> meetup group in Saint Paul, MN. If you&#39;re in the area, stop by (though space is almost full!)</p>
+<p>Tomorrow night, <a href="http://twitter.com/maxlynch">@maxlynch</a> will be presenting Ionic at the <a href="http://www.meetup.com/AngularMN/events/169844302/">AngularMN</a> meetup group in Saint Paul, MN. If you’re in the area, stop by (though space is almost full!)</p>
 
-<p>If you can&#39;t make the meetup, we are having an Ionic Drinkup after at <a href="https://www.google.com/maps/preview?ie=UTF-8&amp;q=The+Bulldog+Lowertown&amp;fb=1&amp;gl=us&amp;hq=the+bulldog+saint+paul&amp;cid=13528608539129420365&amp;ei=5g47U4L8FOe-2wW9mYDgBw&amp;ved=0CJcBEPwSMAs">The Bulldog bar</a> in downtown Saint Paul, starting around 8:30. Join us for free drinks and some Ionic swag!</p>
+<p>If you can’t make the meetup, we are having an Ionic Drinkup after at <a href="https://www.google.com/maps/preview?ie=UTF-8&amp;q=The+Bulldog+Lowertown&amp;fb=1&amp;gl=us&amp;hq=the+bulldog+saint+paul&amp;cid=13528608539129420365&amp;ei=5g47U4L8FOe-2wW9mYDgBw&amp;ved=0CJcBEPwSMAs">The Bulldog bar</a> in downtown Saint Paul, starting around 8:30. Join us for free drinks and some Ionic swag!</p>
 
 <p>Hope to see you there!</p>
 
@@ -172,8 +172,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>HTTPS for the Ionic and Ionicons CDN</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -86,18 +86,17 @@
 
 <p>With both <code>http</code> and <code>https</code> supported, we also recommend using <a href="http://www.paulirish.com/2010/the-protocol-relative-url/">Protocol-relative URLs</a> to ensure <code>https</code> is only used when needed. Now that secure checkout page from earlier can be adorned with as many Ionicons as needed and will load without any issues. Oh, happy day!</p>
 
-<p>One thing to keep in mind: It’s best to use your own local copies of the framework&#39;s files when building a Cordova/Phonegap hybrid app. These CDN files are provided for archived versions, online tutorials, demos, examples, etc.</p>
+<p>One thing to keep in mind: It’s best to use your own local copies of the framework’s files when building a Cordova/Phonegap hybrid app. These CDN files are provided for archived versions, online tutorials, demos, examples, etc.</p>
 
-<h3>Parting Words</h3>
-
-<p>Ionic’s secure CDN is now live, and we encourage all users to reference our files using the protocol relative URLs. This includes our CSS, JS, and Ionicons! Again, we’d also like to thank the good people of <a href="http://www.maxcdn.com/">MaxCDN</a> for providing a lighting-fast CDN for the <a href="http://www.maxcdn.com/open-source/">open source community</a>.</p>
+<p>###Parting Words<br />
+Ionic’s secure CDN is now live, and we encourage all users to reference our files using the protocol relative URLs. This includes our CSS, JS, and Ionicons! Again, we’d also like to thank the good people of <a href="http://www.maxcdn.com/">MaxCDN</a> for providing a lighting-fast CDN for the <a href="http://www.maxcdn.com/open-source/">open source community</a>.</p>
 
 <p>Ionic CDN Links:</p>
 
 <ul>
-<li><a href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">Ionicons v1.5.2</a></li>
-<li><a href="https://code.ionicframework.com/1.0.0-beta.12/css/ionic.min.css">Ionic CSS v1.0.0-beta.12</a></li>
-<li><a href="https://code.ionicframework.com/1.0.0-beta.12/js/ionic.bundle.min.js">Ionic JS v1.0.0-beta.12</a></li>
+  <li><a href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">Ionicons v1.5.2</a></li>
+  <li><a href="https://code.ionicframework.com/1.0.0-beta.12/css/ionic.min.css">Ionic CSS v1.0.0-beta.12</a></li>
+  <li><a href="https://code.ionicframework.com/1.0.0-beta.12/js/ionic.bundle.min.js">Ionic JS v1.0.0-beta.12</a></li>
 </ul>
 
 
@@ -188,8 +187,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

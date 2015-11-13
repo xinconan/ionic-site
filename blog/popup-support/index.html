@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Popup Support Just Landed</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -79,59 +79,63 @@
 <div style="float: right; margin-right: -160px">
 
  <div class="phone-case">
-  <p data-height="568" data-theme-id="3572" data-slug-hash="zkmhJ" data-default-tab="result" class='codepen'>See the Pen by <a href='http://codepen.io/ionic/pen/zkmhJ'>Ionic</a> (<a href='http://codepen.io/ionic'>@ionic</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <p data-height="568" data-theme-id="3572" data-slug-hash="zkmhJ" data-default-tab="result" class="codepen">See the Pen by <a href="http://codepen.io/ionic/pen/zkmhJ">Ionic</a> (<a href="http://codepen.io/ionic">@ionic</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+  <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
 </div>
 
-<p>One great thing about native SDKs is the control they give developers when it comes to common tasks like
+<p>One great thing about native SDKs is the control they give developers when it comes to common tasks like<br />
 prompting the user for input, or showing a modal dialog.</p>
 
-<p>Unfortunately, the browser built-ins <code>alert()</code>, <code>confirm()</code>, and <code>prompt()</code>, while convenient, are too limiting for
+<p>Unfortunately, the browser built-ins <code>alert()</code>, <code>confirm()</code>, and <code>prompt()</code>, while convenient, are too limiting for<br />
 those that wish to build a really custom mobile app experience.</p>
 
-<p>Based on all the requests and feedback we&#39;ve gotten from Ionic developers, we knew more powerful popup support was important to you. You want the ability to do things like
-prompt for a password, or have two inputs in a popup. Things that just aren&#39;t possible with the built-in browser prompts.</p>
+<p>Based on all the requests and feedback we’ve gotten from Ionic developers, we knew more powerful popup support was important to you. You want the ability to do things like<br />
+prompt for a password, or have two inputs in a popup. Things that just aren’t possible with the built-in browser prompts.</p>
 
-<p>So today we are releasing the first implementation of popup (or &quot;dialog&quot;) support in Ionic. Check out the live demo on the right to get a feel for how it works.</p>
+<p>So today we are releasing the first implementation of popup (or “dialog”) support in Ionic. Check out the live demo on the right to get a feel for how it works.</p>
 
-<p>We designed the popup experience off of how they function in iOS, meaning the modals can stack and will &quot;pop&quot; off after the most recent one is dismissed.</p>
+<p>We designed the popup experience off of how they function in iOS, meaning the modals can stack and will “pop” off after the most recent one is dismissed.</p>
 
-<p>Since the native browser popups are the only functions that can block the executing Javascript that opens it, our implementation had to make it easy to asynchronously
+<p>Since the native browser popups are the only functions that can block the executing Javascript that opens it, our implementation had to make it easy to asynchronously<br />
 return prompt data to your code. We do this through Angular promises.</p>
 
 <!-- more -->
 
 <p>A call to prompt a user for a password looks like this with the new popup system (make sure to inject <code>$ionicPopup</code> into your controller):</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">prompt</span><span class="p">({</span>
-  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Enter your password&#39;</span><span class="p">,</span>
-  <span class="nx">inputType</span><span class="o">:</span> <span class="s1">&#39;password&#39;</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// You have the password now</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Or, you can get a little wild and use an arbitrary template that binds to your scope, and completely control the buttons in the popup:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">{}</span>
 
-  <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
-    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;popup-template.html&#39;</span><span class="p">,</span>
-    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Enter Wi-Fi Password&#39;</span><span class="p">,</span>
-    <span class="nx">scope</span><span class="o">:</span> <span class="nx">$scope</span><span class="p">,</span>
-    <span class="nx">buttons</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Cancel&#39;</span><span class="p">,</span> <span class="nx">onTap</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="p">}</span> <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;&lt;b&gt;Save&lt;/b&gt;&#39;</span><span class="p">,</span>
-        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;button-positive&#39;</span><span class="p">,</span>
-        <span class="nx">onTap</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">wifi</span><span class="p">;</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-    <span class="p">]</span>
-    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Got wifi password&#39;</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
-    <span class="p">});</span>
-</code></pre></div>
+<pre><code class="language-javascript">$ionicPopup.prompt({
+  title: 'Enter your password',
+  inputType: 'password'
+}).then(function(password) {
+  // You have the password now
+});
+</code></pre>
+
+<p>Or, you can get a little wild and use an arbitrary template that binds to your scope, and completely control the buttons in the popup:</p>
+
+<pre><code class="language-javascript">  $scope.data = {}
+
+  $ionicPopup.show({
+    templateUrl: 'popup-template.html',
+    title: 'Enter Wi-Fi Password',
+    scope: $scope,
+    buttons: [
+      { text: 'Cancel', onTap: function(e) { return true; } },
+      {
+        text: '&lt;b&gt;Save&lt;/b&gt;',
+        type: 'button-positive',
+        onTap: function(e) {
+          return $scope.data.wifi;
+        }
+      },
+    ]
+    }).then(function(password) {
+      console.log('Got wifi password', password);
+    });
+</code></pre>
+
 <p>See the full <a href="http://codepen.io/ionic/pen/zkmhJ">Demo</a> for an example of how to use each type of popup we support.</p>
 
 <p>Oh, and coming soon are some really great API docs that go into detail all the features of the popup system and all of our other controllers. Expect more on that in a week or so.</p>
@@ -226,8 +230,20 @@ return prompt data to your code. We do this through Angular promises.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

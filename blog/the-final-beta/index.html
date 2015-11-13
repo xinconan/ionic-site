@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Beta 14: The Final Beta</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,77 +76,82 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/459365829348302849/lJ1X8rU9.png" class="author-icon"><a href="https://twitter.com/Ionicframework">Ionic Team</a> on December 15, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/b14-header.jpg" style="margin-top:-20px;"></p>
+<p><img class="showcase-image" src="/img/blog/b14-header.jpg" style="margin-top:-20px;" /></p>
 
-<p>Today, we&#39;re thrilled to announce Ionic 1.0 Beta 14, The Last of the Betas! Beta 14 takes Ionic beyond its birth as a <a href="http://ionicframework.com/blog/beyond-framework/">framework</a> to its current state as a complete suite of solutions for hybrid mobile app development. After we released Beta 13, our team examined our tools and services and analyzed areas where we could make improvements for hybrid app development. The desire to meet the needs of our developers in the best way possible is the driving force behind every decision we make about Ionic. For this release, we focused on performance boosts, caching, view transitions, and platform-specific changes.</p>
+<p>Today, we’re thrilled to announce Ionic 1.0 Beta 14, The Last of the Betas! Beta 14 takes Ionic beyond its birth as a <a href="http://ionicframework.com/blog/beyond-framework/">framework</a> to its current state as a complete suite of solutions for hybrid mobile app development. After we released Beta 13, our team examined our tools and services and analyzed areas where we could make improvements for hybrid app development. The desire to meet the needs of our developers in the best way possible is the driving force behind every decision we make about Ionic. For this release, we focused on performance boosts, caching, view transitions, and platform-specific changes.</p>
 
 <!-- more -->
 
-<h3>Update to Angular 1.3</h3>
+<h3 id="update-to-angular-13">Update to Angular 1.3</h3>
+<p>One of the biggest updates we’ve made in this release is that we’ve migrated Ionic’s core to work with <a href="http://angularjs.blogspot.com/2014/10/angularjs-130-superluminal-nudge.html">Angular 1.3</a>, which offers supercharged performance and slick new features. Take a look at <a href="https://docs.angularjs.org/guide/migration#migrating-from-1-2-to-1-3">Angular’s Migration Page</a> to get familiar with any changes that apply to your app!</p>
 
-<p>One of the biggest updates we&#39;ve made in this release is that we&#39;ve migrated Ionic&#39;s core to work with <a href="http://angularjs.blogspot.com/2014/10/angularjs-130-superluminal-nudge.html">Angular 1.3</a>, which offers supercharged performance and slick new features. Take a look at <a href="https://docs.angularjs.org/guide/migration#migrating-from-1-2-to-1-3">Angular&#39;s Migration Page</a> to get familiar with any changes that apply to your app!</p>
+<h3 id="caching-transitions-and-platform-configuration-oh-my">Caching, Transitions, and Platform Configuration, Oh My!</h3>
 
-<h3>Caching, Transitions, and Platform Configuration, Oh My!</h3>
+<p>####Caching</p>
 
-<h4>Caching</h4>
+<p>One huge performance boost we’ve added is the caching of views. It used to be that views and their scopes were destroyed as soon as the user navigated away from them. While this is the normal behavior for views in Angular, it’s also a big hit for performance and perceived speed to have the same elements and data reloaded on every viewing.</p>
 
-<p>One huge performance boost we&#39;ve added is the caching of views. It used to be that views and their scopes were destroyed as soon as the user navigated away from them. While this is the normal behavior for views in Angular, it&#39;s also a big hit for performance and perceived speed to have the same elements and data reloaded on every viewing.</p>
+<p>Now, when the user transitions away from a view, the scope is disconnected, rather than destroyed, and the view is kept in the DOM (don’t worry; it’s hidden and not being rendered, so it won’t impact performance). This allows us to essentially cache the view and reconnect the scopes, instead of rebuilding them. This means all that data crunching to get a controller spun up only needs to happen once. The controller and its data can stay in memory and listen for events, just like native apps. By default, Ionic will cache only 10 views, but this is all <a href="http://ionicframework.com/docs/api/directive/ionNavView/">highly configurable</a>.</p>
 
-<p>Now, when the user transitions away from a view, the scope is disconnected, rather than destroyed, and the view is kept in the DOM (don&#39;t worry; it&#39;s hidden and not being rendered, so it won&#39;t impact performance). This allows us to essentially cache the view and reconnect the scopes, instead of rebuilding them. This means all that data crunching to get a controller spun up only needs to happen once. The controller and its data can stay in memory and listen for events, just like native apps. By default, Ionic will cache only 10 views, but this is all <a href="http://ionicframework.com/docs/api/directive/ionNavView/">highly configurable</a>.</p>
+<p>Being able to hold scroll position as a user navigates forward and back is great for user interaction. For example, if the user scrolls down a large list on View A, then navigates to a detail page in View B, then navigates back to View A, it’ll still be at the same scroll position (without any data reloading or skippy scrolling).</p>
 
-<p>Being able to hold scroll position as a user navigates forward and back is great for user interaction. For example, if the user scrolls down a large list on View A, then navigates to a detail page in View B, then navigates back to View A, it&#39;ll still be at the same scroll position (without any data reloading or skippy scrolling).</p>
+<p>####Ionic’s Got Some New Moves</p>
 
-<h4>Ionic&#39;s Got Some New Moves</h4>
+<p>If you follow any of the Ionic devs on Twitter, you’ve probably seen some hints about what we’ve been working on.</p>
 
-<p>If you follow any of the Ionic devs on Twitter, you&#39;ve probably seen some hints about what we&#39;ve been working on.</p>
+<p><img class="showcase-image" style="display: block; margin: auto;" src="https://pbs.twimg.com/media/B1DcthWCYAA45I1.jpg" /></p>
 
-<p><img class="showcase-image" style="display: block; margin: auto;" src="https://pbs.twimg.com/media/B1DcthWCYAA45I1.jpg"></p>
+<p>We spent a lot of time analyzing both iOS and Android animations to figure out exactly how they work. In iOS, there are about 20 different things happening all at once. New nav-bar buttons fade in, and old buttons fade out. Old titles slide to the back button text, and new titles slide in. The old view slides away, and the new view slides in, all while an overlay fades in. And that’s just for the transition to a new view! Going back is a slightly different variation of this. We also spent a lot of time looking at how views transition in Android 5.0, paying special attention to the ways in which transitions are done with tabs in Android.</p>
 
-<p>We spent a lot of time analyzing both iOS and Android animations to figure out exactly how they work. In iOS, there are about 20 different things happening all at once. New nav-bar buttons fade in, and old buttons fade out. Old titles slide to the back button text, and new titles slide in. The old view slides away, and the new view slides in, all while an overlay fades in. And that&#39;s just for the transition to a new view! Going back is a slightly different variation of this. We also spent a lot of time looking at how views transition in Android 5.0, paying special attention to the ways in which transitions are done with tabs in Android.</p>
+<p>We encourage Ionic app developers to embrace platform specific changes, so users feel right at home using interactions and layouts with which they’re familiar. For example, iOS apps have center-aligned titles and header buttons on the left and right, while Android apps have left-aligned titles and header buttons on the right. In Beta 14, we’ve added these as defaults, so  platform-specific UI changes happen <em>automatically</em>, but they can all still be configured.</p>
 
-<p>We encourage Ionic app developers to embrace platform specific changes, so users feel right at home using interactions and layouts with which they&#39;re familiar. For example, iOS apps have center-aligned titles and header buttons on the left and right, while Android apps have left-aligned titles and header buttons on the right. In Beta 14, we&#39;ve added these as defaults, so  platform-specific UI changes happen <em>automatically</em>, but they can all still be configured.</p>
+<p>It was clear to us that we needed to rethink our transition system and how we were handling views. Simple CSS transitions weren’t cutting it, especially because we wanted a transition to also be controlled with user-interaction (think swipe-to-go-back). This realization drove us to create our new view transition and caching system and to structure the core so it is easily configurable. With this new setup, we’ll begin working on a new animations pack to provide even more compelling animations. Expect even more to come!</p>
 
-<p>It was clear to us that we needed to rethink our transition system and how we were handling views. Simple CSS transitions weren&#39;t cutting it, especially because we wanted a transition to also be controlled with user-interaction (think swipe-to-go-back). This realization drove us to create our new view transition and caching system and to structure the core so it is easily configurable. With this new setup, we&#39;ll begin working on a new animations pack to provide even more compelling animations. Expect even more to come!</p>
-
-<h4>Configure All The Things</h4>
+<p>####Configure All The Things</p>
 
 <p>We also created the  <a href="http://ionicframework.com/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a>, a powerful feature that allows you to customize nearly every aspect of your app, from where the title aligns in the nav-bar to the style of animations used for transitions. Even small changes, such as the back button icon, can be configured to be one way for an iOS app and another way for an Android app.</p>
 
-<h3>Automatic History Magic</h3>
+<h3 id="automatic-history-magic">Automatic History Magic</h3>
 
-<p>In addition to all the configuration that can be done with <code>$ionicConfigProvider</code>, we&#39;ve also added <a href="http://ionicframework.com/docs/api/service/$ionicHistory/"><code>$ionicHistory</code></a>, which includes functionality that was available in previous versions of Ionic, but wraps them in an Angular service and adds new features. <code>$ionicHistory</code> keeps track of an app&#39;s views and history stack as the user navigates. Similar to the way a browser behaves, an Ionic app is able to keep track of the previous view, the current view, and the forward view (if there is one).</p>
+<p>In addition to all the configuration that can be done with <code>$ionicConfigProvider</code>, we’ve also added <a href="http://ionicframework.com/docs/api/service/$ionicHistory/"><code>$ionicHistory</code></a>, which includes functionality that was available in previous versions of Ionic, but wraps them in an Angular service and adds new features. <code>$ionicHistory</code> keeps track of an app’s views and history stack as the user navigates. Similar to the way a browser behaves, an Ionic app is able to keep track of the previous view, the current view, and the forward view (if there is one).</p>
 
-<p>However, a typical web browser only keeps track of one history stack in a linear fashion. Ionic&#39;s <code>$ionicHistory</code> is able to keep track of multiple histories and follow the user as he or she navigates among different views and different histories. For example, an app with tabs has its own history stack for each tab, so a user can navigate a few views in Tab A, then navigate a few in Tab B, and return to Tab A, with the previous stack location having been maintained the whole time.</p>
+<p>However, a typical web browser only keeps track of one history stack in a linear fashion. Ionic’s <code>$ionicHistory</code> is able to keep track of multiple histories and follow the user as he or she navigates among different views and different histories. For example, an app with tabs has its own history stack for each tab, so a user can navigate a few views in Tab A, then navigate a few in Tab B, and return to Tab A, with the previous stack location having been maintained the whole time.</p>
 
-<h3>But Wait, There&#39;s MORE!</h3>
+<h3 id="but-wait-theres-more">But Wait, There’s MORE!</h3>
+<p>We have so many things in store for 2015 that we couldn’t resist offering you a little sneak peek…</p>
 
-<p>We have so many things in store for 2015 that we couldn&#39;t resist offering you a little sneak peek...</p>
-
-<h4>Here&#39;s What&#39;s Next!</h4>
+<p>####Here’s What’s Next!<br />
+- Chromium builds for Android: We’ll be integrating Chromium builds into the CLI soon, but remember that <a href="http://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/">you can do this now with Crosswalk</a>. What this means for you is drastically improved performance on Android devices.</p>
 
 <ul>
-<li><p>Chromium builds for Android: We&#39;ll be integrating Chromium builds into the CLI soon, but remember that <a href="http://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/">you can do this now with Crosswalk</a>. What this means for you is drastically improved performance on Android devices.</p></li>
-<li><p>Now that view elements are cached in the DOM, we&#39;ll be adding the &quot;swipe to go back&quot; feature between pages.</p></li>
-<li><p>Since Android provides the necessary scroll events, we&#39;ll be refactoring our scrolling, such that we can remove JS scrolling on Android devices.</p></li>
-<li><p>This is our <em>last Beta release</em>! Once “swipe to go back” and removal of JS scrolling on Android updates are added, we&#39;re going to call Ionic v1.0 feature complete and roll out the Release Candidate.</p></li>
-<li><p>Our new navigation and transition system provides a lot more power for animations. In the near future, we&#39;ll be creating an animations pack that can easily extend Ionic&#39;s animations and allow apps to do some pretty slick stuff with very minimal code.</p></li>
-<li><p>More Ionicons! We will be adding to and improving our <a href="http://ionicons.com/">beloved font icon pack</a> to pair nicely with the next Ionic release. Spinning font icons will be removed in lieu of a special new loading spinner project we&#39;re working on…</p></li>
-<li><p>Oh, and let&#39;s not forget <a href="http://ionic.io">Ionic.io</a>, which will give all Ionic developers access to powerful services like Analytics, A/B testing, and live-updating of apps without app store submission. Sign up on the alpha list for more info as we move closer to release!</p></li>
+  <li>
+    <p>Now that view elements are cached in the DOM, we’ll be adding the “swipe to go back” feature between pages.</p>
+  </li>
+  <li>
+    <p>Since Android provides the necessary scroll events, we’ll be refactoring our scrolling, such that we can remove JS scrolling on Android devices.</p>
+  </li>
+  <li>
+    <p>This is our <em>last Beta release</em>! Once “swipe to go back” and removal of JS scrolling on Android updates are added, we’re going to call Ionic v1.0 feature complete and roll out the Release Candidate.</p>
+  </li>
+  <li>
+    <p>Our new navigation and transition system provides a lot more power for animations. In the near future, we’ll be creating an animations pack that can easily extend Ionic’s animations and allow apps to do some pretty slick stuff with very minimal code.</p>
+  </li>
+  <li>More Ionicons! We will be adding to and improving our <a href="http://ionicons.com/">beloved font icon pack</a> to pair nicely with the next Ionic release. Spinning font icons will be removed in lieu of a special new loading spinner project we’re working on…</li>
+  <li>Oh, and let’s not forget <a href="http://ionic.io">Ionic.io</a>, which will give all Ionic developers access to powerful services like Analytics, A/B testing, and live-updating of apps without app store submission. Sign up on the alpha list for more info as we move closer to release!</li>
 </ul>
 
-<h3>Setting the Bar for Maximum Awesomeness</h3>
-
-<p>We encourage the Ionic community to check out the <a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md">changelog</a> for this release, review our <a href="http://ionicframework.com/docs/">docs</a>, and read up on all the new APIs. Ionic has evolved into a full-fledged SDK for mobile apps, and we believe the updates we&#39;ve made in this release will make app development an even more enjoyable process for all of you. Thanks to all our community members who have provided feedback and improvements to the open source project. We are very grateful to you!</p>
+<h3 id="setting-the-bar-for-maximum-awesomeness">Setting the Bar for Maximum Awesomeness</h3>
+<p>We encourage the Ionic community to check out the <a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md">changelog</a> for this release, review our <a href="http://ionicframework.com/docs/">docs</a>, and read up on all the new APIs. Ionic has evolved into a full-fledged SDK for mobile apps, and we believe the updates we’ve made in this release will make app development an even more enjoyable process for all of you. Thanks to all our community members who have provided feedback and improvements to the open source project. We are very grateful to you!</p>
 
 <p><strong>Docs</strong></p>
 
 <ul>
-<li><a href="http://ionicframework.com/docs/api/directive/ionView/">View LifeCycle and Events</a></li>
-<li><a href="http://ionicframework.com/docs/api/directive/ionNavView/">Navigation</a></li>
-<li><a href="http://ionicframework.com/docs/api/provider/$ionicConfigProvider/">Ionic Config</a></li>
-<li><a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md">Ionic Changelog</a></li>
-<li><a href="https://docs.angularjs.org/guide/migration#migrating-from-1-2-to-1-3">Angular v1.2 to v1.3 Migration</a></li>
-<li><a href="https://www.youtube.com/watch?v=ojMy6m_fcxc">Angular v1.3 (ngEurope 2014)</a></li>
+  <li><a href="http://ionicframework.com/docs/api/directive/ionView/">View LifeCycle and Events</a></li>
+  <li><a href="http://ionicframework.com/docs/api/directive/ionNavView/">Navigation</a></li>
+  <li><a href="http://ionicframework.com/docs/api/provider/$ionicConfigProvider/">Ionic Config</a></li>
+  <li><a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md">Ionic Changelog</a></li>
+  <li><a href="https://docs.angularjs.org/guide/migration#migrating-from-1-2-to-1-3">Angular v1.2 to v1.3 Migration</a></li>
+  <li><a href="https://www.youtube.com/watch?v=ojMy6m_fcxc">Angular v1.3 (ngEurope 2014)</a></li>
 </ul>
 
 
@@ -237,8 +242,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Welcome Gerred Dillon as Developer Evangelist!</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -77,10 +77,10 @@
   </div>
 
 <div style="height: 200px; width: 200px; border-radius: 600px; border: 6px solid #4e8ef7; overflow: hidden; margin: 15px auto"> 
-  <img src="http://ionicframework.com.s3.amazonaws.com/blog/gerred.jpg" alt="Gerred Dillon">
+  <img src="http://ionicframework.com.s3.amazonaws.com/blog/gerred.jpg" alt="Gerred Dillon" />
 </div>
 
-<p>Today, Gerred Dillon (<a href="http://twitter.com/justicefries">@justicefries</a> on Twitter and <a href="https://github.com/gerred">@gerred</a> on GitHub) joins the Ionic Team as Developer Evangelist! You&#39;ll see Gerred more often in our upcoming technical blog posts, documentation, demos, and at meetups and conferences.</p>
+<p>Today, Gerred Dillon (<a href="http://twitter.com/justicefries">@justicefries</a> on Twitter and <a href="https://github.com/gerred">@gerred</a> on GitHub) joins the Ionic Team as Developer Evangelist! You’ll see Gerred more often in our upcoming technical blog posts, documentation, demos, and at meetups and conferences.</p>
 
 <!-- more -->
 
@@ -178,8 +178,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

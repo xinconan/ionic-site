@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Changes to Ionic Directive Naming</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,16 +76,16 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on February 20, 2014</time>
   </div>
 
-<p>A few days ago we released Ionic v0.9.25 &quot;Quokka&quot; (<a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md#0925-quokka-2014-02-19">changelog</a>). In addition to lots of bugs getting fixed and a few new features, one big thing that changed was moving Ionic directives to use the <code>ion-</code> prefix.</p>
+<p>A few days ago we released Ionic v0.9.25 “Quokka” (<a href="https://github.com/driftyco/ionic/blob/master/CHANGELOG.md#0925-quokka-2014-02-19">changelog</a>). In addition to lots of bugs getting fixed and a few new features, one big thing that changed was moving Ionic directives to use the <code>ion-</code> prefix.</p>
 
-<p>This means instead of using <code>&lt;side-menus&gt;</code>, you&#39;ll need to start using <code>&lt;ion-side-menus&gt;</code>. This applies to any and all Ionic directives, including attribute and class name directives (though we rarely use those).</p>
+<p>This means instead of using <code>&lt;side-menus&gt;</code>, you’ll need to start using <code>&lt;ion-side-menus&gt;</code>. This applies to any and all Ionic directives, including attribute and class name directives (though we rarely use those).</p>
 
-<p>We thought long and hard about making this change, and at the end of the day we felt it was more clear which directives were powered by Ionic, and safer in the case that
+<p>We thought long and hard about making this change, and at the end of the day we felt it was more clear which directives were powered by Ionic, and safer in the case that<br />
 you had similiar-named directives in your own application.</p>
 
 <!-- more -->
 
-<p>We know this is going to be annoying and cause upgrade issues. We wanted to get this out of the way before we release the beta so that we can move forward with
+<p>We know this is going to be annoying and cause upgrade issues. We wanted to get this out of the way before we release the beta so that we can move forward with<br />
 the best possible solution to Ionic namespacing in your apps.</p>
 
 <p>If you have any questions about this or need help, please head on over to the <a href="http://forum.ionicframework.com/">forum</a>.</p>
@@ -178,8 +178,20 @@ the best possible solution to Ionic namespacing in your apps.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

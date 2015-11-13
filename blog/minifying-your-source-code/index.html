@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Minifying Your App's Source Code</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,162 +76,171 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/2653730816/5da4d8fb72352c715bbaffe07e56270e_400x400.jpeg" class="author-icon"><a href="http://twitter.com/nraboy" target="_blank">Nic Raboy</a> on January 10, 2015</time>
   </div>
 
-<p><em>This is a guest post by <a href="http://blog.nraboy.com/">Nic Raboy</a>, an application developer with a strong background in
+<p><em>This is a guest post by <a href="http://blog.nraboy.com/">Nic Raboy</a>, an application developer with a strong background in<br />
 Android, AngularJS, Ionic, Java, SQL, and Unity3D. Nic writes often about Ionic and how to build great hybrid apps.</em></p>
 
-<p>Previously, I wrote about the importance of uglifying your Apache Cordova source code. If you read my <a href="https://blog.nraboy.com/2014/11/extract-android-apk-view-source-code/">previous
-post</a> you&#39;ll know that hybrid applications are
+<p>Previously, I wrote about the importance of uglifying your Apache Cordova source code. If you read my <a href="https://blog.nraboy.com/2014/11/extract-android-apk-view-source-code/">previous<br />
+post</a> you’ll know that hybrid applications are<br />
 incredibly easy to decompile, so uglifying your code creates additional difficulty for any malicious user.</p>
 
-<p>I also wrote a <a href="https://blog.nraboy.com/2014/12/use-grunt-lint-uglify-javascript-project/">generic post</a> about how to use
-the Grunt task runner to lint and uglify your code. However, using Grunt isn&#39;t the most ideal solution when it comes to
+<p>I also wrote a <a href="https://blog.nraboy.com/2014/12/use-grunt-lint-uglify-javascript-project/">generic post</a> about how to use<br />
+the Grunt task runner to lint and uglify your code. However, using Grunt isn’t the most ideal solution when it comes to<br />
 linting your Apache Cordova project for errors and uglifying your code.</p>
 
-<p>In this guide, we&#39;re going to see how to efficiently lint and minify your Apache Cordova project before building. The
-same information can be applied against <a href="http://phonegap.com/">Phonegap</a> and <a href="http://www.ionicframework.com">Ionic
+<p>In this guide, we’re going to see how to efficiently lint and minify your Apache Cordova project before building. The<br />
+same information can be applied against <a href="http://phonegap.com/">Phonegap</a> and <a href="http://www.ionicframework.com">Ionic<br />
 Framework</a> projects, too.</p>
 
 <!-- more -->
 
-<p>Let&#39;s start by creating a fresh Apache Cordova Android and iOS project:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cordova create TestProject com.nraboy.testproject TestProject
-<span class="nb">cd </span>TestProject
+<p>Let’s start by creating a fresh Apache Cordova Android and iOS project:</p>
+
+<pre><code class="language-bash">cordova create TestProject com.nraboy.testproject TestProject
+cd TestProject
 cordova platform add android
 cordova platform add ios
-</code></pre></div>
-<p>Note that if you&#39;re not using a Mac, you cannot add or build for the iOS platform.</p>
+</code></pre>
+
+<p>Note that if you’re not using a Mac, you cannot add or build for the iOS platform.</p>
 
 <p>This tutorial is going to be broken into two parts:</p>
 
 <ul>
-<li>Linting the project for JavaScript errors</li></li>
-<li>Uglifying the code for obfuscation purposes</li></li>
+  <li>Linting the project for JavaScript errors&lt;/li&gt;</li>
+  <li>Uglifying the code for obfuscation purposes&lt;/li&gt;</li>
 </ul>
 
-<p>Once you&#39;ve run these steps, your project will be in much better shape.</p>
+<p>Once you’ve run these steps, your project will be in much better shape.</p>
 
-<h3>Linting the project for JavaScript errors</h3>
+<h3 id="linting-the-project-for-javascript-errors">Linting the project for JavaScript errors</h3>
 
-<p>One of my subscribers recommended I check out <a href="https://www.npmjs.com/package/cordova-linter">Cordova Linter</a> for this
-task. I checked it out and couldn&#39;t figure out how to get it to work. It kept saying my project had no errors, when I
+<p>One of my subscribers recommended I check out <a href="https://www.npmjs.com/package/cordova-linter">Cordova Linter</a> for this<br />
+task. I checked it out and couldn’t figure out how to get it to work. It kept saying my project had no errors, when I<br />
 know it did. The package had no documentation to prove its process.</p>
 
-<p>This is when I decided to create my own Apache Cordova hook. If you&#39;ve read my <a href="https://blog.nraboy.com/2015/01/hooks-apache-cordova-mobile-applications/">previous
-post</a> regarding hooks, you should have a
-general idea of what we&#39;re going to do.</p>
+<p>This is when I decided to create my own Apache Cordova hook. If you’ve read my <a href="https://blog.nraboy.com/2015/01/hooks-apache-cordova-mobile-applications/">previous<br />
+post</a> regarding hooks, you should have a<br />
+general idea of what we’re going to do.</p>
 
-<p>Create <code>hooks/before_prepare/02_jshint.js</code>, and make sure to give it execute permissions if you&#39;re using Linux or Mac.
-Based on the file title, you can probably guess we&#39;re going to use <a href="http://jshint.com/docs/">JSHint</a> for linting. Open
+<p>Create <code>hooks/before_prepare/02_jshint.js</code>, and make sure to give it execute permissions if you’re using Linux or Mac.<br />
+Based on the file title, you can probably guess we’re going to use <a href="http://jshint.com/docs/">JSHint</a> for linting. Open<br />
 <code>02_jshint.js</code>, and add the following code:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="o">!</span><span class="err">/usr/bin/env node</span>
 
-<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jshint&#39;</span><span class="p">).</span><span class="nx">JSHINT</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">async</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;async&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">#!/usr/bin/env node
 
-<span class="kd">var</span> <span class="nx">foldersToProcess</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;js&#39;</span>
-<span class="p">];</span>
+var fs = require('fs');
+var path = require('path');
+var jshint = require('jshint').JSHINT;
+var async = require('async');
 
-<span class="nx">foldersToProcess</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">folder</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">processFiles</span><span class="p">(</span><span class="s2">&quot;www/&quot;</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">);</span>
-<span class="p">});</span>
+var foldersToProcess = [
+    'js'
+];
 
-<span class="kd">function</span> <span class="nx">processFiles</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">errorCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">fs</span><span class="p">.</span><span class="nx">readdir</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;processFiles err: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">innercallback</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">file</span> <span class="o">=</span> <span class="nx">dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">file</span><span class="p">;</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">stat</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stat</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">stat</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">())</span> <span class="p">{</span>
-                    <span class="k">if</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;.js&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">lintFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">hasError</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">if</span><span class="p">(</span><span class="nx">hasError</span><span class="p">)</span> <span class="p">{</span>
-                                <span class="nx">errorCount</span><span class="o">++</span><span class="p">;</span>
-                            <span class="p">}</span>
-                            <span class="nx">innercallback</span><span class="p">();</span>
-                        <span class="p">});</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                        <span class="nx">innercallback</span><span class="p">();</span>
-                    <span class="p">}</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">innercallback</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">});</span>
-        <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span><span class="p">(</span><span class="nx">errorCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">}</span>
+foldersToProcess.forEach(function(folder) {
+    processFiles("www/" + folder);
+});
 
-<span class="kd">function</span> <span class="nx">lintFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Linting &quot;</span> <span class="o">+</span> <span class="nx">file</span><span class="p">);</span>
-    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">jshint</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()))</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;File &#39;</span> <span class="o">+</span> <span class="nx">file</span> <span class="o">+</span> <span class="s1">&#39; has no errors.&#39;</span><span class="p">);</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------&#39;</span><span class="p">);</span>
-            <span class="nx">callback</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Errors in file &#39;</span> <span class="o">+</span> <span class="nx">file</span><span class="p">);</span>
-            <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">jshint</span><span class="p">.</span><span class="nx">data</span><span class="p">(),</span>
-            <span class="nx">errors</span> <span class="o">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">errors</span><span class="p">;</span>
-            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errors</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">line</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">errors</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">character</span> <span class="o">+</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">+</span> <span class="nx">errors</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">reason</span> <span class="o">+</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">+</span>
-<span class="nx">errors</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">evidence</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------&#39;</span><span class="p">);</span>
-            <span class="nx">callback</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>The above script will look at only the <code>www/js</code> directory, but feel free to add further directories. All
-files in the directory will be looped through, and if they are JavaScript, the file will be fed into JSHint. If any
-files contain errors, they will be presented to the screen, and then the script will stop all further processes. This
+function processFiles(dir, callback) {
+    var errorCount = 0;
+    fs.readdir(dir, function(err, list) {
+        if (err) {
+            console.log('processFiles err: ' + err);
+            return;
+        }
+        async.eachSeries(list, function(file, innercallback) {
+            file = dir + '/' + file;
+            fs.stat(file, function(err, stat) {
+                if(!stat.isDirectory()) {
+                    if(path.extname(file) === ".js") {
+                        lintFile(file, function(hasError) {
+                            if(hasError) {
+                                errorCount++;
+                            }
+                            innercallback();
+                        });
+                    } else {
+                        innercallback();
+                    }
+                } else {
+                    innercallback();
+                }
+            });
+        }, function(error) {
+            if(errorCount &gt; 0) {
+                process.exit(1);
+            }
+        });
+    });
+}
+
+function lintFile(file, callback) {
+    console.log("Linting " + file);
+    fs.readFile(file, function(err, data) {
+        if(err) {
+            console.log('Error: ' + err);
+            return;
+        }
+        if(jshint(data.toString())) {
+            console.log('File ' + file + ' has no errors.');
+            console.log('-----------------------------------------');
+            callback(false);
+        } else {
+            console.log('Errors in file ' + file);
+            var out = jshint.data(),
+            errors = out.errors;
+            for(var j = 0; j &lt; errors.length; j++) {
+                console.log(errors[j].line + ':' + errors[j].character + ' -&gt; ' + errors[j].reason + ' -&gt; ' +
+errors[j].evidence);
+            }
+            console.log('-----------------------------------------');
+            callback(true);
+        }
+    });
+}
+</code></pre>
+
+<p>The above script will look at only the <code>www/js</code> directory, but feel free to add further directories. All<br />
+files in the directory will be looped through, and if they are JavaScript, the file will be fed into JSHint. If any<br />
+files contain errors, they will be presented to the screen, and then the script will stop all further processes. This<br />
 means that if you execute the script with <code>cordova build [platform]</code>, the application will not continue to build if errors are found.</p>
 
-<p><code>02_jshint.js</code> requires two NodeJS libraries in order to function. They can be installed like this from the root of
+<p><code>02_jshint.js</code> requires two NodeJS libraries in order to function. They can be installed like this from the root of<br />
 your project:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install jshint
-<span class="nv">$ </span>npm install async
-</code></pre></div>
-<h3>Uglifying the code for obfuscation purposes</h3>
 
-<p>One of my other subscribers recommended I check out <a href="https://www.npmjs.com/package/cordova-uglify">Cordova Uglify</a> for
-the obfuscation process. Unlike Cordova Linter, this NPM package actually worked as advertised. From the root of your
+<pre><code class="language-bash">$ npm install jshint
+$ npm install async
+</code></pre>
+
+<h3 id="uglifying-the-code-for-obfuscation-purposes">Uglifying the code for obfuscation purposes</h3>
+
+<p>One of my other subscribers recommended I check out <a href="https://www.npmjs.com/package/cordova-uglify">Cordova Uglify</a> for<br />
+the obfuscation process. Unlike Cordova Linter, this NPM package actually worked as advertised. From the root of your<br />
 Apache Cordova project, run the following command:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install cordova-uglify
-</code></pre></div>
-<p>When the installation completes, you should find that <code>hooks/after_prepare/uglify.js</code> was created. If you&#39;re on Linux
-or Mac, you&#39;ll need to give it execute permissions; otherwise, it won&#39;t be picked up.</p>
+
+<pre><code class="language-bash">$ npm install cordova-uglify
+</code></pre>
+
+<p>When the installation completes, you should find that <code>hooks/after_prepare/uglify.js</code> was created. If you’re on Linux<br />
+or Mac, you’ll need to give it execute permissions; otherwise, it won’t be picked up.</p>
 
 <p>You can test that this script worked by running <code>cordova prepare</code> or <code>cordova build [platform]</code>.</p>
 
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 
-<p>By default, Apache Cordova does not check your code for errors when building. This means you won&#39;t know if errors
-exist in your code until you run your application. Linting your code can save you a lot of stress when it comes to
+<p>By default, Apache Cordova does not check your code for errors when building. This means you won’t know if errors<br />
+exist in your code until you run your application. Linting your code can save you a lot of stress when it comes to<br />
 finding errors caused by typos or missing/extra brackets.</p>
 
-<p>Your hard work is very easy to decompile by default, so it is a good idea to obfuscate your code by means of
+<p>Your hard work is very easy to decompile by default, so it is a good idea to obfuscate your code by means of<br />
 uglification before you release your application.</p>
 
 <p>Two videos for this article can be seen below:</p>
 
-<iframe width="100%" height="510" src="//www.youtube.com/embed/qQiYE6x7cFk" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="510" src="//www.youtube.com/embed/qQiYE6x7cFk" frameborder="0" allowfullscreen=""></iframe>
 
-<iframe width="100%" height="510" src="//www.youtube.com/embed/hoy3MESySWQ" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="510" src="//www.youtube.com/embed/hoy3MESySWQ" frameborder="0" allowfullscreen=""></iframe>
+
 
 
   <div class="share-bottom">
@@ -321,8 +330,20 @@ uglification before you release your application.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

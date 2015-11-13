@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Introducing Ionic Lab</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,27 +76,31 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on December 11, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/ionic-lab-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/ionic-lab-header.png" /></p>
 
-<p>We just added a new feature to the <a href="http://ionicframework.com/getting-started">Ionic CLI</a> tool that we&#39;re calling <strong>Ionic Lab</strong>. Ionic Lab makes it much easier to test your apps on multiple screen sizes and platform types:</p>
+<p>We just added a new feature to the <a href="http://ionicframework.com/getting-started">Ionic CLI</a> tool that we’re calling <strong>Ionic Lab</strong>. Ionic Lab makes it much easier to test your apps on multiple screen sizes and platform types:</p>
 
-<p><img src="/img/blog/lab.png" alt="Image"></p>
+<p><img src="/img/blog/lab.png" alt="Image" /></p>
 
 <p>We want Ionic to be both a great SDK and a toolchain that gives hybrid developers a leg up on native, and this is one of our first big steps in that direction.</p>
 
 <!-- more -->
 
 <p>To get started with Ionic Lab, make sure to update to the latest version of Ionic in NPM:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g ionic
-</code></pre></div>
-<p>We&#39;ve extended the <code>serve</code> command to open the new Lab UI:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic serve --lab
-</code></pre></div>
-<p>If you&#39;ve used the <code>serve</code> command before, you&#39;ll feel right at home with this one. Just like <code>serve</code>, it opens
-your app in a browser, but now it shows you what your app will look like on a phone, with both iOS and Android
-side by side. </p>
 
-<p>And of course, it supports Live Reload and all the other goodies we&#39;ve added over the last couple of months.</p>
+<pre><code class="language-bash">$ npm install -g ionic
+</code></pre>
+
+<p>We’ve extended the <code>serve</code> command to open the new Lab UI:</p>
+
+<pre><code class="language-bash">$ ionic serve --lab
+</code></pre>
+
+<p>If you’ve used the <code>serve</code> command before, you’ll feel right at home with this one. Just like <code>serve</code>, it opens<br />
+your app in a browser, but now it shows you what your app will look like on a phone, with both iOS and Android<br />
+side by side.</p>
+
+<p>And of course, it supports Live Reload and all the other goodies we’ve added over the last couple of months.</p>
 
 <p>We hope you enjoy this new feature. Expect a <em>lot</em> more from Ionic Lab in the near future!</p>
 
@@ -188,8 +192,20 @@ side by side. </p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

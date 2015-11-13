@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Collection Repeat</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,9 +76,9 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/495587171332403200/tO9oMmCn.png" class="author-icon"><a href="https://twitter.com/mhartington">Mike</a> on August 13, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/collectionrepeat-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/collectionrepeat-header.png" /></p>
 
-<p>When developing apps, it’s fair to expect that a large list of data will be needed. Until now, if you were developing a hybrid app and wanted to show the user a list of 100+ items, that was just too bad. The phone’s browser would laugh at you as you scrolled through your list at ten frames per second. </p>
+<p>When developing apps, it’s fair to expect that a large list of data will be needed. Until now, if you were developing a hybrid app and wanted to show the user a list of 100+ items, that was just too bad. The phone’s browser would laugh at you as you scrolled through your list at ten frames per second.</p>
 
 <p>After trying to fix this with every trick you knew, your frustration would slowly mount until you sighed and acknowledged that the web was just too limited for realistic apps. Then you would be forced to learn Objective-C or Java and start building a native app.</p>
 
@@ -86,27 +86,33 @@
 
 <!-- more -->
 
-<h3>How Does Native Do It, Anyway?</h3>
+<h3 id="how-does-native-do-it-anyway">How Does Native Do It, Anyway?</h3>
 
-<p>Native apps render huge lists quite seamlessly. A contacts app, for example, can display thousands of items with no problem at all. Achieving this is actually very simple: Native APIs are only rendering the specific items that should be currently visible, relative to the user&#39;s scroll position. </p>
+<p>Native apps render huge lists quite seamlessly. A contacts app, for example, can display thousands of items with no problem at all. Achieving this is actually very simple: Native APIs are only rendering the specific items that should be currently visible, relative to the user’s scroll position.</p>
 
 <p>This means if 10 items can fit in the screen’s viewport, and the user has scrolled halfway down a list of 100 items, only items 50-60 should be rendered.</p>
 
-<p>This <em>is</em> possible to do with web technologies, we just have to game the system a little bit...</p>
+<p>This <em>is</em> possible to do with web technologies, we just have to game the system a little bit…</p>
 
-<h3>The Basic Concept</h3>
+<h3 id="the-basic-concept">The Basic Concept</h3>
 
 <p>We know our end goal: Limit the rendering of items in a large list. So how do we get there?</p>
 
 <p>When figuring this out for Ionic, we were heavily inspired by iOS’s UICollectionView. In our implementation, there are three main components:</p>
 
 <ol>
-<li><p>The <code>collection-repeat</code> directive: The developer adds this directive to the element he or she wants to repeat, supplies an array of data, and gives the size (width and height) of each element in that array using a simple expression.</p></li>
-<li><p>The <code>CollectionRepeatManager</code>: This takes the size of the scroll view containing the list, the current scroll value, and the size of each item to figure out exactly which items need to be rendered. </p></li>
-<li><p>The <code>CollectionDataSource</code>: The Manager will ask the DataSource for an item at a certain index, and the DataSource will give the Manager a complete DOM element representing that item.</p></li>
+  <li>
+    <p>The <code>collection-repeat</code> directive: The developer adds this directive to the element he or she wants to repeat, supplies an array of data, and gives the size (width and height) of each element in that array using a simple expression.</p>
+  </li>
+  <li>
+    <p>The <code>CollectionRepeatManager</code>: This takes the size of the scroll view containing the list, the current scroll value, and the size of each item to figure out exactly which items need to be rendered.</p>
+  </li>
+  <li>
+    <p>The <code>CollectionDataSource</code>: The Manager will ask the DataSource for an item at a certain index, and the DataSource will give the Manager a complete DOM element representing that item.</p>
+  </li>
 </ol>
 
-<h3>The Secret Sauce</h3>
+<h3 id="the-secret-sauce">The Secret Sauce</h3>
 
 <p>The biggest piece of the puzzle is how to performantly render new elements as the user scrolls through the list.</p>
 
@@ -115,25 +121,26 @@
 <div style="float: right; margin-right: -160px">
   
  <div class="phone-case">
-  <p data-height="568" data-theme-id="3572" data-slug-hash="mFygh" data-default-tab="result" class='codepen'>See the Pen by <a href='http://codepen.io/ionic/pen/mFygh'>Ionic</a> (<a href='http://codepen.io/ionic'>@ionic</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <p data-height="568" data-theme-id="3572" data-slug-hash="mFygh" data-default-tab="result" class="codepen">See the Pen by <a href="http://codepen.io/ionic/pen/mFygh">Ionic</a> (<a href="http://codepen.io/ionic">@ionic</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+  <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
 </div>
 
 <p>The solution we found to be the most performant, though, is to hide these no longer visible elements and mark them as “available for rendering.” If we were to remove no-longer-visible elements, we would have to append them to the DOM again later, as the user scrolled down. And appending new elements to the DOM while the user scrolls causes noticeable jankiness.</p>
 
-<p>Later, the Manager asks the DataSource, “Give me an element matching data at index 16, so I can render it.” The DataSource then finds an element that’s already in the DOM and marked as available. It assigns item 16’s data to that element’s scope and gives the element to the Manager. </p>
+<p>Later, the Manager asks the DataSource, “Give me an element matching data at index 16, so I can render it.” The DataSource then finds an element that’s already in the DOM and marked as available. It assigns item 16’s data to that element’s scope and gives the element to the Manager.</p>
 
-<p>The Manager then transforms the element into its proper position in the view, using the width and height given by the developer at the start to calculate its position. We use Javascript to transform the elements into their proper positions--again, so that we don’t have to worry about ordering elements in the DOM as the user scrolls. The actual order of elements in the list doesn’t matter: They are transformed into the proper position to look like they’re in the proper order, and the end user can’t tell the difference. </p>
+<p>The Manager then transforms the element into its proper position in the view, using the width and height given by the developer at the start to calculate its position. We use Javascript to transform the elements into their proper positions–again, so that we don’t have to worry about ordering elements in the DOM as the user scrolls. The actual order of elements in the list doesn’t matter: They are transformed into the proper position to look like they’re in the proper order, and the end user can’t tell the difference.</p>
 
-<h3>Problem Solved. Now What?</h3>
+<h3 id="problem-solved-now-what">Problem Solved. Now What?</h3>
 
 <p>What does this mean for developers? It means we are no longer limited by the weaknesses of the DOM and the mobile webview. It means we can finally have as much data as needed, keep scrolling smooth and performant, <em>and</em> keep our users happy, all at the same time.</p>
 
 <p>Crazy, huh?</p>
 
 <p>Check out <a href="http://ionicframework.com/docs/api/directive/collectionRepeat">Collection Repeat’s documentation</a>.</p>
+
 
 
   <div class="share-bottom">
@@ -223,8 +230,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

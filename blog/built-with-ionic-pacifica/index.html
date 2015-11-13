@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: Pacifica</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,19 +76,17 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on January 26, 2015</time>
   </div>
 
-<p><img src="/img/blog/pacifica-header.jpg" alt="Ionic Logos"></p>
+<p><img src="/img/blog/pacifica-header.jpg" alt="Ionic Logos" /></p>
 
 <p><a href="http://thinkpacifica.com">Pacifica</a>, an app for stress, anxiety and worry, is built around quick, iterative activities that individuals can perform privately in order to cope, understand, and better control their emotions.</p>
 
 <p>Developer <a href="https://twitter.com/beermann">Dale Beermann</a> and designer <a href="https://twitter.com/chrisgoettel">Chris Goettel</a> based the application on the well-known technique of Cognitive Behavioral Therapy (CBT), in which therapists and their clients discuss emotions and tools with which to manage and overcome challenging feelings of stress, anxiety, and depression. Beermann and Goettel wanted to find a way for individuals to practice these techniques between therapy appointments or, in many cases, on their own, using their mobile devices.</p>
 
-<p>“We found that the current implementations are simple mappings from typical workbook-based pen and paper exercises to a mobile device,” says Beermann. “However, workbooks themselves don’t fit into our normal routines. We knew we could do better.” </p>
+<p>“We found that the current implementations are simple mappings from typical workbook-based pen and paper exercises to a mobile device,” says Beermann. “However, workbooks themselves don’t fit into our normal routines. We knew we could do better.”</p>
 
-<!-- more --> 
-
+<!-- more -->
 <div style="float: right; margin-right: -160px; margin-bottom: 80px; width: 50%;">
-  <a href="http://ionicframework.com/img/blog/pacifica-preview-right.png"><img
-src="/img/blog/pacifica-preview-right.png"></a>
+  <a href="http://ionicframework.com/img/blog/pacifica-preview-right.png"><img src="/img/blog/pacifica-preview-right.png" /></a>
 </div>
 
 <p>Beermann and Goettel devised an app that would guide users through relaxation, thinking, wellness, and behavioral exercises, based on the tools of CBT. Users can open the app and practice these techniques anytime, anywhere, as often as they like.</p>
@@ -100,15 +98,14 @@ src="/img/blog/pacifica-preview-right.png"></a>
 <p>Beermann and Goettel, who both have backgrounds in web development, chose to build an HTML5 app because they wanted to be cross-platform from day one. “Building an HTML5 app gets you 95% of the way there,” says Beermann. “Choosing Ionic meant that we were productive immediately; there was no time wasted learning a new language or UI paradigm. We had working prototypes the first week we started programming.”</p>
 
 <div style="float: left; margin-left: -120px; margin-right: 40px; margin-bottom: 70px; width: 32%;">
-  <a href="http://ionicframework.com/img/blog/pacifica-android-left.jpg"><img
-src="/img/blog/pacifica-android-left.jpg"></a>
+  <a href="http://ionicframework.com/img/blog/pacifica-android-left.jpg"><img src="/img/blog/pacifica-android-left.jpg" /></a>
 </div>
 
 <p>Beermann and Goettel used most of the basic building blocks in Ionic to build their app: lists, modals, popups, drawers, overlays, and the Ionicons library. “You can’t quite tell, as we’ve customized most of the UI around it,” says Beerman, “but that was a lot of code that we didn’t have to write.”</p>
 
 <p>“We believe that tools like Ionic or Bootstrap are incredibly important in the prototyping process,” adds Goettel. “They allow rapid proof-of-concept implementations that can be adapted for production quite easily. While these tools provide CSS layers over a broader framework, the CSS can be customized to your liking, giving you the benefit of a robust framework with the customizability a designer needs.”</p>
 
-<p>Goettel chose a style that would work across platforms and wasn’t tied to the native UI of any single one, while incorporating design elements that fit correctly where appropriate. </p>
+<p>Goettel chose a style that would work across platforms and wasn’t tied to the native UI of any single one, while incorporating design elements that fit correctly where appropriate.</p>
 
 <p>“There are a couple things that we had to handle on the technology side to make a truly cross-platform application (Android sorely needs the HTML5 AudioContext), but we really wanted to stick with the same general look and feel everywhere,” says Beerman.</p>
 
@@ -204,8 +201,20 @@ src="/img/blog/pacifica-android-left.jpg"></a>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

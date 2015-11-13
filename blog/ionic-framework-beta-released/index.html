@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Ionic Framework Beta Released!</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,9 +76,9 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/eeff5848f4231174094d2bc3cce26a05?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/adamdbradley">@adamdbradley</a> on March 26, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/beta-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/beta-header.png" /></p>
 
-<p>If you&#39;ve been following Ionic since we launched, or even reviewing our nightly commit log, you’ll know just how hard we’ve been working to continue to improve Ionic.</p>
+<p>If you’ve been following Ionic since we launched, or even reviewing our nightly commit log, you’ll know just how hard we’ve been working to continue to improve Ionic.</p>
 
 <p>In the short time since our Alpha release a few months ago, we’ve seen some great apps being built, and have been amazed by the passion and excitement of our growing community. By the numbers, Ionic developers are creating over <strong>220</strong> new apps every day, the <a href="http://github.com/driftyco/ionic">repo</a> recently passed <strong>4100</strong> stars, and traffic is growing week over week.</p>
 
@@ -90,9 +90,9 @@
 
 <p>One of the largest changes is that the beta has stepped back from using multiple attributes in favor of simply adding child elements/directives. For example, headers and footers no longer use the <code>left-buttons</code> attribute to specify an array of buttons, but rather a nested element which is easier to control and integrate with Angular. This same method is being used for the back buttons within <code>ion-nav-bar</code>, and the left and right side buttons for <code>ion-view</code>.</p>
 
-<p>We’ve also simplified applying styles with the <code>class</code> attribute, rather than through custom attributes. Some of our directives used attributes like <code>tabs-type=&quot;tabs-top&quot;</code> and <code>tabs-style=&quot;tabs-positive&quot;</code>, but in the end all the attributes really did was apply a CSS class. We decided these were redundant, deviated from the CSS docs, and added unnecessary confusion. Removing them has cleaned up the code further by separating behavior from style.</p>
+<p>We’ve also simplified applying styles with the <code>class</code> attribute, rather than through custom attributes. Some of our directives used attributes like <code>tabs-type="tabs-top"</code> and <code>tabs-style="tabs-positive"</code>, but in the end all the attributes really did was apply a CSS class. We decided these were redundant, deviated from the CSS docs, and added unnecessary confusion. Removing them has cleaned up the code further by separating behavior from style.</p>
 
-<p>Additionally, controlling UI elements from within your app has never been easier. We&#39;ve taken the delegate pattern from the alpha and expanded it, adding a delegate for every directive that needs control. Tabs and NavBar delegates have been added, along with more methods in all the delegates, allowing developers even finer control over how their app interacts with Ionic.</p>
+<p>Additionally, controlling UI elements from within your app has never been easier. We’ve taken the delegate pattern from the alpha and expanded it, adding a delegate for every directive that needs control. Tabs and NavBar delegates have been added, along with more methods in all the delegates, allowing developers even finer control over how their app interacts with Ionic.</p>
 
 <p>The beta has also removed the requirement for the developer to manually tell the content to reposition itself if there is a header, footer, or tabbar present. Resultantly, the  <code>has-header</code>, <code>has-footer</code>, and <code>has-tabs</code> attributes have been removed. Ionic now will automatically reposition and resize the content depending on what surrounding widgets are present. If any old alpha code references these attributes or classnames they can be safely removed since they’re no longer being used by the framework.</p>
 
@@ -196,8 +196,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

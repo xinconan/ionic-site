@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: FitRPG</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on July 28, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/fitrpg-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/fitrpg-header.png" /></p>
 
 <p>Created by software developers Amira Anuar, Matt Gutierrez, and Conor Fennell at <a href="http://www.hackreactor.com/">Hack Reactor</a>, a dev bootcamp in San Francisco, <a href="http://fitrpg.co/">FitRPG</a> turns <a href="http://www.fitbit.com/">Fitbit</a> data into a game that friends and family members can play against each other. The app is integrated with the Fitbit API to allow users who own Fitbits to use the data to level up an in-game character, compete against other players or bosses, and go on fitness quests, turning fitness into entertainment. The company is currently running a <a href="https://www.kickstarter.com/projects/fitrpg/fitrpg-gamifying-fitness-trackers-fitbit-for-ios-a">Kickstarter campaign</a> to build out their UX talent.</p>
 
@@ -84,7 +84,7 @@
 
 <p>The FitRPG team heard about Ionic when founder Max Lynch gave a demo of Ionic at Hack Reactor. “Everyone was pretty impressed by how easy it is to develop a hybrid app using the framework, the clean and intuitive UI, and the many different components it supports, so we decided to use it in building our project,” says Anuar. “Ionic provided starter apps, such as the sidebar menu, which helped us focus on the the actual game rather than the UI. We used a lot of the UI elements, from CSS classes to Javascript popups, loading, and navigation controls.”</p>
 
-<p><a href="http://ionicframework.com/img/blog/fitrpg-app-preview.png"><img class="body-image" src="/img/blog/fitrpg-app-preview.png"></a></p>
+<p><a href="http://ionicframework.com/img/blog/fitrpg-app-preview.png"><img class="body-image" src="/img/blog/fitrpg-app-preview.png" /></a></p>
 
 <p>Gutierrez says Ionic reminded him of Bootstrap. “It provided simple to use CSS classes and Javascript functions, all built on top of Angular,” he says. “Because it was almost exactly like Angular, it makes it incredibly easy to create a web version of the app and then convert it to a mobile version using Ionic.”</p>
 
@@ -92,9 +92,9 @@
 
 <p>FitRPG is available on <a href="https://itunes.apple.com/us/app/fitrpg-gamifying-fitbit/id887067605?ls=1&amp;mt=8">iTunes</a> and <a href="https://play.google.com/store/apps/details?id=com.fatchickenstudios.fitrpg">Google Play</a>.</p>
 
-<p>Developers:
-<a href="http://amiraanuar.com/">Amira Anuar</a>,
-<a href="https://github.com/fatchicken007">Matt Gutierrez</a>,
+<p>Developers:<br />
+<a href="http://amiraanuar.com/">Amira Anuar</a>,<br />
+<a href="https://github.com/fatchicken007">Matt Gutierrez</a>,<br />
 <a href="https://github.com/conorfennell">Conor Fennell</a></p>
 
 
@@ -185,8 +185,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>The Fifth Ionic Show is Live!</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,9 +76,9 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/477539679567228928/JObyaUW_.jpeg" class="author-icon"><a href="http://twitter.com/brodymkidd" target="_blank">Brody</a> on February 04, 2015</time>
   </div>
 
-<iframe width="730" height="411" src="https://www.youtube.com/embed/sy9Rdt5XwdU" frameborder="0" allowfullscreen></iframe>
+<iframe width="730" height="411" src="https://www.youtube.com/embed/sy9Rdt5XwdU" frameborder="0" allowfullscreen=""></iframe>
 
-<p>We took a small break after our last show, but we’ve all been working really hard for the last couple months and have a lot of exciting things to share. Most importantly, we want to give our community a huge shout-out for all your amazing support, hard work, and beautiful apps that have surpassed all of our expectations. </p>
+<p>We took a small break after our last show, but we’ve all been working really hard for the last couple months and have a lot of exciting things to share. Most importantly, we want to give our community a huge shout-out for all your amazing support, hard work, and beautiful apps that have surpassed all of our expectations.</p>
 
 <!-- more -->
 
@@ -87,17 +87,17 @@
 <p>Here is a quick breakdown of the show:</p>
 
 <ul>
-<li>Community love and 2014 wrap-up <a href="http://youtu.be/sy9Rdt5XwdU?t=2m4s">2:04</a></li>
-<li>Electronic Frontier Foundation app <a href="http://youtu.be/sy9Rdt5XwdU?t=4m43s">4:43</a></li>
-<li>Convergence <a href="http://youtu.be/sy9Rdt5XwdU?t=6m3s">6:03</a></li>
-<li>The Ionic View app <a href="http://youtu.be/sy9Rdt5XwdU?t=7m16s">7:16</a></li>
-<li>Beta 14 <a href="http://youtu.be/sy9Rdt5XwdU?t=9m30s">9:30</a></li>
-<li>Ionic Lab <a href="http://youtu.be/sy9Rdt5XwdU?t=12m2s">12:02</a></li>
-<li>Crosswalk <a href="http://youtu.be/sy9Rdt5XwdU?t=14m">14:00</a></li>
-<li>Splash screen icon generator <a href="http://youtu.be/sy9Rdt5XwdU?t=15m9s">15:09</a></li>
-<li>Hiring <a href="http://youtu.be/sy9Rdt5XwdU?t=17m19s">17:19</a></li>
-<li>Max’s Face <a href="http://youtu.be/sy9Rdt5XwdU?t=18m40s">18:40</a></li>
-<li>End screen <a href="http://youtu.be/sy9Rdt5XwdU?t=19m01s">19:01</a></li>
+  <li>Community love and 2014 wrap-up <a href="http://youtu.be/sy9Rdt5XwdU?t=2m4s">2:04</a></li>
+  <li>Electronic Frontier Foundation app <a href="http://youtu.be/sy9Rdt5XwdU?t=4m43s">4:43</a></li>
+  <li>Convergence <a href="http://youtu.be/sy9Rdt5XwdU?t=6m3s">6:03</a></li>
+  <li>The Ionic View app <a href="http://youtu.be/sy9Rdt5XwdU?t=7m16s">7:16</a></li>
+  <li>Beta 14 <a href="http://youtu.be/sy9Rdt5XwdU?t=9m30s">9:30</a></li>
+  <li>Ionic Lab <a href="http://youtu.be/sy9Rdt5XwdU?t=12m2s">12:02</a></li>
+  <li>Crosswalk <a href="http://youtu.be/sy9Rdt5XwdU?t=14m">14:00</a></li>
+  <li>Splash screen icon generator <a href="http://youtu.be/sy9Rdt5XwdU?t=15m9s">15:09</a></li>
+  <li>Hiring <a href="http://youtu.be/sy9Rdt5XwdU?t=17m19s">17:19</a></li>
+  <li>Max’s Face <a href="http://youtu.be/sy9Rdt5XwdU?t=18m40s">18:40</a></li>
+  <li>End screen <a href="http://youtu.be/sy9Rdt5XwdU?t=19m01s">19:01</a></li>
 </ul>
 
 <p>We love you all! Let’s keep killin’ it, together.</p>
@@ -194,8 +194,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: Coride</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,15 +76,15 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on September 01, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/coride-header.jpg"></p>
+<p><img class="showcase-image" src="/img/blog/coride-header.jpg" /></p>
 
-<p>Say you’re going to Chicago for the weekend but would love company on the drive and a little bit of gas money. <a href="https://coride.co/">Coride.co</a>, founded by Adam Braus and based in Madison, WI, is an app that does just that. It helps individual drivers sell tickets for seats in their cars on road trips. </p>
+<p>Say you’re going to Chicago for the weekend but would love company on the drive and a little bit of gas money. <a href="https://coride.co/">Coride.co</a>, founded by Adam Braus and based in Madison, WI, is an app that does just that. It helps individual drivers sell tickets for seats in their cars on road trips.</p>
 
 <p>“In a few taps, you can find passengers to ride along,” says Braus. “They help you cover costs and add a sense of adventure to your ride. Our target audience is friendly 18-35 year olds.”</p>
 
 <!-- more -->
 
-<p><a href="http://ionicframework.com/img/blog/coride-app-preview.png"><img class="body-image" src="/img/blog/coride-app-preview.png"></a></p>
+<p><a href="http://ionicframework.com/img/blog/coride-app-preview.png"><img class="body-image" src="/img/blog/coride-app-preview.png" /></a></p>
 
 <p>Braus, who was one of the first ten beta users of the Ionic Framework, says Ionic helped his development team with basic lists and item display, as well as great navigation and animations. “It gave us a framework, a place to start, and that has been its biggest contribution,” says Braus. “The power of <a href="http://angularjs.org">AngularJS</a>, wedded to the beauty of <a href="http://drifty.com">Drifty</a>, Ionic’s parent company, is unique.”</p>
 
@@ -180,8 +180,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

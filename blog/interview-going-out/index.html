@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Ionic Developer Interview: Going Out</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,9 +76,9 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on February 12, 2014</time>
   </div>
 
-<p>Going out on the town, but not sure what&#39;s going on? You&#39;ll want to check out the <a href="https://www.goingoutapp.co.uk/">GoingOut</a> app, built with Ionic. GoingOut lists nightly events for bars, clubs, and other venues in your local area (starting with their hometown of Leeds, UK):</p>
+<p>Going out on the town, but not sure what’s going on? You’ll want to check out the <a href="https://www.goingoutapp.co.uk/">GoingOut</a> app, built with Ionic. GoingOut lists nightly events for bars, clubs, and other venues in your local area (starting with their hometown of Leeds, UK):</p>
 
-<p><img src="http://ionicframework.com.s3.amazonaws.com/blog/goingout/ss.png" style="width: 320px; margin: auto; display: block;"></p>
+<p><img src="http://ionicframework.com.s3.amazonaws.com/blog/goingout/ss.png" style="width: 320px; margin: auto; display: block;" /></p>
 
 <p><a href="https://twitter.com/grumpywizards">Greg Pratt</a>, the lead developer of GoingOut, first heard about Ionic from a <a href="https://twitter.com/yearofmoo/status/387980629029027840">tweet</a> by <a href="https://twitter.com/yearofmoo">@yearofmoo</a>. He read the promises Ionic was making on the home page, and as an AngularJS convert, was excited at the possibility of a mobile framework built on Angular.</p>
 
@@ -110,10 +110,10 @@
 
 <p><strong>Me</strong>: Why did you choose to build an HTML5 app instead of going pure native?</p>
 
-<p><strong>Greg</strong>: I believe the future is the web and in particular JavaScript and evolution of the language.
-In my opinion HTML, CSS and JavaScript are perfectly good for app development. The hurdle in their way is both a good framework to lean on, device APIs and the OS vendors themselves. </p>
+<p><strong>Greg</strong>: I believe the future is the web and in particular JavaScript and evolution of the language.<br />
+In my opinion HTML, CSS and JavaScript are perfectly good for app development. The hurdle in their way is both a good framework to lean on, device APIs and the OS vendors themselves.</p>
 
-<p>Apple keeps Nitro to themselves and Google proved they are capable of producing lemons such as the Android stock browser. It’s absolutely rubbish. If vendors actively supported HTML5 apps rather than subtly curtailing their efforts you’d see so much progress it would be awesome...I can dream!</p>
+<p>Apple keeps Nitro to themselves and Google proved they are capable of producing lemons such as the Android stock browser. It’s absolutely rubbish. If vendors actively supported HTML5 apps rather than subtly curtailing their efforts you’d see so much progress it would be awesome…I can dream!</p>
 
 <p><strong>Me</strong>: Any closing thoughts?</p>
 
@@ -121,8 +121,8 @@ In my opinion HTML, CSS and JavaScript are perfectly good for app development. T
 
 <p>Grab the iOS and Android apps for <a href="https://www.goingoutapp.co.uk">GoingOut</a> below:</p>
 
-<p><a href="https://www.goingoutapp.co.uk/apple"><img src="/img/appstore.png"></a>
-<a href="https://www.goingoutapp.co.uk/android"><img src="http://developer.android.com/images/brand/en_generic_rgb_wo_45.png"></a></p>
+<p><a href="https://www.goingoutapp.co.uk/apple"><img src="/img/appstore.png" /></a><br />
+<a href="https://www.goingoutapp.co.uk/android"><img src="http://developer.android.com/images/brand/en_generic_rgb_wo_45.png" /></a></p>
 
 
   <div class="share-bottom">
@@ -212,8 +212,20 @@ In my opinion HTML, CSS and JavaScript are perfectly good for app development. T
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

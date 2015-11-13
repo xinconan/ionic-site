@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>URLs are for Web Apps, not Hybrid Apps</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -78,51 +78,51 @@
 
 <p>When we started planning to build what soon became <a href="http://ionicframework.com/">Ionic</a>, we knew that we needed to take a native-focused approach to building the next great HTML5 development framework.</p>
 
-<p>We felt that there were plenty of web-focused HTML5 frameworks, but few that treated HTML5 as a first-class citizen in the app store. We couldn&#39;t ignore that people increasingly look to the app store to find apps, rather than browse the web for them.</p>
+<p>We felt that there were plenty of web-focused HTML5 frameworks, but few that treated HTML5 as a first-class citizen in the app store. We couldn’t ignore that people increasingly look to the app store to find apps, rather than browse the web for them.</p>
 
-<p>One big difference that kept coming up between web apps and native apps is how they handle URLs. Web apps utilize URLs both for the developer&#39;s convenience but also for the user&#39;s, allowing people all over the world to link directly to content and using them to delineate parts of a user interface. Native apps, in comparison, don&#39;t use URLs for UI interactions, or use them only under the hood for the developer&#39;s convenience.</p>
+<p>One big difference that kept coming up between web apps and native apps is how they handle URLs. Web apps utilize URLs both for the developer’s convenience but also for the user’s, allowing people all over the world to link directly to content and using them to delineate parts of a user interface. Native apps, in comparison, don’t use URLs for UI interactions, or use them only under the hood for the developer’s convenience.</p>
 
-<p>In a native app, a user will never see any URLs even if the app is using URL based routing underneath. Obviously there are no URL bars or browser chrome in a native app so having URLs doesn&#39;t make sense. When used, it&#39;s merely a convenient way to manage UI state for the developer.</p>
+<p>In a native app, a user will never see any URLs even if the app is using URL based routing underneath. Obviously there are no URL bars or browser chrome in a native app so having URLs doesn’t make sense. When used, it’s merely a convenient way to manage UI state for the developer.</p>
 
-<p>Yet most current HTML5 development frameworks have kept URLs as a core concept, limiting a lot of UI interaction to those that can triggered through an anchor like <code>&lt;a href=&quot;nextPage.html&quot;&gt;</code>. Things like switching to a new page, popping up a dialog box, or linking tabs. It&#39;s probably out of developer comfort, but also because the history of HTML5 and web technology is rooted in the browser app. But even then, URLs were meant to link to specific resources on the web, not to control user interface interactions.</p>
+<p>Yet most current HTML5 development frameworks have kept URLs as a core concept, limiting a lot of UI interaction to those that can triggered through an anchor like <code>&lt;a href="nextPage.html"&gt;</code>. Things like switching to a new page, popping up a dialog box, or linking tabs. It’s probably out of developer comfort, but also because the history of HTML5 and web technology is rooted in the browser app. But even then, URLs were meant to link to specific resources on the web, not to control user interface interactions.</p>
 
-<p>If you are familiar with native app development, you&#39;ll know that native apps tend to utilize a lower level design pattern called the <a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/Introduction/Introduction.html">View Controller</a> pattern (ignore the Model portion for now). The idea is pretty simple: you have a set of views (think of them as boxes or rectangles where UI elements are drawn), and then controllers that manage multiple views in tandem.</p>
+<p>If you are familiar with native app development, you’ll know that native apps tend to utilize a lower level design pattern called the <a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/Introduction/Introduction.html">View Controller</a> pattern (ignore the Model portion for now). The idea is pretty simple: you have a set of views (think of them as boxes or rectangles where UI elements are drawn), and then controllers that manage multiple views in tandem.</p>
 
-<p>The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITabBarController_Class/Reference/Reference.html">UITabBarController</a> on iOS is a perfect example of this. It takes a set of child controllers which each have their own set of views that make up each &quot;page&quot; in the tabs, and manages tabbing between them:</p>
+<p>The <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITabBarController_Class/Reference/Reference.html">UITabBarController</a> on iOS is a perfect example of this. It takes a set of child controllers which each have their own set of views that make up each “page” in the tabs, and manages tabbing between them:</p>
 
 <div class="phone">
-  <img src="http://farm6.staticflickr.com/5330/9023342228_8341c60043_b.jpg" alt="UITabController">
+  <img src="http://farm6.staticflickr.com/5330/9023342228_8341c60043_b.jpg" alt="UITabController" />
 </div>
-
 <div class="caption">(don't forget to drink your vitamins, all day every day)</div>
 
-<p>In the screenshot of the iOS Alarm app above, you&#39;ll notice four tab buttons with four possible pages of the tab you can select. We are currently on the &quot;Alarm&quot; tab. The UITabBarController holds a reference to the <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITabBar_Class/Reference/Reference.html">UITabBar</a> view at the bottom (it even creates it for you), and then when a tab is selected, the controller makes sure to switch the pages for you.</p>
+<p>In the screenshot of the iOS Alarm app above, you’ll notice four tab buttons with four possible pages of the tab you can select. We are currently on the “Alarm” tab. The UITabBarController holds a reference to the <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UITabBar_Class/Reference/Reference.html">UITabBar</a> view at the bottom (it even creates it for you), and then when a tab is selected, the controller makes sure to switch the pages for you.</p>
 
-<p>In a Web App, you might have a distinct URL for each page in the tab. That wouldn&#39;t be the worst thing in the world for a hybrid/native app, but it soon breaks down when we look at more complicated native apps. For example, the great <a href="https://itunes.apple.com/us/app/yahoo-weather/id628677149?mt=8">Yahoo! Weather</a> app:</p>
-
-<div class="phone">
-  <img src="http://ionicframework.com.s3.amazonaws.com/blog/madison_weather.jpg" alt="Yahoo! Weather">
-</div>
-
-<p>If you haven&#39;t used the Yahoo Weather app before (highly recommended), it features one single pane that scrolls up displaying a variety of weather information. The user can also swipe in between each city they&#39;ve added, showing weather for that city:</p>
+<p>In a Web App, you might have a distinct URL for each page in the tab. That wouldn’t be the worst thing in the world for a hybrid/native app, but it soon breaks down when we look at more complicated native apps. For example, the great <a href="https://itunes.apple.com/us/app/yahoo-weather/id628677149?mt=8">Yahoo! Weather</a> app:</p>
 
 <div class="phone">
-  <img src="https://s3.amazonaws.com/ionicframework.com/blog/weather3.jpg" alt="Yahoo! Weather Cities">
+  <img src="http://ionicframework.com.s3.amazonaws.com/blog/madison_weather.jpg" alt="Yahoo! Weather" />
 </div>
 
-<p>Imagine trying to model this drag animation using a URL-to-City approach in a back or frontend framework that uses route based navigation. Let&#39;s say the first page is <code>/cities/current</code> and the second page is <code>/cities/Madison-WI</code>. When the user starts dragging to the next page, what happens? Do we navigate to <code>/cities/Madison-WI</code>, or do we wait until they complete the drag? If the routing system uses the URL state to know when to render each page, then we are stuck trying to hack around the router.</p>
+<p>If you haven’t used the Yahoo Weather app before (highly recommended), it features one single pane that scrolls up displaying a variety of weather information. The user can also swipe in between each city they’ve added, showing weather for that city:</p>
+
+<div class="phone">
+  <img src="https://s3.amazonaws.com/ionicframework.com/blog/weather3.jpg" alt="Yahoo! Weather Cities" />
+</div>
+
+<p>Imagine trying to model this drag animation using a URL-to-City approach in a back or frontend framework that uses route based navigation. Let’s say the first page is <code>/cities/current</code> and the second page is <code>/cities/Madison-WI</code>. When the user starts dragging to the next page, what happens? Do we navigate to <code>/cities/Madison-WI</code>, or do we wait until they complete the drag? If the routing system uses the URL state to know when to render each page, then we are stuck trying to hack around the router.</p>
 
 <p>Instead of being a convenience, URL-based routing becomes an artistic restriction.</p>
 
-<h2>Ionic: Native Applied to Web, And Back Again</h2>
+<h2 id="ionic-native-applied-to-web-and-back-again">Ionic: Native Applied to Web, And Back Again</h2>
 
-<p>To native developers, this all might seem like a pedantic exercise, but for web developers moving to native development, it is often quite a change to not use URLs for common UI interactions. We don&#39;t just link to different pages using <code>&lt;a href=&quot;page2.html&quot;&gt;</code>, we use more subtle tools often powered by touch, letting the user treat our app as an open canvas.</p>
+<p>To native developers, this all might seem like a pedantic exercise, but for web developers moving to native development, it is often quite a change to not use URLs for common UI interactions. We don’t just link to different pages using <code>&lt;a href="page2.html"&gt;</code>, we use more subtle tools often powered by touch, letting the user treat our app as an open canvas.</p>
 
 <p>With Ionic, we wanted to apply these native design patterns to web development. And in doing so, we realized something really exciting: <em>HTML5 was just as powerful and flexible as native development</em>. But better still, it had some major benefits over native: it was faster to build in, easier to port across platforms, and known by a lot more developers.</p>
 
 <p>We realized that if we could build an HTML5 framework that loved native design concepts instead of avoiding them, we could enable developers to build any kind of app they dreamed up, not just ones that worked with the URL pattern.</p>
 
-<p>So we decided to apply the View Controller pattern to a lot of the ways developers build UI interactions in Ionic. If you are a web developer that hasn&#39;t had much experience with native development, it will probably feel a bit strange at first. We are confident that once you see what is possible when you free yourself from the URL, you&#39;ll feel quite empowered to build great apps in HTML5.</p>
+<p>So we decided to apply the View Controller pattern to a lot of the ways developers build UI interactions in Ionic. If you are a web developer that hasn’t had much experience with native development, it will probably feel a bit strange at first. We are confident that once you see what is possible when you free yourself from the URL, you’ll feel quite empowered to build great apps in HTML5.</p>
+
 
 
   <div class="share-bottom">
@@ -212,8 +212,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

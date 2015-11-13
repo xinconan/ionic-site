@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Ionic RC0: New Swipe to Go Back Feature</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -84,10 +84,10 @@
 
 <p>This feature, which is common in native iOS apps, is only offered for iOS, because Android doesn’t do this. It’s only in Cordova, because standard mobile browsers provide their own swipe to go back capabilities. The URL still changes and is no different than any other navigation with the same lifecycle events.</p>
 
-<p>Watch the video of my presentation <a href="https://youtu.be/wvr11fvCeu4?t=9m1s">where I talk about Swipe to Go Back</a>:
-<iframe width="100%" height="510" src="//www.youtube.com/embed/wvr11fvCeu4?t=9m1s" frameborder="0" allowfullscreen></iframe></p>
+<p>Watch the video of my presentation <a href="https://youtu.be/wvr11fvCeu4?t=9m1s">where I talk about Swipe to Go Back</a>:</p>
+<iframe width="100%" height="510" src="//www.youtube.com/embed/wvr11fvCeu4?t=9m1s" frameborder="0" allowfullscreen=""></iframe>
 
-<p>For more on the Ionic community&#39;s response to Swipe to Go Back and RCO, check out <a href="https://medium.com/@saniyusuf/first-look-at-ionic-1-0-rc-release-candidate-40f6f18308f4">Sani Yusuf&#39;s post on Medium.com</a>.</p>
+<p>For more on the Ionic community’s response to Swipe to Go Back and RCO, check out <a href="https://medium.com/@saniyusuf/first-look-at-ionic-1-0-rc-release-candidate-40f6f18308f4">Sani Yusuf’s post on Medium.com</a>.</p>
 
 
   <div class="share-bottom">
@@ -177,8 +177,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

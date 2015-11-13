@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Building Ionicons, Our Open Source Icon Font</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/b2fb6624572ff6d6dcbe98bd787b9e9b.png?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/benjsperry" target="_blank">@benjsperry</a> on October 16, 2013</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/ionicons-preview.png"></p>
+<p><img class="showcase-image" src="/img/blog/ionicons-preview.png" /></p>
 
 <p>When we went to build <a href="http://ionicframework.com">Ionic</a>, we knew that great design would be crucial in an amazing HTML5 mobile app development framework. This meant we had to cover a lot of (visual) bases with the design, but few design challenges were as daunting as iconography.</p>
 
@@ -96,7 +96,7 @@
 
 <p>The tools required to build Ionicons were minimal: <a href="http://www.adobe.com/mena_en/products/illustrator.html" target="_blank">Adobe Illustrator</a> for designing the vector icons, <a href="http://icomoon.io/" target="_blank">IcoMoon</a> for converting the vector shapes into font files, and <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">a browser</a> to preview them all in. All of these were free, with the exception of Illustrator.</p>
 
-<p><img class="body-image" src="/img/blog/ionicons-tools.png" style="width:50%;"></p>
+<p><img class="body-image" src="/img/blog/ionicons-tools.png" style="width:50%;" /></p>
 
 <p>If you’re unfamiliar with IcoMoon, do take some time to check it out. It’s a very cool open source tool for creating custom icon font packs. There are some legal usecase limitations if you build a custom pack from other existing icon fonts, but not if you create and import your own icons from scratch.</p>
 
@@ -104,13 +104,13 @@
 
 <p>The concept of a “crisp size” took a bit of time for me to understand, so I will try to explain it as simply as possible. Basically, “crisp size” is the default size at which an icon renders sharply on a screen. For an icon to render sharply, its lines and edges must line up perfectly with the pixel grid of the screen. If any edges of the icon shape are not aligned to the pixel grid, they will appear blurry because the screen cannot definitively decipher where the edge ends/begins.</p>
 
-<p><img class="body-image" src="/img/blog/ionicons-pixelgrid.png"></p>
+<p><img class="body-image" src="/img/blog/ionicons-pixelgrid.png" /></p>
 
 <p>We decided to go with the common crisp size of 16px with Ionicons for several reasons. Having a number divisible by 2, 4 and 8 was a good step to improve crisp scalability at various sizes (for the most crispy looking icons, use font sizes 16px, 32px, 48px, 64px, etc.).</p>
 
 <p>Knowing this, I constructed a series of artboards in Illustrator to represent my drawing canvas for the icons. Each artboard is set to 512 x 512 pixels, with a grid dividing them into 16 x16 squares. Each square represents one pixel unit (technically there are 4 square pixels within each box). I used this grid as my guide for where to place and align each icon shape.</p>
 
-<p><img class="body-image" src="/img/blog/ionicons-artboards.png"></p>
+<p><img class="body-image" src="/img/blog/ionicons-artboards.png" /></p>
 
 <p>Then came the hard part. What icons do we include, and how many should we start with? I started looking closer at all of the icons used in popular apps and websites, and took note of those most commonly used. At the top of this list were icons relating to navigation, utility, help, searching, and sharing. Ultimately, I feel we did a good job curating the most necessary and frequently used icons for this first iteration of Ionicons.</p>
 
@@ -118,11 +118,11 @@
 
 <p>It took me a solid three to four weeks to construct the initial designs of each icon in Illustrator and organize them accordingly. We went through several revisions and tweaks before we were confident they were ready for prime time. Once we reached that point, I exported each individual icon as an SVG file. From there, I imported them all into IcoMoon.</p>
 
-<p><img class="body-image" src="/img/blog/ionicons-list.png"></p>
+<p><img class="body-image" src="/img/blog/ionicons-list.png" /></p>
 
 <p>Once each and every SVG file was in IcoMoon, I set the font name to “ionicons” and the prefix to “icon-” for consistency. There is also a setting in IcoMoon called Font Metrics, which allows you to set your font’s Crisp Size. It’s important to have this set to whatever your chosen Crisp Size is, which in our case is 16px. This will ensure that our icons will appear crisp at the correct sizing units.</p>
 
-<p><img class="body-image" src="/img/blog/ionicons-metrics.png"></p>
+<p><img class="body-image" src="/img/blog/ionicons-metrics.png" /></p>
 
 <p>Then I exported the font. It compiled and packaged up the necessary CSS and font files required by all the various browsers. We were really pleased with the ease of use and speed offered through IcoMoon. It made the transition from SVG to fonts a breeze.</p>
 
@@ -224,8 +224,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

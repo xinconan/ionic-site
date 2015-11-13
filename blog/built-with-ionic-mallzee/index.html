@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: Mallzee</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,26 +76,26 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on October 01, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/mallzee-header.jpg"></p>
+<p><img class="showcase-image" src="/img/blog/mallzee-header.jpg" /></p>
 
-<p><a href="http://mallzee.com/">Mallzee</a>, “the personal stylist in your pocket,” pulls together over two million products from 100 big-name fashion brands to find must-have clothes suited to its users, who are primarily 16-35 year-olds who love fashion but are too busy to spend a lot of time shopping. Mallzee’s unique Style Feeds allow users to get search-specific, receive price drop alerts, and be inspired by top fashion bloggers and personal stylists. </p>
+<p><a href="http://mallzee.com/">Mallzee</a>, “the personal stylist in your pocket,” pulls together over two million products from 100 big-name fashion brands to find must-have clothes suited to its users, who are primarily 16-35 year-olds who love fashion but are too busy to spend a lot of time shopping. Mallzee’s unique Style Feeds allow users to get search-specific, receive price drop alerts, and be inspired by top fashion bloggers and personal stylists.</p>
 
 <!-- more -->
 
-<p>Mallzee CTO <a href="https://twitter.com/wedgybo">Jamie Sutherland</a> heard about Ionic when it was being promoted on AngularJS lists. “We were building an app with the same sort of ethos,” says Sutherland. “We wanted to create reusable components, so we could make our next apps quicker. When we heard about Ionic, we were keen to take a look, and we weren’t disappointed!” </p>
+<p>Mallzee CTO <a href="https://twitter.com/wedgybo">Jamie Sutherland</a> heard about Ionic when it was being promoted on AngularJS lists. “We were building an app with the same sort of ethos,” says Sutherland. “We wanted to create reusable components, so we could make our next apps quicker. When we heard about Ionic, we were keen to take a look, and we weren’t disappointed!”</p>
 
 <div style="float: right; margin-right: -160px; width: 50%;">
-  <a href="http://ionicframework.com/img/blog/mallzee-preview-right.jpg"><img src="/img/blog/mallzee-preview-right.jpg"></a>
+  <a href="http://ionicframework.com/img/blog/mallzee-preview-right.jpg"><img src="/img/blog/mallzee-preview-right.jpg" /></a>
 </div>
 
-<p>However, the company had already published the first version of the Mallzee app. In May 2014, the team decided to replace their existing UI work with Ionic, which was approaching a 1.0.0 version. </p>
+<p>However, the company had already published the first version of the Mallzee app. In May 2014, the team decided to replace their existing UI work with Ionic, which was approaching a 1.0.0 version.</p>
 
 <p>“We figured thousands of eyes on the code is better than a few, so it would pay off in the long run,” says Sutherland. “So far, we’ve been right.”</p>
 
 <p>Sutherland says Ionic helped streamline app development by reducing the amount of work needed to make a high-quality hybrid application. “It takes away the pain of having to create a lot of the standard components people expect and know how to use in their native counterparts,” he says. “Because we’d already created similar components, we were able to quickly switch out old for new in the space of a few weeks! In the end, we’ve used almost the entire framework. We even have a few components waiting to give back!”</p>
 
 <div style="float: left; margin-left: -120px; margin-right: 40px; width: 32%;">
-  <a href="http://ionicframework.com/img/blog/mallzee-preview-left.jpg"><img src="/img/blog/mallzee-preview-left.jpg"></a>
+  <a href="http://ionicframework.com/img/blog/mallzee-preview-left.jpg"><img src="/img/blog/mallzee-preview-left.jpg" /></a>
 </div>
 
 <p>Sutherland adds, “Being invested in AngularJS, I love the simplicity of fitting together components to create great-looking apps in no time at all.”</p>
@@ -104,7 +104,7 @@
 
 <p>Mallzee originally chose hybrid over native because they were all web developers. “We’d looked at great PhoneGap apps (Twist, Untappd) and figured we could do something like that,” says Sutherland. “We’d no idea how hard it would be, especially when you are rolling most of the components yourself, as all the frameworks at the time (jQuery Mobile, Sencha Touch) were too heavy. Although we only support iPhone at the moment, another factor in our decision was cross-platform support. We focused on the iOS platform first, to get the user experience nailed there before covering others. It should be a simple process, and now we’re ready to tackle that and roll out Android before the end of the year.”</p>
 
-<p><strong>Download Mallzee from Apple&#39;s <a href="https://itunes.apple.com/gb/app/mallzee/id681106862">iOS App Store</a>!</strong></p>
+<p><strong>Download Mallzee from Apple’s <a href="https://itunes.apple.com/gb/app/mallzee/id681106862">iOS App Store</a>!</strong></p>
 
 
   <div class="share-bottom">
@@ -194,8 +194,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

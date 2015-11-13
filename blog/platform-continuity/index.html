@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Platform Continuity</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,26 +76,27 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on March 17, 2015</time>
   </div>
 
-<p><img src="/img/blog/platform-continuity-ionicframework.png" style="min-width:100%"/></p>
+<p><img src="/img/blog/platform-continuity-ionicframework.png" style="min-width:100%" /></p>
 
-<p>Think about how it feels when you open up a particularly well designed iOS or Android app. The entire experience is predictable and clear; everything functions according to your expectations. </p>
+<p>Think about how it feels when you open up a particularly well designed iOS or Android app. The entire experience is predictable and clear; everything functions according to your expectations.</p>
 
-<p>To achieve a user experience this seamless and comfortable, you&#39;ll need to design your app according to the style guidelines of each major mobile platform. Users expect apps to look familiar on their mobile platform of choice: a centered header on iOS, a left-aligned header on Android; tabs on the bottom on iOS, and on the top on Android; rounded icons in iOS, etc. Until now, accomplishing this was time-consuming, expensive, and downright difficult.</p>
+<p>To achieve a user experience this seamless and comfortable, you’ll need to design your app according to the style guidelines of each major mobile platform. Users expect apps to look familiar on their mobile platform of choice: a centered header on iOS, a left-aligned header on Android; tabs on the bottom on iOS, and on the top on Android; rounded icons in iOS, etc. Until now, accomplishing this was time-consuming, expensive, and downright difficult.</p>
 
 <!-- more -->
 
 <p>From a functionality standpoint, the “write once and run anywhere” mantra still applies, but from a design standpoint, it’s more akin to “write once; check the platform style guidelines; write some more; check again; deploy anywhere.” That’s pretty overwhelming when you’re trying to write an app for two or more platforms.</p>
 
-<p>Ionic helps to solve this problem out of the box. Design is a critically important part of an app; it’s what makes an app attractive and enjoyable to use. Ionic helps developers build beautiful apps more quickly, and by incorporating <a href="http://adamdbradley.github.io/ionic-present/#/15">Platform Continuity</a> into Ionic, we provide developers with the tools to create clearly structured apps whose design elements and functionality meet users’ expectations, no matter which platform they’re using. </p>
+<p>Ionic helps to solve this problem out of the box. Design is a critically important part of an app; it’s what makes an app attractive and enjoyable to use. Ionic helps developers build beautiful apps more quickly, and by incorporating <a href="http://adamdbradley.github.io/ionic-present/#/15">Platform Continuity</a> into Ionic, we provide developers with the tools to create clearly structured apps whose design elements and functionality meet users’ expectations, no matter which platform they’re using.</p>
 
 <p>Ionic allows you to customize settings, such as headers, tabs, transitions, toggles, action sheets, back-buttons, checkboxes, nav-buttons, and fonts, for each major platform. For example, now Ionic checkboxes automatically look like iOS checkboxes on iOS and Android checkboxes on Android. Our action sheet below looks significantly different on iOS than on Android. All of this happens automatically and is customizable.</p>
 
-<p><img src="/img/blog/actionsheet-platform-continuity.png" style="min-width:100%"/></p>
+<p><img src="/img/blog/actionsheet-platform-continuity.png" style="min-width:100%" /></p>
 
 <p>Going forward, our criteria for acceptance into the <a href="http://showcase.ionicframework.com/">Ionic Showcase</a> will emphasize platform continuity, in addition to beautiful design and unique functionality. We look forward to seeing what you build!</p>
 
-<p>Hear more about platform continuity in <a href="https://youtu.be/wvr11fvCeu4?t=4m41s">Adam’s talk at ng-conf</a>:
-<iframe width="100%" height="510" src="//www.youtube.com/embed/wvr11fvCeu4?t=4m41s" frameborder="0" allowfullscreen></iframe></p>
+<p>Hear more about platform continuity in <a href="https://youtu.be/wvr11fvCeu4?t=4m41s">Adam’s talk at ng-conf</a>:</p>
+<iframe width="100%" height="510" src="//www.youtube.com/embed/wvr11fvCeu4?t=4m41s" frameborder="0" allowfullscreen=""></iframe>
+
 
 
   <div class="share-bottom">
@@ -185,8 +186,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

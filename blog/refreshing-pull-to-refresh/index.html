@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Refreshing our Pull-to-Refresh</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,34 +76,34 @@
     <time class="post-time">By <img src="https://en.gravatar.com/userimage/4492737/bd46f8f2d8d12133c4df6c0441bc7ef1.jpg" class="author-icon"><a href="http://twitter.com/perrygovier" target="_blank">@perrygovier</a> on September 25, 2014</time>
   </div>
 
-<p>For a while now, we’ve wanted to update Pull To Refresh in Ionic. It worked, but it wasn’t exciting, and since it’s a goal of ours at Ionic to make every component as enjoyable to use as it can be, we decided it was time for a change. Here&#39;s some of the lessons in semiotics and UX that we learned...</p>
+<p>For a while now, we’ve wanted to update Pull To Refresh in Ionic. It worked, but it wasn’t exciting, and since it’s a goal of ours at Ionic to make every component as enjoyable to use as it can be, we decided it was time for a change. Here’s some of the lessons in semiotics and UX that we learned…</p>
 
 <!-- more -->
 
-<p>Wanting to make it fun and playful, we started by binding the rotation of the arrow icon to how far you pull down the view. It was fun. <a href="https://twitter.com/benjsperry">Ben</a> and I spent a good ten minutes each just playing with pulling the view down. We quickly realized a problem, though: While it was fun, it was not practical. </p>
+<p>Wanting to make it fun and playful, we started by binding the rotation of the arrow icon to how far you pull down the view. It was fun. <a href="https://twitter.com/benjsperry">Ben</a> and I spent a good ten minutes each just playing with pulling the view down. We quickly realized a problem, though: While it was fun, it was not practical.</p>
 
 <p>Most users don’t sit and play with the pull to refresh animation on their phones; they “use” their phones. They “use” pull to refresh to get the information they want, and they want it now. That means they swipe up quickly and expect the pull to refresh to trigger and update. They swipe so fast, the animation doesn’t even happen.</p>
 
 <div style="float: right; margin-right: -160px">
   
  <div class="phone-case">
-  <p data-height="568" data-theme-id="3572" data-slug-hash="nqIrC" data-default-tab="result" class='codepen'>See the Pen by <a href='http://codepen.io/ionic/pen/nqIrC'>Ionic</a> (<a href='http://codepen.io/ionic'>@ionic</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <p data-height="568" data-theme-id="3572" data-slug-hash="nqIrC" data-default-tab="result" class="codepen">See the Pen by <a href="http://codepen.io/ionic/pen/nqIrC">Ionic</a> (<a href="http://codepen.io/ionic">@ionic</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+  <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
 </div>
 
-<p>So we went back to a regular fixed-time animation, updated the default icons to be something more visually appealing, and moved on. </p>
+<p>So we went back to a regular fixed-time animation, updated the default icons to be something more visually appealing, and moved on.</p>
 
-<p>The next thing we noticed was that most API calls are pretty fast, perhaps too fast. Our refresher would return to the home position as soon as it was told the information requested was received. This meant that as soon as you let go of the refresher when swiping up, it wouldn’t spin; instead, it would return immediately to the home position. We have an internal Hacker News app we were using to test this (more info on that soon). The front page of Hacker News doesn’t update every five seconds, so most of the time, a refresh does nothing. We were left unsure if an update actually fired. </p>
+<p>The next thing we noticed was that most API calls are pretty fast, perhaps too fast. Our refresher would return to the home position as soon as it was told the information requested was received. This meant that as soon as you let go of the refresher when swiping up, it wouldn’t spin; instead, it would return immediately to the home position. We have an internal Hacker News app we were using to test this (more info on that soon). The front page of Hacker News doesn’t update every five seconds, so most of the time, a refresh does nothing. We were left unsure if an update actually fired.</p>
 
 <p>Setting up console logs allows developers to make sure the refresh actually happened. Users don’t get the reassurance of a console log, though, so your UI must be reassuring enough on its own.</p>
 
 <p>We decided to force 400ms of the refreshing spinner animation. If the data came back sooner, we’d still apply it immediately, but we’d show the spinner for a bit, so the user would know a refresh had happened. To a developer, this may feel misleading. The refresh is already complete, so why are we still showing the animation?</p>
 
-<p><strong>Users don’t care about what’s going on under the hood.</strong> A big part of UX is keeping a user in familiar territory and reassuring him or her that the app is working properly. The user’s confidence that the refresh happened trumps its technical representation. In our updated pull to refresh, if an update takes longer than 400ms, it will continue to spin until the data is available. </p>
+<p><strong>Users don’t care about what’s going on under the hood.</strong> A big part of UX is keeping a user in familiar territory and reassuring him or her that the app is working properly. The user’s confidence that the refresh happened trumps its technical representation. In our updated pull to refresh, if an update takes longer than 400ms, it will continue to spin until the data is available.</p>
 
-<p>I think you’ll agree, the end result is a pull to refresh that’s enjoyable to use and communicates its function clearly. I really enjoyed going into this level of critical thinking on just one component. It’s a standard to which I’m proud to say we hold ourselves with every new Ionic feature. </p>
+<p>I think you’ll agree, the end result is a pull to refresh that’s enjoyable to use and communicates its function clearly. I really enjoyed going into this level of critical thinking on just one component. It’s a standard to which I’m proud to say we hold ourselves with every new Ionic feature.</p>
 
 <p>Check out what we did <a href="https://github.com/driftyco/ionic/commit/db27fb116cd3139b271cf9d20c462fb3746f25df">under the hood on GitHub</a>, or take a look at how to add it into your app from our <a href="http://ionicframework.com/docs/api/directive/ionRefresher/">Docs</a>!</p>
 
@@ -195,8 +195,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

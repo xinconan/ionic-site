@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Adding Auth to your Ionic app in 5 mins with Auth0</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -79,7 +79,7 @@
 <p><em>This is a guest post by Martin Gontovnikas (aka <a href="http://twitter.com/mgonto">mgonto</a>), the lead Developer Advocate at <a href="https://auth0.com/">Auth0</a>. Martin is passionate about tech and contributes to open source with <a href="https://github.com/mgonto/restangular">Restangular</a> (the famous REST client for AngularJS), AngularWizard, Angularytics, and FactoryPal. He also blogs at <a href="http://gon.to/blog/">http://gon.to/blog/</a></em></p>
 
 <blockquote>
-<p><em>TL;DR</em>: Get the <a href="https://github.com/auth0/auth0-ionic/tree/master/examples/refresh-token-sample">sample project using Ionic and Auth0 from Github</a>.</p>
+  <p><em>TL;DR</em>: Get the <a href="https://github.com/auth0/auth0-ionic/tree/master/examples/refresh-token-sample">sample project using Ionic and Auth0 from Github</a>.</p>
 </blockquote>
 
 <p>The smartphone has changed the way everyone interacts with different services and applications. Facebook reports having more usage from mobile phones compared to desktop computers. The industry calls this trend  <em>Mobile First</em>.</p>
@@ -88,263 +88,276 @@
 
 <p>Mobile First implies that companies first develop a mobile experience of their services. Often this means implementing the application in lots of different languages and platforms: Objective C for iOS, Java for Android, C# for Windows Phone, etc.</p>
 
-<p>This is where Ionic and Cordova help you. Thanks to Cordova, you just code the application once in HTML and JS, and it works in all the different platforms. Thanks to Ionic, your code is easily reusable and maintainable. You&#39;re basically creating a Single Page App (SPA) that works on any device. It seems it could be the holy grail of mobile development.</p>
+<p>This is where Ionic and Cordova help you. Thanks to Cordova, you just code the application once in HTML and JS, and it works in all the different platforms. Thanks to Ionic, your code is easily reusable and maintainable. You’re basically creating a Single Page App (SPA) that works on any device. It seems it could be the holy grail of mobile development.</p>
 
-<p>However, once you start coding, you&#39;ll see that there are some obstacles to overcome. If you search for <em>&quot;Authentication with AngularJS/Ionic&quot;</em> in Stackoverflow, you&#39;ll see that <a href="http://stackoverflow.com/search?q=angularjs+authentication">there are more than 900 questions</a> about it.</p>
+<p>However, once you start coding, you’ll see that there are some obstacles to overcome. If you search for <em>“Authentication with AngularJS/Ionic”</em> in Stackoverflow, you’ll see that <a href="http://stackoverflow.com/search?q=angularjs+authentication">there are more than 900 questions</a> about it.</p>
 
 <p>How do you keep users logged in forever? Should you use Cookies or Tokens? How to login users with social providers such as Facebook, Twitter, Linkedin, etc.? What if you need to authenticate users in enterprise directories such as Active Directory or LDAP? *</p>
 
 <p>These are some of the challenges that we solve at <a href="http://auth0.com/">Auth0</a>.</p>
 
-<p>In this post, you&#39;ll learn how to easily add any authentication to your Ionic app using Auth0. As an introduction to this post, you can read about why it&#39;s better to use tokens in your AngularJS SPA in <a href="http://blog.auth0.com/2014/01/07/angularjs-authentication-with-cookies-vs-token/">this other post</a>.</p>
+<p>In this post, you’ll learn how to easily add any authentication to your Ionic app using Auth0. As an introduction to this post, you can read about why it’s better to use tokens in your AngularJS SPA in <a href="http://blog.auth0.com/2014/01/07/angularjs-authentication-with-cookies-vs-token/">this other post</a>.</p>
 
 <!-- more -->
 
-<h2>1. Add the required dependencies</h2>
+<h2 id="add-the-required-dependencies">1. Add the required dependencies</h2>
+<p>The first thing you’ll need to do is add the required dependencies. If you don’t have an Ionic project yet, you can just create one using the <code>ionic</code> command:</p>
 
-<p>The first thing you&#39;ll need to do is add the required dependencies. If you don&#39;t have an Ionic project yet, you can just create one using the <code>ionic</code> command:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ionic start auth0-ionic-app tabs
+<pre><code class="language-bash">ionic start auth0-ionic-app tabs
 ionic platform add ios
-</code></pre></div>
-<h3>1.1 Add Auth0 dependencies</h3>
+</code></pre>
 
+<h3 id="add-auth0-dependencies">1.1 Add Auth0 dependencies</h3>
 <p>Add the Auth0 dependencies to your <code>bower.json</code> file. Save the file and run <code>bower install</code>:</p>
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;dependencies&quot;</span> <span class="err">:</span> <span class="p">{</span>
-  <span class="nt">&quot;auth0-angular&quot;</span><span class="p">:</span> <span class="s2">&quot;3.*&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;a0-angular-storage&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;= 0.0.6&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;angular-jwt&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;= 0.0.4&quot;</span>
-<span class="p">}</span><span class="err">,</span>
-</code></pre></div>
+
+<pre><code class="language-json">"dependencies" : {
+  "auth0-angular": "3.*",
+  "a0-angular-storage": "&gt;= 0.0.6",
+  "angular-jwt": "&gt;= 0.0.4"
+},
+</code></pre>
+
 <p>Add a reference to the Auth0 JS files from your <code>index.html</code> file:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Auth0 Lock --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/auth0-lock/build/auth0-lock.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-<span class="c">&lt;!-- auth0-angular --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/auth0-angular/build/auth0-angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<pre><code class="language-html">&lt;!-- Auth0 Lock --&gt;
+&lt;script src="lib/auth0-lock/build/auth0-lock.js"&gt;&lt;/script&gt;
 
-<span class="c">&lt;!-- angular storage --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/a0-angular-storage/dist/angular-storage.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+&lt;!-- auth0-angular --&gt;
+&lt;script src="lib/auth0-angular/build/auth0-angular.js"&gt;&lt;/script&gt;
 
-<span class="c">&lt;!-- angular-jwt --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/angular-jwt/dist/angular-jwt.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
-<h3>1.2 Add the InAppBrowser plugin</h3>
+&lt;!-- angular storage --&gt;
+&lt;script src="lib/a0-angular-storage/dist/angular-storage.js"&gt;&lt;/script&gt;
 
+&lt;!-- angular-jwt --&gt;
+&lt;script src="lib/angular-jwt/dist/angular-jwt.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3 id="add-the-inappbrowser-plugin">1.2 Add the InAppBrowser plugin</h3>
 <p>Auth0 uses the <code>InAppBrowser</code> plugin from Cordova to display the Login Window from each of the different Identity Providers. To install it, run the following command:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ionic plugin add org.apache.cordova.inappbrowser
-</code></pre></div>
+
+<pre><code class="language-bash">ionic plugin add org.apache.cordova.inappbrowser
+</code></pre>
+
 <p>Then add this configuration to your <code>config.xml</code>:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;feature</span> <span class="na">name=</span><span class="s">&quot;InAppBrowser&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;ios-package&quot;</span> <span class="na">value=</span><span class="s">&quot;CDVInAppBrowser&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;android-package&quot;</span> <span class="na">value=</span><span class="s">&quot;org.apache.cordova.inappbrowser.InAppBrowser&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/feature&gt;</span>
-</code></pre></div>
-<h2>2. Time to code!</h2>
 
-<p>Now the fun starts. Let&#39;s integrate Auth0 into our Ionic code.</p>
+<pre><code class="language-xml">&lt;feature name="InAppBrowser"&gt;
+  &lt;param name="ios-package" value="CDVInAppBrowser" /&gt;
+  &lt;param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" /&gt;
+&lt;/feature&gt;
+</code></pre>
 
-<h3>2.1 Add the Auth0 module as a dependency and configure it</h3>
+<h2 id="time-to-code">2. Time to code!</h2>
+<p>Now the fun starts. Let’s integrate Auth0 into our Ionic code.</p>
+
+<h3 id="add-the-auth0-module-as-a-dependency-and-configure-it">2.1 Add the Auth0 module as a dependency and configure it</h3>
 
 <p>Add the <code>auth0</code>, <code>angular-storage</code> and <code>angular-jwt</code> module dependencies to your angular app definition and configure <code>auth0</code> by calling the <code>init</code> method of the `authProvider</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ionic&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;starter.controllers&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;starter.services&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;auth0&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;angular-storage&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;angular-jwt&#39;</span><span class="p">])</span>
-<span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">,</span> <span class="nx">$urlRouterProvider</span><span class="p">,</span> <span class="nx">authProvider</span><span class="p">,</span> <span class="nx">$httpProvider</span><span class="p">,</span>
-  <span class="nx">jwtInterceptorProvider</span><span class="p">)</span> <span class="p">{</span>
-    <span class="p">...</span>
-    <span class="nx">authProvider</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
-      <span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;{your domain in Auth0}.auth0.com&#39;</span><span class="p">,</span>
-      <span class="nx">clientID</span><span class="o">:</span> <span class="s1">&#39;{your client id in Auth0}&#39;</span><span class="p">,</span>
-      <span class="nx">callbackURL</span><span class="o">:</span> <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span>
-      <span class="nx">loginState</span><span class="o">:</span> <span class="s1">&#39;login&#39;</span>
-    <span class="p">});</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">auth</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Hook auth0-angular to all the events it needs to listen to</span>
-  <span class="nx">auth</span><span class="p">.</span><span class="nx">hookEvents</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
+
+<pre><code class="language-js">angular.module('starter', ['ionic',
+  'starter.controllers',
+  'starter.services',
+  'auth0',
+  'angular-storage',
+  'angular-jwt'])
+.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
+  jwtInterceptorProvider) {
+	...
+	authProvider.init({
+	  domain: '{your domain in Auth0}.auth0.com',
+      clientID: '{your client id in Auth0}',
+      callbackURL: location.href,
+      loginState: 'login'
+	});
+})
+.run(function(auth) {
+  // Hook auth0-angular to all the events it needs to listen to
+  auth.hookEvents();
+});
+</code></pre>
+
 <p>The <code>init</code> method in <code>authProvider</code> needs Auth0 account data such as the <code>domain</code> and the app registration identifier (the <code>clientId</code>). This ensures your Ionic app connects to the right Auth0 instance: yours!</p>
 
 <blockquote>
-<p>You don&#39;t have an Auth0 account yet? It&#39;s really easy. You&#39;ll learn how to create one in steps below.</p>
+  <p>You don’t have an Auth0 account yet? It’s really easy. You’ll learn how to create one in steps below.</p>
 </blockquote>
 
-<h3>2.2 Configure the routes in the app</h3>
-
+<h3 id="configure-the-routes-in-the-app">2.2 Configure the routes in the app</h3>
 <p>You will add a new state called <code>login</code> which will actually get displayed before the user can access the main pages of the application:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">)</span> <span class="p">{</span>
-    <span class="p">...</span>
-    <span class="nx">$stateProvider</span>
-    <span class="c1">// This is the state where you&#39;ll show the login</span>
-    <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="p">{</span>
-      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/login&#39;</span><span class="p">,</span>
-      <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;templates/login.html&#39;</span><span class="p">,</span>
-      <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;LoginCtrl&#39;</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="c1">// Your app states</span>
-    <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;tab&#39;</span><span class="p">,</span> <span class="p">{</span>
-      <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/tab&quot;</span><span class="p">,</span>
-      <span class="kr">abstract</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;templates/tabs.html&quot;</span><span class="p">,</span>
-      <span class="c1">// This state requires users to be logged in</span>
-        <span class="c1">// If they&#39;re not they&#39;ll be redirected to the login state</span>
-      <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">requiresLogin</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
-    <span class="p">...</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>Notice the <code>requiresLogin</code> added to the <code>tabs</code> state.</p>
-</blockquote>
 
-<h3>2.3 Add code for the Login state</h3>
-
-<p>Now, it&#39;s just time to code the Login state!</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;LoginCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">auth</span><span class="p">,</span> <span class="nx">$state</span><span class="p">,</span> <span class="nx">store</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">auth</span><span class="p">.</span><span class="nx">signin</span><span class="p">({</span>
-    <span class="nx">authParams</span><span class="o">:</span> <span class="p">{</span>
-      <span class="c1">// This asks for the refresh token</span>
-      <span class="c1">// So that the user never has to log in again</span>
-      <span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;openid offline_access&#39;</span><span class="p">,</span>
-      <span class="c1">// This is the device name</span>
-      <span class="nx">device</span><span class="o">:</span> <span class="s1">&#39;Mobile device&#39;</span>
-    <span class="p">},</span>
-    <span class="c1">// Make the widget non closeable</span>
-    <span class="nx">standalone</span><span class="o">:</span> <span class="kc">true</span>
-  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span> <span class="nx">token</span><span class="p">,</span> <span class="nx">accessToken</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">refreshToken</span><span class="p">)</span> <span class="p">{</span>
-          <span class="c1">// Login was successful</span>
-    <span class="c1">// We need to save the information from the login</span>
-    <span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">,</span> <span class="nx">profile</span><span class="p">);</span>
-    <span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="nx">token</span><span class="p">);</span>
-    <span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;refreshToken&#39;</span><span class="p">,</span> <span class="nx">refreshToken</span><span class="p">);</span>
-    <span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;tab.dash&#39;</span><span class="p">);</span>
-  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Oops something went wrong during login:</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;There was an error logging in&quot;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">})</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"> <span class="nt">&lt;ion-view</span> <span class="na">title=</span><span class="s">&quot;&#39;Login&#39;&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-content&gt;</span>
-      <span class="c">&lt;!-- The content of the page --&gt;</span>
-      <span class="c">&lt;!-- The widget is created by Auth0. We don&#39;t have to add anything here --&gt;</span>
-    <span class="nt">&lt;/ion-content&gt;</span>
-  <span class="nt">&lt;/ion-view&gt;</span>
-</code></pre></div>
-<p>The <code>auth.signin</code> method is called as soon as the controller is created. This will result in the <a href="https://auth0.com/lock">Auth0 Lock</a> being displayed. The <code>Auth0 Lock</code> is a UI widget that will let your users choose how they want to authenticate to your Ionic app. The <code>Auth0 Lock</code> comes pre-configured with all usual controls for various ways of authetnication: Social Connections, Enterprise connections or regular Username and passwords. It&#39;s pretty on its own, but it be fully customized to match your UX.</p>
+<pre><code class="language-js">app.config(function($stateProvider) {
+	...
+	$stateProvider
+    // This is the state where you'll show the login
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl',
+    })
+    // Your app states
+    .state('tab', {
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html",
+      // This state requires users to be logged in
+	    // If they're not they'll be redirected to the login state
+      data: {
+        requiresLogin: true
+      }
+    });
+    ...
+});
+</code></pre>
 
 <blockquote>
-<p>Auth0 supports <a href="https://docs.auth0.com/identityproviders">a large number of identity providers</a>.</p>
+  <p>Notice the <code>requiresLogin</code> added to the <code>tabs</code> state.</p>
 </blockquote>
 
-<p>Notice the various parameters in the <em>Auth0 Lock</em>. In particular, check that we added the <code>offline_access</code> scope. This setting is very important for mobile apps since it&#39;ll make Auth0 return a <code>refresh_token</code> to your app. For more information about Refresh Tokens, you can <a href="http://docs.auth0.com/refresh-token">click here</a>.</p>
+<h3 id="add-code-for-the-login-state">2.3 Add code for the Login state</h3>
+<p>Now, it’s just time to code the Login state!</p>
 
-<p>Once the login is successful, we&#39;re using <code>angular-storage</code> to store the tokens and the user profile. We&#39;ll use these in the upcoming sections.</p>
+<pre><code class="language-js">app.controller('LoginCtrl', function($scope, auth, $state, store) {
+  auth.signin({
+    authParams: {
+      // This asks for the refresh token
+      // So that the user never has to log in again
+      scope: 'openid offline_access',
+      // This is the device name
+      device: 'Mobile device'
+    },
+    // Make the widget non closeable
+    standalone: true
+  }, function(profile, token, accessToken, state, refreshToken) {
+          // Login was successful
+    // We need to save the information from the login
+    store.set('profile', profile);
+    store.set('token', token);
+    store.set('refreshToken', refreshToken);
+    $state.go('tab.dash');
+  }, function(error) {
+    // Oops something went wrong during login:
+    console.log("There was an error logging in", error);
+  });
+})
+</code></pre>
 
-<h3>2.4 Call the secured API</h3>
+<pre><code class="language-html"> &lt;ion-view title="'Login'"&gt;
+    &lt;ion-content&gt;
+      &lt;!-- The content of the page --&gt;
+      &lt;!-- The widget is created by Auth0. We don't have to add anything here --&gt;
+    &lt;/ion-content&gt;
+  &lt;/ion-view&gt;
+</code></pre>
 
-<p>With the token in the app, you can now call a secured API safely. Each call you make to an API endpoint should attach the token (JWT) to the <code>Authorization</code> header. For that, we need to do the add the <code>jwtInterceptor</code> from <code>angular-jwt</code> to the list of <code>$http</code> interceptors. Also, as JWTs expire, we&#39;ll use the <code>refreshToken</code> to get a new JWT if the one we have is expired:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// app.js</span>
-<span class="nx">myApp</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">authProvider</span><span class="p">,</span> <span class="nx">$routeProvider</span><span class="p">,</span> <span class="nx">$httpProvider</span><span class="p">,</span> <span class="nx">jwtInterceptorProvider</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
+<p>The <code>auth.signin</code> method is called as soon as the controller is created. This will result in the <a href="https://auth0.com/lock">Auth0 Lock</a> being displayed. The <code>Auth0 Lock</code> is a UI widget that will let your users choose how they want to authenticate to your Ionic app. The <code>Auth0 Lock</code> comes pre-configured with all usual controls for various ways of authetnication: Social Connections, Enterprise connections or regular Username and passwords. It’s pretty on its own, but it be fully customized to match your UX.</p>
 
-  <span class="nx">jwtInterceptorProvider</span><span class="p">.</span><span class="nx">tokenGetter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="nx">jwtHelper</span><span class="p">,</span> <span class="nx">auth</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">idToken</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">refreshToken</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;refreshToken&#39;</span><span class="p">);</span>
-    <span class="c1">// If no token return null</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">idToken</span> <span class="o">||</span> <span class="o">!</span><span class="nx">refreshToken</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="c1">// If token is expired, get a new one</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">jwtHelper</span><span class="p">.</span><span class="nx">isTokenExpired</span><span class="p">(</span><span class="nx">idToken</span><span class="p">))</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">refreshIdToken</span><span class="p">(</span><span class="nx">refreshToken</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">idToken</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="nx">idToken</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">idToken</span><span class="p">;</span>
-      <span class="p">});</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">idToken</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<blockquote>
+  <p>Auth0 supports <a href="https://docs.auth0.com/identityproviders">a large number of identity providers</a>.</p>
+</blockquote>
 
-  <span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;jwtInterceptor&#39;</span><span class="p">);</span>
-  <span class="c1">// ...</span>
-<span class="p">});</span><span class="err">````</span>
+<p>Notice the various parameters in the <em>Auth0 Lock</em>. In particular, check that we added the <code>offline_access</code> scope. This setting is very important for mobile apps since it’ll make Auth0 return a <code>refresh_token</code> to your app. For more information about Refresh Tokens, you can <a href="http://docs.auth0.com/refresh-token">click here</a>.</p>
 
-<span class="nx">All</span> <span class="nx">that</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">left</span> <span class="nx">now</span> <span class="nx">is</span> <span class="nx">validating</span> <span class="nx">the</span> <span class="nx">sent</span> <span class="nx">token</span> <span class="k">in</span> <span class="nx">your</span> <span class="nx">server</span> <span class="nx">hosting</span> <span class="nx">the</span> <span class="nx">API</span><span class="p">.</span> <span class="p">[</span><span class="nx">Tailored</span> <span class="nx">tutorials</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//docs.auth0.com/quickstart/hybrid/ionic) for all popular stacks and platforms will teach you how to do that. Auth0 OSS SDKs make it really easy.</span>
+<p>Once the login is successful, we’re using <code>angular-storage</code> to store the tokens and the user profile. We’ll use these in the upcoming sections.</p>
 
-<span class="err">###</span> <span class="mf">2.5</span> <span class="nx">Display</span> <span class="nx">user</span> <span class="nx">information</span>
-<span class="nx">Once</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">is</span> <span class="nx">logged</span> <span class="k">in</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">access</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">information</span> <span class="nx">via</span> <span class="err">`</span><span class="nx">auth</span><span class="p">.</span><span class="nx">profile</span><span class="err">`</span><span class="p">.</span> <span class="p">[</span><span class="nx">Auth0</span> <span class="nx">ensures</span> <span class="nx">that</span> <span class="nx">common</span> <span class="nx">properties</span> <span class="nx">are</span> <span class="nx">all</span> <span class="nx">sent</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">way</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//docs.auth0.com/user-profile).</span>
+<h3 id="call-the-secured-api">2.4 Call the secured API</h3>
+<p>With the token in the app, you can now call a secured API safely. Each call you make to an API endpoint should attach the token (JWT) to the <code>Authorization</code> header. For that, we need to do the add the <code>jwtInterceptor</code> from <code>angular-jwt</code> to the list of <code>$http</code> interceptors. Also, as JWTs expire, we’ll use the <code>refreshToken</code> to get a new JWT if the one we have is expired:</p>
 
-<span class="err">````</span><span class="nx">html</span>
+<pre><code class="language-js">// app.js
+myApp.config(function (authProvider, $routeProvider, $httpProvider, jwtInterceptorProvider) {
+  // ...
 
-<span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Hi</span> <span class="p">{{</span><span class="nx">auth</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">nickname</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
-</code></pre></div>
-<h3>2.6 Keeping the user logged in after page refreshes</h3>
+  jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
+    var idToken = store.get('token');
+    var refreshToken = store.get('refreshToken');
+    // If no token return null
+    if (!idToken || !refreshToken) {
+      return null;
+    }
+    // If token is expired, get a new one
+    if (jwtHelper.isTokenExpired(idToken)) {
+      return auth.refreshIdToken(refreshToken).then(function(idToken) {
+        store.set('token', idToken);
+        return idToken;
+      });
+    } else {
+      return idToken;
+    }
+  }
 
+  $httpProvider.interceptors.push('jwtInterceptor');
+  // ...
+});````
+
+All that's left now is validating the sent token in your server hosting the API. [Tailored tutorials](https://docs.auth0.com/quickstart/hybrid/ionic) for all popular stacks and platforms will teach you how to do that. Auth0 OSS SDKs make it really easy.
+
+### 2.5 Display user information
+Once the user is logged in, you can access the user information via `auth.profile`. [Auth0 ensures that common properties are all sent in the same way](https://docs.auth0.com/user-profile).
+
+````html
+
+&lt;span&gt;Hi {{auth.profile.nickname}}&lt;/span&gt;
+
+</code></pre>
+
+<h3 id="keeping-the-user-logged-in-after-page-refreshes">2.6 Keeping the user logged in after page refreshes</h3>
 <p>We already saved the user profile and tokens into <code>localStorage</code>. We just need to fetch them on page refresh and let <code>auth0-angular</code> know that the user is already authenticated.</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;auth0&#39;</span><span class="p">,</span> <span class="s1">&#39;angular-storage&#39;</span><span class="p">,</span> <span class="s1">&#39;angular-jwt&#39;</span><span class="p">])</span>
-<span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">auth</span><span class="p">,</span> <span class="nx">store</span><span class="p">,</span> <span class="nx">jwtHelper</span><span class="p">,</span> <span class="nx">$location</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// This events gets triggered on refresh or URL change</span>
-  <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$locationChangeStart&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="p">.</span><span class="nx">isAuthenticated</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">jwtHelper</span><span class="p">.</span><span class="nx">isTokenExpired</span><span class="p">(</span><span class="nx">token</span><span class="p">))</span> <span class="p">{</span>
-          <span class="nx">auth</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span> <span class="nx">token</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">auth</span><span class="p">.</span><span class="nx">refreshIdToken</span><span class="p">(</span><span class="nx">refreshToken</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">idToken</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="nx">idToken</span><span class="p">);</span>
-            <span class="nx">auth</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span> <span class="nx">idToken</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">idToken</span><span class="p">;</span>
-          <span class="p">});</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2>3. Configure Auth0</h2>
 
-<p>Now it&#39;s time to configure Auth0. First, we need to register an <code>Application</code>. This represents the Ionic app and the API. Then, you can choose which Identity Providers the user will be enabled for the app.</p>
+<pre><code class="language-js">angular.module('myApp', ['auth0', 'angular-storage', 'angular-jwt'])
+.run(function($rootScope, auth, store, jwtHelper, $location) {
+  // This events gets triggered on refresh or URL change
+  $rootScope.$on('$locationChangeStart', function() {
+    if (!auth.isAuthenticated) {
+      var token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          auth.authenticate(store.get('profile'), token);
+        } else {
+          auth.refreshIdToken(refreshToken).then(function(idToken) {
+            store.set('token', idToken);
+            auth.authenticate(store.get('profile'), idToken);
+            return idToken;
+          });
+        }
+      }
+    }
+  });
+});
+</code></pre>
 
-<h3>3.1 Create the Application in Auth0</h3>
+<h2 id="configure-auth0">3. Configure Auth0</h2>
+<p>Now it’s time to configure Auth0. First, we need to register an <code>Application</code>. This represents the Ionic app and the API. Then, you can choose which Identity Providers the user will be enabled for the app.</p>
 
+<h3 id="create-the-application-in-auth0">3.1 Create the Application in Auth0</h3>
 <p>Creating the Application is super easy. Once created, check Settings, and copy the <code>clientId</code> and <code>domain</code>. These are used in Step 2.1.</p>
 
 <p><img src="https://cloudup.com/iYZPXy0c303+" /></p>
 
 <blockquote>
-<p><em>Note</em>: If you want to try this out with <code>ionic serve</code> as well, you&#39;ll have to put <code>localhost:8100</code> as one of the <code>callbackURLs</code> on the Settings of your application.</p>
+  <p><em>Note</em>: If you want to try this out with <code>ionic serve</code> as well, you’ll have to put <code>localhost:8100</code> as one of the <code>callbackURLs</code> on the Settings of your application.</p>
 </blockquote>
 
-<h3>3.2 Choose the Identity providers</h3>
-
+<h3 id="choose-the-identity-providers">3.2 Choose the Identity providers</h3>
 <p>Now, you can choose what Identity Providers (called <em>Connections</em> in Auth0) the user will use to log in. We have tons of them!</p>
 
 <p><img src="https://cloudup.com/iVIa3IZg_6o+" /></p>
 
-<h2>Show time!</h2>
+<h2 id="show-time">Show time!</h2>
 
-<p>You&#39;ve completed implementing Authentication in your app. Let&#39;s see how it runs!</p>
+<p>You’ve completed implementing Authentication in your app. Let’s see how it runs!</p>
 
 <p><img src="https://cloudup.com/iMmARAM4VJZ+" /></p>
 
-<h2>Final thoughts</h2>
+<h2 id="final-thoughts">Final thoughts</h2>
 
-<p>You&#39;ve added authentication with Social Providers, Enterprise Providers and regular username &amp; password to our Ionic app in just a few simple steps.</p>
+<p>You’ve added authentication with Social Providers, Enterprise Providers and regular username &amp; password to our Ionic app in just a few simple steps.</p>
 
 <p><a href="https://github.com/auth0/auth0-ionic/tree/master/examples/refresh-token-sample">You can download this exact example from Github</a>.</p>
 
-<p>If you have any questions, please contact me at <a href="mailto:gonto@auth0.com">gonto@auth0.com</a> :).</p>
+<p>If you have any questions, please contact me at <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#103;&#111;&#110;&#116;&#111;&#064;&#097;&#117;&#116;&#104;&#048;&#046;&#099;&#111;&#109;">&#103;&#111;&#110;&#116;&#111;&#064;&#097;&#117;&#116;&#104;&#048;&#046;&#099;&#111;&#109;</a> :).</p>
 
 <p>Happy hacking!</p>
 
 <p><a href="http://twitter.com/mgonto">@mgonto</a></p>
+
 
 
   <div class="share-bottom">
@@ -434,8 +447,20 @@ ionic platform add ios
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

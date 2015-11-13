@@ -9,7 +9,7 @@
 <meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
 
     <title>Ionic Framework - Swipe Cards - Ionic Framework</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -46,14 +46,14 @@
         <div class="col-md-6">
           <p>Swipeable cards are an emerging mobile UI, seen in new apps like <a href="http://jelly.co/">Jelly</a>.</p>
 
-<p>Cards make it easy to display modal content that fills the center of the screen,
+<p>Cards make it easy to display modal content that fills the center of the screen,<br />
 letting the user swipe it away to bring up a new bit of content.</p>
 
-<p>We built a similar UI that you can use in your own Ionic apps today! To use it, 
-check out the <a href="https://github.com/driftyco/ionic-contrib-swipe-cards">Ionic Swipe Cards</a> repo
+<p>We built a similar UI that you can use in your own Ionic apps today! To use it, <br />
+check out the <a href="https://github.com/driftyco/ionic-contrib-swipe-cards">Ionic Swipe Cards</a> repo<br />
 and follow the guide in the README.</p>
 
-<p>Or, download the starter Cordova project below which contains everything you need
+<p>Or, download the starter Cordova project below which contains everything you need<br />
 to build and run your own card-based Ionic app!</p>
 
 <p><a href="https://github.com/driftyco/ionic-contrib-swipe-cards/archive/master.zip" class="btn btn-large btn-primary"><i class="icon ion-social-github"></i> Download Project</a></p>
@@ -123,12 +123,12 @@ to build and run your own card-based Ionic app!</p>
       <dd><a href="http://ionicframework.com/present-ionic/">Present Ionic</a></dd>
       <dd><a href="http://ionicframework.com/contribute/">Contribute</a></dd>
       <dd><a href="https://github.com/driftyco/ionic-learn/issues/new">Write for us</a></dd>
-      <dd><a href="http://www.stickermule.com/user/1070630560/stickers">Ionic Swag</a></dd>
+      <dd><a href="http://shop.ionic.io/">Ionic Shop</a></dd>
     </dl>
 
     <dl class="small-break">
       <dt>About</dt>
-      <dd><a href="http://ionicframework.com/blog/">Blog</a></dd>
+      <dd><a href="http://blog.ionic.io/">Blog</a></dd>
       <dd><a href="http://ionic.io">Services</a></dd>
       <dd><a href="http://drifty.com">Company</a></dd>
       <dd><a href="https://s3.amazonaws.com/ionicframework.com/logo-pack.zip">Logo Pack</a></dd>
@@ -174,7 +174,7 @@ to build and run your own card-based Ionic app!</p>
         Code licensed under <a href="/docs/#license">MIT</a>.
         Docs under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a>
         <span>|</span>
-        &copy; 2014 <a href="http://drifty.com/">Drifty Co</a>
+        &copy; 2013-2015 <a href="http://drifty.com/">Drifty Co</a>
       </p>
     </div>
   </div>
@@ -205,8 +205,20 @@ to build and run your own card-based Ionic app!</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

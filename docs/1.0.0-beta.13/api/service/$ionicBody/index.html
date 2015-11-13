@@ -15,7 +15,7 @@
     
 
     <title>$ionicBody - Service in module ionic -  Ionic Framework</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -49,16 +49,33 @@
           <img src="/img/ionic-logo-white.svg" width="123" height="43" alt="Ionic Framework">
         
       </a>
+      <a href="http://blog.ionic.io/announcing-ionic-1-0/" target="_blank">
+      <img src="/img/ionic1-tag.png" alt="Ionic 1.0 is out!" width="28" height="32" style="margin-left: 140px; margin-top:22px; display:block">
+      </a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="products-nav nav-link" href="http://ionic.io/">Products</a></li>
         <li><a class="getting-started-nav nav-link" href="/getting-started/">Getting Started</a></li>
         <li><a class="docs-nav nav-link" href="/docs/">Docs</a></li>
-        <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+        <li><a class="nav-link" href="http://ionic.io/support">Support</a></li>
+        <li><a class="blog-nav nav-link" href="http://blog.ionic.io/">Blog <span id="blog-badge">1</span></a></li>
         <li><a class="nav-link" href="http://forum.ionicframework.com/">Forum</a></li>
-        <li><a class="blog-nav nav-link" href="/blog/">Blog <span id="blog-badge">1</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle nav-link " data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <div class="arrow-up"></div>
+            <li><a class="products-nav nav-link" href="http://ionic.io/">Ionic Platform</a></li>
+            <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+            <li><a class="nav-link" href="http://jobs.ionic.io/">Job Board</a></li>
+            <li><a class="nav-link" href="http://market.ionic.io/">Market</a></li>
+            <li><a class="nav-link" href="http://ionicworldwide.herokuapp.com/">Ionic Worldwide</a></li>
+            <li><a class="nav-link" href="http://play.ionic.io/">Playground</a></li>
+            <li><a class="nav-link" href="http://creator.ionic.io/">Creator</a></li>
+            <li><a class="nav-link" href="http://shop.ionic.io/">Shop</a></li>
+            <!--<li><a class="nav-link" href="http://ngcordova.com/">ngCordova</a></li>-->
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -75,65 +92,23 @@
           <div class="row">
             <div class="col-sm-8 news-col">
               <div class="picker">
-                <select onchange="window.location.href=this.options[this.selectedIndex].value">
+                <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/nightly/api/service/$ionicBody/"
+   value="/docs/v2/nightly/api/service/$ionicBody/"
    >
     nightly 
   </option>
 
   <option
-   value="/docs/api/service/$ionicBody/"
+   value="/docs/v2/api/service/$ionicBody/"
    >
-    1.0.0-rc.2 (latest)
-  </option>
-
-  <option
-   value="/docs/1.0.0-rc.1/api/service/$ionicBody/"
-   >
-    1.0.0-rc.1 
-  </option>
-
-  <option
-   value="/docs/1.0.0-rc.0/api/service/$ionicBody/"
-   >
-    1.0.0-rc.0 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.14/api/service/$ionicBody/"
-   >
-    1.0.0-beta.14 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.13/api/service/$ionicBody/"
-   selected>
-    1.0.0-beta.13 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.12/api/service/$ionicBody/"
-   >
-    1.0.0-beta.12 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.11/api/service/$ionicBody/"
-   >
-    1.0.0-beta.11 
-  </option>
-
-  <option
-   value="/docs/1.0.0-beta.10/api/service/$ionicBody/"
-   >
-    1.0.0-beta.10 
+    2.0.0 (latest)
   </option>
 
 </select>
-
-
 
               </div>
             </div>
@@ -187,6 +162,12 @@
               </li>
             </ul>
 
+            <ul class="nav left-menu">
+              <li class="menu-title">
+                <a href="/docs/platform-customization/">Platform Customization</a>
+              </li>
+            </ul>
+
             <!-- Docs: JavaScript -->
             <ul class="nav left-menu active-menu">
               <li class="menu-title">
@@ -195,10 +176,10 @@
                 </a>
               </li>
               
-  
-    
 
-    
+
+
+
   
 
 
@@ -789,10 +770,10 @@
     </ul>
   </li>
 
-  
 
-  
-    
+
+
+
 
 
             </ul>
@@ -836,11 +817,11 @@
 
         <div class="col-md-10 col-sm-9 main-content">
           <div class="improve-docs">
-  <a href='http://github.com/driftyco/ionic/tree/master/js/angular/service/body.js#L1'>
+  <a href="http://github.com/driftyco/ionic/tree/master/js/angular/service/body.js#L1">
     View Source
   </a>
   &nbsp;
-  <a href='http://github.com/driftyco/ionic/edit/master/js/angular/service/body.js#L1'>
+  <a href="http://github.com/driftyco/ionic/edit/master/js/angular/service/body.js#L1">
     Improve this doc
   </a>
 </div>
@@ -853,19 +834,18 @@
 
 </h1>
 
-<p>An angular utility service to easily and efficiently
-add and remove CSS classes from the document&#39;s body element.</p>
+<p>An angular utility service to easily and efficiently<br />
+add and remove CSS classes from the document’s body element.</p>
 
-<h2>Methods</h2>
+<h2 id="methods">Methods</h2>
 
 <div id="add"></div>
-
 <h2>
   <code>add(class)</code>
 
 </h2>
 
-<p>Add a class to the document&#39;s body element.</p>
+<p>Add a class to the document’s body element.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -898,18 +878,17 @@ add and remove CSS classes from the document&#39;s body element.</p>
 </table>
 
 <ul>
-<li>Returns: 
+  <li>Returns: <br />
 <code>$ionicBody</code> The $ionicBody service so methods can be chained.</li>
 </ul>
 
 <div id="removeClass"></div>
-
 <h2>
   <code>removeClass(class)</code>
 
 </h2>
 
-<p>Remove a class from the document&#39;s body element.</p>
+<p>Remove a class from the document’s body element.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -942,20 +921,19 @@ add and remove CSS classes from the document&#39;s body element.</p>
 </table>
 
 <ul>
-<li>Returns: 
+  <li>Returns: <br />
 <code>$ionicBody</code> The $ionicBody service so methods can be chained.</li>
 </ul>
 
 <div id="enableClass"></div>
-
 <h2>
   <code>enableClass(shouldEnableClass, class)</code>
 
 </h2>
 
-<p>Similar to the <code>add</code> method, except the first parameter accepts a boolean
-value determining if the class should be added or removed. Rather than writing user code,
-such as &quot;if true then add the class, else then remove the class&quot;, this method can be
+<p>Similar to the <code>add</code> method, except the first parameter accepts a boolean<br />
+value determining if the class should be added or removed. Rather than writing user code,<br />
+such as “if true then add the class, else then remove the class”, this method can be<br />
 given a true or false value which reduces redundant code.</p>
 
 <table class="table" style="margin:0;">
@@ -1007,18 +985,17 @@ the first argument.</p>
 </table>
 
 <ul>
-<li>Returns: 
+  <li>Returns: <br />
 <code>$ionicBody</code> The $ionicBody service so methods can be chained.</li>
 </ul>
 
 <div id="append"></div>
-
 <h2>
   <code>append(element)</code>
 
 </h2>
 
-<p>Append a child to the document&#39;s body.</p>
+<p>Append a child to the document’s body.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1052,23 +1029,23 @@ can be either a jqLite element, or a DOM element.</p>
 </table>
 
 <ul>
-<li>Returns: 
+  <li>Returns: <br />
 <code>$ionicBody</code> The $ionicBody service so methods can be chained.</li>
 </ul>
 
 <div id="get"></div>
-
 <h2>
   <code>get()</code>
 
 </h2>
 
-<p>Get the document&#39;s body element.</p>
+<p>Get the document’s body element.</p>
 
 <ul>
-<li>Returns: 
-<code>element</code> Returns the document&#39;s body element.</li>
+  <li>Returns: <br />
+<code>element</code> Returns the document’s body element.</li>
 </ul>
+
 
         </div>
 
@@ -1135,12 +1112,12 @@ can be either a jqLite element, or a DOM element.</p>
       <dd><a href="http://ionicframework.com/present-ionic/">Present Ionic</a></dd>
       <dd><a href="http://ionicframework.com/contribute/">Contribute</a></dd>
       <dd><a href="https://github.com/driftyco/ionic-learn/issues/new">Write for us</a></dd>
-      <dd><a href="http://www.stickermule.com/user/1070630560/stickers">Ionic Swag</a></dd>
+      <dd><a href="http://shop.ionic.io/">Ionic Shop</a></dd>
     </dl>
 
     <dl class="small-break">
       <dt>About</dt>
-      <dd><a href="http://ionicframework.com/blog/">Blog</a></dd>
+      <dd><a href="http://blog.ionic.io/">Blog</a></dd>
       <dd><a href="http://ionic.io">Services</a></dd>
       <dd><a href="http://drifty.com">Company</a></dd>
       <dd><a href="https://s3.amazonaws.com/ionicframework.com/logo-pack.zip">Logo Pack</a></dd>
@@ -1186,7 +1163,7 @@ can be either a jqLite element, or a DOM element.</p>
         Code licensed under <a href="/docs/#license">MIT</a>.
         Docs under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a>
         <span>|</span>
-        &copy; 2014 <a href="http://drifty.com/">Drifty Co</a>
+        &copy; 2013-2015 <a href="http://drifty.com/">Drifty Co</a>
       </p>
     </div>
   </div>
@@ -1217,8 +1194,20 @@ can be either a jqLite element, or a DOM element.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

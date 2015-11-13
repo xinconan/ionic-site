@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Welcome Mike Hartington as Community Manager!</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -77,16 +77,16 @@
   </div>
 
 <div style="height: 200px; width: 200px; border-radius: 600px; border: 6px solid #4e8ef7; overflow: hidden; margin: 15px auto"> 
-  <img src="/img/blog/mike-lg.png" alt="Mike Hartington">
+  <img src="/img/blog/mike-lg.png" alt="Mike Hartington" />
 </div>
 
-<p>Today, we&#39;re excited to announce that Mike Hartington (<a href="https://twitter.com/mhartington">@mhartington</a> on Twitter, <a href="https://github.com/mhartington">@mhartington</a> on GitHub, and <a href="http://forum.ionicframework.com/users/mhartington/activity">mhartington</a>  on the Forum) has joined Ionic as a Community Manager! If you haven&#39;t already interacted with him on the <a href="forum.ionicframework.com">Forum</a>, expect to see him there more often. He&#39;ll be helping out on a daily basis fielding questions/ideas/suggestions, creating inspirational demos, and of course, sling&#39;n code.</p>
+<p>Today, we’re excited to announce that Mike Hartington (<a href="https://twitter.com/mhartington">@mhartington</a> on Twitter, <a href="https://github.com/mhartington">@mhartington</a> on GitHub, and <a href="http://forum.ionicframework.com/users/mhartington/activity">mhartington</a>  on the Forum) has joined Ionic as a Community Manager! If you haven’t already interacted with him on the <a href="forum.ionicframework.com">Forum</a>, expect to see him there more often. He’ll be helping out on a daily basis fielding questions/ideas/suggestions, creating inspirational demos, and of course, sling’n code.</p>
 
 <!-- more -->
 
 <p>Mike is a front end web developer, with a background in tradional design. Thus, Mike strives to create efficient and performant CSS while at the same time keeping the visual UI in mind (which is perfect for a design-aware framework like Ionic). He hails from the enterprise world, where he worked on internal mobile applications built on Ionic, of course!</p>
 
-<p>Residing out of Rhode Island, USA, Mike loves playing or building guitars, doing sculpture work, and making wood carvings. Yep, he&#39;s a badass.</p>
+<p>Residing out of Rhode Island, USA, Mike loves playing or building guitars, doing sculpture work, and making wood carvings. Yep, he’s a badass.</p>
 
 <p>So with that, help us welcome Mike to the team!</p>
 
@@ -178,8 +178,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

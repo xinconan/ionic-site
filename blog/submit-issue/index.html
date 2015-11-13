@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Introducing a New Way to Submit Issues</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,19 +76,19 @@
     <time class="post-time">By <img src="https://en.gravatar.com/userimage/4492737/bd46f8f2d8d12133c4df6c0441bc7ef1.jpg" class="author-icon"><a href="http://twitter.com/perrygovier" target="_blank">@perrygovier</a></time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/submit-issue-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/submit-issue-header.png" /></p>
 
-<p>Today, I&#39;m excited to introduce a better way for all our awesome community members and contributors to submit Ionic issues: <a href="http://ionicframework.com/submit-issue/">Submit An Issue</a>.</p>
+<p>Today, I’m excited to introduce a better way for all our awesome community members and contributors to submit Ionic issues: <a href="http://ionicframework.com/submit-issue/">Submit An Issue</a>.</p>
 
 <p>Many of the issue submissions on <a href="https://github.com/driftyco/ionic">GitHub</a> are closely related to existing issues, so to streamline the process and make the interface more user-friendly, we changed our issue submission form.</p>
 
 <!-- more -->
 
-<p>Now, <a href="http://twitter.com/ionitron">Ionitron</a> will guide you through the process of submitting your issue, problem, or bug, and we&#39;ll help you find a solution, or we&#39;ll fix it for you. We&#39;ll ask you for some preliminary info, and then our new Auto Suggest feature will list out the issues to which your problem might be related. If you see a related issue in that list, you can join that conversation and immediately get help, instead of unintentionally creating a duplicate issue.</p>
+<p>Now, <a href="http://twitter.com/ionitron">Ionitron</a> will guide you through the process of submitting your issue, problem, or bug, and we’ll help you find a solution, or we’ll fix it for you. We’ll ask you for some preliminary info, and then our new Auto Suggest feature will list out the issues to which your problem might be related. If you see a related issue in that list, you can join that conversation and immediately get help, instead of unintentionally creating a duplicate issue.</p>
 
-<p>We&#39;ve also improved the UX in general. The <em>connect to GitHub</em> requirement is now the first step, so there won&#39;t be any surprises after you&#39;ve taken the time to craft your issue. Lastly, we&#39;ve improved the UI with the animated step tracking bar and minor visual improvements.</p>
+<p>We’ve also improved the UX in general. The <em>connect to GitHub</em> requirement is now the first step, so there won’t be any surprises after you’ve taken the time to craft your issue. Lastly, we’ve improved the UI with the animated step tracking bar and minor visual improvements.</p>
 
-<p>In the future, we&#39;re going to encourage you to send all new issues through the Submit Issue page, and as such, we want to start by making sure it&#39;s as enjoyable to use as possible. If you think there&#39;s any way we can improve it, please let us know!</p>
+<p>In the future, we’re going to encourage you to send all new issues through the Submit Issue page, and as such, we want to start by making sure it’s as enjoyable to use as possible. If you think there’s any way we can improve it, please let us know!</p>
 
 <p>Found an issue in Ionic? <a href="http://ionicframework.com/submit-issue/">Try it out!</a></p>
 
@@ -180,8 +180,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

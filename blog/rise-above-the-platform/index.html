@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Rise Above the Platform</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/b2fb6624572ff6d6dcbe98bd787b9e9b.png?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/benjsperry" target="_blank">@benjsperry</a> on January 15, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/rise-above.png"></p>
+<p><img class="showcase-image" src="/img/blog/rise-above.png" /></p>
 
 <p>When was the last time you saw a unique mobile app <a href="http://www.snapchat.com/" target="_blank">rise the ranks</a> of popularity, <a href="https://vine.co/" target="_blank">hit number one</a> or two in the App/Play Store, maybe even become a <a href="https://about.twitter.com/" target="_blank">household name</a>- yet, have a visual design that completely mimics the native UI design for all the platforms?</p>
 
@@ -96,7 +96,7 @@
 
 <p>Let’s examine three mobile apps, Apple’s default App Store app, <a href="http://jelly.co/" target="_blank">Jelly</a> and <a href="https://vine.co/" target="_blank">Vine</a>. All three are running on iOS 7:</p>
 
-<p><img class="body-image" src="/img/blog/phone-comparison.png"></p>
+<p><img class="body-image" src="/img/blog/phone-comparison.png" /></p>
 
 <p>Each app adheres to the iOS 7 design guidelines and displays a list of options. Apple’s App Store app (left) is an example of the standard iOS 7 design. Yet, the Jelly app (middle) and Vine app (right) take a completely different visual approach to displaying content. Mind you, these are both extremely popular and successful apps that still feel completely at home in iOS 7, right alongside the App Store app.</p>
 
@@ -108,7 +108,7 @@
 
 <p>First, you probably won’t get it right. Both Apple and Android (as well as others) have worked years on perfecting every little detail of their visual experience. Everything from individual typographic kerning/letter-spacing, weights, and line-heights, to stroke lengths, list heights, animation timing, and more. In some cases, you might get very close to creating an app that looks and behaves similar to its corresponding default OS, but any “little things” your app misses are going to stand out like a sore thumb.</p>
 
-<p><img class="body-image" src="/img/blog/uncanny.png"></p>
+<p><img class="body-image" src="/img/blog/uncanny.png" /></p>
 
 <p>This is called the <a href="http://en.wikipedia.org/wiki/Uncanny_valley" target="_blank">Uncanny Valley Effect</a>, in which your users are given the impression that there is something “wrong” or “off” about your app, but they might not be able to explain what. It's kind of like the feeling you get when you notice the CGI in a movie- you know what it's trying to look like, but there's just something wrong about it. It pulls you out of the movie, just like a poor clone will pull the user out of her experience with your app.</p>
 
@@ -122,7 +122,7 @@
 
 <p>One of the main goals with Ionic is for it to offer a beautiful default design, such that with very little customization it can fit your brand’s style and look great right off the press. In a sense, it’s goal is to simply adhere to each brands individual design specifications with ease.</p>
 
-<p><a href="https://twitter.com/GrumpyWizards/status/419428232682020864" target="_blank"><img class="body-image" src="/img/blog/quote.png"></a></p>
+<p><a href="https://twitter.com/GrumpyWizards/status/419428232682020864" target="_blank"><img class="body-image" src="/img/blog/quote.png" /></a></p>
 
 <p>We achieve this by keeping our visual system simple. Ionic gets out of the way by choosing to visually do less, so it’s easier for others to add more. Does it loosely mimic iOS 7? In some ways, yes, without a doubt. However, I would argue that in many ways they inadvertently share the same basic principles: simplicity, reduction of clutter, use of white and solid colors, zero gradients, and hardly any box-shadows or border-radii altercations. Anything more than that, we leave up to you. Oh, and did I mention it’s built on Sass?</p>
 
@@ -220,8 +220,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

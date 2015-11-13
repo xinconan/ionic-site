@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Fast code deployments with Docker</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,88 +76,101 @@
     <time class="post-time">By <img src="https://pbs.twimg.com/profile_images/2645882152/2d0a800126f9913e3df81c47add9d17a.jpeg" class="author-icon"><a href="http://twitter.com/tweakbox" target="_blank">Joel Weirauch</a> on December 22, 2014</time>
   </div>
 
-<p>We are huge fans of <a href="https://www.docker.com/">Docker</a> here at Ionic. Docker keeps our code and its dependencies together and lets us more fully utilize our computing resources for products like <a href="https://creator.ionic.io/">Ionic Creator</a> and the upcoming <a href="https://ionic.io/">Ionic.io</a> services. </p>
+<p>We are huge fans of <a href="https://www.docker.com/">Docker</a> here at Ionic. Docker keeps our code and its dependencies together and lets us more fully utilize our computing resources for products like <a href="https://creator.ionic.io/">Ionic Creator</a> and the upcoming <a href="https://ionic.io/">Ionic.io</a> services.</p>
 
-<p>One challenge we faced with Docker, though, was that any time we made even the smallest change to our code, we had to go through the process of building a new container, pulling it down to our servers, and replacing the running version.  </p>
+<p>One challenge we faced with Docker, though, was that any time we made even the smallest change to our code, we had to go through the process of building a new container, pulling it down to our servers, and replacing the running version.</p>
 
 <p>We store all of our code in GitHub, use the <a href="https://hub.docker.com/">Docker Registry</a> to automatically build and store our containers, and use <a href="http://www.ansible.com/">Ansible</a> to script the management and deployment of our containers to our servers. Even with a fully automated process, deploying that one small change could take us 20 minutes or more. After some brainstorming, we realized there is a better way for us to utilize Docker.</p>
 
-<p>After the initial container build, 99% of our changes are purely code. We aren&#39;t adding any new dependencies or changing any of the requirements for running the code. Docker is really just a way to encapsulate the infrastructure required to run our code in a self-contained package. Because 99% of our changes are to code, not infrastructure, we realized we didn’t need to go through the effort to rebuild the infrastructure on every change.</p>
+<p>After the initial container build, 99% of our changes are purely code. We aren’t adding any new dependencies or changing any of the requirements for running the code. Docker is really just a way to encapsulate the infrastructure required to run our code in a self-contained package. Because 99% of our changes are to code, not infrastructure, we realized we didn’t need to go through the effort to rebuild the infrastructure on every change.</p>
 
-<p>The killer Docker feature that lets us solve this problem is <a href="https://docs.docker.com/userguide/dockervolumes/">volumes</a>. In the first iterations of our Docker files, our code was pulled from GitHub and built directly into the container. Now, we deliberately leave the code out of the container and instead load it through a host volume on container start. When we want to do a new deploy, Ansible pulls down our master branch from GitHub into an app directory on our servers. Then it checks to make sure that the associated container is running, and if it&#39;s not, it will start the container and map the app code into the container.</p>
+<p>The killer Docker feature that lets us solve this problem is <a href="https://docs.docker.com/userguide/dockervolumes/">volumes</a>. In the first iterations of our Docker files, our code was pulled from GitHub and built directly into the container. Now, we deliberately leave the code out of the container and instead load it through a host volume on container start. When we want to do a new deploy, Ansible pulls down our master branch from GitHub into an app directory on our servers. Then it checks to make sure that the associated container is running, and if it’s not, it will start the container and map the app code into the container.</p>
 
 <p>The other component that makes this work for us is that most of our apps are Python (Django), and we serve them with uWSGI inside the Docker container. uWSGI has a <a href="http://uwsgi-docs.readthedocs.org/en/latest/Options.html#touch-reload">touch reload</a> feature that watches a specified file and reloads the uWSGI server when the file is touched. After Ansible has pulled our changes from GitHub, we have Ansible touch the uwsgi.ini file, which triggers uWSGI to reload inside the running container. Just like that, we’re running the updated version of our code!</p>
 
 <p>What this means, in brief, is that we took our deployments from a 20+ minute process that looked like this:</p>
 
 <ol>
-<li>Commit and push to GitHub.</li>
-<li>Docker Registry pulls the changes and builds a new container.</li>
-<li>Ansible connects to our servers and pulls the new container.</li>
-<li>Ansible finds any running instances of the old container and stops them.</li>
-<li>Ansible starts new instances of the container.</li>
+  <li>Commit and push to GitHub.</li>
+  <li>Docker Registry pulls the changes and builds a new container.</li>
+  <li>Ansible connects to our servers and pulls the new container.</li>
+  <li>Ansible finds any running instances of the old container and stops them.</li>
+  <li>Ansible starts new instances of the container.</li>
 </ol>
 
 <p>to this approximately 10 second process:</p>
 
 <ol>
-<li>Commit and push to GitHub.</li>
-<li>Ansible connects to our servers, pulls latest master from GitHub.</li>
-<li>Ansible touches the app&#39;s uwsgi.ini file to trigger UWSGI to reload.</li>
+  <li>Commit and push to GitHub.</li>
+  <li>Ansible connects to our servers, pulls latest master from GitHub.</li>
+  <li>Ansible touches the app’s uwsgi.ini file to trigger UWSGI to reload.</li>
 </ol>
 
-<h3>Breaking it down</h3>
+<h3 id="breaking-it-down">Breaking it down</h3>
 
-<h4>Supervisor / uWSGI</h4>
-
+<h4 id="supervisor--uwsgi">Supervisor / uWSGI</h4>
 <p>We are using <a href="http://supervisord.org/">Supervisor</a> inside the Docker container to start the processes run by the container. Our supervisord.conf looks like the following:</p>
-<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[supervisord]</span>
-<span class="na">nodaemon</span><span class="o">=</span><span class="s">true</span>
 
-<span class="k">[program:uwsgi]</span>
-<span class="na">command</span> <span class="o">=</span> <span class="s">/usr/local/bin/uwsgi --touch-reload=/path/to/code/in/container/uwsgi.ini --ini /path/to/code/in/container/uwsgi.ini</span>
-</code></pre></div>
-<p>We are using the uwsgi.ini file as the trigger file via the <a href="http://uwsgi-docs.readthedocs.org/en/latest/Options.html#touch-reload">--touch-reload</a> flag.</p>
+<pre><code class="language-ini">
+[supervisord]
+nodaemon=true
 
-<h4>Docker</h4>
+[program:uwsgi]
+command = /usr/local/bin/uwsgi --touch-reload=/path/to/code/in/container/uwsgi.ini --ini /path/to/code/in/container/uwsgi.ini
 
+</code></pre>
+
+<p>We are using the uwsgi.ini file as the trigger file via the <a href="http://uwsgi-docs.readthedocs.org/en/latest/Options.html#touch-reload">–touch-reload</a> flag.</p>
+
+<h4 id="docker">Docker</h4>
 <p>When we start our container, we add a host volume that contains the code for our app. That host volume is mapped to an app path in the container from which uWSGI will load the app.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -d -P -v /path/to/code/on/host:/path/to/code/in/container --name<span class="o">=</span>container_name driftyco/testapp
-</code></pre></div>
-<h4>Ansible</h4>
 
-<p>Ansible is in charge of cloning the application code from GitHub into our host&#39;s app directory, ensuring that the Docker container is running and touching the uWSGI touch-reload trigger file. We have created playbooks to direct the deployment of each of our services, so deploying is just a matter of running the right one.</p>
+<pre><code class="language-bash">
+docker run -d -P -v /path/to/code/on/host:/path/to/code/in/container --name=container_name driftyco/testapp
+
+</code></pre>
+
+<h4 id="ansible">Ansible</h4>
+<p>Ansible is in charge of cloning the application code from GitHub into our host’s app directory, ensuring that the Docker container is running and touching the uWSGI touch-reload trigger file. We have created playbooks to direct the deployment of each of our services, so deploying is just a matter of running the right one.</p>
 
 <p>For a quick code deploy, we run a playbook that contains these tasks and takes only a few seconds to run:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">set_fact</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">host_volume=&quot;/path/to/code/on/host&quot;</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Git pull the latest code</span>
-  <span class="l-Scalar-Plain">git</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">repo=git@github.com:{{ org }}/{{ container }}.git</span>
-       <span class="l-Scalar-Plain">dest={{ host_volume }}</span>
-       <span class="l-Scalar-Plain">accept_hostkey=yes</span>
-       <span class="l-Scalar-Plain">force=yes</span>
 
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Gracefully reload uwsgi</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path={{ touch_file }} state=touch</span>
-</code></pre></div>
+<pre><code class="language-yaml">
+- set_fact: host_volume="/path/to/code/on/host"
+- name: Git pull the latest code
+  git: repo=git@github.com:{{ org }}/{{ container }}.git
+       dest={{ host_volume }}
+       accept_hostkey=yes
+       force=yes
+
+- name: Gracefully reload uwsgi
+  file: path={{ touch_file }} state=touch
+
+</code></pre>
+
 <p>If we need to restart the entire container or update system packages, we can do a container deploy, which takes a few minutes, with these tasks:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Add app dir if it doesn&#39;t yet exist</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path={{ host_volume }} owner=nobody group=docker recurse=yes state=directory</span>
-  <span class="l-Scalar-Plain">sudo</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yes</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Pull Docker image</span>
-  <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
-  <span class="l-Scalar-Plain">ignore_errors</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yes</span>
-  <span class="l-Scalar-Plain">with_items</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">docker pull {{ org }}/{{ container }}</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">docker stop {{ container }}</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">docker rm {{ container }}</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Run Docker image with app volumes</span>
-  <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">docker run -d -P -v {{ host_volume }}:{{ container_volume }} --name={{ container }} {{ extra_params }} {{ org }}/{{ container }}</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">
+- name: Add app dir if it doesn't yet exist
+  file: path={{ host_volume }} owner=nobody group=docker recurse=yes state=directory
+  sudo: yes
+- name: Pull Docker image
+  command: "{{ item }}"
+  ignore_errors: yes
+  with_items:
+    - docker pull {{ org }}/{{ container }}
+    - docker stop {{ container }}
+    - docker rm {{ container }}
+- name: Run Docker image with app volumes
+  command:  docker run -d -P -v {{ host_volume }}:{{ container_volume }} --name={{ container }} {{ extra_params }} {{ org }}/{{ container }}
+
+</code></pre>
+
 <p>For a full deploy, we run both playbooks together in sequence; it’s that simple. ;)</p>
 
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
+<p>Because Docker is primarily a way to encapsulate infrastructure into a self-contained, deployable package, there is often no need to rebuild the entire container just to deploy a couple code changes. By utilizing volumes in Docker, we remove the code from the container, enabling code to be updated independently of the container that runs it. Finally, we can use the UWSGI touch reload feature to restart UWSGI in the container and load the updated code from the volume.</p>
 
-<p>Because Docker is primarily a way to encapsulate infrastructure into a self-contained, deployable package, there is often no need to rebuild the entire container just to deploy a couple code changes. By utilizing volumes in Docker, we remove the code from the container, enabling code to be updated independently of the container that runs it. Finally, we can use the UWSGI touch reload feature to restart UWSGI in the container and load the updated code from the volume. </p>
 
 
   <div class="share-bottom">
@@ -247,8 +260,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

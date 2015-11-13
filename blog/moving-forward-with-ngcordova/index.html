@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Moving Forward with ngCordova</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -78,16 +78,17 @@
 
 <p><em>This is a guest post by <a href="http://paolobernasconi.com/">Paolo Bernasconi</a>, lead developer on <a href="http://ngcordova.com/">ngCordova</a>.</em></p>
 
-<p>To watch <a href="http://ngcordova.com/">ngCordova</a> grow from a small idea to a popular open source project with over 1250 stars on GitHub has been a great pleasure for me. Since its inception in July 2014, I&#39;ve had the opportunity to learn about creating and maintaining a GitHub repository, and I&#39;ve come to realize the true power of the open source community and individual contributors. With the community&#39;s troubleshooting help and submissions, we&#39;ve been able to improve ngCordova more rapidly and effectively than one person, or even a small team, ever could.</p>
+<p>To watch <a href="http://ngcordova.com/">ngCordova</a> grow from a small idea to a popular open source project with over 1250 stars on GitHub has been a great pleasure for me. Since its inception in July 2014, I’ve had the opportunity to learn about creating and maintaining a GitHub repository, and I’ve come to realize the true power of the open source community and individual contributors. With the community’s troubleshooting help and submissions, we’ve been able to improve ngCordova more rapidly and effectively than one person, or even a small team, ever could.</p>
 
 <p>When we first built ngCordova, it covered 14 basic Cordova plugins. Now it has <strong>47</strong> and counting, ranging from Push Notifications to Facebook support. We have since released 8 versions, received 230 pull requests from 49 contributors, and resolved over 170 issues.</p>
 
 <!-- more -->
 
-<h3>So, what&#39;s next?</h3>
+<h3 id="so-whats-next">So, what’s next?</h3>
 
-<p>The first new feature in ngCordova&#39;s future is an automatic <code>deviceready</code> check to determine whether a device is ready to use plugins. Currently, the only way to ensure this is to manually insert plugin calls inside the event-listener:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">document.addEventListener(&quot;deviceready&quot;, function () {
+<p>The first new feature in ngCordova’s future is an automatic <code>deviceready</code> check to determine whether a device is ready to use plugins. Currently, the only way to ensure this is to manually insert plugin calls inside the event-listener:</p>
+
+<pre><code>document.addEventListener("deviceready", function () {
   $cordovaPlugin.someFunction().then(success, error);
 }, false);
 
@@ -96,38 +97,41 @@
 $ionicPlatform.ready(function() {
   $cordovaPlugin.someFunction().then(success, error);
 });
-</code></pre></div>
-<p>This <em>&quot;event check&quot;</em> needs to be done for each plugin method, which becomes a bit tedious and over-bloats code in the controller. Soon, ngCordova will call the <code>deviceready</code> event in the background, making it easier and simpler to use plugins.</p>
 
-<p>Another important feature on the roadmap is an improved demo app. Cordova plugins can often be very hard to use, and there are times when you might have no idea why your app isn&#39;t working or what error is being produced. While the <a href="https://github.com/driftyco/ng-cordova/tree/master/demo/www/app">current demo</a> does include quite a few plugins, we plan to support <em>all</em> plugins in ngCordova, with very detailed examples and unit-tests.</p>
+</code></pre>
 
-<p>Finally, we understand the need for great documentation, so we are improving the docs with more comprehensive methods for each plugin API (<a href="http://ngcordova.com/docs/#Facebook">see the Facebook plugin for an example</a>), so you&#39;ll have all the information you need readily available.</p>
+<p>This <em>“event check”</em> needs to be done for each plugin method, which becomes a bit tedious and over-bloats code in the controller. Soon, ngCordova will call the <code>deviceready</code> event in the background, making it easier and simpler to use plugins.</p>
 
-<h3>What about testing in the browser?</h3>
+<p>Another important feature on the roadmap is an improved demo app. Cordova plugins can often be very hard to use, and there are times when you might have no idea why your app isn’t working or what error is being produced. While the <a href="https://github.com/driftyco/ng-cordova/tree/master/demo/www/app">current demo</a> does include quite a few plugins, we plan to support <em>all</em> plugins in ngCordova, with very detailed examples and unit-tests.</p>
 
-<p>One of the biggest issues with app development using Cordova plugins is the fact that it can sometimes break an app when testing in the browser, giving us the &quot;white screen of death&quot;. ngCordova does have a <a href="https://github.com/driftyco/ng-cordova/tree/master/src/mocks">mocks module</a>, but it requires a lot of extra code in your controller to simulate the phone environment and isn&#39;t well documented at the moment.</p>
+<p>Finally, we understand the need for great documentation, so we are improving the docs with more comprehensive methods for each plugin API (<a href="http://ngcordova.com/docs/#Facebook">see the Facebook plugin for an example</a>), so you’ll have all the information you need readily available.</p>
 
-<p>That&#39;s why I created a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/cordova-mocks/iigcccneenmnplhhfhaeahiofeeeifpn">Cordova Mocks</a> (<a href="https://github.com/pbernasconi/chrome-cordova">Github</a>), which generates mock-data and automatically injects it into your browser. It follows the same API that Cordova plugins use, so the only thing you have to do is install the extension and start using your app as if you were testing on your phone.</p>
+<h3 id="what-about-testing-in-the-browser">What about testing in the browser?</h3>
+
+<p>One of the biggest issues with app development using Cordova plugins is the fact that it can sometimes break an app when testing in the browser, giving us the “white screen of death”. ngCordova does have a <a href="https://github.com/driftyco/ng-cordova/tree/master/src/mocks">mocks module</a>, but it requires a lot of extra code in your controller to simulate the phone environment and isn’t well documented at the moment.</p>
+
+<p>That’s why I created a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/cordova-mocks/iigcccneenmnplhhfhaeahiofeeeifpn">Cordova Mocks</a> (<a href="https://github.com/pbernasconi/chrome-cordova">Github</a>), which generates mock-data and automatically injects it into your browser. It follows the same API that Cordova plugins use, so the only thing you have to do is install the extension and start using your app as if you were testing on your phone.</p>
 
 <p>It currently supports the following plugins, with many more to come:</p>
 
 <ul>
-<li>Camera</li>
-<li>Device Motion</li>
-<li>Device Orientation</li>
-<li>Device</li>
-<li>Dialogs</li>
-<li>Flashlight</li>
-<li>Geolocation</li>
-<li>Globalization</li>
-<li>Network Information</li>
+  <li>Camera</li>
+  <li>Device Motion</li>
+  <li>Device Orientation</li>
+  <li>Device</li>
+  <li>Dialogs</li>
+  <li>Flashlight</li>
+  <li>Geolocation</li>
+  <li>Globalization</li>
+  <li>Network Information</li>
 </ul>
 
-<p>Soon, you&#39;ll be able to configure the data yourself in an options panel built into the extension. Also, expect a Firefox (and maybe Safari) extension in the next few weeks.</p>
+<p>Soon, you’ll be able to configure the data yourself in an options panel built into the extension. Also, expect a Firefox (and maybe Safari) extension in the next few weeks.</p>
 
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 
 <p>ngCordova is still growing day by day and always welcomes new ideas and plugins. If you encounter any issues or want to get official support for a specific plugin, <a href="https://github.com/driftyco/ng-cordova/issues/new">create a new issue</a>, and stay tuned for new features and fixes.</p>
+
 
 
   <div class="share-bottom">
@@ -217,8 +221,20 @@ $ionicPlatform.ready(function() {
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

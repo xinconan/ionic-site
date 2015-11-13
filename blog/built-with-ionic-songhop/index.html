@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: Songhop</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,20 +76,20 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on October 08, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/songhop-header.jpg"></p>
+<p><img class="showcase-image" src="/img/blog/songhop-header.jpg" /></p>
 
-<p><a href="https://songhop.fm/">Songhop</a>, a super fast way to find new music, streams music that can be quickly flipped through using swipe gestures to interact with the Tinder-esque interface. The team behind <a href="https://thinkster.io/">Thinkster.io</a>: Eric Simons, Albert Pai, and Matt Green, built the app, which is targeted at teens and young adults. </p>
+<p><a href="https://songhop.fm/">Songhop</a>, a super fast way to find new music, streams music that can be quickly flipped through using swipe gestures to interact with the Tinder-esque interface. The team behind <a href="https://thinkster.io/">Thinkster.io</a>: Eric Simons, Albert Pai, and Matt Green, built the app, which is targeted at teens and young adults.</p>
 
 <!-- more -->
 
 <div style="float: right; margin-right: -160px; margin-bottom: 80px; width: 50%;">
-  <a href="http://ionicframework.com/img/blog/songhop-preview-right.jpg"><img src="/img/blog/songhop-preview-right.png"></a>
+  <a href="http://ionicframework.com/img/blog/songhop-preview-right.jpg"><img src="/img/blog/songhop-preview-right.png" /></a>
 </div>
 
-<p>In early 2013, Simons, Pai, and Green wrote what is now the de facto tutorial on AngularJS and have since taught over 500K developers AngularJS. They originally heard about Ionic from the AngularJS community and agreed that it would take significantly more time to learn native languages than to learn how Ionic was set up. They built the entire Songhop app on top of Ionic’s UI elements and plugins: modals, dialogs, navigation controllers, swipe gestures, etc. </p>
+<p>In early 2013, Simons, Pai, and Green wrote what is now the de facto tutorial on AngularJS and have since taught over 500K developers AngularJS. They originally heard about Ionic from the AngularJS community and agreed that it would take significantly more time to learn native languages than to learn how Ionic was set up. They built the entire Songhop app on top of Ionic’s UI elements and plugins: modals, dialogs, navigation controllers, swipe gestures, etc.</p>
 
 <div style="float: left; margin-left: -120px; margin-right: 40px; margin-bottom: 70px; width: 32%;">
-  <a href="http://ionicframework.com/img/blog/songhop-preview-left.jpg"><img src="/img/blog/songhop-preview-left.png"></a>
+  <a href="http://ionicframework.com/img/blog/songhop-preview-left.jpg"><img src="/img/blog/songhop-preview-left.png" /></a>
 </div>
 
 <p>“We custom-skinned a lot of components, and it was unbelievably easy to do so,” says Simons. “The framework is absolutely fantastic, and the documentation and resources that Ionic provides is unreal. I’ve honestly never seen such comprehensive docs and resources for a framework or platform. Further, the design decisions that the Ionic team has made are very intuitive and straightforward, which makes it a lot easier to understand how things work.”</p>
@@ -186,8 +186,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

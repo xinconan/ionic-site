@@ -10,7 +10,7 @@
 <meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
 
   <title>Ionic CLI - Ionic Framework</title>
-  <link href="/css/site.css?12" rel="stylesheet">
+  <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -44,16 +44,33 @@
           <img src="/img/ionic-logo-white.svg" width="123" height="43" alt="Ionic Framework">
         
       </a>
+      <a href="http://blog.ionic.io/announcing-ionic-1-0/" target="_blank">
+      <img src="/img/ionic1-tag.png" alt="Ionic 1.0 is out!" width="28" height="32" style="margin-left: 140px; margin-top:22px; display:block">
+      </a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="products-nav nav-link" href="http://ionic.io/">Products</a></li>
         <li><a class="getting-started-nav nav-link" href="/getting-started/">Getting Started</a></li>
         <li><a class="docs-nav nav-link" href="/docs/">Docs</a></li>
-        <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+        <li><a class="nav-link" href="http://ionic.io/support">Support</a></li>
+        <li><a class="blog-nav nav-link" href="http://blog.ionic.io/">Blog <span id="blog-badge">1</span></a></li>
         <li><a class="nav-link" href="http://forum.ionicframework.com/">Forum</a></li>
-        <li><a class="blog-nav nav-link" href="/blog/">Blog <span id="blog-badge">1</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle nav-link " data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <div class="arrow-up"></div>
+            <li><a class="products-nav nav-link" href="http://ionic.io/">Ionic Platform</a></li>
+            <li><a class="examples-nav nav-link" href="http://showcase.ionicframework.com/">Showcase</a></li>
+            <li><a class="nav-link" href="http://jobs.ionic.io/">Job Board</a></li>
+            <li><a class="nav-link" href="http://market.ionic.io/">Market</a></li>
+            <li><a class="nav-link" href="http://ionicworldwide.herokuapp.com/">Ionic Worldwide</a></li>
+            <li><a class="nav-link" href="http://play.ionic.io/">Playground</a></li>
+            <li><a class="nav-link" href="http://creator.ionic.io/">Creator</a></li>
+            <li><a class="nav-link" href="http://shop.ionic.io/">Shop</a></li>
+            <!--<li><a class="nav-link" href="http://ngcordova.com/">ngCordova</a></li>-->
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -117,6 +134,12 @@
           <ul class="nav left-menu">
             <li class="menu-title">
               <a href="/docs/components/">CSS</a>
+            </li>
+          </ul>
+
+          <ul class="nav left-menu">
+            <li class="menu-title">
+              <a href="/docs/platform-customization/">Platform Customization</a>
             </li>
           </ul>
 
@@ -186,118 +209,134 @@
       </div>
 
       <div class="col-md-10 col-sm-9 main-content">
-        <h1>Testing in a Browser</h1>
+        <h1 id="testing-in-a-browser">Testing in a Browser</h1>
 
-<p>Use <code>ionic serve</code> to start a local development server for app dev and testing.
- This is useful for both desktop browser testing, and to test within a device 
-browser which is connected to the same network. Additionally, this command 
-starts LiveReload which is used to monitor changes in the file system. As soon 
-as you save a file the browser is refreshed automatically. Take a look at the 
-<a href="/docs/cli/sass.html">Sass docs</a> if you would also like to have <code>ionic serve</code> 
-watch the project&#39;s Sass files.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic serve <span class="o">[</span>options<span class="o">]</span>
-</code></pre></div>
-<h3>LiveReload</h3>
+<p>Use <code>ionic serve</code> to start a local development server for app dev and testing.<br />
+ This is useful for both desktop browser testing, and to test within a device <br />
+browser which is connected to the same network. Additionally, this command <br />
+starts LiveReload which is used to monitor changes in the file system. As soon <br />
+as you save a file the browser is refreshed automatically. Take a look at the <br />
+<a href="/docs/cli/sass.html">Sass docs</a> if you would also like to have <code>ionic serve</code> <br />
+watch the project’s Sass files.</p>
 
-<p>By default, LiveReload will watch for changes in your <code>www/</code> directory, 
-excluding <code>www/lib/</code>.  To change this, you can specify a <code>watchPatterns</code> 
-property in the <code>ionic.project</code> file located in your project root to watch 
+<pre><code class="language-bash">$ ionic serve [options]
+</code></pre>
+
+<h3 id="livereload">LiveReload</h3>
+
+<p>By default, LiveReload will watch for changes in your <code>www/</code> directory, <br />
+excluding <code>www/lib/</code>.  To change this, you can specify a <code>watchPatterns</code> <br />
+property in the <code>ionic.project</code> file located in your project root to watch <br />
 (or not watch) for specific changes.</p>
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;myApp&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;app_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;watchPatterns&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;www/js/*&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;!www/css/**/*&quot;</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>For a reference on glob pattern syntax, check out 
-<a href="http://gruntjs.com/configuring-tasks#globbing-patterns">globbing patterns</a> on 
+
+<pre><code class="language-json">{
+  "name": "myApp",
+  "app_id": "",
+  "watchPatterns": [
+    "www/js/*",
+    "!www/css/**/*"
+  ]
+}
+</code></pre>
+
+<p>For a reference on glob pattern syntax, check out <br />
+<a href="http://gruntjs.com/configuring-tasks#globbing-patterns">globbing patterns</a> on <br />
 the Grunt website.</p>
 
-<p>Note: </p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic setup sass 
-</code></pre></div>
-<p>will add a <code>watchPatterns</code> propery with the default values to your <code>ionic.project</code> 
-file that you can then edit, in addition to the <code>gulpStartupTasks</code> property as 
-described in the <a href="/docs/cli/sass.html">Sass documentation</a>. </p>
+<p>Note:</p>
 
-<h3>Ionic Lab</h3>
+<pre><code class="language-bash">$ ionic setup sass 
+</code></pre>
 
-<p><img src="http://ionicframework.com/img/blog/lab.png" alt="Ionic Lab"></p>
+<p>will add a <code>watchPatterns</code> propery with the default values to your <code>ionic.project</code> <br />
+file that you can then edit, in addition to the <code>gulpStartupTasks</code> property as <br />
+described in the <a href="/docs/cli/sass.html">Sass documentation</a>.</p>
 
-<p>Ionic Lab is a feature on top of <code>ionic serve</code> that makes it easy to test your 
-app in a phone frame and with iOS and Android platforms side-by-side. To use it, 
+<h3 id="ionic-lab">Ionic Lab</h3>
+
+<p><img src="http://ionicframework.com/img/blog/lab.png" alt="Ionic Lab" /></p>
+
+<p>Ionic Lab is a feature on top of <code>ionic serve</code> that makes it easy to test your <br />
+app in a phone frame and with iOS and Android platforms side-by-side. To use it, <br />
 just run</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic serve --lab
-</code></pre></div>
-<p>Read the <a href="http://ionicframework.com/blog/ionic-lab/">full release announcement</a> 
+
+<pre><code class="language-bash">$ ionic serve --lab
+</code></pre>
+
+<p>Read the <a href="http://ionicframework.com/blog/ionic-lab/">full release announcement</a> <br />
 for all the details!</p>
 
-<h3>Specifying an IP Address to use</h3>
+<h3 id="specifying-an-ip-address-to-use">Specifying an IP Address to use</h3>
 
 <p>Say you want to specify what address your browser will connect to, say for testing or external users. Specify the address with the <code>--address</code> argument.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ionic serve --address 68.54.96.105
-</code></pre></div>
-<h3>Service Proxies</h3>
 
-<p>The <code>serve</code> command can add some proxies to the http server. These proxies are 
-useful if you are developing in the browser and you need to make calls to an 
-external API. With this feature you can proxy request to the external api 
-through the ionic http server preventing the <code>No &#39;Access-Control-Allow-Origin&#39; 
+<pre><code class="language-bash">$ ionic serve --address 68.54.96.105
+</code></pre>
+
+<h3 id="service-proxies">Service Proxies</h3>
+
+<p>The <code>serve</code> command can add some proxies to the http server. These proxies are <br />
+useful if you are developing in the browser and you need to make calls to an <br />
+external API. With this feature you can proxy request to the external api <br />
+through the ionic http server preventing the <code>No 'Access-Control-Allow-Origin' 
 header is present on the requested resource</code> error.</p>
 
-<p>In the <code>ionic.project</code> file you can add a property with an array of proxies you 
+<p>In the <code>ionic.project</code> file you can add a property with an array of proxies you <br />
 want to add. The proxies are object with two properties:</p>
 
 <ul>
-<li><code>path</code>: string that will be matched against the beginning of the incoming request URL.</li>
-<li><code>proxyUrl</code>: a string with the url of where the proxied request should go.</li>
+  <li><code>path</code>: string that will be matched against the beginning of the incoming request URL.</li>
+  <li><code>proxyUrl</code>: a string with the url of where the proxied request should go.</li>
 </ul>
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;appname&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;app_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;proxies&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/v1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;proxyUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.instagram.com/v1&quot;</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Using the above configuration, you can now make requests to your local server 
+
+<pre><code class="language-json">{
+  "name": "appname",
+  "email": "",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/v1",
+      "proxyUrl": "https://api.instagram.com/v1"
+    }
+  ]
+}
+</code></pre>
+
+<p>Using the above configuration, you can now make requests to your local server <br />
 at <code>http://localhost:8100/v1</code> to have it proxy out requests to <code>https://api.instagram.com/v1</code></p>
 
 <p>For example:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter.controllers&#39;</span><span class="p">,</span> <span class="p">[])</span>
-<span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">&#39;InstagramApiUrl&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="c1">// .contant(&#39;InstagramApiUrl&#39;,&#39;https://api.instagram.com&#39;)</span>
-<span class="c1">//In production, make this the real URL</span>
 
-<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;FeedCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">,</span> <span class="nx">InstagramApiUrl</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="language-js">angular.module('starter.controllers', [])
+.constant('InstagramApiUrl', '')
+// .constant('InstagramApiUrl','https://api.instagram.com')
+//In production, make this the real URL
 
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">feed</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+.controller('FeedCtrl', function($scope, $http, InstagramApiUrl) {
 
-  <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">InstagramApiUrl</span> <span class="o">+</span> <span class="s1">&#39;/v1/media/search?client_id=1&amp;lat=48&amp;lng=2.294351&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;data &#39;</span> <span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">feed</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
-  <span class="p">})</span>
+  $scope.feed = null;
 
-<span class="p">})</span>
-</code></pre></div>
+  $http.get(InstagramApiUrl + '/v1/media/search?client_id=1&amp;lat=48&amp;lng=2.294351').then(function(data) {
+    console.log('data ' , data)
+    $scope.feed = data;
+  })
+
+})
+</code></pre>
+
 <p>See also <a href="https://gist.github.com/jbavari/d9c1c94058c4fdd4e935">this gist</a> for more help.</p>
 
-<h3>Command-line flags/options</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[--consolelogs|-c] ......  Print app console logs to Ionic CLI
+<h3 id="command-line-flagsoptions">Command-line flags/options</h3>
+
+<pre><code>[--consolelogs|-c] ......  Print app console logs to Ionic CLI
 [--serverlogs|-s] .......  Print dev server logs to Ionic CLI
 [--port|-p] .............  Dev server HTTP port (8100 default)
 [--livereload-port|-i] ..  Live Reload port (35729 default)
 [--nobrowser|-b] ........  Disable launching a browser
 [--nolivereload|-r] .....  Do not start live reload
 [--noproxy|-x] ..........  Do not add proxies
-</code></pre></div>
+</code></pre>
+
       </div>
 
     </div>
@@ -361,12 +400,12 @@ at <code>http://localhost:8100/v1</code> to have it proxy out requests to <code>
       <dd><a href="http://ionicframework.com/present-ionic/">Present Ionic</a></dd>
       <dd><a href="http://ionicframework.com/contribute/">Contribute</a></dd>
       <dd><a href="https://github.com/driftyco/ionic-learn/issues/new">Write for us</a></dd>
-      <dd><a href="http://www.stickermule.com/user/1070630560/stickers">Ionic Swag</a></dd>
+      <dd><a href="http://shop.ionic.io/">Ionic Shop</a></dd>
     </dl>
 
     <dl class="small-break">
       <dt>About</dt>
-      <dd><a href="http://ionicframework.com/blog/">Blog</a></dd>
+      <dd><a href="http://blog.ionic.io/">Blog</a></dd>
       <dd><a href="http://ionic.io">Services</a></dd>
       <dd><a href="http://drifty.com">Company</a></dd>
       <dd><a href="https://s3.amazonaws.com/ionicframework.com/logo-pack.zip">Logo Pack</a></dd>
@@ -412,7 +451,7 @@ at <code>http://localhost:8100/v1</code> to have it proxy out requests to <code>
         Code licensed under <a href="/docs/#license">MIT</a>.
         Docs under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a>
         <span>|</span>
-        &copy; 2014 <a href="http://drifty.com/">Drifty Co</a>
+        &copy; 2013-2015 <a href="http://drifty.com/">Drifty Co</a>
       </p>
     </div>
   </div>
@@ -441,8 +480,20 @@ at <code>http://localhost:8100/v1</code> to have it proxy out requests to <code>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

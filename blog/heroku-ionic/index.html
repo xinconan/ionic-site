@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Using Ionic and Heroku</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,16 +76,16 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/e130a4be9fba5eb5d932c813fbe3a58d?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/maxlynch" target="_blank">@maxlynch</a> on October 05, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/heroku-ionic-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/heroku-ionic-header.png" /></p>
 
-<p>We&#39;ve noticed a lot of Ionic developers using Heroku side-by-side, either as a backend or to actually host their Ionic app as a mobile website or externally-loaded app.</p>
+<p>We’ve noticed a lot of Ionic developers using Heroku side-by-side, either as a backend or to actually host their Ionic app as a mobile website or externally-loaded app.</p>
 
-<p>To help with that, we&#39;ve built a ready-to-go <a href="https://github.com/driftyco/ionic-heroku-button">Ionic app</a> with Node.js and Express, to either host your Ionic app as a mobile website,
+<p>To help with that, we’ve built a ready-to-go <a href="https://github.com/driftyco/ionic-heroku-button">Ionic app</a> with Node.js and Express, to either host your Ionic app as a mobile website,<br />
 or to build a Node.js API server.</p>
 
 <p>To get started, all you need to do is click the Heroku Deploy button below, or see the <a href="https://github.com/driftyco/ionic-heroku-button">manual instructions</a> on the github repo:</p>
 
-<p><a href="https://heroku.com/deploy?template=https://github.com/driftyco/ionic-heroku-button"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy"></a></p>
+<p><a href="https://heroku.com/deploy?template=https://github.com/driftyco/ionic-heroku-button"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy" /></a></p>
 
 <p>We hope this helps you get up and running with Ionic and a great backend like Heroku. Give it a spin, and let us know what you think!</p>
 
@@ -177,8 +177,20 @@ or to build a Node.js API server.</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Build a Mobile App on Nitrous.IO with Ionic Framework, Firebase, and PhoneGap</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,119 +76,129 @@
     <time class="post-time">By A community post by <img src="http://www.gravatar.com/avatar/38543d631e009559d7630877856991ca?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/gmckeever" target="_blank">@gmckeever</a> of <a href="http://nitrous.io">Nitrous.IO</a>, provider of fast dev environments in the cloud<br> on December 18, 2013</time>
   </div>
 
-<p><img src="/img/blog/nitrous/todo-app-main.jpg" alt="Mobile App using Ionic, Firebase, and PhoneGap Build"></p>
+<p><img src="/img/blog/nitrous/todo-app-main.jpg" alt="Mobile App using Ionic, Firebase, and PhoneGap Build" /></p>
 
 <p>Looking to build a mobile app with the Ionic Framework? This guide quickly covers how to build a native Android app on <a href="http://www.nitrous.io">Nitrous.IO</a> with <a href="http://build.phonegap.com/">PhoneGap Build</a>. You will also learn how to use <a href="https://www.firebase.com/index.html">Firebase</a> to connect your app to <a href="https://www.firebase.com/index.html">Firebase</a> for a backend service. All of these services provide a free tier, so you can try this out without dropping a dime.</p>
 
-<h3>Prerequisites</h3>
+<h3 id="prerequisites">Prerequisites</h3>
 
 <p>Before we get started, make sure you have the following:</p>
 
 <ul>
-<li>A Node.JS box on <a href="http://www.nitrous.io">Nitrous.IO</a></li>
-<li>A <a href="http://www.github.com">Github account</a> which is <a href="http://help.nitrous.io/github-add-key/">connected</a> to your Node.JS box</li>
-<li>A <a href="https://build.phonegap.com/plans">PhoneGap Account</a></li>
+  <li>A Node.JS box on <a href="http://www.nitrous.io">Nitrous.IO</a></li>
+  <li>A <a href="http://www.github.com">Github account</a> which is <a href="http://help.nitrous.io/github-add-key/">connected</a> to your Node.JS box</li>
+  <li>A <a href="https://build.phonegap.com/plans">PhoneGap Account</a></li>
 </ul>
 
 <!-- more -->
 
-<h3>Create a Node.JS box on Nitrous.IO</h3>
+<h3 id="create-a-nodejs-box-on-nitrousio">Create a Node.JS box on Nitrous.IO</h3>
 
-<p>If you haven&#39;t already, sign up at <a href="http://www.nitrous.io">Nitrous.IO</a> and create a Node.JS box.</p>
+<p>If you haven’t already, sign up at <a href="http://www.nitrous.io">Nitrous.IO</a> and create a Node.JS box.</p>
 
-<p><img src="/img/blog/nitrous/nitrous-create-node-box.png" alt="Nitrous.IO creating Node.JS box"></p>
+<p><img src="/img/blog/nitrous/nitrous-create-node-box.png" alt="Nitrous.IO creating Node.JS box" /></p>
 
 <p>Once your Node.JS box is created you will need to <a href="http://help.nitrous.io/github-add-key/">connect</a> it to your Github account. This will add a Public SSH key so you may update repos from Nitrous.</p>
 
-<h3>Get Started with Ionic Framework</h3>
+<h3 id="get-started-with-ionic-framework">Get Started with Ionic Framework</h3>
 
 <p>To get started with the <a href="http://ionicframework.com/">Ionic Framework</a>, we will build a Todo app. Although the <a href="http://ionicframework.com/docs/guide/installation.html">Ionic guide</a> goes into detail with building the initial app, this article provides you with the app ready to clone from Github.</p>
 
 <p>Cd into <code>~/workspace/</code> and run the following command in your console to clone the starter project into <code>/myproject</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git@github.com:nitrous-examples/ionic-todo.git myproject
-</code></pre></div>
+
+<pre><code>git clone git@github.com:nitrous-examples/ionic-todo.git myproject
+</code></pre>
+
 <p>cd into the <code>~/workspace/myproject</code> folder, and from there run the app within the Nitrous box with Python (yes, Python along with other tools and interpreters are already installed on Node.JS boxes):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd myproject
+
+<pre><code>cd myproject
 python -m SimpleHTTPServer 4000
-</code></pre></div>
+</code></pre>
+
 <p>You can view the app by navigating to <strong>Preview &gt; Port 4000</strong> in the Nitrous.IO web IDE menu bar:</p>
 
-<p><img src="/img/blog/nitrous/preview-port-4000.png" alt="Preview Port 4000"></p>
+<p><img src="/img/blog/nitrous/preview-port-4000.png" alt="Preview Port 4000" /></p>
 
-<h3>Create a New Repository at Github</h3>
+<h3 id="create-a-new-repository-at-github">Create a New Repository at Github</h3>
 
 <p><a href="https://github.com/new">Create a new repo</a> at Github for this project.</p>
 
 <p>Once the project is created on Github, you should see the following page with your repo URI as well as some instructions on the next steps.</p>
 
-<p><img src="/img/blog/nitrous/github-new-project.png" alt="Github new project"></p>
+<p><img src="/img/blog/nitrous/github-new-project.png" alt="Github new project" /></p>
 
 <p>Make note of your HTTP URI at the top of the page. You will want to push your existing project from Nitrous to this location. Navigate within the console to <code>~/workspace/myproject</code> and modify your git remote to point to the new repo:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git remote set-url origin git://YOUR-NEW.HTTP-URL.HERE
-</code></pre></div>
+
+<pre><code>git remote set-url origin git://YOUR-NEW.HTTP-URL.HERE
+</code></pre>
+
 <p>Push the Ionic starter project files to the repository by running the following command:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git push -u origin master
-</code></pre></div>
+
+<pre><code>git push -u origin master
+</code></pre>
+
 <p>Your project should now be found in the Github repo.</p>
 
-<h3>Host the App with PhoneGap Build</h3>
+<h3 id="host-the-app-with-phonegap-build">Host the App with PhoneGap Build</h3>
 
-<p>Now, let&#39;s setup PhoneGap Build. First you will need to sign up at <a href="https://build.phonegap.com/">https://build.phonegap.com/</a>.</p>
+<p>Now, let’s setup PhoneGap Build. First you will need to sign up at <a href="https://build.phonegap.com/">https://build.phonegap.com/</a>.</p>
 
-<p><img src="/img/blog/nitrous/phonegap-signup.png" alt="Signup with PhoneGap"></p>
+<p><img src="/img/blog/nitrous/phonegap-signup.png" alt="Signup with PhoneGap" /></p>
 
-<p>You can login with your existing Github account to make connecting to your repo easier, but if you login with your Adobe ID then then you will have to manually paste in your Github project repo URI. </p>
+<p>You can login with your existing Github account to make connecting to your repo easier, but if you login with your Adobe ID then then you will have to manually paste in your Github project repo URI.</p>
 
 <p>Once logged in, create a new app and select the Github repo we just created. Once this has been added, select <strong>Build App</strong> as seen below:</p>
 
-<p><img src="/img/blog/nitrous/phonegap-build-app.png" alt="Signup with PhoneGap"></p>
+<p><img src="/img/blog/nitrous/phonegap-build-app.png" alt="Signup with PhoneGap" /></p>
 
-<p>This should only take a minute to build. Once ready you will have instant access to download the app for Android, Windows Mobile, WebOS, or Symbian. </p>
+<p>This should only take a minute to build. Once ready you will have instant access to download the app for Android, Windows Mobile, WebOS, or Symbian.</p>
 
 <blockquote>
-<p>If you are working with iOS in developer mode, you must provide a signing key before downloading the app.</p>
+  <p>If you are working with iOS in developer mode, you must provide a signing key before downloading the app.</p>
 </blockquote>
 
 <p>To download the APK for Android, click the android logo seen below. You can also click the preview page if you wish to scan the QR code on your phone for an instant download.</p>
 
-<p><img src="/img/blog/nitrous/phonegap-download-android-app.png" alt="PhoneGap Download App"></p>
+<p><img src="/img/blog/nitrous/phonegap-download-android-app.png" alt="PhoneGap Download App" /></p>
 
 <blockquote>
-<p>Note: To allow 3rd party apps to be install on Android 4.2+, open your <code>Settings</code> and enable the option <code>Security &gt; Unknown Sources</code>.</p>
+  <p>Note: To allow 3rd party apps to be install on Android 4.2+, open your <code>Settings</code> and enable the option <code>Security &gt; Unknown Sources</code>.</p>
 </blockquote>
 
 <p>Click on the downloaded APK file and install the app. Click the app icon once installed.</p>
 
-<p><img src="/img/blog/nitrous/todo-app-android.jpg" alt="Starter App"></p>
+<p><img src="/img/blog/nitrous/todo-app-android.jpg" alt="Starter App" /></p>
 
 <p>The tasks will save to your phone locally, but you will not be able to sync the data elsewhere. In order to create a more robust app which can read and write to a database, we will need to connect to <a href="https://www.firebase.com/index.html">Firebase</a>.</p>
 
-<p><img src="/img/blog/nitrous/ionic-create-new-task.png" alt="Ionic App"></p>
+<p><img src="/img/blog/nitrous/ionic-create-new-task.png" alt="Ionic App" /></p>
 
-<h3>Setting up Firebase for a Backend Service</h3>
+<h3 id="setting-up-firebase-for-a-backend-service">Setting up Firebase for a Backend Service</h3>
 
 <p>At this point you will notice that the app is static, and that there is no real functionality to it. Since the Ionic Framework utilizes AngularJS, we will be easily able to easily connect to <a href="https://www.firebase.com/index.html">Firebase</a> using <a href="http://angularfire.com/">AngularFire</a>.</p>
 
-<p><img src="/img/blog/nitrous/firebase-homepage.png" alt="Firebase"></p>
+<p><img src="/img/blog/nitrous/firebase-homepage.png" alt="Firebase" /></p>
 
 <p><a href="https://www.firebase.com/index.html">Firebase</a> provides a backend service which saves you the time of setting up your own backend server. <a href="https://www.firebase.com/signup/">Sign up</a> for a new account and create a Firebase instance. Remember the name of your Firebase which you create as we will be referencing it later (you can find your Firebase instance on the <a href="https://www.firebase.com/account/">account overview</a> page).</p>
 
-<h3>Connecting to Firebase with AngularFire</h3>
+<h3 id="connecting-to-firebase-with-angularfire">Connecting to Firebase with AngularFire</h3>
 
-<p><a href="http://angularfire.com/">AngularFire</a> is a AngularJS binding for <a href="http://www.firebase.com">Firebase</a>, which allows us to connect our app to a backend service. Let&#39;s get started with setting up AngularFire.</p>
+<p><a href="http://angularfire.com/">AngularFire</a> is a AngularJS binding for <a href="http://www.firebase.com">Firebase</a>, which allows us to connect our app to a backend service. Let’s get started with setting up AngularFire.</p>
 
 <p>Include Firebase and AngularFire to your project by adding the following lines within the <code>&lt;head&gt;</code> section of your <code>index.html</code> file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- Firebase and AngularFire Extensions --&gt;
-&lt;script src=&#39;https://cdn.firebase.com/v0/firebase.js&#39;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdn.firebase.com/libs/angularfire/0.5.0-rc1/angularfire.js&quot;&gt;&lt;/script&gt;
-</code></pre></div>
-<h3>Updating the Controller for Firebase</h3>
+
+<pre><code>&lt;!-- Firebase and AngularFire Extensions --&gt;
+&lt;script src='https://cdn.firebase.com/v0/firebase.js'&gt;&lt;/script&gt;
+&lt;script src="https://cdn.firebase.com/libs/angularfire/0.5.0-rc1/angularfire.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3 id="updating-the-controller-for-firebase">Updating the Controller for Firebase</h3>
 
 <p>Before integrating with <a href="https://www.firebase.com/index.html">Firebase</a>, we utilized local data only to store values. In this next section we are going to add Firebase as a dependency to the app module, and we will also update the controller to connect to Firebase.</p>
 
-<p>Update the code in <code>www/js/app.js</code> and <code>www/index.html</code> with the corresponding code, replacing the two Firebase URL&#39;s (https://YOUR<em>FIREBASE</em>NAME.firebaseio.com) with the Firebase URL you created:</p>
+<p>Update the code in <code>www/js/app.js</code> and <code>www/index.html</code> with the corresponding code, replacing the two Firebase URL’s (https://YOUR_FIREBASE_NAME.firebaseio.com) with the Firebase URL you created:</p>
 
-<h3>app.js</h3>
+<h3 id="appjs">app.js</h3>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ionic&#39;</span><span class="p">,</span><span class="s1">&#39;firebase&#39;</span><span class="p">])</span>
 <span class="cm">/**</span>
@@ -298,7 +308,7 @@ python -m SimpleHTTPServer 4000
 
 <span class="p">});</span></code></pre></div>
 
-<h3>index.html</h3>
+<h3 id="indexhtml">index.html</h3>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -397,43 +407,48 @@ python -m SimpleHTTPServer 4000
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
 
-<p>(note: if using the most recent version of Ionic, you&#39;ll need to also include the AngularJS dependencies seen in the <a href="https://github.com/driftyco/ionic-angular-cordova-seed/blob/master/www/index.html">seed project</a>)</p>
+<p>(note: if using the most recent version of Ionic, you’ll need to also include the AngularJS dependencies seen in the <a href="https://github.com/driftyco/ionic-angular-cordova-seed/blob/master/www/index.html">seed project</a>)</p>
 
-<h3>Testing the App</h3>
+<h3 id="testing-the-app">Testing the App</h3>
 
 <p>You should now be able to run the app while utilizing Firebase for a backend service. Within the main project folder, run the python command again to start the app on your Nitrous box:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">python -m SimpleHTTPServer 4000
-</code></pre></div>
+
+<pre><code>python -m SimpleHTTPServer 4000
+</code></pre>
+
 <p>Navigate in your Nitrous.IO web IDE menu bar to <strong>Preview &gt; Port 4000</strong> to view the app again:</p>
 
-<p><img src="/img/blog/nitrous/preview-port-4000.png" alt="Preview Port 4000"></p>
+<p><img src="/img/blog/nitrous/preview-port-4000.png" alt="Preview Port 4000" /></p>
 
-<p>Try adding some sample data into your app. When the tasks save you should see the changes reflect in your Firebase account. Take a look at your Firebase URL (https://YOUR<em>FIREBASE</em>NAME.firebaseio.com/) within the browser to see similar data as seen in the screenshot below.</p>
+<p>Try adding some sample data into your app. When the tasks save you should see the changes reflect in your Firebase account. Take a look at your Firebase URL (https://YOUR_FIREBASE_NAME.firebaseio.com/) within the browser to see similar data as seen in the screenshot below.</p>
 
-<p><img src="/img/blog/nitrous/firebase-data.png" alt="Firebase Data"></p>
+<p><img src="/img/blog/nitrous/firebase-data.png" alt="Firebase Data" /></p>
 
-<h3>Updating the App in PhoneGap</h3>
+<h3 id="updating-the-app-in-phonegap">Updating the App in PhoneGap</h3>
 
 <p>In order to update the code for your app you will need to first push the changes to Github. Run the following commands within the project folder in your console:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git add .
-git commit -m &quot;Integrated Firebase with AngularFire&quot;
-git push origin master
-</code></pre></div>
-<p>You can now simply click &#39;update&#39; in your PhoneGap account to pull the latest changes from your Git repo, and from there click &#39;rebuild&#39; to generate a new build for your app.</p>
 
-<p><img src="/img/blog/nitrous/update-phonegap.png" alt="Update PhoneGap"></p>
+<pre><code>git add .
+git commit -m "Integrated Firebase with AngularFire"
+git push origin master
+</code></pre>
+
+<p>You can now simply click ‘update’ in your PhoneGap account to pull the latest changes from your Git repo, and from there click ‘rebuild’ to generate a new build for your app.</p>
+
+<p><img src="/img/blog/nitrous/update-phonegap.png" alt="Update PhoneGap" /></p>
 
 <p>Uninstall any existing Todo app you have on your phone and download the latest version. You now have a todo list which syncs with Firebase.</p>
 
-<p><img src="/img/blog/nitrous/ionic-todo-app.png" alt="Ionic Android App"></p>
+<p><img src="/img/blog/nitrous/ionic-todo-app.png" alt="Ionic Android App" /></p>
 
-<h3>The Next Steps</h3>
+<h3 id="the-next-steps">The Next Steps</h3>
 
 <p>If you are looking to publish the App within the Google Play store, or are looking for a more in depth explanation on some of the code, follow the <a href="http://ionicframework.com/docs/guide/preface.html">Ionic Framework Guide</a> and take note of the <a href="http://ionicframework.com/docs/guide/publishing.html">publishing section</a>.</p>
 
 <p>Visit the <a href="http://forum.ionicframework.com/">forums</a> to connect with other developers, or ask questions related to the Ionic Framework. If you are looking for an API reference for utilizing mobile phone functionality, take a look at the <a href="http://docs.phonegap.com/en/3.2.0/index.html">PhoneGap documentation</a>.</p>
 
 <p>How did it go for you? If you have any sample apps you wish to share, free free to let the Nitrous.IO team know via <a href="http://www.twitter.com/nitrous.io">twitter</a> as we would love to take a look!</p>
+
 
 
   <div class="share-bottom">
@@ -523,8 +538,20 @@ git push origin master
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

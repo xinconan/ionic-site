@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Welcome Josh Bavari to the Ionic Team</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -77,22 +77,22 @@
   </div>
 
 <div style="height: 360px; width: 360px; border-radius: 600px; border: 6px solid #4e8ef7; overflow: hidden; margin: 5px auto 40px;"> 
-  <img src="/img/blog/josh-bavari.png" alt="Josh Bavari">
+  <img src="/img/blog/josh-bavari.png" alt="Josh Bavari" />
 </div>
 
-<p>I&#39;m really excited to introduce Josh Bavari (<a href="https://twitter.com/jbavari">@jbavari</a> on Twitter, <a href="http://forum.ionicframework.com/users/jbavari/activity">@jbavari</a> on the Forum, and <a href="https://github.com/jbavari">jbavari</a> on GitHub) as our newest Ionic team member!</p>
+<p>I’m really excited to introduce Josh Bavari (<a href="https://twitter.com/jbavari">@jbavari</a> on Twitter, <a href="http://forum.ionicframework.com/users/jbavari/activity">@jbavari</a> on the Forum, and <a href="https://github.com/jbavari">jbavari</a> on GitHub) as our newest Ionic team member!</p>
 
-<p>Josh has spent the last few years working on the <a href="http://cordova.apache.org/">Cordova</a> open source project. Starting with version 1.9, he&#39;s followed the project from its earlier days and actively contributes to it, helping maintain the <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a>.</p>
+<p>Josh has spent the last few years working on the <a href="http://cordova.apache.org/">Cordova</a> open source project. Starting with version 1.9, he’s followed the project from its earlier days and actively contributes to it, helping maintain the <a href="http://plugins.cordova.io/">Cordova Plugin Registry</a>.</p>
 
 <!-- more -->
 
-<p>Josh has been playing with technology and developing software since his childhood. Since joining the professional field in 2007, he&#39;s been a part of development projects for start-ups, small to medium-sized businesses, and enterprise companies.</p>
+<p>Josh has been playing with technology and developing software since his childhood. Since joining the professional field in 2007, he’s been a part of development projects for start-ups, small to medium-sized businesses, and enterprise companies.</p>
 
-<p>Josh&#39;s passions are developing, helping others by speaking and presenting, and contributing to open source projects, which led him to discover that working on Ionic is his professional calling, lining up with his purpose in the world.</p>
+<p>Josh’s passions are developing, helping others by speaking and presenting, and contributing to open source projects, which led him to discover that working on Ionic is his professional calling, lining up with his purpose in the world.</p>
 
 <p>In his free time, Josh trains in the gentle art of jiu-jitsu, hikes and bikes challenging trails, snowboards, tastes many of the finer Rockies beers, and hacks on code.</p>
 
-<p>Expect to see some awesome things from Josh. He joins the team remotely, out of beautiful Boulder, CO, to help strengthen the Ionic CLI tooling, integrate additional browsers and conveniences for Ionic developers, help community members, and help with some of the other back-end integration pieces that help strengthen Ionic. </p>
+<p>Expect to see some awesome things from Josh. He joins the team remotely, out of beautiful Boulder, CO, to help strengthen the Ionic CLI tooling, integrate additional browsers and conveniences for Ionic developers, help community members, and help with some of the other back-end integration pieces that help strengthen Ionic.</p>
 
 <p>Welcome to the team, Josh!</p>
 
@@ -184,8 +184,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

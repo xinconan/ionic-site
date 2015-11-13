@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Popover Support Lands in Ionic</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/eeff5848f4231174094d2bc3cce26a05?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/adamdbradley">Adam</a> on August 06, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/popover-header.gif"></p>
+<p><img class="showcase-image" src="/img/blog/popover-header.gif" /></p>
 
 <p>A commonly requested feature from the community has been the Popover, which we’re happy to now have included within <a href="http://forum.ionicframework.com/t/v1-0-0-beta-11-indium-iguana-released/7798">Ionic v1.0.0-beta.11</a>.</p>
 
@@ -87,20 +87,20 @@
 <p>Popovers provide an easy way to present or gather information from the user and are commonly used to:</p>
 
 <ul>
-<li>Show more info about the current view</li>
-<li>Select a commonly used tool or configuration within a list</li>
-<li>Present a list of actions to perform inside one of your views</li>
+  <li>Show more info about the current view</li>
+  <li>Select a commonly used tool or configuration within a list</li>
+  <li>Present a list of actions to perform inside one of your views</li>
 </ul>
 
-<p><a href="/img/blog/popover-preview.gif"><img class="body-image" src="/img/blog/popover-preview.gif"></a></p>
+<p><a href="/img/blog/popover-preview.gif"><img class="body-image" src="/img/blog/popover-preview.gif" /></a></p>
 
 <p>Like with all of Ionic’s other components, its goal is to give the developer full control of creating a popover, and continue to take advantage of all the niceties of AngularJS, such as template files, controllers, scoped variables, etc.</p>
 
 <div style="float: right; margin-right: -160px">
   
  <div class="phone-case">
-  <p data-height="568" data-theme-id="3572" data-slug-hash="GpCst" data-default-tab="result" class='codepen'>See the Pen by <a href='http://codepen.io/ionic/pen/GpCst'>Ionic</a> (<a href='http://codepen.io/ionic'>@ionic</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <p data-height="568" data-theme-id="3572" data-slug-hash="GpCst" data-default-tab="result" class="codepen">See the Pen by <a href="http://codepen.io/ionic/pen/GpCst">Ionic</a> (<a href="http://codepen.io/ionic">@ionic</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+  <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
 </div>
@@ -199,8 +199,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

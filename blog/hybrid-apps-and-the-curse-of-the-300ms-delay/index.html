@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Hybrid Apps and the Curse of the 300ms Delay</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,7 +76,7 @@
     <time class="post-time">By <img src="http://www.gravatar.com/avatar/eeff5848f4231174094d2bc3cce26a05?s=48&amp;d=mm" class="author-icon"><a href="http://twitter.com/adamdbradley">@adamdbradley</a> on January 30, 2014</time>
   </div>
 
-<p><img class="showcase-image" src="/img/blog/delay-header.png"></p>
+<p><img class="showcase-image" src="/img/blog/delay-header.png" /></p>
 
 <p>Just when we thought we had this web-dev stuff figured out with HTML5 standards and modern desktop browsers, mobile devices slapped us in the face. Mobile browsers are still the wild-west of web development (which is exactly why I love it), but because they're still relatively new, we're all still fleshing out the details on how to create amazing web apps. When it comes to response time on mobile browsers, one of the biggest culprits is a 300 millisecond delay after every tap by the user.</p>
 
@@ -160,9 +160,11 @@
 
 <p>When it comes to creating hybrid apps, one of the biggest wins to making it feel more “app-like” is eliminating that 300ms delay. The great news is that this all comes for free in Ionic without any extra work on the developers part. Ionic is still pretty new, and we're quickly improving and enhancing it, but we'd love to have your help testing it out to make it better.</p>
 
-<p><strong>If you have any questions we encourage you to check out the <a href="http://forum.ionicframework.com/">Community Forum</a>, or if you find any issues please <a href="https://github.com/driftyco/ionic/issues?state=open">let us know</a>. Give it a shot a let us know how it goes!</stron></p>
+<p><strong>If you have any questions we encourage you to check out the <a href="http://forum.ionicframework.com/">Community Forum</a>, or if you find any issues please <a href="https://github.com/driftyco/ionic/issues?state=open">let us know</a>. Give it a shot a let us know how it goes!
 
 <p><strong><a href="http://twitter.com/adamdbradley">Adam</a></strong></p>
+
+</strong></p>
 
 
   <div class="share-bottom">
@@ -252,8 +254,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');

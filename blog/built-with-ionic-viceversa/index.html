@@ -10,7 +10,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="Ionic Framework Blog" href="http://ionicframework.com/blog/feed.xml">
     <title>Built with Ionic: Viceversa</title>
-    <link href="/css/site.css?12" rel="stylesheet">
+    <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
@@ -76,15 +76,14 @@
     <time class="post-time">By <img src="https://s3.amazonaws.com/ionicframework.com/blog/katie-md.jpg" class="author-icon">Katie on February 17, 2015</time>
   </div>
 
-<p><img src="/img/blog/viceversa-header.jpg" alt="Ionic Logos">
-<a href="http://app.viceversa.io/">Viceversa</a> is a social decision-making app that lets anyone in the world help you make choices. Questions as simple as, &quot;Where should we go for dinner?&quot; or as complex as, &quot;What should I say to resolve this situation?&quot; can be crowd-sourced. Close friends and family members can share their opinions privately.</p>
+<p><img src="/img/blog/viceversa-header.jpg" alt="Ionic Logos" /><br />
+<a href="http://app.viceversa.io/">Viceversa</a> is a social decision-making app that lets anyone in the world help you make choices. Questions as simple as, “Where should we go for dinner?” or as complex as, “What should I say to resolve this situation?” can be crowd-sourced. Close friends and family members can share their opinions privately.</p>
 
 <p>The ViceVersa team is comprised of CEO <a href="http://fr.linkedin.com/in/viceversa">Jonathan Widawski</a>, the project leader, designer, and web developer; COO <a href="https://www.linkedin.com/pub/alexis-schechter/48/13a/a50">Alexis Schechter</a>, an iOs developer and marketing director; and CTO <a href="https://www.linkedin.com/pub/thomas-mary/72/918/711">Thomas Mary</a>, a backend developer and technical director. The team chose to build their iOS app using native code and their Android app with Ionic.</p>
 
-<!-- more --> 
-
+<!-- more -->
 <div style="float: left; margin-left: -120px; margin-right: 40px; margin-bottom: 70px; width: 32%;">
-  <a href="http://ionicframework.com/img/blog/viceversa-left.jpg"><img src="/img/blog/viceversa-left.jpg"></a>
+  <a href="http://ionicframework.com/img/blog/viceversa-left.jpg"><img src="/img/blog/viceversa-left.jpg" /></a>
 </div>
 
 <p>“Ionic allowed us to create our app in no time, compared to our native iOS app,” says Widawski. “Since Thomas and I are huge Angular fans, the learning curve for Ionic was really smooth, and we got started quickly. Design-wise, we used almost everything Ionic provided, from CSS to JS utils, and tweaked most of them to respect the new material design guidelines and our own design.”</p>
@@ -97,7 +96,7 @@
 
 <p>Widawski, a frontend developer who also has experience with PHP and the Laravel framework, adds, “There is an Ionic way of doing things. You don’t get lost; it is very well documented and up-to-date; and if you have any questions, the forum has one of the most active and helpful communities I’ve seen.”</p>
 
-<p>Mary found Ionic to be straightforward and well-integrated with AngularJS. “There’s really little to no room for hesitation when coding,” he says. “That’s what we love about Angular, and that’s what we love about Ionic.” </p>
+<p>Mary found Ionic to be straightforward and well-integrated with AngularJS. “There’s really little to no room for hesitation when coding,” he says. “That’s what we love about Angular, and that’s what we love about Ionic.”</p>
 
 <p>Get the <a href="https://play.google.com/store/apps/details?id=com.viceversa.Viceversa&amp;hl=en">Android version of Viceversa</a> (built with Ionic).</p>
 
@@ -191,8 +190,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
 
 <script>
+
+  $('.navbar .dropdown').on('show.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').addClass('animated fadeInDown');
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.navbar .dropdown').on('hide.bs.dropdown', function(e){
+    //$(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+    //$(this).find('.dropdown-menu').removeClass('animated fadeInDown');
+  });
+
+
 try {
-  var d = new Date('2015-03-20 05:00:00 +0000');
+  var d = new Date('2015-03-20 05:00:00 -0500');
   var ts = d.getTime();
 
   var cd = Cookies.get('_iondj');
