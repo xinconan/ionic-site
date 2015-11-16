@@ -1208,47 +1208,38 @@ class SearchPage{
 
 <p>Use the segment to control to use radio selections.</p>
 
-<pre><code class="language-html">&lt;form (submit)="doSubmit($event)" [ng-form-model]="myForm"&gt;
-    &lt;ion-segment ng-control="mapStyle" danger&gt;
-      &lt;ion-segment-button value="standard"&gt;
-        Standard
-      &lt;/ion-segment-button&gt;
-      &lt;ion-segment-button value="hybrid"&gt;
-        Hybrid
-      &lt;/ion-segment-button&gt;
-      &lt;ion-segment-button value="sat"&gt;
-        Satellite
-      &lt;/ion-segment-button&gt;
-    &lt;/ion-segment&gt;
-    &lt;ion-segment&gt;
-      &lt;ion-segment-button&gt;
-        Friends
-      &lt;/ion-segment-button&gt;
-      &lt;ion-segment-button&gt;
-        Enemies
-      &lt;/ion-segment-button&gt;
-    &lt;/ion-segment&gt;
-  &lt;button type="submit" button&gt;Submit&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
+<pre><code class="language-html">&lt;div padding&gt;
+  &lt;ion-segment [(ng-model)]="pet"&gt;
+    &lt;ion-segment-button value="kittens"&gt;
+      Kittens
+    &lt;/ion-segment-button&gt;
+    &lt;ion-segment-button value="puppies"&gt;
+      Puppies
+    &lt;/ion-segment-button&gt;
+  &lt;/ion-segment&gt; 
+&lt;/div&gt; 
 
-<pre><code class="language-typescript">@App({
-  templateUrl: 'main.html',
-  providers: [FormBuilder]
-})
-class MyApp {
-  constructor(fb: FormBuilder) {
-    this.myForm = fb.group({
-      mapStyle: ['hybrid', Validators.required]
-    });
-  }
+&lt;div [ng-switch]="pet"&gt;
+  &lt;ion-list *ng-switch-when="'puppies'"&gt;
+    &lt;ion-item&gt;
+      &lt;ion-thumbnail item-left&gt;
+        &lt;img src="img/thumbnail-puppy-1.jpg"&gt;
+      &lt;/ion-thumbnail&gt;
+      &lt;h2&gt;Ruby&lt;/h2&gt;
+    &lt;/ion-item&gt;
+    ...
+  &lt;/ion-list&gt;
 
-  doSubmit(event) {
-    console.log('Submitting form', this.myForm.value);
-    event.preventDefault();
-  }
-}
-
+  &lt;ion-list *ng-switch-when="'kittens'"&gt;
+    &lt;ion-item&gt;
+      &lt;ion-thumbnail item-left&gt;
+        &lt;img src="img/thumbnail-kitten-1.jpg"&gt;
+      &lt;/ion-thumbnail&gt;
+      &lt;h2&gt;Luna&lt;/h2&gt;
+    &lt;/ion-item&gt;
+    ...
+  &lt;/ion-list&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 id="select" class="section-header">Select</h2>
