@@ -192,12 +192,6 @@
   <a href="/docs/v2/nightly/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
 </li>
 <li class="">
-  <a href="/docs/v2/nightly/api/components/item/ionItem">ionItem</a>
-</li>
-<li class="">
-  <a href="/docs/v2/nightly/api/components/radio/ionRadio">ionRadio</a>
-</li>
-<li class="">
   <a href="/docs/v2/nightly/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
@@ -210,7 +204,7 @@
   <a href="/docs/v2/nightly/api/components/item/ItemGroupTitle">ItemGroupTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/nightly/api/components/item/ItemSlidingOptionButton">ItemSlidingOptionButton</a>
+  <a href="/docs/v2/nightly/api/components/item/ItemSliding">ItemSliding</a>
 </li>
 <li class="">
   <a href="/docs/v2/nightly/api/components/text-input/Label">Label</a>
@@ -276,6 +270,9 @@
   <a href="/docs/v2/nightly/api/components/popup/Popup">Popup</a>
 </li>
 <li class="">
+  <a href="/docs/v2/nightly/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="">
   <a href="/docs/v2/nightly/api/components/radio/RadioGroup">RadioGroup</a>
 </li>
 <li class="">
@@ -285,7 +282,7 @@
   <a href="/docs/v2/nightly/api/components/scroll/Scroll">Scroll</a>
 </li>
 <li class="">
-  <a href="/docs/v2/nightly/api/components/searchbar/Search Bar">Search Bar</a>
+  <a href="/docs/v2/nightly/api/components/searchbar/SearchBar">SearchBar</a>
 </li>
 <li class="">
   <a href="/docs/v2/nightly/api/components/segment/Segment">Segment</a>
@@ -370,11 +367,11 @@
       
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/list/list.ts#L5">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/list/list.ts#L6">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/list/list.ts#L5">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/list/list.ts#L6">
     Improve this doc
   </a>
 </div>
@@ -396,7 +393,7 @@ interaction modes such as swipe to edit, drag to reorder, and removing items.</p
 
 <h1 class="class export">List <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/list/list.ts#L6-L86">ionic/components/list/list.ts (line 6)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/list/list.ts#L7-L108">ionic/components/list/list.ts (line 7)</a>
 </p>
 <h2>Directive</h2>
 <p><span>selector: ion-list</span></p>
@@ -405,69 +402,21 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 
 <h2 id="members">Members</h2>
 
-<div id="onInit"></div>
+<div id="zone"></div>
 <h2>
-  <code>onInit()</code>
+  <code>zone()</code>
 
 </h2>
 
-<p>TODO</p>
-
-<div id="setItemTemplate"></div>
+<div id="enableSlidingItems"></div>
 <h2>
-  <code>setItemTemplate(item)</code>
+  <code>enableSlidingItems()</code>
 
 </h2>
 
-<p>TODO</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        item
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="setOpenItem"></div>
+<div id="closeSlidingItems"></div>
 <h2>
-  <code>setOpenItem()</code>
-
-</h2>
-
-<p>Keeps track of any open item (a sliding item, for example), to close it later</p>
-
-<div id="closeOpenItem"></div>
-<h2>
-  <code>closeOpenItem()</code>
-
-</h2>
-
-<div id="getOpenItem"></div>
-<h2>
-  <code>getOpenItem()</code>
+  <code>closeSlidingItems()</code>
 
 </h2>
 
