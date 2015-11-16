@@ -1334,7 +1334,7 @@ that can be tabbed through.</p>
 
 <p>For iOS, tabs will appear at the bottom of the screen. For Android, tabs<br />
 will be at the top of the screen, below the nav-bar. This follows each platform’s<br />
-design specification, but can be configured with <a href="../api/config/IonicConfig/">IonicConfig</a>.</p>
+design specification, but can be configured with <a href="../api/config/Config/">Config</a>.</p>
 
 <p>Tabs are useful if you have a few “root” or “top-level” pages.  They are obvious to the user and quickly accessed, since they are always on the screen.  However if screen space is limited, or you have a large number of root pages, a <a href="#menu">Menu</a> may be a better option.</p>
 
@@ -1364,7 +1364,7 @@ class MyApp {
 }
 </code></pre>
 
-<p>Individual tabs are just <a href="../api/config/IonicView/"><code>@Pages</code></a>:</p>
+<p>Individual tabs are just <a href="../api/config/Page/"><code>@Pages</code></a>:</p>
 
 <pre><code class="language-typescript">@Page({
   template: `
