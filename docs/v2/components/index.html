@@ -196,6 +196,7 @@
 
       <li><a href="#menus">Menus</a></li>
       <li><a href="#modals">Modals</a></li>
+      <li><a href="#modes">Modes</a></li>
       <li><a href="#navigation">Navigation</a></li>
       <li><a href="#popups">Popups</a></li>
       <li><a href="#radio">Radio</a></li>
@@ -1030,6 +1031,68 @@ class MyModal Modal {
 
 }
 </code></pre>
+<h2 id="modes" class="section-header">Modes</h2>
+
+<p>Modes allow you to configure an app’s interaction and behavior. Like platform continuity in V1, V2’s modes go a step further by allowing for completely different experience based on the current platform.<br />
+Modes can be configured at several levels, app wide, platform specific, or component specific.</p>
+
+<h3 id="app-wide">App Wide</h3>
+
+<p>Say you wanted to have material design enable for both Android and iOS. To do this, you use the <code>config</code> object on your <code>@App</code> annotation.</p>
+
+<pre><code class="language-typescript">import {App, Config} from 'ionic/ionic'
+
+@App({
+  template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;',
+  config: {
+    mode: 'md'
+  }
+})
+</code></pre>
+<p>This will enable material design mode for both iOS and android.</p>
+
+<h3 id="platform-level-configurations">Platform Level Configurations</h3>
+
+<p>While app-wide mode change are easy, you may wanted to only change a few properties. To do this, you could pass the mode you want to target and configure it that way</p>
+
+<pre><code class="language-typescript">import {App, Config} from 'ionic/ionic'
+@App({
+  template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;',
+  config: {
+    platforms: {
+      ios: {
+        iconMode: 'md',
+        menuType: 'overlay',
+      }
+    }
+  }
+})
+</code></pre>
+
+<p>Now on iOS, we’ll only set the icon mode and menu reveal for material design.<br />
+You could also remove the platform/ios object and just keep <code>iconMode</code> and <code>menuType</code> to set these across platforms</p>
+
+<h3 id="component-level-configurations">Component Level Configurations</h3>
+
+<p>You could also configure certain properties based on the markup you use.</p>
+
+<pre><code class="language-typescript">import {App, Config} from 'ionic/ionic'
+@App({
+  template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;',
+  config: {
+    tabbarPlacement: 'bottom'
+  }
+})
+</code></pre>
+
+<p>But in our tabs markup, we can override that</p>
+
+<pre><code class="language-html">&lt;ion-tabs tabbar-placement="top"&gt;
+  ---
+&lt;/ion-tabs&gt;
+</code></pre>
+
+<p>The markup level config will take precedent over the original config object</p>
 
 <h2 id="navigation" class="section-header">Navigation</h2>
 <p><em>For more in depth information on navigation, see the <a href="../api/components/nav/Nav">Nav API reference</a>.</em></p>
@@ -1222,8 +1285,8 @@ class SearchPage{
     &lt;ion-segment-button value="puppies"&gt;
       Puppies
     &lt;/ion-segment-button&gt;
-  &lt;/ion-segment&gt; 
-&lt;/div&gt; 
+  &lt;/ion-segment&gt;
+&lt;/div&gt;
 
 &lt;div [ng-switch]="pet"&gt;
   &lt;ion-list *ng-switch-when="'puppies'"&gt;
@@ -1457,7 +1520,7 @@ export class TabsIconPage {
   template: `
   &lt;ion-navbar *navbar&gt;
     &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt; 
+  &lt;/ion-navbar&gt;
   &lt;ion-content&gt;
   &lt;/ion-content&gt;`
 })
@@ -1471,8 +1534,8 @@ class TabsTextContentPage {
   &lt;ion-tabs&gt;
     &lt;ion-tab tab-icon="water" tab-title="Water" [root]="tab1"&gt;&lt;/ion-tab&gt;
     &lt;ion-tab tab-icon="leaf" tab-title="Life" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="flame" tab-title="Fire" [root]="tab3"&gt;&lt;/ion-tab&gt; 
-    &lt;ion-tab tab-icon="magnet" tab-title="Force" [root]="tab4"&gt;&lt;/ion-tab&gt; 
+    &lt;ion-tab tab-icon="flame" tab-title="Fire" [root]="tab3"&gt;&lt;/ion-tab&gt;
+    &lt;ion-tab tab-icon="magnet" tab-title="Force" [root]="tab4"&gt;&lt;/ion-tab&gt;
   &lt;/ion-tabs&gt;`
 })
 export class TabsTextPage {
@@ -1485,7 +1548,6 @@ export class TabsTextPage {
 </code></pre>
 
 <p>For more information on tabs, check out the <a href="../api/components/tabs/Tabs/">Tabs API reference</a>.</p>
-
 
       </main>
     </div>
