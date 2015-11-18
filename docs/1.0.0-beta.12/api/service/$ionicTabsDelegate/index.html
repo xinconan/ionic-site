@@ -925,24 +925,26 @@ directives. Use the <a href="/docs/api/service/$ionicTabsDelegate/#$getByHandle"
 method to control specific ionTabs instances.</p>
 
 <h2 id="usage">Usage</h2>
-<pre><code class="language-html">&lt;body ng-controller="MyCtrl"&gt;
-  &lt;ion-tabs&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-tabs&gt;</span>
 
-    &lt;ion-tab title="Tab 1"&gt;
+    <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Tab 1"</span><span class="nt">&gt;</span>
       Hello tab 1!
-      &lt;button ng-click="selectTabWithIndex(1)"&gt;Select tab 2!&lt;/button&gt;
-    &lt;/ion-tab&gt;
-    &lt;ion-tab title="Tab 2"&gt;Hello tab 2!&lt;/ion-tab&gt;
+      <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"selectTabWithIndex(1)"</span><span class="nt">&gt;</span>Select tab 2!<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-tab&gt;</span>
+    <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Tab 2"</span><span class="nt">&gt;</span>Hello tab 2!<span class="nt">&lt;/ion-tab&gt;</span>
 
-  &lt;/ion-tabs&gt;
-&lt;/body&gt;
+  <span class="nt">&lt;/ion-tabs&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
 </code></pre>
-<pre><code class="language-js">function MyCtrl($scope, $ionicTabsDelegate) {
-  $scope.selectTabWithIndex = function(index) {
-    $ionicTabsDelegate.select(index);
-  }
-}
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicTabsDelegate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">selectTabWithIndex</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$ionicTabsDelegate</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h2 id="methods">Methods</h2>
 
@@ -992,7 +994,7 @@ method to control specific ionTabs instances.</p>
 
 <ul>
   <li>Returns: <br />
- <code>number</code> The index of the selected tab, or -1.</li>
+ <code class="highlighter-rouge">number</code> The index of the selected tab, or -1.</li>
 </ul>
 
 <div id="$getByHandle"></div>
@@ -1032,12 +1034,12 @@ method to control specific ionTabs instances.</p>
 
 <ul>
   <li>Returns: <br />
- <code>delegateInstance</code> A delegate instance that controls only the<br />
-<a href="/docs/api/directive/ionTabs/"><code>ionTabs</code></a> directives with <code>delegate-handle</code> matching<br />
+ <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the<br />
+<a href="/docs/api/directive/ionTabs/"><code>ionTabs</code></a> directives with <code class="highlighter-rouge">delegate-handle</code> matching<br />
 the given handle.</li>
 </ul>
 
-<p>Example: <code>$ionicTabsDelegate.$getByHandle('my-handle').select(0);</code></p>
+<p>Example: <code class="highlighter-rouge">$ionicTabsDelegate.$getByHandle('my-handle').select(0);</code></p>
 
 
         </div>

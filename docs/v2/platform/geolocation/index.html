@@ -313,51 +313,53 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<pre><code class="language-bash">$ ionic plugin add cordova-plugin-geolocation
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-geolocation
 </code></pre>
+</div>
 
-<p>Tracking GPS location is easy with the <code>Geolocation</code> class. There are two modes:<br />
+<p>Tracking GPS location is easy with the <code class="highlighter-rouge">Geolocation</code> class. There are two modes:<br />
 single value, and watching. Single value grabs one location position and returns it,<br />
 while watching continuously checks for location changes and returns those.</p>
 
 <p>Both operations prompt the user to accept location sharing with your app.</p>
 
-<pre><code class="language-javascript">import {Geolocation} from 'ionic/ionic'
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Geolocation</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-class LocationTracker {
-  constructor() {
-    Geolocation.getCurrentPosition({
-    }).then((position) =&gt; {
-      let lat  = position.coords.latitude
-      let long = position.coords.longitude
-    }, (err) =&gt; {
-     // error
-    });
-  }
+<span class="kr">class</span> <span class="nx">LocationTracker</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">({</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">position</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">lat</span>  <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span>
+      <span class="kd">let</span> <span class="kr">long</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="c1">// error</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
 
-  startTracking() {
-    var watchOptions = {
-     frequency : 1000,
-     timeout : 3000,
-     enableHighAccuracy: false // may cause errors if true
-    };
+  <span class="nx">startTracking</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">watchOptions</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="na">frequency</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+     <span class="na">timeout</span> <span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+     <span class="na">enableHighAccuracy</span><span class="p">:</span> <span class="kc">false</span> <span class="c1">// may cause errors if true</span>
+    <span class="p">};</span>
 
-    this.currentWatch = Geolocation.watchPosition(watchOptions);
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentWatch</span> <span class="o">=</span> <span class="nx">Geolocation</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">(</span><span class="nx">watchOptions</span><span class="p">);</span>
 
-    this.currentWatch.source.subscribe((position) =&gt; {
-      // Called continuously
-      let lat  = position.coords.latitude
-      let long = position.coords.longitude
-    });
-  }
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentWatch</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">position</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Called continuously</span>
+      <span class="kd">let</span> <span class="nx">lat</span>  <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span>
+      <span class="kd">let</span> <span class="kr">long</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
 
-  stopTracking() {
-    if(!this.currentWatch) { return; }
+  <span class="nx">stopTracking</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">currentWatch</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
 
-    this.currentWatch.clear();
-  }
-}
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentWatch</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
       </main>
     </div>

@@ -883,7 +883,7 @@
 </h1>
 
 <p>If we have an <a href="/docs/api/directive/ionNavView/"><code>ionNavView</code></a> directive, we can also create an<br />
-<code>&lt;ion-nav-bar&gt;</code>, which will create a topbar that updates as the application state changes.</p>
+<code class="highlighter-rouge">&lt;ion-nav-bar&gt;</code>, which will create a topbar that updates as the application state changes.</p>
 
 <p>We can add a back button by putting an <a href="/docs/api/directive/ionNavBackButton/"><code>ionNavBackButton</code></a> inside.</p>
 
@@ -891,7 +891,7 @@
 <a href="/docs/api/directive/ionNavButtons/"><code>ionNavButtons</code></a>.</p>
 
 <p>Add an <a href="/docs/components#animations">animation class</a> to the element via the<br />
-<code>animation</code> attribute to enable animated changing of titles <br />
+<code class="highlighter-rouge">animation</code> attribute to enable animated changing of titles <br />
 (recommended: ‘nav-title-slide-ios7’).</p>
 
 <p>Note that the ion-nav-bar element will only work correctly if your content has an<br />
@@ -899,19 +899,20 @@ ionView around it.</p>
 
 <h2 id="usage">Usage</h2>
 
-<pre><code class="language-html">&lt;body ng-app="starter"&gt;
-  &lt;!-- The nav bar that will be updated as we navigate --&gt;
-  &lt;ion-nav-bar class="bar-positive" animation="nav-title-slide-ios7"&gt;
-  &lt;/ion-nav-bar&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"starter"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The nav bar that will be updated as we navigate --&gt;</span>
+  <span class="nt">&lt;ion-nav-bar</span> <span class="na">class=</span><span class="s">"bar-positive"</span> <span class="na">animation=</span><span class="s">"nav-title-slide-ios7"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-nav-bar&gt;</span>
 
-  &lt;!-- where the initial view template will be rendered --&gt;
-  &lt;ion-nav-view&gt;
-    &lt;ion-view&gt;
-      &lt;ion-content&gt;Hello!&lt;/ion-content&gt;
-    &lt;/ion-view&gt;
-  &lt;/ion-nav-view&gt;
-&lt;/body&gt;
+  <span class="c">&lt;!-- where the initial view template will be rendered --&gt;</span>
+  <span class="nt">&lt;ion-nav-view&gt;</span>
+    <span class="nt">&lt;ion-view&gt;</span>
+      <span class="nt">&lt;ion-content&gt;</span>Hello!<span class="nt">&lt;/ion-content&gt;</span>
+    <span class="nt">&lt;/ion-view&gt;</span>
+  <span class="nt">&lt;/ion-nav-view&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
 </code></pre>
+</div>
 
 <h2 id="api" style="clear:both;">API</h2>
 

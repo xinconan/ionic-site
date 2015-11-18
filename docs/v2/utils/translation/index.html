@@ -212,39 +212,41 @@ support for your apps.</p>
 <p>Unlike some translation systems, Ionic uses the full text that you wish to display in the default<br />
 language as the translation key (rather than a lookup key).</p>
 
-<h2 id="using-translate">Using <code>Translate</code></h2>
+<h2 id="using-translate">Using <code class="highlighter-rouge">Translate</code></h2>
 
-<p>The <code>Translate</code> service is used to set the active language, and provide string mapping.</p>
+<p>The <code class="highlighter-rouge">Translate</code> service is used to set the active language, and provide string mapping.</p>
 
-<pre><code class="language-javascript">export class MyApp {
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
 
-  // Inject the Translate service
-  constructor(trans: Translate) {
+  <span class="c1">// Inject the Translate service</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">trans</span><span class="err">:</span> <span class="nx">Translate</span><span class="p">)</span> <span class="p">{</span>
 
-    // Example German string mapping
-    trans.translations('de', {
-      'Location': 'lage'
-    });
+    <span class="c1">// Example German string mapping</span>
+    <span class="nx">trans</span><span class="p">.</span><span class="nx">translations</span><span class="p">(</span><span class="s1">'de'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="s1">'Location'</span><span class="p">:</span> <span class="s1">'lage'</span>
+    <span class="p">});</span>
 
-    console.log(this.trans.translate('Location')); // Shows 'Location'
-    console.log(this.trans.translate('Location', 'de')); // Shows 'lage'
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trans</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Location'</span><span class="p">));</span> <span class="c1">// Shows 'Location'</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trans</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Location'</span><span class="p">,</span> <span class="s1">'de'</span><span class="p">));</span> <span class="c1">// Shows 'lage'</span>
 
-    // Change the active language for the entire app
-    this.trans.setLanguage('de');
-    console.log(this.trans.translate('Location')); // Shows 'lage'
-  }
+    <span class="c1">// Change the active language for the entire app</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trans</span><span class="p">.</span><span class="nx">setLanguage</span><span class="p">(</span><span class="s1">'de'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trans</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="s1">'Location'</span><span class="p">));</span> <span class="c1">// Shows 'lage'</span>
+  <span class="p">}</span>
 </code></pre>
+</div>
 
 <h2 id="template-translation">Template Translation</h2>
 
-<p>To use translated strings in your templates, use the <code>translate</code> pipe:</p>
+<p>To use translated strings in your templates, use the <code class="highlighter-rouge">translate</code> pipe:</p>
 
-<pre><code class="language-html">&lt;!-- to use the active language --&gt;
-&lt;span&gt;{{ 'Location' | translate }}&lt;/span&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- to use the active language --&gt;</span>
+<span class="nt">&lt;span&gt;</span>{{ 'Location' | translate }}<span class="nt">&lt;/span&gt;</span>
 
-&lt;!-- to use a specific language --&gt;
-&lt;span&gt;{{ 'Location' | translate:"de" }}&lt;/span&gt;
+<span class="c">&lt;!-- to use a specific language --&gt;</span>
+<span class="nt">&lt;span&gt;</span>{{ 'Location' | translate:"de" }}<span class="nt">&lt;/span&gt;</span>
 </code></pre>
+</div>
 
 
 

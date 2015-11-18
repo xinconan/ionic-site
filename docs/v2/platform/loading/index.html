@@ -315,17 +315,19 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<pre><code class="language-bash">$ ionic plugin add cordova-plugin-progressindicator
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-progressindicator
 </code></pre>
+</div>
 
-<pre><code class="language-javascript">import {Loading} from 'ionic/ionic'
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Loading</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-class MyPage {
-  startLoading() {
-    Loading.show(true, 'Waiting...') // Dim the background and show label
-  }
-}
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="nx">startLoading</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Loading</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s1">'Waiting...'</span><span class="p">)</span> <span class="c1">// Dim the background and show label</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
       </main>
     </div>

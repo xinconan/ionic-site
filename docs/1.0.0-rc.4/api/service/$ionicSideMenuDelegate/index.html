@@ -957,26 +957,28 @@ menus.  Use the <a href="/docs/api/service/$ionicSideMenuDelegate/#$getByHandle"
 method to control specific ionSideMenus instances.</p>
 
 <h2 id="usage">Usage</h2>
-<pre><code class="language-html">&lt;body ng-controller="MainCtrl"&gt;
-  &lt;ion-side-menus&gt;
-    &lt;ion-side-menu-content&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-side-menus&gt;</span>
+    <span class="nt">&lt;ion-side-menu-content&gt;</span>
       Content!
-      &lt;button ng-click="toggleLeftSideMenu()"&gt;
+      <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"toggleLeftSideMenu()"</span><span class="nt">&gt;</span>
         Toggle Left Side Menu
-      &lt;/button&gt;
-    &lt;/ion-side-menu-content&gt;
-    &lt;ion-side-menu side="left"&gt;
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-side-menu-content&gt;</span>
+    <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
       Left Menu!
-    &lt;ion-side-menu&gt;
-  &lt;/ion-side-menus&gt;
-&lt;/body&gt;
+    <span class="nt">&lt;ion-side-menu&gt;</span>
+  <span class="nt">&lt;/ion-side-menus&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
 </code></pre>
-<pre><code class="language-js">function MainCtrl($scope, $ionicSideMenuDelegate) {
-  $scope.toggleLeftSideMenu = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-}
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicSideMenuDelegate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleLeftSideMenu</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$ionicSideMenuDelegate</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h2 id="methods">Methods</h2>
 
@@ -1232,12 +1234,12 @@ side menus.</p>
 
 <ul>
   <li>Returns: <br />
- <code>delegateInstance</code> A delegate instance that controls only the<br />
-<a href="/docs/api/directive/ionSideMenus/"><code>ionSideMenus</code></a> directives with <code>delegate-handle</code> matching<br />
+ <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the<br />
+<a href="/docs/api/directive/ionSideMenus/"><code>ionSideMenus</code></a> directives with <code class="highlighter-rouge">delegate-handle</code> matching<br />
 the given handle.</li>
 </ul>
 
-<p>Example: <code>$ionicSideMenuDelegate.$getByHandle('my-handle').toggleLeft();</code></p>
+<p>Example: <code class="highlighter-rouge">$ionicSideMenuDelegate.$getByHandle('my-handle').toggleLeft();</code></p>
 
 
         </div>

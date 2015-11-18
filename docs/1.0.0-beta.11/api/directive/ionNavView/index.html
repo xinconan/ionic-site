@@ -946,49 +946,52 @@ and remember to replace ui-view with ion-nav-view in examples).</p>
 the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive that updates as we navigate through the<br />
 navigation stack.</p>
 
-<p>You can use any <a href="/docs/components#animation">animation class</a> on the navView’s <code>animation</code> attribute<br />
+<p>You can use any <a href="/docs/components#animation">animation class</a> on the navView’s <code class="highlighter-rouge">animation</code> attribute<br />
 to have its pages animate.</p>
 
 <p>Recommended for page transitions: ‘slide-left-right’, ‘slide-left-right-ios7’, ‘slide-in-up’.</p>
 
-<pre><code class="language-html">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;
-&lt;ion-nav-view animation="slide-left-right"&gt;
-  &lt;!-- Center content --&gt;
-&lt;/ion-nav-view&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;</span>
+<span class="nt">&lt;ion-nav-view</span> <span class="na">animation=</span><span class="s">"slide-left-right"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Center content --&gt;</span>
+<span class="nt">&lt;/ion-nav-view&gt;</span>
 </code></pre>
+</div>
 
 <p>Next, we need to setup our states that will be rendered.</p>
 
-<pre><code class="language-js">var app = angular.module('myApp', ['ionic']);
-app.config(function($stateProvider) {
-  $stateProvider
-  .state('index', {
-    url: '/',
-    templateUrl: 'home.html'
-  })
-  .state('music', {
-    url: '/music',
-    templateUrl: 'music.html'
-  });
-});
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">]);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$stateProvider</span>
+  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'home.html'</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'music'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'/music'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'music.html'</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 <p>Then on app start, $stateProvider will look at the url, see it matches the index state,<br />
-and then try to load home.html into the <code>&lt;ion-nav-view&gt;</code>.</p>
+and then try to load home.html into the <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
 <p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put<br />
-them directly into your HTML file and use the <code>&lt;script type="text/ng-template"&gt;</code> syntax.<br />
+them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.<br />
 So here is one way to put home.html into our app:</p>
 
-<pre><code class="language-html">&lt;script id="home" type="text/ng-template"&gt;
-  &lt;!-- The title of the ion-view will be shown on the navbar --&gt;
-  &lt;ion-view title="'Home'"&gt;
-    &lt;ion-content ng-controller="HomeCtrl"&gt;
-      &lt;!-- The content of the page --&gt;
-      &lt;a href="#/music"&gt;Go to music page!&lt;/a&gt;
-    &lt;/ion-content&gt;
-  &lt;/ion-view&gt;
-&lt;/script&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"home"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--</span> <span class="nx">The</span> <span class="nx">title</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">shown</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">navbar</span> <span class="o">--&gt;</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"'Home'"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">controller</span><span class="o">=</span><span class="s2">"HomeCtrl"</span><span class="o">&gt;</span>
+      <span class="c">&lt;!--</span> <span class="nx">The</span> <span class="nx">content</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">page</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"#/music"</span><span class="o">&gt;</span><span class="nx">Go</span> <span class="nx">to</span> <span class="nx">music</span> <span class="nx">page</span><span class="o">!&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-view</span><span class="err">&gt;
+</span><span class="nt">&lt;/script&gt;</span>
 </code></pre>
+</div>
 
 <p>This is good to do because the template will be cached for very fast loading, instead of<br />
 having to fetch them from the network.</p>

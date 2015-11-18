@@ -219,29 +219,29 @@
 
 <h2 id="viewing-browsers-available">Viewing browsers available</h2>
 
-<p><code>ionic browser list</code> - this should show all the browsers available by platform.</p>
+<p><code class="highlighter-rouge">ionic browser list</code> - this should show all the browsers available by platform.</p>
 
 <h3 id="specifying-a-browser">Specifying a browser</h3>
 
 <p>For Android, there is a project that bundles up Chromium to be used in place of the default Android browser. The project that provides Chromium is called Crosswalk.</p>
 
-<p><code>ionic browser add crosswalk</code> - this will install the Chromium browser for Android. By default, it will install Chromium 37 (Crosswalk 8.37.189.12 version).</p>
+<p><code class="highlighter-rouge">ionic browser add crosswalk</code> - this will install the Chromium browser for Android. By default, it will install Chromium 37 (Crosswalk 8.37.189.12 version).</p>
 
 <h3 id="specifying-a-version">Specifying a version</h3>
 
-<p><code>ionic browser add crosswalk@10.39.235.15</code> - this specifies a newer version of Chromium.</p>
+<p><code class="highlighter-rouge">ionic browser add crosswalk@10.39.235.15</code> - this specifies a newer version of Chromium.</p>
 
 <h3 id="removing-the-browser-for-a-platform">Removing the browser for a platform</h3>
 
-<p><code>ionic browser revert android</code> or <code>ionic browser revert ios</code></p>
+<p><code class="highlighter-rouge">ionic browser revert android</code> or <code class="highlighter-rouge">ionic browser revert ios</code></p>
 
 <p>These commands will remove any custom browser that was installed for either platform by replacing it with the system default browser.</p>
 
-<p>Note: this will remove the entire <code>platforms/android</code> or <code>platforms/ios</code> folder(s). If you have any custom Java or Objective-C code in these folders, they will be removed.</p>
+<p>Note: this will remove the entire <code class="highlighter-rouge">platforms/android</code> or <code class="highlighter-rouge">platforms/ios</code> folder(s). If you have any custom Java or Objective-C code in these folders, they will be removed.</p>
 
 <h3 id="removing-a-browser">Removing a browser</h3>
 
-<p><code>ionic browser rm crosswalk</code> - this is essentially the same as <code>ionic browser revert android</code></p>
+<p><code class="highlighter-rouge">ionic browser rm crosswalk</code> - this is essentially the same as <code class="highlighter-rouge">ionic browser revert android</code></p>
 
       </div>
 

@@ -196,11 +196,11 @@
         <div class="col-md-10 col-sm-9 main-content">
           <h1 id="platform-classes">Platform Classes</h1>
 
-<p>Ionic automagically adds classes to the <code>&lt;body&gt;</code> of your project based on the device you are using to view the project. This means if you are viewing your app on an iOS device, the <code>&lt;body&gt;</code> will have the <code>platform-ios</code> class applied. Some information about the different classes can be found below.</p>
+<p>Ionic automagically adds classes to the <code class="highlighter-rouge">&lt;body&gt;</code> of your project based on the device you are using to view the project. This means if you are viewing your app on an iOS device, the <code class="highlighter-rouge">&lt;body&gt;</code> will have the <code class="highlighter-rouge">platform-ios</code> class applied. Some information about the different classes can be found below.</p>
 
 <h2 id="platform-device-classes">Platform Device Classes</h2>
 
-<p><code><a href="/docs/api/utility/ionic.Platform/">ionic.Platform</a></code> is used to retrieve the device information and apply classes to the <code>&lt;body&gt;</code> of the project. These classes are used by the Ionic SDK to give the project a platform specific look and feel, and can be used by you to override styles.</p>
+<p><code><a href="/docs/api/utility/ionic.Platform/">ionic.Platform</a></code> is used to retrieve the device information and apply classes to the <code class="highlighter-rouge">&lt;body&gt;</code> of the project. These classes are used by the Ionic SDK to give the project a platform specific look and feel, and can be used by you to override styles.</p>
 
 <table class="table">
   <tr>
@@ -249,7 +249,7 @@
 
 <p>Ionic also adds classes based on the OS version. This can be used to customize your project for a specific OS version. A class is added for the major version and the major + minor versions.</p>
 
-<p>The class is created by looking at the User Agent of the OS version. The major + minor class is created by replacing the <code>.</code> separating the major and minor version numbers with a <code>_</code>. So, if you are running your project on a device running iOS 8.4, it will add the <code>platform-ios8</code> and <code>platform-ios8_4</code> classes. Below are some example classes, but you are not limited to these.</p>
+<p>The class is created by looking at the User Agent of the OS version. The major + minor class is created by replacing the <code class="highlighter-rouge">.</code> separating the major and minor version numbers with a <code class="highlighter-rouge">_</code>. So, if you are running your project on a device running iOS 8.4, it will add the <code class="highlighter-rouge">platform-ios8</code> and <code class="highlighter-rouge">platform-ios8_4</code> classes. Below are some example classes, but you are not limited to these.</p>
 
 <table class="table">
   <tr>
@@ -283,10 +283,11 @@
 
 <p>You can use any of the above classes to override Ionic styling. For example, if you wanted to override the header title on Android to be uppercase, you could use the following code:</p>
 
-<pre><code class="language-css">.platform-android .bar-header {
-  text-transform: uppercase;  
-}
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.platform-android</span> <span class="nc">.bar-header</span> <span class="p">{</span>
+  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>  
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>This would uppercase the title for Android, but any other device would remain lowercase.</p>
 

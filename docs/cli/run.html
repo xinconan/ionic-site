@@ -211,52 +211,58 @@
       <div class="col-md-10 col-sm-9 main-content">
         <h2 id="adding-a-platform-target">Adding a platform target</h2>
 
-<pre><code class="language-bash">$ ionic platform ios android
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform ios android
 </code></pre>
+</div>
 
 <h2 id="building-your-app">Building your app</h2>
 
-<pre><code class="language-bash">$ ionic build ios
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic build ios
 </code></pre>
+</div>
 
 <h2 id="live-reload-app-during-development-beta">Live Reload App During Development (beta)</h2>
 
-<p>The <code>run</code> or <code>emulate</code> command will deploy the app to the specified platform devices/emulators. You can also run <strong>live reload</strong> on the specified platform device by adding the <code>--livereload</code> option. The live reload functionality is similar to <code>ionic serve</code>, but instead of developing and debugging an app using a standard browser, the compiled hybrid app itself is watching for any changes to its files and reloading the app when needed. This reduces the requirement to constantly rebuild the app for small changes. However, any changes to plugins will still require a full rebuild. For live reload to work, the dev machine and device must be on the same local network, and the device must support <a href="http://caniuse.com/websockets">web sockets</a>.</p>
+<p>The <code class="highlighter-rouge">run</code> or <code class="highlighter-rouge">emulate</code> command will deploy the app to the specified platform devices/emulators. You can also run <strong>live reload</strong> on the specified platform device by adding the <code class="highlighter-rouge">--livereload</code> option. The live reload functionality is similar to <code class="highlighter-rouge">ionic serve</code>, but instead of developing and debugging an app using a standard browser, the compiled hybrid app itself is watching for any changes to its files and reloading the app when needed. This reduces the requirement to constantly rebuild the app for small changes. However, any changes to plugins will still require a full rebuild. For live reload to work, the dev machine and device must be on the same local network, and the device must support <a href="http://caniuse.com/websockets">web sockets</a>.</p>
 
-<p>With live reload enabled, an app’s console logs can also be printed to the terminal/command prompt by including the <code>--consolelogs</code> or <code>-c</code> option. Additionally, the development server’s request logs can be printed out using <code>--serverlogs</code> or <code>-s</code> options.</p>
+<p>With live reload enabled, an app’s console logs can also be printed to the terminal/command prompt by including the <code class="highlighter-rouge">--consolelogs</code> or <code class="highlighter-rouge">-c</code> option. Additionally, the development server’s request logs can be printed out using <code class="highlighter-rouge">--serverlogs</code> or <code class="highlighter-rouge">-s</code> options.</p>
 
-<h3 id="command-line-flagsoptions-for-run-and-emulate">Command-line flags/options for <code>run</code> and <code>emulate</code></h3>
+<h3 id="command-line-flagsoptions-for-run-and-emulate">Command-line flags/options for <code class="highlighter-rouge">run</code> and <code class="highlighter-rouge">emulate</code></h3>
 
-<pre><code>[--livereload|-l] .......  Live Reload app dev files from the device (beta)
+<div class="highlighter-rouge"><pre class="highlight"><code>[--livereload|-l] .......  Live Reload app dev files from the device (beta)
 [--consolelogs|-c] ......  Print app console logs to Ionic CLI (live reload req.)
 [--serverlogs|-s] .......  Print dev server logs to Ionic CLI (live reload req.)
 [--port|-p] .............  Dev server HTTP port (8100 default, live reload req.)
 [--livereload-port|-i] ..  Live Reload port (35729 default, live reload req.)
 [--debug|--release]
 </code></pre>
+</div>
 
 <p>While the server is running for live reload, you can use the following commands within the CLI:</p>
 
-<pre><code>restart or r to restart the client app from the root
+<div class="highlighter-rouge"><pre class="highlight"><code>restart or r to restart the client app from the root
 goto or g and a url to have the app navigate to the given url
 consolelogs or c to enable/disable console log output
 serverlogs or s to enable/disable server log output
 quit or q to shutdown the server and exit
 </code></pre>
+</div>
 
 <h2 id="emulating-your-app">Emulating your app</h2>
 
-<p>Deploys the Ionic app on specified platform emulator. This is simply an alias for <code>run --emulator</code>.</p>
+<p>Deploys the Ionic app on specified platform emulator. This is simply an alias for <code class="highlighter-rouge">run --emulator</code>.</p>
 
-<pre><code class="language-bash">$ ionic emulate ios [options]
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic emulate ios <span class="o">[</span>options]
 </code></pre>
+</div>
 
 <h2 id="running-your-app">Running your app</h2>
 
 <p>Deploys the Ionic app on specified platform devices. If a device is not found it’ll then deploy to an emulator/simulator.</p>
 
-<pre><code class="language-bash">$ ionic run ios [options]
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run ios <span class="o">[</span>options]
 </code></pre>
+</div>
 
       </div>
 

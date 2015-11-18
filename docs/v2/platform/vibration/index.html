@@ -311,20 +311,22 @@
   Improve this doc
 </a></p>
 
-<pre><code class="language-bash">$ ionic plugin add cordova-plugin-vibration
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-vibration
 </code></pre>
+</div>
 
 <p>Vibrate the device. Pretty simple.</p>
 
-<pre><code class="language-javascript">import {Vibration} from 'ionic/ionic'
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Vibration</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-class MyPage {
-  vibrate() {
-    // iOS doesn't support the duration or pattern param
-    Vibration.vibrate(3000);
-  }
-}
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="nx">vibrate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// iOS doesn't support the duration or pattern param</span>
+    <span class="nx">Vibration</span><span class="p">.</span><span class="nx">vibrate</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
       </main>
     </div>

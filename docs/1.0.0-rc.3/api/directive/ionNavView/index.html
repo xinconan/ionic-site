@@ -984,36 +984,38 @@ navigation stack.</p>
 
 <p>Next, we need to setup our states that will be rendered.</p>
 
-<pre><code class="language-js">var app = angular.module('myApp', ['ionic']);
-app.config(function($stateProvider) {
-  $stateProvider
-  .state('index', {
-    url: '/',
-    templateUrl: 'home.html'
-  })
-  .state('music', {
-    url: '/music',
-    templateUrl: 'music.html'
-  });
-});
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">]);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$stateProvider</span>
+  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'home.html'</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'music'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'/music'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'music.html'</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 <p>Then on app start, $stateProvider will look at the url, see it matches the index state,<br />
-and then try to load home.html into the <code>&lt;ion-nav-view&gt;</code>.</p>
+and then try to load home.html into the <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
 <p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put<br />
-them directly into your HTML file and use the <code>&lt;script type="text/ng-template"&gt;</code> syntax.<br />
+them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.<br />
 So here is one way to put home.html into our app:</p>
 
-<pre><code class="language-html">&lt;script id="home" type="text/ng-template"&gt;
-  &lt;!-- The title of the ion-view will be shown on the navbar --&gt;
-  &lt;ion-view view-title="Home"&gt;
-    &lt;ion-content ng-controller="HomeCtrl"&gt;
-      &lt;!-- The content of the page --&gt;
-      &lt;a href="#/music"&gt;Go to music page!&lt;/a&gt;
-    &lt;/ion-content&gt;
-  &lt;/ion-view&gt;
-&lt;/script&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"home"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--</span> <span class="nx">The</span> <span class="nx">title</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">shown</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">navbar</span> <span class="o">--&gt;</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">view</span><span class="o">-</span><span class="nx">title</span><span class="o">=</span><span class="s2">"Home"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">controller</span><span class="o">=</span><span class="s2">"HomeCtrl"</span><span class="o">&gt;</span>
+      <span class="c">&lt;!--</span> <span class="nx">The</span> <span class="nx">content</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">page</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"#/music"</span><span class="o">&gt;</span><span class="nx">Go</span> <span class="nx">to</span> <span class="nx">music</span> <span class="nx">page</span><span class="o">!&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-view</span><span class="err">&gt;
+</span><span class="nt">&lt;/script&gt;</span>
 </code></pre>
+</div>
 
 <p>This is good to do because the template will be cached for very fast loading, instead of<br />
 having to fetch them from the network.</p>
@@ -1021,7 +1023,7 @@ having to fetch them from the network.</p>
 <h2 id="caching">Caching</h2>
 
 <p>By default, views are cached to improve performance. When a view is navigated away from, its<br />
-element is left in the DOM, and its scope is disconnected from the <code>$watch</code> cycle. When<br />
+element is left in the DOM, and its scope is disconnected from the <code class="highlighter-rouge">$watch</code> cycle. When<br />
 navigating to a view that is already cached, its scope is then reconnected, and the existing<br />
 element that was left in the DOM becomes the active view. This also allows for the scroll<br />
 position of previous views to be maintained.</p>
@@ -1034,39 +1036,43 @@ should and should not be cached.</p>
 are being disconnected from the watch cycle. Because scopes are not being destroyed and<br />
 recreated, controllers are not loading again on a subsequent viewing. If the app/controller<br />
 needs to know when a view has entered or has left, then view events emitted from the<br />
-<a href="/docs/api/directive/ionView/"><code>ionView</code></a> scope, such as <code>$ionicView.enter</code>, may be useful.</p>
+<a href="/docs/api/directive/ionView/"><code>ionView</code></a> scope, such as <code class="highlighter-rouge">$ionicView.enter</code>, may be useful.</p>
 
 <p>By default, when navigating back in the history, the “forward” views are removed from the cache.<br />
 If you navigate forward to the same view again, it’ll create a new DOM element and controller<br />
 instance. Basically, any forward views are reset each time. This can be configured using the<br />
 <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a>:</p>
 
-<pre><code class="language-js">$ionicConfigProvider.views.forwardCache(true);
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">forwardCache</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </code></pre>
+</div>
 
 <h4 id="disable-cache-globally">Disable cache globally</h4>
 
 <p>The <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a> can be used to set the maximum allowable views<br />
 which can be cached, but this can also be use to disable all caching by setting it to 0.</p>
 
-<pre><code class="language-js">$ionicConfigProvider.views.maxCache(0);
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </code></pre>
+</div>
 
 <h4 id="disable-cache-within-state-provider">Disable cache within state provider</h4>
 
-<pre><code class="language-js">$stateProvider.state('myState', {
-   cache: false,
-   url : '/myUrl',
-   templateUrl : 'my-template.html'
-})
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$stateProvider</span><span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'myState'</span><span class="p">,</span> <span class="p">{</span>
+   <span class="na">cache</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="na">url</span> <span class="p">:</span> <span class="s1">'/myUrl'</span><span class="p">,</span>
+   <span class="na">templateUrl</span> <span class="p">:</span> <span class="s1">'my-template.html'</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <h4 id="disable-cache-with-an-attribute">Disable cache with an attribute</h4>
 
-<pre><code class="language-html">&lt;ion-view cache-view="false" view-title="My Title!"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-view</span> <span class="na">cache-view=</span><span class="s">"false"</span> <span class="na">view-title=</span><span class="s">"My Title!"</span><span class="nt">&gt;</span>
   ...
-&lt;/ion-view&gt;
+<span class="nt">&lt;/ion-view&gt;</span>
 </code></pre>
+</div>
 
 <h2 id="angularui-router">AngularUI Router</h2>
 

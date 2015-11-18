@@ -1040,60 +1040,64 @@
   </tbody>
 </table>
 
-<pre><code class="language-html">
-&lt;ion-tabs tabs-type="tabs-icon-only"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
 
-  &lt;ion-tab title="Home" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline"&gt;
-    &lt;!-- Tab 1 content --&gt;
-  &lt;/ion-tab&gt;
+  <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Tab 1 content --&gt;</span>
+  <span class="nt">&lt;/ion-tab&gt;</span>
 
-  &lt;ion-tab title="About" icon-on="ion-ios7-clock" icon-off="ion-ios7-clock-outline"&gt;
-    &lt;!-- Tab 2 content --&gt;
-  &lt;/ion-tab&gt;
+  <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"About"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-clock"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-clock-outline"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Tab 2 content --&gt;</span>
+  <span class="nt">&lt;/ion-tab&gt;</span>
 
-  &lt;ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline"&gt;
-    &lt;!-- Tab 3 content --&gt;
-  &lt;/ion-tab&gt;
+  <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Settings"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-gear"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-gear-outline"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Tab 3 content --&gt;</span>
+  <span class="nt">&lt;/ion-tab&gt;</span>
 
-&lt;/ion-tabs&gt;
+<span class="nt">&lt;/ion-tabs&gt;</span>
 </code></pre>
+</div>
 
-<p>To use the tabs, put the content of each tab right into the <code>&lt;ion-tab&gt;</code> tag, like this:</p>
+<p>To use the tabs, put the content of each tab right into the <code class="highlighter-rouge">&lt;ion-tab&gt;</code> tag, like this:</p>
 
-<pre><code class="language-html">&lt;ion-tabs tabs-type="tabs-icon-only"&gt;
-  &lt;ion-tab title="Home" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline"&gt;
-    &lt;ion-header-bar type="bar-positive" title="'Home'"&gt;&lt;/ion-header-bar&gt;
-    &lt;ion-content has-header="true"&gt;
-      &lt;h2&gt;Home Content&lt;/h2&gt;
-    &lt;/ion-content&gt;
-  &lt;/ion-tab&gt;
-&lt;/ion-tabs&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-header-bar</span> <span class="na">type=</span><span class="s">"bar-positive"</span> <span class="na">title=</span><span class="s">"'Home'"</span><span class="nt">&gt;&lt;/ion-header-bar&gt;</span>
+    <span class="nt">&lt;ion-content</span> <span class="na">has-header=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>Home Content<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
+  <span class="nt">&lt;/ion-tab&gt;</span>
+<span class="nt">&lt;/ion-tabs&gt;</span>
 </code></pre>
+</div>
 
-<p>Notice we set the title of the <code>&lt;ion-header-bar&gt;</code> using single quotes (<code>title="'Home'"</code>) since the title is an angular expression and can be bound to a scope value for dynamic titles.</p>
+<p>Notice we set the title of the <code class="highlighter-rouge">&lt;ion-header-bar&gt;</code> using single quotes (<code class="highlighter-rouge">title="'Home'"</code>) since the title is an angular expression and can be bound to a scope value for dynamic titles.</p>
 
-<p>The Tab Bar also emits events when tabs change. To know when a tab is shown, listen for the <code>tab.shown</code> event, and the <code>tab.hidden</code> event for when it is hidden:</p>
+<p>The Tab Bar also emits events when tabs change. To know when a tab is shown, listen for the <code class="highlighter-rouge">tab.shown</code> event, and the <code class="highlighter-rouge">tab.hidden</code> event for when it is hidden:</p>
 
-<pre><code class="language-html">&lt;ion-tabs tabs-type="tabs-icon-only"&gt;
-  &lt;ion-tab title="Home" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ng-controller="HomeCtrl"&gt;
-    &lt;ion-header-bar type="bar-positive" title="'Home'"&gt;&lt;/ion-header-bar&gt;
-    &lt;ion-content has-header="true"&gt;
-      &lt;h2&gt;Home Content&lt;/h2&gt;
-    &lt;/ion-content&gt;
-  &lt;/ion-tab&gt;
-&lt;/ion-tabs&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span> <span class="na">ng-controller=</span><span class="s">"HomeCtrl"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-header-bar</span> <span class="na">type=</span><span class="s">"bar-positive"</span> <span class="na">title=</span><span class="s">"'Home'"</span><span class="nt">&gt;&lt;/ion-header-bar&gt;</span>
+    <span class="nt">&lt;ion-content</span> <span class="na">has-header=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>Home Content<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
+  <span class="nt">&lt;/ion-tab&gt;</span>
+<span class="nt">&lt;/ion-tabs&gt;</span>
 </code></pre>
+</div>
 
-<pre><code class="language-javascript">angular.module('test', ['ionic'])
-.controller('HomeCtrl', function($scope) {
-  $scope.$on('tab.shown', function() {
-    // Maybe load some content here
-  });
-  $scope.$on('tab.hidden', function() {
-    // Perhaps cycle out some data in memory here
-  });
-});
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'HomeCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'tab.shown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Maybe load some content here</span>
+  <span class="p">});</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'tab.hidden'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Perhaps cycle out some data in memory here</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 
         </div>
 

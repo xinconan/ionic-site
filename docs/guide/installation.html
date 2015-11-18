@@ -215,10 +215,11 @@
 
 <p>To install Cordova, make sure you have <a href="http://nodejs.org/">Node.js</a> installed, then run</p>
 
-<pre><code>$ sudo npm install -g cordova
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo npm install -g cordova
 </code></pre>
+</div>
 
-<p>Drop <code>sudo</code> from the above command if running on Windows. Depending on the platforms you wish to develop for, you’ll need to install platform-specific tools. Follow the Cordova platform guides for <a href="http://cordova.apache.org/docs/en/3.4.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android</a> and <a href="http://cordova.apache.org/docs/en/3.4.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide">iOS</a> to make sure you have everything needed for development on those platforms. Luckily, you’ll only need to do this once.</p>
+<p>Drop <code class="highlighter-rouge">sudo</code> from the above command if running on Windows. Depending on the platforms you wish to develop for, you’ll need to install platform-specific tools. Follow the Cordova platform guides for <a href="http://cordova.apache.org/docs/en/3.4.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android</a> and <a href="http://cordova.apache.org/docs/en/3.4.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide">iOS</a> to make sure you have everything needed for development on those platforms. Luckily, you’ll only need to do this once.</p>
 
 <p><button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#android-linux-note">
   Linux Android note
@@ -278,19 +279,21 @@ Next, update your PATH to include the <code>tools/</code> and <code>platform-too
 
 <p>To install it, simply run:</p>
 
-<pre><code class="language-bash">$ sudo npm install -g ionic
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g ionic
 </code></pre>
+</div>
 
 <h2 id="create-the-project">Create the project</h2>
 
 <p>Now, we need to create a new Cordova project somewhere on the computer for the code for our app:</p>
 
-<pre><code>$ ionic start todo blank
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ionic start todo blank
 </code></pre>
+</div>
 
-<p>That will create a folder called <code>todo</code> in the directory the command was run. Next, we will go into that directory and list the contents. Here is what the outer structure of your Ionic project will look like:</p>
+<p>That will create a folder called <code class="highlighter-rouge">todo</code> in the directory the command was run. Next, we will go into that directory and list the contents. Here is what the outer structure of your Ionic project will look like:</p>
 
-<pre><code>$ cd todo &amp;&amp; ls
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd todo &amp;&amp; ls
 
 ├── bower.json     // bower dependencies
 ├── config.xml     // cordova configuration
@@ -303,6 +306,7 @@ Next, update your PATH to include the <code>tools/</code> and <code>platform-too
 ├── scss           // scss code, which will output to www/css/
 └── www            // application - JS code and libs, CSS, images, etc.
 </code></pre>
+</div>
 
 <p>If you are planning on using any version control system, you can go ahead and set it up in this new folder.</p>
 
@@ -310,9 +314,10 @@ Next, update your PATH to include the <code>tools/</code> and <code>platform-too
 
 <p>Now, we need to tell ionic that we want to enable the iOS and Android platforms. Note: unless you are on MacOS, leave out the iOS platform:</p>
 
-<pre><code class="language-bash">$ ionic platform add ios
-$ ionic platform add android
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform add ios
+<span class="gp">$ </span>ionic platform add android
 </code></pre>
+</div>
 
 <p>If you see errors here, make sure to follow the platform guides above to install necessary platform tools.</p>
 
@@ -333,9 +338,10 @@ $ ionic platform add android
 
 <p>Just to make sure the default project worked, try building and running the project (substitute ios for android to build for Android instead):</p>
 
-<pre><code class="language-bash">$ ionic build ios
-$ ionic emulate ios
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic build ios
+<span class="gp">$ </span>ionic emulate ios
 </code></pre>
+</div>
 
 <p><button type="button" class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#android-emulator-note">
   Android emulator note

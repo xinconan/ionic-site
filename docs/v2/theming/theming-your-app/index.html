@@ -313,47 +313,51 @@
 
 <h1 class="title">Theming your Ionic App</h1>
 
-<p>Theme support is baked right in to your Ionic apps. To change the theme, just tweak the <code>$colors</code> <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps">map</a> in your <code>www/app/app.scss</code> file:</p>
+<p>Theme support is baked right in to your Ionic apps. To change the theme, just tweak the <code class="highlighter-rouge">$colors</code> <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps">map</a> in your <code class="highlighter-rouge">www/app/app.scss</code> file:</p>
 
-<pre><code class="language-scss">$colors: (
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
 
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222,
+  <span class="n">primary</span><span class="o">:</span>    <span class="mh">#387ef5</span><span class="o">,</span>
+  <span class="n">secondary</span><span class="o">:</span>  <span class="mh">#32db64</span><span class="o">,</span>
+  <span class="n">danger</span><span class="o">:</span>     <span class="mh">#f53d3d</span><span class="o">,</span>
+  <span class="n">light</span><span class="o">:</span>      <span class="mh">#f4f4f4</span><span class="o">,</span>
+  <span class="n">dark</span><span class="o">:</span>       <span class="mh">#222</span><span class="o">,</span>
 
-);
+<span class="p">);</span>
 
 </code></pre>
+</div>
 
-<p>The fastest way to change the theme of your Ionic app is to set a new value for <code>primary</code>, since Ionic uses the primary color by default for buttons and other components.</p>
+<p>The fastest way to change the theme of your Ionic app is to set a new value for <code class="highlighter-rouge">primary</code>, since Ionic uses the primary color by default for buttons and other components.</p>
 
 <h2 id="custom-colors">Custom Colors</h2>
 
-<p>To add custom colors, just add them to the <code>$colors</code> map:</p>
+<p>To add custom colors, just add them to the <code class="highlighter-rouge">$colors</code> map:</p>
 
-<pre><code class="language-scss">$colors: (
-  // ...
-  twitter:    #55acee
-)
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
+  <span class="o">//</span> <span class="o">...</span>
+  <span class="n">twitter</span><span class="o">:</span>    <span class="mh">#55acee</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
-<p>Ionic makes the <code>$colors</code> keys available as a property to many components. For example, to use our <code>twitter</code> color, add the key as a property:</p>
+<p>Ionic makes the <code class="highlighter-rouge">$colors</code> keys available as a property to many components. For example, to use our <code class="highlighter-rouge">twitter</code> color, add the key as a property:</p>
 
-<pre><code class="language-html">&lt;button twitter&gt;I'm a button&lt;/button&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">twitter</span><span class="nt">&gt;</span>I'm a button<span class="nt">&lt;/button&gt;</span>
 </code></pre>
+</div>
 
 <h2 id="dark-theme">Dark theme</h2>
 
-<p>By default, Ionic comes with a light and dark theme. To use the dark theme, import it before the Ionic Sass files in your <code>app.scss</code> file:</p>
+<p>By default, Ionic comes with a light and dark theme. To use the dark theme, import it before the Ionic Sass files in your <code class="highlighter-rouge">app.scss</code> file:</p>
 
-<pre><code class="language-scss">@import "themes/dark";
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@import</span> <span class="s2">"themes/dark"</span><span class="p">;</span>
 
-// Ionic Sass
+<span class="c1">// Ionic Sass
 // ---------------------------------
-@import "ionic";
+</span><span class="k">@import</span> <span class="s2">"ionic"</span><span class="p">;</span>
 </code></pre>
+</div>
 
 <h2 id="platform-specific-styles">Platform Specific Styles</h2>
 

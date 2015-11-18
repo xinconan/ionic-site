@@ -929,37 +929,38 @@ hitting escape on the keyboard for desktop testing.</p>
 <h2 id="usage">Usage</h2>
 <p>To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:</p>
 
-<pre><code class="language-js">angular.module('mySuperApp', ['ionic'])
-.controller(function($scope, $ionicActionSheet, $timeout) {
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'mySuperApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicActionSheet</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
 
- // Triggered on a button click, or some other target
- $scope.show = function() {
+ <span class="c1">// Triggered on a button click, or some other target</span>
+ <span class="nx">$scope</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
-   // Show the action sheet
-   var hideSheet = $ionicActionSheet.show({
-     buttons: [
-       { text: '&lt;b&gt;Share&lt;/b&gt; This' },
-       { text: 'Move' }
-     ],
-     destructiveText: 'Delete',
-     titleText: 'Modify your album',
-     cancelText: 'Cancel',
-     cancel: function() {
-          // add cancel code..
-        },
-     buttonClicked: function(index) {
-       return true;
-     }
-   });
+   <span class="c1">// Show the action sheet</span>
+   <span class="kd">var</span> <span class="nx">hideSheet</span> <span class="o">=</span> <span class="nx">$ionicActionSheet</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
+     <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'&lt;b&gt;Share&lt;/b&gt; This'</span> <span class="p">},</span>
+       <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'Move'</span> <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="na">destructiveText</span><span class="p">:</span> <span class="s1">'Delete'</span><span class="p">,</span>
+     <span class="na">titleText</span><span class="p">:</span> <span class="s1">'Modify your album'</span><span class="p">,</span>
+     <span class="na">cancelText</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span>
+     <span class="na">cancel</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="c1">// add cancel code..</span>
+        <span class="p">},</span>
+     <span class="na">buttonClicked</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">});</span>
 
-   // For example's sake, hide the sheet after two seconds
-   $timeout(function() {
-     hideSheet();
-   }, 2000);
+   <span class="c1">// For example's sake, hide the sheet after two seconds</span>
+   <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">hideSheet</span><span class="p">();</span>
+   <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
 
- };
-});
+ <span class="p">};</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 
 <h2 id="methods">Methods</h2>
 
@@ -1021,7 +1022,7 @@ to a new state.  Default true.</li>
 
 <ul>
   <li>Returns: <br />
-<code>function</code> <code>hideSheet</code> A function which, when called, hides &amp; cancels the action sheet.</li>
+<code>function</code> <code class="highlighter-rouge">hideSheet</code> A function which, when called, hides &amp; cancels the action sheet.</li>
 </ul>
 
 

@@ -311,8 +311,9 @@
   Improve this doc
 </a></p>
 
-<pre><code class="language-bash">$ ionic plugin add phonegap-plugin-push
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add phonegap-plugin-push
 </code></pre>
+</div>
 
 <p>Every app needs to receive push notifications.</p>
 
@@ -322,72 +323,73 @@ service for Ionic apps. To try it out, create an <a href="http://ionic.io/">Ioni
 
 <p>If you’d like to use your own push server, just integrate it with the plugin below.</p>
 
-<pre><code class="language-javascript">
-import {Push} from 'ngcordova';
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">Push</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ngcordova'</span><span class="p">;</span>
 
-export class MyApp {
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
 
-  constructor() {
-    this.setupPush();
-  }
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupPush</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  setupPush() {
-    var iosConfig = {
-      "badge": true,
-      "sound": true,
-      "alert": true,
-    };
+  <span class="nx">setupPush</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">iosConfig</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">"badge"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"sound"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"alert"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">};</span>
 
-    document.addEventListener("deviceready", () =&gt; {
+    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"deviceready"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-      Push.register(iosConfig).then((deviceToken) =&gt; {
-        // Success -- send deviceToken to server, and store for future use
-        console.log("deviceToken: " + deviceToken)
+      <span class="nx">Push</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">iosConfig</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">deviceToken</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// Success -- send deviceToken to server, and store for future use</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"deviceToken: "</span> <span class="o">+</span> <span class="nx">deviceToken</span><span class="p">)</span>
 
-        fetch("http://server.co/", {
-          method: 'post',
-          body: JSON.stringify({
-            user: "Bob",
-            tokenID: deviceToken
-          })
-        });
-      }, (err) =&gt; {
-        alert("Registration error: " + err)
-      });
+        <span class="nx">fetch</span><span class="p">(</span><span class="s2">"http://server.co/"</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
+          <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+            <span class="na">user</span><span class="p">:</span> <span class="s2">"Bob"</span><span class="p">,</span>
+            <span class="na">tokenID</span><span class="p">:</span> <span class="nx">deviceToken</span>
+          <span class="p">})</span>
+        <span class="p">});</span>
+      <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"Registration error: "</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+      <span class="p">});</span>
 
 
-      Push.onNotification.subscribe((event, notification) =&gt; {
-        if (notification.alert) {
-          navigator.notification.alert(notification.alert);
-        }
+      <span class="nx">Push</span><span class="p">.</span><span class="nx">onNotification</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">notification</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">alert</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">navigator</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">alert</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        if (notification.sound) {
-          var snd = new Media(event.sound);
-          snd.play();
-        }
+        <span class="k">if</span> <span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">sound</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">snd</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Media</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">sound</span><span class="p">);</span>
+          <span class="nx">snd</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+        <span class="p">}</span>
 
-        if (notification.badge) {
-          Push.setBadgeNumber(notification.badge).then((result) =&gt; {
-            // Success!
-          }, (err) =&gt; {
-            // An error occurred. Show a message to the user
-          });
-        }
-      });
+        <span class="k">if</span> <span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">badge</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">Push</span><span class="p">.</span><span class="nx">setBadgeNumber</span><span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">badge</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// Success!</span>
+          <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// An error occurred. Show a message to the user</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
 
-    }, false);
-  }
+    <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
 
-  unregister() {
-    // WARNING! dangerous to unregister (results in loss of tokenID)
-    Push.unregister(options).then((result) =&gt; {
-      // Success!
-    }, (err) =&gt; {
-      // Error
-    });
-  }
-}
+  <span class="nx">unregister</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// WARNING! dangerous to unregister (results in loss of tokenID)</span>
+    <span class="nx">Push</span><span class="p">.</span><span class="nx">unregister</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Success!</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Error</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
       </main>
     </div>

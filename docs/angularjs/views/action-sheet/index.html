@@ -946,56 +946,57 @@
 
 <h2 id="ionic-angular-usage">Ionic-Angular Usage</h2>
 
-<p>To trigger an Action Sheet in your code, use the <code>$ionicActionSheet</code> service in your angular controllers:</p>
+<p>To trigger an Action Sheet in your code, use the <code class="highlighter-rouge">$ionicActionSheet</code> service in your angular controllers:</p>
 
-<pre><code class="language-javascript">
-angular.module('test', ['ionic'])
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 
-.controller(function($scope, $ionicActionSheet) {
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicActionSheet</span><span class="p">)</span> <span class="p">{</span>
 
-  // Triggered on a button click, or some other target
-  $scope.show = function() {
+  <span class="c1">// Triggered on a button click, or some other target</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
-    // Show the action sheet
-    $ionicActionSheet.show({
+    <span class="c1">// Show the action sheet</span>
+    <span class="nx">$ionicActionSheet</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
 
-      // The various non-destructive button choices
-      buttons: [
-        { text: 'Share' },
-        { text: 'Move' },
-      ],
+      <span class="c1">// The various non-destructive button choices</span>
+      <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'Share'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'Move'</span> <span class="p">},</span>
+      <span class="p">],</span>
 
-      // The text of the red destructive button
-      destructiveText: 'Delete',
+      <span class="c1">// The text of the red destructive button</span>
+      <span class="na">destructiveText</span><span class="p">:</span> <span class="s1">'Delete'</span><span class="p">,</span>
 
-      // The title text at the top
-      titleText: 'Modify your album',
+      <span class="c1">// The title text at the top</span>
+      <span class="na">titleText</span><span class="p">:</span> <span class="s1">'Modify your album'</span><span class="p">,</span>
 
-      // The text of the cancel button
-      cancelText: 'Cancel',
+      <span class="c1">// The text of the cancel button</span>
+      <span class="na">cancelText</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span>
 
-      // Called when the sheet is cancelled, either from triggering the
-      // cancel button, or tapping the backdrop, or using escape on the keyboard
-      cancel: function() {
-      },
+      <span class="c1">// Called when the sheet is cancelled, either from triggering the</span>
+      <span class="c1">// cancel button, or tapping the backdrop, or using escape on the keyboard</span>
+      <span class="na">cancel</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="p">},</span>
 
-      // Called when one of the non-destructive buttons is clicked, with
-      // the index of the button that was clicked. Return
-      // "true" to tell the action sheet to close. Return false to not close.
-      buttonClicked: function(index) {
-        return true;
-      },
+      <span class="c1">// Called when one of the non-destructive buttons is clicked, with</span>
+      <span class="c1">// the index of the button that was clicked. Return</span>
+      <span class="c1">// "true" to tell the action sheet to close. Return false to not close.</span>
+      <span class="na">buttonClicked</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">},</span>
 
-      // Called when the destructive button is clicked. Return true to close the
-      // action sheet. False to keep it open
-      destructiveButtonClicked: function() {
-        return true;
-      }
-    });
+      <span class="c1">// Called when the destructive button is clicked. Return true to close the</span>
+      <span class="c1">// action sheet. False to keep it open</span>
+      <span class="na">destructiveButtonClicked</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
 
-  };
-});
+  <span class="p">};</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 
         </div>
 

@@ -944,43 +944,44 @@
 
 <h2 id="ionic-angular-usage">Ionic-Angular Usage</h2>
 
-<p>To trigger Loading in your code, use the <code>$ionicLoading</code> service in your angular controllers or directives:</p>
+<p>To trigger Loading in your code, use the <code class="highlighter-rouge">$ionicLoading</code> service in your angular controllers or directives:</p>
 
-<pre><code class="language-javascript">
-angular.module('LoadingApp', ['ionic'])
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'LoadingApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 
-.controller('LoadingCtrl', ['$scope', '$ionicLoading', function($scope, $ionicLoading) {
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'LoadingCtrl'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'$ionicLoading'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicLoading</span><span class="p">)</span> <span class="p">{</span>
 
-  // Trigger the loading indicator
-  $scope.show = function() {
+  <span class="c1">// Trigger the loading indicator</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
-    // Show the loading overlay and text
-    $scope.loading = $ionicLoading.show({
+    <span class="c1">// Show the loading overlay and text</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="nx">$ionicLoading</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
 
-      // The text to display in the loading indicator
-      content: 'Loading',
+      <span class="c1">// The text to display in the loading indicator</span>
+      <span class="na">content</span><span class="p">:</span> <span class="s1">'Loading'</span><span class="p">,</span>
 
-      // The animation to use
-      animation: 'fade-in',
+      <span class="c1">// The animation to use</span>
+      <span class="na">animation</span><span class="p">:</span> <span class="s1">'fade-in'</span><span class="p">,</span>
 
-      // Will a dark overlay or backdrop cover the entire view
-      showBackdrop: true,
+      <span class="c1">// Will a dark overlay or backdrop cover the entire view</span>
+      <span class="na">showBackdrop</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 
-      // The maximum width of the loading indicator
-      // Text will be wrapped if longer than maxWidth
-      maxWidth: 200,
+      <span class="c1">// The maximum width of the loading indicator</span>
+      <span class="c1">// Text will be wrapped if longer than maxWidth</span>
+      <span class="na">maxWidth</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
 
-      // The delay in showing the indicator
-      showDelay: 500
-    });
-  };
+      <span class="c1">// The delay in showing the indicator</span>
+      <span class="na">showDelay</span><span class="p">:</span> <span class="mi">500</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
 
-  // Hide the loading indicator
-  $scope.hide = function(){
-    $scope.loading.hide();
-  };
-}]);
+  <span class="c1">// Hide the loading indicator</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hide</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">loading</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}]);</span>
 </code></pre>
+</div>
 
         </div>
 

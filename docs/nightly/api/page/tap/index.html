@@ -972,7 +972,7 @@ feel more “native” like. Resultingly, other solutions such as<br />
 <a href="https://docs.angularjs.org/api/ngTouch">ngTouch</a> should not be included, to avoid conflicts.</p>
 
 <p>Some browsers already remove the delay with certain settings, such as the CSS property<br />
-<code>touch-events: none</code> or with specific meta tag viewport values. However, each of these<br />
+<code class="highlighter-rouge">touch-events: none</code> or with specific meta tag viewport values. However, each of these<br />
 browsers still handle clicks differently, such as when to fire off or cancel the event<br />
 (like scrolling when the target is a button, or holding a button down).<br />
 For browsers that already remove the 300ms delay, consider Ionic’s tap system as a way to<br />
@@ -987,12 +987,13 @@ a touch detection system which conflicts with Ionic’s tap system.</p>
 <h3 id="disabling-the-tap-system">Disabling the tap system</h3>
 
 <p>To disable the tap for an element and all of its children elements,<br />
-add the attribute <code>data-tap-disabled="true"</code>.</p>
+add the attribute <code class="highlighter-rouge">data-tap-disabled="true"</code>.</p>
 
-<pre><code class="language-html">&lt;div data-tap-disabled="true"&gt;
-    &lt;div id="google-map"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-tap-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"google-map"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre>
+</div>
 
 <h3 id="additional-notes">Additional Notes:</h3>
 

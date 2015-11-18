@@ -315,27 +315,29 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<pre><code class="language-bash">$ ionic plugin add cordova-plugin-dialogs
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-dialogs
 </code></pre>
+</div>
 
-<pre><code class="language-javascript">import {Dialogs} from 'ionic/ionic'
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Dialogs</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-class MyPage {
-  doAlert() {
-    Dialogs.alert('Hello');
-  }
-  doConfirm() {
-    Dialogs.confirm('Do you want to click that?').then((resp) =&gt; {
-      console.log(resp);
-    });
-  }
-  doPrompt() {
-    Dialogs.prompt('What is your fav ice cream?').then((resp) =&gt; {
-      console.log(resp);
-    });
-  }
-}
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="nx">doAlert</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Dialogs</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">doConfirm</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Dialogs</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Do you want to click that?'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">resp</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">doPrompt</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Dialogs</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your fav ice cream?'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">resp</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
       </main>
     </div>

@@ -400,7 +400,7 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/platfor
 
 <p>Depending on the platform name, isPlatform will return true or flase</p>
 
-<pre><code>import {Platform} 'ionic/ionic';
+<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -411,6 +411,7 @@ export MyClass {
    }
 }
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -452,11 +453,11 @@ export MyClass {
 
 </h2>
 
-<p>Depending on what device you are on, <code>platforms</code> can return multiple values.<br />
+<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.<br />
 Each possible value is a hierarchy of platforms. For example, on an iPhone,<br />
 it would return mobile, ios, and iphone.</p>
 
-<pre><code>import {Platform} 'ionic/ionic';
+<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -466,6 +467,7 @@ export MyClass {
    }
 }
 </code></pre>
+</div>
 
 <ul>
   <li>Returns: <br />
@@ -480,7 +482,7 @@ export MyClass {
 
 <p>Returns an object conta</p>
 
-<pre><code>import {Platform} 'ionic/ionic';
+<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -490,6 +492,7 @@ export MyClass {
    }
 }
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -524,10 +527,10 @@ export MyClass {
 <ul>
   <li>Returns: <br />
 <code>object</code> An object with various platform info</li>
-  <li><code>{object=} </code>cordova`</li>
-  <li><code>{object=}</code> <code>platformOS</code> {str: “9.1”, num: 9.1, major: 9, minor: 1}</li>
-  <li><code>{object=} </code>deviceName` Returns the name of the device</li>
-  <li><code>{object=}</code> <code>device platform</code> R</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span><span class="w"> </span></code>cordova`</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span></code> <code class="highlighter-rouge">platformOS</code> {str: “9.1”, num: 9.1, major: 9, minor: 1}</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span><span class="w"> </span></code>deviceName` Returns the name of the device</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span></code> <code class="highlighter-rouge">device platform</code> R</li>
 </ul>
 
 <div id="ready"></div>
@@ -538,7 +541,7 @@ export MyClass {
 
 <p>Returns a promise when the platform is ready and native functionality can be called</p>
 
-<pre><code>import {Platform} 'ionic/ionic';
+<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -549,6 +552,7 @@ export MyClass {
    }
 }
 </code></pre>
+</div>
 
 <ul>
   <li>Returns: <br />

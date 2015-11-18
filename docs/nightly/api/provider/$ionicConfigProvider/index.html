@@ -968,34 +968,37 @@ bottom to center, covering the previous view, which remains stationary. It shoul
 that when a platform is not iOS or Android, then it’ll default to iOS. So if you are<br />
 developing on a desktop browser, it’s going to take on iOS default configs.</p>
 
-<p>These configs can be changed using the <code>$ionicConfigProvider</code> during the configuration phase<br />
-of your app. Additionally, <code>$ionicConfig</code> can also set and get config values during the run<br />
+<p>These configs can be changed using the <code class="highlighter-rouge">$ionicConfigProvider</code> during the configuration phase<br />
+of your app. Additionally, <code class="highlighter-rouge">$ionicConfig</code> can also set and get config values during the run<br />
 phase and within the app itself.</p>
 
-<p>By default, all base config variables are set to <code>'platform'</code>, which means it’ll take on the<br />
+<p>By default, all base config variables are set to <code class="highlighter-rouge">'platform'</code>, which means it’ll take on the<br />
 default config of the platform on which it’s running. Config variables can be set at this<br />
 level so all platforms follow the same setting, rather than its platform config.<br />
 The following code would set the same config variable for all platforms:</p>
 
-<pre><code class="language-js">$ionicConfigProvider.views.maxCache(10);
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </code></pre>
+</div>
 
-<p>Additionally, each platform can have it’s own config within the <code>$ionicConfigProvider.platform</code><br />
+<p>Additionally, each platform can have it’s own config within the <code class="highlighter-rouge">$ionicConfigProvider.platform</code><br />
 property. The config below would only apply to Android devices.</p>
 
-<pre><code class="language-js">$ionicConfigProvider.platform.android.views.maxCache(5);
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </code></pre>
+</div>
 
 <h2 id="usage">Usage</h2>
-<pre><code class="language-js">var myApp = angular.module('reallyCoolApp', ['ionic']);
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'reallyCoolApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">]);</span>
 
-myApp.config(function($ionicConfigProvider) {
-  $ionicConfigProvider.views.maxCache(5);
+<span class="nx">myApp</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$ionicConfigProvider</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-  // note that you can also chain configs
-  $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
-});
+  <span class="c1">// note that you can also chain configs</span>
+  <span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">backButton</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'Go Back'</span><span class="p">).</span><span class="nx">icon</span><span class="p">(</span><span class="s1">'ion-chevron-left'</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
+</div>
 
 <h2 id="methods">Methods</h2>
 
@@ -1005,7 +1008,7 @@ myApp.config(function($ionicConfigProvider) {
 
 </h2>
 
-<p>Animation style when transitioning between views. Default <code>platform</code>.</p>
+<p>Animation style when transitioning between views. Default <code class="highlighter-rouge">platform</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1059,8 +1062,8 @@ to <code>ios</code>.</li>
 <p>Maximum number of view elements to cache in the DOM. When the max number is<br />
 exceeded, the view with the longest time period since it was accessed is removed. Views that<br />
 stay in the DOM cache the view’s scope, current state, and scroll position. The scope is<br />
-disconnected from the <code>$watch</code> cycle when it is cached and reconnected when it enters again.<br />
-When the maximum cache is <code>0</code>, the leaving view’s element will be removed from the DOM after<br />
+disconnected from the <code class="highlighter-rouge">$watch</code> cycle when it is cached and reconnected when it enters again.<br />
+When the maximum cache is <code class="highlighter-rouge">0</code>, the leaving view’s element will be removed from the DOM after<br />
 each view transition, and the next time the same view is shown, it will have to re-compile,<br />
 attach to the DOM, and link the element again. This disables caching, in effect.</p>
 
@@ -1109,7 +1112,7 @@ attach to the DOM, and link the element again. This disables caching, in effect.
 the same instance data and DOM elements are referenced when navigating back. However, when<br />
 navigating back in the history, the “forward” views are removed from the cache. If you<br />
 navigate forward to the same view again, it’ll create a new DOM element and controller<br />
-instance. Basically, any forward views are reset each time. Set this config to <code>true</code> to have<br />
+instance. Basically, any forward views are reset each time. Set this config to <code class="highlighter-rouge">true</code> to have<br />
 forward views cached and not reset on each load.</p>
 
 <table class="table" style="margin:0;">
@@ -1153,7 +1156,7 @@ forward views cached and not reset on each load.</p>
 </h2>
 
 <p>Whether to use JS or Native scrolling. Defaults to JS scrolling. Setting this to<br />
-<code>false</code> has the same effect as setting each <code>ion-content</code> to have <code>overflow-scroll='true'</code>.</p>
+<code class="highlighter-rouge">false</code> has the same effect as setting each <code class="highlighter-rouge">ion-content</code> to have <code class="highlighter-rouge">overflow-scroll='true'</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1324,7 +1327,7 @@ is the default for iOS.</p>
 
 </h2>
 
-<p>Checkbox style. Android defaults to <code>square</code> and iOS defaults to <code>circle</code>.</p>
+<p>Checkbox style. Android defaults to <code class="highlighter-rouge">square</code> and iOS defaults to <code class="highlighter-rouge">circle</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1366,7 +1369,7 @@ is the default for iOS.</p>
 
 </h2>
 
-<p>Toggle item style. Android defaults to <code>small</code> and iOS defaults to <code>large</code>.</p>
+<p>Toggle item style. Android defaults to <code class="highlighter-rouge">small</code> and iOS defaults to <code class="highlighter-rouge">large</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1452,7 +1455,7 @@ is the default for iOS.</p>
 
 </h2>
 
-<p>Tab style. Android defaults to <code>striped</code> and iOS defaults to <code>standard</code>.</p>
+<p>Tab style. Android defaults to <code class="highlighter-rouge">striped</code> and iOS defaults to <code class="highlighter-rouge">standard</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1495,7 +1498,7 @@ is the default for iOS.</p>
 
 </h2>
 
-<p>Tab position. Android defaults to <code>top</code> and iOS defaults to <code>bottom</code>.</p>
+<p>Tab position. Android defaults to <code class="highlighter-rouge">top</code> and iOS defaults to <code class="highlighter-rouge">bottom</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1539,8 +1542,8 @@ is the default for iOS.</p>
 </h2>
 
 <p>Sets the maximum number of templates to prefetch from the templateUrls defined in<br />
-$stateProvider.state. If set to <code>0</code>, the user will have to wait<br />
-for a template to be fetched the first time when navigating to a new page. Default <code>30</code>.</p>
+$stateProvider.state. If set to <code class="highlighter-rouge">0</code>, the user will have to wait<br />
+for a template to be fetched the first time when navigating to a new page. Default <code class="highlighter-rouge">30</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1584,7 +1587,7 @@ for a template to be fetched the first time when navigating to a new page. Defau
 
 </h2>
 
-<p>Which side of the navBar to align the title. Default <code>center</code>.</p>
+<p>Which side of the navBar to align the title. Default <code class="highlighter-rouge">center</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1638,7 +1641,7 @@ If the platform is <code>android</code>, it will default to <code>left</code>. I
 
 </h2>
 
-<p>Which side of the navBar to align the primary navBar buttons. Default <code>left</code>.</p>
+<p>Which side of the navBar to align the primary navBar buttons. Default <code class="highlighter-rouge">left</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1691,7 +1694,7 @@ If the platform is <code>android</code>, it will default to <code>right</code>. 
 
 </h2>
 
-<p>Which side of the navBar to align the secondary navBar buttons. Default <code>right</code>.</p>
+<p>Which side of the navBar to align the secondary navBar buttons. Default <code class="highlighter-rouge">right</code>.</p>
 
 <table class="table" style="margin:0;">
   <thead>
