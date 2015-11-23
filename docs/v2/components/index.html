@@ -1028,7 +1028,13 @@ class MyApp {
 <p>Modals slide in off screen to display a temporary UI, often used for login or signup pages,<br />
 message composition, and option selection.</p>
 
-<p>First, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>:</p>
+<p>First, we need to add the <code class="highlighter-rouge">&lt;ion-overlay&gt;</code> component to our root <code class="highlighter-rouge">app.html</code> template. This only needs to be done once, no matter how many modal pages our app contains:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-overlay&gt;&lt;/ion-overlay&gt;</span>
+</code></pre>
+</div>
+
+<p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>:</p>
 
 <pre><code class="language-typescript">import {Modal} from 'ionic/ionic';
 </code></pre>
@@ -1042,7 +1048,7 @@ message composition, and option selection.</p>
     &lt;button (click)="close()"&gt;Close&lt;/button&gt;
   &lt;/ion-content&gt;`
 })
-class MyModal Modal {
+class MyModal {
   constructor() {
   }
 }
@@ -1057,7 +1063,6 @@ class MyModal Modal {
   showModal() {
     this.modal.open(MyModal);
   }
-
 }
 </code></pre>
 
