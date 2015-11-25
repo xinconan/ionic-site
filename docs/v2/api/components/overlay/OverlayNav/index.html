@@ -11,11 +11,11 @@
 <link href="/css/v2.css?1" rel="stylesheet">
 
 
-    <title>ionContent - Class in module  -  Ionic Framework</title>
+    <title>OverlayNav - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{ionContent | slugify}}"
-        class="v2 docs page-{{ionContent | slugify}}"
+  <body id="docs-page-{{OverlayNav | slugify}}"
+        class="v2 docs page-{{OverlayNav | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -261,7 +261,7 @@
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
@@ -363,258 +363,29 @@
       
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/content/content.ts#L8">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/overlay/overlay.ts#L6">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/content/content.ts#L8">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/overlay/overlay.ts#L6">
     Improve this doc
   </a>
 </div>
 
 <h1 class="api-title">
 
-  ionContent
+  OverlayNav
 
 
 
 </h1>
 
-<p>The ionContent component provides an easy to use content area that can be configured to use Ionic&#39;s custom Scroll View, or the built in overflow scrolling of the browser.</p>
-<p>While we recommend using the custom Scroll features in Ionic in most cases, sometimes (for performance reasons) only the browser&#39;s native overflow scrolling will suffice, and so we&#39;ve made it easy to toggle between the Ionic scroll implementation and overflow scrolling.</p>
-<p>You can implement pull-to-refresh with the ionRefresher component.</p>
-
-<h1 class="class export">ionContent <span class="type">class</span></h1>
+<h1 class="class export">OverlayNav <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/content/content.ts#L9-L190">ionic/components/content/content.ts (line 9)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/overlay/overlay.ts#L7-L37">ionic/components/overlay/overlay.ts (line 7)</a>
 </p>
-<p>## Members</p>
-
-<div id="onInit"></div>
-<h2>
-  <code>onInit()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="addScrollEventListener"></div>
-<h2>
-  <code>addScrollEventListener(handler)</code>
-
-</h2>
-
-<p>Adds the specified scroll handler to the content’ scroll element.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        handler
-        
-        
-      </td>
-      <td>
-        
-  <code>Function</code>
-      </td>
-      <td>
-        <p>The scroll event handler.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
-<code>Function</code> A function that removes the scroll handler.</li>
-</ul>
-
-<div id="addTouchMoveListener"></div>
-<h2>
-  <code>addTouchMoveListener(handler)</code>
-
-</h2>
-
-<p>Adds the specified touchmove handler to the content’s scroll element.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        handler
-        
-        
-      </td>
-      <td>
-        
-  <code>Function</code>
-      </td>
-      <td>
-        <p>The touchmove handler.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
-<code>Function</code> A function that removes the touchmove handler.</li>
-</ul>
-
-<div id="scrollTo"></div>
-<h2>
-  <code>scrollTo(x, y, duration, tolerance)</code>
-
-</h2>
-
-<p>Scroll to the specified position.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        x
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The x-value to scroll to.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        y
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The y-value to scroll to.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        duration
-        
-        
-      </td>
-      <td>
-        
-  <code>Number</code>
-      </td>
-      <td>
-        <p>Duration of the scroll animation.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        tolerance
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
-<code>TODO</code> TODO</li>
-</ul>
-
-<div id="scrollToTop"></div>
-<h2>
-  <code>scrollToTop()</code>
-
-</h2>
-
-<div id="getDimensions"></div>
-<h2>
-  <code>getDimensions()</code>
-
-</h2>
-
-<p>Returns the content and scroll elements’ dimensions.</p>
-
-<ul>
-  <li>Returns: <br />
-<code>Object</code> dimensions  The content and scroll elements’ dimensions<br />
-{Number} dimensions.contentHeight  content offsetHeight<br />
-{Number} dimensions.contentTop  content offsetTop<br />
-{Number} dimensions.contentBottom  content offsetTop+offsetHeight<br />
-{Number} dimensions.contentWidth  content offsetWidth<br />
-{Number} dimensions.contentLeft  content offsetLeft<br />
-{Number} dimensions.contentRight  content offsetLeft + offsetWidth<br />
-{Number} dimensions.scrollHeight  scroll scrollHeight<br />
-{Number} dimensions.scrollTop  scroll scrollTop<br />
-{Number} dimensions.scrollBottom  scroll scrollTop + scrollHeight<br />
-{Number} dimensions.scrollWidth  scroll scrollWidth<br />
-{Number} dimensions.scrollLeft  scroll scrollLeft<br />
-{Number} dimensions.scrollRight  scroll scrollLeft + scrollWidth<br />
-TODO: figure out how to get this to work</li>
-</ul>
-
-<div id="addKeyboardPadding"></div>
-<h2>
-  <code>addKeyboardPadding()</code>
-
-</h2>
+<h2>Component</h2>
+<p><span>selector: ion-overlay</span></p>
 
 
       </main>
