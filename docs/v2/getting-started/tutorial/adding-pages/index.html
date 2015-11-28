@@ -304,7 +304,7 @@
       <main>
         <h1 class="title">Adding Pages</h1>
 
-<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/guide/adding-pages/index.md">
+<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/getting-started/tutorial/adding-pages/index.md">
   Improve this doc
 </a></p>
 
@@ -322,13 +322,13 @@ first, or “root” page for the <code class="highlighter-rouge">ion-nav</code>
 
 <p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> root component specifies this in its constructor:</p>
 
-<pre><code class="language-ts">import {App, IonicApp, IonicPlatform} from 'ionic/ionic';
+<pre><code class="language-ts">import {App, IonicApp, Platform} from 'ionic/ionic';
 import {HelloIonicPage} from './hello-ionic/hello-ionic';
 import {ListPage} from './list/list';
 
 class MyApp {
 
-  constructor(app: IonicApp, platform: IonicPlatform) {
+  constructor(app: IonicApp, platform: Platform) {
 
     // set up our app
     this.app = app;
