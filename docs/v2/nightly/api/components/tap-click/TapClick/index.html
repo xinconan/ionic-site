@@ -12,11 +12,11 @@
 
 
 
-    <title>Refresher - Class in module  -  Ionic Framework</title>
+    <title>TapClick - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Refresher | slugify}}"
-        class="v2 docs page-{{Refresher | slugify}}"
+  <body id="docs-page-{{TapClick | slugify}}"
+        class="v2 docs page-{{TapClick | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -278,7 +278,7 @@
 <li class="">
   <a href="/docs/v2/nightly/api/components/radio/RadioGroup">RadioGroup</a>
 </li>
-<li class="active">
+<li class="">
   <a href="/docs/v2/nightly/api/components/scroll/Refresher">Refresher</a>
 </li>
 <li class="">
@@ -323,7 +323,7 @@
 <li class="">
   <a href="/docs/v2/nightly/api/components/tabs/Tabs">Tabs</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/nightly/api/components/tap-click/TapClick">TapClick</a>
 </li>
 <li class="">
@@ -371,316 +371,94 @@
       
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/scroll/pull-to-refresh.ts#L4">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/tap-click/tap-click.ts#L6">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/scroll/pull-to-refresh.ts#L4">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/tap-click/tap-click.ts#L6">
     Improve this doc
   </a>
 </div>
 
 <h1 class="api-title">
 
-  Refresher
+  TapClick
 
 
 
 </h1>
 
-<p>Allows you to add pull-to-refresh to an Content component.</p>
-<p>Place it as the first child of your Content or Scroll element.</p>
-<p>When refreshing is complete, call <code>refresher.complete()</code> from your controller.</p>
-
-<h1 class="class export">Refresher <span class="type">class</span></h1>
+<h1 class="class export">TapClick <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/scroll/pull-to-refresh.ts#L5-L421">ionic/components/scroll/pull-to-refresh.ts (line 5)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/tap-click/tap-click.ts#L7-L163">ionic/components/tap-click/tap-click.ts (line 7)</a>
 </p>
-<h2>Component</h2>
-<p><span>selector: ion-refresher</span></p>
+<h2>Members</h2>
 
-<p><span>inputs: pullingIcon, pullingText, refreshingIcon, refreshingText, spinner, disablePullingRotation</span></p>
+<div id="touchStart"></div>
+<h3>
+  <code>touchStart()</code>
 
-<p><span>outputs: refresh, starting, pulling</span></p>
+</h3>
 
-<h2 id="members">Members</h2>
+<div id="touchEnd"></div>
+<h3>
+  <code>touchEnd()</code>
 
-<div id="onInit"></div>
-<h2>
-  <code>onInit()</code>
+</h3>
 
-</h2>
+<div id="mouseDown"></div>
+<h3>
+  <code>mouseDown()</code>
 
-<div id="initEvents"></div>
-<h2>
-  <code>initEvents()</code>
+</h3>
 
-</h2>
+<div id="mouseUp"></div>
+<h3>
+  <code>mouseUp()</code>
 
-<p>Initialize touch and scroll event listeners.</p>
+</h3>
 
-<div id="onDehydrate"></div>
-<h2>
-  <code>onDehydrate()</code>
+<div id="pointerStart"></div>
+<h3>
+  <code>pointerStart()</code>
 
-</h2>
+</h3>
 
-<div id="overscroll"></div>
-<h2>
-  <code>overscroll(val)</code>
+<div id="pointerEnd"></div>
+<h3>
+  <code>pointerEnd()</code>
 
-</h2>
+</h3>
 
-<p>TODO</p>
+<div id="pointerMove"></div>
+<h3>
+  <code>pointerMove()</code>
 
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        val
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
+</h3>
 
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
+<div id="pointerCancel"></div>
+<h3>
+  <code>pointerCancel()</code>
 
-<div id="nativescroll"></div>
-<h2>
-  <code>nativescroll(target, newScrollTop)</code>
+</h3>
 
-</h2>
+<div id="moveListeners"></div>
+<h3>
+  <code>moveListeners()</code>
 
-<p>TODO</p>
+</h3>
 
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        target
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
+<div id="click"></div>
+<h3>
+  <code>click()</code>
 
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        newScrollTop
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
+</h3>
 
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
+<div id="isDisabledNativeClick"></div>
+<h3>
+  <code>isDisabledNativeClick()</code>
 
-<div id="setScrollLock"></div>
-<h2>
-  <code>setScrollLock(enabled)</code>
-
-</h2>
-
-<p>TODO</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        enabled
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="activate"></div>
-<h2>
-  <code>activate()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="deactivate"></div>
-<h2>
-  <code>deactivate()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="start"></div>
-<h2>
-  <code>start()</code>
-
-</h2>
-
-<div id="show"></div>
-<h2>
-  <code>show()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="hide"></div>
-<h2>
-  <code>hide()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="tail"></div>
-<h2>
-  <code>tail()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="complete"></div>
-<h2>
-  <code>complete()</code>
-
-</h2>
-
-<p>TODO</p>
-
-<div id="scrollTo"></div>
-<h2>
-  <code>scrollTo(Y, duration, callback)</code>
-
-</h2>
-
-<p>TODO</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        Y
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        duration
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        callback
-        
-        
-      </td>
-      <td>
-        
-  <code>Function</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
+</h3>
 
 
       </main>
