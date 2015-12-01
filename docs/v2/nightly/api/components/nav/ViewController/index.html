@@ -141,10 +141,10 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
+  
+    
 
-
-
-
+    
   
 <li class="">
   <a href="/docs/v2/nightly/api"></a>
@@ -360,12 +360,12 @@
   <a href="/docs/v2/nightly/api/components/nav/ViewController">ViewController</a>
 </li>
 
+  
 
+  
 
-
-
-
-
+  
+    
 
 
     </ul>
@@ -394,19 +394,51 @@
 
 </h1>
 
-<p>TODO</p>
+<p>You can access various features and information about the current view</p>
 
 <h1 class="class export">ViewController <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/view-controller.ts#L1-L315">ionic/components/nav/view-controller.ts (line 1)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/view-controller.ts#L1-L346">ionic/components/nav/view-controller.ts (line 1)</a>
 </p>
 <h2>Members</h2>
 
 <div id="enableBack"></div>
 <h3>
-  <code>enableBack()</code>
+  <code>enableBack(Check)</code>
 
 </h3>
+
+<p>Check to see if you can go back in the navigation stack</p>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        Check
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>whether or not you can go back from this page</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 <ul>
   <li>Returns: <br />
@@ -418,6 +450,17 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
   <code>index()</code>
 
 </h3>
+
+<p>You can find out the index of the current view is in the current navigation stack</p>
+
+<pre><code class="language-typescript"> export class Page1 {
+   constructor(view: ViewController){
+     this.view = view;
+     // Just log out the index
+     console.log(this.view.index);
+   }
+ }
+</code></pre>
 
 <ul>
   <li>Returns: <br />
@@ -435,44 +478,23 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 <code>boolean</code> Returns if this Page is the root page of the NavController.</li>
 </ul>
 
-<div id="pageRef"></div>
-<h3>
-  <code>pageRef()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>ElementRef</code> Returns the Page’s ElementRef</li>
-</ul>
-
-<div id="contentRef"></div>
-<h3>
-  <code>contentRef()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>ElementRef</code> Returns the Page’s Content ElementRef</li>
-</ul>
-
-<div id="getContent"></div>
-<h3>
-  <code>getContent()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>Component</code> Returns the Page’s Content component reference.</li>
-</ul>
-
 <div id="hasNavbar"></div>
 <h3>
   <code>hasNavbar()</code>
 
 </h3>
+
+<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onInit</code> method in order to make sure the view has rendered fully.</p>
+
+<pre><code class="language-typescript">export class Page1 {
+ constructor(view: ViewController) {
+   this.view = view
+ }
+ onInit(){
+   console.log('Do we have a Navbar?', this.view.hasNavbar());
+ }
+}
+</code></pre>
 
 <ul>
   <li>Returns: <br />
@@ -520,6 +542,8 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
   <code>showBackButton(Set)</code>
 
 </h3>
+
+<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onInit</code> to make sure the has been compleltly rendered.</p>
 
 <table class="table" style="margin:0;">
   <thead>
