@@ -465,7 +465,7 @@ class HelloWorld {
 
 <h1 class="class export">NavController <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/nav-controller.ts#L12-L1377">ionic/components/nav/nav-controller.ts (line 12)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/nav-controller.ts#L12-L1368">ionic/components/nav/nav-controller.ts (line 12)</a>
 </p>
 <h2>Members</h2>
 
@@ -526,7 +526,6 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
      },{
       // here we can configure things like the animations direction or
       // or if the view should animate at all.
-      animate: true,
       direction: back
      });
    }
@@ -615,12 +614,8 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
    constructor(nav:NavController){
      this.nav = nav;
    }
-
    goBack(){
-     this.nav.pop({
-      animate: true,
-      direction: back
-     });
+     this.nav.pop();
    }
 }
 </code></pre>
@@ -857,8 +852,8 @@ import {Info} from '../info/info'
    constructor(nav: NavController) {
      this.nav = nav;
    }
-   setView() {
-     this.nav.setViews([List,Detail, Info]);
+   setPages() {
+     this.nav.setPages([List,Detail, Info]);
    }
  }
 </code></pre>
@@ -875,8 +870,8 @@ import {Info} from '../info/info'
    constructor(nav: NavController) {
      this.nav = nav;
    }
-   setView() {
-     this.nav.setViews([List,Detail, Info],{
+   setPages() {
+     this.nav.setPages([List,Detail, Info],{
        animate: true
      });
    }
@@ -893,8 +888,8 @@ import {Info} from '../info/info'
    constructor(nav: NavController) {
      this.nav = nav;
    }
-   setView() {
-     this.nav.setViews([{
+   setPages() {
+     this.nav.setPages([{
        componentType: List,
        params: {id: 43}
      }, {
@@ -903,9 +898,7 @@ import {Info} from '../info/info'
      },{
        componentType: Info,
        params: {id: 5}
-     } ],{
-       animate: true
-     });
+     }]);
    }
  }
 </code></pre>
@@ -959,7 +952,7 @@ import {Info} from '../info/info'
 
 <ul>
   <li>Returns: <br />
-<code>Promise</code> Returns a promise when the views are set</li>
+<code>Promise</code> Returns a promise when the pages are set</li>
 </ul>
 
 <div id="setRoot"></div>
@@ -1104,12 +1097,12 @@ will return true.</p>
 
 </h3>
 
-<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous view that we can pop back to.<br />
+<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.<br />
 Otherwise returns false.</p>
 
 <ul>
   <li>Returns: <br />
-<code>boolean</code> Whether there is a view to go back to</li>
+<code>boolean</code> Whether there is a page to go back to</li>
 </ul>
 
 <div id="getByIndex"></div>
@@ -1139,7 +1132,7 @@ Otherwise returns false.</p>
   <code>Index</code>
       </td>
       <td>
-        <p>index of the view you want to get</p>
+        <p>index of the page you want to get</p>
 
         
       </td>
@@ -1159,12 +1152,11 @@ Otherwise returns false.</p>
 
 </h3>
 
-<p>First view in this nav controller’s stack. This would<br />
-not return an view which is about to be destroyed.</p>
+<p>First page in this nav controller’s stack. This would not return a page which is about to be destroyed.</p>
 
 <ul>
   <li>Returns: <br />
-<code>Component</code> Returns the first component view in the current stack</li>
+<code>Component</code> Returns the first component page in the current stack</li>
 </ul>
 
 <div id="last"></div>
@@ -1173,12 +1165,11 @@ not return an view which is about to be destroyed.</p>
 
 </h3>
 
-<p>Last view in this nav controller’s stack. This would<br />
-not return an view which is about to be destroyed.</p>
+<p>Last page in this nav controller’s stack. This would not return a page which is about to be destroyed.</p>
 
 <ul>
   <li>Returns: <br />
-<code>Component</code> Returns the last component view in the current stack</li>
+<code>Component</code> Returns the last component page in the current stack</li>
 </ul>
 
 <div id="length"></div>

@@ -484,13 +484,13 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 
 </h3>
 
-<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onInit</code> method in order to make sure the view has rendered fully.</p>
+<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageLoaded</code> method in order to make sure the view has rendered fully.</p>
 
 <pre><code class="language-typescript">export class Page1 {
  constructor(view: ViewController) {
    this.view = view
  }
- onInit(){
+ onPageLoaded(){
    console.log('Do we have a Navbar?', this.view.hasNavbar());
  }
 }
@@ -543,7 +543,7 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 
 </h3>
 
-<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onInit</code> to make sure the has been compleltly rendered.</p>
+<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onPageLoaded</code> to make sure the has been compleltly rendered.</p>
 
 <table class="table" style="margin:0;">
   <thead>
