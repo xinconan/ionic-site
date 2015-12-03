@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -247,9 +238,6 @@
 <li class="">
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
-<li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
 <li class="active">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,11 +350,17 @@
 
 <h1 class="api-title">
 
-  NavController
+
+NavController
+
+
+
 
 
 
 </h1>
+
+<h2>Description</h2>
 
 <p><em>For examples on the basic usage of NavController, check out the
 <a href="../../../../components/#navigation">Navigation section</a> of the Component
@@ -459,15 +431,14 @@ class HelloWorld {
 <li><code>onPageDidUnload</code> - Runs after the page has been destroyed and its elements have been removed.</li>
 </ul>
 
-<h1 class="class export">NavController <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/nav-controller.ts#L12-L1447">ionic/components/nav/nav-controller.ts (line 12)</a>
-</p>
-<h2>Members</h2>
+<h2>Usage</h2>
+
+<h2>Methods</h2>
 
 <div id="push"></div>
+
 <h3>
-  <code>push(component, params, opts)</code>
+<code>push(component, params, opts)</code>
 
 </h3>
 
@@ -598,8 +569,9 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </ul>
 
 <div id="pop"></div>
+
 <h3>
-  <code>pop(opts)</code>
+<code>pop(opts)</code>
 
 </h3>
 
@@ -652,8 +624,9 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 </ul>
 
 <div id="popToRoot"></div>
+
 <h3>
-  <code>popToRoot(opts)</code>
+<code>popToRoot(opts)</code>
 
 </h3>
 
@@ -690,8 +663,9 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 </table>
 
 <div id="insert"></div>
+
 <h3>
-  <code>insert(index, component)</code>
+<code>insert(index, component)</code>
 
 </h3>
 
@@ -763,8 +737,9 @@ This is useful if you need to add a view at any point in your navigation stack</
 </ul>
 
 <div id="remove"></div>
+
 <h3>
-  <code>remove(index, opts)</code>
+<code>remove(index, opts)</code>
 
 </h3>
 
@@ -833,8 +808,9 @@ This is useful if you need to add a view at any point in your navigation stack</
 </ul>
 
 <div id="setPages"></div>
+
 <h3>
-  <code>setPages(component, opts)</code>
+<code>setPages(component, opts)</code>
 
 </h3>
 
@@ -952,8 +928,9 @@ import {Info} from '../info/info'
 </ul>
 
 <div id="setRoot"></div>
+
 <h3>
-  <code>setRoot(The, params, opts)</code>
+<code>setRoot(The, params, opts)</code>
 
 </h3>
 
@@ -1029,8 +1006,9 @@ import {Info} from '../info/info'
 </ul>
 
 <div id="isSwipeBackEnabled"></div>
+
 <h3>
-  <code>isSwipeBackEnabled([isSwipeBackEnabled])</code>
+<code>isSwipeBackEnabled([isSwipeBackEnabled])</code>
 
 </h3>
 
@@ -1072,8 +1050,9 @@ import {Info} from '../info/info'
 </ul>
 
 <div id="canSwipeBack"></div>
+
 <h3>
-  <code>canSwipeBack()</code>
+<code>canSwipeBack()</code>
 
 </h3>
 
@@ -1088,8 +1067,9 @@ will return true.</p>
 </ul>
 
 <div id="canGoBack"></div>
+
 <h3>
-  <code>canGoBack()</code>
+<code>canGoBack()</code>
 
 </h3>
 
@@ -1102,8 +1082,9 @@ Otherwise returns false.</p>
 </ul>
 
 <div id="getByIndex"></div>
+
 <h3>
-  <code>getByIndex(The)</code>
+<code>getByIndex(The)</code>
 
 </h3>
 
@@ -1143,8 +1124,9 @@ Otherwise returns false.</p>
 </ul>
 
 <div id="first"></div>
+
 <h3>
-  <code>first()</code>
+<code>first()</code>
 
 </h3>
 
@@ -1156,8 +1138,9 @@ Otherwise returns false.</p>
 </ul>
 
 <div id="last"></div>
+
 <h3>
-  <code>last()</code>
+<code>last()</code>
 
 </h3>
 
@@ -1169,8 +1152,9 @@ Otherwise returns false.</p>
 </ul>
 
 <div id="length"></div>
+
 <h3>
-  <code>length()</code>
+<code>length()</code>
 
 </h3>
 
@@ -1181,6 +1165,10 @@ not include views which are about to be destroyed.</p>
   <li>Returns: <br />
 <code>Number</code> The number of views in stack, including the current view</li>
 </ul>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

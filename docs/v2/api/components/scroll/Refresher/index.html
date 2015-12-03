@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,15 +350,25 @@
 
 <h1 class="api-title">
 
-  Refresher
+
+Refresher
+
+
+
 
 
 
 </h1>
 
+<h2>Description</h2>
+
 <p>Allows you to add pull-to-refresh to an Content component.</p>
 <p>Place it as the first child of your Content or Scroll element.</p>
 <p>When refreshing is complete, call <code>refresher.complete()</code> from your controller.</p>
+
+<h2>Component</h2>
+<h3>selector: <code>ion-refresher</code></h3>
+<h2>Usage</h2>
 
 <pre><code class="lang-ts">&lt;ion-refresher (starting)=&quot;doStarting()&quot; (refresh)=&quot;doRefresh($event, refresher)&quot; (pulling)=&quot;doPulling($event, amt)&quot;&gt;
 
@@ -415,42 +391,35 @@ doPulling(amt) {
 }
 </code></pre>
 
-<h1 class="class export">Refresher <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/scroll/pull-to-refresh.ts#L5-L421">ionic/components/scroll/pull-to-refresh.ts (line 5)</a>
-</p>
-<h2>Component</h2>
-<p><span>selector: ion-refresher</span></p>
-
-<p><span>inputs: pullingIcon, pullingText, refreshingIcon, refreshingText, spinner, disablePullingRotation</span></p>
-
-<p><span>outputs: refresh, starting, pulling</span></p>
-
-<h2>Members</h2>
+<h2>Methods</h2>
 
 <div id="onInit"></div>
+
 <h3>
-  <code>onInit()</code>
+<code>onInit()</code>
 
 </h3>
 
 <div id="initEvents"></div>
+
 <h3>
-  <code>initEvents()</code>
+<code>initEvents()</code>
 
 </h3>
 
 <p>Initialize touch and scroll event listeners.</p>
 
 <div id="onDehydrate"></div>
+
 <h3>
-  <code>onDehydrate()</code>
+<code>onDehydrate()</code>
 
 </h3>
 
 <div id="overscroll"></div>
+
 <h3>
-  <code>overscroll(val)</code>
+<code>overscroll(val)</code>
 
 </h3>
 
@@ -487,8 +456,9 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </table>
 
 <div id="nativescroll"></div>
+
 <h3>
-  <code>nativescroll(target, newScrollTop)</code>
+<code>nativescroll(target, newScrollTop)</code>
 
 </h3>
 
@@ -542,8 +512,9 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </table>
 
 <div id="setScrollLock"></div>
+
 <h3>
-  <code>setScrollLock(enabled)</code>
+<code>setScrollLock(enabled)</code>
 
 </h3>
 
@@ -580,62 +551,70 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </table>
 
 <div id="activate"></div>
+
 <h3>
-  <code>activate()</code>
+<code>activate()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="deactivate"></div>
+
 <h3>
-  <code>deactivate()</code>
+<code>deactivate()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="start"></div>
+
 <h3>
-  <code>start()</code>
+<code>start()</code>
 
 </h3>
 
 <div id="show"></div>
+
 <h3>
-  <code>show()</code>
+<code>show()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="hide"></div>
+
 <h3>
-  <code>hide()</code>
+<code>hide()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="tail"></div>
+
 <h3>
-  <code>tail()</code>
+<code>tail()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="complete"></div>
+
 <h3>
-  <code>complete()</code>
+<code>complete()</code>
 
 </h3>
 
 <p>TODO</p>
 
 <div id="scrollTo"></div>
+
 <h3>
-  <code>scrollTo(Y, duration, callback)</code>
+<code>scrollTo(Y, duration, callback)</code>
 
 </h3>
 
@@ -704,6 +683,10 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
     
   </tbody>
 </table>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

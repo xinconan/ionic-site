@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,23 +350,28 @@
 
 <h1 class="api-title">
 
-  Platform
+
+Platform
+
+
+
 
 
 
 </h1>
 
+<h2>Description</h2>
+
 <p>TODO</p>
 
-<h1 class="class export">Platform <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/platform/platform.ts#L11-L456">ionic/platform/platform.ts (line 11)</a>
-</p>
-<h2>Members</h2>
+<h2>Usage</h2>
+
+<h2>Methods</h2>
 
 <div id="is"></div>
+
 <h3>
-  <code>is(platformName)</code>
+<code>is(platformName)</code>
 
 </h3>
 
@@ -454,8 +425,9 @@ export MyClass {
 </ul>
 
 <div id="platforms"></div>
+
 <h3>
-  <code>platforms()</code>
+<code>platforms()</code>
 
 </h3>
 
@@ -481,8 +453,9 @@ export MyClass {
 </ul>
 
 <div id="versions"></div>
+
 <h3>
-  <code>versions(optional)</code>
+<code>versions(optional)</code>
 
 </h3>
 
@@ -540,14 +513,16 @@ export MyClass {
 </ul>
 
 <div id="version"></div>
+
 <h3>
-  <code>version()</code>
+<code>version()</code>
 
 </h3>
 
 <div id="ready"></div>
+
 <h3>
-  <code>ready()</code>
+<code>ready()</code>
 
 </h3>
 
@@ -572,104 +547,121 @@ export MyClass {
 </ul>
 
 <div id="on"></div>
+
 <h3>
-  <code>on()</code>
+<code>on()</code>
 
 </h3>
 
 <div id="onHardwareBackButton"></div>
+
 <h3>
-  <code>onHardwareBackButton()</code>
+<code>onHardwareBackButton()</code>
 
 </h3>
 
 <div id="registerBackButtonAction"></div>
+
 <h3>
-  <code>registerBackButtonAction()</code>
+<code>registerBackButtonAction()</code>
 
 </h3>
 
 <div id="exitApp"></div>
+
 <h3>
-  <code>exitApp()</code>
+<code>exitApp()</code>
 
 </h3>
 
 <div id="fullScreen"></div>
+
 <h3>
-  <code>fullScreen()</code>
+<code>fullScreen()</code>
 
 </h3>
 
 <div id="showStatusBar"></div>
+
 <h3>
-  <code>showStatusBar()</code>
+<code>showStatusBar()</code>
 
 </h3>
 
 <div id="url"></div>
+
 <h3>
-  <code>url()</code>
+<code>url()</code>
 
 </h3>
 
 <div id="query"></div>
+
 <h3>
-  <code>query()</code>
+<code>query()</code>
 
 </h3>
 
 <div id="userAgent"></div>
+
 <h3>
-  <code>userAgent()</code>
+<code>userAgent()</code>
 
 </h3>
 
 <div id="navigatorPlatform"></div>
+
 <h3>
-  <code>navigatorPlatform()</code>
+<code>navigatorPlatform()</code>
 
 </h3>
 
 <div id="width"></div>
+
 <h3>
-  <code>width()</code>
+<code>width()</code>
 
 </h3>
 
 <div id="height"></div>
+
 <h3>
-  <code>height()</code>
+<code>height()</code>
 
 </h3>
 
 <div id="isPortrait"></div>
+
 <h3>
-  <code>isPortrait()</code>
+<code>isPortrait()</code>
 
 </h3>
 
 <div id="isLandscape"></div>
+
 <h3>
-  <code>isLandscape()</code>
+<code>isLandscape()</code>
 
 </h3>
 
 <div id="windowResize"></div>
+
 <h3>
-  <code>windowResize()</code>
+<code>windowResize()</code>
 
 </h3>
 
 <div id="onResize"></div>
+
 <h3>
-  <code>onResize()</code>
+<code>onResize()</code>
 
 </h3>
 
 <div id="testQuery"></div>
+
 <h3>
-  <code>testQuery(queryValue)</code>
+<code>testQuery(queryValue)</code>
 
 </h3>
 
@@ -711,8 +703,9 @@ export MyClass {
 </ul>
 
 <div id="testUserAgent"></div>
+
 <h3>
-  <code>testUserAgent(userAgentExpression)</code>
+<code>testUserAgent(userAgentExpression)</code>
 
 </h3>
 
@@ -754,8 +747,9 @@ export MyClass {
 </ul>
 
 <div id="testNavigatorPlatform"></div>
+
 <h3>
-  <code>testNavigatorPlatform(navigatorPlatformExpression)</code>
+<code>testNavigatorPlatform(navigatorPlatformExpression)</code>
 
 </h3>
 
@@ -797,8 +791,9 @@ export MyClass {
 </ul>
 
 <div id="matchUserAgentVersion"></div>
+
 <h3>
-  <code>matchUserAgentVersion(userAgentExpression)</code>
+<code>matchUserAgentVersion(userAgentExpression)</code>
 
 </h3>
 
@@ -840,8 +835,9 @@ export MyClass {
 </ul>
 
 <div id="isPlatform"></div>
+
 <h3>
-  <code>isPlatform(queryValue, userAgentExpression)</code>
+<code>isPlatform(queryValue, userAgentExpression)</code>
 
 </h3>
 
@@ -900,8 +896,9 @@ export MyClass {
 </ul>
 
 <div id="load"></div>
+
 <h3>
-  <code>load(config)</code>
+<code>load(config)</code>
 
 </h3>
 
@@ -938,8 +935,9 @@ export MyClass {
 </table>
 
 <div id="matchPlatform"></div>
+
 <h3>
-  <code>matchPlatform(platformName)</code>
+<code>matchPlatform(platformName)</code>
 
 </h3>
 
@@ -979,6 +977,10 @@ export MyClass {
   <li>Returns: <br />
 <code>TODO</code> TODO</li>
 </ul>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

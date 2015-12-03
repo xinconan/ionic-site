@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="active">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,33 +350,37 @@
 
 <h1 class="api-title">
 
-  Content
+
+Content
+
+
+
 
 
 
 </h1>
 
+<h2>Description</h2>
+
 <p>The Content component provides an easy to use content area that can be configured to use Ionic&#39;s custom Scroll View, or the built in overflow scrolling of the browser.</p>
 <p>While we recommend using the custom Scroll features in Ionic in most cases, sometimes (for performance reasons) only the browser&#39;s native overflow scrolling will suffice, and so we&#39;ve made it easy to toggle between the Ionic scroll implementation and overflow scrolling.</p>
 <p>You can implement pull-to-refresh with the <a href="../../scroll/Refresher">Refresher</a> component.</p>
+
+<h2>Component</h2>
+<h3>selector: <code>ion-content</code></h3>
+<h2>Usage</h2>
 
 <pre><code class="lang-html">&lt;ion-content&gt;
   Add your content here!
 &lt;/ion-content&gt;
 </code></pre>
 
-<h1 class="class export">Content <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/content/content.ts#L9-L227">ionic/components/content/content.ts (line 9)</a>
-</p>
-<h2>Component</h2>
-<p><span>selector: ion-content</span></p>
-
-<h2>Members</h2>
+<h2>Methods</h2>
 
 <div id="addScrollEventListener"></div>
+
 <h3>
-  <code>addScrollEventListener(handler)</code>
+<code>addScrollEventListener(handler)</code>
 
 </h3>
 
@@ -452,14 +422,16 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </ul>
 
 <div id="onScrollEnd"></div>
+
 <h3>
-  <code>onScrollEnd()</code>
+<code>onScrollEnd()</code>
 
 </h3>
 
 <div id="addTouchMoveListener"></div>
+
 <h3>
-  <code>addTouchMoveListener(handler)</code>
+<code>addTouchMoveListener(handler)</code>
 
 </h3>
 
@@ -501,8 +473,9 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </ul>
 
 <div id="scrollTo"></div>
+
 <h3>
-  <code>scrollTo(x, y, duration, tolerance)</code>
+<code>scrollTo(x, y, duration, tolerance)</code>
 
 </h3>
 
@@ -595,10 +568,15 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </ul>
 
 <div id="scrollToTop"></div>
+
 <h3>
-  <code>scrollToTop()</code>
+<code>scrollToTop()</code>
 
 </h3>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

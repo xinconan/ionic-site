@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,11 +350,17 @@
 
 <h1 class="api-title">
 
-  Animation
+
+Animation
+
+
+
 
 
 
 </h1>
+
+<h2>Description</h2>
 
 <h2 id="animation-steps-process">Animation Steps/Process</h2>
 <p>  1) Construct animation (doesn&#39;t start)
@@ -407,153 +379,175 @@
  13) Call onFinish()
  14) Resolve play()&#39;s promise</p>
 
-<h1 class="class export">Animation <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/animations/animation.ts#L2-L556">ionic/animations/animation.ts (line 2)</a>
-</p>
-<h2>Members</h2>
+<h2>Usage</h2>
+
+<h2>Methods</h2>
 
 <div id="reset"></div>
+
 <h3>
-  <code>reset()</code>
+<code>reset()</code>
 
 </h3>
 
 <div id="elements"></div>
+
 <h3>
-  <code>elements()</code>
+<code>elements()</code>
 
 </h3>
 
 <div id="addElement"></div>
+
 <h3>
-  <code>addElement()</code>
+<code>addElement()</code>
 
 </h3>
 
 <div id="parent"></div>
+
 <h3>
-  <code>parent()</code>
+<code>parent()</code>
 
 </h3>
 
 <div id="add"></div>
+
 <h3>
-  <code>add()</code>
+<code>add()</code>
 
 </h3>
 
 <div id="duration"></div>
+
 <h3>
-  <code>duration()</code>
+<code>duration()</code>
 
 </h3>
 
 <div id="clearDuration"></div>
+
 <h3>
-  <code>clearDuration()</code>
+<code>clearDuration()</code>
 
 </h3>
 
 <div id="easing"></div>
+
 <h3>
-  <code>easing()</code>
+<code>easing()</code>
 
 </h3>
 
 <div id="playbackRate"></div>
+
 <h3>
-  <code>playbackRate()</code>
+<code>playbackRate()</code>
 
 </h3>
 
 <div id="reverse"></div>
+
 <h3>
-  <code>reverse()</code>
+<code>reverse()</code>
 
 </h3>
 
 <div id="forward"></div>
+
 <h3>
-  <code>forward()</code>
+<code>forward()</code>
 
 </h3>
 
 <div id="from"></div>
+
 <h3>
-  <code>from()</code>
+<code>from()</code>
 
 </h3>
 
 <div id="to"></div>
+
 <h3>
-  <code>to()</code>
+<code>to()</code>
 
 </h3>
 
 <div id="fromTo"></div>
+
 <h3>
-  <code>fromTo()</code>
+<code>fromTo()</code>
 
 </h3>
 
 <div id="fadeIn"></div>
+
 <h3>
-  <code>fadeIn()</code>
+<code>fadeIn()</code>
 
 </h3>
 
 <div id="fadeOut"></div>
+
 <h3>
-  <code>fadeOut()</code>
+<code>fadeOut()</code>
 
 </h3>
 
 <div id="before"></div>
+
 <h3>
-  <code>before()</code>
+<code>before()</code>
 
 </h3>
 
 <div id="after"></div>
+
 <h3>
-  <code>after()</code>
+<code>after()</code>
 
 </h3>
 
 <div id="play"></div>
+
 <h3>
-  <code>play()</code>
+<code>play()</code>
 
 </h3>
 
 <div id="stage"></div>
+
 <h3>
-  <code>stage()</code>
+<code>stage()</code>
 
 </h3>
 
 <div id="pause"></div>
+
 <h3>
-  <code>pause()</code>
+<code>pause()</code>
 
 </h3>
 
 <div id="progressStart"></div>
+
 <h3>
-  <code>progressStart()</code>
+<code>progressStart()</code>
 
 </h3>
 
 <div id="progress"></div>
+
 <h3>
-  <code>progress()</code>
+<code>progress()</code>
 
 </h3>
 
 <div id="getCurrentTime"></div>
+
 <h3>
-  <code>getCurrentTime()</code>
+<code>getCurrentTime()</code>
 
 </h3>
 
@@ -562,40 +556,50 @@ in the list. To get a specific time of an animation, call<br />
 subAnimationInstance.getCurrentTime()</p>
 
 <div id="progressEnd"></div>
+
 <h3>
-  <code>progressEnd()</code>
+<code>progressEnd()</code>
 
 </h3>
 
 <div id="onReady"></div>
+
 <h3>
-  <code>onReady()</code>
+<code>onReady()</code>
 
 </h3>
 
 <div id="onPlay"></div>
+
 <h3>
-  <code>onPlay()</code>
+<code>onPlay()</code>
 
 </h3>
 
 <div id="onFinish"></div>
+
 <h3>
-  <code>onFinish()</code>
+<code>onFinish()</code>
 
 </h3>
 
 <div id="clone"></div>
+
 <h3>
-  <code>clone()</code>
+<code>clone()</code>
 
 </h3>
 
 <div id="dispose"></div>
+
 <h3>
-  <code>dispose()</code>
+<code>dispose()</code>
 
 </h3>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

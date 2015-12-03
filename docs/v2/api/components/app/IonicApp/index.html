@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -193,6 +187,9 @@
 <li class="">
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
+<li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
 <li class="active">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,24 +350,29 @@
 
 <h1 class="api-title">
 
-  IonicApp
+
+IonicApp
+
+
+
 
 
 
 </h1>
 
+<h2>Description</h2>
+
 <p>Component registry service.  For more information on registering
 components see the <a href="../id/IdRef/">IdRef API reference</a>.</p>
 
-<h1 class="class export">IonicApp <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/app/app.ts#L6-L115">ionic/components/app/app.ts (line 6)</a>
-</p>
-<h2>Members</h2>
+<h2>Usage</h2>
+
+<h2>Methods</h2>
 
 <div id="setTitle"></div>
+
 <h3>
-  <code>setTitle(val)</code>
+<code>setTitle(val)</code>
 
 </h3>
 
@@ -438,8 +409,9 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 </table>
 
 <div id="setEnabled"></div>
+
 <h3>
-  <code>setEnabled(isEnabled, fallback)</code>
+<code>setEnabled(isEnabled, fallback)</code>
 
 </h3>
 
@@ -498,8 +470,9 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
 </table>
 
 <div id="isEnabled"></div>
+
 <h3>
-  <code>isEnabled()</code>
+<code>isEnabled()</code>
 
 </h3>
 
@@ -511,8 +484,9 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
 </ul>
 
 <div id="register"></div>
+
 <h3>
-  <code>register(id, component)</code>
+<code>register(id, component)</code>
 
 </h3>
 
@@ -566,8 +540,9 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
 </table>
 
 <div id="unregister"></div>
+
 <h3>
-  <code>unregister(id)</code>
+<code>unregister(id)</code>
 
 </h3>
 
@@ -604,8 +579,9 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
 </table>
 
 <div id="getRegisteredComponent"></div>
+
 <h3>
-  <code>getRegisteredComponent(cls)</code>
+<code>getRegisteredComponent(cls)</code>
 
 </h3>
 
@@ -647,8 +623,9 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
 </ul>
 
 <div id="getComponent"></div>
+
 <h3>
-  <code>getComponent(key)</code>
+<code>getComponent(key)</code>
 
 </h3>
 
@@ -688,6 +665,10 @@ something goes wrong during a transition and the app wasn&#39;t re-enabled corre
   <li>Returns: <br />
 <code>TODO</code> TODO</li>
 </ul>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,11 +350,17 @@
 
 <h1 class="api-title">
 
-  Slides
+
+Slides
+
+
+
 
 
 
 </h1>
+
+<h2>Description</h2>
 
 <p>Slides is a slide box implementation based on Swiper.js</p>
 <p>Swiper.js:
@@ -399,106 +371,114 @@ The iDangero.us
 <a href="http://www.idangero.us/">http://www.idangero.us/</a></p>
 <p>Licensed under MIT</p>
 
-<h1 class="class export">Slides <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/slides/slides.ts#L13-L451">ionic/components/slides/slides.ts (line 13)</a>
-</p>
 <h2>Component</h2>
-<p><span>selector: ion-slides</span></p>
+<h3>selector: <code>ion-slides</code></h3>
+<h2>Usage</h2>
 
-<p><span>inputs: autoplay, loop, index, bounce, pager, options, zoom, zoomDuration, zoomMax</span></p>
-
-<p><span>outputs: slideChanged</span></p>
-
-<h2>Members</h2>
+<h2>Methods</h2>
 
 <div id="onInit"></div>
+
 <h3>
-  <code>onInit()</code>
+<code>onInit()</code>
 
 </h3>
 
 <div id="onTap"></div>
+
 <h3>
-  <code>onTap()</code>
+<code>onTap()</code>
 
 </h3>
 
 <div id="onClick"></div>
+
 <h3>
-  <code>onClick()</code>
+<code>onClick()</code>
 
 </h3>
 
 <div id="onDoubleTap"></div>
+
 <h3>
-  <code>onDoubleTap()</code>
+<code>onDoubleTap()</code>
 
 </h3>
 
 <div id="onLazyImageLoad"></div>
+
 <h3>
-  <code>onLazyImageLoad()</code>
+<code>onLazyImageLoad()</code>
 
 </h3>
 
 <div id="onLazyImageReady"></div>
+
 <h3>
-  <code>onLazyImageReady()</code>
+<code>onLazyImageReady()</code>
 
 </h3>
 
 <div id="initZoom"></div>
+
 <h3>
-  <code>initZoom()</code>
+<code>initZoom()</code>
 
 </h3>
 
 <div id="resetZoom"></div>
+
 <h3>
-  <code>resetZoom()</code>
+<code>resetZoom()</code>
 
 </h3>
 
 <div id="toggleZoom"></div>
+
 <h3>
-  <code>toggleZoom()</code>
+<code>toggleZoom()</code>
 
 </h3>
 
 <div id="onTransitionStart"></div>
+
 <h3>
-  <code>onTransitionStart()</code>
+<code>onTransitionStart()</code>
 
 </h3>
 
 <div id="onTransitionEnd"></div>
+
 <h3>
-  <code>onTransitionEnd()</code>
+<code>onTransitionEnd()</code>
 
 </h3>
 
 <div id="onTouchStart"></div>
+
 <h3>
-  <code>onTouchStart()</code>
+<code>onTouchStart()</code>
 
 </h3>
 
 <div id="onTouchMove"></div>
+
 <h3>
-  <code>onTouchMove()</code>
+<code>onTouchMove()</code>
 
 </h3>
 
 <div id="onTouchEnd"></div>
+
 <h3>
-  <code>onTouchEnd()</code>
+<code>onTouchEnd()</code>
 
 </h3>
 
 <div id="update"></div>
+
 <h3>
-  <code>update()</code>
+<code>update()</code>
 
 </h3>
 
@@ -506,46 +486,57 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 child slides.</p>
 
 <div id="next"></div>
+
 <h3>
-  <code>next()</code>
+<code>next()</code>
 
 </h3>
 
 <div id="prev"></div>
+
 <h3>
-  <code>prev()</code>
+<code>prev()</code>
 
 </h3>
 
 <div id="getIndex"></div>
+
 <h3>
-  <code>getIndex()</code>
+<code>getIndex()</code>
 
 </h3>
 
 <div id="getNumSlides"></div>
+
 <h3>
-  <code>getNumSlides()</code>
+<code>getNumSlides()</code>
 
 </h3>
 
 <div id="isAtEnd"></div>
+
 <h3>
-  <code>isAtEnd()</code>
+<code>isAtEnd()</code>
 
 </h3>
 
 <div id="isAtBeginning"></div>
+
 <h3>
-  <code>isAtBeginning()</code>
+<code>isAtBeginning()</code>
 
 </h3>
 
 <div id="getSliderWidget"></div>
+
 <h3>
-  <code>getSliderWidget()</code>
+<code>getSliderWidget()</code>
 
 </h3>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>

@@ -101,13 +101,13 @@
         onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/v2/nightly/api/"
-   >
+   value="/docs/v2/api/"
+   selected>
     2.0.0-nightly 
   </option>
 
   <option
-   value="/docs/v2/api/"
+   value="/docs/v2/2.0.0-alpha.38/api/"
    >
     2.0.0-alpha.38 (latest)
   </option>
@@ -141,12 +141,12 @@
     <a ng-click="showAPI = !showAPI">API</a>
     <ul ng-show="showAPI" ng-init="showAPI = true">
       
-  
     
 
+    
   
 <li class="">
-  <a href="/docs/v2/api"></a>
+  <a href="/docs/v2/nightly/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -170,13 +170,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +188,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +198,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +213,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +239,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +252,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,36 +314,17 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
 </li>
 
+
+    
 
 
     </ul>
@@ -384,11 +350,17 @@
 
 <h1 class="api-title">
 
-  SqlStorage
+
+SqlStorage
+
+
+
 
 
 
 </h1>
+
+<h2>Description</h2>
 
 <p>SqlStorage uses SQLite or WebSQL (development only!) to store data in a
 persistent SQL store on the filesystem.</p>
@@ -396,6 +368,8 @@ persistent SQL store on the filesystem.</p>
 app storage, unlike Local Storage which is treated differently by the OS.</p>
 <p>For convenience, the engine supports key/value storage for simple get/set and blob
 storage. The full SQL engine is exposed underneath through the <code>query</code> method.</p>
+
+<h2>Usage</h2>
 
 <pre><code class="lang-js">let storage = new Storage(SqlStorage, options);
 storage.set(&#39;name&#39;, &#39;Max&#39;);
@@ -413,15 +387,12 @@ storage.query(&#39;select * from projects&#39;).then((resp) =&gt; {})
   existingDatabase: whether to load this as an existing database (default is false)
 }</p>
 
-<h1 class="class export">SqlStorage <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/platform/storage/sql.ts#L5-L203">ionic/platform/storage/sql.ts (line 5)</a>
-</p>
-<h2>Members</h2>
+<h2>Methods</h2>
 
 <div id="query"></div>
+
 <h3>
-  <code>query(query, params)</code>
+<code>query(query, params)</code>
 
 </h3>
 
@@ -482,8 +453,9 @@ like SELECT, INSERT, and UPDATE.</p>
 </ul>
 
 <div id="get"></div>
+
 <h3>
-  <code>get(key)</code>
+<code>get(key)</code>
 
 </h3>
 
@@ -525,8 +497,9 @@ like SELECT, INSERT, and UPDATE.</p>
 </ul>
 
 <div id="set"></div>
+
 <h3>
-  <code>set(key, value)</code>
+<code>set(key, value)</code>
 
 </h3>
 
@@ -585,8 +558,9 @@ like SELECT, INSERT, and UPDATE.</p>
 </ul>
 
 <div id="remove"></div>
+
 <h3>
-  <code>remove(key, value)</code>
+<code>remove(key, value)</code>
 
 </h3>
 
@@ -643,6 +617,10 @@ like SELECT, INSERT, and UPDATE.</p>
   <li>Returns: <br />
 <code>Promise</code> that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}</li>
 </ul>
+
+<!-- end content block -->
+
+<!-- end body block -->
 
 
       </main>
