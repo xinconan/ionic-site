@@ -109,7 +109,13 @@
   <option
    value="/docs/v2/api/"
    selected>
-    2.0.0-alpha.38 (latest)
+    2.0.0-alpha.39 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
   </option>
 
   <option
@@ -170,13 +176,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +194,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +204,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +219,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +245,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +258,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,31 +320,10 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
@@ -377,6 +347,9 @@
   <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/scroll/pull-to-refresh.ts#L4">
     Improve this doc
   </a>
+
+  <!-- TODO(drewrygh, perrygovier): render this block in the correct location, markup identical to component docs -->
+
 </div>
 
 <h1 class="api-title">
@@ -390,6 +363,27 @@
 <p>Allows you to add pull-to-refresh to an Content component.</p>
 <p>Place it as the first child of your Content or Scroll element.</p>
 <p>When refreshing is complete, call <code>refresher.complete()</code> from your controller.</p>
+
+<pre><code class="lang-ts">&lt;ion-refresher (starting)=&quot;doStarting()&quot; (refresh)=&quot;doRefresh($event, refresher)&quot; (pulling)=&quot;doPulling($event, amt)&quot;&gt;
+
+
+doRefresh(refresher) {
+  console.log(&#39;Refreshing!&#39;, refresher);
+
+  setTimeout(() =&gt; {
+    console.log(&#39;Pull to refresh complete!&#39;, refresher);
+    refresher.complete();
+  })
+}
+
+doStarting() {
+  console.log(&#39;Pull started!&#39;);
+}
+
+doPulling(amt) {
+  console.log(&#39;You have pulled&#39;, amt);
+}
+</code></pre>
 
 <h1 class="class export">Refresher <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />

@@ -109,7 +109,13 @@
   <option
    value="/docs/v2/api/"
    selected>
-    2.0.0-alpha.38 (latest)
+    2.0.0-alpha.39 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
   </option>
 
   <option
@@ -170,13 +176,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +194,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +204,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +219,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +245,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +258,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,31 +320,10 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
 </li>
 <li class="active">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
@@ -377,6 +347,9 @@
   <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/nav/view-controller.ts#L0">
     Improve this doc
   </a>
+
+  <!-- TODO(drewrygh, perrygovier): render this block in the correct location, markup identical to component docs -->
+
 </div>
 
 <h1 class="api-title">
@@ -387,19 +360,51 @@
 
 </h1>
 
-<p>TODO</p>
+<p>You can access various features and information about the current view</p>
 
 <h1 class="class export">ViewController <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/view-controller.ts#L1-L315">ionic/components/nav/view-controller.ts (line 1)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/nav/view-controller.ts#L1-L344">ionic/components/nav/view-controller.ts (line 1)</a>
 </p>
 <h2>Members</h2>
 
 <div id="enableBack"></div>
 <h3>
-  <code>enableBack()</code>
+  <code>enableBack(Check)</code>
 
 </h3>
+
+<p>Check to see if you can go back in the navigation stack</p>
+
+<table class="table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        Check
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>whether or not you can go back from this page</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 <ul>
   <li>Returns: <br />
@@ -411,6 +416,17 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
   <code>index()</code>
 
 </h3>
+
+<p>You can find out the index of the current view is in the current navigation stack</p>
+
+<pre><code class="language-typescript"> export class Page1 {
+   constructor(view: ViewController){
+     this.view = view;
+     // Just log out the index
+     console.log(this.view.index);
+   }
+ }
+</code></pre>
 
 <ul>
   <li>Returns: <br />
@@ -428,44 +444,23 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 <code>boolean</code> Returns if this Page is the root page of the NavController.</li>
 </ul>
 
-<div id="pageRef"></div>
-<h3>
-  <code>pageRef()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>ElementRef</code> Returns the Page’s ElementRef</li>
-</ul>
-
-<div id="contentRef"></div>
-<h3>
-  <code>contentRef()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>ElementRef</code> Returns the Page’s Content ElementRef</li>
-</ul>
-
-<div id="getContent"></div>
-<h3>
-  <code>getContent()</code>
-
-</h3>
-
-<ul>
-  <li>Returns: <br />
-<code>Component</code> Returns the Page’s Content component reference.</li>
-</ul>
-
 <div id="hasNavbar"></div>
 <h3>
   <code>hasNavbar()</code>
 
 </h3>
+
+<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageLoaded</code> method in order to make sure the view has rendered fully.</p>
+
+<pre><code class="language-typescript">export class Page1 {
+ constructor(view: ViewController) {
+   this.view = view
+ }
+ onPageLoaded(){
+   console.log('Do we have a Navbar?', this.view.hasNavbar());
+ }
+}
+</code></pre>
 
 <ul>
   <li>Returns: <br />
@@ -513,6 +508,8 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
   <code>showBackButton(Set)</code>
 
 </h3>
+
+<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onPageLoaded</code> to make sure the has been compleltly rendered.</p>
 
 <table class="table" style="margin:0;">
   <thead>

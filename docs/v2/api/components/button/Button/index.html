@@ -12,7 +12,7 @@
 
 
 
-    <title>Button - Class in module  -  Ionic Framework</title>
+    <title>Button - Class in module ionic -  Ionic Framework</title>
 
   </head>
   <body id="docs-page-{{Button | slugify}}"
@@ -109,7 +109,13 @@
   <option
    value="/docs/v2/api/"
    selected>
-    2.0.0-alpha.38 (latest)
+    2.0.0-alpha.39 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
   </option>
 
   <option
@@ -170,13 +176,7 @@
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/util/ClickBlock">ClickBlock</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/config/Config">Config</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/config/ConfigComponent">ConfigComponent</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
@@ -194,6 +194,9 @@
   <a href="/docs/v2/api/components/app/IdRef">IdRef</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/text-input/Input">Input</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -201,9 +204,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/tap-click/isActivatable">isActivatable</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/item/Item">Item</a>
@@ -219,9 +219,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/list/List">List</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/list/ListHeader">ListHeader</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -248,9 +245,6 @@
   <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/navbar/NavbarTemplate">NavbarTemplate</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/nav/NavController">NavController</a>
 </li>
 <li class="">
@@ -264,9 +258,6 @@
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/overlay/OverlayNav">OverlayNav</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/config/Page">Page</a>
@@ -329,31 +320,10 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/tap-click/TapClick">TapClick</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInput">TextInput</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/text-input/TextInputElement">TextInputElement</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarBase">ToolbarBase</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/components/toolbar/ToolbarItem">ToolbarItem</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/toolbar/ToolbarTitle">ToolbarTitle</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/Translate">Translate</a>
-</li>
-<li class="">
-  <a href="/docs/v2/api/translation/TranslatePipe">TranslatePipe</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
@@ -377,6 +347,9 @@
   <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/button/button.ts#L2">
     Improve this doc
   </a>
+
+  <!-- TODO(drewrygh, perrygovier): render this block in the correct location, markup identical to component docs -->
+
 </div>
 
 <h1 class="api-title">
@@ -387,14 +360,189 @@
 
 </h1>
 
-<p>TODO</p>
+<p>Buttons are simple components in Ionic, can consist of text, an icon, or both, and can be enhanced with a wide range of attributes.</p>
 
 <h1 class="class export">Button <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/button/button.ts#L3-L73">ionic/components/button/button.ts (line 3)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/button/button.ts#L3-L94">ionic/components/button/button.ts (line 3)</a>
 </p>
 <h2>Directive</h2>
 <p><span>selector: button, [button]</span></p>
+
+<h2>Attributes:</h2>
+<table class="table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td>
+          primary
+        </td>
+        <td>
+          sets button color to default primary
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          secondary
+        </td>
+        <td>
+          sets button color to default secondary
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          danger
+        </td>
+        <td>
+          sets button color to default danger
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          light
+        </td>
+        <td>
+          sets button color to default light
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          dark
+        </td>
+        <td>
+          sets button color to default dark
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          outline
+        </td>
+        <td>
+          for an unfilled outline button
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          clear
+        </td>
+        <td>
+          for a transparent button that only shows text and icons
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          round
+        </td>
+        <td>
+          for a button with rounded corners
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          block
+        </td>
+        <td>
+          for a block button that fills it's parent container
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          full
+        </td>
+        <td>
+          for a full width button
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          small
+        </td>
+        <td>
+          sets button size to small
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          large
+        </td>
+        <td>
+          sets button size to large
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab
+        </td>
+        <td>
+          for a floating action button
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab-left
+        </td>
+        <td>
+          position a fab button to the left
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab-right
+        </td>
+        <td>
+          position a fab button to the right
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab-center
+        </td>
+        <td>
+          position a fab button towards the center
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab-top
+        </td>
+        <td>
+          position a fab button towards the top
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          fab-bottom
+        </td>
+        <td>
+          position a fab button towards the bottom
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
 
 
       </main>
