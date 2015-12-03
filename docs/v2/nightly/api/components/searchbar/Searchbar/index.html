@@ -12,11 +12,11 @@
 
 
 
-    <title>Checkbox - Class in module  -  Ionic Framework</title>
+    <title>Searchbar - Class in module ionic -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Checkbox | slugify}}"
-        class="v2 docs page-{{Checkbox | slugify}}"
+  <body id="docs-page-{{Searchbar | slugify}}"
+        class="v2 docs page-{{Searchbar | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -167,7 +167,7 @@
 <li class="">
   <a href="/docs/v2/nightly/api/components/button/Button">Button</a>
 </li>
-<li class="active">
+<li class="">
   <a href="/docs/v2/nightly/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="">
@@ -275,7 +275,7 @@
 <li class="">
   <a href="/docs/v2/nightly/api/components/scroll/Scroll">Scroll</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/nightly/api/components/searchbar/Searchbar">Searchbar</a>
 </li>
 <li class="">
@@ -341,11 +341,11 @@
       
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/checkbox/checkbox.ts#L3">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/searchbar/searchbar.ts#L5">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/checkbox/checkbox.ts#L3">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/searchbar/searchbar.ts#L5">
     Improve this doc
   </a>
 
@@ -355,44 +355,25 @@
 
 <h1 class="api-title">
 
-  Checkbox
+  Searchbar
 
 
 
 </h1>
 
-<p>The checkbox is no different than the HTML checkbox input, except it&#39;s styled differently.</p>
-<p>See the <a href="https://angular.io/docs/js/latest/api/core/Form-interface.html">Angular 2 Docs</a> for more info on forms and input.</p>
+<p>Manages the display of a search bar which can be used to search or filter items.</p>
 
-<pre><code class="lang-html">&lt;ion-checkbox checked=&quot;true&quot; value=&quot;isChecked&quot; ng-control=&quot;htmlCtrl&quot;&gt;
-  HTML5
-&lt;/ion-checkbox&gt;
+<pre><code class="lang-html">&lt;ion-searchbar [(ng-model)]=&quot;defaultSearch&quot;&gt;&lt;/ion-searchbar&gt;
 </code></pre>
 
-<h1 class="class export">Checkbox <span class="type">class</span></h1>
+<h1 class="class export">Searchbar <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/checkbox/checkbox.ts#L4-L123">ionic/components/checkbox/checkbox.ts (line 4)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/searchbar/searchbar.ts#L6-L156">ionic/components/searchbar/searchbar.ts (line 6)</a>
 </p>
 <h2>Component</h2>
-<p><span>selector: ion-checkbox</span></p>
+<p><span>selector: ion-searchbar</span></p>
 
-<p><span>inputs: value, checked, disabled, id</span></p>
-
-<h2>Members</h2>
-
-<div id="onInit"></div>
-<h3>
-  <code>onInit()</code>
-
-</h3>
-
-<div id="toggle"></div>
-<h3>
-  <code>toggle()</code>
-
-</h3>
-
-<p>Toggle the checked state of the checkbox. Calls onChange to pass the updated checked state to the model (Control).</p>
+<p><span>inputs: cancelAction</span></p>
 
 <h2>Attributes:</h2>
 <table class="table" style="margin:0;">
@@ -401,6 +382,10 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
         <th>Attribute</th>
 
         
+        
+          
+        
+          
         
           
         
@@ -417,13 +402,13 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
         <td>
           
           
-          checked
+          placeholder
         </td>
 
         
 
         <td>
-          whether or not the checkbox is checked (defaults to false)
+          sets input placeholder to value passed in
         </td>
       </tr>
       
@@ -431,13 +416,42 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
         <td>
           
           
-          value
+          show-cancel
         </td>
 
         
 
         <td>
-          the value of the checkbox component
+          shows the cancel button based on boolean value passed in
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          
+          
+          cancel-text
+        </td>
+
+        
+
+        <td>
+          sets the cancel button text to the value passed in
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          
+          
+          cancel-action
+        </td>
+
+        
+
+        <td>
+          the function that gets called by clicking the cancel button
+
 
         </td>
       </tr>
