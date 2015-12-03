@@ -12,11 +12,11 @@
 
 
 
-    <title>SearchBar - Class in module  -  Ionic Framework</title>
+    <title>Searchbar - Class in module ionic -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{SearchBar | slugify}}"
-        class="v2 docs page-{{SearchBar | slugify}}"
+  <body id="docs-page-{{Searchbar | slugify}}"
+        class="v2 docs page-{{Searchbar | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -275,7 +275,7 @@
 <li class="">
   <a href="/docs/v2/nightly/api/components/scroll/Scroll">Scroll</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/nightly/api/components/searchbar/Searchbar">Searchbar</a>
 </li>
 <li class="">
@@ -348,32 +348,83 @@
   <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/searchbar/searchbar.ts#L5">
     Improve this doc
   </a>
+
+  <!-- TODO(drewrygh, perrygovier): render this block in the correct location, markup identical to component docs -->
+
 </div>
 
 <h1 class="api-title">
 
-  SearchBar
+  Searchbar
 
 
 
 </h1>
 
-<p>The Search Bar service adds an input field which can be used to search or filter items.</p>
+<p>Manages the display of a search bar which can be used to search or filter items.</p>
 
-<h1 class="class export">SearchBar <span class="type">class</span></h1>
+<pre><code class="lang-html">&lt;ion-searchbar [(ng-model)]=&quot;defaultSearch&quot;&gt;&lt;/ion-searchbar&gt;
+</code></pre>
+
+<h1 class="class export">Searchbar <span class="type">class</span></h1>
 <p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/searchbar/searchbar.ts#L6-L129">ionic/components/searchbar/searchbar.ts (line 6)</a>
+defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/searchbar/searchbar.ts#L6-L156">ionic/components/searchbar/searchbar.ts (line 6)</a>
 </p>
 <h2>Component</h2>
 <p><span>selector: ion-searchbar</span></p>
 
-<h2>Members</h2>
+<p><span>inputs: cancelAction</span></p>
 
-<div id="clearInput"></div>
-<h3>
-  <code>clearInput()</code>
+<h2>Attributes:</h2>
+<table class="table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td>
+          placeholder
+        </td>
+        <td>
+          sets input placeholder to value passed in
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          show-cancel
+        </td>
+        <td>
+          shows the cancel button based on boolean value passed in
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          cancel-text
+        </td>
+        <td>
+          sets the cancel button text to the value passed in
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          cancel-action
+        </td>
+        <td>
+          the function that gets called by clicking the cancel button
 
-</h3>
+
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
 
 
       </main>
