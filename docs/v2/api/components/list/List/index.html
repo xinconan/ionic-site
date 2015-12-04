@@ -149,7 +149,7 @@
     
   
 <li class="">
-  <a href="/docs/v2/nightly/api"></a>
+  <a href="/docs/v2/api"></a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
@@ -319,6 +319,31 @@
 
         
       </nav>
+      
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+        </div>
+        <div id="demo-device-ios" ng-class="previewPlatform">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/list/?ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android" ng-class="previewPlatform">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/list/?ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
       
       <main>
         <div class="improve-docs">
