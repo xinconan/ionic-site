@@ -12,11 +12,11 @@
 
 
 
-    <title>Events - Class in module  -  Ionic Framework</title>
+    <title>Javascript - Extend Ionic even further with the power of AngularJS -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Events | slugify}}"
-        class="v2 docs page-{{Events | slugify}}"
+  <body id="docs-page-api"
+        class="v2 docs page-api"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -175,7 +175,7 @@
 <li class="">
   <a href="/docs/v2/api/components/content/Content">Content</a>
 </li>
-<li class="active">
+<li class="">
   <a href="/docs/v2/api/util/Events">Events</a>
 </li>
 <li class="">
@@ -335,231 +335,14 @@
       </nav>
       
       <main>
-        <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/util/events.ts#L0">
-    View Source
-  </a>
-  &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/util/events.ts#L0">
-    Improve this doc
-  </a>
+        <h1 id="angularjs-extensions">AngularJS Extensions</h1>
 
-  <!-- TODO(drewrygh, perrygovier): render this block in the correct location, markup identical to component docs -->
+<p>Ionic is both a CSS framework and a Javascript UI library. Many components need Javascript in order to produce magic, though often components<br />
+can easily be used without coding through framework extensions such as our AngularIonic extensions.</p>
 
-</div>
+<p>Ionic follows the View Controller pattern popularized in such frameworks as Cocoa Touch. In the View Controller pattern, we treat different sections of the interface as child Views or even child View Controllers that contain other views. View Controllers then “power” the Views inside of them to provide interaction and UI functionality. A great example is the Tab Bar View Controller which processes taps on a Tab Bar to switch between a set of viewable panes.</p>
 
-<h1 class="api-title">
-
-
-Events
-
-
-
-
-
-
-</h1>
-
-<h2>Description</h2>
-
-<p>Events is a pub/sub style event system for sending and responding to application-level
-events across your app.</p>
-
-<h2>Usage</h2>
-
-<pre><code class="lang-ts">// first page (publish an event when a user is created)
-function createUser(user) {
-  console.log(&#39;User created!&#39;)
-  events.publish(&#39;user:created&#39;, user);
-}
-
-// second page (listen for the user created event)
-events.subscribe(&#39;user:created&#39;, (user) =&gt; {
-  console.log(&#39;Welcome&#39;, user); 
-});
-</code></pre>
-
-<h2>Methods</h2>
-
-<div id="subscribe"></div>
-
-<h3>
-<code>subscribe(topic, handler)</code>
-
-</h3>
-
-<p>Subscribe to an event topic. Events that get posted to that topic<br />
-will trigger the provided handler.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        topic
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the topic to subscribe to</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        handler
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the event handler</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="unsubscribe"></div>
-
-<h3>
-<code>unsubscribe(topic, handler)</code>
-
-</h3>
-
-<p>Unsubscribe from the given topic. Your handler will<br />
-no longer receive events published to this topic.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        topic
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the topic to unsubscribe from</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        handler
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the event handler</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
- true if a handler was removed</li>
-</ul>
-
-<div id="publish"></div>
-
-<h3>
-<code>publish(topic, eventData)</code>
-
-</h3>
-
-<p>Publish an event to the given topic.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        topic
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the topic to publish to</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        eventData
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the data to send as the event</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<!-- end content block -->
-
-<!-- end body block -->
-
+<p>Explore our API docs for detailed information on the View Controllers and Javascript utilities available in Ionic.</p>
 
       </main>
     </div>
