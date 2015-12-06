@@ -978,16 +978,17 @@ automatically close the currently opened menu.</p>
 </code></pre>
 </div>
 
-<p>Note that if your destination state uses a resolve and that resolve asyncronously<br />
+<p>Note that if your destination state uses a resolve and that resolve asynchronously<br />
 takes longer than a standard transition (300ms), you’ll need to set the<br />
 <code class="highlighter-rouge">nextViewOptions</code> manually as your resolve completes.</p>
 
-<p>```js<br />
-$ionicHistory.nextViewOptions({<br />
- historyRoot: true,<br />
- disableAnimate: true,<br />
- expire: 300<br />
-});</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicHistory</span><span class="p">.</span><span class="nx">nextViewOptions</span><span class="p">({</span>
+ <span class="na">historyRoot</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="na">disableAnimate</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="na">expire</span><span class="p">:</span> <span class="mi">300</span>
+<span class="p">});</span>
+</code></pre>
+</div>
 
 
         </div>
