@@ -985,7 +985,7 @@ an opt-in feature and not the default.</p>
 
 <span class="c1">// Triggered on a button click, or some other target</span>
 <span class="nx">$scope</span><span class="p">.</span><span class="nx">showPopup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
 
   <span class="c1">// An elaborate, custom popup</span>
   <span class="kd">var</span> <span class="nx">myPopup</span> <span class="o">=</span> <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">show</span><span class="p">({</span>
@@ -1009,19 +1009,23 @@ an opt-in feature and not the default.</p>
       <span class="p">}</span>
     <span class="p">]</span>
   <span class="p">});</span>
+
   <span class="nx">myPopup</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Tapped!'</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
   <span class="p">});</span>
+
   <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
      <span class="nx">myPopup</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span> <span class="c1">//close the popup after 3 seconds for some reason</span>
   <span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
  <span class="p">};</span>
+
  <span class="c1">// A confirm dialog</span>
  <span class="nx">$scope</span><span class="p">.</span><span class="nx">showConfirm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
    <span class="kd">var</span> <span class="nx">confirmPopup</span> <span class="o">=</span> <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">confirm</span><span class="p">({</span>
      <span class="na">title</span><span class="p">:</span> <span class="s1">'Consume Ice Cream'</span><span class="p">,</span>
      <span class="na">template</span><span class="p">:</span> <span class="s1">'Are you sure you want to eat this ice cream?'</span>
    <span class="p">});</span>
+
    <span class="nx">confirmPopup</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
      <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'You are sure'</span><span class="p">);</span>
@@ -1037,6 +1041,7 @@ an opt-in feature and not the default.</p>
      <span class="na">title</span><span class="p">:</span> <span class="s1">'Don\'t eat that!'</span><span class="p">,</span>
      <span class="na">template</span><span class="p">:</span> <span class="s1">'It might taste good'</span>
    <span class="p">});</span>
+
    <span class="nx">alertPopup</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Thank you for not eating my delicious ice cream cone'</span><span class="p">);</span>
    <span class="p">});</span>

@@ -975,8 +975,12 @@ when it is done with the backdrop.</p>
 <p>For example, if <code class="highlighter-rouge">retain</code> is called three times, the backdrop will be shown until <code class="highlighter-rouge">release</code><br />
 is called three times.</p>
 
+<p><strong>Notes:</strong><br />
+- The backdrop service will broadcast ‘backdrop.shown’ and ‘backdrop.hidden’ events from the root scope,<br />
+this is useful for alerting native components not in html.</p>
+
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicBackdrop</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicBackdrop</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">//Show a backdrop for one second</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">action</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicBackdrop</span><span class="p">.</span><span class="nx">retain</span><span class="p">();</span>
@@ -984,6 +988,17 @@ is called three times.</p>
       <span class="nx">$ionicBackdrop</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
     <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
   <span class="p">};</span>
+
+  <span class="c1">// Execute action on backdrop disappearing</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'backdrop.hidden'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Execute action</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Execute action on backdrop appearing</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'backdrop.shown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Execute action</span>
+  <span class="p">});</span>
+
 <span class="p">}</span>
 </code></pre>
 </div>
