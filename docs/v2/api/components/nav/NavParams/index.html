@@ -89,6 +89,8 @@
 
     <div class="docs-container"
          ng-app="IonicDocs"
+         
+           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <!-- <form class="form-group search" role="search">
@@ -320,6 +322,31 @@
         
       </nav>
       
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+        </div>
+        <div id="demo-device-ios" ng-class="previewPlatform">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/nav-params/?ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android" ng-class="previewPlatform">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/nav-params/?ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
+      
       <main>
         <div class="improve-docs">
   <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/nav/nav-controller.ts#L1454">
@@ -411,7 +438,12 @@ option with a simple <code>get</code> method.</p>
   </tbody>
 </table>
 
-<!-- end content block -->
+<h2>Related</h2>
+
+<p><a href="/docs/v2/components#navigation">Navigation Component Docs</a><br />
+<a href="../NavController/">NavController API Docs</a><br />
+<a href="../Nav/">Nav API Docs</a><br />
+<a href="../NavPush/">NavPush API Docs</a><!-- end content block --></p>
 
 <!-- end body block -->
 
