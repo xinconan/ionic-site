@@ -879,7 +879,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">no-lines</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ng-for=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
-    
+    {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
@@ -900,7 +900,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 
   <span class="nt">&lt;ion-item&gt;</span>
     <span class="nt">&lt;icon</span> <span class="na">leaf</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
-    Herbology
+      Herbology
     <span class="nt">&lt;icon</span> <span class="na">rose</span> <span class="na">item-right</span><span class="nt">&gt;&lt;/icon&gt;</span>
   <span class="nt">&lt;/ion-item&gt;</span>
 
