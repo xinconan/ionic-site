@@ -14,7 +14,7 @@
       <meta name="robots" content="noindex">
     
 
-    <title>ion-slide-box - Directive in module ionic -  Ionic Framework</title>
+    <title>ion-title - Directive in module ionic -  Ionic Framework</title>
     <link href="/css/site.css?17" rel="stylesheet">
 <!--<script src="//cdn.optimizely.com/js/595530035.js"></script>-->
 <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
@@ -84,7 +84,7 @@
 
     <div class="header horizontal-gradient">
       <div class="container">
-        <h3>ion-slide-box</h3>
+        <h3>ion-title</h3>
         <h4>Directive in module ionic</h4>
       </div>
       <div class="news">
@@ -95,97 +95,97 @@
                 <select onchange="window.location.href=this.options[this.selectedIndex].value">
 
   <option
-   value="/docs/nightly/api/directive/ionSlideBox/"
+   value="/docs/nightly/api/directive/ionTitle/"
    selected>
     nightly 
   </option>
 
   <option
-   value="/docs/api/directive/ionSlideBox/"
+   value="/docs/api/directive/ionTitle/"
    >
     1.1.1 (latest)
   </option>
 
   <option
-   value="/docs/1.1.0/api/directive/ionSlideBox/"
+   value="/docs/1.1.0/api/directive/ionTitle/"
    >
     1.1.0 
   </option>
 
   <option
-   value="/docs/1.0.1/api/directive/ionSlideBox/"
+   value="/docs/1.0.1/api/directive/ionTitle/"
    >
     1.0.1 
   </option>
 
   <option
-   value="/docs/1.0.0/api/directive/ionSlideBox/"
+   value="/docs/1.0.0/api/directive/ionTitle/"
    >
     1.0.0 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.5/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.5/api/directive/ionTitle/"
    >
     1.0.0-rc.5 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.4/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.4/api/directive/ionTitle/"
    >
     1.0.0-rc.4 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.3/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.3/api/directive/ionTitle/"
    >
     1.0.0-rc.3 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.2/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.2/api/directive/ionTitle/"
    >
     1.0.0-rc.2 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.1/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.1/api/directive/ionTitle/"
    >
     1.0.0-rc.1 
   </option>
 
   <option
-   value="/docs/1.0.0-rc.0/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-rc.0/api/directive/ionTitle/"
    >
     1.0.0-rc.0 
   </option>
 
   <option
-   value="/docs/1.0.0-beta.14/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-beta.14/api/directive/ionTitle/"
    >
     1.0.0-beta.14 
   </option>
 
   <option
-   value="/docs/1.0.0-beta.13/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-beta.13/api/directive/ionTitle/"
    >
     1.0.0-beta.13 
   </option>
 
   <option
-   value="/docs/1.0.0-beta.12/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-beta.12/api/directive/ionTitle/"
    >
     1.0.0-beta.12 
   </option>
 
   <option
-   value="/docs/1.0.0-beta.11/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-beta.11/api/directive/ionTitle/"
    >
     1.0.0-beta.11 
   </option>
 
   <option
-   value="/docs/1.0.0-beta.10/api/directive/ionSlideBox/"
+   value="/docs/1.0.0-beta.10/api/directive/ionTitle/"
    >
     1.0.0-beta.10 
   </option>
@@ -943,206 +943,30 @@
 
         <div class="col-md-10 col-sm-9 main-content">
           <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic/tree/master/js/angular/directive/slideBox.js#L2">
+  <a href="http://github.com/driftyco/ionic/tree/master/js/angular/directive/title.js#L1">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic/edit/master/js/angular/directive/slideBox.js#L2">
+  <a href="http://github.com/driftyco/ionic/edit/master/js/angular/directive/title.js#L1">
     Improve this doc
   </a>
 </div>
 
 <h1 class="api-title">
 
-  ion-slide-box
+  ion-title
 
 
-
-<br />
-<small>
-  Delegate: <a href="/docs/nightly/api/service/$ionicSlideBoxDelegate/"><code>$ionicSlideBoxDelegate</code></a>
-</small>
 
 </h1>
 
-<p>The Slide Box is a multi-page container where each page can be swiped or dragged between:</p>
-
-<p><img src="http://ionicframework.com.s3.amazonaws.com/docs/controllers/slideBox.gif" alt="SlideBox" /></p>
-
-<fieldset class="deprecated">
-  <legend>Deprecated API</legend>
-  <p>will be removed in the next Ionic release in favor of the new ion-slides component.
-Don&#39;t depend on the internal behavior of this widget.</p>
-
-</fieldset>
-
 <h2 id="usage">Usage</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slide-box</span> <span class="na">on-slide-changed=</span><span class="s">"slideHasChanged($index)"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box blue"</span><span class="nt">&gt;&lt;h1&gt;</span>BLUE<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box yellow"</span><span class="nt">&gt;&lt;h1&gt;</span>YELLOW<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box pink"</span><span class="nt">&gt;&lt;h1&gt;</span>PINK<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
-<span class="nt">&lt;/ion-slide-box&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Hello<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;ion-nav-bar&gt;</span>
 </code></pre>
 </div>
-
-<h2 id="api" style="clear:both;">API</h2>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Attr</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        delegate-handle
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>The handle used to identify this slideBox
-with <a href="/docs/nightly/api/service/$ionicSlideBoxDelegate/"><code>$ionicSlideBoxDelegate</code></a>.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        does-continue
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>boolean</code>
-      </td>
-      <td>
-        <p>Whether the slide box should loop.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        auto-play
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>boolean</code>
-      </td>
-      <td>
-        <p>Whether the slide box should automatically slide. Default true if does-continue is true.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        slide-interval
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>number</code>
-      </td>
-      <td>
-        <p>How many milliseconds to wait to change slides (if does-continue is true). Defaults to 4000.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        show-pager
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>boolean</code>
-      </td>
-      <td>
-        <p>Whether a pager should be shown for this slide box. Accepts expressions via <code>show-pager=&quot;&quot;</code>. Defaults to true.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        pager-click
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>expression</code>
-      </td>
-      <td>
-        <p>Expression to call when a pager is clicked (if show-pager is true). Is passed the &#39;index&#39; variable.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        on-slide-changed
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>expression</code>
-      </td>
-      <td>
-        <p>Expression called whenever the slide is changed.  Is passed an &#39;$index&#39; variable.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        active-slide
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        
-  <code>expression</code>
-      </td>
-      <td>
-        <p>Model to bind the current slide index to.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
 
 
         </div>
