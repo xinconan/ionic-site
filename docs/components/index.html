@@ -135,7 +135,7 @@
             <!-- Docs: CSS -->
             <ul class="nav left-menu active-menu">
               <li class="menu-title">
-                <a href="/docs/components/">CSS</a>
+                <a href="/docs/components/">Components</a>
               </li>
               <li>
                 <a href="/docs/components/#header">Header</a>
@@ -2482,32 +2482,21 @@
   <h3 class="title"><a href="#checkbox">Checkbox</a></h3>
 
   <p>
-    A checkbox is no different than the HTML checkbox input, except it's
-    styled differently. This is an example of multiple checkboxes within a list.
-    Note the <code>item-checkbox</code> class was added along side
-    <code>item</code> for each item.
-  </p>
-  <p>
-    Ionic prefers to use the <code>&lt;label&gt;</code> element for a checkbox
-    item in order to make the entire checkbox tappable.
+    Checkboxes allow the user to select a number of items in a set of choices. A good use for a checkbox
+    list would be a filter list to apply multiple filters to a search.
   </p>
   <p>
     Checkboxes can also have <a href="#colors">colors</a> assigned to them,
     such as <code>checkbox-assertive</code> to assign the assertive color.
   </p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ion-list&gt;</span>
 
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"item item-checkbox"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;/label&gt;</span>
-     Flux Capacitor
-  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;ion-checkbox</span> <span class="na">ng-model=</span><span class="s">"filter.blue"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/ion-checkbox&gt;</span>
+  <span class="nt">&lt;ion-checkbox</span> <span class="na">ng-model=</span><span class="s">"filter.yellow"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/ion-checkbox&gt;</span>
+  <span class="nt">&lt;ion-checkbox</span> <span class="na">ng-model=</span><span class="s">"filter.pink"</span><span class="nt">&gt;</span>Pink<span class="nt">&lt;/ion-checkbox&gt;</span>
 
-  ...
-
-<span class="nt">&lt;/ul&gt;</span></code></pre></figure>
+<span class="nt">&lt;/ion-list&gt;</span></code></pre></figure>
 
   <div class="doc-example ionic">
     <div class="bar bar-header">
@@ -2564,33 +2553,14 @@
   <h3 class="title"><a href="#radio-buttons">Radio Button List</a></h3>
 
   <p>
-    Radio buttons act no differently as standard radio input elements. Following this
-    convention will display a list of radio buttons similarly seen in modern app.
-  </p>
-  <p>
-    Each <code>item-radio</code> must have a radio input with the same input <code>name</code> attribute.
-    The <code>radio-icon</code> class is used to designate when to show and hide the icon element.
-  </p>
-  <p>
-    Ionic prefers to use the <code>&lt;label&gt;</code> element for a radio item in order to make the
-    entire area tappable.
+    Radio buttons let the user select one option in a set of options, unlike a checkbox
+    which allows for multiple selections.
   </p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list"</span><span class="nt">&gt;</span>
-
-  <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"item item-radio"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"group"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"radio-content"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-        Go
-      <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"radio-icon ion-checkmark"</span><span class="nt">&gt;&lt;/i&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/label&gt;</span>
-
-  ...
-
-<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ion-list&gt;</span>
+  <span class="nt">&lt;ion-radio</span> <span class="na">ng-model=</span><span class="s">"choice"</span> <span class="na">ng-value=</span><span class="s">"'A'"</span><span class="nt">&gt;</span>Choose A<span class="nt">&lt;/ion-radio&gt;</span>
+  <span class="nt">&lt;ion-radio</span> <span class="na">ng-model=</span><span class="s">"choice"</span> <span class="na">ng-value=</span><span class="s">"'B'"</span><span class="nt">&gt;</span>Choose B<span class="nt">&lt;/ion-radio&gt;</span>
+<span class="nt">&lt;/ion-list&gt;</span></code></pre></figure>
 
   <div class="doc-example ionic">
     <div class="bar bar-header">
