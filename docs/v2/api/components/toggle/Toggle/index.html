@@ -16,11 +16,11 @@
 
 
 
-    <title>ionSwitch - Class in module  -  Ionic Framework</title>
+    <title>Toggle - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{ionSwitch | slugify}}"
-        class="v2 docs page-{{ionSwitch | slugify}}"
+  <body id="docs-page-{{Toggle | slugify}}"
+        class="v2 docs page-{{Toggle | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -93,6 +93,8 @@
 
     <div class="docs-container"
          ng-app="IonicDocs"
+         
+           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <!-- <form class="form-group search" role="search">
@@ -150,6 +152,7 @@
   
     
 
+    
   
 <li class="">
   <a href="/docs/v2/api"></a>
@@ -301,7 +304,7 @@
 <li class="">
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
 </li>
 <li class="">
@@ -315,262 +318,212 @@
 </li>
 
 
+    
+
 
 </ul>
 
         
       </nav>
       
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+        </div>
+        <div id="demo-device-ios" ng-class="previewPlatform">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/toggle/?ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android" ng-class="previewPlatform">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/toggle/?ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
+      
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/switch/switch.ts#L43">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/toggle/toggle.ts#L31">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/switch/switch.ts#L43">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/toggle/toggle.ts#L31">
     Improve this doc
   </a>
+
 </div>
 
 <h1 class="api-title">
 
-  ionSwitch
+
+Toggle
+
+
+
 
 
 
 </h1>
 
-<p>A switch technically is the same thing as an HTML checkbox input, except it looks different and is easier to use on a touch device. Ionic prefers to wrap the checkbox input with the <label> in order to make the entire toggle easy to tap or drag.
-<p>Toggles can also have colors assigned to them, by adding the <code>toggle-assertive</code> attribute to assign the assertive color.</p>
+<h2>Description</h2>
+
+<p>A toggle technically is the same thing as an HTML checkbox input, except it looks different and is easier to use on a touch device. Ionic prefers to wrap the checkbox input with the <code>&lt;label&gt;</code> in order to make the entire toggle easy to tap or drag.
+Togglees can also have colors assigned to them, by adding any color attribute to them.</p>
 <p>See the <a href="https://angular.io/docs/js/latest/api/forms/">Angular 2 Docs</a> for more info on forms and input.</p>
 
+<h2>Component</h2>
+<h3>selector: <code>ion-toggle,ion-switch</code></h3>
 
-<h1 class="class export">ionSwitch <span class="type">class</span></h1>
-<p class="module">exported from <a href="undefined">ionic/ionic</a><br />
-defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/components/switch/switch.ts#L44-L245">ionic/components/switch/switch.ts (line 44)</a>
-</p>
-## Members
+<h2>Usage</h2>
 
-<div id="ngControl"></div>
-<h2>
-  <code>ngControl()</code>
+<pre><code class="lang-html">// Create a single toggle
+ &lt;ion-toggle checked=&quot;true&quot;&gt;
+   Pineapple
+ &lt;/ion-toggle&gt;
 
-</h2>
+// Create a list of togglees:
+ &lt;ion-list&gt;
 
+   &lt;ion-toggle checked=&quot;true&quot;&gt;
+     Apple
+   &lt;/ion-toggle&gt;
 
+    &lt;ion-toggle checked=&quot;false&quot;&gt;
+      Banana
+    &lt;/ion-toggle&gt;
 
+    &lt;ion-toggle disabled=&quot;true&quot;&gt;
+      Cherry
+    &lt;/ion-toggle&gt;
 
+ &lt;/ion-list&gt;
+</code></pre>
 
-
-
-
-
-
-
-
-<div id="onInit"></div>
-<h2>
-  <code>onInit()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="check"></div>
-<h2>
-  <code>check(value)</code>
-
-</h2>
-
-Set checked state of this switch.
-
-
-
+<h2>Attributes:</h2>
 <table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        value
-        
-        
-      </td>
-      <td>
-        
-  <code>boolean</code>
-      </td>
-      <td>
-        <p>Boolean to set this switch&#39;s checked state to.</p>
+<thead>
+<tr>
+<th>Attribute</th>
 
-        
-      </td>
-    </tr>
-    
-  </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<th>Type</th>
+
+
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>
+value
+</td>
+
+
+<td>
+any
+</td>
+
+
+<td>
+the inital value of the toggle
+</td>
+</tr>
+
+<tr>
+<td>
+checked
+</td>
+
+
+<td>
+boolean
+</td>
+
+
+<td>
+whether the toggle it toggled or not
+</td>
+</tr>
+
+<tr>
+<td>
+disabled
+</td>
+
+
+<td>
+boolean
+</td>
+
+
+<td>
+whether the toggle is disabled or not
+</td>
+</tr>
+
+<tr>
+<td>
+id
+</td>
+
+
+<td>
+string
+</td>
+
+
+<td>
+a unique ID for a toggle
+</td>
+</tr>
+
+</tbody>
 </table>
 
+<h2>Methods</h2>
 
+<div id="ngControl"></div>
 
+<h3>
+<code>ngControl()</code>
 
+</h3>
 
+<h2>Related</h2>
 
+<p><a href="/docs/v2/components#toggle">Toggle Component Docs</a><!-- end content block --></p>
 
+<!-- end body block -->
 
-
-<div id="toggle"></div>
-<h2>
-  <code>toggle()</code>
-
-</h2>
-
-Toggle the checked state of this switch.
-
-
-
-
-
-
-
-
-
-
-
-<div id="writeValue"></div>
-<h2>
-  <code>writeValue()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="pointerDown"></div>
-<h2>
-  <code>pointerDown()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="pointerUp"></div>
-<h2>
-  <code>pointerUp()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="registerOnChange"></div>
-<h2>
-  <code>registerOnChange()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="registerOnTouched"></div>
-<h2>
-  <code>registerOnTouched()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="onDestroy"></div>
-<h2>
-  <code>onDestroy()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="isDisabled"></div>
-<h2>
-  <code>isDisabled()</code>
-
-</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-</label></p>
 
       </main>
     </div>
