@@ -16,11 +16,11 @@
 
 
 
-    <title>IonicApp - Class in module  -  Ionic Framework</title>
+    <title>SearchbarInput - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{IonicApp | slugify}}"
-        class="v2 docs page-{{IonicApp | slugify}}"
+  <body id="docs-page-{{SearchbarInput | slugify}}"
+        class="v2 docs page-{{SearchbarInput | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -197,7 +197,7 @@
 <li class="">
   <a href="/docs/v2/api/components/text-input/Input">Input</a>
 </li>
-<li class="active">
+<li class="">
   <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
 </li>
 <li class="">
@@ -281,7 +281,7 @@
 <li class="">
   <a href="/docs/v2/api/components/searchbar/Searchbar">Searchbar</a>
 </li>
-<li class="">
+<li class="active">
   <a href="/docs/v2/api/components/searchbar/SearchbarInput">SearchbarInput</a>
 </li>
 <li class="">
@@ -329,11 +329,11 @@
       
       <main>
         <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/app/app.ts#L6">
+  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/searchbar/searchbar.ts#L145">
     View Source
   </a>
   &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/app/app.ts#L6">
+  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/searchbar/searchbar.ts#L145">
     Improve this doc
   </a>
 
@@ -342,7 +342,7 @@
 <h1 class="api-title">
 
 
-IonicApp
+SearchbarInput
 
 
 
@@ -353,307 +353,8 @@ IonicApp
 
 <h2>Description</h2>
 
-<p>Component registry service.  For more information on registering
-components see the <a href="../id/IdRef/">IdRef API reference</a>.</p>
-
-<h2>Methods</h2>
-
-<div id="setTitle"></div>
-
-<h3>
-<code>setTitle(val)</code>
-
-</h3>
-
-<p>Sets the document title.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        val
-        
-        
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>Value to set the document title to.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="setEnabled"></div>
-
-<h3>
-<code>setEnabled(isEnabled, fallback)</code>
-
-</h3>
-
-<p>Sets if the app is currently enabled or not, meaning if it’s<br />
-available to accept new user commands. For example, this is set to <code class="highlighter-rouge">false</code><br />
-while views transition, a modal slides up, an action-sheet<br />
-slides up, etc. After the transition completes it is set back to <code class="highlighter-rouge">true</code>.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        isEnabled
-        
-        
-      </td>
-      <td>
-        
-  <code>bool</code>
-      </td>
-      <td>
-        
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        fallback
-        
-        
-      </td>
-      <td>
-        
-  <code>bool</code>
-      </td>
-      <td>
-        <p>When <code>isEnabled</code> is set to <code>false</code>, this argument
-is used to set the maximum number of milliseconds that app will wait until
-it will automatically enable the app again. It&#39;s basically a fallback incase
-something goes wrong during a transition and the app wasn&#39;t re-enabled correctly.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="isEnabled"></div>
-
-<h3>
-<code>isEnabled()</code>
-
-</h3>
-
-<p>Boolean if the app is actively enabled or not.</p>
-
-<ul>
-  <li>Returns: <br />
-<code>bool</code></li>
-</ul>
-
-<div id="register"></div>
-
-<h3>
-<code>register(id, component)</code>
-
-</h3>
-
-<p>Register a known component with a key, for easy lookups later.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        id
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The id to use to register the component</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        component
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The component to register</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="unregister"></div>
-
-<h3>
-<code>unregister(id)</code>
-
-</h3>
-
-<p>Unregister a known component with a key.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        id
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The id to use to unregister</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="getRegisteredComponent"></div>
-
-<h3>
-<code>getRegisteredComponent(cls)</code>
-
-</h3>
-
-<p>Get a registered component with the given type (returns the first)</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        cls
-        
-        
-      </td>
-      <td>
-        
-  <code>Object</code>
-      </td>
-      <td>
-        <p>the type to search for</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
- the matching component, or undefined if none was found</li>
-</ul>
-
-<div id="getComponent"></div>
-
-<h3>
-<code>getComponent(key)</code>
-
-</h3>
-
-<p>Get the component for the given key.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        key
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
-<code>TODO</code> TODO</li>
-</ul>
+<h2>Directive</h2>
+<h3>selector: <code>.searchbar-input</code></h3>
 
 <!-- end content block -->
 
