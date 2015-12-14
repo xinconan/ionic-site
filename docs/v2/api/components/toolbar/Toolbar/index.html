@@ -93,8 +93,6 @@
 
     <div class="docs-container"
          ng-app="IonicDocs"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <!-- <form class="form-group search" role="search">
@@ -164,7 +162,7 @@
   <a href="/docs/v2/api/animations/Animation">Animation</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/config/App">App</a>
+  <a href="/docs/v2/api/config/decorators/App">App</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/app/Attr">Attr</a>
@@ -260,7 +258,7 @@
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/config/Page">Page</a>
+  <a href="/docs/v2/api/config/decorators/Page">Page</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
@@ -284,6 +282,9 @@
   <a href="/docs/v2/api/components/searchbar/Searchbar">Searchbar</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/searchbar/SearchbarInput">SearchbarInput</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/segment/Segment">Segment</a>
 </li>
 <li class="">
@@ -299,13 +300,13 @@
   <a href="/docs/v2/api/platform/storage/SqlStorage">SqlStorage</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/components/switch/Switch">Switch</a>
-</li>
-<li class="">
   <a href="/docs/v2/api/components/tabs/Tab">Tab</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="">
+  <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
 </li>
 <li class="active">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
@@ -325,31 +326,6 @@
 
         
       </nav>
-      
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-        </div>
-        <div id="demo-device-ios" ng-class="previewPlatform">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/toolbar/?ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android" ng-class="previewPlatform">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/toolbar/?ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
       
       <main>
         <div class="improve-docs">
@@ -392,9 +368,7 @@ Unlike an <code>Navbar</code>, <code>Toolbar</code> can be used for a subheader 
  &lt;ion-content&gt;&lt;/ion-content&gt;
 </code></pre>
 
-<h2>Related</h2>
-
-<p><a href="../../navbar/Navbar/">Navbar API Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 

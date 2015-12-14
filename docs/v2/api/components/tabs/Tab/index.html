@@ -162,7 +162,7 @@
   <a href="/docs/v2/api/animations/Animation">Animation</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/config/App">App</a>
+  <a href="/docs/v2/api/config/decorators/App">App</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/app/Attr">Attr</a>
@@ -258,7 +258,7 @@
   <a href="/docs/v2/api/components/nav/NavRouter">NavRouter</a>
 </li>
 <li class="">
-  <a href="/docs/v2/api/config/Page">Page</a>
+  <a href="/docs/v2/api/config/decorators/Page">Page</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
@@ -282,6 +282,9 @@
   <a href="/docs/v2/api/components/searchbar/Searchbar">Searchbar</a>
 </li>
 <li class="">
+  <a href="/docs/v2/api/components/searchbar/SearchbarInput">SearchbarInput</a>
+</li>
+<li class="">
   <a href="/docs/v2/api/components/segment/Segment">Segment</a>
 </li>
 <li class="">
@@ -296,14 +299,14 @@
 <li class="">
   <a href="/docs/v2/api/platform/storage/SqlStorage">SqlStorage</a>
 </li>
-<li class="">
-  <a href="/docs/v2/api/components/switch/Switch">Switch</a>
-</li>
 <li class="active">
   <a href="/docs/v2/api/components/tabs/Tab">Tab</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="">
+  <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
 </li>
 <li class="">
   <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
@@ -366,8 +369,8 @@ and the TabBar.</p>
 <h2>Usage</h2>
 
 <pre><code class="lang-html">&lt;ion-tabs&gt;
-     &lt;ion-tab tab-title=&quot;Home&quot; tab-icon=&quot;home&quot; [root]=&quot;tabOneRoot&quot;&gt;&lt;/ion-tab&gt;
-     &lt;ion-tab tab-title=&quot;Login&quot; tab-icon=&quot;star&quot; [root]=&quot;tabTwoRoot&quot;&gt;&lt;/ion-tab&gt;
+     &lt;ion-tab tabTitle=&quot;Home&quot; tabIcon=&quot;home&quot; [root]=&quot;tabOneRoot&quot;&gt;&lt;/ion-tab&gt;
+     &lt;ion-tab tabTitle=&quot;Login&quot; tabIcon=&quot;star&quot; [root]=&quot;tabTwoRoot&quot;&gt;&lt;/ion-tab&gt;
 &lt;/ion-tabs&gt;
 </code></pre>
 
@@ -418,7 +421,7 @@ set the root page for this tab
 
 <tr>
 <td>
-tab-title
+tabTitle
 </td>
 
 
@@ -434,7 +437,7 @@ set the title of this tab
 
 <tr>
 <td>
-tab-icon
+tabIcon
 </td>
 
 
