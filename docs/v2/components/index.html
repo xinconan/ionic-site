@@ -1403,77 +1403,25 @@ class SearchPage{
 
 <p>Slides make it easy to create galleries, tutorials, and page-based layouts.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slides&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slides</span> <span class="na">pager</span> <span class="na">loop=</span><span class="s">"true"</span> <span class="na">autoplay=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: green"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Slide 1<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;/ion-slide&gt;</span>
 
   <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: blue"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Page 1<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Slide 2<span class="nt">&lt;/h2&gt;</span>
   <span class="nt">&lt;/ion-slide&gt;</span>
 
-  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: yellow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Page 2<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: red"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Slide 3<span class="nt">&lt;/h2&gt;</span>
   <span class="nt">&lt;/ion-slide&gt;</span>
-
-  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: pink"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Page 3<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
-
-  <span class="nt">&lt;ion-pager&gt;</span>
-  <span class="nt">&lt;/ion-pager&gt;</span>
 
 <span class="nt">&lt;/ion-slides&gt;</span>
 </code></pre>
 </div>
 
-<p>Slides take a number of configuration options on the <code class="highlighter-rouge">&lt;ion-slides&gt;</code> element:</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Details</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        loop
-      </td>
-      <td>
-        boolean
-      </td>
-      <td>
-        Whether to loop at the beginning and end of the slides for a continuous experience.
-      </td>
-      <td>false</td>
-    </tr>
-    <tr>
-      <td>
-        index
-      </td>
-      <td>
-        number
-      </td>
-      <td>
-        The index to start on
-      </td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>
-        bounce
-      </td>
-      <td>
-        boolean
-      </td>
-      <td>
-        Whether to slow down and bounce when reaching the beginning/end of the slides
-      </td>
-      <td>false</td>
-    </tr>
-  </tbody>
-</table>
+<p>Slides take a number of configuration options on the <code class="highlighter-rouge">&lt;ion-slides&gt;</code> element, such as <code class="highlighter-rouge">loop</code> and <code class="highlighter-rouge">autoplay</code>. Check out the <a href="../api/components/slides/Slides/">Slides API reference</a> for more information on configuring slides.</p>
 
 <h2 id="switch" class="section-header">Switch</h2>
 <p><em>Coming soon.</em></p>
