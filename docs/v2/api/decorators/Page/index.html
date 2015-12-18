@@ -16,11 +16,11 @@
 
 
 
-    <title>Checkbox - Class in module  -  Ionic Framework</title>
+    <title>Page - Function in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Checkbox | slugify}}"
-        class="v2 docs page-{{Checkbox | slugify}}"
+  <body id="docs-page-{{Page | slugify}}"
+        class="v2 docs page-{{Page | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -93,8 +93,6 @@
 
     <div class="docs-container"
          ng-app="IonicDocs"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <!-- <form class="form-group search" role="search">
@@ -190,7 +188,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/button/Button">Button</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="capitalize ">
@@ -262,7 +260,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/NavPush">NavPush</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/api/decorators/Page">Page</a>
 </li>
 <li class="capitalize ">
@@ -329,38 +327,13 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-        </div>
-        <div id="demo-device-ios" ng-class="previewPlatform">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/checkbox/?ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android" ng-class="previewPlatform">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/checkbox/?ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <div class="improve-docs">
-<a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/checkbox/checkbox.ts#L4">
+<a href="http://github.com/driftyco/ionic2/tree/master/ionic/decorators/page.ts#L1">
 View Source
 </a>
 &nbsp;
-<a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/checkbox/checkbox.ts#L4">
+<a href="http://github.com/driftyco/ionic2/edit/master/ionic/decorators/page.ts#L1">
 Improve this doc
 </a>
 </div>
@@ -368,7 +341,7 @@ Improve this doc
 <h1 class="api-title">
 
 
-Checkbox
+Page
 
 
 
@@ -380,100 +353,61 @@ Checkbox
 <!-- description -->
 <h2>Description</h2>
 
-<p>The checkbox is no different than the HTML checkbox input, except it&#39;s styled differently.</p>
-<p>See the <a href="https://angular.io/docs/js/latest/api/core/Form-interface.html">Angular 2 Docs</a> for more info on forms and input.</p>
+<p>For more information on how pages are created, see the <a href="../../components/nav/NavController/#creating_pages">NavController API reference</a></p>
+<p>The Page decorator indicates that the decorated class is an Ionic
+navigation component, meaning it can be navigated to using a NavController.</p>
+<p>Pages have all <code>IONIC_DIRECTIVES</code>, which include all Ionic components and directives,
+as well as Angular&#39;s <a href="https://angular.io/docs/js/latest/api/core/CORE_DIRECTIVES-const.html">CORE_DIRECTIVES</a>
+and <a href="https://angular.io/docs/js/latest/api/core/FORM_DIRECTIVES-const.html">FORM_DIRECTIVES</a>,
+already provided to them, so you only need to supply custom components and directives to your pages:</p>
 
-<h2>Component</h2>
-<h3>selector: <code>ion-checkbox</code></h3>
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-html">&lt;ion-checkbox checked=&quot;true&quot; value=&quot;isChecked&quot; ngControl=&quot;htmlCtrl&quot;&gt;
-  HTML5
-&lt;/ion-checkbox&gt;
+<pre><code class="lang-ts">@Page({
+  template: `
+   &lt;ion-content&gt;
+     I am a page!
+   &lt;/ion-content&gt;
+  `
+})
+class MyPage {}
 </code></pre>
+<p>Here <a href="../../../components/content/Content/">Content</a> will load because
+it is in <code>IONIC_DIRECTIVES</code>, so there is no need to add a <code>directives</code> array.</p>
+<p>Say you built a custom component that uses the an already exsiting Ionic component.
+In this case, you would add <code>IONIC_DIRECTIVES</code> to your directives array.</p>
+<pre><code class="lang-ts">import {IONIC_DIRECTIVES} from &#39;ionic/ionic&#39;;
+@Component({
+  selector: &#39;my-component&#39;
+  template: `&lt;div class=&quot;my-style&quot;&gt;
+                            &lt;ion-checkbox&gt;&lt;/ion-checkbox&gt;
+                          &lt;/div&gt;`,
+  directives: [IONIC_DIRECTIVES]
+})
+class MyCustomCheckbox {}
+</code></pre>
+<p>Alternatively, you could:</p>
+<pre><code class="lang-ts">import {Checkbox, Icon} from &#39;ionic/ionic&#39;
+</code></pre>
+<p>along with any other components and add them individually:</p>
+<pre><code>@Component({
+  ...
+  directives: [Checkbox, Icon]
+})
+</code></pre>
+<p>However, using IONIC_DIRECTIVES will always <em>Just Work</em> with no
+performance overhead, so there is really no reason to not always use it.</p>
+<p>Pages have their content automatically wrapped in <code>&lt;ion-view&gt;</code>, so although
+you may see these tags if you inspect your markup, you don&#39;t need to include
+them in your templates.</p>
 
 <!-- @property tags -->
 
-<h2>Attributes:</h2>
-<table class="table" style="margin:0;">
-<thead>
-<tr>
-<th>Attribute</th>
-
-
-
-
-
-
-
-
-
-
-
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td>
-checked
-</td>
-
-
-
-<td>
-whether or not the checkbox is checked (defaults to false)
-</td>
-</tr>
-
-<tr>
-<td>
-value
-</td>
-
-
-
-<td>
-the value of the checkbox component
-</td>
-</tr>
-
-<tr>
-<td>
-disabled
-</td>
-
-
-
-<td>
-whether or not the checkbox is disabled or not.
-
-</td>
-</tr>
-
-</tbody>
-</table>
-
 <!-- methods on the class -->
-
-<h2>Methods</h2>
-
-<div id="form"></div>
-
-<h3>
-<code>form()</code>
-  
-
-</h3>
-
 <!-- related link -->
-
-<h2>Related</h2>
-
-<p><a href="/docs/v2/components#checkbox">Checkbox Component Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 
