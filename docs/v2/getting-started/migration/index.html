@@ -359,11 +359,13 @@ export class MainCmp {
 
 <p><em>index.html</em></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;ion-item&gt;</span>
-        
+        {{data.text}}
       <span class="nt">&lt;/ion-item&gt;</span>
     <span class="nt">&lt;/ion-content&gt;</span>
+
 </code></pre>
 </div>
 
@@ -381,11 +383,13 @@ export class MainCmp {
 
 <p><em>index.html</em></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl as main"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl as main"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;ion-item&gt;</span>
-        
+        {{data.text}}
       <span class="nt">&lt;/ion-item&gt;</span>
     <span class="nt">&lt;/ion-content&gt;</span>
+
 </code></pre>
 </div>
 
