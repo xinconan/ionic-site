@@ -973,8 +973,8 @@
 
 <p>Shows a pager for the slidebox.</p>
 
-<p>A pager is a row of small buttons at the bottom of the slidebox, each<br />
-representing one slide. When the user clicks a pager, that slide will<br />
+<p>A pager is a row of small buttons at the bottom of the slidebox, each
+representing one slide. When the user clicks a pager, that slide will
 be selected.</p>
 
 <p>For more complete examples, see <a href="/docs/nightly/api/directive/ionSlideBox/"><code>ionSlideBox</code></a>.</p>
@@ -983,27 +983,27 @@ be selected.</p>
 
 <p>This will show four pager buttons, one for each slide.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slide-box&gt;</span>
-  <span class="nt">&lt;ion-slide-pager&gt;&lt;/ion-slide-pager&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>1<span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>2<span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>3<span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>4<span class="nt">&lt;/ion-slide&gt;</span>
-<span class="nt">&lt;/ion-slide-box&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-slide-box>
+  <ion-slide-pager></ion-slide-pager>
+  <ion-slide>1</ion-slide>
+  <ion-slide>2</ion-slide>
+  <ion-slide>3</ion-slide>
+  <ion-slide>4</ion-slide>
+</ion-slide-box>
+<p>```</p>
 
-<p>If you provide your own <code class="highlighter-rouge">ng-click</code> attribute, it overrides the default<br />
+<p>If you provide your own <code class="highlighter-rouge">ng-click</code> attribute, it overrides the default
 click behavior.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slide-box&gt;</span>
-  <span class="nt">&lt;ion-slide-pager</span> <span class="na">ng-click=</span><span class="s">"doSomething($slideIndex)"</span><span class="nt">&gt;&lt;/ion-slide-pager&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>1<span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>2<span class="nt">&lt;/ion-slide&gt;</span>
-  <span class="nt">&lt;ion-slide&gt;</span>3<span class="nt">&lt;/ion-slide&gt;</span>
-<span class="nt">&lt;/ion-slide-box&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-slide-box>
+  <ion-slide-pager ng-click="doSomething($slideIndex)"></ion-slide-pager>
+  <ion-slide>1</ion-slide>
+  <ion-slide>2</ion-slide>
+  <ion-slide>3</ion-slide>
+</ion-slide-box>
+<p>```</p>
 
 <h2 id="api" style="clear:both;">API</h2>
 

@@ -400,7 +400,8 @@ Platform
 
 <p>Depending on the platform name, isPlatform will return true or flase</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -410,8 +411,7 @@ export MyClass {
      }
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -443,7 +443,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>bool</code> returns true/false based on platform you place</li>
 </ul>
 
@@ -454,11 +454,12 @@ export MyClass {
 
 </h3>
 
-<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.<br />
-Each possible value is a hierarchy of platforms. For example, on an iPhone,<br />
+<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.
+Each possible value is a hierarchy of platforms. For example, on an iPhone,
 it would return mobile, ios, and iphone.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -467,11 +468,10 @@ export MyClass {
      // From if your on mobile, to mobile os, and device name
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>array</code> the array of platforms</li>
 </ul>
 
@@ -484,7 +484,8 @@ export MyClass {
 
 <p>Returns an object conta</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -493,8 +494,7 @@ export MyClass {
      console.log(this.platform.versions('ios'));
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -527,7 +527,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> An object with various platform info</li>
   <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span><span class="w"> </span></code>cordova`</li>
   <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">object=</span><span class="p">}</span></code> <code class="highlighter-rouge">platformOS</code> {str: “9.1”, num: 9.1, major: 9, minor: 1}</li>
@@ -551,7 +551,8 @@ export MyClass {
 
 <p>Returns a promise when the platform is ready and native functionality can be called</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -561,11 +562,10 @@ export MyClass {
       });
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>promise</code></li>
 </ul>
 
@@ -721,7 +721,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> TODO</li>
 </ul>
 
@@ -765,7 +765,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> TODO</li>
 </ul>
 
@@ -809,7 +809,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> TODO</li>
 </ul>
 
@@ -853,7 +853,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>Object</code> TODO</li>
 </ul>
 
@@ -914,7 +914,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> TODO</li>
 </ul>
 
@@ -997,7 +997,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>TODO</code> TODO</li>
 </ul>
 

@@ -112,9 +112,9 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <!-- <li class=""> -->
-      <!--   <a href="/docs/v2/getting&#45;started/concepts">Concepts</a> -->
-      <!-- </li> -->
+      <li class="">
+        <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
+      </li>
       <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
@@ -299,6 +299,9 @@
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
       </li>
+      <li class="">
+        <a href="/docs/v2/resources/using-npm/">Using NPM</a>
+      </li>
     </ul>
   </li>
 </ul>
@@ -315,34 +318,34 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add com.lampa.startapp
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add com.lampa.startapp
+</code></p>
 
 <p><code class="highlighter-rouge">AppLinks</code> makes it easy to check for installed apps on the user’s device, and open those apps. Due to the way Android and iOS register apps, both platforms require different launch methods.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">AppLinks</span><span class="p">,</span> <span class="nx">IonicPlatform</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {AppLinks, IonicPlatform} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">SharePage</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">(</span><span class="nx">platform</span><span class="err">:</span> <span class="nx">IonicPlatform</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">platform</span> <span class="o">=</span> <span class="nx">platform</span><span class="p">;</span>
-  <span class="p">}</span>
+<p>class SharePage {
+  constructor(platform: IonicPlatform) {
+    this.platform = platform;
+  }</p>
 
-  <span class="nx">openTwitter</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s1">'ios'</span><span class="p">)</span> <span class="p">{</span>
-     <span class="nx">AppLinks</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s1">'twitter://'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">installed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-       <span class="nx">AppLinks</span><span class="p">.</span><span class="nx">openIOS</span><span class="p">(</span><span class="s1">'twitter://user?screen_name=ionicframework'</span><span class="p">)</span>
-     <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-     <span class="p">})</span>
-   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s1">'android'</span><span class="p">)</span> <span class="p">{</span>
-     <span class="nx">AppLinks</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s1">'com.twitter.android'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">installed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-       <span class="nx">AppLinks</span><span class="p">.</span><span class="nx">openAndroid</span><span class="p">([[</span><span class="s2">"action"</span><span class="p">,</span> <span class="s2">"VIEW"</span><span class="p">],</span> <span class="p">[</span><span class="s1">'twitter://user?screen_name=ionicframework'</span><span class="p">]])</span>
-     <span class="p">})</span>
-   <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<p>openTwitter() {
+    if(this.platform.is(‘ios’) {
+     AppLinks.check(‘twitter://’).then((installed) =&gt; {
+       AppLinks.openIOS(‘twitter://user?screen_name=ionicframework’)
+     }, (err) =&gt; {
+     })
+   } else if(this.platform.is(‘android’) {
+     AppLinks.check(‘com.twitter.android’).then((installed) =&gt; {
+       AppLinks.openAndroid([[“action”, “VIEW”], [‘twitter://user?screen_name=ionicframework’]])
+     })
+   }
+  }
+}
+```</p>
 
       </main>
     </div>

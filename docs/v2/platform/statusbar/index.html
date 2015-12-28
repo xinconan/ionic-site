@@ -112,9 +112,9 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <!-- <li class=""> -->
-      <!--   <a href="/docs/v2/getting&#45;started/concepts">Concepts</a> -->
-      <!-- </li> -->
+      <li class="">
+        <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
+      </li>
       <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
@@ -299,6 +299,9 @@
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
       </li>
+      <li class="">
+        <a href="/docs/v2/resources/using-npm/">Using NPM</a>
+      </li>
     </ul>
   </li>
 </ul>
@@ -313,22 +316,21 @@
   Improve this doc
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-statusbar
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-statusbar
+</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">StatusBar</span><span class="p">,</span> <span class="nx">IonicPlatform</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {StatusBar, IonicPlatform} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">(</span><span class="nx">platform</span><span class="err">:</span> <span class="nx">IonicPlatform</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">StatusBar</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+<p>class MyPage {
+  constructor(platform: IonicPlatform) {
+    platform.ready().then(() =&gt; {
+      StatusBar.hide();</p>
 
-      <span class="c1">// Dark for light content</span>
-      <span class="nx">StatusBar</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="nx">StatusBar</span><span class="p">.</span><span class="nx">LIGHT_CONTENT</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>  // Dark for light content
+  StatusBar.setStyle(StatusBar.LIGHT_CONTENT);
+});   } } ```
 </code></pre>
 </div>
 

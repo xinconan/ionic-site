@@ -112,9 +112,9 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <!-- <li class=""> -->
-      <!--   <a href="/docs/v2/getting&#45;started/concepts">Concepts</a> -->
-      <!-- </li> -->
+      <li class="">
+        <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
+      </li>
       <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
@@ -297,6 +297,9 @@
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
       </li>
+      <li class="">
+        <a href="/docs/v2/resources/using-npm/">Using NPM</a>
+      </li>
     </ul>
   </li>
 </ul>
@@ -313,7 +316,7 @@
 
 <ul>
   <li>Make sure your @App has a <code class="highlighter-rouge">template</code> or <code class="highlighter-rouge">templateUrl</code></li>
-  <li>Make sure your @App template has an <code class="highlighter-rouge">&lt;ion-nav&gt;&lt;/ion-nav&gt;</code> with a <code class="highlighter-rouge">root</code> property:<br />
+  <li>Make sure your @App template has an <code class="highlighter-rouge">&lt;ion-nav&gt;&lt;/ion-nav&gt;</code> with a <code class="highlighter-rouge">root</code> property:
 <code class="highlighter-rouge">
 &lt;ion-nav [root]="firstPage"&gt;&lt;/ion-nav&gt;
 </code></li>
@@ -336,24 +339,25 @@
   </li>
 </ul>
 
-<pre><code class="language-ts">@Directive({
-  selector: '[my-dir]' // &lt;-- [my-dir] because it's an attribute
+<p>```ts
+@Directive({
+  selector: ‘[my-dir]’ // &lt;– [my-dir] because it’s an attribute
 })                     // Could be my-dir, [my-dir], .my-dir
 class MyDir {
-  constructor(){ console.log("I'm alive!"); }
-}
+  constructor(){ console.log(“I’m alive!”); }
+}</p>
 
-@Page({
-  template: `&lt;div my-dir&gt;Hello World&lt;/div&gt;`
+<p>@Page({
+  template: <code class="highlighter-rouge">&lt;div my-dir&gt;Hello World&lt;/div&gt;</code></p>
 
-  // Or, depending on your directive's type
-  //template: `&lt;my-dir&gt;Hello World&lt;/my-dir&gt;`
-  //template: `&lt;div class="my-dir"&gt;Hello World&lt;/div&gt;`
+<p>// Or, depending on your directive’s type
+  //template: <code class="highlighter-rouge">&lt;my-dir&gt;Hello World&lt;/my-dir&gt;</code>
+  //template: <code class="highlighter-rouge">&lt;div class="my-dir"&gt;Hello World&lt;/div&gt;</code></p>
 
-  directives: [MyDir] // &lt;-- Don't forget me!
+<p>directives: [MyDir] // &lt;– Don’t forget me!
 })
 class MyPage {}
-</code></pre>
+```</p>
 
 <h2 id="Common_mistakes">Common mistakes:</h2>
 
@@ -361,31 +365,34 @@ class MyPage {}
   <li>putting your <code class="highlighter-rouge">directives</code> array in your <code class="highlighter-rouge">@Component</code> options, not in <code class="highlighter-rouge">(click)</code>.</li>
 </ul>
 
-<pre><code class="language-ts">@Component({
+<p><code class="highlighter-rouge">ts
+@Component({
   //directives: [MyDirective] Wrong
 })
 (click)({
   directives: [MyDirective] // Right
 })
-</code></pre>
+</code></p>
 
 <ul>
   <li>putting your <code class="highlighter-rouge">bindings</code> array in your <code class="highlighter-rouge">(click)</code> options, not in <code class="highlighter-rouge">@Component</code> or <code class="highlighter-rouge">@Directive</code>.</li>
 </ul>
 
-<pre><code class="language-ts">@Component({
+<p><code class="highlighter-rouge">ts
+@Component({
   providers: [MyService] // Right
 })
 (click)({
   // providers: [MyService] Wrong
 })
-</code></pre>
+</code></p>
 
 <ul>
   <li>Forgetting <code class="highlighter-rouge">()</code> after an annotation: <code class="highlighter-rouge">@Injectable()</code>, <code class="highlighter-rouge">@Optional()</code>, etc.</li>
 </ul>
 
-<pre><code class="language-ts">@Directive({
+<p><code class="highlighter-rouge">ts
+@Directive({
   selector: 'my-dir'
 })
 class MyDirective {
@@ -393,39 +400,40 @@ class MyDirective {
   // @Optional does nothing here, so MyDirective will error if parent is undefined
   constructor(@Optional parent: ParentComponent) {}
 }
-</code></pre>
+</code></p>
 
 <ul>
   <li>Adding bindings to every component when you mean to have the same binding instance injected to each component (services for example).  For a class to be injectable it only needs to be in the <code class="highlighter-rouge">bindings</code> array of that component or any parent component (for example <code class="highlighter-rouge">@App</code>), but not both.  Putting it in both the component that has that binding injected in addition to a parent or ancestor will create two separate binding instances. The following example illustrates the issue:</li>
 </ul>
 
-<pre><code class="language-ts">let id = 0;
+<p>```ts
+let id = 0;
 class MyService {
   constructor(){ this.id = id++; }
-}
+}</p>
 
-@Component({
-  selector: 'my-component',
-  providers: [MyService] // &lt;-- Creates a new instance of MyService
-})                      // Unnecessary because MyService is in App's bindings
+<p>@Component({
+  selector: ‘my-component’,
+  providers: [MyService] // &lt;– Creates a new instance of MyService
+})                      // Unnecessary because MyService is in App’s bindings
 (click)({
-  template: 'Hello World'
+  template: ‘Hello World’
 })
 class MyComp {
   // id is 0
-  constructor(s: MyService) { console.log("MyService id is: " + s.id); }
-}
+  constructor(s: MyService) { console.log(“MyService id is: “ + s.id); }
+}</p>
 
-@App({
-  template: '&lt;my-component&gt;&lt;/my-component&gt;',
+<p>@App({
+  template: ‘<my-component></my-component>’,
   providers: [MyService],
   directives: [MyComp]
 })
 class MyApp {
   // id is 1, s is a different instance than MyComp
-  constructor(s: MyService) { console.log("MyService id is: " + s.id); }
+  constructor(s: MyService) { console.log(“MyService id is: “ + s.id); }
 }
-</code></pre>
+```</p>
 
 <h2 id="Common_JS_errors">Common JS errors:</h2>
 
@@ -440,38 +448,40 @@ class MyApp {
   <li>you have properly annotated the parameter or specified its type</li>
 </ul>
 
-<pre><code class="language-ts">import {MyService} from 'myservice'; //Don't forget to import me!
+<p>```ts
+import {MyService} from ‘myservice’; //Don’t forget to import me!</p>
 
-@Page({
-  template: `Hello World`
+<p>@Page({
+  template: <code class="highlighter-rouge">Hello World</code>
 })
 export class MyClass {
   constructor(service: MyService){}
     /* OR */
   constructor(@Inject(MyService) service){}
 }
-</code></pre>
+```</p>
 
 <p>Sometimes circular references within your code can cause this error.  Circular references mean that two objects depend on each other, and so there is no way to declare both of them before each other.  To get around this, we can use the <a href=""><code class="highlighter-rouge">forwardRef</code></a> function built in to Angular 2.</p>
 
-<pre><code class="language-ts">@Component({
-  selector: 'my-button'
+<p>```ts
+@Component({
+  selector: ‘my-button’
 })
 (click)({
-  template: `&lt;div&gt;
+  template: <code class="highlighter-rouge">&lt;div&gt;
                &lt;icon&gt;&lt;/icon&gt;
                &lt;input type="button" /&gt;
-             &lt;/div&gt;`
+             &lt;/div&gt;</code>
   directives: [forwardRef(() =&gt; MyIcon)] // MyIcon has not been defined yet
-})                                       // forwardRef resolves as MyIcon when MyIcon is needed
+})                                       // forwardRef resolves as MyIcon when MyIcon is needed</p>
 
-@Directive({
-  selector: 'icon'  
+<p>@Directive({
+  selector: ‘icon’<br />
 })
 class MyIcon {
   constructor(containerButton: MyButton) {} // MyButton has been defined
 }
-</code></pre>
+```</p>
 
 <hr />
 
@@ -483,52 +493,55 @@ class MyIcon {
   <li>if the parameter is a service, you have added the specified class to the list of bindings available to your app</li>
 </ul>
 
-<pre><code class="language-ts">import {MyService} from 'myservice';
+<p>```ts
+import {MyService} from ‘myservice’;</p>
 
-@App({
-  templateUrl: 'app/app.html',
-  providers: [MyService] // Don't forget me!
+<p>@App({
+  templateUrl: ‘app/app.html’,
+  providers: [MyService] // Don’t forget me!
 })
 class MyApp {
-</code></pre>
+```</p>
 
 <p>If the parameter is another component or directive (for example, a parent component), adding it to your list of bindings will make the error go away, but this will have the same effect as #4 of the <a href="#Common_mistakes">Common Mistakes</a> above.  That is, you’ll be creating a new instance of the component class (you can kind of think of it as service-ifying your component), but you aren’t actually getting a reference to the component instance you want (the one from angular compiling your app).  Instead, make sure that the directive or component you expect to be injected is available to your component (e.g. that it is actually a parent if you are expecting it to be a parent). This is probably easiest understood with an example:</p>
 
-<pre><code class="language-ts">@Component({
-  selector: 'my-comp'
+<p>```ts
+@Component({
+  selector: ‘my-comp’
 })
 (click)({
-  template: '&lt;div my-dir&gt;&lt;/div&gt;',
+  template: ‘&lt;div my-dir&gt;&lt;/div&gt;’,
   directives: [forwardRef(() =&gt; MyDir)]
 })
 class MyComp {
-  constructor(){ this.name = "My Component"; }
-}
+  constructor(){ this.name = “My Component”; }
+}</p>
 
-@Directive({
-  selector: '[my-dir]'
+<p>@Directive({
+  selector: ‘[my-dir]’
 })
 class MyDir {
-  constructor(c: MyComp) { &lt;-- This is the line of interest
+  constructor(c: MyComp) { &lt;– This is the line of interest</p>
 
-    // Errors when directive is on regular div because there is no MyComp in the
-    // component tree so there is no MyComp to inject
-    console.log("Host component's name: " + c.name);
-  }
-}
+<div class="highlighter-rouge"><pre class="highlight"><code>// Errors when directive is on regular div because there is no MyComp in the
+// component tree so there is no MyComp to inject
+console.log("Host component's name: " + c.name);   } }
+</code></pre>
+</div>
 
-@App({
-  template: "&lt;my-comp&gt;&lt;/my-comp&gt;" + // No error in MyDir constructor, MyComp is parent of MyDir
-            "&lt;my-comp my-dir&gt;&lt;/my-comp&gt;" + // No error in MyDir constructor, MyComp is host of MyDir
-            "&lt;div my-dir&gt;&lt;/div&gt;", // Errors in MyDir constructor
+<p>@App({
+  template: “<my-comp></my-comp>” + // No error in MyDir constructor, MyComp is parent of MyDir
+            “<my-comp my-dir=""></my-comp>” + // No error in MyDir constructor, MyComp is host of MyDir
+            “&lt;div my-dir&gt;&lt;/div&gt;”, // Errors in MyDir constructor
   directives: [MyComp, MyDir]
 })
 class MyApp {}
-</code></pre>
+```</p>
 
 <p>Here’s a diagram illustrating what injectors are available:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                 +-------+                                         
+<p><code class="highlighter-rouge">
+                 +-------+                                         
                  |  App  |                                         
                  +---+---+                                         
                      |                                                        
@@ -541,12 +554,12 @@ class MyApp {}
 No MyComp to inject        +------+------+
                            | Div (MyDir) | &lt;- MyComp can be injected from parent
                            +-------------+
-</code></pre>
-</div>
+</code></p>
 
 <p>To expand on the previous example, you can use the Angular 2 <code class="highlighter-rouge">@Optional</code> annotation if you don’t always expect a component/directive reference:</p>
 
-<pre><code class="language-ts">@Directive({
+<p><code class="highlighter-rouge">ts
+@Directive({
   selector: '[my-dir]'
 })
 class MyDir {
@@ -557,32 +570,33 @@ class MyDir {
     }
   }
 }
-</code></pre>
+</code></p>
 
 <hr />
 
-<p><code class="highlighter-rouge">Can't bind to 'propertyName' since it isn't a known property of the 'elementName' element and there are no matching</code><br />
+<p><code class="highlighter-rouge">Can't bind to 'propertyName' since it isn't a known property of the 'elementName' element and there are no matching</code>
 <code class="highlighter-rouge">directives with a corresponding property</code></p>
 
 <p>This one is pretty self explanatory, it happens when you try and bind a property on an element that doesn’t have that property.  If the element is a component or has one or more directives on it, neither the component nor the directives have that property either.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- div doesn't have a 'foo' property --&gt;</span>
-<span class="nt">&lt;div</span> <span class="err">[</span><span class="na">foo</span><span class="err">]="</span><span class="na">bar</span><span class="err">"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
-<hr />
+<p><code class="highlighter-rouge">html
+&lt;!-- div doesn't have a 'foo' property --&gt;
+&lt;div [foo]="bar"&gt;&lt;/div&gt;
+</code>
+——–</p>
 
 <p><code class="highlighter-rouge">EXCEPTION: No provider for ControlContainer! (NgControlName -&gt; ControlContainer)</code></p>
 
 <p>This error is a more specific version of the <code class="highlighter-rouge">No provider</code> error above.  It happens when you use a form control like <a href="https://angular.io/docs/js/latest/api/core/NgControlName-class.html">NgControlName</a> without specifying a parent <a href="https://angular.io/docs/js/latest/api/core/NgForm-class.html">NgForm</a> or <a href="https://angular.io/docs/js/latest/api/core/NgFormModel-class.html">NgFormModel</a>.  In most cases, this can be resolved by making sure your form control is within an actual form element.  NgForm uses <code class="highlighter-rouge">form</code> as a selector so this will instantiate a new NgForm:</p>
 
-<pre><code class="language-ts">@Page({
+<p><code class="highlighter-rouge">ts
+@Page({
   template:
     '&lt;form&gt;' +
       '&lt;input ng-control='login'&gt;' +
     '&lt;/form&gt;'
 })
-</code></pre>
+</code></p>
 
       </main>
     </div>

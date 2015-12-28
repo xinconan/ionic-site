@@ -956,32 +956,32 @@
 
 </h1>
 
-<p>A set of utility methods that can be used to retrieve the device ready state and<br />
+<p>A set of utility methods that can be used to retrieve the device ready state and
 various other information such as what kind of platform the app is currently installed on.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'PlatformApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
-<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'PlatformCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+<p>```js
+angular.module(‘PlatformApp’, [‘ionic’])
+.controller(‘PlatformCtrl’, function($scope) {</p>
 
-  <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="c1">// will execute when device is ready, or immediately if the device is already ready.</span>
-  <span class="p">});</span>
+<p>ionic.Platform.ready(function(){
+    // will execute when device is ready, or immediately if the device is already ready.
+  });</p>
 
-  <span class="kd">var</span> <span class="nx">deviceInformation</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">device</span><span class="p">();</span>
+<p>var deviceInformation = ionic.Platform.device();</p>
 
-  <span class="kd">var</span> <span class="nx">isWebView</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isWebView</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">isIPad</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isIPad</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">isIOS</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isIOS</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">isAndroid</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isAndroid</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">isWindowsPhone</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isWindowsPhone</span><span class="p">();</span>
+<p>var isWebView = ionic.Platform.isWebView();
+  var isIPad = ionic.Platform.isIPad();
+  var isIOS = ionic.Platform.isIOS();
+  var isAndroid = ionic.Platform.isAndroid();
+  var isWindowsPhone = ionic.Platform.isWindowsPhone();</p>
 
-  <span class="kd">var</span> <span class="nx">currentPlatform</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">platform</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">currentPlatformVersion</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">version</span><span class="p">();</span>
+<p>var currentPlatform = ionic.Platform.platform();
+  var currentPlatformVersion = ionic.Platform.version();</p>
 
-  <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">exitApp</span><span class="p">();</span> <span class="c1">// stops the app</span>
-<span class="p">});</span>
-</code></pre>
-</div>
+<p>ionic.Platform.exitApp(); // stops the app
+});
+```</p>
 
 <h2 id="methods">Methods</h2>
 
@@ -991,13 +991,13 @@ various other information such as what kind of platform the app is currently ins
 
 </h2>
 
-<p>Trigger a callback once the device is ready, or immediately<br />
-if the device is already ready. This method can be run from<br />
-anywhere and does not need to be wrapped by any additonal methods.<br />
-When the app is within a WebView (Cordova), it’ll fire<br />
-the callback once the device is ready. If the app is within<br />
-a web browser, it’ll fire the callback after <code class="highlighter-rouge">window.load</code>.<br />
-Please remember that Cordova features (Camera, FileSystem, etc) still<br />
+<p>Trigger a callback once the device is ready, or immediately
+if the device is already ready. This method can be run from
+anywhere and does not need to be wrapped by any additonal methods.
+When the app is within a WebView (Cordova), it’ll fire
+the callback once the device is ready. If the app is within
+a web browser, it’ll fire the callback after <code class="highlighter-rouge">window.load</code>.
+Please remember that Cordova features (Camera, FileSystem, etc) still
 will not work in a web browser.</p>
 
 <table class="table" style="margin:0;">
@@ -1036,8 +1036,8 @@ will not work in a web browser.</p>
 
 </h2>
 
-<p>Set the grade of the device: ‘a’, ‘b’, or ‘c’. ‘a’ is the best<br />
-(most css features enabled), ‘c’ is the worst.  By default, sets the grade<br />
+<p>Set the grade of the device: ‘a’, ‘b’, or ‘c’. ‘a’ is the best
+(most css features enabled), ‘c’ is the worst.  By default, sets the grade
 depending on the current device.</p>
 
 <table class="table" style="margin:0;">
@@ -1079,7 +1079,7 @@ depending on the current device.</p>
 <p>Return the current device (given by cordova).</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> The device object.</li>
 </ul>
 
@@ -1090,7 +1090,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Check if we are running within a WebView (such as Cordova).</li>
 </ul>
 
@@ -1101,7 +1101,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether we are running on iPad.</li>
 </ul>
 
@@ -1112,7 +1112,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether we are running on iOS.</li>
 </ul>
 
@@ -1123,7 +1123,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether we are running on Android.</li>
 </ul>
 
@@ -1134,7 +1134,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether we are running on Windows Phone.</li>
 </ul>
 
@@ -1145,7 +1145,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether we are running on MS Edge/Windows 10 (inc. Phone)</li>
 </ul>
 
@@ -1156,7 +1156,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> The name of the current platform.</li>
 </ul>
 
@@ -1167,7 +1167,7 @@ depending on the current device.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>number</code> The version of the current device platform.</li>
 </ul>
 
@@ -1208,7 +1208,7 @@ depending on the current device.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether the platform name provided is detected.</li>
 </ul>
 

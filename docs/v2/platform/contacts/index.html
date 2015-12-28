@@ -112,9 +112,9 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <!-- <li class=""> -->
-      <!--   <a href="/docs/v2/getting&#45;started/concepts">Concepts</a> -->
-      <!-- </li> -->
+      <li class="">
+        <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
+      </li>
       <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
@@ -299,6 +299,9 @@
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
       </li>
+      <li class="">
+        <a href="/docs/v2/resources/using-npm/">Using NPM</a>
+      </li>
     </ul>
   </li>
 </ul>
@@ -313,57 +316,57 @@
   Improve this doc
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-contacts
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-contacts
+</code></p>
 
 <p>Use the <code class="highlighter-rouge">Contacts</code> class to access contacts from the user’s address book, or to create and modify contacts.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Contacts</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {Contacts} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+<p>class MyPage {</p>
 
-  <span class="nx">newContact</span><span class="p">(</span><span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
-    <span class="cm">/** Valid fields for the info object:
+<p>newContact(info) {
+    /** Valid fields for the info object:
     * {
     * id: A globally unique identifier.
     * displayName: The name of this Contact, suitable for display to end-users.
     * name: An object containing all components of a persons name.
     * nickname: A casual name by which to address the contact.
-    * phoneNumbers: An array of all the contact's phone numbers.
-    * emails: An array of all the contact's email addresses.
-    * addresses: An array of all the contact's addresses.
-    * ims: An array of all the contact's IM addresses.
-    * organizations: An array of all the contact's organizations.
+    * phoneNumbers: An array of all the contact’s phone numbers.
+    * emails: An array of all the contact’s email addresses.
+    * addresses: An array of all the contact’s addresses.
+    * ims: An array of all the contact’s IM addresses.
+    * organizations: An array of all the contact’s organizations.
     * birthday: The birthday of the contact.
     * note: A note about the contact.
-    * photos: An array of the contact's photos.
+    * photos: An array of the contact’s photos.
     * categories: An array of all the user-defined categories associated with the contact.
     * urls: An array of web pages associated with the contact.
     * }
-    */</span>
+    */</p>
 
-    <span class="nx">Contacts</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">info</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// New contact is in contact</span>
-    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// Handle an error</span>
-    <span class="p">})</span>
-  <span class="p">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>Contacts.save(info).then((contact) =&gt; {
+  // New contact is in contact
+}, (err) =&gt; {
+  // Handle an error
+})   }
+</code></pre>
+</div>
 
-  <span class="nx">getContact</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Let the user pick a contact from the address book</span>
-    <span class="nx">Contacts</span><span class="p">.</span><span class="nx">pickContact</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// Got a contact</span>
-    <span class="p">})</span>
-  <span class="p">}</span>
+<p>getContact() {
+    // Let the user pick a contact from the address book
+    Contacts.pickContact((contact) =&gt; {
+      // Got a contact
+    })
+  }</p>
 
-  <span class="nx">findContact</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+<p>findContact(query) {</p>
 
-    <span class="c1">// Search for a displayName of 'Max' (set fields to one of the above fields to change the search field)</span>
-    <span class="nx">Contacts</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">filter</span><span class="p">:</span> <span class="s1">'Max'</span> <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">contact</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="p">})</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>// Search for a displayName of 'Max' (set fields to one of the above fields to change the search field)
+Contacts.find({filter: 'Max' }).then((contact) =&gt; {
+})   } } ```
 </code></pre>
 </div>
 

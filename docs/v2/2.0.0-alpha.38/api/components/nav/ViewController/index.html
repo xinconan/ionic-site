@@ -431,7 +431,7 @@ ViewController
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Returns if it’s possible to go back from this Page.</li>
 </ul>
 
@@ -444,17 +444,18 @@ ViewController
 
 <p>You can find out the index of the current view is in the current navigation stack</p>
 
-<pre><code class="language-typescript"> export class Page1 {
+<p><code class="highlighter-rouge">typescript
+ export class Page1 {
    constructor(view: ViewController){
      this.view = view;
      // Just log out the index
      console.log(this.view.index);
    }
  }
-</code></pre>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>Number</code> Returns the index of this page within its NavController.</li>
 </ul>
 
@@ -466,7 +467,7 @@ ViewController
 </h3>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Returns if this Page is the root page of the NavController.</li>
 </ul>
 
@@ -479,7 +480,8 @@ ViewController
 
 <p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageLoaded</code> method in order to make sure the view has rendered fully.</p>
 
-<pre><code class="language-typescript">export class Page1 {
+<p><code class="highlighter-rouge">typescript
+export class Page1 {
  constructor(view: ViewController) {
    this.view = view
  }
@@ -487,10 +489,10 @@ ViewController
    console.log('Do we have a Navbar?', this.view.hasNavbar());
  }
 }
-</code></pre>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Returns a boolean if this Page has a navbar or not.</li>
 </ul>
 

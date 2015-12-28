@@ -207,25 +207,25 @@
 
 <p>Since every Ionic app is basically a web page, we need to have an <code class="highlighter-rouge">index.html</code> file in our app which defines the first page that loads in the app. Let’s create <code class="highlighter-rouge">www/index.html</code> and initialize it with this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Todo<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"</span><span class="nt">&gt;</span>
+<p>```html
+&lt;!DOCTYPE html&gt;</p>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Todo</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
 
-    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"lib/ionic/css/ionic.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet" />
 
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"lib/ionic/js/ionic.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <span class="c">&lt;!-- Needed for Cordova/PhoneGap (will be a 404 during development) --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="cordova.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
+<p>```</p>
 
 <p>In the shell above, we are including the Ionic CSS and both the core Ionic JS and the Ionic AngularJS extensions in the <code class="highlighter-rouge">ionic.bundle.js</code> file. Ionic comes with <code class="highlighter-rouge">ngAnimate</code> and <code class="highlighter-rouge">ngSanitize</code> bundled in, but to use other Angular modules you’ll need to include them from the <code class="highlighter-rouge">lib/js/angular</code> directory.</p>
 
@@ -239,16 +239,16 @@
 
 <p>To create side menus in Ionic, we can use <a href="http://ionicframework.com/docs/api/directive/ionSideMenus">ion-side-menus</a>. Feel free to read up on it, but the markup needed is simple. Edit the <code class="highlighter-rouge">index.html</code> file and change the <code class="highlighter-rouge">&lt;body&gt;</code> content to look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;ion-side-menus&gt;</span>
-    <span class="nt">&lt;ion-side-menu-content&gt;</span>
-    <span class="nt">&lt;/ion-side-menu-content&gt;</span>
-    <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ion-side-menu&gt;</span>
-  <span class="nt">&lt;/ion-side-menus&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<body>
+  <ion-side-menus>
+    <ion-side-menu-content>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+    </ion-side-menu>
+  </ion-side-menus>
+</body>
+<p>```</p>
 
 <p>In the code above, we’ve added our <code class="highlighter-rouge">&lt;ion-side-menus&gt;</code> controller which will handle the dragging and exposing of the side menu. Inside of the controller we have a <code class="highlighter-rouge">&lt;ion-side-menu-content&gt;</code> which is the center content area of the app, and a <code class="highlighter-rouge">&lt;ion-side-menu side="left"&gt;</code> which is a left, initially hidden, side menu.</p>
 
@@ -258,59 +258,60 @@
 
 <p>Let’s fix that. First, we need to create a new AngularJS module and tell Angular to initialize it. Let’s create a new file located at <code class="highlighter-rouge">www/js/app.js</code>. Put this code into the file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">javascript
+angular.module('todo', ['ionic'])
+</code></p>
 
 <p>This is the Angular way of creating an application, and we are telling angular to include the <code class="highlighter-rouge">ionic</code> module which includes all of the Ionic code which will process the tags above and make our app come to life.</p>
 
 <p>Now, go back to <code class="highlighter-rouge">index.html</code> and right before the <code class="highlighter-rouge">&lt;script src="cordova.js"&gt;&lt;/script&gt;</code> line, add:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;script src="js/app.js"&gt;&lt;/script&gt;
+</code></p>
 
 <p>This includes the script we just created.</p>
 
 <p>And to make our new app run, we need to add the <code class="highlighter-rouge">ng-app</code> attribute to the body tag:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<body ng-app="todo">
+```
 
-<p>Now, we still won’t see anything if we run the code, because we need to add some content to the application. Let’s go ahead and add a header for both the center content area and the left menu.</p>
+Now, we still won't see anything if we run the code, because we need to add some content to the application. Let's go ahead and add a header for both the center content area and the left menu.
 
-<p>Update the body content to be:</p>
+Update the body content to be:
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-side-menus&gt;</span>
+```html
+<body ng-app="todo">
+  <ion-side-menus>
 
-    <span class="c">&lt;!-- Center content --&gt;</span>
-    <span class="nt">&lt;ion-side-menu-content&gt;</span>
-      <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Todo<span class="nt">&lt;/h1&gt;</span>
-      <span class="nt">&lt;/ion-header-bar&gt;</span>
-      <span class="nt">&lt;ion-content&gt;</span>
-      <span class="nt">&lt;/ion-content&gt;</span>
-    <span class="nt">&lt;/ion-side-menu-content&gt;</span>
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Todo</h1>
+      </ion-header-bar>
+      <ion-content>
+      </ion-content>
+    </ion-side-menu-content>
 
-    <span class="c">&lt;!-- Left menu --&gt;</span>
-    <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Projects<span class="nt">&lt;/h1&gt;</span>
-      <span class="nt">&lt;/ion-header-bar&gt;</span>
-    <span class="nt">&lt;/ion-side-menu&gt;</span>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Projects</h1>
+      </ion-header-bar>
+    </ion-side-menu>
 
-  <span class="nt">&lt;/ion-side-menus&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
+  </ion-side-menus>
+</body>
+```
 
-<h2 id="testing-it">Testing it</h2>
+## Testing it
 
-<p>With our shell and app ready to run, let’s test it out and see how it looks!</p>
+With our shell and app ready to run, let's test it out and see how it looks!
 
-<p><a href="testing.html">Chapter 4: Testing your app</a></p>
+[Chapter 4: Testing your app](testing.html)
+</body>
 
         </div>
 

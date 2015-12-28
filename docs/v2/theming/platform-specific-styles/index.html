@@ -112,9 +112,9 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <!-- <li class=""> -->
-      <!--   <a href="/docs/v2/getting&#45;started/concepts">Concepts</a> -->
-      <!-- </li> -->
+      <li class="">
+        <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
+      </li>
       <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
@@ -300,6 +300,9 @@
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
       </li>
+      <li class="">
+        <a href="/docs/v2/resources/using-npm/">Using NPM</a>
+      </li>
     </ul>
   </li>
 </ul>
@@ -318,11 +321,11 @@
 
 <p>Ionic uses modes to customize the look of components to match the platform you are using. For example, when you are viewing the app on an Android device, the <code class="highlighter-rouge">&lt;body&gt;</code> will have <code class="highlighter-rouge">class="md"</code> added to it by default:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"md"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<body class="md">
+```
 
-<p>Here is a chart of the default mode that gets added based on platform:</p>
+Here is a chart of the default mode that gets added based on platform:
 
 <table class="table">
   <tr>
@@ -352,39 +355,41 @@
   </tr>
 </table>
 
-<p>You can change the mode that gets assigned in the configuration of your app. Therefore, if you wanted the Material Design <code class="highlighter-rouge">md</code> mode on iOS, you could do it.</p>
+You can change the mode that gets assigned in the configuration of your app. Therefore, if you wanted the Material Design `md` mode on iOS, you could do it.
 
-<h2 id="overriding-the-mode-styles">Overriding the Mode Styles</h2>
+## Overriding the Mode Styles
 
-<p>Each Ionic component has up to three stylesheets used to style it. For example, the tabs component has a core stylesheet that consists of styles shared between all modes, a material stylesheet which contains the styles for the <code class="highlighter-rouge">md</code> mode, and an iOS stylesheet for, you guessed it, the <code class="highlighter-rouge">ios</code> mode. Not all components are styled differently for each mode, so some of them will only have the core stylesheet, or the core stylesheet and one of the modes.</p>
+Each Ionic component has up to three stylesheets used to style it. For example, the tabs component has a core stylesheet that consists of styles shared between all modes, a material stylesheet which contains the styles for the `md` mode, and an iOS stylesheet for, you guessed it, the `ios` mode. Not all components are styled differently for each mode, so some of them will only have the core stylesheet, or the core stylesheet and one of the modes.
 
-<p>You can use the class that is applied to the body to override specific properties in mode components. For example, if you wanted to override all Material Design (md) mode buttons to have capitalized text:</p>
+You can use the class that is applied to the body to override specific properties in mode components. For example, if you wanted to override all Material Design (md) mode buttons to have capitalized text:
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.md</span> <span class="nt">button</span> <span class="p">{</span>
-  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">capitalize</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+```scss
+.md button {
+  text-transform: capitalize;
+}
+```
 
-<p>The Sass files for these modes also have unique variables that can be used to override the styles. Using the same example above, we could change the <code class="highlighter-rouge">md</code> button’s <code class="highlighter-rouge">border-radius</code> by changing the value of the <code class="highlighter-rouge">$button-md-border-radius</code> variable. You can do this in your own custom Sass file or in our main Sass file, before Ionic is imported:</p>
+The Sass files for these modes also have unique variables that can be used to override the styles. Using the same example above, we could change the `md` button's `border-radius` by changing the value of the `$button-md-border-radius` variable. You can do this in your own custom Sass file or in our main Sass file, before Ionic is imported:
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$button-md-border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+```scss
+$button-md-border-radius: 8px;
 
-<span class="c1">// Ionic Sass
+// Ionic Sass
 // ---------------------------------
-</span><span class="k">@import</span> <span class="s2">"ionic"</span><span class="p">;</span>
-</code></pre>
-</div>
+@import "ionic";
+```
 
-<h2 id="setting-attributes-dynamically">Setting Attributes Dynamically</h2>
+## Setting Attributes Dynamically
 
-<p>By setting an attribute dynamically, you can add or remove functionality from a component based on a certain condition. To set an attribute dynamically, use the following syntax:</p>
+By setting an attribute dynamically, you can add or remove functionality from a component based on a certain condition. To set an attribute dynamically, use the following syntax:
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="err">[</span><span class="na">attr</span><span class="err">.</span><span class="na">no-lines</span><span class="err">]="</span><span class="na">isMD</span> <span class="err">?</span> <span class="err">''</span> <span class="na">:</span> <span class="na">null</span><span class="err">"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+```html
+&lt;ion-list [attr.no-lines]="isMD ? '' : null"&gt;
+```
 
-<p>This will set the <code class="highlighter-rouge">no-lines</code> attribute on the list component if <code class="highlighter-rouge">isMD</code> evaluates to true.</p>
+This will set the `no-lines` attribute on the list component if `isMD` evaluates to true.
+
+
 
 <h3 style="text-align:right;">
  <a href="../overriding-ionic-variables/">
@@ -392,6 +397,9 @@
   </a>
 </h3>
 
+
+
+</body>
 
       </main>
     </div>

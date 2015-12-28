@@ -385,19 +385,20 @@ Keyboard
 
 <p>Chech to see if the keyboard is open or not.</p>
 
-<pre><code class="language-ts">export class MyClass{
+<p>```ts
+export class MyClass{
  constructor(keyboard: Keyboard){
    this.keyboard = keyboard;
  }
  keyboardCheck(){
-   setTimeout(()  =&gt; console.log('is the keyboard open ', this.keyboard.isOpen()));
+   setTimeout(()  =&gt; console.log(‘is the keyboard open ‘, this.keyboard.isOpen()));
  }
-}
+}</p>
 
-</code></pre>
+<p>```</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>Bool</code> returns a true or flase value if the keyboard is open or not</li>
 </ul>
 
@@ -411,18 +412,19 @@ Keyboard
 
 <p>When the keyboard is closed, call any methods you want</p>
 
-<pre><code class="language-ts">export class MyClass{
+<p>```ts
+export class MyClass{
  constructor(keyboard: Keyboard){
    this.keyboard = keyboard;
    this.keyboard.onClose(this.closeCallback);
  }
  closeCallback(){
     // call what ever functionality you want on keyboard close
-    console.log('Closing time");
+    console.log(‘Closing time”);
  }
-}
+}</p>
 
-</code></pre>
+<p>```</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -455,7 +457,7 @@ Keyboard
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>Function</code> returns a callback that gets fired when the keyboard is closed</li>
 </ul>
 

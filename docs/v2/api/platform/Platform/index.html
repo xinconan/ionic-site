@@ -413,7 +413,8 @@ export MyClass {
 
 <p>Depending on the platform name, isPlatform will return true or flase</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -423,8 +424,7 @@ export MyClass {
      }
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -456,7 +456,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>bool</code> returns true/false based on platform you place</li>
 </ul>
 
@@ -468,11 +468,12 @@ export MyClass {
 
 </h3>
 
-<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.<br />
-Each possible value is a hierarchy of platforms. For example, on an iPhone,<br />
+<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.
+Each possible value is a hierarchy of platforms. For example, on an iPhone,
 it would return mobile, ios, and iphone.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -481,11 +482,10 @@ export MyClass {
      // From if your on mobile, to mobile os, and device name
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>array</code> the array of platforms</li>
 </ul>
 
@@ -499,15 +499,15 @@ export MyClass {
 
 <p>Returns an object containing information about the paltform</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
      console.log(this.platform.versions());
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -540,7 +540,7 @@ export MyClass {
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> An object with various platform info</li>
 </ul>
 
@@ -554,7 +554,8 @@ export MyClass {
 
 <p>Returns a promise when the platform is ready and native functionality can be called</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -564,11 +565,10 @@ export MyClass {
       });
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>promise</code> Returns a promsie when device ready has fired</li>
 </ul>
 

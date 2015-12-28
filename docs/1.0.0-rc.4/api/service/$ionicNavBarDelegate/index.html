@@ -959,22 +959,22 @@
 <p>Delegate for controlling the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-nav-bar&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"setNavTitle('banana')"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<body ng-controller="MyCtrl">
+  <ion-nav-bar>
+    <button ng-click="setNavTitle('banana')">
       Set title to banana!
-    <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/ion-nav-bar&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">setNavTitle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">$ionicNavBarDelegate</span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+    </button>
+  </ion-nav-bar>
+</body>
+<p><code class="highlighter-rouge">
+</code>js
+function MyCtrl($scope, $ionicNavBarDelegate) {
+  $scope.setNavTitle = function(title) {
+    $ionicNavBarDelegate.title(title);
+  }
+}
+```</p>
 
 <h2 id="methods">Methods</h2>
 
@@ -1023,7 +1023,7 @@ Available: &#39;left&#39;, &#39;right&#39;, &#39;center&#39;. Default: &#39;cent
 
 </h2>
 
-<p>Set/get whether the <a href="/docs/api/directive/ionNavBackButton/"><code>ionNavBackButton</code></a> is shown<br />
+<p>Set/get whether the <a href="/docs/api/directive/ionNavBackButton/"><code>ionNavBackButton</code></a> is shown
 (if it exists and there is a previous view that can be navigated to).</p>
 
 <table class="table" style="margin:0;">
@@ -1057,7 +1057,7 @@ Available: &#39;left&#39;, &#39;right&#39;, &#39;center&#39;. Default: &#39;cent
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether the back button is shown.</li>
 </ul>
 
@@ -1100,7 +1100,7 @@ Available: &#39;left&#39;, &#39;right&#39;, &#39;center&#39;. Default: &#39;cent
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code> Whether the bar is shown.</li>
 </ul>
 
