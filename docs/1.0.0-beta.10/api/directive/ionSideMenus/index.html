@@ -894,44 +894,44 @@
 
 </h1>
 
-<p>A container element for side menu(s) and the main content. Allows the left
-and/or right side menu to be toggled by dragging the main content area side
+<p>A container element for side menu(s) and the main content. Allows the left<br />
+and/or right side menu to be toggled by dragging the main content area side<br />
 to side.</p>
 
 <p><img src="http://ionicframework.com.s3.amazonaws.com/docs/controllers/sidemenu.gif" alt="Side Menu" /></p>
 
-<p>For more information on side menus, check out the documenation for
-<a href="/docs/api/directive/ionSideMenuContent/"><code>ionSideMenuContent</code></a> and
+<p>For more information on side menus, check out the documenation for<br />
+<a href="/docs/api/directive/ionSideMenuContent/"><code>ionSideMenuContent</code></a> and<br />
 <a href="/docs/api/directive/ionSideMenu/"><code>ionSideMenu</code></a>.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>To use side menus, add an <code class="highlighter-rouge">&lt;ion-side-menus&gt;</code> parent element,
-an <code class="highlighter-rouge">&lt;ion-side-menu-content&gt;</code> for the center content,
+<p>To use side menus, add an <code class="highlighter-rouge">&lt;ion-side-menus&gt;</code> parent element,<br />
+an <code class="highlighter-rouge">&lt;ion-side-menu-content&gt;</code> for the center content,<br />
 and one or more <code class="highlighter-rouge">&lt;ion-side-menu&gt;</code> directives.</p>
 
-<p>```html</p>
-<ion-side-menus>
-  <!-- Center content -->
-  <ion-side-menu-content ng-controller="ContentController">
-  </ion-side-menu-content>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-side-menus&gt;</span>
+  <span class="c">&lt;!-- Center content --&gt;</span>
+  <span class="nt">&lt;ion-side-menu-content</span> <span class="na">ng-controller=</span><span class="s">"ContentController"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-side-menu-content&gt;</span>
 
-  <!-- Left menu -->
-  <ion-side-menu side="left">
-  </ion-side-menu>
+  <span class="c">&lt;!-- Left menu --&gt;</span>
+  <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-side-menu&gt;</span>
 
-  <!-- Right menu -->
-  <ion-side-menu side="right">
-  </ion-side-menu>
-</ion-side-menus>
-<p><code class="highlighter-rouge">
-</code>js
-function ContentController($scope, $ionicSideMenuDelegate) {
-  $scope.toggleLeft = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-}
-```</p>
+  <span class="c">&lt;!-- Right menu --&gt;</span>
+  <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"right"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-side-menu&gt;</span>
+<span class="nt">&lt;/ion-side-menus&gt;</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ContentController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicSideMenuDelegate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleLeft</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$ionicSideMenuDelegate</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h2 id="api" style="clear:both;">API</h2>
 

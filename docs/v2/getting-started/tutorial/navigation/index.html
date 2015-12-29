@@ -319,28 +319,25 @@ Improve this doc
 
 <p>Recall from the previous section we had a function inside our <code class="highlighter-rouge">ListPage</code> class that looked something like this:</p>
 
-<p><code class="highlighter-rouge">ts
-itemTapped(event, item) {
+<pre><code class="language-ts">itemTapped(event, item) {
     console.log('You selected:', item.title);
 }
-</code></p>
+</code></pre>
 
 <p>Let’s improve it so it navigates to a new page:</p>
 
-<p><code class="highlighter-rouge">ts
-itemTapped(event, item) {
+<pre><code class="language-ts">itemTapped(event, item) {
     this.nav.push(ItemDetailsPage, {
       item: item
     });
 }
-</code></p>
+</code></pre>
 
 <p>You might have noticed we are referencing <code class="highlighter-rouge">ItemDetailsPage</code>. This is a page included in the tutorial starter.  Let’s imported it in <code class="highlighter-rouge">app/list/list.js</code> so we can use it:</p>
 
-<p><code class="highlighter-rouge">ts
-...
+<pre><code class="language-ts">...
 import {ItemDetailsPage} from '../item-details/item-details';
-</code></p>
+</code></pre>
 
 <p>After saving the file, you will notice the <code class="highlighter-rouge">ionic serve</code> process will recompile your app with the new changes, and reload the browser. Let’s revisit our app in the browser, and when we tap an item, it will navigate to the item details page!</p>
 

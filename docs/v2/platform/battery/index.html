@@ -320,21 +320,21 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<p><code class="highlighter-rouge">bash
-$ ionic plugin add cordova-plugin-battery-status
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-battery-status
+</code></pre>
+</div>
 
-<p>```javascript
-import {Battery} from ‘ionic/ionic’</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Battery</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-<p>class MyPage {
-  constructor() {
-    Battery.getStatus().then((data) =&gt; {
-      console.log(data.charging, data.level, data.chargingTime, data.dischargingTime)
-    });
-  }
-}
-```</p>
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Battery</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">charging</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">level</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">chargingTime</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">dischargingTime</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
       </main>
     </div>

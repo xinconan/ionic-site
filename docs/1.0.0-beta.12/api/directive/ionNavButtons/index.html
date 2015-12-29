@@ -935,30 +935,30 @@
 
 </h1>
 
-<p>Use ionNavButtons to set the buttons on your <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a>
+<p>Use ionNavButtons to set the buttons on your <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a><br />
 from within an <a href="/docs/api/directive/ionView/"><code>ionView</code></a>.</p>
 
-<p>Any buttons you declare will be placed onto the navbar’s corresponding side,
+<p>Any buttons you declare will be placed onto the navbar’s corresponding side,<br />
 and then destroyed when the user leaves their parent view.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>```html</p>
-<ion-nav-bar>
-</ion-nav-bar>
-<ion-nav-view>
-  <ion-view>
-    <ion-nav-buttons side="left">
-      <button class="button" ng-click="doSomething()">
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;</span>
+<span class="nt">&lt;/ion-nav-bar&gt;</span>
+<span class="nt">&lt;ion-nav-view&gt;</span>
+  <span class="nt">&lt;ion-view&gt;</span>
+    <span class="nt">&lt;ion-nav-buttons</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">ng-click=</span><span class="s">"doSomething()"</span><span class="nt">&gt;</span>
         I'm a button on the left of the navbar!
-      </button>
-    </ion-nav-buttons>
-    <ion-content>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-nav-buttons&gt;</span>
+    <span class="nt">&lt;ion-content&gt;</span>
       Some super content here!
-    </ion-content>
-  </ion-view>
-</ion-nav-view>
-<p>```</p>
+    <span class="nt">&lt;/ion-content&gt;</span>
+  <span class="nt">&lt;/ion-view&gt;</span>
+<span class="nt">&lt;/ion-nav-view&gt;</span>
+</code></pre>
+</div>
 
 <h2 id="api" style="clear:both;">API</h2>
 

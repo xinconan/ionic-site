@@ -207,9 +207,9 @@
 
 <p>Testing your app in a browser is as simple as running the serve command in your project’s root folder.</p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic serve
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve
+</code></pre>
+</div>
 
 <p>This will start a live-reload server for your project. When changes are made to any HTML, CSS, or JavaScript files, the browser will automatically reload when the files are saved.</p>
 
@@ -221,16 +221,16 @@ $ ionic serve
 
 <p>You can also test right in the simulator using the cordova commands from the previous chapter. For example, to test in the iOS simulator, run:</p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic build ios
-$ ionic emulate ios
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic build ios
+<span class="gp">$ </span>ionic emulate ios
+</code></pre>
+</div>
 
 <p>Substitute ios with android for Android testing. If you want to get advanced, you can also open up the project file for a specific platform by opening the required XCode or Android Eclipse project in <code class="highlighter-rouge">platforms/PLATFORM</code> inside the root of your project. Then, you can build and test from inside the platform-specific IDE. Note: if you go this route, I recommend still working inside of the root <code class="highlighter-rouge">www</code> folder, and when you’ve made changes to this folder, run the command:</p>
 
-<p><code class="highlighter-rouge">bash
-$ cordova prepare ios
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova prepare ios
+</code></pre>
+</div>
 
 <p>Which will update the ios specific project with the code from the <code class="highlighter-rouge">www</code> folder. Note: this will overwrite any changes you’ve made to the <code class="highlighter-rouge">platforms/ios/www</code> and other platform-specific folders.</p>
 
@@ -250,9 +250,9 @@ $ cordova prepare ios
 
 <p>Testing on Android is much easier and faster. To test on the device, simply plug it in, and run</p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic run android
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run android
+</code></pre>
+</div>
 
 <p>If this doesn’t work, make sure you have USB debugging enabled on your device, as <a href="http://developer.android.com/tools/device.html">described</a> on the Android developer site.</p>
 

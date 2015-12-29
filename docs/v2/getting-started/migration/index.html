@@ -320,33 +320,33 @@
 
 <p>V1</p>
 
-<p>```
-.config(function($stateProvider){
+<div class="highlighter-rouge"><pre class="highlight"><code>.config(function($stateProvider){
   $stateProvider
-  .state(‘main’, {
-    url: ‘/’,
-    templateUrl: ‘templates/main.html’,
-    controller: ‘MainCtrl’
+  .state('main', {
+    url: '/',
+    templateUrl: 'templates/main.html',
+    controller: 'MainCtrl'
   })
-})</p>
+})
 
-<p>.controller(‘MainCtrl’, function(){</p>
+.controller('MainCtrl', function(){
 
-<p>})
-```</p>
+})
+</code></pre>
+</div>
 
 <p>We can rewrite this in V2 like so.</p>
 
-<p>```
-@Page({
-  templateUrl:’main/main.html’
+<div class="highlighter-rouge"><pre class="highlight"><code>@Page({
+  templateUrl:'main/main.html'
 })
 export class MainCmp {
-  constructor(){</p>
+  constructor(){
 
-<p>}
+  }
 }
-```</p>
+</code></pre>
+</div>
 
 <p>Other changes, such as our navigation changes, are much more different, but all for the best. Now we can treat components as arbitrary views, and navigate to them however we want. This makes navigation much more flexible and allows for much more native-styled navigation stacks.</p>
 
@@ -362,54 +362,50 @@ export class MainCmp {
 
 <p><em>index.html</em></p>
 
-<p>```html</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-item&gt;</span>
+        {{data.text}}
+      <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-content ng-controller="MainCtrl"&gt;
-  &lt;ion-item&gt;
-    {{data.text}}
-  &lt;/ion-item&gt;
-&lt;/ion-content&gt;
 </code></pre>
 </div>
 
-<p>```</p>
-
 <p><em>app.js</em></p>
 
-<p><code class="highlighter-rouge">javascript
-    .controller('MainCtrl', function($scope){
-      $scope.data ={
-        text: 'Hello World'
-      }
-    })
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MainCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span><span class="p">{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Hello World'</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+</code></pre>
+</div>
 
 <p>To convert this to <code class="highlighter-rouge">controllerAs</code> syntax, you only have to change a few things.</p>
 
 <p><em>index.html</em></p>
 
-<p>```html</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl as main"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-item&gt;</span>
+        {{data.text}}
+      <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-content ng-controller="MainCtrl as main"&gt;
-  &lt;ion-item&gt;
-    {{data.text}}
-  &lt;/ion-item&gt;
-&lt;/ion-content&gt;
 </code></pre>
 </div>
 
-<p>```</p>
-
 <p><em>app.js</em></p>
 
-<p>```javascript
-    .controller(‘MainCtrl’, function(){
-      this.data ={
-        text: ‘Hello World’
-      }
-    })</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MainCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span><span class="p">{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Hello World'</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
 
-<p>```</p>
+</code></pre>
+</div>
 
 <h3 id="typescript">TypeScript</h3>
 
@@ -417,55 +413,52 @@ export class MainCmp {
 
 <p><em>app.js</em></p>
 
-<p>```javascript
-    .controller(‘MainCtrl’, function(){
-      this.data ={
-        text: ‘Hello World’
-      }
-    })</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MainCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span><span class="p">{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Hello World'</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
 
-<p>```</p>
-
-<p><em>app.ts</em></p>
-
-<p>```javascript</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>export class MainCtrl{
-  constructor(){
-    this.data ={
-      text: 'Hello World'
-    }
-  }
-}
 </code></pre>
 </div>
 
-<p>```</p>
+<p><em>app.ts</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+    <span class="kr">export</span> <span class="kr">class</span> <span class="nx">MainCtrl</span><span class="p">{</span>
+      <span class="nx">constructor</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span><span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Hello World'</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
 
 <h3 id="project-structure">Project Structure</h3>
 
 <p>With Angular 1, it was a practice to keep all your JavaScript together and separate from your templates. Since Ionic 2 and Angular 2 will be moving to a component base setup, you can reorganize your project to help mentally enforce that concept. So a project whose directory could look like this:</p>
 
-<p>```
-    |-www/
+<div class="highlighter-rouge"><pre class="highlight"><code>    |-www/
     |
-    |–js/
-    |–|-app.js
-    |–|-HomeCtrl.js
-    |–|-DetailCtrl.js
+    |--js/
+    |--|-app.js
+    |--|-HomeCtrl.js
+    |--|-DetailCtrl.js
     |
-    |–templates/
-    |–|-Home.html
-    |–|-Detail.html
+    |--templates/
+    |--|-Home.html
+    |--|-Detail.html
     |
-    |-index.html</p>
+    |-index.html
 
-<p>```</p>
+</code></pre>
+</div>
 
 <p>Could start to be reorganized to look like this:</p>
 
-<p><code class="highlighter-rouge">
-    |-www/
+<div class="highlighter-rouge"><pre class="highlight"><code>    |-www/
     |
     |--Home/
     |--|-HomeCtrl.js
@@ -477,7 +470,8 @@ export class MainCmp {
     |
     |-index.html
     |-app.js
-</code></p>
+</code></pre>
+</div>
 
 <p>Organizing your project like this can help get you in the mindset that each of your app’s views/states are a component, with a template and a controller.</p>
 

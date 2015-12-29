@@ -320,26 +320,27 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<p><code class="highlighter-rouge">bash
-$ ionic plugin add cordova-plugin-device-motion
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-device-motion
+</code></pre>
+</div>
 
-<p>```javascript
-import {DeviceMotion, IonicPlatform} from ‘ionic/ionic’</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">DeviceMotion</span><span class="p">,</span> <span class="nx">IonicPlatform</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
 
-<p>class MyPage {
-  constructor(platform: IonicPlatform) {
-    platform.ready().then(() =&gt; {
-      let watch = DeviceMotion.watchAcceleration();</p>
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">platform</span><span class="err">:</span> <span class="nx">IonicPlatform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">watch</span> <span class="o">=</span> <span class="nx">DeviceMotion</span><span class="p">.</span><span class="nx">watchAcceleration</span><span class="p">();</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  watch.source.subscribe((data) =&gt; {
-    // data.acceleration.x
-    // data.acceleration.y
-    // data.acceleration.z
-  })
+      <span class="nx">watch</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// data.acceleration.x</span>
+        <span class="c1">// data.acceleration.y</span>
+        <span class="c1">// data.acceleration.z</span>
+      <span class="p">})</span>
 
-  watch.clear() // to stop watching
-});   } } ```
+      <span class="nx">watch</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span> <span class="c1">// to stop watching</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 

@@ -955,26 +955,27 @@
 
 <p>To use the Gesture service in your Angular directives, just inject <code class="highlighter-rouge">Gesture</code>:</p>
 
-<p>```javascript
-angular.module(‘myModule’, [])</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">[])</span>
 
-<p>.directive(‘myDirective’, function(Gesture) {
-  return {
-    // Other directive stuff …</p>
+<span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'myDirective'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Gesture</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="c1">// Other directive stuff ...</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>link: function($scope, $element, $attr) {
-  var handleDrag = function(e) {
-    // Access e.gesture for gesture related information
-    console.log('Drag: ', e.gesture.touches[0].pageX, e.gesture.touches[0].pageY, e.gesture.deltaX, e.gesture.deltaY);
-  };
+    <span class="na">link</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$element</span><span class="p">,</span> <span class="nx">$attr</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">handleDrag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Access e.gesture for gesture related information</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Drag: '</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">touches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageX</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">touches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">deltaX</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">deltaY</span><span class="p">);</span>
+      <span class="p">};</span>
 
-  var dragGesture = Gesture.on('drag', handleDrag, $element);
+      <span class="kd">var</span> <span class="nx">dragGesture</span> <span class="o">=</span> <span class="nx">Gesture</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'drag'</span><span class="p">,</span> <span class="nx">handleDrag</span><span class="p">,</span> <span class="nx">$element</span><span class="p">);</span>
 
-  $scope.$on('$destroy', function() {
-    // Unbind drag gesture handler
-    Gesture.off(dragGesture, 'drag', handleDrag);
-  });
-}   } }); ```
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'$destroy'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Unbind drag gesture handler</span>
+        <span class="nx">Gesture</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="nx">dragGesture</span><span class="p">,</span> <span class="s1">'drag'</span><span class="p">,</span> <span class="nx">handleDrag</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 </div>
 

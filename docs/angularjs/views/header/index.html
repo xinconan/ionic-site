@@ -956,26 +956,31 @@
 
 <p>To use the dynamic header bar behavior in Ionic-Angular, use the <code class="highlighter-rouge">&lt;ion-header-bar&gt;</code> directive:</p>
 
-<p>```html</p>
-<ion-header-bar title="headerTitle" left-buttons="leftButtons" right-buttons="rightButtons" type="bar-positive" align-title="center">
-</ion-header-bar>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-header-bar</span>
+  <span class="na">title=</span><span class="s">"headerTitle"</span>
+  <span class="na">left-buttons=</span><span class="s">"leftButtons"</span>
+  <span class="na">right-buttons=</span><span class="s">"rightButtons"</span>
+  <span class="na">type=</span><span class="s">"bar-positive"</span>
+  <span class="na">align-title=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/ion-header-bar&gt;</span>
 
-<p>```</p>
+</code></pre>
+</div>
 
 <p>Where <code class="highlighter-rouge">headerTitle</code>, <code class="highlighter-rouge">leftButtons</code>, and <code class="highlighter-rouge">rightButtons</code> are angular expressions. Pass in <code class="highlighter-rouge">left</code> for the <code class="highlighter-rouge">align-title</code> attribute to align the title to the left for more Android-friendly layouts.</p>
 
 <p>For example, to specify left buttons, you can set <code class="highlighter-rouge">$scope.leftButtons</code> to be:</p>
 
-<p><code class="highlighter-rouge">javascript
-$scope.leftButtons = [
-  {
-    type: 'button-positive',
-    content: '&lt;i class="icon ion-navicon"&gt;&lt;/i&gt;',
-    tap: function(e) {
-    }
-  }
-]
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">leftButtons</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s1">'button-positive'</span><span class="p">,</span>
+    <span class="na">content</span><span class="p">:</span> <span class="s1">'&lt;i class="icon ion-navicon"&gt;&lt;/i&gt;'</span><span class="p">,</span>
+    <span class="na">tap</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+</div>
 
 <p>Which will create a left-side button with the <code class="highlighter-rouge">ion-navicon</code> icon. You can do the same for the right side.</p>
 

@@ -390,8 +390,7 @@ Content
 
 <p>Adds the specified scroll handler to the content’ scroll element.</p>
 
-<p><code class="highlighter-rouge">ts
-@Page({
+<pre><code class="language-ts">@Page({
   template: `&lt;ion-content id="my-content"&gt;&lt;/ion-content&gt;`
 )}
 export class MyPage{
@@ -408,7 +407,7 @@ export class MyPage{
      console.info('They see me scrolling...');
    }
 }
-</code></p>
+</code></pre>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -441,7 +440,7 @@ export class MyPage{
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Function</code> A function that removes the scroll handler.</li>
 </ul>
 
@@ -463,8 +462,7 @@ export class MyPage{
 
 <p>Adds the specified touchmove handler to the content’s scroll element.</p>
 
-<p><code class="highlighter-rouge">ts
-@Page({
+<pre><code class="language-ts">@Page({
   template: `&lt;ion-content id="my-content"&gt;&lt;/ion-content&gt;`
 )}
 export class MyPage{
@@ -481,7 +479,7 @@ export class MyPage{
      console.log("I'm touching all the magazines!!");
    }
 }
-</code></p>
+</code></pre>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -514,7 +512,7 @@ export class MyPage{
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Function</code> A function that removes the touchmove handler.</li>
 </ul>
 
@@ -528,8 +526,7 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<p><code class="highlighter-rouge">ts
-@Page({
+<pre><code class="language-ts">@Page({
   template: `&lt;ion-content id="my-content"&gt;
      &lt;button (click)="scrollTo()"&gt; Down 500px&lt;/button&gt;
   &lt;/ion-content&gt;`
@@ -547,7 +544,7 @@ export class MyPage{
      this.content.scrollTo(0, 500, 200);
    }
 }
-</code></p>
+</code></pre>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -631,7 +628,7 @@ export class MyPage{
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when done</li>
 </ul>
 
@@ -645,8 +642,7 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<p><code class="highlighter-rouge">ts
-@Page({
+<pre><code class="language-ts">@Page({
   template: `&lt;ion-content id="my-content"&gt;
      &lt;button (click)="scrollTop()"&gt; Down 500px&lt;/button&gt;
   &lt;/ion-content&gt;`
@@ -664,10 +660,10 @@ export class MyPage{
      this.content.scrollTop();
    }
 }
-</code></p>
+</code></pre>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when done</li>
 </ul>
 
