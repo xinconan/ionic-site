@@ -267,6 +267,43 @@
     </ul>
   </li>
 
+  <!-- ### CLI ### -->
+  <li class="active">
+    <a ng-click="showCli = !showCli">CLI</a>
+    <ul ng-show="showCli"
+        
+          ng-init="showCli = true"
+        >
+      <li class="">
+        <a href="/docs/v2/cli/build">build</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/emulate">emulate</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/generate">generate</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/info">info</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/platform">platform</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/run">run</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/serve">serve</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/start">start</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/cli/v2">v2</a>
+      </li>
+    </ul>
+  </li>
+
   <!-- ### FAQ ### -->
   <li class="">
     <a href="/docs/v2/faq/">FAQ</a>
@@ -311,43 +348,6 @@
         <h2 id="cli-20">CLI 2.0</h2>
 
 <p>Ionic 2 brings a lot of new changes to your typical development process. To make development much easier, the CLI has been upgraded to include many useful features.</p>
-
-<h2 id="generators">Generators</h2>
-
-<p>Ionic now provides a generator function to create pages and services for your app. This makes going from a basic app to a full featured app with navigation much easier.</p>
-
-<p>To create a page you can use the following command</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># ionic g page &lt;PageName&gt;</span>
-ionic g page myPage
-
-√ Create www/app/my-page/my-page.html
-√ Create www/app/my-page/my-page.js
-√ Create www/app/my-page/my-page.scss
-</code></pre>
-</div>
-
-<p>This will give you a html file, sass file, and a js file with your component definition.</p>
-
-<p>To create service, you can replace <code class="highlighter-rouge">page</code> with <code class="highlighter-rouge">injectable</code></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ionic g injectable MyData
-
-√ Create www/app/my-data/my-data.js
-</code></pre>
-</div>
-
-<p>This will create a standard class with a simple <code class="highlighter-rouge">http</code> get request using Angular’s <code class="highlighter-rouge">http</code> class</p>
-
-<blockquote>
-  <p>They’re called injectable because to use the class, you first have to annotate it with the <code class="highlighter-rouge">@Injectable()</code> decorator. This will let you use the class in your app.</p>
-</blockquote>
-
-<h3 id="a-quick-note-on-naming-conventions">A quick note on naming conventions</h3>
-
-<p>For Ionic 2, it uses kabob-casing for file names (my-about-page.html) and css classes (.my-about-page), and using PascalCasing for JavaScript classes in ES6/TypeScript (MyAboutPage).<br />
-Using this convention, developers can pick up any Ionic 2 project and be productive, similar to rails.</p>
-
 
       </main>
     </div>
