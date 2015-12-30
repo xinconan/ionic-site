@@ -489,7 +489,7 @@ class HelloWorld {
 }
 </code></pre>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -553,10 +553,11 @@ class HelloWorld {
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when the transition is completed</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when the transition is completed  
+</div>
 
 <div id="pop"></div>
 
@@ -579,7 +580,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 }
 </code></pre>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -609,10 +610,11 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when the transition is completed</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when the transition is completed  
+</div>
 
 <div id="popToRoot"></div>
 
@@ -624,7 +626,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 
 <p>Similar to <code class="highlighter-rouge">pop()</code>, this method let’s you navigate back to the root of the stack, no matter how many views that is</p>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -677,7 +679,7 @@ This is useful if you need to add a view at any point in your navigation stack</
 
 <p>This will insert the <code class="highlighter-rouge">Info</code> view into the second slot of our navigation stack</p>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -724,10 +726,11 @@ This is useful if you need to add a view at any point in your navigation stack</
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when the view has been inserted into the navigation stack</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when the view has been inserted into the navigation stack  
+</div>
 
 <div id="remove"></div>
 
@@ -749,7 +752,7 @@ This is useful if you need to add a view at any point in your navigation stack</
  }
 </code></pre>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -796,10 +799,11 @@ This is useful if you need to add a view at any point in your navigation stack</
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when the view has been removed</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when the view has been removed  
+</div>
 
 <div id="setPages"></div>
 
@@ -870,7 +874,7 @@ import {Info} from '../info/info'
  }
 </code></pre>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -917,10 +921,11 @@ import {Info} from '../info/info'
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when the pages are set</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when the pages are set  
+</div>
 
 <div id="setRoot"></div>
 
@@ -932,7 +937,7 @@ import {Info} from '../info/info'
 
 <p>Set the root for the current navigation stack</p>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -996,10 +1001,11 @@ import {Info} from '../info/info'
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Promise</code> Returns a promise when done</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise when done  
+</div>
 
 <div id="isSwipeBackEnabled"></div>
 
@@ -1011,7 +1017,7 @@ import {Info} from '../info/info'
 
 <p>Check to see if swipe-to-go-back is enabled</p>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -1041,10 +1047,11 @@ import {Info} from '../info/info'
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>boolean</code> Whether swipe-to-go-back is enabled</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Whether swipe-to-go-back is enabled  
+</div>
 
 <div id="canSwipeBack"></div>
 
@@ -1059,10 +1066,11 @@ to go back, or swipe back is not enable then this will return false.<br />
 If it is possible to go back, and swipe back is enabled, then this<br />
 will return true.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>boolean</code> Whether you can swipe to go back</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Whether you can swipe to go back  
+</div>
 
 <div id="canGoBack"></div>
 
@@ -1075,10 +1083,11 @@ will return true.</p>
 <p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.<br />
 Otherwise returns false.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>boolean</code> Whether there is a page to go back to</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Whether there is a page to go back to  
+</div>
 
 <div id="getByIndex"></div>
 
@@ -1088,7 +1097,7 @@ Otherwise returns false.</p>
 
 </h3>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -1118,10 +1127,11 @@ Otherwise returns false.</p>
   </tbody>
 </table>
 
-<ul>
-  <li>Returns: <br />
-<code>Component</code> Returns the component that matches the index given</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Component</code> Returns the component that matches the index given  
+</div>
 
 <div id="first"></div>
 
@@ -1133,10 +1143,11 @@ Otherwise returns false.</p>
 
 <p>First page in this nav controller’s stack. This would not return a page which is about to be destroyed.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>Component</code> Returns the first component page in the current stack</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Component</code> Returns the first component page in the current stack  
+</div>
 
 <div id="last"></div>
 
@@ -1148,10 +1159,11 @@ Otherwise returns false.</p>
 
 <p>Last page in this nav controller’s stack. This would not return a page which is about to be destroyed.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>Component</code> Returns the last component page in the current stack</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Component</code> Returns the last component page in the current stack  
+</div>
 
 <div id="length"></div>
 
@@ -1164,10 +1176,11 @@ Otherwise returns false.</p>
 <p>Number of sibling views in the nav controller. This does<br />
 not include views which are about to be destroyed.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>Number</code> The number of views in stack, including the current view</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Number</code> The number of views in stack, including the current view  
+</div>
 
 <div id="rootNav"></div>
 
@@ -1179,10 +1192,11 @@ not include views which are about to be destroyed.</p>
 
 <p>Returns the root NavController.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>NavController</code></li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>NavController</code>   
+</div>
 
 <!-- related link -->
 
