@@ -16,11 +16,11 @@
 
 
 
-    <title>Ionic 2 | CLI | Overview - Ionic 2 Developer Preview -  Ionic Framework</title>
+    <title>Ionic 2 | CLI | Intro - Ionic 2 Developer Preview -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-concepts"
-        class="v2 docs page-concepts"
+  <body id="docs-page-cli-intro"
+        class="v2 docs page-cli-intro"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -112,7 +112,7 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/getting&#45;started/concepts">Concepts</a>
       </li>
       <li class="">
@@ -274,6 +274,9 @@
         
           ng-init="showCli = true"
         >
+      <li class="active">
+        <a href="/docs/v2/cli/">Intro</a>
+      </li>
       <li class="">
         <a href="/docs/v2/cli/build">build</a>
       </li>
@@ -345,9 +348,41 @@
       </nav>
       
       <main>
-        <h2 id="cli-20">CLI 2.0</h2>
+        <h2 id="ionic-cli">Ionic CLI</h2>
 
-<p>Ionic 2 brings a lot of new changes to your typical development process. To make development much easier, the CLI has been upgraded to include many useful features.</p>
+<p>The Ionic CLI is the primary tool used during the process of developing an Ionic app. It is like a swiss army knife in that it brings together a bunch of miscellaneous tools under a single interface. The CLI contains a number of commands crucial for Ionic development, such as <code class="highlighter-rouge">start</code>, <code class="highlighter-rouge">build</code>, <code class="highlighter-rouge">serve</code>, and <code class="highlighter-rouge">run</code>. It also contains commands like <code class="highlighter-rouge">emulate</code> and <code class="highlighter-rouge">info</code>, which can be helpful in certain situations.</p>
+
+<h3 id="installing-the-cli">Installing the CLI</h3>
+
+<p>To install the CLI, you will need to first install <a href="../resources/what-is#node">node</a> and <a href="../resources/what-is#npm">npm</a>. Once installed, run the following command to get the latest version of the Ionic CLI:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
+</code></pre>
+</div>
+
+<h3 id="basic-usage">Basic Usage</h3>
+
+<p>One of the most important commands is the <code class="highlighter-rouge">start</code> command, which creates a new Ionic project. Let’s try it out:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start myAwesomeApp --v2
+</code></pre>
+</div>
+
+<p>This will create a new app named <code class="highlighter-rouge">myAwesomeApp</code>. Let’s <code class="highlighter-rouge">cd</code> in to that directory, and run another Ionic CLI command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic info
+</code></pre>
+</div>
+
+<p>This should print out details about your Ionic environment, which is useful for debugging. Finally, to view our app in the browser, we can use the <code class="highlighter-rouge">serve</code> command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve
+</code></pre>
+</div>
+
+<h3 id="next-steps">Next Steps</h3>
+
+<p>Now that you’ve got the basics down, check out the menu on the left for a full list of commands. If you prefer to use the command line, you can see the full list of commands and options by simply typing <code class="highlighter-rouge">ionic</code>.</p>
 
       </main>
     </div>
