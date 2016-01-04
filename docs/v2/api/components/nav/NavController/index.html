@@ -177,6 +177,9 @@
   <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/alert/Alert">Alert</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/decorators/App">App</a>
 </li>
 <li class="capitalize ">
@@ -265,9 +268,6 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/components/popup/Popup">Popup</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
@@ -469,7 +469,7 @@ class HelloWorld {
 <p>We can also pass any options to the transtion from that same method</p>
 
 <pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
+   constructor(nav: NavController){
      this.nav = nav;
    }
 
@@ -510,7 +510,7 @@ class HelloWorld {
   <code>Any</code>
       </td>
       <td>
-        <p>The name of the component you want to push on the navigation stack</p>
+        <p>The page component class you want to push on to the navigation stack</p>
 
         
       </td>
@@ -556,7 +556,87 @@ class HelloWorld {
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the transition is completed  
+  <code>Promise</code> Returns a promise, which resolves when the transition has completed  
+</div>
+
+<div id="present"></div>
+
+<h3>
+<code>present(enteringView,&nbsp;opts)</code>
+  
+
+</h3>
+
+<p>Present is how we display overlays on top of the content, from within the<br />
+root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such<br />
+as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code><br />
+and <code class="highlighter-rouge">present</code>, is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas<br />
+<code class="highlighter-rouge">push</code> takes a <code class="highlighter-rouge">Page</code> component class. Additionally, <code class="highlighter-rouge">present</code> will place<br />
+the overlay in the root NavController’s stack.</p>
+
+<pre><code class="language-typescript">class MyClass{
+   constructor(nav: NavController) {
+     this.nav = nav;
+   }
+
+   presentModal() {
+     let modal = Modal.create(ProfilePage);
+     this.nav.present(modal);
+   }
+}
+</code></pre>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        enteringView
+        
+        
+      </td>
+      <td>
+        
+  <code>ViewController</code>
+      </td>
+      <td>
+        <p>The name of the component you want to push on the navigation stack</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        opts
+        
+        
+      </td>
+      <td>
+        
+  <code>Object</code>
+      </td>
+      <td>
+        <p>Any options you want to use pass to transtion</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> Returns a promise, which resolves when the transition has completed  
 </div>
 
 <div id="pop"></div>
