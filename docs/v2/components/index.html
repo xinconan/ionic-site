@@ -1299,15 +1299,9 @@ message composition, and option selection.</p>
   View Demo Source
 </a></p>
 
-<p>First, we need to add the <code class="highlighter-rouge">&lt;ion-overlay&gt;</code> component to our root <code class="highlighter-rouge">app.html</code> template. This only needs to be done once, no matter how many modal pages our app contains:</p>
+<p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code> and <code class="highlighter-rouge">NavController</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-overlay&gt;&lt;/ion-overlay&gt;</span>
-</code></pre>
-</div>
-
-<p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>:</p>
-
-<pre><code class="language-typescript">import {Modal} from 'ionic/ionic';
+<pre><code class="language-typescript">import {Modal, NavController} from 'ionic/ionic';
 </code></pre>
 
 <p>Next, let’s create our modal and define add its template:</p>
@@ -1327,17 +1321,19 @@ class MyModal {
 
 <p>Finally, let’s add the code that will open our Modal:</p>
 
-<pre><code class="language-typescript">class MyPage {
-  constructor(modal: Modal){
-    this.modal = modal;
+<pre><code class="language-typescript">import {Modal, NavController} from 'ionic/ionic'
+class MyPage {
+  constructor(nav: NavController){
+    this.nav = nav;
   }
   showModal() {
-    this.modal.open(MyModal);
+    let modal = Modal.create(MyModal);
+    this.nav.present(modal)
   }
 }
 </code></pre>
 
-<p>The <code class="highlighter-rouge">modal.open()</code> function can also receive an object as the second argument that will be passed to the modal. See the <a href="/docs/v2/api/components/modal/Modal/">Modal API docs</a> for more information.</p>
+<p>The <code class="highlighter-rouge">Modal.create()</code> function can also receive an object as the second argument that will be passed to the modal. See the <a href="/docs/v2/api/components/modal/Modal/">Modal API docs</a> for more information.</p>
 
 <h2 id="modes" class="section-header">Modes</h2>
 
