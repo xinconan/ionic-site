@@ -141,6 +141,7 @@
       
       <li><a href="#overview">Overview</a></li>
       <li><a href="#action-sheets">Action Sheets</a></li>
+      <li><a href="#alert">Alerts</a></li>
       <li><a href="#badges">Badges</a></li>
 
       <li id="components-buttons"><a href="#buttons">Buttons</a></li>
@@ -200,7 +201,6 @@
       <li><a href="#modals">Modals</a></li>
       <li><a href="#modes">Modes</a></li>
       <li><a href="#navigation">Navigation</a></li>
-      <li><a href="#popups">Popups</a></li>
       <li><a href="#radio">Radio</a></li>
       <li><a href="#range">Range</a></li>
       <li><a href="#searchbar">Searchbar</a></li>
@@ -394,23 +394,42 @@
   View Demo Source
 </a></p>
 
-<pre><code class="language-typescript">ActionSheet.open({
-  buttons: [
-    { text: 'Share This' },
-    { text: 'Move' }
-  ],
-  destructiveText: 'Delete',
-  titleText: 'Modify your album',
-  cancelText: 'Cancel',
-  cancel: () =&gt; {...},
-  destructiveButtonClicked: () =&gt; {...},
-  buttonClicked: (index) =&gt; {...}
-}).then(actionSheetRef =&gt; {
-  // Action sheet was created and opened
-  this.actionSheetRef = actionSheetRef;
-  // this.actionSheetRef.close() to close it
-})
+<pre><code class="language-typescript">presentActionSheet() {
+  let actionSheet = ActionSheet.create({
+    title: 'Modify your album',
+    buttons: [
+      {
+        text: 'Destructive',
+        style: 'destructive',
+        handler: () =&gt; {
+          console.log('Destructive clicked');
+        }
+      },{
+        text: 'Archive',
+        handler: () =&gt; {
+          console.log('Archive clicked');
+        }
+      },{
+        text: 'Cancel',
+        style: 'cancel',
+        handler: () =&gt; {
+          console.log('Cancel clicked');
+        }
+      }
+    ]
+  });
+  this.nav.present(actionSheet);
+  }
 </code></pre>
+
+<h2 id="alert" class="section-header">Alerts</h2>
+
+<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/alert.html">
+  Improve This Doc
+</a></p>
+
+<p>Alerts are a great way to require the user to take a specific action. They can provide the user with important information, and require them to make a decision.<br />
+Alerts are quite flexible, and can easily be customized. Check out the <a href="../api/components/alert/Alert">API docs</a> for more information.</p>
 
 <h2 id="badges" class="section-header">Badges</h2>
 
@@ -1500,22 +1519,6 @@ class OtherPage {
 <p>For more information on navigation controllers, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
 
 <p>But what if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menu">Menu</a>.</p>
-
-<h2 id="popups" class="section-header">Popups</h2>
-
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/popups.html">
-  Improve This Doc
-</a></p>
-
-<p>Popups are a great way to require the user to take a specific action. They can provide the user with important information, and require them to make a decision. Ionic provides three types of popups — <strong>alert</strong>, <strong>confirm</strong>, and <strong>prompt</strong>. Each popup is meant to be used in a different scenario.</p>
-
-<p>The <strong>alert</strong> popup simply displays a message to the user, and provides a button to close the popup. This popup is useful for displaying important messages (eg: <em>“Your battery is low!”</em>).</p>
-
-<p>The <strong>confirm</strong> popup displays a message, and gives the user the option to either cancel or confirm their action. This popup is useful when the user wants to perform an uncommon, but important action (eg: <em>“Are you sure you’d like to delete your account?”</em>).</p>
-
-<p>The <strong>prompt</strong> popup displays a message, and requires to user to input some data. This popup is useful when you need important information from the user in order to continue (eg: <em>“Please re-enter your password to continue.”</em>).</p>
-
-<p>Popups are quite flexible, and can easily be customized. Check out the <a href="../api/components/popup/Popup">API docs</a> for more information.</p>
 
 <h2 id="radio" class="section-header">Radio</h2>
 
