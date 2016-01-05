@@ -701,20 +701,45 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
   View Demo Source
 </a></p>
 
-<p>A card can contain a list of items. To create a card list, add elements with the <code class="highlighter-rouge">ion-item</code> attribute inside of your card:</p>
+<p>A card can contain a list of items. To create a card list, add elements with the <code class="highlighter-rouge">ion-item</code> attribute inside of an <code class="highlighter-rouge">ion-list</code> in your card:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
   <span class="nt">&lt;ion-card-header&gt;</span>
     Explore Nearby
   <span class="nt">&lt;/ion-card-header&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">cart</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
-    Shopping
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">medical</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
-    Hospital
-  <span class="nt">&lt;/a&gt;</span>
+
+  <span class="nt">&lt;ion-list&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">cart</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Shopping
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">medical</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Hospital
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">cafe</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Cafe
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">paw</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Dog Park
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">beer</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Pub
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">planet</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      Space
+    <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;/ion-list&gt;</span>
 <span class="nt">&lt;/ion-card&gt;</span>
 </code></pre>
 </div>
