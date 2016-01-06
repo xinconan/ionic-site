@@ -1605,7 +1605,7 @@ class OtherPage {
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
 <span class="nt">&lt;ion-list&gt;</span>
   <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
-    
+    {{ item }}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
@@ -1668,7 +1668,7 @@ class SearchPage {
 </a></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">padding</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-segment</span> <span class="err">[(</span><span class="na">ngNodel</span><span class="err">)]="</span><span class="na">pet</span><span class="err">"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-segment</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">pet</span><span class="err">"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ion-segment-button</span> <span class="na">value=</span><span class="s">"kittens"</span><span class="nt">&gt;</span>
       Kittens
     <span class="nt">&lt;/ion-segment-button&gt;</span>
