@@ -794,7 +794,41 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
   View Demo Source
 </a></p>
 
-<p><em>Coming soon.</em></p>
+<p>It’s often necessary to create social cards within an application. Using a combination of different items in a card you can achieve this.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
+
+  <span class="nt">&lt;ion-item&gt;</span>
+    <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/marty-avatar.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/ion-avatar&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Marty McFly<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>November 5, 1955<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/ion-item&gt;</span>
+
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/advance-card-bttf.png"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;ion-card-content&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/ion-card-content&gt;</span>
+
+  <span class="nt">&lt;ion-item&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">thumbs-up</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      <span class="nt">&lt;div&gt;</span>12 Likes<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;icon</span> <span class="na">text</span><span class="nt">&gt;&lt;/icon&gt;</span>
+      <span class="nt">&lt;div&gt;</span>4 Comments<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;ion-note</span> <span class="na">item-right</span><span class="nt">&gt;</span>
+      11h ago
+    <span class="nt">&lt;/ion-note&gt;</span>
+  <span class="nt">&lt;/ion-item&gt;</span>
+
+<span class="nt">&lt;/ion-card&gt;</span>
+</code></pre>
+</div>
 
 <h3 class="section-nav" id="card-advanced-map">Map Cards</h3>
 <p><a class="component-doc-demo" href="https://github.com/driftyco/ionic2/tree/master/demos/component-docs/cards/advanced-map">
