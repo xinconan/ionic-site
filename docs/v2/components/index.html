@@ -1549,28 +1549,30 @@ class OtherPage {
   Improve This Doc
 </a></p>
 
-<p>Like the <a href="#checkbox">checkbox</a>, a radio is an input component that holds a <em>boolean</em> value. Under the hood, radios are no different than HTML radio inputs. However, like other Ionic components, radios are styled differently on each platform. Unlike checkboxes, radio components form a group, where only one radio can be selected at a time. Use the <code class="highlighter-rouge">checked</code> attribute to set the default value, and the <code class="highlighter-rouge">disabled</code> attribute to disable the user from changing the value.</p>
+<p>Like the <a href="#checkbox">checkbox</a>, a radio is an input component that holds a <em>boolean</em> value. Under the hood, radios are no different than HTML radio inputs. However, like other Ionic components, radios are styled differently on each platform. Unlike checkboxes, radio components form a group, where only one radio can be selected at a time. Use the <code class="highlighter-rouge">checked</code> attribute to set the default value, and the <code class="highlighter-rouge">disabled</code> attribute to disable the user from changing to that value.</p>
 
 <h3 class="section-nav">Basic Usage</h3>
 <p><a class="component-doc-demo" href="https://github.com/driftyco/ionic2/tree/master/demos/component-docs/inputs/radio">
   View Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-radio-group&gt;</span>
-
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">radio-group</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-header&gt;</span>
     Language
   <span class="nt">&lt;/ion-header&gt;</span>
 
-  <span class="nt">&lt;ion-radio</span> <span class="na">checked=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-radio</span> <span class="na">checked=</span><span class="s">"true"</span> <span class="na">value=</span><span class="s">"go"</span><span class="nt">&gt;</span>
     Go
   <span class="nt">&lt;/ion-radio&gt;</span>
 
-  <span class="nt">&lt;ion-radio&gt;</span>
+  <span class="nt">&lt;ion-radio</span> <span class="na">value=</span><span class="s">"rust"</span><span class="nt">&gt;</span>
     Rust
   <span class="nt">&lt;/ion-radio&gt;</span>
 
-<span class="nt">&lt;/ion-radio-group&gt;</span>
+  <span class="nt">&lt;ion-radio</span> <span class="na">value=</span><span class="s">"python"</span> <span class="na">disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    Python
+  <span class="nt">&lt;/ion-radio&gt;</span>
+<span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
 
