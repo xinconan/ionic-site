@@ -1597,23 +1597,27 @@ class OtherPage {
   View Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
-<span class="nt">&lt;ion-list</span> <span class="err">#</span><span class="na">list</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of getItems()"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
+<span class="nt">&lt;ion-list&gt;</span>
+  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
     
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
 
-<p>Note that in this example, the search bar binds to the <code class="highlighter-rouge">searchQuery</code> variable. The <code class="highlighter-rouge">getItems()</code> function is called when this variable changes, which updates the cities that are displayed. Although this example filters the list based on the search input, search bar can be used in many different scenarios:</p>
+<p>Note that in this example, the Searchbar binds to the <code class="highlighter-rouge">searchQuery</code> variable. The <code class="highlighter-rouge">getItems()</code> function is called when the input changes, which updates the cities that are displayed. Although this example filters the list based on the search input, Searchbar can be used in many different scenarios:</p>
 
 <pre><code class="language-typescript">@Page({
   templateUrl: 'search/template.html',
 })
-class SearchPage{
+class SearchPage {
   constructor() {
     this.searchQuery = '';
+    this.initializeItems();
+  }
+
+  initializeItems() {
     this.items = [
       'Amsterdam',
       'Bogota',
@@ -1621,11 +1625,20 @@ class SearchPage{
     ];
   }
 
-  getItems() {
-    var q = this.searchQuery;
-    if(q.trim() == '') { return this.items; }
-    return this.items.filter((v) =&gt; {
-      if(v.toLowerCase().indexOf(q.toLowerCase()) &gt;= 0) {
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      return;
+    }
+
+    this.items = this.items.filter((v) =&gt; {
+      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
         return true;
       }
       return false;
@@ -1633,6 +1646,8 @@ class SearchPage{
   }
 }
 </code></pre>
+
+<p>The Searchbar takes a number of configuration options on the <code class="highlighter-rouge">&lt;ion-searchbar&gt;</code> element, such as <code class="highlighter-rouge">cancelButtonText</code> and <code class="highlighter-rouge">hideCancelButton</code>. Check out the <a href="../api/components/searchbar/Searchbar/">Searchbar API reference</a> for more information on configuring a Searchbar.</p>
 
 <h2 class="section-header" id="segment">Segment</h2>
 
