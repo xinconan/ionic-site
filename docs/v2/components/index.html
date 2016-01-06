@@ -1098,7 +1098,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
   <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
-    
+    {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
@@ -1126,6 +1126,14 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>By default, lists have an outside margin, to remove that add the <code class="highlighter-rouge">inset</code> property to make the list flush with the parent container.</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">inset</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+    {{item.title}}
+  <span class="nt">&lt;/ion-item&gt;</span>
+<span class="nt">&lt;/ion-list&gt;</span>
+</code></pre>
+</div>
+
 <h3 class="section-nav" id="list-headers">List Headers</h3>
 <p><a class="component-doc-demo" href="https://github.com/driftyco/ionic2/tree/master/demos/component-docs/lists/headers">
   View Demo Source
@@ -1133,12 +1141,14 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Each list can include a header at the top of the list:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="nt">&lt;ion-list&gt;</span>
-    <span class="nt">&lt;ion-list-header&gt;</span>Action<span class="nt">&lt;/ion-list-header&gt;</span>
-    <span class="nt">&lt;ion-item&gt;</span>Terminator II<span class="nt">&lt;/ion-item&gt;</span>
-    <span class="nt">&lt;ion-item&gt;</span>The Empire Strikes Back<span class="nt">&lt;/ion-item&gt;</span>
-    <span class="nt">&lt;ion-item&gt;</span>Blade Runner<span class="nt">&lt;/ion-item&gt;</span>
-  <span class="nt">&lt;/ion-list&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+  <span class="nt">&lt;ion-list-header&gt;</span>
+    Action
+  <span class="nt">&lt;/ion-list-header&gt;</span>
+  <span class="nt">&lt;ion-item&gt;</span>Terminator II<span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;ion-item&gt;</span>The Empire Strikes Back<span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;ion-item&gt;</span>Blade Runner<span class="nt">&lt;/ion-item&gt;</span>
+<span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
 
@@ -1150,13 +1160,11 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>Adding <a href="#icons">icons</a> to list items is a great way to hint about the contents of each item. The position of the icon can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-
   <span class="nt">&lt;ion-item&gt;</span>
     <span class="nt">&lt;icon</span> <span class="na">leaf</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
       Herbology
     <span class="nt">&lt;icon</span> <span class="na">rose</span> <span class="na">item-right</span><span class="nt">&gt;&lt;/icon&gt;</span>
   <span class="nt">&lt;/ion-item&gt;</span>
-
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
@@ -1169,7 +1177,6 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>Item avatars showcase an image larger than an icon, but smaller than a thumbnail. To use an avatar, add an <code class="highlighter-rouge">&lt;ion-avatar&gt;</code> component inside of an item. The position of the avatar can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-
   <span class="nt">&lt;ion-item&gt;</span>
     <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
       <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/avatar-cher.png"</span><span class="nt">&gt;</span>
@@ -1177,7 +1184,6 @@ You can also add a placeholder so that users have a hint of what type of text th
     <span class="nt">&lt;h2&gt;</span>Cher<span class="nt">&lt;/h2&gt;</span>
     <span class="nt">&lt;p&gt;</span>Ugh. As if.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/ion-item&gt;</span>
-
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
@@ -1190,7 +1196,6 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>Multiline lists are identical to regular lists, except they can multiple lines of text. When multiple header or paragraph tags are added to an <code class="highlighter-rouge">&lt;ion-item&gt;</code>, the item will automatically adjust its height to fit the new lines. Below is an example with three lines of text:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-
   <span class="nt">&lt;ion-item&gt;</span>
     <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
       <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/avatar-finn.png"</span><span class="nt">&gt;</span>
@@ -1199,7 +1204,6 @@ You can also add a placeholder so that users have a hint of what type of text th
     <span class="nt">&lt;h3&gt;</span>Don't Know What To Do!<span class="nt">&lt;/h3&gt;</span>
     <span class="nt">&lt;p&gt;</span>I've had a pretty messed up day. If we just...<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/ion-item&gt;</span>
-
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
@@ -1212,7 +1216,6 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>Item thumbnails showcase an image that takes up the entire height of an item. To use a thumbnail, add an <code class="highlighter-rouge">&lt;ion-thumbnail&gt;</code> component inside of an item. The position of the thumbnail can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-
   <span class="nt">&lt;ion-item&gt;</span>
     <span class="nt">&lt;ion-thumbnail</span> <span class="na">item-left</span><span class="nt">&gt;</span>
       <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/thumbnail-totoro.png"</span><span class="nt">&gt;</span>
@@ -1221,7 +1224,6 @@ You can also add a placeholder so that users have a hint of what type of text th
     <span class="nt">&lt;p&gt;</span>Hayao Miyazaki • 1988<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">clear</span> <span class="na">item-right</span><span class="nt">&gt;</span>View<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/ion-item&gt;</span>
-
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
