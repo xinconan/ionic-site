@@ -383,11 +383,11 @@
   </li>
 </ul>
 
-<h3 class="file-title">www/app/app.js</h3>
+<h3 class="file-title">app/app.js</h3>
 
 <p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled Javascript code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="/docs/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="/docs/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="/docs/what-is/es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
 
-<p><code class="highlighter-rouge">www/app/app.js</code> is the entry point for our app.</p>
+<p><code class="highlighter-rouge">app/app.js</code> is the entry point for our app.</p>
 
 <p>Near the top of the file, we should see this:</p>
 
@@ -404,9 +404,9 @@ class MyApp {
 
 <p>In this component, we set the template to be the file at <code class="highlighter-rouge">app/app.html</code>, let’s take a look!</p>
 
-<h3 class="file-title">www/app/app.html</h3>
+<h3 class="file-title">app/app.html</h3>
 
-<p>Here’s the main template for the app in <code class="highlighter-rouge">www/app/app.html</code>:</p>
+<p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
 
