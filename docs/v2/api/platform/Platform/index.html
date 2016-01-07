@@ -573,13 +573,16 @@ export MyClass {
 <div id="setDir"></div>
 
 <h3>
-<code>setDir(languageDirection)</code>
+<code>setDir(dir)</code>
   
 
 </h3>
 
 <p>Set the app’s language direction, which will update the <code class="highlighter-rouge">dir</code> attribute<br />
-on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.<br />
+on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element. We recommend the app’s <code class="highlighter-rouge">index.html</code><br />
+file already has the correct <code class="highlighter-rouge">dir</code> attribute value set, such as<br />
+<code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>. This method is useful if the<br />
+direction needs to be dynamically changed per user/session.<br />
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <table class="table param-table" style="margin:0;">
@@ -594,7 +597,7 @@ on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt
     
     <tr>
       <td>
-        languageDirection
+        dir
         
         
       </td>
@@ -621,6 +624,8 @@ on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt
 </h3>
 
 <p>Returns app’s language direction.<br />
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code><br />
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.<br />
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <div class="return-value">
@@ -638,6 +643,8 @@ on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt
 </h3>
 
 <p>Returns if this app is using right-to-left language direction or not.<br />
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code><br />
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.<br />
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <div class="return-value">
@@ -656,6 +663,9 @@ on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt
 
 <p>Set the app’s language and optionally the country code, which will update<br />
 the <code class="highlighter-rouge">lang</code> attribute on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.<br />
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code><br />
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>. This method is useful if<br />
+the language needs to be dynamically changed per user/session.<br />
 <a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
 
 <table class="table param-table" style="margin:0;">
@@ -697,6 +707,8 @@ the <code class="highlighter-rouge">lang</code> attribute on the app’s root <c
 </h3>
 
 <p>Returns app’s language and optional country code.<br />
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code><br />
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>.<br />
 <a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
 
 <div class="return-value">
