@@ -570,6 +570,65 @@ export MyClass {
   <code>promise</code> Returns a promsie when device ready has fired  
 </div>
 
+<div id="setDir"></div>
+
+<h3>
+<code>setDir(languageDirection)</code>
+  
+
+</h3>
+
+<p>Set the app’s language direction, which will update the <code class="highlighter-rouge">dir</code> attribute<br />
+on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.<br />
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        languageDirection
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Examples: <code>rtl</code>, <code>ltr</code></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="dir"></div>
+
+<h3>
+<code>dir()</code>
+  
+
+</h3>
+
+<p>Returns app’s language direction.<br />
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>string</code>   
+</div>
+
 <div id="isRTL"></div>
 
 <h3>
@@ -579,12 +638,71 @@ export MyClass {
 </h3>
 
 <p>Returns if this app is using right-to-left language direction or not.<br />
-http://www.w3.org/International/questions/qa-html-dir</p>
+<a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
   <code>boolean</code>   
+</div>
+
+<div id="setLang"></div>
+
+<h3>
+<code>setLang(language)</code>
+  
+
+</h3>
+
+<p>Set the app’s language and optionally the country code, which will update<br />
+the <code class="highlighter-rouge">lang</code> attribute on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.<br />
+<a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        language
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Examples: <code>en-US</code>, <code>en-GB</code>, <code>ar</code>, <code>de</code>, <code>zh</code>, <code>es-MX</code></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="lang"></div>
+
+<h3>
+<code>lang()</code>
+  
+
+</h3>
+
+<p>Returns app’s language and optional country code.<br />
+<a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>string</code>   
 </div>
 
 <!-- related link -->
