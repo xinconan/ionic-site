@@ -8,19 +8,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_1 = require('ionic/ionic');
-var DeviceMotionPage = (function () {
-    function DeviceMotionPage() {
-        var _this = this;
-        ionic_1.DeviceMotion.watchAcceleration().source.subscribe(function (accel) {
-            _this.accel = accel.acceleration;
-        });
+var ApiDemoApp = (function () {
+    function ApiDemoApp() {
+        this.rootPage = InitialPage;
     }
-    DeviceMotionPage = __decorate([
-        ionic_1.IonicView({
-            template: "\n  <ion-navbar *navbar>\n    <button menuToggle>\n      <ion-icon name=\"menu\"></ion-icon>\n    </button>\n    <ion-title>Device Motion</ion-title>\n  </ion-navbar>\n  <ion-content padding>\n    <div *ngIf=\"accel\">{{accel.x}} {{accel.y}} {{accel.z}}</div>\n  </ion-content>\n  "
+    ApiDemoApp = __decorate([
+        ionic_1.App({
+            templateUrl: 'app.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], DeviceMotionPage);
-    return DeviceMotionPage;
+    ], ApiDemoApp);
+    return ApiDemoApp;
 })();
-exports.DeviceMotionPage = DeviceMotionPage;
+var InitialPage = (function () {
+    function InitialPage() {
+    }
+    InitialPage = __decorate([
+        ionic_1.Page({
+            templateUrl: 'main.html'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], InitialPage);
+    return InitialPage;
+})();
+exports.InitialPage = InitialPage;
