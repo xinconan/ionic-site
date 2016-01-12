@@ -430,10 +430,82 @@ class HelloWorld {
 
 <h2>Methods</h2>
 
+<div id="sbGesture"></div>
+
+<h3>
+<code>sbGesture()</code>
+  
+
+</h3>
+
+<div id="initZIndex"></div>
+
+<h3>
+<code>initZIndex()</code>
+  
+
+</h3>
+
+<div id="id"></div>
+
+<h3>
+<code>id()</code>
+  
+
+</h3>
+
+<div id="providers"></div>
+
+<h3>
+<code>providers()</code>
+  
+
+</h3>
+
+<div id="router"></div>
+
+<h3>
+<code>router()</code>
+  
+
+</h3>
+
+<div id="parent"></div>
+
+<h3>
+<code>parent()</code>
+  
+
+</h3>
+
+<div id="app"></div>
+
+<h3>
+<code>app()</code>
+  
+
+</h3>
+
+<div id="config"></div>
+
+<h3>
+<code>config()</code>
+  
+
+</h3>
+
+<div id="keyboard"></div>
+
+<h3>
+<code>keyboard()</code>
+  
+
+</h3>
+
 <div id="push"></div>
 
 <h3>
-<code>push(component,&nbsp;params,&nbsp;opts)</code>
+<code>push(componentType,&nbsp;params,&nbsp;opts)</code>
   
 
 </h3>
@@ -507,13 +579,13 @@ class HelloWorld {
     
     <tr>
       <td>
-        component
+        componentType
         
         
       </td>
       <td>
         
-  <code>Any</code>
+  <code>Type</code>
       </td>
       <td>
         <p>The page component class you want to push on to the navigation stack</p>
@@ -745,7 +817,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 <div id="insert"></div>
 
 <h3>
-<code>insert(index,&nbsp;component)</code>
+<code>insert(index,&nbsp;componentType)</code>
   
 
 </h3>
@@ -783,7 +855,7 @@ This is useful if you need to add a view at any point in your navigation stack</
       </td>
       <td>
         
-  <code>Number</code>
+  <code>number</code>
       </td>
       <td>
         <p>The index where you want to insert the view</p>
@@ -794,13 +866,13 @@ This is useful if you need to add a view at any point in your navigation stack</
     
     <tr>
       <td>
-        component
+        componentType
         
         
       </td>
       <td>
         
-  <code>Any</code>
+  <code>Type</code>
       </td>
       <td>
         <p>The name of the component you want to insert into the nav stack</p>
@@ -856,7 +928,7 @@ This is useful if you need to add a view at any point in your navigation stack</
       </td>
       <td>
         
-  <code>Number</code>
+  <code>number</code>
       </td>
       <td>
         <p>Remove the view from the nav stack at that index</p>
@@ -894,7 +966,7 @@ This is useful if you need to add a view at any point in your navigation stack</
 <div id="setPages"></div>
 
 <h3>
-<code>setPages(component,&nbsp;opts)</code>
+<code>setPages(componentTypes,&nbsp;opts)</code>
   
 
 </h3>
@@ -972,13 +1044,13 @@ import {Info} from '../info/info'
     
     <tr>
       <td>
-        component
+        componentTypes
         
         
       </td>
       <td>
         
-  <code>Array</code>
+  <code>Array&lt;Type&gt;</code>
       </td>
       <td>
         <p>an arry of components to load in the stack</p>
@@ -1265,7 +1337,7 @@ not include views which are about to be destroyed.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Number</code> The number of views in stack, including the current view  
+  <code>number</code> The number of views in stack, including the current view  
 </div>
 
 <div id="rootNav"></div>
