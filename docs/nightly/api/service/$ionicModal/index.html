@@ -1020,7 +1020,7 @@ template file, remove the script tags and call it by file name.</li>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">closeModal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
   <span class="p">};</span>
-  <span class="c1">//Cleanup the modal when we're done with it!</span>
+  <span class="c1">// Cleanup the modal when we're done with it!</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'$destroy'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
   <span class="p">});</span>
