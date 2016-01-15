@@ -1,0 +1,21 @@
+general:
+  branches:
+    ignore:
+      - production
+machine:
+  node:
+    version: 4.1.0
+  ruby:
+    version: 2.2.3
+dependencies:
+  post:
+    - gem install jekyll && gem install kramdown
+    - ./_scripts/prepare.sh
+test:
+  override:
+    - ./_scripts/test.sh
+deployment:
+  staging:
+    branch: master
+    commands:
+      - ./_scripts/deploy_staging.sh
