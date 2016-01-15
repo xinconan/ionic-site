@@ -16,11 +16,11 @@
 
 
 
-    <title>Button - Class in module ionic -  Ionic Framework</title>
+    <title>MenuBackdrop - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Button | slugify}}"
-        class="v2 docs page-{{Button | slugify}}"
+  <body id="docs-page-{{MenuBackdrop | slugify}}"
+        class="v2 docs page-{{MenuBackdrop | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -93,8 +93,6 @@
 
     <div class="docs-container"
          ng-app="IonicDocs"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <!-- <form class="form-group search" role="search">
@@ -190,7 +188,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/blur/Blur">Blur</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/api/components/button/Button">Button</a>
 </li>
 <li class="capitalize ">
@@ -238,7 +236,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/menu/Menu">Menu</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/api/components/menu/MenuBackdrop">MenuBackdrop</a>
 </li>
 <li class="capitalize ">
@@ -338,36 +336,11 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-        </div>
-        <div id="demo-device-ios" ng-class="previewPlatform">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/buttons/?ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android" ng-class="previewPlatform">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/buttons/?ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
 
 
-Button
+MenuBackdrop
 
 
 
@@ -376,273 +349,40 @@ Button
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/ionic/components/button/button.ts#L3">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/ionic/components/menu/menu.ts#L440">
 Improve this doc
 </a></p>
 
 <!-- description -->
 
-<p>Buttons are simple components in Ionic, can consist of text, an icon, or both, and can be enhanced with a wide range of attributes.</p>
-
 <h3>Directive</h3>
-<h3>selector: <code>button,[button]</code></h3>
+<h3>selector: <code>.backdrop</code></h3>
 <!-- @usage tag -->
 
 <!-- @property tags -->
-
-<h3>Attributes:</h3>
-<table class="table" style="margin:0;">
-<thead>
-<tr>
-<th>Attribute</th>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td>
-outline
-</td>
-
-
-
-<td>
-for an unfilled outline button
-</td>
-</tr>
-
-<tr>
-<td>
-clear
-</td>
-
-
-
-<td>
-for a transparent button that only shows text and icons
-</td>
-</tr>
-
-<tr>
-<td>
-round
-</td>
-
-
-
-<td>
-for a button with rounded corners
-</td>
-</tr>
-
-<tr>
-<td>
-block
-</td>
-
-
-
-<td>
-for a block button that fills it's parent container
-</td>
-</tr>
-
-<tr>
-<td>
-full
-</td>
-
-
-
-<td>
-for a full width button
-</td>
-</tr>
-
-<tr>
-<td>
-small
-</td>
-
-
-
-<td>
-sets button size to small
-</td>
-</tr>
-
-<tr>
-<td>
-large
-</td>
-
-
-
-<td>
-sets button size to large
-</td>
-</tr>
-
-<tr>
-<td>
-disabled
-</td>
-
-
-
-<td>
-disables the button
-</td>
-</tr>
-
-<tr>
-<td>
-fab
-</td>
-
-
-
-<td>
-for a floating action button
-</td>
-</tr>
-
-<tr>
-<td>
-fab-left
-</td>
-
-
-
-<td>
-position a fab button to the left
-</td>
-</tr>
-
-<tr>
-<td>
-fab-right
-</td>
-
-
-
-<td>
-position a fab button to the right
-</td>
-</tr>
-
-<tr>
-<td>
-fab-center
-</td>
-
-
-
-<td>
-position a fab button towards the center
-</td>
-</tr>
-
-<tr>
-<td>
-fab-top
-</td>
-
-
-
-<td>
-position a fab button towards the top
-</td>
-</tr>
-
-<tr>
-<td>
-fab-bottom
-</td>
-
-
-
-<td>
-position a fab button towards the bottom
-</td>
-</tr>
-
-<tr>
-<td>
-color
-</td>
-
-
-
-<td>
-Dynamically set which color attribute this button should use.
-</td>
-</tr>
-
-</tbody>
-</table>
 
 <!-- methods on the class -->
 
 <h3>Methods</h3>
 
-<div id="isItem"></div>
+<div id="menu"></div>
 
 <h3>
-<code>isItem()</code>
+<code>menu()</code>
   
 
 </h3>
 
-<div id="color"></div>
+<div id="elementRef"></div>
 
 <h3>
-<code>color()</code>
+<code>elementRef()</code>
   
 
 </h3>
 
 <!-- related link -->
-
-<h3>Related</h3>
-
-<p><a href="/docs/v2/components#buttons">Button Component Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 

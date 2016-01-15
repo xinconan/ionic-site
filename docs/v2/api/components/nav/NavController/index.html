@@ -237,6 +237,9 @@
   <a href="/docs/v2/api/components/menu/Menu">Menu</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/menu/MenuBackdrop">MenuBackdrop</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/menu/MenuClose">MenuClose</a>
 </li>
 <li class="capitalize ">
@@ -346,12 +349,11 @@ NavController
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic2/edit/master/ionic/components/nav/nav-controller.ts#L11">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/ionic/components/nav/nav-controller.ts#L11">
 Improve this doc
 </a></p>
 
 <!-- description -->
-<h2>Description</h2>
 
 <p><em>For examples on the basic usage of NavController, check out the
 <a href="../../../../components/#navigation">Navigation section</a> of the Component
@@ -428,23 +430,7 @@ class HelloWorld {
 
 <!-- methods on the class -->
 
-<h2>Methods</h2>
-
-<div id="sbGesture"></div>
-
-<h3>
-<code>sbGesture()</code>
-  
-
-</h3>
-
-<div id="initZIndex"></div>
-
-<h3>
-<code>initZIndex()</code>
-  
-
-</h3>
+<h3>Methods</h3>
 
 <div id="id"></div>
 
@@ -466,6 +452,14 @@ class HelloWorld {
 
 <h3>
 <code>router()</code>
+  
+
+</h3>
+
+<div id="sbGesture"></div>
+
+<h3>
+<code>sbGesture()</code>
   
 
 </h3>
@@ -634,7 +628,7 @@ class HelloWorld {
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise, which resolves when the transition has completed  
+  <code>Promise</code> Returns a promise, which resolves when the transition has completed
 </div>
 
 <div id="present"></div>
@@ -714,7 +708,7 @@ the overlay in the root NavController’s stack.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise, which resolves when the transition has completed  
+  <code>Promise</code> Returns a promise, which resolves when the transition has completed
 </div>
 
 <div id="pop"></div>
@@ -771,7 +765,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the transition is completed  
+  <code>Promise</code> Returns a promise when the transition is completed
 </div>
 
 <div id="popToRoot"></div>
@@ -887,7 +881,7 @@ This is useful if you need to add a view at any point in your navigation stack</
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the view has been inserted into the navigation stack  
+  <code>Promise</code> Returns a promise when the view has been inserted into the navigation stack
 </div>
 
 <div id="remove"></div>
@@ -960,7 +954,7 @@ This is useful if you need to add a view at any point in your navigation stack</
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the view has been removed  
+  <code>Promise</code> Returns a promise when the view has been removed
 </div>
 
 <div id="setPages"></div>
@@ -1082,7 +1076,7 @@ import {Info} from '../info/info'
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the pages are set  
+  <code>Promise</code> Returns a promise when the pages are set
 </div>
 
 <div id="setRoot"></div>
@@ -1162,7 +1156,7 @@ import {Info} from '../info/info'
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when done  
+  <code>Promise</code> Returns a promise when done
 </div>
 
 <div id="isSwipeBackEnabled"></div>
@@ -1208,7 +1202,7 @@ import {Info} from '../info/info'
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>boolean</code> Whether swipe-to-go-back is enabled  
+  <code>boolean</code> Whether swipe-to-go-back is enabled
 </div>
 
 <div id="canSwipeBack"></div>
@@ -1227,7 +1221,7 @@ will return true.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>boolean</code> Whether you can swipe to go back  
+  <code>boolean</code> Whether you can swipe to go back
 </div>
 
 <div id="canGoBack"></div>
@@ -1244,7 +1238,7 @@ Otherwise returns false.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>boolean</code> Whether there is a page to go back to  
+  <code>boolean</code> Whether there is a page to go back to
 </div>
 
 <div id="getByIndex"></div>
@@ -1288,7 +1282,7 @@ Otherwise returns false.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Component</code> Returns the component that matches the index given  
+  <code>Component</code> Returns the component that matches the index given
 </div>
 
 <div id="first"></div>
@@ -1304,7 +1298,7 @@ Otherwise returns false.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Component</code> Returns the first component page in the current stack  
+  <code>Component</code> Returns the first component page in the current stack
 </div>
 
 <div id="last"></div>
@@ -1320,7 +1314,7 @@ Otherwise returns false.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Component</code> Returns the last component page in the current stack  
+  <code>Component</code> Returns the last component page in the current stack
 </div>
 
 <div id="length"></div>
@@ -1337,7 +1331,7 @@ not include views which are about to be destroyed.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>number</code> The number of views in stack, including the current view  
+  <code>number</code> The number of views in stack, including the current view
 </div>
 
 <div id="rootNav"></div>
@@ -1353,12 +1347,12 @@ not include views which are about to be destroyed.</p>
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>NavController</code>   
+  <code>NavController</code> 
 </div>
 
 <!-- related link -->
 
-<h2>Related</h2>
+<h3>Related</h3>
 
 <p><a href="/docs/v2/components#navigation">Navigation Component Docs</a><!-- end content block --></p>
 
