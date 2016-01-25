@@ -353,26 +353,26 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add phonegap-plugin-barcodescanner
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add phonegap-plugin-barcodescanner
+</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Barcode</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {Barcode} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">BarcodePage</span> <span class="p">{</span>
-  <span class="nx">scan</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Barcode</span><span class="p">.</span><span class="nx">scan</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Result: "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">text</span> <span class="o">+</span> <span class="s2">"\n"</span> <span class="o">+</span> <span class="s2">"Format: "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">format</span> <span class="o">+</span> <span class="s2">"\n"</span> <span class="o">+</span> <span class="s2">"Cancelled: "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">cancelled</span><span class="p">);</span>
-    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="p">})</span>
-  <span class="p">}</span>
+<p>class BarcodePage {
+  scan() {
+    Barcode.scan().then((data) =&gt; {
+      console.log(“Result: “ + result.text + “\n” + “Format: “ + result.format + “\n” + “Cancelled: “ + result.cancelled);
+    }, (err) =&gt; {
+    })
+  }</p>
 
-  <span class="nx">create</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Barcode</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">Barcode</span><span class="p">.</span><span class="nx">TEXT_TYPE</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{},</span> <span class="p">(</span><span class="nx">fail</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{});</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<p>create() {
+    Barcode.encode(Barcode.TEXT_TYPE).then((data) =&gt; {}, (fail) =&gt; {});
+  }
+}
+```</p>
 
       </main>
     </div>

@@ -358,16 +358,16 @@
 
 <p>For your app to function, Ionic looks for the <code class="highlighter-rouge">&lt;ion-app&gt;</code> tag in your HTML. In this example we have:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-app&gt;&lt;/ion-app&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-app></ion-app>
+<p>```</p>
 
 <p>And the following scripts near the bottom:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"build/js/app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;script src="cordova.js"&gt;&lt;/script&gt;
+&lt;script src="build/js/app.bundle.js"&gt;&lt;/script&gt;
+</code></p>
 
 <ul>
   <li>
@@ -386,14 +386,15 @@
 
 <p>Near the top of the file, we should see this:</p>
 
-<pre><code class="language-ts">@App({
+<p><code class="highlighter-rouge">ts
+@App({
   templateUrl: 'app/app.html'
 })
 class MyApp {
   constructor() {
   }
 }
-</code></pre>
+</code></p>
 
 <p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. To specify a root component with Ionic, we use the <code class="highlighter-rouge">@App</code> decorator.</p>
 
@@ -403,28 +404,28 @@ class MyApp {
 
 <p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
+<p>```html
+&lt;ion-menu [content]=”content”&gt;</p>
 
-  <span class="nt">&lt;ion-toolbar&gt;</span>
-    <span class="nt">&lt;ion-title&gt;</span>Pages<span class="nt">&lt;/ion-title&gt;</span>
-  <span class="nt">&lt;/ion-toolbar&gt;</span>
+<ion-toolbar>
+    <ion-title>Pages</ion-title>
+  </ion-toolbar>
 
-  <span class="nt">&lt;ion-content&gt;</span>
-    <span class="nt">&lt;ion-list&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">ion-item</span> <span class="err">*</span><span class="na">ng-for=</span><span class="s">"#p of pages"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">openPage</span><span class="err">(</span><span class="na">p</span><span class="err">)"</span><span class="nt">&gt;</span>
+<ion-content>
+    <ion-list>
+      &lt;button ion-item *ng-for="#p of pages" (click)="openPage(p)"&gt;
         {{p.title}}
-      <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/ion-list&gt;</span>
-  <span class="nt">&lt;/ion-content&gt;</span>
+      
+    </ion-list>
+  </ion-content>
 
-<span class="nt">&lt;/ion-menu&gt;</span>
+<p>&lt;/ion-menu&gt;</p>
 
-<span class="nt">&lt;ion-nav</span> <span class="na">id=</span><span class="s">"nav"</span> <span class="err">[</span><span class="na">root</span><span class="err">]="</span><span class="na">rootPage</span><span class="err">"</span> <span class="err">#</span><span class="na">content</span> <span class="na">swipe-back-enabled=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/ion-nav&gt;</span>
-</code></pre>
-</div>
+<p>&lt;ion-nav id=”nav” [root]=”rootPage” #content swipe-back-enabled=”false”&gt;&lt;/ion-nav&gt;
+```</p>
 
-<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then a navigation controller<br />
-to act as the main content area. The <code class="highlighter-rouge">ion-menu</code> takes a property of <code class="highlighter-rouge">content</code>, and we can pass the local variable of <code class="highlighter-rouge">#content</code> from our <code class="highlighter-rouge">ion-nav</code>.<br />
+<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then a navigation controller
+to act as the main content area. The <code class="highlighter-rouge">ion-menu</code> takes a property of <code class="highlighter-rouge">content</code>, and we can pass the local variable of <code class="highlighter-rouge">#content</code> from our <code class="highlighter-rouge">ion-nav</code>.
 This will let the menu know what element should be the main content. The app will let the user select sections from the side menu which will change what they see in the content area. The user will be able to navigate inside the content menu if the section has other pages to navigate to.</p>
 
 <p>Let’s go and see how to create more pages and perform basic navigation.</p>

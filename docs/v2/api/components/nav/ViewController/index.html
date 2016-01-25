@@ -564,14 +564,15 @@ export class MyPage{
 
 <p>You can find out the index of the current view is in the current navigation stack</p>
 
-<pre><code class="language-typescript"> export class Page1 {
+<p><code class="highlighter-rouge">typescript
+ export class Page1 {
    constructor(view: ViewController){
      this.view = view;
      // Just log out the index
      console.log(this.view.index);
    }
  }
-</code></pre>
+</code></p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -603,7 +604,8 @@ export class MyPage{
 
 <p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageWillEnter</code> method in order to make sure the view has rendered fully.</p>
 
-<pre><code class="language-typescript">export class Page1 {
+<p><code class="highlighter-rouge">typescript
+export class Page1 {
  constructor(view: ViewController) {
    this.view = view
  }
@@ -611,7 +613,7 @@ export class MyPage{
    console.log('Do we have a Navbar?', this.view.hasNavbar());
  }
 }
-</code></pre>
+</code></p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -629,7 +631,8 @@ export class MyPage{
 
 <p>You can change the text of the back button on a view-by-view basis.</p>
 
-<pre><code class="language-ts">export class MyClass{
+<p><code class="highlighter-rouge">ts
+export class MyClass{
  constructor(viewCtrl: ViewController){
    this.viewCtrl = viewCtrl
  }
@@ -637,8 +640,8 @@ export class MyPage{
    this.viewCtrl.setBackButtonText('Previous');
  }
 }
-</code></pre>
-<p>Make sure you use the view events when calling this method, otherwise the back-button will not have been created</p>
+</code>
+Make sure you use the view events when calling this method, otherwise the back-button will not have been created</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>

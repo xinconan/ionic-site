@@ -380,16 +380,17 @@ Improve this doc
 
 <p>Chech to see if the keyboard is open or not.</p>
 
-<pre><code class="language-ts">export class MyClass{
+<p>```ts
+export class MyClass{
  constructor(keyboard: Keyboard){
    this.keyboard = keyboard;
  }
  keyboardCheck(){
-   setTimeout(()  =&gt; console.log('is the keyboard open ', this.keyboard.isOpen()));
+   setTimeout(()  =&gt; console.log(‘is the keyboard open ‘, this.keyboard.isOpen()));
  }
-}
+}</p>
 
-</code></pre>
+<p>```</p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -407,18 +408,19 @@ Improve this doc
 
 <p>When the keyboard is closed, call any methods you want</p>
 
-<pre><code class="language-ts">export class MyClass{
+<p>```ts
+export class MyClass{
  constructor(keyboard: Keyboard){
    this.keyboard = keyboard;
    this.keyboard.onClose(this.closeCallback);
  }
  closeCallback(){
     // call what ever functionality you want on keyboard close
-    console.log('Closing time");
+    console.log(‘Closing time”);
  }
-}
+}</p>
 
-</code></pre>
+<p>```</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>

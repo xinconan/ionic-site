@@ -351,26 +351,25 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-network-information
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-network-information
+</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Network</span><span class="p">,</span> <span class="nx">Events</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {Network, Events} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">(</span><span class="nx">events</span><span class="err">:</span> <span class="nx">Events</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">isOnline</span> <span class="o">=</span> <span class="nx">Network</span><span class="p">.</span><span class="nx">isOnline</span><span class="p">();</span>
+<p>class MyPage {
+  constructor(events: Events) {
+    var isOnline = Network.isOnline();</p>
 
-    <span class="c1">// Respond to online/offline changes</span>
-    <span class="nx">events</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'app:offline'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// App is offline</span>
-    <span class="p">})</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>// Respond to online/offline changes
+events.subscribe('app:offline', () =&gt; {
+  // App is offline
+})
 
-    <span class="nx">events</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">'app:online'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// App is online</span>
-    <span class="p">})</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+events.subscribe('app:online', () =&gt; {
+  // App is online
+})   } } ```
 </code></pre>
 </div>
 

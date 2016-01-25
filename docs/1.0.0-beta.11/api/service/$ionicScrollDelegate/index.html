@@ -926,57 +926,57 @@
 
 </h1>
 
-<p>Delegate for controlling scrollViews (created by<br />
-<a href="/docs/api/directive/ionContent/"><code>ionContent</code></a> and<br />
+<p>Delegate for controlling scrollViews (created by
+<a href="/docs/api/directive/ionContent/"><code>ionContent</code></a> and
 <a href="/docs/api/directive/ionScroll/"><code>ionScroll</code></a> directives).</p>
 
-<p>Methods called directly on the $ionicScrollDelegate service will control all scroll<br />
-views.  Use the <a href="/docs/api/service/$ionicScrollDelegate/#$getByHandle">$getByHandle</a><br />
+<p>Methods called directly on the $ionicScrollDelegate service will control all scroll
+views.  Use the <a href="/docs/api/service/$ionicScrollDelegate/#$getByHandle">$getByHandle</a>
 method to control specific scrollViews.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-content&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"scrollTop()"</span><span class="nt">&gt;</span>Scroll to Top!<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/ion-content&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">();</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<p>```html</p>
+<body ng-controller="MainCtrl">
+  <ion-content>
+    <button ng-click="scrollTop()">Scroll to Top!</button>
+  </ion-content>
+</body>
+<p><code class="highlighter-rouge">
+</code>js
+function MainCtrl($scope, $ionicScrollDelegate) {
+  $scope.scrollTop = function() {
+    $ionicScrollDelegate.scrollTop();
+  };
+}
+```</p>
 
-<p>Example of advanced usage, with two scroll areas using <code class="highlighter-rouge">delegate-handle</code><br />
+<p>Example of advanced usage, with two scroll areas using <code class="highlighter-rouge">delegate-handle</code>
 for fine control.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-content</span> <span class="na">delegate-handle=</span><span class="s">"mainScroll"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"scrollMainToTop()"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<body ng-controller="MainCtrl">
+  <ion-content delegate-handle="mainScroll">
+    <button ng-click="scrollMainToTop()">
       Scroll content to top!
-    <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;ion-scroll</span> <span class="na">delegate-handle=</span><span class="s">"small"</span> <span class="na">style=</span><span class="s">"height: 100px;"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"scrollSmallToTop()"</span><span class="nt">&gt;</span>
+    </button>
+    <ion-scroll delegate-handle="small" style="height: 100px;">
+      <button ng-click="scrollSmallToTop()">
         Scroll small area to top!
-      <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/ion-scroll&gt;</span>
-  <span class="nt">&lt;/ion-content&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">scrollMainToTop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">$getByHandle</span><span class="p">(</span><span class="s1">'mainScroll'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span>
-  <span class="p">};</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">scrollSmallToTop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">$getByHandle</span><span class="p">(</span><span class="s1">'small'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+      </button>
+    </ion-scroll>
+  </ion-content>
+</body>
+<p><code class="highlighter-rouge">
+</code>js
+function MainCtrl($scope, $ionicScrollDelegate) {
+  $scope.scrollMainToTop = function() {
+    $ionicScrollDelegate.$getByHandle(‘mainScroll’).scrollTop();
+  };
+  $scope.scrollSmallToTop = function() {
+    $ionicScrollDelegate.$getByHandle(‘small’).scrollTop();
+  };
+}
+```</p>
 
 <h2 id="methods">Methods</h2>
 
@@ -1207,7 +1207,7 @@ for fine control.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> The scroll position of this view, with the following properties:</li>
   <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">number</span><span class="p">}</span></code> <code class="highlighter-rouge">left</code> The distance the user has scrolled from the left (starts at 0).</li>
   <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">number</span><span class="p">}</span></code> <code class="highlighter-rouge">top</code> The distance the user has scrolled from the top (starts at 0).</li>
@@ -1219,7 +1219,7 @@ for fine control.</p>
 
 </h2>
 
-<p>Tell the scrollView to scroll to the element with an id<br />
+<p>Tell the scrollView to scroll to the element with an id
 matching window.location.hash.</p>
 
 <p>If no matching element is found, it will scroll to top.</p>
@@ -1261,7 +1261,7 @@ matching window.location.hash.</p>
 </h2>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> The scrollView associated with this delegate.</li>
 </ul>
 
@@ -1271,42 +1271,42 @@ matching window.location.hash.</p>
 
 </h2>
 
-<p>Will make it so, when this scrollView is destroyed (user leaves the page),<br />
-the last scroll position the page was on will be saved, indexed by the<br />
+<p>Will make it so, when this scrollView is destroyed (user leaves the page),
+the last scroll position the page was on will be saved, indexed by the
 given id.</p>
 
-<p>Note: for pages associated with a view under an ion-nav-view,<br />
+<p>Note: for pages associated with a view under an ion-nav-view,
 rememberScrollPosition automatically saves their scroll.</p>
 
 <p>Related methods: scrollToRememberedPosition, forgetScrollPosition (below).</p>
 
-<p>In the following example, the scroll position of the ion-scroll element<br />
+<p>In the following example, the scroll position of the ion-scroll element
 will persist, even when the user changes the toggle switch.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toggle</span> <span class="na">ng-model=</span><span class="s">"shouldShowScrollView"</span><span class="nt">&gt;&lt;/ion-toggle&gt;</span>
-<span class="nt">&lt;ion-scroll</span> <span class="na">delegate-handle=</span><span class="s">"myScroll"</span> <span class="na">ng-if=</span><span class="s">"shouldShowScrollView"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">"ScrollCtrl"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-list&gt;</span>
-      <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"i in items"</span><span class="nt">&gt;</span>{{i}}<span class="nt">&lt;/ion-item&gt;</span>
-    <span class="nt">&lt;/ion-list&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/ion-scroll&gt;</span>
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ScrollCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">delegate</span> <span class="o">=</span> <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">$getByHandle</span><span class="p">(</span><span class="s1">'myScroll'</span><span class="p">);</span>
+<p>```html</p>
+<ion-toggle ng-model="shouldShowScrollView"></ion-toggle>
+<ion-scroll delegate-handle="myScroll" ng-if="shouldShowScrollView">
+  <div ng-controller="ScrollCtrl">
+    <ion-list>
+      <ion-item ng-repeat="i in items">{{i}}</ion-item>
+    </ion-list>
+  </div>
+</ion-scroll>
+<p><code class="highlighter-rouge">
+</code>js
+function ScrollCtrl($scope, $ionicScrollDelegate) {
+  var delegate = $ionicScrollDelegate.$getByHandle(‘myScroll’);</p>
 
-  <span class="c1">// Put any unique ID here.  The point of this is: every time the controller is recreated</span>
-  <span class="c1">// we want to load the correct remembered scroll values.</span>
-  <span class="nx">delegate</span><span class="p">.</span><span class="nx">rememberScrollPosition</span><span class="p">(</span><span class="s1">'my-scroll-id'</span><span class="p">);</span>
-  <span class="nx">delegate</span><span class="p">.</span><span class="nx">scrollToRememberedPosition</span><span class="p">();</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<p>// Put any unique ID here.  The point of this is: every time the controller is recreated
+  // we want to load the correct remembered scroll values.
+  delegate.rememberScrollPosition(‘my-scroll-id’);
+  delegate.scrollToRememberedPosition();
+  $scope.items = [];
+  for (var i=0; i&lt;100; i++) {
+    $scope.items.push(i);
+  }
+}
+```</p>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -1353,8 +1353,8 @@ scrollView by.</p>
 
 </h2>
 
-<p>If this scrollView has an id associated with its scroll position,<br />
-(through calling rememberScrollPosition), and that position is remembered,<br />
+<p>If this scrollView has an id associated with its scroll position,
+(through calling rememberScrollPosition), and that position is remembered,
 load the position and scroll to it.</p>
 
 <table class="table" style="margin:0;">
@@ -1423,8 +1423,8 @@ load the position and scroll to it.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
- <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the<br />
+  <li>Returns: 
+ <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the
 scrollViews with <code class="highlighter-rouge">delegate-handle</code> matching the given handle.</li>
 </ul>
 

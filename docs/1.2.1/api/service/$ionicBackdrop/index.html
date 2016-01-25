@@ -956,48 +956,48 @@ $ionicBackdrop
 
 </h1>
 
-<p>Shows and hides a backdrop over the UI.  Appears behind popups, loading,<br />
+<p>Shows and hides a backdrop over the UI.  Appears behind popups, loading,
 and other overlays.</p>
 
-<p>Often, multiple UI components require a backdrop, but only one backdrop is<br />
+<p>Often, multiple UI components require a backdrop, but only one backdrop is
 ever needed in the DOM at a time.</p>
 
-<p>Therefore, each component that requires the backdrop to be shown calls<br />
-<code class="highlighter-rouge">$ionicBackdrop.retain()</code> when it wants the backdrop, then <code class="highlighter-rouge">$ionicBackdrop.release()</code><br />
+<p>Therefore, each component that requires the backdrop to be shown calls
+<code class="highlighter-rouge">$ionicBackdrop.retain()</code> when it wants the backdrop, then <code class="highlighter-rouge">$ionicBackdrop.release()</code>
 when it is done with the backdrop.</p>
 
 <p>For each time <code class="highlighter-rouge">retain</code> is called, the backdrop will be shown until <code class="highlighter-rouge">release</code> is called.</p>
 
-<p>For example, if <code class="highlighter-rouge">retain</code> is called three times, the backdrop will be shown until <code class="highlighter-rouge">release</code><br />
+<p>For example, if <code class="highlighter-rouge">retain</code> is called three times, the backdrop will be shown until <code class="highlighter-rouge">release</code>
 is called three times.</p>
 
-<p><strong>Notes:</strong><br />
-- The backdrop service will broadcast ‘backdrop.shown’ and ‘backdrop.hidden’ events from the root scope,<br />
+<p><strong>Notes:</strong>
+- The backdrop service will broadcast ‘backdrop.shown’ and ‘backdrop.hidden’ events from the root scope,
 this is useful for alerting native components not in html.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicBackdrop</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">//Show a backdrop for one second</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">action</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$ionicBackdrop</span><span class="p">.</span><span class="nx">retain</span><span class="p">();</span>
-    <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">$ionicBackdrop</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-  <span class="p">};</span>
+<p>```js
+function MyController($scope, $ionicBackdrop, $timeout, $rootScope) {
+  //Show a backdrop for one second
+  $scope.action = function() {
+    $ionicBackdrop.retain();
+    $timeout(function() {
+      $ionicBackdrop.release();
+    }, 1000);
+  };</p>
 
-  <span class="c1">// Execute action on backdrop disappearing</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'backdrop.hidden'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Execute action</span>
-  <span class="p">});</span>
+<p>// Execute action on backdrop disappearing
+  $scope.$on(‘backdrop.hidden’, function() {
+    // Execute action
+  });</p>
 
-  <span class="c1">// Execute action on backdrop appearing</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'backdrop.shown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Execute action</span>
-  <span class="p">});</span>
+<p>// Execute action on backdrop appearing
+  $scope.$on(‘backdrop.shown’, function() {
+    // Execute action
+  });</p>
 
-<span class="p">}</span>
-</code></pre>
-</div>
+<p>}
+```</p>
 
 <h2 id="methods">Methods</h2>
 

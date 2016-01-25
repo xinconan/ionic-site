@@ -353,30 +353,32 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add ionic-plugin-keyboard
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add ionic-plugin-keyboard
+</code></p>
 
 <p>Control the device keyboard</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Keyboard</span><span class="p">,</span> <span class="nx">IonicPlatform</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {Keyboard, IonicPlatform} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">(</span><span class="nx">platform</span><span class="err">:</span> <span class="nx">IonicPlatform</span><span class="p">)</span> <span class="p">{</span>
+<p>class MyPage {
+  constructor(platform: IonicPlatform) {</p>
 
-    <span class="nx">platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// Hide the accessory bar (our default)</span>
-      <span class="nx">Keyboard</span><span class="p">.</span><span class="nx">setAccessoryBarVisible</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-    <span class="p">})</span>
-
-  <span class="p">}</span>
-  <span class="nx">userDidSomething</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// In case you want to programatically close the keyboard</span>
-    <span class="nx">Keyboard</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>platform.ready().then(() =&gt; {
+  // Hide the accessory bar (our default)
+  Keyboard.setAccessoryBarVisible(false)
+})
 </code></pre>
 </div>
+
+<p>}
+  userDidSomething() {
+    // In case you want to programatically close the keyboard
+    Keyboard.close()
+  }
+}
+```</p>
 
       </main>
     </div>

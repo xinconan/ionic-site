@@ -353,27 +353,27 @@
 
 <h3 id="install-the-plugin">Install the plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic plugin add cordova-plugin-device
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-device
+</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Device</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span>
+<p>```javascript
+import {Device} from ‘ionic/ionic’</p>
 
-<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">device</span> <span class="o">=</span> <span class="nx">Device</span><span class="p">.</span><span class="nx">getDevice</span><span class="p">();</span>
-    <span class="cm">/*
+<p>class MyPage {
+  constructor() {
+    var device = Device.getDevice();
+    /*
     Device info:
     device.name
     device.model
     device.platform
     device.uuid
     device.version
-    */</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+    */
+  }
+}
+```</p>
 
       </main>
     </div>

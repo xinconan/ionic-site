@@ -1041,58 +1041,56 @@
 
 <p>If have an <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code> element, we can also create an <code class="highlighter-rouge">&lt;ion-nav-bar&gt;</code> which will create a topbar that updates as the application state changes. We can also add some styles and set up animations:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"starter"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<body ng-app="starter">
 
-  <span class="c">&lt;!-- The nav bar that will be updated as we navigate --&gt;</span>
-  <span class="nt">&lt;ion-nav-bar</span> <span class="na">animation=</span><span class="s">"nav-title-slide-ios7"</span>
-           <span class="na">type=</span><span class="s">"bar-positive"</span>
-           <span class="na">back-button-type=</span><span class="s">"button-icon"</span>
-           <span class="na">back-button-icon=</span><span class="s">"ion-arrow-left-c"</span><span class="nt">&gt;&lt;/ion-nav-bar&gt;</span>
+  <!-- The nav bar that will be updated as we navigate -->
+  <ion-nav-bar animation="nav-title-slide-ios7" type="bar-positive" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></ion-nav-bar>
 
-  <span class="c">&lt;!-- where the initial view template will be rendered --&gt;</span>
-  <span class="nt">&lt;ion-nav-view</span> <span class="na">animation=</span><span class="s">"slide-left-right"</span><span class="nt">&gt;&lt;/ion-nav-view&gt;</span>
+  <!-- where the initial view template will be rendered -->
+  <ion-nav-view animation="slide-left-right"></ion-nav-view>
 
-<span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
+</body>
+<p>```</p>
 
 <h3 id="state-provider-setup">State Provider Setup</h3>
 
 <p>We can set up Angular to listen for various routes, match which state should be loaded, and render the state’s template into the correct <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<p>```javascript
+angular.module(‘myApp’, [‘ionic’])</p>
 
-<span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">,</span> <span class="nx">$urlRouterProvider</span><span class="p">)</span> <span class="p">{</span>
+<p>.config(function($stateProvider, $urlRouterProvider) {</p>
 
-  <span class="nx">$stateProvider</span>
-    <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'home'</span><span class="p">,</span> <span class="p">{</span>
-      <span class="na">url</span><span class="p">:</span> <span class="s2">"/home"</span><span class="p">,</span>
-      <span class="na">templateUrl</span><span class="p">:</span> <span class="s2">"home.html"</span><span class="p">,</span>
-      <span class="na">controller</span><span class="p">:</span> <span class="s1">'HomeCtrl'</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'about'</span><span class="p">,</span> <span class="p">{</span>
-      <span class="na">url</span><span class="p">:</span> <span class="s2">"/about"</span><span class="p">,</span>
-      <span class="na">templateUrl</span><span class="p">:</span> <span class="s2">"about.html"</span><span class="p">,</span>
-      <span class="na">controller</span><span class="p">:</span> <span class="s1">'AboutCtrl'</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'contact'</span><span class="p">,</span> <span class="p">{</span>
-      <span class="na">url</span><span class="p">:</span> <span class="s2">"/contact"</span><span class="p">,</span>
-      <span class="na">templateUrl</span><span class="p">:</span> <span class="s2">"contact.html"</span>
-    <span class="p">})</span>
+<p>$stateProvider
+    .state(‘home’, {
+      url: “/home”,
+      templateUrl: “home.html”,
+      controller: ‘HomeCtrl’
+    })
+    .state(‘about’, {
+      url: “/about”,
+      templateUrl: “about.html”,
+      controller: ‘AboutCtrl’
+    })
+    .state(‘contact’, {
+      url: “/contact”,
+      templateUrl: “contact.html”
+    })</p>
 
-    <span class="c1">// if none of the above are matched, go to this one</span>
-    <span class="nx">$urlRouterProvider</span><span class="p">.</span><span class="nx">otherwise</span><span class="p">(</span><span class="s2">"/home"</span><span class="p">);</span>
-<span class="p">})</span>
-
-<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'HomeCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'HomeCtrl'</span><span class="p">);</span>
-<span class="p">})</span>
-
-<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AboutCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'AboutCtrl'</span><span class="p">);</span>
-<span class="p">});</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>// if none of the above are matched, go to this one
+$urlRouterProvider.otherwise("/home"); })
 </code></pre>
 </div>
+
+<p>.controller(‘HomeCtrl’, function($scope) {
+  console.log(‘HomeCtrl’);
+})</p>
+
+<p>.controller(‘AboutCtrl’, function($scope) {
+  console.log(‘AboutCtrl’);
+});
+```</p>
 
 <p>Please visit <a href="https://github.com/angular-ui/ui-router/wiki">AngularUI Router’s docs</a> for more info. Below is a great video by the AngularUI Router guys that may help to explain how it all works:</p>
 
@@ -1106,67 +1104,67 @@
 
 <p>Next, in each state’s template should contain a <code class="highlighter-rouge">view</code> directive, which provides the view’s title:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"home.html"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/ng-template"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"'Home'"</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">has</span><span class="o">-</span><span class="nx">header</span><span class="o">=</span><span class="s2">"true"</span> <span class="nx">padding</span><span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
-      <span class="p">...</span>
-    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/ion-view</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"about.html"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/ng-template"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"'About'"</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">has</span><span class="o">-</span><span class="nx">header</span><span class="o">=</span><span class="s2">"true"</span> <span class="nx">padding</span><span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
-      <span class="p">...</span>
-    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/ion-view</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"contact.html"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/ng-template"</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"'Contact'"</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">has</span><span class="o">-</span><span class="nx">header</span><span class="o">=</span><span class="s2">"true"</span> <span class="nx">padding</span><span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
-      <span class="p">...</span>
-    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/ion-view</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>
-</code></pre>
-</div>
+<p>```javascript</p>
+
+<script id="home.html" type="text/ng-template">
+  <ion-view title="'Home'">
+    <ion-content has-header="true" padding="true">
+      ...
+    </ion-content>
+  </ion-view>
+</script>
+
+<script id="about.html" type="text/ng-template">
+  <ion-view title="'About'">
+    <ion-content has-header="true" padding="true">
+      ...
+    </ion-content>
+  </ion-view>
+</script>
+
+<script id="contact.html" type="text/ng-template">
+  <ion-view title="'Contact'">
+    <ion-content has-header="true" padding="true">
+      ...
+    </ion-content>
+  </ion-view>
+</script>
+
+<p>```</p>
 
 <p>Inside of each <code class="highlighter-rouge">&lt;ion-view&gt;</code> we can specify the title, left buttons, and right buttons that will be updated on the nav bar.</p>
 
 <p>Note: To hide the back button for a given view, use the <code class="highlighter-rouge">hide-back-button="true"</code> attribute on the <code class="highlighter-rouge">&lt;ion-view&gt;</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-view</span> <span class="na">ng-controller=</span><span class="s">"AppCtrl"</span> <span class="na">title=</span><span class="s">"myTitle"</span> <span class="na">left-buttons=</span><span class="s">"leftButtons"</span> <span class="na">right-buttons=</span><span class="s">"rightButtons"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/ion-view&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-view ng-controller="AppCtrl" title="myTitle" left-buttons="leftButtons" right-buttons="rightButtons">
+</ion-view>
+<p>```</p>
 
 <p>We can then specify these fields on the scope in our controller:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AppCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">myTitle</span> <span class="o">=</span> <span class="s1">'Page One'</span><span class="p">;</span>
+<p>```javascript
+app.controller(‘AppCtrl’, function($scope) {
+  $scope.myTitle = ‘Page One’;</p>
 
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">leftButtons</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="na">type</span><span class="p">:</span> <span class="s1">'button-positive'</span><span class="p">,</span>
-      <span class="na">content</span><span class="p">:</span> <span class="s1">'&lt;i class="icon ion-navicon"&gt;&lt;/i&gt;'</span><span class="p">,</span>
-      <span class="na">tap</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">];</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">rightButtons</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="na">type</span><span class="p">:</span> <span class="s1">'button-clear'</span><span class="p">,</span>
-      <span class="na">content</span><span class="p">:</span> <span class="s1">'Edit'</span><span class="p">,</span>
-      <span class="na">tap</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">});</span>
-</code></pre>
-</div>
+<p>$scope.leftButtons = [
+    {
+      type: ‘button-positive’,
+      content: ‘<i class="icon ion-navicon"></i>’,
+      tap: function(e) {
+      }
+    }
+  ];
+  $scope.rightButtons = [
+    {
+      type: ‘button-clear’,
+      content: ‘Edit’,
+      tap: function(e) {
+      }
+    }
+  ]
+});
+```</p>
 
         </div>
 

@@ -389,7 +389,8 @@
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">presentActionSheet() {
+<p><code class="highlighter-rouge">typescript
+presentActionSheet() {
   let actionSheet = ActionSheet.create({
     title: 'Modify your album',
     buttons: [
@@ -415,7 +416,7 @@
   });
   this.nav.present(actionSheet);
   }
-</code></pre>
+</code></p>
 
 <h2 id="alert" class="section-header">Alerts</h2>
 
@@ -423,7 +424,7 @@
   Improve this Doc
 </a></p>
 
-<p>Alerts are a great way to require the user to take a specific action. They can provide the user with important information, and require them to make a decision.<br />
+<p>Alerts are a great way to require the user to take a specific action. They can provide the user with important information, and require them to make a decision.
 Alerts are quite flexible, and can easily be customized. Check out the <a href="../api/components/alert/Alert">API docs</a> for more information.</p>
 
 <h2 id="badges" class="section-header">Badges</h2>
@@ -439,19 +440,19 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
-  <span class="nt">&lt;icon</span> <span class="na">ion-social-twitter</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+<p>```html</p>
+<ion-item>
+  <icon ion-social-twitter="" item-left=""></icon>
   Followers
-  <span class="nt">&lt;ion-badge</span> <span class="na">item-right</span><span class="nt">&gt;</span>260k<span class="nt">&lt;/ion-badge&gt;</span>
-<span class="nt">&lt;/ion-item&gt;</span>
-</code></pre>
-</div>
+  <ion-badge item-right="">260k</ion-badge>
+</ion-item>
+<p>```</p>
 
 <p>Badges can also be given any color attribute:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-badge</span> <span class="na">secondary</span><span class="nt">&gt;&lt;/ion-badge&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-badge secondary=""></ion-badge>
+<p>```</p>
 
 <h2 id="buttons" class="section-header">Buttons</h2>
 
@@ -488,19 +489,19 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button&gt;Button&lt;/button&gt;
+</code></p>
 
 <p>The <code class="highlighter-rouge">primary</code> property sets the color of the button. Ionic includes a number of default colors which can be easily overridden:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">light</span><span class="nt">&gt;</span>Light<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">secondary</span><span class="nt">&gt;</span>Secondary<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">danger</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">dark</span><span class="nt">&gt;</span>Dark<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button light&gt;Light&lt;/button&gt;
+&lt;button&gt;Primary&lt;/button&gt;
+&lt;button secondary&gt;Secondary&lt;/button&gt;
+&lt;button danger&gt;Danger&lt;/button&gt;
+&lt;button dark&gt;Dark&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="outline-buttons">Outline Style</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/outline">
@@ -509,13 +510,13 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>To use the outline style for a button, just add the <code class="highlighter-rouge">outline</code> property:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">light</span> <span class="na">outline</span><span class="nt">&gt;</span>Light Outline<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">outline</span><span class="nt">&gt;</span>Primary Outline<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">secondary</span> <span class="na">outline</span><span class="nt">&gt;</span>Secondary Outline<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">danger</span> <span class="na">outline</span><span class="nt">&gt;</span>Danger Outline<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">dark</span> <span class="na">outline</span><span class="nt">&gt;</span>Dark Outline<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button light outline&gt;Light Outline&lt;/button&gt;
+&lt;button outline&gt;Primary Outline&lt;/button&gt;
+&lt;button secondary outline&gt;Secondary Outline&lt;/button&gt;
+&lt;button danger outline&gt;Danger Outline&lt;/button&gt;
+&lt;button dark outline&gt;Dark Outline&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="clear-buttons">Clear Style</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/clear">
@@ -524,13 +525,13 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>To use the clear style for a button, just add the <code class="highlighter-rouge">clear</code> property:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">light</span> <span class="na">clear</span><span class="nt">&gt;</span>Light Clear<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">clear</span><span class="nt">&gt;</span>Primary Clear<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">secondary</span> <span class="na">clear</span><span class="nt">&gt;</span>Secondary Clear<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">danger</span> <span class="na">clear</span><span class="nt">&gt;</span>Danger Clear<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">dark</span> <span class="na">clear</span><span class="nt">&gt;</span>Dark Clear<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button light clear&gt;Light Clear&lt;/button&gt;
+&lt;button clear&gt;Primary Clear&lt;/button&gt;
+&lt;button secondary clear&gt;Secondary Clear&lt;/button&gt;
+&lt;button danger clear&gt;Danger Clear&lt;/button&gt;
+&lt;button dark clear&gt;Dark Clear&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="round-buttons">Round Buttons</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/round">
@@ -539,13 +540,13 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>To create a button with rounded corners, just add the <code class="highlighter-rouge">round</code> property:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">light</span> <span class="na">round</span><span class="nt">&gt;</span>Light Round<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">round</span><span class="nt">&gt;</span>Primary Round<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">secondary</span> <span class="na">round</span><span class="nt">&gt;</span>Secondary Round<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">danger</span> <span class="na">round</span><span class="nt">&gt;</span>Danger Round<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">dark</span> <span class="na">round</span><span class="nt">&gt;</span>Dark Round<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button light round&gt;Light Round&lt;/button&gt;
+&lt;button round&gt;Primary Round&lt;/button&gt;
+&lt;button secondary round&gt;Secondary Round&lt;/button&gt;
+&lt;button danger round&gt;Danger Round&lt;/button&gt;
+&lt;button dark round&gt;Dark Round&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="block-buttons">Block Buttons</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/block">
@@ -554,9 +555,9 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Adding <code class="highlighter-rouge">block</code> to a button will make the button take 100% of its parent’s width. It will also add <code class="highlighter-rouge">display: block</code> to the button:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">block</span><span class="nt">&gt;</span>Block Button<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button block&gt;Block Button&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="full-buttons">Full Buttons</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/full">
@@ -565,9 +566,9 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Adding <code class="highlighter-rouge">full</code> to a button will also make the button take 100% of its parent’s width. However, it will also remove the button’s left and right borders. This style is useful when the button should stretch across the entire width of the display.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">full</span><span class="nt">&gt;</span>Full Button<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button full&gt;Full Button&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="button-sizes">Button Sizes</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/sizes">
@@ -576,11 +577,11 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Add the <code class="highlighter-rouge">large</code> attribute to make a button larger, or <code class="highlighter-rouge">small</code> to make it smaller:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">small</span><span class="nt">&gt;</span>Small<span class="nt">&lt;button&gt;</span>
-<span class="nt">&lt;button&gt;</span>Default<span class="nt">&lt;button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">large</span><span class="nt">&gt;</span>Large<span class="nt">&lt;button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button small&gt;Small&lt;button&gt;
+&lt;button&gt;Default&lt;button&gt;
+&lt;button large&gt;Large&lt;button&gt;
+</code></p>
 
 <h3 class="section-nav" id="icon-buttons">Icon Buttons</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/icons">
@@ -589,24 +590,24 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>To add icons to a button, add an icon component inside of it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- Float the icon left --&gt;</span>
-<span class="nt">&lt;button&gt;</span>
-  <span class="nt">&lt;icon</span> <span class="na">home</span><span class="nt">&gt;&lt;/icon&gt;</span>
-  Left Icon
-<span class="nt">&lt;/button&gt;</span>
+<p>```html
+<!-- Float the icon left -->
+<button></button></p>
+<icon home=""></icon>
+<p>Left Icon
+&lt;/button&gt;</p>
 
-<span class="c">&lt;!-- Float the icon right --&gt;</span>
-<span class="nt">&lt;button&gt;</span>
-  Right Icon
-  <span class="nt">&lt;icon</span> <span class="na">home</span><span class="nt">&gt;&lt;/icon&gt;</span>
-<span class="nt">&lt;/button&gt;</span>
+<!-- Float the icon right -->
+<p><button>
+  Right Icon</button></p>
+<icon home=""></icon>
+<p>&lt;/button&gt;</p>
 
-<span class="c">&lt;!-- Only icon (no text) --&gt;</span>
-<span class="nt">&lt;button&gt;</span>
-  <span class="nt">&lt;icon</span> <span class="na">home</span><span class="nt">&gt;&lt;/icon&gt;</span>
-<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<!-- Only icon (no text) -->
+<p><button></button></p>
+<icon home=""></icon>
+<p>&lt;/button&gt;
+```</p>
 
 <h3 class="section-nav" id="floating-action-buttons">Floating Action Buttons</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/fab">
@@ -615,9 +616,9 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Adding <code class="highlighter-rouge">fab</code> to a button will turn it into a floating action button. This is a material design styled button that is meant to draw the user to take a specific action. Fab buttons are positioned absolutely, and their placement can be controlled by adding attributes like <code class="highlighter-rouge">fab-top</code> and <code class="highlighter-rouge">fab-left</code>. See the <a href="../api/components/button/Button">button API spec</a> for a full list of attributes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">fab</span><span class="nt">&gt;</span>FAB<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;button fab&gt;FAB&lt;/button&gt;
+</code></p>
 
 <h3 class="section-nav" id="buttons-in-components">Buttons In Components</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/buttons/components">
@@ -626,17 +627,17 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Although buttons can be used on their own, they can easily be used within other components. For example, buttons can be added to a list item:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>
+<p>```html</p>
+<ion-list>
+  <ion-item>
     Left Icon Button
-    <span class="nt">&lt;button</span> <span class="na">outline</span> <span class="na">item-right</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">star</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button outline="" item-right="">
+      <icon star=""></icon>
       Left Icon
-    <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+    </button>
+  </ion-item>
+</ion-list>
+<p>```</p>
 
 <h2 id="cards" class="section-header">Cards</h2>
 
@@ -668,33 +669,33 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Cards are primarily a CSS component. To use add a basic card, follow this structure:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
+<p>```html</p>
+<ion-card>
 
-  <span class="nt">&lt;ion-card-header&gt;</span>
+  <ion-card-header>
     Card Header
-  <span class="nt">&lt;/ion-card-header&gt;</span>
+  </ion-card-header>
 
-  <span class="nt">&lt;ion-card-content&gt;</span>
-    <span class="c">&lt;!-- Add card content here! --&gt;</span>
-  <span class="nt">&lt;/ion-card-content&gt;</span>
+  <ion-card-content>
+    <!-- Add card content here! -->
+  </ion-card-content>
 
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-header">Card Headers</h3>
 <p>Just like a normal page, cards can be customized to include headers. To add use add a card header, add the <code class="highlighter-rouge">&lt;ion-card-header&gt;</code> component inside of your card:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
-  <span class="nt">&lt;ion-card-header&gt;</span>
+<p>```html</p>
+<ion-card>
+  <ion-card-header>
     Header
-  <span class="nt">&lt;/ion-card-header&gt;</span>
-  <span class="nt">&lt;ion-card-content&gt;</span>
+  </ion-card-header>
+  <ion-card-content>
     The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-  <span class="nt">&lt;/ion-card-content&gt;</span>
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+  </ion-card-content>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-list">Lists In Cards</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/cards/list">
@@ -703,46 +704,46 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>A card can contain a list of items. To create a card list, add elements with the <code class="highlighter-rouge">ion-item</code> attribute inside of an <code class="highlighter-rouge">ion-list</code> in your card:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
-  <span class="nt">&lt;ion-card-header&gt;</span>
+<p>```html</p>
+<ion-card>
+  <ion-card-header>
     Explore Nearby
-  <span class="nt">&lt;/ion-card-header&gt;</span>
+  </ion-card-header>
 
-  <span class="nt">&lt;ion-list&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">cart</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+  <ion-list>
+    <button ion-item="">
+      <icon cart="" item-left=""></icon>
       Shopping
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">medical</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button ion-item="">
+      <icon medical="" item-left=""></icon>
       Hospital
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">cafe</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button ion-item="">
+      <icon cafe="" item-left=""></icon>
       Cafe
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">paw</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button ion-item="">
+      <icon paw="" item-left=""></icon>
       Dog Park
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">beer</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button ion-item="">
+      <icon beer="" item-left=""></icon>
       Pub
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-    <span class="nt">&lt;button</span> <span class="na">ion-item</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">planet</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+    <button ion-item="">
+      <icon planet="" item-left=""></icon>
       Space
-    <span class="nt">&lt;/button&gt;</span>
+    </button>
 
-  <span class="nt">&lt;/ion-list&gt;</span>
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+  </ion-list>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-image">Images In Cards</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/cards/image">
@@ -751,20 +752,20 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Images often vary in size, so it is important that they adopt a consistent style throughout your app. Images can easily be added to cards. Adding an image to a card will give the image a constant width, and a variable height. Lists, headers, and other card components can easily be combined with image cards. To add an image to a card, use the following markup:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/nin-live.png"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ion-card-content&gt;</span>
-    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-card>
+  <img src="img/nin-live.png" />
+  <ion-card-content>
+    <h2 class="card-title">
       Nine Inch Nails Live
-    <span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>
+    </h2>
+    <p>
       The most popular industrial group ever, and largely
       responsible for bringing the music to a mass audience.
-    <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-card-content&gt;</span>
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+    </p>
+  </ion-card-content>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-background">Background Images</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/cards/background">
@@ -791,39 +792,39 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>It’s often necessary to create social cards within an application. Using a combination of different items in a card you can achieve this.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
+<p>```html</p>
+<ion-card>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/marty-avatar.png"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ion-avatar&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Marty McFly<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>November 5, 1955<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+  <ion-item>
+    <ion-avatar item-left="">
+      <img src="img/marty-avatar.png" />
+    </ion-avatar>
+    <h2>Marty McFly</h2>
+    <p>November 5, 1955</p>
+  </ion-item>
 
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/advance-card-bttf.png"</span><span class="nt">&gt;</span>
+  <img src="img/advance-card-bttf.png" />
 
-  <span class="nt">&lt;ion-card-content&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-card-content&gt;</span>
+  <ion-card-content>
+  <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+  </ion-card-content>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">thumbs-up</span><span class="nt">&gt;&lt;/icon&gt;</span>
-      <span class="nt">&lt;div&gt;</span>12 Likes<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">text</span><span class="nt">&gt;&lt;/icon&gt;</span>
-      <span class="nt">&lt;div&gt;</span>4 Comments<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;ion-note</span> <span class="na">item-right</span><span class="nt">&gt;</span>
+  <ion-item>
+    <button primary="" clear="" item-left="">
+      <icon thumbs-up=""></icon>
+      <div>12 Likes</div>
+    </button>
+    <button primary="" clear="" item-left="">
+      <icon text=""></icon>
+      <div>4 Comments</div>
+    </button>
+    <ion-note item-right="">
       11h ago
-    <span class="nt">&lt;/ion-note&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+    </ion-note>
+  </ion-item>
 
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-advanced-map">Map Cards</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/cards/advanced-map">
@@ -832,37 +833,37 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>A combination of Ionic components can be used to create a card that appears as a map.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-card&gt;</span>
+<p>```html</p>
+<ion-card>
 
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/advance-card-map-madison.png"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">fab</span> <span class="na">fab-right</span> <span class="na">fab-top</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">pin</span><span class="nt">&gt;&lt;/icon&gt;</span>
-  <span class="nt">&lt;/button&gt;</span>
+  <img src="img/advance-card-map-madison.png" />
+  <button fab="" fab-right="" fab-top="">
+    <icon pin=""></icon>
+  </button>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">item-left</span> <span class="na">large</span> <span class="na">football</span><span class="nt">&gt;&lt;/icon&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Museum of Football<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>11 N. Way St, Madison, WI 53703<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+  <ion-item>
+    <icon item-left="" large="" football=""></icon>
+    <h2>Museum of Football</h2>
+    <p>11 N. Way St, Madison, WI 53703</p>
+  </ion-item>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">item-left</span> <span class="na">large</span> <span class="na">wine</span><span class="nt">&gt;&lt;/icon&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Institute of Fine Cocktails<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>14 S. Hop Avenue, Madison, WI 53703<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+  <ion-item>
+    <icon item-left="" large="" wine=""></icon>
+    <h2>Institute of Fine Cocktails</h2>
+    <p>14 S. Hop Avenue, Madison, WI 53703</p>
+  </ion-item>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">item-left</span><span class="nt">&gt;</span>18 min<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">item-left</span><span class="nt">&gt;</span>(2.6 mi)<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-right</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;icon</span> <span class="na">navigate</span><span class="nt">&gt;&lt;/icon&gt;</span>
+  <ion-item>
+    <span item-left="">18 min</span>
+    <span item-left="">(2.6 mi)</span>
+    <button primary="" clear="" item-right="">
+      <icon navigate=""></icon>
       Start
-    <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+    </button>
+  </ion-item>
 
-<span class="nt">&lt;/ion-card&gt;</span>
-</code></pre>
-</div>
+</ion-card>
+<p>```</p>
 
 <h3 class="section-nav" id="card-advanced-weather">Weather Cards</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/cards/advanced-weather">
@@ -884,15 +885,15 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-checkbox</span> <span class="na">dark</span> <span class="na">checked=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-checkbox dark="" checked="true">
   Daenerys Targaryen
-<span class="nt">&lt;/ion-checkbox&gt;</span>
+</ion-checkbox>
 
-<span class="nt">&lt;ion-checkbox</span> <span class="na">disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<ion-checkbox disabled="true">
   Arya Stark
-<span class="nt">&lt;/ion-checkbox&gt;</span>
-</code></pre>
-</div>
+</ion-checkbox>
+<p>```</p>
 
 <h2 id="grid" class="section-header">Grid</h2>
 
@@ -919,18 +920,22 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>To use an icon, just add the Icon’s CSS class to your element:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-icon</span> <span class="na">heart</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-icon heart=""></ion-icon>
+<p>```</p>
 
 <h3 id="active--inactive-icons">Active / Inactive Icons:</h3>
 
 <p>All icons have both <code class="highlighter-rouge">active</code> and <code class="highlighter-rouge">inactive</code> states. Active icons are typically full and thick, where as inactive icons are outlined and thin. Set the <code class="highlighter-rouge">is-active</code> attribute to <code class="highlighter-rouge">true</code> or false to change the state of the icon. Icons will default to active if a value is not specified.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-icon</span> <span class="na">heart</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>                    <span class="c">&lt;!-- active --&gt;</span>
-<span class="nt">&lt;ion-icon</span> <span class="na">heart</span> <span class="na">is-active=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>  <span class="c">&lt;!-- inactive --&gt;</span>
+<p>```html</p>
+<ion-icon heart=""></ion-icon>
+<div class="highlighter-rouge"><pre class="highlight"><code>                &lt;!-- active --&gt;
 </code></pre>
 </div>
+<ion-icon heart="" is-active="false"></ion-icon>
+<p><!-- inactive -->
+```</p>
 
 <h3 id="platform-specific-icons">Platform Specific Icons:</h3>
 
@@ -938,33 +943,34 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>However, if you want more control, you can explicitly set the icon to use for each platform. Use the <code class="highlighter-rouge">md</code> (material design) and <code class="highlighter-rouge">ios</code> attributes to specify a platform specific icon:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-icon</span> <span class="na">ios=</span><span class="s">"ion-social-apple"</span> <span class="na">md=</span><span class="s">"ion-social-android"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-icon ios="ion-social-apple" md="ion-social-android"></ion-icon>
+<p>```</p>
 
 <h3 id="variable-icons">Variable Icons:</h3>
 
 <p>To set an icon using a variable:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-icon</span> <span class="err">[</span><span class="na">name</span><span class="err">]="</span><span class="na">myIcon</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;ion-icon [name]="myIcon"&gt;&lt;/ion-icon&gt;
+</code></p>
 
-<pre><code class="language-typescript">export class MyFirstPage {
+<p><code class="highlighter-rouge">typescript
+export class MyFirstPage {
   constructor(nav: NavController) {
     // use the home icon
     this.myIcon = "home";
   }
 }
-</code></pre>
+</code></p>
 
 <h3 id="as-a-class">As a Class:</h3>
 
 <p>While not recommended, icons can be added using their class name. This was the typical way to add icons in Ionic 1, so you may encounter the following syntax from time to time:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon ion-home"</span><span class="nt">&gt;&lt;/i&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;i class="icon ion-home"&gt;&lt;/i&gt;
+</code></p>
 
 <p><a href="http://ionicons.com">
   <button class="btn btn-primary ion-forward icon-right">Explore the full icon set</button>
@@ -999,21 +1005,21 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Use <code class="highlighter-rouge">fixed-label</code> to place a label to the left of the input element. When the user enters text, the label does not hide. The user’s input will align on the same position, regardless of the length of the label. Note that there’s nothing stopping you from also using a placeholder label too.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+<p>```html</p>
+<ion-list>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">fixed-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Username<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input fixed-label="">
+    <ion-label>Username</ion-label>
+    <input type="text" value="" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">fixed-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Password<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input fixed-label="">
+    <ion-label>Password</ion-label>
+    <input type="password" value="" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="floating-labels">Floating Labels</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/labels/floating">
@@ -1024,21 +1030,21 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Enter text in the example to the right to see the floating labels in action.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+<p>```html</p>
+<ion-list>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">floating-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Username<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input floating-label="">
+    <ion-label>Username</ion-label>
+    <input type="text" value="" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">floating-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Password<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input floating-label="">
+    <ion-label>Password</ion-label>
+    <input type="password" value="" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-header" id="inline-labels">Inline Labels</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/labels/inline">
@@ -1047,25 +1053,25 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>If a label attribute is not provided, an <code class="highlighter-rouge">&lt;ion-input&gt;</code> component will default to using an inline label. When the user enters text, the label does not hide. Note that there’s nothing stopping you from also using a placeholder as well.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+<p>```html</p>
+<ion-list>
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Username<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <ion-label>Username</ion-label>
+    <input type="text" value="" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Password<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <ion-label>Password</ion-label>
+    <input type="password" value="" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
+</ion-list>
 
-<span class="nt">&lt;div</span> <span class="na">padding</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">block</span><span class="nt">&gt;</span>Sign In<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre>
+<div padding="">
+  <button block="">Sign In</button>
 </div>
+<p>```</p>
 <h3 class="section-header" id="inset-labels">Inset Labels</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/labels/inset">
   Demo Source
@@ -1073,21 +1079,21 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>By default each input item will fill 100% of the width of its parent element (the list). However, you can inset the list by adding the <code class="highlighter-rouge">inset</code> attribute.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">inset</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-list inset="">
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Username<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <ion-label>Username</ion-label>
+    <input type="text" value="" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Password<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <ion-label>Password</ion-label>
+    <input type="password" value="" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-header" id="placeholder-labels">Placeholder Labels</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/labels/placeholder">
@@ -1096,44 +1102,44 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 
 <p>Add the <code class="highlighter-rouge">placeholder</code> attribute to an <code class="highlighter-rouge">&lt;input&gt;</code> element to simulate the input’s label. When the user begins to enter text into the input, the placeholder label will be hidden.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+<p>```html</p>
+<ion-list>
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Username"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <input type="text" placeholder="Username" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">placeholder=</span><span class="s">"Password"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input>
+    <input type="password" placeholder="Password" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
+</ion-list>
 
-</code></pre>
-</div>
+<p>```</p>
 
 <h3 class="section-header" id="stacked-labels">Stacked Labels</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/labels/stacked">
   Demo Source
 </a></p>
 
-<p>A stacked label will always appear on top of the input. Each <code class="highlighter-rouge">&lt;ion-input&gt;</code> should have the <code class="highlighter-rouge">stacked-label</code> attribute.<br />
+<p>A stacked label will always appear on top of the input. Each <code class="highlighter-rouge">&lt;ion-input&gt;</code> should have the <code class="highlighter-rouge">stacked-label</code> attribute.
 You can also add a placeholder so that users have a hint of what type of text the input is looking for.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+<p>```html</p>
+<ion-list>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">stacked-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Username<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input stacked-label="">
+    <ion-label>Username</ion-label>
+    <input type="text" />
+  </ion-input>
 
-  <span class="nt">&lt;ion-input</span> <span class="na">stacked-label</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-label&gt;</span>Password<span class="nt">&lt;/ion-label&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/ion-input&gt;</span>
+  <ion-input stacked-label="">
+    <ion-label>Password</ion-label>
+    <input type="password" />
+  </ion-input>
 
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+</ion-list>
+<p>```</p>
 
 <h2 id="lists" class="section-header">Lists</h2>
 
@@ -1162,13 +1168,13 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>By default, all lists will be styled with divider lines:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-list>
+  &lt;ion-item *ngFor="#item of items" (click)="itemSelected(item)"&gt;
     {{item.title}}
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  
+</ion-list>
+<p>```</p>
 
 <h3 class="no-para" id="list-no-lines">Basic Usage (No Lines)</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/no-lines">
@@ -1177,13 +1183,13 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Adding the <code class="highlighter-rouge">no-lines</code> attribute will hide the dividers between list items:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">no-lines</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-list no-lines="">
+  &lt;ion-item *ngFor="#item of items" (click)="itemSelected(item)"&gt;
     {{item.title}}
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="inset-list">Inset List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/inset">
@@ -1192,13 +1198,13 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>By default, lists have an outside margin, to remove that add the <code class="highlighter-rouge">inset</code> property to make the list flush with the parent container.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">inset</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-list inset="">
+  &lt;ion-item *ngFor="#item of items" (click)="itemSelected(item)"&gt;
     {{item.title}}
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="list-headers">List Headers</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/headers">
@@ -1207,16 +1213,16 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Each list can include a header at the top of the list:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-list-header&gt;</span>
+<p>```html</p>
+<ion-list>
+  <ion-list-header>
     Action
-  <span class="nt">&lt;/ion-list-header&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>Terminator II<span class="nt">&lt;/ion-item&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>The Empire Strikes Back<span class="nt">&lt;/ion-item&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>Blade Runner<span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  </ion-list-header>
+  <ion-item>Terminator II</ion-item>
+  <ion-item>The Empire Strikes Back</ion-item>
+  <ion-item>Blade Runner</ion-item>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="icon-list">Icon List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/icon">
@@ -1225,15 +1231,15 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Adding <a href="#icons">icons</a> to list items is a great way to hint about the contents of each item. The position of the icon can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;icon</span> <span class="na">leaf</span> <span class="na">item-left</span><span class="nt">&gt;&lt;/icon&gt;</span>
+<p>```html</p>
+<ion-list>
+  <ion-item>
+    <icon leaf="" item-left=""></icon>
       Herbology
-    <span class="nt">&lt;icon</span> <span class="na">rose</span> <span class="na">item-right</span><span class="nt">&gt;&lt;/icon&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+    <icon rose="" item-right=""></icon>
+  </ion-item>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="avatar-list">Avatar List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/avatar">
@@ -1242,17 +1248,17 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Item avatars showcase an image larger than an icon, but smaller than a thumbnail. To use an avatar, add an <code class="highlighter-rouge">&lt;ion-avatar&gt;</code> component inside of an item. The position of the avatar can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/avatar-cher.png"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ion-avatar&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Cher<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Ugh. As if.<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-list>
+  <ion-item>
+    <ion-avatar item-left="">
+      <img src="img/avatar-cher.png" />
+    </ion-avatar>
+    <h2>Cher</h2>
+    <p>Ugh. As if.</p>
+  </ion-item>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="multiline-list">Multiline List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/multiline">
@@ -1261,18 +1267,18 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Multiline lists are identical to regular lists, except they can multiple lines of text. When multiple header or paragraph tags are added to an <code class="highlighter-rouge">&lt;ion-item&gt;</code>, the item will automatically adjust its height to fit the new lines. Below is an example with three lines of text:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/avatar-finn.png"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ion-avatar&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Finn<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;h3&gt;</span>Don't Know What To Do!<span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;p&gt;</span>I've had a pretty messed up day. If we just...<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-list>
+  <ion-item>
+    <ion-avatar item-left="">
+      <img src="img/avatar-finn.png" />
+    </ion-avatar>
+    <h2>Finn</h2>
+    <h3>Don't Know What To Do!</h3>
+    <p>I've had a pretty messed up day. If we just...</p>
+  </ion-item>
+</ion-list>
+<p>```</p>
 
 <h3 class="section-nav" id="thumbnail-list">Thumbnail List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/lists/thumbnail">
@@ -1281,18 +1287,18 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Item thumbnails showcase an image that takes up the entire height of an item. To use a thumbnail, add an <code class="highlighter-rouge">&lt;ion-thumbnail&gt;</code> component inside of an item. The position of the thumbnail can be set using the <code class="highlighter-rouge">item-left</code> and <code class="highlighter-rouge">item-right</code> attributes:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;ion-thumbnail</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/thumbnail-totoro.png"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ion-thumbnail&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>My Neighbor Totoro<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;p&gt;</span>Hayao Miyazaki • 1988<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">clear</span> <span class="na">item-right</span><span class="nt">&gt;</span>View<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+<p>```html</p>
+<ion-list>
+  <ion-item>
+    <ion-thumbnail item-left="">
+      <img src="img/thumbnail-totoro.png" />
+    </ion-thumbnail>
+    <h2>My Neighbor Totoro</h2>
+    <p>Hayao Miyazaki • 1988</p>
+    <button clear="" item-right="">View</button>
+  </ion-item>
+</ion-list>
+<p>```</p>
 
 <h2 id="menus" class="section-header">Menus</h2>
 
@@ -1319,58 +1325,58 @@ You can also add a placeholder so that users have a hint of what type of text th
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">@App({
+<p>```typescript
+@App({
   template: `
-    &lt;ion-menu [content]="content"&gt;
-      &lt;ion-toolbar&gt;
-        &lt;ion-title&gt;Pages&lt;/ion-title&gt;
-      &lt;/ion-toolbar&gt;
-      &lt;ion-content&gt;
-        &lt;ion-list&gt;
+    &lt;ion-menu [content]=”content”&gt;
+      <ion-toolbar>
+        <ion-title>Pages</ion-title>
+      </ion-toolbar>
+      <ion-content>
+        <ion-list>
           &lt;button ion-item (click)="openPage(loginPage)"&gt;
             Login
           &lt;/button&gt;
           &lt;button ion-item (click)="openPage(signupPage)"&gt;
             Signup
           &lt;/button&gt;
-        &lt;/ion-list&gt;
-      &lt;/ion-content&gt;
-    &lt;/ion-menu&gt;
+        </ion-list>
+      </ion-content>
+    &lt;/ion-menu&gt;</p>
 
-    &lt;ion-nav id="nav" #content [root]="loginPage"&gt;&lt;/ion-nav&gt;`
-})
-class MyApp {}
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-nav id="nav" #content [root]="loginPage"&gt;&lt;/ion-nav&gt;` }) class MyApp {} ```
 </code></pre>
+</div>
 
 <p>The <code class="highlighter-rouge">&lt;ion-menu&gt;</code>s bound <code class="highlighter-rouge">[content]</code> property gets a <a href="https://angular.io/docs/ts/latest/guide/user-input.html#local-variables">reference</a> to the <code class="highlighter-rouge">&lt;ion-nav&gt;</code> in order to listen for drag events on the main content so it knows when to open/close.</p>
 
 <p>Then in our <a href="../api/config/App/">@App</a> component we have two buttons with click handlers that navigate to a new root page:</p>
 
-<pre><code class="language-typescript">import {LoginPage} from 'login';
-import {SignupPage} from 'signup';
+<p>```typescript
+import {LoginPage} from ‘login’;
+import {SignupPage} from ‘signup’;</p>
 
-@App({
-...
+<p>@App({
+…
 })
-class MyApp {
+class MyApp {</p>
 
-  constructor(ionicApp: IonicApp) {
+<p>constructor(ionicApp: IonicApp) {
     this.app = ionicApp;
     this.loginPage = LoginPage;
     this.signupPage = SignupPage;
-  }
+  }</p>
 
-  openPage(page) {
+<p>openPage(page) {
     // close the menu when clicking a link from the menu
-    this.app.getComponent('menu').close();
+    this.app.getComponent(‘menu’).close();</p>
 
-    // Reset the nav controller to have just this page
-    // we wouldn't want the back button to show in this scenario
-    let nav = this.app.getComponent('nav');
-    nav.setRoot(page);
-  }
-}
+<div class="highlighter-rouge"><pre class="highlight"><code>// Reset the nav controller to have just this page
+// we wouldn't want the back button to show in this scenario
+let nav = this.app.getComponent('nav');
+nav.setRoot(page);   } } ```
 </code></pre>
+</div>
 
 <p>We inject the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service so we can use Ionic’s <a href="../api/components/app/IdRef">id system</a> to get references to the menu and the nav controller.  We then use the NavController’s <a href="../api/components/nav/NavController/#setRoot"><code class="highlighter-rouge">setRoot</code></a> function to clear the navigation stack and set the selected page as the new navigation root.</p>
 
@@ -1384,7 +1390,7 @@ class MyApp {
   Improve this Doc
 </a></p>
 
-<p>Modals slide in off screen to display a temporary UI, often used for login or signup pages,<br />
+<p>Modals slide in off screen to display a temporary UI, often used for login or signup pages,
 message composition, and option selection.</p>
 
 <h3 class="section-nav">Basic Usage</h3>
@@ -1394,27 +1400,31 @@ message composition, and option selection.</p>
 
 <p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code> and <code class="highlighter-rouge">NavController</code>:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController} from 'ionic/ionic';
-</code></pre>
+<p><code class="highlighter-rouge">typescript
+import {Modal, NavController} from 'ionic/ionic';
+</code></p>
 
 <p>Next, let’s create our modal and define add its template:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-  &lt;ion-content padding&gt;
-    &lt;h2&gt;I'm a modal!&lt;/h2&gt;
-    &lt;button (click)="close()"&gt;Close&lt;/button&gt;
-  &lt;/ion-content&gt;`
+<p>```typescript
+@Page({
+  template: `</p>
+<ion-content padding="">
+    <h2>I'm a modal!</h2>
+    &lt;button (click)="close()"&gt;Close
+  </ion-content>
+<p><code class="highlighter-rouge">
 })
 class MyModal {
   constructor() {
   }
 }
-</code></pre>
+</code>``</p>
 
 <p>Finally, let’s add the code that will open our Modal:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController} from 'ionic/ionic'
+<p><code class="highlighter-rouge">typescript
+import {Modal, NavController} from 'ionic/ionic'
 class MyPage {
   constructor(nav: NavController){
     this.nav = nav;
@@ -1424,7 +1434,7 @@ class MyPage {
     this.nav.present(modal)
   }
 }
-</code></pre>
+</code></p>
 
 <p>The <code class="highlighter-rouge">Modal.create()</code> function can also receive an object as the second argument that will be passed to the modal. See the <a href="/docs/v2/api/components/modal/Modal/">Modal API docs</a> for more information.</p>
 
@@ -1449,10 +1459,11 @@ class MyPage {
 
 <p>The simplest way to navigate throughout your app is to create and initialize a new navigation controller, using <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a>:</p>
 
-<pre><code class="language-typescript">  import {StartPage} from 'start'
+<p>```typescript
+  import {StartPage} from ‘start’</p>
 
-  @App({
-    template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
+<p>@App({
+    template: ‘&lt;ion-nav [root]=”rootPage”&gt;&lt;/ion-nav&gt;’
   })
   class MyApp {
     constructor(){
@@ -1460,67 +1471,63 @@ class MyPage {
       this.rootPage = StartPage;
     }
   }
-</code></pre>
+```</p>
 
 <p>You can access the navigation controller you create by injecting it into any of your Pages:</p>
 
-<pre><code class="language-typescript">@Page({
+<p>```typescript
+@Page({
   template: `
     &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Login&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
+      <ion-title>Login</ion-title>
+    &lt;/ion-navbar&gt;</p>
 
-    &lt;ion-content&gt;Hello World&lt;/ion-content&gt;`
-})
-export class StartPage {
-  constructor(nav: NavController){
-    this.nav = nav;
-  }
-}
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-content&gt;Hello World&lt;/ion-content&gt;` }) export class StartPage {   constructor(nav: NavController){
+this.nav = nav;   } } ```
 </code></pre>
+</div>
 
 <p>To navigate from one page to another simply push or pop a new page onto the stack:</p>
 
-<pre><code class="language-typescript">@Page({
+<p>```typescript
+@Page({
   template: `
     &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Login&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
+      <ion-title>Login</ion-title>
+    &lt;/ion-navbar&gt;</p>
 
-    &lt;ion-content&gt;
-      &lt;button (click)="goToOtherPage()"&gt;
-        Go to OtherPage
-      &lt;/button&gt;
-    &lt;/ion-content&gt;`
-})
-export class StartPage {
-  constructor(nav: NavController) {
-    this.nav = nav;
-  }
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-content&gt;
+  &lt;button (click)="goToOtherPage()"&gt;
+    Go to OtherPage
+  &lt;/button&gt;
+&lt;/ion-content&gt;` }) export class StartPage {   constructor(nav: NavController) {
+this.nav = nav;   }
+</code></pre>
+</div>
 
-  goToOtherPage(){
+<p>goToOtherPage(){
     //push another page onto the history stack
     //causing the nav controller to animate the new page in
     this.nav.push(OtherPage);
   }
-}
+}</p>
 
-@Page({
+<p>@Page({
   template: `
     &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Other Page&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
+      <ion-title>Other Page</ion-title>
+    &lt;/ion-navbar&gt;</p>
 
-    &lt;ion-content&gt;I'm the other page!&lt;/ion-content&gt;`
-})
-class OtherPage {}
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-content&gt;I'm the other page!&lt;/ion-content&gt;` }) class OtherPage {} ```
 </code></pre>
+</div>
 
 <p>If your page has an <a href="../api/components/nav-bar/NavBar/"><code class="highlighter-rouge">&lt;ion-navbar&gt;</code></a>, a back button will automatically be added to it if it is not a root page.</p>
 
 <p>Alternatively, if you want to go back, but don’t have a NavBar, you can pop the current page off the stack:</p>
 
-<pre><code class="language-typescript">@Page({
+<p><code class="highlighter-rouge">typescript
+@Page({
   template: `
     &lt;ion-content&gt;
       &lt;button (click)="goBack()"&gt;
@@ -1536,8 +1543,8 @@ class OtherPage {
     this.nav.pop();
   }
 }
-</code></pre>
-<p>For more information on navigation controllers, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
+</code>
+For more information on navigation controllers, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
 
 <p>But what if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menu">Menu</a>.</p>
 
@@ -1554,25 +1561,25 @@ class OtherPage {
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">radio-group</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-header&gt;</span>
+<p>```html</p>
+<ion-list radio-group="">
+  <ion-header>
     Language
-  <span class="nt">&lt;/ion-header&gt;</span>
+  </ion-header>
 
-  <span class="nt">&lt;ion-radio</span> <span class="na">checked=</span><span class="s">"true"</span> <span class="na">value=</span><span class="s">"go"</span><span class="nt">&gt;</span>
+  <ion-radio checked="true" value="go">
     Go
-  <span class="nt">&lt;/ion-radio&gt;</span>
+  </ion-radio>
 
-  <span class="nt">&lt;ion-radio</span> <span class="na">value=</span><span class="s">"rust"</span><span class="nt">&gt;</span>
+  <ion-radio value="rust">
     Rust
-  <span class="nt">&lt;/ion-radio&gt;</span>
+  </ion-radio>
 
-  <span class="nt">&lt;ion-radio</span> <span class="na">value=</span><span class="s">"python"</span> <span class="na">disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <ion-radio value="python" disabled="true">
     Python
-  <span class="nt">&lt;/ion-radio&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  </ion-radio>
+</ion-list>
+<p>```</p>
 
 <!-- <h2 id="range" class="section-header">Range</h2>
 
@@ -1595,55 +1602,55 @@ class OtherPage {
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
-<span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
+<p>```html
+&lt;ion-searchbar [(ngModel)]=”searchQuery” (input)=”getItems($event)”&gt;&lt;/ion-searchbar&gt;</p>
+<ion-list>
+  &lt;ion-item *ngFor="#item of items"&gt;
     {{ item }}
-  <span class="nt">&lt;/ion-item&gt;</span>
-<span class="nt">&lt;/ion-list&gt;</span>
-</code></pre>
-</div>
+  
+</ion-list>
+<p>```</p>
 
 <p>Note that in this example, the Searchbar binds to the <code class="highlighter-rouge">searchQuery</code> variable. The <code class="highlighter-rouge">getItems()</code> function is called when the input changes, which updates the cities that are displayed. Although this example filters the list based on the search input, Searchbar can be used in many different scenarios:</p>
 
-<pre><code class="language-typescript">@Page({
-  templateUrl: 'search/template.html',
+<p>```typescript
+@Page({
+  templateUrl: ‘search/template.html’,
 })
 class SearchPage {
   constructor() {
-    this.searchQuery = '';
+    this.searchQuery = ‘’;
     this.initializeItems();
-  }
+  }</p>
 
-  initializeItems() {
+<p>initializeItems() {
     this.items = [
-      'Amsterdam',
-      'Bogota',
-      ...
+      ‘Amsterdam’,
+      ‘Bogota’,
+      …
     ];
-  }
+  }</p>
 
-  getItems(searchbar) {
+<p>getItems(searchbar) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.initializeItems();</p>
 
-    // set q to the value of the searchbar
-    var q = searchbar.value;
+<div class="highlighter-rouge"><pre class="highlight"><code>// set q to the value of the searchbar
+var q = searchbar.value;
 
-    // if the value is an empty string don't filter the items
-    if (q.trim() == '') {
-      return;
-    }
-
-    this.items = this.items.filter((v) =&gt; {
-      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
-        return true;
-      }
-      return false;
-    })
-  }
+// if the value is an empty string don't filter the items
+if (q.trim() == '') {
+  return;
 }
+
+this.items = this.items.filter((v) =&gt; {
+  if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
+    return true;
+  }
+  return false;
+})   } } ```
 </code></pre>
+</div>
 
 <p>The Searchbar takes a number of configuration options on the <code class="highlighter-rouge">&lt;ion-searchbar&gt;</code> element, such as <code class="highlighter-rouge">cancelButtonText</code> and <code class="highlighter-rouge">hideCancelButton</code>. Check out the <a href="../api/components/searchbar/Searchbar/">Searchbar API reference</a> for more information on configuring a Searchbar.</p>
 
@@ -1660,40 +1667,40 @@ class SearchPage {
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">padding</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-segment</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">pet</span><span class="err">"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-segment-button</span> <span class="na">value=</span><span class="s">"kittens"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<div padding="">
+  &lt;ion-segment [(ngModel)]="pet"&gt;
+    <ion-segment-button value="kittens">
       Kittens
-    <span class="nt">&lt;/ion-segment-button&gt;</span>
-    <span class="nt">&lt;ion-segment-button</span> <span class="na">value=</span><span class="s">"puppies"</span><span class="nt">&gt;</span>
+    </ion-segment-button>
+    <ion-segment-button value="puppies">
       Puppies
-    <span class="nt">&lt;/ion-segment-button&gt;</span>
-  <span class="nt">&lt;/ion-segment&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="err">[</span><span class="na">ngSwitch</span><span class="err">]="</span><span class="na">pet</span><span class="err">"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-list</span> <span class="err">*</span><span class="na">ngSwitchWhen=</span><span class="s">"'puppies'"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-item&gt;</span>
-      <span class="nt">&lt;ion-thumbnail</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/thumbnail-puppy-1.jpg"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;/ion-thumbnail&gt;</span>
-      <span class="nt">&lt;h2&gt;</span>Ruby<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;/ion-item&gt;</span>
-    ...
-  <span class="nt">&lt;/ion-list&gt;</span>
-
-  <span class="nt">&lt;ion-list</span> <span class="err">*</span><span class="na">ngSwitchWhen=</span><span class="s">"'kittens'"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-item&gt;</span>
-      <span class="nt">&lt;ion-thumbnail</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/thumbnail-kitten-1.jpg"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;/ion-thumbnail&gt;</span>
-      <span class="nt">&lt;h2&gt;</span>Luna<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;/ion-item&gt;</span>
-    ...
-  <span class="nt">&lt;/ion-list&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre>
+    </ion-segment-button>
+  
 </div>
+
+<p>&lt;div [ngSwitch]=”pet”&gt;
+  &lt;ion-list *ngSwitchWhen=”‘puppies’”&gt;
+    <ion-item>
+      <ion-thumbnail item-left="">
+        <img src="img/thumbnail-puppy-1.jpg" />
+      </ion-thumbnail>
+      &lt;h2&gt;Ruby&lt;/h2&gt;
+    </ion-item>
+    …
+  &lt;/ion-list&gt;</p>
+
+<p>&lt;ion-list *ngSwitchWhen=”‘kittens’”&gt;
+    <ion-item>
+      <ion-thumbnail item-left="">
+        <img src="img/thumbnail-kitten-1.jpg" />
+      </ion-thumbnail>
+      &lt;h2&gt;Luna&lt;/h2&gt;
+    </ion-item>
+    …
+  &lt;/ion-list&gt;
+&lt;/div&gt;
+```</p>
 
 <h2 id="select" class="section-header">Select</h2>
 
@@ -1716,23 +1723,23 @@ class SearchPage {
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slides</span> <span class="na">pager</span> <span class="na">loop=</span><span class="s">"true"</span> <span class="na">autoplay=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-slides pager="" loop="true" autoplay="true">
 
-  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: green"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Slide 1<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
+  <ion-slide style="background-color: green">
+    <h2>Slide 1</h2>
+  </ion-slide>
 
-  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: blue"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Slide 2<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
+  <ion-slide style="background-color: blue">
+    <h2>Slide 2</h2>
+  </ion-slide>
 
-  <span class="nt">&lt;ion-slide</span> <span class="na">style=</span><span class="s">"background-color: red"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>Slide 3<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;/ion-slide&gt;</span>
+  <ion-slide style="background-color: red">
+    <h2>Slide 3</h2>
+  </ion-slide>
 
-<span class="nt">&lt;/ion-slides&gt;</span>
-</code></pre>
-</div>
+</ion-slides>
+<p>```</p>
 
 <p>Slides take a number of configuration options on the <code class="highlighter-rouge">&lt;ion-slides&gt;</code> element, such as <code class="highlighter-rouge">loop</code> and <code class="highlighter-rouge">autoplay</code>. Check out the <a href="../api/components/slides/Slides/">Slides API reference</a> for more information on configuring slides.</p>
 
@@ -1764,11 +1771,12 @@ class SearchPage {
 
 <p>To initialize Tabs, use <a href="../api/components/tabs/Tabs/"><code class="highlighter-rouge">&lt;ion-tabs&gt;</code></a>, with a child <a href="../api/components/tabs/Tab/"><code class="highlighter-rouge">&lt;ion-tab&gt;</code></a> for each tab:</p>
 
-<pre><code class="language-typescript">@App({
+<p><code class="highlighter-rouge">typescript
+@App({
   template: `
     &lt;ion-tabs&gt;
-      &lt;ion-tab tab-icon="heart" [root]="tab1"&gt;&lt;/ion-tab&gt;
-      &lt;ion-tab tab-icon="star" [root]="tab2"&gt;&lt;/ion-tab&gt;
+      &lt;ion-tab tabIcon="heart" [root]="tab1"&gt;&lt;/ion-tab&gt;
+      &lt;ion-tab tabIcon="star" [root]="tab2"&gt;&lt;/ion-tab&gt;
     &lt;/ion-tabs&gt;`
 })
 class MyApp {
@@ -1777,43 +1785,45 @@ class MyApp {
     this.tab1 = Tab2;
   }
 }
-</code></pre>
+</code></p>
 
 <p>Individual tabs are just <a href="../api/config/Page/"><code class="highlighter-rouge">@Pages</code></a>:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Heart&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
-    &lt;ion-content&gt;Tab 1&lt;/ion-content&gt;`
-})
-class Tab1 {}
-
+<p>```typescript
 @Page({
   template: `
     &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Star&lt;/ion-title&gt;
+      <ion-title>Heart</ion-title>
     &lt;/ion-navbar&gt;
-    &lt;ion-content&gt;Tab 2&lt;/ion-content&gt;`
+    <ion-content>Tab 1</ion-content>`
+})
+class Tab1 {}</p>
+
+<p>@Page({
+  template: `
+    &lt;ion-navbar *navbar&gt;
+      <ion-title>Star</ion-title>
+    &lt;/ion-navbar&gt;
+    <ion-content>Tab 2</ion-content><code class="highlighter-rouge">
 })
 class Tab2 {}
-</code></pre>
+</code>``</p>
 
 <p>Notice that each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> binds to a <code class="highlighter-rouge">[root]</code> property, just like <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a> in the <a href="#navigation">Navigation</a> section above.  That is because each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> is really just a navigation controller.  This means that each tab has its own history stack, and <a href="../api/components/nav/NavController/#injecting_nav_controller"><code class="highlighter-rouge">NavController instances injected</code></a> into children <code class="highlighter-rouge">@Pages</code> of each tab will be unique to each tab:</p>
 
-<pre><code class="language-typescript">@Page({
-...
+<p>```typescript
+@Page({
+…
 })
 class Tab1 {
   constructor(nav: NavController) {
     // Id is 1, nav refers to Tab1
     console.log(nav.id)
   }
-}
+}</p>
 
-@Page({
-...
+<p>@Page({
+…
 })
 class Tab2 {
   constructor(nav: NavController) {
@@ -1821,7 +1831,7 @@ class Tab2 {
     console.log(nav.id)
   }
 }
-</code></pre>
+```</p>
 
 <h3 class="section-nav" id="tabs-icon">Icon Tabs</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/tabs/icon">
@@ -1830,27 +1840,30 @@ class Tab2 {
 
 <p>To add an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> attribute. This attribute can be passed the name of any <a href="#icon">icon</a>:</p>
 
-<pre><code class="language-typescript">@Page({
+<p>```typescript
+@Page({
   template: `
   &lt;ion-navbar *navbar&gt;
-    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt;
-  &lt;ion-content&gt;
-  &lt;/ion-content&gt;`,
+    <ion-title>Tabs</ion-title>
+  &lt;/ion-navbar&gt;</p>
+<ion-content>
+  </ion-content>
+<p>`,
 })
 class TabContentPage {
   constructor() {
   }
-}
+}</p>
 
-@Page({
-  template: `
-  &lt;ion-tabs&gt;
-    &lt;ion-tab tab-icon="contact" [root]="tab1"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="compass" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="analytics" [root]="tab3"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="settings" [root]="tab4"&gt;&lt;/ion-tab&gt;
-  &lt;/ion-tabs&gt;`
+<p>@Page({
+  template: `</p>
+<ion-tabs>
+    &lt;ion-tab tabIcon="contact" [root]="tab1"&gt;
+    &lt;ion-tab tabIcon="compass" [root]="tab2"&gt;
+    &lt;ion-tab tabIcon="analytics" [root]="tab3"&gt;
+    &lt;ion-tab tabIcon="settings" [root]="tab4"&gt;
+  </ion-tabs>
+<p><code class="highlighter-rouge">
 })
 export class TabsIconPage {
   constructor() {
@@ -1859,7 +1872,7 @@ export class TabsIconPage {
     ...
   }
 }
-</code></pre>
+</code>``</p>
 
 <h3 class="section-nav" id="tabs-icon-text">Icon and Text</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-site/tree/master/dist/preview-app/app/tabs/icon-text">
@@ -1868,27 +1881,30 @@ export class TabsIconPage {
 
 <p>To add text and an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> and <code class="highlighter-rouge">tab-title</code> attributes:</p>
 
-<pre><code class="language-typescript">@Page({
+<p>```typescript
+@Page({
   template: `
   &lt;ion-navbar *navbar&gt;
-    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt;
-  &lt;ion-content&gt;
-  &lt;/ion-content&gt;`
+    <ion-title>Tabs</ion-title>
+  &lt;/ion-navbar&gt;</p>
+<ion-content>
+  </ion-content>
+<p>`
 })
 class TabsTextContentPage {
   constructor() {
   }
-}
+}</p>
 
-@Page({
-  template: `
-  &lt;ion-tabs&gt;
-    &lt;ion-tab tab-icon="water" tab-title="Water" [root]="tab1"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="leaf" tab-title="Life" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="flame" tab-title="Fire" [root]="tab3"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tab-icon="magnet" tab-title="Force" [root]="tab4"&gt;&lt;/ion-tab&gt;
-  &lt;/ion-tabs&gt;`
+<p>@Page({
+  template: `</p>
+<ion-tabs>
+    &lt;ion-tab tabIcon="water" tabTitle="Water" [root]="tab1"&gt;
+    &lt;ion-tab tabIcon="leaf" tabTitle="Life" [root]="tab2"&gt;
+    &lt;ion-tab tabIcon="flame" tabTitle="Fire" [root]="tab3"&gt;
+    &lt;ion-tab tabIcon="magnet" tabTitle="Force" [root]="tab4"&gt;
+  </ion-tabs>
+<p><code class="highlighter-rouge">
 })
 export class TabsTextPage {
   constructor() {
@@ -1897,7 +1913,7 @@ export class TabsTextPage {
     ...
   }
 }
-</code></pre>
+</code>``</p>
 
 <p>For more information on tabs, check out the <a href="../api/components/tabs/Tabs/">Tabs API reference</a>.</p>
 
@@ -1914,11 +1930,11 @@ export class TabsTextPage {
   Demo Source
 </a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="nt">&lt;ion-toggle</span> <span class="na">disabled</span> <span class="na">checked=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+<p>```html</p>
+<ion-toggle disabled="" checked="false">
     Sam
-  <span class="nt">&lt;/ion-toggle&gt;</span>
-</code></pre>
-</div>
+  </ion-toggle>
+<p>```</p>
 
 
       </main>

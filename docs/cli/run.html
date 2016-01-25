@@ -211,15 +211,15 @@
       <div class="col-md-10 col-sm-9 main-content">
         <h2 id="adding-a-platform-target">Adding a platform target</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform ios android
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic platform ios android
+</code></p>
 
 <h2 id="building-your-app">Building your app</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic build ios
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic build ios
+</code></p>
 
 <h2 id="live-reload-app-during-development-beta">Live Reload App During Development (beta)</h2>
 
@@ -229,40 +229,40 @@
 
 <h3 id="command-line-flagsoptions-for-run-and-emulate">Command-line flags/options for <code class="highlighter-rouge">run</code> and <code class="highlighter-rouge">emulate</code></h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[--livereload|-l] .......  Live Reload app dev files from the device (beta)
+<p><code class="highlighter-rouge">
+[--livereload|-l] .......  Live Reload app dev files from the device (beta)
 [--consolelogs|-c] ......  Print app console logs to Ionic CLI (live reload req.)
 [--serverlogs|-s] .......  Print dev server logs to Ionic CLI (live reload req.)
 [--port|-p] .............  Dev server HTTP port (8100 default, live reload req.)
 [--livereload-port|-i] ..  Live Reload port (35729 default, live reload req.)
 [--debug|--release]
-</code></pre>
-</div>
+</code></p>
 
 <p>While the server is running for live reload, you can use the following commands within the CLI:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>restart or r to restart the client app from the root
+<p><code class="highlighter-rouge">
+restart or r to restart the client app from the root
 goto or g and a url to have the app navigate to the given url
 consolelogs or c to enable/disable console log output
 serverlogs or s to enable/disable server log output
 quit or q to shutdown the server and exit
-</code></pre>
-</div>
+</code></p>
 
 <h2 id="emulating-your-app">Emulating your app</h2>
 
 <p>Deploys the Ionic app on specified platform emulator. This is simply an alias for <code class="highlighter-rouge">run --emulator</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic emulate ios <span class="o">[</span>options]
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic emulate ios [options]
+</code></p>
 
 <h2 id="running-your-app">Running your app</h2>
 
 <p>Deploys the Ionic app on specified platform devices. If a device is not found it’ll then deploy to an emulator/simulator.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run ios <span class="o">[</span>options]
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+$ ionic run ios [options]
+</code></p>
 
       </div>
 

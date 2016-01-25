@@ -419,7 +419,8 @@ export MyClass {
 
 <p>Depending on the platform name, isPlatform will return true or flase</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -429,8 +430,7 @@ export MyClass {
      }
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -475,11 +475,12 @@ export MyClass {
 
 </h3>
 
-<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.<br />
-Each possible value is a hierarchy of platforms. For example, on an iPhone,<br />
+<p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.
+Each possible value is a hierarchy of platforms. For example, on an iPhone,
 it would return mobile, ios, and iphone.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -488,8 +489,7 @@ export MyClass {
      // From if your on mobile, to mobile os, and device name
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -507,15 +507,15 @@ export MyClass {
 
 <p>Returns an object containing information about the paltform</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
      console.log(this.platform.versions());
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -563,7 +563,8 @@ export MyClass {
 
 <p>Returns a promise when the platform is ready and native functionality can be called</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} 'ionic/ionic';
+<p><code class="highlighter-rouge">
+import {Platform} 'ionic/ionic';
 export MyClass {
    constructor(platform: Platform){
      this.platform = platform;
@@ -573,8 +574,7 @@ export MyClass {
       });
    }
 }
-</code></pre>
-</div>
+</code></p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -590,11 +590,11 @@ export MyClass {
 
 </h3>
 
-<p>Set the app’s language direction, which will update the <code class="highlighter-rouge">dir</code> attribute<br />
-on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element. We recommend the app’s <code class="highlighter-rouge">index.html</code><br />
-file already has the correct <code class="highlighter-rouge">dir</code> attribute value set, such as<br />
-<code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>. This method is useful if the<br />
-direction needs to be dynamically changed per user/session.<br />
+<p>Set the app’s language direction, which will update the <code class="highlighter-rouge">dir</code> attribute
+on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element. We recommend the app’s <code class="highlighter-rouge">index.html</code>
+file already has the correct <code class="highlighter-rouge">dir</code> attribute value set, such as
+<code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>. This method is useful if the
+direction needs to be dynamically changed per user/session.
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <table class="table param-table" style="margin:0;">
@@ -635,9 +635,9 @@ direction needs to be dynamically changed per user/session.<br />
 
 </h3>
 
-<p>Returns app’s language direction.<br />
-We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code><br />
-attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.<br />
+<p>Returns app’s language direction.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <div class="return-value">
@@ -654,9 +654,9 @@ attribute value set, such as <code class="highlighter-rouge"><span class="nt">&l
 
 </h3>
 
-<p>Returns if this app is using right-to-left language direction or not.<br />
-We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code><br />
-attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.<br />
+<p>Returns if this app is using right-to-left language direction or not.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">dir</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span></code> or <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">dir=</span><span class="s">"rtl"</span><span class="nt">&gt;</span></code>.
 <a href="http://www.w3.org/International/questions/qa-html-dir">W3C: Structural markup and right-to-left text in HTML</a></p>
 
 <div class="return-value">
@@ -673,11 +673,11 @@ attribute value set, such as <code class="highlighter-rouge"><span class="nt">&l
 
 </h3>
 
-<p>Set the app’s language and optionally the country code, which will update<br />
-the <code class="highlighter-rouge">lang</code> attribute on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.<br />
-We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code><br />
-attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>. This method is useful if<br />
-the language needs to be dynamically changed per user/session.<br />
+<p>Set the app’s language and optionally the country code, which will update
+the <code class="highlighter-rouge">lang</code> attribute on the app’s root <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> element.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>. This method is useful if
+the language needs to be dynamically changed per user/session.
 <a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
 
 <table class="table param-table" style="margin:0;">
@@ -718,9 +718,9 @@ the language needs to be dynamically changed per user/session.<br />
 
 </h3>
 
-<p>Returns app’s language and optional country code.<br />
-We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code><br />
-attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>.<br />
+<p>Returns app’s language and optional country code.
+We recommend the app’s <code class="highlighter-rouge">index.html</code> file already has the correct <code class="highlighter-rouge">lang</code>
+attribute value set, such as <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span></code>.
 <a href="http://www.w3.org/International/questions/qa-html-language-declarations">W3C: Declaring language in HTML</a></p>
 
 <div class="return-value">

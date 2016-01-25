@@ -350,47 +350,49 @@
   Improve this doc
 </a></p>
 
-<p>Now that we have a basic understanding of the layout of an Ionic 2 app, let’s walk through the process of<br />
+<p>Now that we have a basic understanding of the layout of an Ionic 2 app, let’s walk through the process of
 creating and navigating to pages in our app.</p>
 
 <p>Taking a look at <code class="highlighter-rouge">app/app.html</code>, we see this line near the bottom:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav</span> <span class="err">#</span><span class="na">content</span> <span class="err">[</span><span class="na">root</span><span class="err">]="</span><span class="na">rootPage</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-nav&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;ion-nav #content [root]="rootPage"&gt;&lt;/ion-nav&gt;
+</code></p>
 
-<p>Pay attention to the <code class="highlighter-rouge">[root]</code> property binding. This sets what is essentially the<br />
+<p>Pay attention to the <code class="highlighter-rouge">[root]</code> property binding. This sets what is essentially the
 first, or “root” page for the <code class="highlighter-rouge">ion-nav</code> controller. When the navigation controller loads, the component referenced by <code class="highlighter-rouge">rootPage</code> will be the root page.</p>
 
 <p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> root component specifies this in its constructor:</p>
 
-<pre><code class="language-ts">import {App, IonicApp, Platform} from 'ionic/ionic';
-import {HelloIonicPage} from './hello-ionic/hello-ionic';
-import {ListPage} from './list/list';
+<p>```ts
+import {App, IonicApp, Platform} from ‘ionic/ionic’;
+import {HelloIonicPage} from ‘./hello-ionic/hello-ionic’;
+import {ListPage} from ‘./list/list’;</p>
 
-class MyApp {
+<p>class MyApp {</p>
 
-  constructor(app: IonicApp, platform: Platform) {
+<p>constructor(app: IonicApp, platform: Platform) {</p>
 
-    // set up our app
-    this.app = app;
-    this.platform = platform;
-    this.initializeApp();
+<div class="highlighter-rouge"><pre class="highlight"><code>// set up our app
+this.app = app;
+this.platform = platform;
+this.initializeApp();
 
-    // set our app's pages
-    this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
-    ];
+// set our app's pages
+this.pages = [
+  { title: 'Hello Ionic', component: HelloIonicPage },
+  { title: 'My First List', component: ListPage }
+];
 
-    // make HelloIonicPage the root (or first) page
-    this.rootPage = HelloIonicPage;
-  }
-
-  ...
-}
-
+// make HelloIonicPage the root (or first) page
+this.rootPage = HelloIonicPage;   }
 </code></pre>
+</div>
+
+<p>…
+}</p>
+
+<p>```</p>
 
 <p>We see that <code class="highlighter-rouge">this.rootPage</code> is set to <code class="highlighter-rouge">HelloIonicPage</code>, so <code class="highlighter-rouge">HelloIonicPage</code> will be the first page loaded in the nav controller. Let’s take a look at it.</p>
 
@@ -408,49 +410,50 @@ You may have noticed that each page has its own folder that is named after the p
 
 <p>Below, you will see the <code class="highlighter-rouge">HelloIonicPage</code> class which has a <code class="highlighter-rouge">Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component and an Angular view configured with all the necessary directives already that is meant to be loaded dynamically, so it does not use a tag selector:</p>
 
-<pre><code class="language-ts">import {Page, NavController} from 'ionic/ionic';
+<p>```ts
+import {Page, NavController} from ‘ionic/ionic’;</p>
 
-@Page({
-  templateUrl: 'app/hello-ionic/hello-ionic.html'
+<p>@Page({
+  templateUrl: ‘app/hello-ionic/hello-ionic.html’
 })
 export class HelloIonicPage {
   constructor(nav: NavController) {
     this.nav = nav;
-  }
+  }</p>
 
-}
-</code></pre>
+<p>}
+```</p>
 
 <p>Note that we pass in the <code class="highlighter-rouge">nav</code> object, and set it as a property in the constructor.</p>
 
 <p>All pages have both a class, and an associated template. Let’s checkout <code class="highlighter-rouge">app/hello-ionic/hello-ionic.html</code> - the template file for this page:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-<span class="nt">&lt;ion-navbar</span> <span class="err">*</span><span class="na">navbar</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">menu-toggle</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"menu"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;ion-title&gt;</span>Hello Ionic<span class="nt">&lt;/ion-title&gt;</span>
-<span class="nt">&lt;/ion-navbar&gt;</span>
+<p>```html</p>
 
-<span class="nt">&lt;ion-content</span> <span class="na">padding</span> <span class="na">class=</span><span class="s">"getting-started"</span><span class="nt">&gt;</span>
+<p>&lt;ion-navbar *navbar&gt;
+  <a menu-toggle="">
+    <ion-icon name="menu"></ion-icon>
+  </a></p>
+<ion-title>Hello Ionic</ion-title>
+<p>&lt;/ion-navbar&gt;</p>
 
-  <span class="nt">&lt;h3&gt;</span>Welcome to your first Ionic app!<span class="nt">&lt;/h3&gt;</span>
+<ion-content padding="" class="getting-started">
 
-  <span class="nt">&lt;p&gt;</span>
+  <h3>Welcome to your first Ionic app!</h3>
+
+  <p>
     This starter project is our way of helping you get a functional app running in record time.
     ...
-  <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/ion-content&gt;</span>
+  </p>
+</ion-content>
 
-</code></pre>
-</div>
+<p>```</p>
 
-<p>The <code class="highlighter-rouge">&lt;ion-navbar *navbar&gt;</code> component functions as configuration<br />
-data for the navigation bar. As we navigate to the page, the nav bar will be updated with the<br />
+<p>The <code class="highlighter-rouge">&lt;ion-navbar *navbar&gt;</code> component functions as configuration
+data for the navigation bar. As we navigate to the page, the nav bar will be updated with the
 various <code class="highlighter-rouge">ion-nav-items</code> for buttons in the bar, and <code class="highlighter-rouge">&lt;ion-title&gt;</code> for the title of the bar.</p>
 
-<p>The rest of the template is standard Ionic code that sets up our content area, and then<br />
+<p>The rest of the template is standard Ionic code that sets up our content area, and then
 renders our welcome message.</p>
 
 <h3 id="creating-additional-pages">Creating Additional Pages</h3>
@@ -459,30 +462,31 @@ renders our welcome message.</p>
 
 <p>Let’s check out the contents of <code class="highlighter-rouge">app/list/list.js</code>. Inside, you will see a new page is being defined:</p>
 
-<pre><code class="language-ts">
-import {IonicApp, Page, NavController, NavParams} from 'ionic/ionic';
+<p>```ts</p>
 
-@Page({
-  templateUrl: 'app/list/list.html'
+<p>import {IonicApp, Page, NavController, NavParams} from ‘ionic/ionic’;</p>
+
+<p>@Page({
+  templateUrl: ‘app/list/list.html’
 })
 export class ListPage {
   constructor(app: IonicApp, nav: NavController, navParams: NavParams) {
     this.nav = nav;
-    ...
+    …
    }
-   ...
+   …
    itemTapped(event, item) {
-     console.log('You selected', item.title);
+     console.log(‘You selected’, item.title);
    }
-}
+}</p>
 
-</code></pre>
+<p>```</p>
 
 <p>This page will create a basic list page containing a number of items. Notice that we are also defining an <code class="highlighter-rouge">itemTapped</code> function that logs the title of an item to the console. Let’s go check out how this function gets called. Open up <code class="highlighter-rouge">app/list/list.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ng-for=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemTapped</span><span class="err">($</span><span class="na">event</span><span class="err">,</span> <span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">html
+&lt;ion-item *ng-for="#item of items" (click)="itemTapped($event, item)"&gt;
+</code></p>
 
 <p>This will add each item to the list, and register a click handler on each of those items. When the item is tapped or clicked, it will call our <code class="highlighter-rouge">itemTapped</code> function that logs the title of the item to the console. Also note that we pass this function the click event, as well as the item that was tapped.</p>
 
