@@ -12,11 +12,11 @@
 
 
 
-    <title>Geolocation - Class in module  -  Ionic Framework</title>
+    <title>Ionic 2 Plugins | Geolocation - Ionic 2 Developer Preview -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Geolocation | slugify}}"
-        class="v2 docs page-{{Geolocation | slugify}}"
+  <body id="docs-page-geolocation"
+        class="v2 docs page-geolocation"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -343,51 +343,61 @@
       </nav>
       
       <main>
-        <h1 class="api-title">
+        <h1 class="title">Tracking GPS Location</h1>
 
-
-Geolocation
-
-
-
-
-
-
-</h1>
-
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/geolocation.ts#L4">
-Improve this doc
+<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/platform/geolocation/index.md">
+  Improve this doc
 </a></p>
 
-<!-- description -->
-<h2>Description</h2>
+<h3 id="install-the-plugin">Install the plugin</h3>
 
-<p>Get geolocation data.</p>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-geolocation
+</code></p>
 
-<!-- @usage tag -->
+<p>Tracking GPS location is easy with the <code class="highlighter-rouge">Geolocation</code> class. There are two modes:
+single value, and watching. Single value grabs one location position and returns it,
+while watching continuously checks for location changes and returns those.</p>
 
-<h2>Usage</h2>
+<p>Both operations prompt the user to accept location sharing with your app.</p>
 
-<pre><code class="lang-js">Geolocation.getCurrentPosition().then((resp) =&gt; {
- //resp.coords.latitude
- //resp.coords.longitude
-})
+<p>```javascript
+import {Geolocation} from ‘ionic/ionic’</p>
 
-let watch = Geolocation.watchPosition();
-watch.source.subscribe((data) =&gt; {
- //data.coords.latitude
- //data.coords.longitude
-})
+<p>class LocationTracker {
+  constructor() {
+    Geolocation.getCurrentPosition({
+    }).then((position) =&gt; {
+      let lat  = position.coords.latitude
+      let long = position.coords.longitude
+    }, (err) =&gt; {
+     // error
+    });
+  }</p>
+
+<p>startTracking() {
+    var watchOptions = {
+     frequency : 1000,
+     timeout : 3000,
+     enableHighAccuracy: false // may cause errors if true
+    };</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>this.currentWatch = Geolocation.watchPosition(watchOptions);
+
+this.currentWatch.source.subscribe((position) =&gt; {
+  // Called continuously
+  let lat  = position.coords.latitude
+  let long = position.coords.longitude
+});   }
 </code></pre>
+</div>
 
-<!-- @property tags -->
+<p>stopTracking() {
+    if(!this.currentWatch) { return; }</p>
 
-<!-- methods on the class -->
-<!-- related link -->
-<!-- end content block -->
-
-<!-- end body block -->
-
+<div class="highlighter-rouge"><pre class="highlight"><code>this.currentWatch.clear();   } } ```
+</code></pre>
+</div>
 
       </main>
     </div>

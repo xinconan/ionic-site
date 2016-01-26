@@ -12,11 +12,11 @@
 
 
 
-    <title>Contacts - Class in module  -  Ionic Framework</title>
+    <title>Contacts | Ionic Native Plugins - Access and create contacts on the device -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{Contacts | slugify}}"
-        class="v2 docs page-{{Contacts | slugify}}"
+  <body id="docs-page-contacts"
+        class="v2 docs page-contacts"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -343,47 +343,65 @@
       </nav>
       
       <main>
-        <h1 class="api-title">
+        <h1 class="title">Contacts</h1>
 
-
-Contacts
-
-
-
-
-
-
-</h1>
-
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/contacts.ts#L0">
-Improve this doc
+<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/platform/contact/index.md">
+  Improve this doc
 </a></p>
 
-<!-- description -->
-<h2>Description</h2>
+<p><code class="highlighter-rouge">bash
+$ ionic plugin add cordova-plugin-contacts
+</code></p>
 
-<p>Access and manage Contacts on the device.</p>
-<p>Requires plugin: <code>cordova-plugin-contacts</code>
-For full info, please see the <a href="https://github.com/apache/cordova-plugin-contacts">Cordova Contacts Docs</a></p>
+<p>Use the <code class="highlighter-rouge">Contacts</code> class to access contacts from the user’s address book, or to create and modify contacts.</p>
 
-<!-- @usage tag -->
+<p>```javascript
+import {Contacts} from ‘ionic/ionic’</p>
 
-<h2>Usage</h2>
+<p>class MyPage {</p>
 
-<pre><code class="lang-js">Contacts.save({
-  displayName: &quot;Mr. Ionitron&quot;
-}).then((contact) =&gt; {}, (err) =&gt; {})
+<p>newContact(info) {
+    /** Valid fields for the info object:
+    * {
+    * id: A globally unique identifier.
+    * displayName: The name of this Contact, suitable for display to end-users.
+    * name: An object containing all components of a persons name.
+    * nickname: A casual name by which to address the contact.
+    * phoneNumbers: An array of all the contact’s phone numbers.
+    * emails: An array of all the contact’s email addresses.
+    * addresses: An array of all the contact’s addresses.
+    * ims: An array of all the contact’s IM addresses.
+    * organizations: An array of all the contact’s organizations.
+    * birthday: The birthday of the contact.
+    * note: A note about the contact.
+    * photos: An array of the contact’s photos.
+    * categories: An array of all the user-defined categories associated with the contact.
+    * urls: An array of web pages associated with the contact.
+    * }
+    */</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Contacts.save(info).then((contact) =&gt; {
+  // New contact is in contact
+}, (err) =&gt; {
+  // Handle an error
+})   }
 </code></pre>
-<p>See the <code>save()</code> docs for a full list of fields.</p>
+</div>
 
-<!-- @property tags -->
+<p>getContact() {
+    // Let the user pick a contact from the address book
+    Contacts.pickContact((contact) =&gt; {
+      // Got a contact
+    })
+  }</p>
 
-<!-- methods on the class -->
-<!-- related link -->
-<!-- end content block -->
+<p>findContact(query) {</p>
 
-<!-- end body block -->
-
+<div class="highlighter-rouge"><pre class="highlight"><code>// Search for a displayName of 'Max' (set fields to one of the above fields to change the search field)
+Contacts.find({filter: 'Max' }).then((contact) =&gt; {
+})   } } ```
+</code></pre>
+</div>
 
       </main>
     </div>
