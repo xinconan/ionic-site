@@ -12,11 +12,11 @@
 
 
 
-    <title>Status Bar | Ionic Native Plugins - Modify the status bar -  Ionic Framework</title>
+    <title>StatusBar - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-Status Bar"
-        class="v2 docs page-Status Bar"
+  <body id="docs-page-{{StatusBar | slugify}}"
+        class="v2 docs page-{{StatusBar | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -343,29 +343,44 @@
       </nav>
       
       <main>
-        <h1 class="title">Status Bar</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/platform/statusbar/index.md">
-  Improve this doc
+
+StatusBar
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/statusbar.ts#L0">
+Improve this doc
 </a></p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic plugin add cordova-plugin-statusbar
-</code></p>
+<!-- description -->
+<h2>Description</h2>
 
-<p>```javascript
-import {StatusBar, IonicPlatform} from ‘ionic/ionic’</p>
+<p>Manage the appearance of the native status bar.</p>
 
-<p>class MyPage {
-  constructor(platform: IonicPlatform) {
-    platform.ready().then(() =&gt; {
-      StatusBar.hide();</p>
+<!-- @usage tag -->
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  // Dark for light content
-  StatusBar.setStyle(StatusBar.LIGHT_CONTENT);
-});   } } ```
+<h2>Usage</h2>
+
+<pre><code class="lang-js">StatusBar.hide(); // Hide the bar
+
+StatusBar.setStyle(StatusBar.LIGHT_CONTENT) // Good for dark backgrounds
 </code></pre>
-</div>
+
+<!-- @property tags -->
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
     </div>
