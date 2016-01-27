@@ -900,13 +900,15 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 </a></p>
 
 <p>```html</p>
-<ion-checkbox dark="" checked="true">
-  Daenerys Targaryen
-</ion-checkbox>
+<ion-item>
+  <ion-label>Daenerys Targaryen</ion-label>
+  <ion-checkbox dark="" checked="true"></ion-checkbox>
+</ion-item>
 
-<ion-checkbox disabled="true">
-  Arya Stark
-</ion-checkbox>
+<ion-item>
+  <ion-label>Arya Stark</ion-label>
+  <ion-checkbox disabled="true"></ion-checkbox>
+</ion-item>
 <p>```</p>
 
 <h2 id="grid" class="section-header">Grid</h2>
@@ -989,7 +991,7 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 <p>To use an icon, just add the Icon’s CSS class to your element:</p>
 
 <p>```html</p>
-<ion-icon heart=""></ion-icon>
+<ion-icon name="heart"></ion-icon>
 <p>```</p>
 
 <h3 id="active--inactive-icons">Active / Inactive Icons:</h3>
@@ -997,11 +999,11 @@ Alerts are quite flexible, and can easily be customized. Check out the <a href="
 <p>All icons have both <code class="highlighter-rouge">active</code> and <code class="highlighter-rouge">inactive</code> states. Active icons are typically full and thick, where as inactive icons are outlined and thin. Set the <code class="highlighter-rouge">is-active</code> attribute to <code class="highlighter-rouge">true</code> or false to change the state of the icon. Icons will default to active if a value is not specified.</p>
 
 <p>```html</p>
-<ion-icon heart=""></ion-icon>
+<ion-icon name="heart"></ion-icon>
 <div class="highlighter-rouge"><pre class="highlight"><code>                &lt;!-- active --&gt;
 </code></pre>
 </div>
-<ion-icon heart="" is-active="false"></ion-icon>
+<ion-icon name="heart" is-active="false"></ion-icon>
 <p><!-- inactive -->
 ```</p>
 
@@ -1030,14 +1032,6 @@ export class MyFirstPage {
     this.myIcon = "home";
   }
 }
-</code></p>
-
-<h3 id="as-a-class">As a Class:</h3>
-
-<p>While not recommended, icons can be added using their class name. This was the typical way to add icons in Ionic 1, so you may encounter the following syntax from time to time:</p>
-
-<p><code class="highlighter-rouge">html
-&lt;i class="icon ion-home"&gt;&lt;/i&gt;
 </code></p>
 
 <p><a href="http://ionicons.com">
@@ -1071,20 +1065,20 @@ export class MyFirstPage {
   Demo Source
 </a></p>
 
-<p>Use <code class="highlighter-rouge">fixed-label</code> to place a label to the left of the input element. When the user enters text, the label does not hide. The user’s input will align on the same position, regardless of the length of the label. Note that there’s nothing stopping you from also using a placeholder label too.</p>
+<p>Use <code class="highlighter-rouge">fixed</code> to place a label to the left of the input element. When the user enters text, the label does not hide. The user’s input will align on the same position, regardless of the length of the label. Note that there’s nothing stopping you from also using a placeholder label too.</p>
 
 <p>```html</p>
 <ion-list>
 
-  <ion-input fixed-label="">
-    <ion-label>Username</ion-label>
-    <input type="text" value="" />
-  </ion-input>
+  <ion-item>
+    <ion-label fixed="">Username</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
 
-  <ion-input fixed-label="">
-    <ion-label>Password</ion-label>
-    <input type="password" value="" />
-  </ion-input>
+  <ion-item>
+    <ion-label fixed="">Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
 
 </ion-list>
 <p>```</p>
@@ -1094,22 +1088,22 @@ export class MyFirstPage {
   Demo Source
 </a></p>
 
-<p>Floating labels are just like <a href="#forms-stacked-labels">Stacked Labels</a>, except that their labels animate, or “float” up when text is entered in the input. Each <code class="highlighter-rouge">&lt;ion-input&gt;</code> should have the <code class="highlighter-rouge">floating-label</code> attribute assigned.</p>
+<p>Floating labels are just like <a href="#forms-stacked-labels">Stacked Labels</a>, except that their labels animate, or “float” up when text is entered in the input. Each <code class="highlighter-rouge">&lt;ion-label&gt;</code> should have the <code class="highlighter-rouge">floating</code> attribute assigned.</p>
 
 <p>Enter text in the example to the right to see the floating labels in action.</p>
 
 <p>```html</p>
 <ion-list>
 
-  <ion-input floating-label="">
-    <ion-label>Username</ion-label>
-    <input type="text" value="" />
-  </ion-input>
+  <ion-item>
+    <ion-label floating="">Username</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
-  <ion-input floating-label="">
-    <ion-label>Password</ion-label>
-    <input type="password" value="" />
-  </ion-input>
+  <ion-item>
+    <ion-label floating="">Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
 
 </ion-list>
 <p>```</p>
@@ -1119,20 +1113,20 @@ export class MyFirstPage {
   Demo Source
 </a></p>
 
-<p>If a label attribute is not provided, an <code class="highlighter-rouge">&lt;ion-input&gt;</code> component will default to using an inline label. When the user enters text, the label does not hide. Note that there’s nothing stopping you from also using a placeholder as well.</p>
+<p>If a label attribute is not provided, an <code class="highlighter-rouge">&lt;ion-label&gt;</code> component will default to using an inline label. When the user enters text, the label does not hide. Note that there’s nothing stopping you from also using a placeholder as well.</p>
 
 <p>```html</p>
 <ion-list>
 
-  <ion-input>
+  <ion-item>
     <ion-label>Username</ion-label>
-    <input type="text" value="" />
-  </ion-input>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
-  <ion-input>
+  <ion-item>
     <ion-label>Password</ion-label>
-    <input type="password" value="" />
-  </ion-input>
+    <ion-input type="password"></ion-input>
+  </ion-item>
 
 </ion-list>
 
@@ -1150,15 +1144,15 @@ export class MyFirstPage {
 <p>```html</p>
 <ion-list inset="">
 
-  <ion-input>
+  <ion-item>
     <ion-label>Username</ion-label>
-    <input type="text" value="" />
-  </ion-input>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
-  <ion-input>
+  <ion-item>
     <ion-label>Password</ion-label>
-    <input type="password" value="" />
-  </ion-input>
+    <ion-input type="password"></ion-input>
+  </ion-item>
 
 </ion-list>
 <p>```</p>
@@ -1173,13 +1167,13 @@ export class MyFirstPage {
 <p>```html</p>
 <ion-list>
 
-  <ion-input>
-    <input type="text" placeholder="Username" />
-  </ion-input>
+  <ion-item>
+    <ion-input type="text" placholder="Username"></ion-input>
+  </ion-item>
 
-  <ion-input>
-    <input type="password" placeholder="Password" />
-  </ion-input>
+  <ion-item>
+    <ion-input type="password" placeholder="Password"></ion-input>
+  </ion-item>
 
 </ion-list>
 
@@ -1190,21 +1184,21 @@ export class MyFirstPage {
   Demo Source
 </a></p>
 
-<p>A stacked label will always appear on top of the input. Each <code class="highlighter-rouge">&lt;ion-input&gt;</code> should have the <code class="highlighter-rouge">stacked-label</code> attribute.
+<p>A stacked label will always appear on top of the input. Each <code class="highlighter-rouge">&lt;ion-label&gt;</code> should have the <code class="highlighter-rouge">stacked</code> attribute.
 You can also add a placeholder so that users have a hint of what type of text the input is looking for.</p>
 
 <p>```html</p>
 <ion-list>
 
-  <ion-input stacked-label="">
-    <ion-label>Username</ion-label>
-    <input type="text" />
-  </ion-input>
+  <ion-item>
+    <ion-label stacked="">Username</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
-  <ion-input stacked-label="">
-    <ion-label>Password</ion-label>
-    <input type="password" />
-  </ion-input>
+  <ion-item>
+    <ion-label stacked="">Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
 
 </ion-list>
 <p>```</p>
@@ -1635,17 +1629,20 @@ For more information on navigation controllers, check out the <a href="../api/co
     Language
   </ion-header>
 
-  <ion-radio checked="true" value="go">
-    Go
-  </ion-radio>
+  <ion-item>
+    <ion-label>Go</ion-label>
+    <ion-radio checked="true" value="go"></ion-radio>
+  </ion-item>
 
-  <ion-radio value="rust">
-    Rust
-  </ion-radio>
+  <ion-item>
+    <ion-label>Rust</ion-label>
+    <ion-radio value="rust"></ion-radio>
+  </ion-item>
 
-  <ion-radio value="python" disabled="true">
-    Python
-  </ion-radio>
+  <ion-item>
+    <ion-label>Python</ion-label>
+    <ion-radio value="python" disabled="true"></ion-radio>
+  </ion-item>
 </ion-list>
 <p>```</p>
 
@@ -1776,7 +1773,45 @@ this.items = this.items.filter((v) =&gt; {
   Improve this Doc
 </a></p>
 
-<p><em>Coming soon.</em></p>
+<p>The <code class="highlighter-rouge">ion-select</code> component is similar to an HTML <code class="highlighter-rouge">&lt;select&gt;</code> element, however, Ionic’s select component makes it easier for users to sort through and select the preferred option or options. When users tap the select component, a  dialog will appear with all of the options in a large, easy to select list for users.</p>
+
+<p>```html</p>
+
+<ion-list>
+  <ion-label>Gaming</ion-label>
+  &lt;ion-select [(ngModel)]="gaming"&gt;
+    <ion-option value="nes">NES</ion-option>
+    <ion-option value="n64">Nintendo64</ion-option>
+    <ion-option value="ps">PlayStation</ion-option>
+    <ion-option value="genesis">Sega Genesis</ion-option>
+    <ion-option value="saturn">Sega Saturn</ion-option>
+    <ion-option value="snes">SNES</ion-option>
+  
+</ion-list>
+
+<p>```</p>
+
+<p>You can make multiple selection with <code class="highlighter-rouge">&lt;ion-select&gt;</code> by adding <code class="highlighter-rouge">multiple="true"</code> to the element</p>
+
+<p>```</p>
+<ion-list>
+  <ion-item>
+  <ion-label>Toppings</ion-label>
+  &lt;ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!"&gt;
+    <ion-option value="bacon" checked="true">Bacon</ion-option>
+    <ion-option value="olives">Black Olives</ion-option>
+    <ion-option value="xcheese" checked="true">Extra Cheese</ion-option>
+    <ion-option value="peppers">Green Peppers</ion-option>
+    <ion-option value="mushrooms">Mushrooms</ion-option>
+    <ion-option value="onions">Onions</ion-option>
+    <ion-option value="pepperoni">Pepperoni</ion-option>
+    <ion-option value="pineapple">Pineapple</ion-option>
+    <ion-option value="sausage">Sausage</ion-option>
+    <ion-option value="Spinach">Spinach</ion-option>
+  
+</ion-item>
+</ion-list>
+<p>```</p>
 
 <h2 id="slides" class="section-header">Slides</h2>
 
@@ -1988,8 +2023,7 @@ export class TabsTextPage {
 <h2 id="toggle" class="section-header">Toggle</h2>
 
 <p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/toggle.html">
-  Improve this Doc
-</a></p>
+  Improve this Doc</a></p>
 
 <p>A toggle is an input component that holds a <em>boolean</em> value. Like the <a href="#checkbox">checkbox</a>, toggles are often used to allow the user to switch a setting on or off. Attributes like <code class="highlighter-rouge">value</code>, <code class="highlighter-rouge">disabled</code>, and <code class="highlighter-rouge">checked</code> can be applied to the toggle to control its behavior. Check out the <a href="../api/components/toggle/Toggle/">Toggle API Reference</a> for more information.</p>
 
@@ -1999,9 +2033,10 @@ export class TabsTextPage {
 </a></p>
 
 <p>```html</p>
-<ion-toggle disabled="" checked="false">
-    Sam
-  </ion-toggle>
+<ion-item>
+  <ion-label> Sam</ion-label>
+  <ion-toggle disabled="" checked="false"></ion-toggle>
+</ion-item>
 <p>```</p>
 
 
