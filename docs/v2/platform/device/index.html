@@ -12,11 +12,11 @@
 
 
 
-    <title>Device | Ionic Native Plugins - Access device information -  Ionic Framework</title>
+    <title>Device - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-device"
-        class="v2 docs page-device"
+  <body id="docs-page-{{Device | slugify}}"
+        class="v2 docs page-{{Device | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -343,37 +343,43 @@
       </nav>
       
       <main>
-        <h1 class="title">Device</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/platform/device/index.md">
-  Improve this doc
+
+Device
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/device.ts#L2">
+Improve this doc
 </a></p>
 
-<p>Get information about the underlying device and platform.</p>
+<!-- description -->
+<h2>Description</h2>
 
-<h3 id="install-the-plugin">Install the plugin</h3>
+<p>Access information about the underlying device and platform.</p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic plugin add cordova-plugin-device
-</code></p>
+<!-- @usage tag -->
 
-<p>```javascript
-import {Device} from ‘ionic/ionic’</p>
+<h2>Usage</h2>
 
-<p>class MyPage {
-  constructor() {
-    var device = Device.getDevice();
-    /*
-    Device info:
-    device.name
-    device.model
-    device.platform
-    device.uuid
-    device.version
-    */
-  }
-}
-```</p>
+<pre><code class="lang-js">let info = Device.getDevice();
+// Device sits below
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
     </div>

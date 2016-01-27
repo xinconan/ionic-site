@@ -12,11 +12,11 @@
 
 
 
-    <title>Camera | Ionic Native Plugins - Take photos and video -  Ionic Framework</title>
+    <title>Camera - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-camera"
-        class="v2 docs page-camera"
+  <body id="docs-page-{{Camera | slugify}}"
+        class="v2 docs page-{{Camera | slugify}}"
         data-spy="scroll"
         data-target="#components-index">
     <nav class="navbar navbar-default">
@@ -343,43 +343,48 @@
       </nav>
       
       <main>
-        <h1 class="title">Camera</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/platform/camera/index.md">
-  Improve this doc
+
+Camera
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/camera.ts#L0">
+Improve this doc
 </a></p>
 
-<p><code class="highlighter-rouge">bash
-$ ionic plugin add cordova-plugin-camera
-</code></p>
+<!-- description -->
+<h2>Description</h2>
 
-<p>To take pictures in your Ionic app, use the <code class="highlighter-rouge">Camera</code> utility:</p>
+<p>Take a photo or capture video.</p>
+<p>Requires Cordova plugin: <code>cordova-plugin-camera</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-camera">Cordova Camera Plugin Docs</a>.</p>
 
-<p>```javascript
-import {Camera} from ‘ionic/ionic’</p>
+<!-- @usage tag -->
 
-<p>class PhotoTaker {
-  takePhoto() {
-    Camera.getPicture({
-      quality: 50,
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,
-      allowEdit: true,
-      encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 100,
-      targetHeight: 100,
-      popoverOptions: CameraPopoverOptions,
-      saveToPhotoAlbum: false
-    }).then((data) =&gt; {
-      // Camera data
-      //let base64Image = “data:image/jpeg;base64,” + data;
-      // this.imageData = base64Image;
-      //
-      // Use this in your view: <img src="" />
-    })
-  }
-}
-```</p>
+<h2>Usage</h2>
+
+<pre><code class="lang-js">Camera.getPicture(options).then((imageData) =&gt; {
+ // imageData is either a base64 encoded string or a file URI
+ // If it&#39;s base64:
+ let base64Image = &quot;data:image/jpeg;base64,&quot; + imageData;
+}, (err) =&gt; {
+});
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
     </div>
