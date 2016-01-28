@@ -191,12 +191,6 @@
   <a href="/docs/v2/api/decorators/App">App</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/Attr">Attr</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/components/blur/Blur">Blur</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/button/Button">Button</a>
 </li>
 <li class="capitalize ">
@@ -243,9 +237,6 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/menu/Menu">Menu</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/components/menu/MenuBackdrop">MenuBackdrop</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/menu/MenuClose">MenuClose</a>
@@ -323,6 +314,9 @@
   <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/input/TextArea">TextArea</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/toolbar/Title">Title</a>
 </li>
 <li class="capitalize ">
@@ -387,6 +381,7 @@ Improve this doc
 </a></p>
 
 <!-- description -->
+<h2>Description</h2>
 
 <p>Config lets you change multiple or a single value in an apps mode configuration. Things such as tab placement, icon changes, and view animations can be set here.</p>
 <pre><code class="lang-ts">@App({
@@ -515,7 +510,7 @@ config.get(&#39;favoriteColor&#39;); // &#39;green&#39;
 <td>top</td>
 </tr>
 <tr>
-<td>tabSubPage</td>
+<td>tabSubPages</td>
 <td></td>
 <td>true</td>
 </tr>
@@ -528,15 +523,7 @@ config.get(&#39;favoriteColor&#39;); // &#39;green&#39;
 
 <!-- methods on the class -->
 
-<h3>Methods</h3>
-
-<div id="platform"></div>
-
-<h3>
-<code>platform()</code>
-  
-
-</h3>
+<h2>Methods</h2>
 
 <div id="set"></div>
 
@@ -655,10 +642,42 @@ config.get(&#39;favoriteColor&#39;); // &#39;green&#39;
 <div id="getBoolean"></div>
 
 <h3>
-<code>getBoolean()</code>
+<code>getBoolean(key)</code>
   
 
 </h3>
+
+<p>Same as <code class="highlighter-rouge">get()</code>, however always returns a boolean value.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        key
+        
+        
+      </td>
+      <td>
+        
+  <code>String</code>
+      </td>
+      <td>
+        <p>the key for the config value</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 <!-- related link -->
 <!-- end content block -->
