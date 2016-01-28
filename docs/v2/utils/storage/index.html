@@ -212,29 +212,29 @@
 
 <p>For persistent storage, use the <code class="highlighter-rouge">SqlStorage</code> service, which uses SQLite and/or WebSQL (dev mode only).</p>
 
-<p>```javascript
-import {Storage, SqlStorage} from ‘ionic/ionic’;</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Storage</span><span class="p">,</span> <span class="nx">SqlStorage</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span><span class="p">;</span>
 
-<p>export class MyApp {
-  constructor() {
-    this.storage = new Storage(SqlStorage);
-  }
-}
-```</p>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Storage</span><span class="p">(</span><span class="nx">SqlStorage</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h1 id="local-storage">Local Storage</h1>
 
 <p>For <em>temporary</em> storage, use the <code class="highlighter-rouge">LocalStorage</code> service:</p>
 
-<p>```javascript
-import {Storage, LocalStorage} from ‘ionic/ionic’;</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">Storage</span><span class="p">,</span> <span class="nx">LocalStorage</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span><span class="p">;</span>
 
-<p>export class MyApp {
-  constructor() {
-    this.storage = new Storage(LocalStorage);
-  }
-}
-```</p>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Storage</span><span class="p">(</span><span class="nx">LocalStorage</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <p>Note: <em>do not</em> use Local Storage for data that you cannot afford to lose! Some operating systems (like iOS) will clear local storage when device storage gets low.</p>
 
@@ -242,55 +242,55 @@ import {Storage, LocalStorage} from ‘ionic/ionic’;</p>
 
 <p>To store a value for a given key, use <code class="highlighter-rouge">set()</code></p>
 
-<p><code class="highlighter-rouge">javascript
-setName(name) {
-  this.storage.set('name', name);
-}
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h1 id="getting-values">Getting values</h1>
 
 <p>To retrieve a value for a given key, use <code class="highlighter-rouge">get()</code></p>
 
-<p><code class="highlighter-rouge">javascript
-getName(name) {
-  this.storage.get('name').then((value) =&gt; {
-    // name is available here
-  })
-}
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">getName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// name is available here</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h1 id="sql-queries">SQL Queries</h1>
 
 <p>When using the <code class="highlighter-rouge">SqlStorage</code> engine, a full query API is available:</p>
 
-<p>```javascript
-saveUser(user) {
-  this.storage.query(‘insert into users(name, email) values (?, ?)’, [user.name, user.email]).then(() =&gt; {
-    // Saved
-  })
-}</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">saveUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">'insert into users(name, email) values (?, ?)'</span><span class="p">,</span> <span class="p">[</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">]).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Saved</span>
+  <span class="p">})</span>
+<span class="p">}</span>
 
-<p>getUser() {
-  this.storage.query(‘select * from users where email = ?’, [user.email]).then((users) =&gt; {
-  });
-}
-```</p>
+<span class="nx">getUser</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">'select * from users where email = ?'</span><span class="p">,</span> <span class="p">[</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">users</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <h1 id="icloud-support">iCloud Support</h1>
 
-<p>iOS supports a variety of storage strategies that use (or don’t use) iCloud. By default, Ionic storage
-will not back up to iCloud, since storing arbitrary data in an iCloud-backup location is one of the
+<p>iOS supports a variety of storage strategies that use (or don’t use) iCloud. By default, Ionic storage<br />
+will not back up to iCloud, since storing arbitrary data in an iCloud-backup location is one of the<br />
 most common ways apps are rejected from the app stores.</p>
 
-<p>If you have a logical <code class="highlighter-rouge">document</code> that user create and then might want to back up (for example, images, text documents, etc.), set the <code class="highlighter-rouge">SqlStorage</code> engine
+<p>If you have a logical <code class="highlighter-rouge">document</code> that user create and then might want to back up (for example, images, text documents, etc.), set the <code class="highlighter-rouge">SqlStorage</code> engine<br />
 to use the proper location:</p>
 
-<p><code class="highlighter-rouge">javascript
-this.storage = new Storage(SqlStorage, {
-  backupFlag: SqlStorage.DOCUMENTS
-})
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Storage</span><span class="p">(</span><span class="nx">SqlStorage</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">backupFlag</span><span class="p">:</span> <span class="nx">SqlStorage</span><span class="p">.</span><span class="nx">DOCUMENTS</span>
+<span class="p">})</span>
+</code></pre>
+</div>
 
 <p>See the <a href="https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database">Cordova SQLite</a> documentation for more info.</p>
 

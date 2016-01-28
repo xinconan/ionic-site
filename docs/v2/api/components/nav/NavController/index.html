@@ -512,63 +512,60 @@ class HelloWorld {
 
 <p>Push is how we can pass components and navigate to them. We push the component we want to navigate to on to the navigation stack.</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav:NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(){
+   pushPage(){
      this.nav.push(SecondView);
    }
 }
-```</p>
+</code></pre>
 
 <p>We can also pass along parameters to the next view, such as data that we have on the current view. This is a similar concept to to V1 apps with <code class="highlighter-rouge">$stateParams</code>.</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav:NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(user){
+   pushPage(user){
      this.nav.push(SecondView,{
       // user is an object we have in our view
       // typically this comes from an ngFor or some array
       // here we can create an object with a property of
-      // paramUser, and set it’s value to the user object we passed in
+      // paramUser, and set it's value to the user object we passed in
       paramUser: user
      });
    }
 }
-```</p>
+</code></pre>
 
 <p>We’ll look at how we can access that data in the <code class="highlighter-rouge">SecondView</code> in the navParam docs</p>
 
 <p>We can also pass any options to the transtion from that same method</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav: NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(user){
+   pushPage(user){
      this.nav.push(SecondView,{
       // user is an object we have in our view
       // typically this comes from an ngFor or some array
       // here we can create an object with a property of
-      // paramUser, and set it’s value to the user object we passed in
+      // paramUser, and set it's value to the user object we passed in
       paramUser: user
      },{
       // here we can configure things like the animations direction or
       // or if the view should animate at all.
-      direction: ‘back’
+      direction: 'back'
      });
    }
 }
-```</p>
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -648,25 +645,24 @@ class MyClass{
 
 </h3>
 
-<p>Present is how we display overlays on top of the content, from within the
-root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such
-as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code>
-and <code class="highlighter-rouge">present</code>, is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas
-<code class="highlighter-rouge">push</code> takes a <code class="highlighter-rouge">Page</code> component class. Additionally, <code class="highlighter-rouge">present</code> will place
+<p>Present is how we display overlays on top of the content, from within the<br />
+root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such<br />
+as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code><br />
+and <code class="highlighter-rouge">present</code>, is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas<br />
+<code class="highlighter-rouge">push</code> takes a <code class="highlighter-rouge">Page</code> component class. Additionally, <code class="highlighter-rouge">present</code> will place<br />
 the overlay in the root NavController’s stack.</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav: NavController) {
      this.nav = nav;
-   }</p>
+   }
 
-<p>presentModal() {
+   presentModal() {
      let modal = Modal.create(ProfilePage);
      this.nav.present(modal);
    }
 }
-```</p>
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -729,11 +725,10 @@ class MyClass{
 
 </h3>
 
-<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code>
+<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code><br />
 Similar to <code class="highlighter-rouge">push()</code>, you can pass animation options.</p>
 
-<p><code class="highlighter-rouge">typescript
-class SecondView{
+<pre><code class="language-typescript">class SecondView{
    constructor(nav:NavController){
      this.nav = nav;
    }
@@ -741,7 +736,7 @@ class SecondView{
      this.nav.pop();
    }
 }
-</code></p>
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -827,11 +822,10 @@ class SecondView{
 
 </h3>
 
-<p>Inserts a view into the nav stack at the specified index.
+<p>Inserts a view into the nav stack at the specified index.<br />
 This is useful if you need to add a view at any point in your navigation stack</p>
 
-<p><code class="highlighter-rouge">typescript
-export class Detail {
+<pre><code class="language-typescript">export class Detail {
    constructor(nav: NavController) {
      this.nav = nav;
    }
@@ -839,7 +833,7 @@ export class Detail {
      this.nav.insert(1,Info)
    }
  }
-</code></p>
+</code></pre>
 
 <p>This will insert the <code class="highlighter-rouge">Info</code> view into the second slot of our navigation stack</p>
 
@@ -906,8 +900,7 @@ export class Detail {
 
 <p>Removes a view from the nav stack at the specified index.</p>
 
-<p><code class="highlighter-rouge">typescript
-export class Detail {
+<pre><code class="language-typescript">export class Detail {
    constructor(nav: NavController) {
      this.nav = nav;
    }
@@ -915,7 +908,7 @@ export class Detail {
      this.nav.remove(1)
    }
  }
-</code></p>
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -980,12 +973,11 @@ export class Detail {
 
 <p>You can set the views of the current navigation stack and navigate to the last view past</p>
 
-<p>```typescript
-import {Page, NavController} from ‘ionic/ionic’
-import {Detail} from ‘../detail/detail’
-import {Info} from ‘../info/info’</p>
+<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
+import {Detail} from '../detail/detail'
+import {Info} from '../info/info'
 
-<p>export class Home {
+ export class Home {
    constructor(nav: NavController) {
      this.nav = nav;
    }
@@ -993,18 +985,17 @@ import {Info} from ‘../info/info’</p>
      this.nav.setPages([List,Detail, Info]);
    }
  }
-```</p>
+</code></pre>
 
 <p>In this example, we’re giving the current nav stack an array of pages. Then the navigation stack will navigate to the last view in the array and remove the orignal view you came from.</p>
 
 <p>By default, animations are disabled, but they can be enabled by passing options to the navigation controller</p>
 
-<p>```typescript
-import {Page, NavController} from ‘ionic/ionic’
-import {Detail} from ‘../detail/detail’
-import {Info} from ‘../info/info’</p>
+<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
+import {Detail} from '../detail/detail'
+import {Info} from '../info/info'
 
-<p>export class Home {
+ export class Home {
    constructor(nav: NavController) {
      this.nav = nav;
    }
@@ -1014,16 +1005,15 @@ import {Info} from ‘../info/info’</p>
      });
    }
  }
-```</p>
+</code></pre>
 
 <p>You can also pass any navigation params to the individual pages in the array.</p>
 
-<p>```typescript
-import {Page, NavController} from ‘ionic/ionic’
-import {Detail} from ‘../detail/detail’
-import {Info} from ‘../info/info’</p>
+<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
+import {Detail} from '../detail/detail'
+import {Info} from '../info/info'
 
-<p>export class Home {
+ export class Home {
    constructor(nav: NavController) {
      this.nav = nav;
    }
@@ -1040,7 +1030,7 @@ import {Info} from ‘../info/info’</p>
      }]);
    }
  }
-```</p>
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1229,9 +1219,9 @@ import {Info} from ‘../info/info’</p>
 
 </h3>
 
-<p>If it’s possible to use swipe back or not. If it’s not possible
-to go back, or swipe back is not enable then this will return false.
-If it is possible to go back, and swipe back is enabled, then this
+<p>If it’s possible to use swipe back or not. If it’s not possible<br />
+to go back, or swipe back is not enable then this will return false.<br />
+If it is possible to go back, and swipe back is enabled, then this<br />
 will return true.</p>
 
 <div class="return-value">
@@ -1248,7 +1238,7 @@ will return true.</p>
 
 </h3>
 
-<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.
+<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.<br />
 Otherwise returns false.</p>
 
 <div class="return-value">
@@ -1341,7 +1331,7 @@ Otherwise returns false.</p>
 
 </h3>
 
-<p>Number of sibling views in the nav controller. This does
+<p>Number of sibling views in the nav controller. This does<br />
 not include views which are about to be destroyed.</p>
 
 <div class="return-value">

@@ -1087,81 +1087,91 @@
 
 <p>The <code class="highlighter-rouge">&lt;ion-content&gt;</code> directive can be used anywhere to define a scrollable content area. Here is an example with many of its available options:</p>
 
-<p>```html</p>
-<body ng-controller="ContentCtrl">
-  <ion-header-bar title="'Header'">
-  </ion-header-bar>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"ContentCtrl"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-header-bar</span> <span class="na">title=</span><span class="s">"'Header'"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-header-bar&gt;</span>
 
-  <!-- content area -->
-  <ion-content has-header="true" has-footer="true" scroll="true">
+  <span class="c">&lt;!-- content area --&gt;</span>
+  <span class="nt">&lt;ion-content</span>
+    <span class="na">has-header=</span><span class="s">"true"</span>
+    <span class="na">has-footer=</span><span class="s">"true"</span>
+    <span class="na">scroll=</span><span class="s">"true"</span>
+    <span class="nt">&gt;</span>
 
-    <!-- for pull to refresh -->
-    <ion-refresher on-refresh="onRefresh()">
-    </ion-refresher>
+    <span class="c">&lt;!-- for pull to refresh --&gt;</span>
+    <span class="nt">&lt;ion-refresher</span>
+     <span class="na">on-refresh=</span><span class="s">"onRefresh()"</span>
+     <span class="nt">&gt;</span>
+    <span class="nt">&lt;/ion-refresher&gt;</span>
 
-    <!-- content -->
-  </ion-content>
+    <span class="c">&lt;!-- content --&gt;</span>
+  <span class="nt">&lt;/ion-content&gt;</span>
 
-  <ion-footer-bar>
-    <div class="title">Footer</div>
-  </ion-footer-bar>
-</body>
-<p>```</p>
-
-<p>And an example controller:</p>
-
-<p>```javascript
-angular.module(‘myModule’, [])
-.controller(‘ContentCtrl’, function($scope, Users) {
-  $scope.onRefresh = function() {
-    // Load content
-    Users.load().then(function(users) {
-      $scope.users = users;</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  // Trigger refresh complete on the pull to refresh action
-  $scope.$broadcast('scroll.refreshComplete');
-});   }; });
+  <span class="nt">&lt;ion-footer-bar&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Footer<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/ion-footer-bar&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
 </code></pre>
 </div>
 
-<p>```</p>
+<p>And an example controller:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">[])</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'ContentCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">Users</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">onRefresh</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Load content</span>
+    <span class="nx">Users</span><span class="p">.</span><span class="nx">load</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">users</span> <span class="o">=</span> <span class="nx">users</span><span class="p">;</span>
+
+      <span class="c1">// Trigger refresh complete on the pull to refresh action</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">'scroll.refreshComplete'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+
+</code></pre>
+</div>
 
 <h3 id="dynamic-content-resizing">Dynamic content resizing</h3>
 
 <p>If the content of your scroll area changes, we can tell the content area to resize and update itself:</p>
 
-<p><code class="highlighter-rouge">javascript
-$scope.$broadcast('scroll.resize');
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">'scroll.resize'</span><span class="p">);</span>
+</code></pre>
+</div>
 
 <h3 id="pull-to-refresh">Pull to Refresh</h3>
 
 <p>Pull to refresh is an incredibly common UI paradigm found in mobile apps these days. If you want to add pull to refresh to your scroll area, you can just add the <code class="highlighter-rouge">&lt;ion-refresher&gt;</code> element to the beginning of the scroll content:</p>
 
-<p>```html
-  <!-- content area --></p>
-<ion-content>
-    <ion-refresher on-refresh="onRefresh()"></ion-refresher>
-  </ion-content>
-<p>```</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="c">&lt;!-- content area --&gt;</span>
+  <span class="nt">&lt;ion-content&gt;</span>
+    <span class="nt">&lt;ion-refresher</span> <span class="na">on-refresh=</span><span class="s">"onRefresh()"</span><span class="nt">&gt;&lt;/ion-refresher&gt;</span>
+  <span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
 
 <p>This will give you a default icon and animation style. To customize the pull to refresh, supply your own content to attributes of <code class="highlighter-rouge">&lt;ion-refresher&gt;</code>:</p>
 
-<p>```html
-  <!-- content area --></p>
-<ion-content>
-    <ion-refresher on-refresh="onRefresh()" pulling-icon="ion-loading-c" pulling-text="Pull to refresh...">
-    </ion-refresher>
-  </ion-content>
-<p>```</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="c">&lt;!-- content area --&gt;</span>
+  <span class="nt">&lt;ion-content&gt;</span>
+    <span class="nt">&lt;ion-refresher</span>
+     <span class="na">on-refresh=</span><span class="s">"onRefresh()"</span>
+     <span class="na">pulling-icon=</span><span class="s">"ion-loading-c"</span>
+     <span class="na">pulling-text=</span><span class="s">"Pull to refresh..."</span>
+     <span class="nt">&gt;</span>
+    <span class="nt">&lt;/ion-refresher&gt;</span>
+  <span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
 
 <p><em>Hint: Ionicons comes with <a href="http://ionicons.com/animation.html">animated icons</a>.</em></p>
 
 <p>When refreshing is complete, you’ll need to tell the scroll view to stop the refresh. To do this, trigger an event either up or down the scope chain to the scroll view. If your controller is “above” the scroll view in the scope chain, use broadcast:</p>
 
-<p><code class="highlighter-rouge">javascript
-$scope.$broadcast('scroll.refreshComplete');
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">'scroll.refreshComplete'</span><span class="p">);</span>
+</code></pre>
+</div>
 
 <p>Use <code class="highlighter-rouge">$scope.$emit</code> if the scroll view is above your controller.</p>
 

@@ -385,33 +385,32 @@ Improve this doc
 
 <p>We created a new page in the last section, but now we need to navigate to it.</p>
 
-<p>Navigation in Ionic 2 works like a simple stack, where we <code class="highlighter-rouge">push</code> new pages onto the
-top of the stack which takes us forwards in the app and shows a back button,
+<p>Navigation in Ionic 2 works like a simple stack, where we <code class="highlighter-rouge">push</code> new pages onto the<br />
+top of the stack which takes us forwards in the app and shows a back button,<br />
 and then we <code class="highlighter-rouge">pop</code> the top one off to go back to the page before it.</p>
 
 <p><strong>Note:</strong> When it comes to URLs, Ionic 2 works a bit differently than Ionic 1. Instead of using URLs to navigate, we use them to make sure we can always come back to a page (on app launch, for example), but pages can be navigated to from anywhere which was not possible in v1. For example, we can show the same Playlist page instead of a tab, a side menu, or a modal. This means we don’t use <code class="highlighter-rouge">href</code> to navigate around.</p>
 
 <p>So, let’s take our <code class="highlighter-rouge">PlaylistPage</code> from the previous example and navigate to it when we tap on a specific play list from the <code class="highlighter-rouge">PlaylistsPage</code> (note the ‘s’). Open up <code class="highlighter-rouge">app/playlists/playlists.html</code>, and find the <code class="highlighter-rouge">&lt;ion-item&gt;</code> entry:</p>
 
-<p><code class="highlighter-rouge">html
-&lt;ion-item *ng-for="#playlist of playlists" (click)="openPlaylist(playlist)"&gt;&lt;/ion-item&gt;
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ng-for=</span><span class="s">"#playlist of playlists"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">openPlaylist</span><span class="err">(</span><span class="na">playlist</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
 
 <p>When the user taps this, the <code class="highlighter-rouge">openPlaylist()</code> function will be called with a reference to the playlist that was tapped.</p>
 
 <p>Open <code class="highlighter-rouge">app/playlists/playlists.js</code>, and let’s add a method to <code class="highlighter-rouge">PlaylistsPage</code> to handle this:</p>
 
-<p>```ts
-export class PlaylistsPage {
-  // constructor and other methods above here…</p>
+<pre><code class="language-ts">export class PlaylistsPage {
+  // constructor and other methods above here...
 
-<p>openPlaylist(playlist) {
+  openPlaylist(playlist) {
     this.nav.push(PlaylistPage, {
       playlist: playlist
     })
   }
 }
-```</p>
+</code></pre>
 
 <p>Open the app, and navigate to the playlists page. When we tap on the page, we should see the new playlist page open with the title set to the playlist we just clicked!</p>
 

@@ -502,7 +502,7 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 <p>Boolean if the nav controller is actively transitioning or not.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>bool</code></li>
 </ul>
 
@@ -520,54 +520,51 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 
 <p>Push is how we can pass components and navigate to them. We push the component we want to navigate to on to the navigation stack.</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav:NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(){
+   pushPage(){
      this.nav.push(SecondView);
    }
 }
-```</p>
+</code></pre>
 
 <p>We can also pass along parameters to the next view, such as data that we have on the current view. This is a similar concept to to V1 apps with <code class="highlighter-rouge">$stateParams</code>.</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav:NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(user){
+   pushPage(user){
      this.nav.push(SecondView,{
       // user is an object we have in our view
       // typically this comes from an ngFor or some array
       // here we can create an object with a property of
-      // paramUser, and set it’s value to the user object we passed in
+      // paramUser, and set it's value to the user object we passed in
       paramUser: user
      });
    }
 }
-```</p>
+</code></pre>
 
 <p>We’ll look at how we can access that data in the <code class="highlighter-rouge">SecondView</code> in the navParam docs</p>
 
 <p>We can also pass any options to the transtion from that same method</p>
 
-<p>```typescript
-class MyClass{
+<pre><code class="language-typescript">class MyClass{
    constructor(nav:NavController){
      this.nav = nav;
-   }</p>
+   }
 
-<p>pushPage(user){
+   pushPage(user){
      this.nav.push(SecondView,{
       // user is an object we have in our view
       // typically this comes from an ngFor or some array
       // here we can create an object with a property of
-      // paramUser, and set it’s value to the user object we passed in
+      // paramUser, and set it's value to the user object we passed in
       paramUser: user
      },{
       // here we can configure things like the animations direction or
@@ -577,7 +574,7 @@ class MyClass{
      });
    }
 }
-```</p>
+</code></pre>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -644,7 +641,7 @@ class MyClass{
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when the transition is completed</li>
 </ul>
 
@@ -654,21 +651,21 @@ class MyClass{
 
 </h2>
 
-<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code>
-Similar to <code class="highlighter-rouge">push()</code>, you can pass animation options.
-```typescript
-class SecondView{
-   constructor(nav:NavController){
-     this.nav = nav;
+<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code><br />
+Similar to <code class="highlighter-rouge">push()</code>, you can pass animation options.<br />
+```typescript<br />
+class SecondView{<br />
+   constructor(nav:NavController){<br />
+     this.nav = nav;<br />
    }</p>
 
-<p>goBack(){
-     this.nav.pop({
-      animate: true,
-      direction: back
-     });
-   }
-}
+<p>goBack(){<br />
+     this.nav.pop({<br />
+      animate: true,<br />
+      direction: back<br />
+     });<br />
+   }<br />
+}<br />
 ```</p>
 
 <table class="table" style="margin:0;">
@@ -702,7 +699,7 @@ class SecondView{
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when the transition is completed</li>
 </ul>
 
@@ -750,7 +747,7 @@ class SecondView{
 
 </h2>
 
-<p>Inserts a view into the nav stack at the specified index.
+<p>Inserts a view into the nav stack at the specified index.<br />
 This is useful if you need to add a view at any point in your navigation stack</p>
 
 <p><code class="highlighter-rouge">typescript
@@ -762,7 +759,7 @@ export class Detail {
      this.nav.insert(1,Info)
    }
  }
-</code>
+</code><br />
  This will insert the <code class="highlighter-rouge">Info</code> view into the second slot of our navigation stack</p>
 
 <table class="table" style="margin:0;">
@@ -813,7 +810,7 @@ export class Detail {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when the view has been inserted into the navigation stack</li>
 </ul>
 
@@ -884,7 +881,7 @@ export class Detail {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when the view has been removed</li>
 </ul>
 
@@ -944,7 +941,7 @@ export class Detail {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> TODO</li>
 </ul>
 
@@ -1021,7 +1018,7 @@ export class Detail {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Promise</code> Returns a promise when done</li>
 </ul>
 
@@ -1070,7 +1067,7 @@ export class Detail {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether swipe-to-go-back is enabled</li>
 </ul>
 
@@ -1080,13 +1077,13 @@ export class Detail {
 
 </h2>
 
-<p>If it’s possible to use swipe back or not. If it’s not possible
-to go back, or swipe back is not enable then this will return false.
-If it is possible to go back, and swipe back is enabled, then this
+<p>If it’s possible to use swipe back or not. If it’s not possible<br />
+to go back, or swipe back is not enable then this will return false.<br />
+If it is possible to go back, and swipe back is enabled, then this<br />
 will return true.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether you can swipe to go back</li>
 </ul>
 
@@ -1096,11 +1093,11 @@ will return true.</p>
 
 </h2>
 
-<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous view that we can pop back to.
+<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous view that we can pop back to.<br />
 Otherwise returns false.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether there is a view to go back to</li>
 </ul>
 
@@ -1141,7 +1138,7 @@ Otherwise returns false.</p>
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Component</code> Returns the component that matches the index given</li>
 </ul>
 
@@ -1151,11 +1148,11 @@ Otherwise returns false.</p>
 
 </h2>
 
-<p>First view in this nav controller’s stack. This would
+<p>First view in this nav controller’s stack. This would<br />
 not return an view which is about to be destroyed.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Component</code> Returns the first component view in the current stack</li>
 </ul>
 
@@ -1165,11 +1162,11 @@ not return an view which is about to be destroyed.</p>
 
 </h2>
 
-<p>Last view in this nav controller’s stack. This would
+<p>Last view in this nav controller’s stack. This would<br />
 not return an view which is about to be destroyed.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Component</code> Returns the last component view in the current stack</li>
 </ul>
 
@@ -1179,11 +1176,11 @@ not return an view which is about to be destroyed.</p>
 
 </h2>
 
-<p>Number of sibling views in the nav controller. This does
+<p>Number of sibling views in the nav controller. This does<br />
 not include views which are about to be destroyed.</p>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>Number</code> The number of views in stack, including the current view</li>
 </ul>
 

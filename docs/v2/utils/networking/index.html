@@ -212,35 +212,35 @@
   </div>
 </div>
 
-<p>```javascript</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">Http</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic/ionic'</span><span class="p">;</span>
 
-<p>import {Http} from ‘ionic/ionic’;</p>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://swapi.co/api/people/1'</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">resp</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Got Luke Skywalker</span>
+<span class="p">});</span>
 
-<p>Http.get(‘http://swapi.co/api/people/1’).then((resp) =&gt; {
-  // Got Luke Skywalker
-});</p>
-
-<p>Http.post(myApi, {
-  username: ‘tim’,
-}).then((resp) =&gt; {
-  // Response
-}, (err) =&gt; {
-  // Err
-});
-```</p>
+<span class="nx">Http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">myApi</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">username</span><span class="p">:</span> <span class="s1">'tim'</span><span class="p">,</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">resp</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Response</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Err</span>
+<span class="p">});</span>
+</code></pre>
+</div>
 
 <p>To send a <code class="highlighter-rouge">PUT/PATCH/DELETE</code> method, substitute <code class="highlighter-rouge">Http.post()</code> with the lower-cased method name.</p>
 
-<p>To modify the request, pass a third object to <code class="highlighter-rouge">post/put/patch/delete</code> or a second object to <code class="highlighter-rouge">get</code> which follows
+<p>To modify the request, pass a third object to <code class="highlighter-rouge">post/put/patch/delete</code> or a second object to <code class="highlighter-rouge">get</code> which follows<br />
 the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a> object from the fetch API:</p>
 
-<p><code class="highlighter-rouge">javascript
-Http.delete(myApi, {
-  reason: 'Because I can'
-}, {
-  mode: 'cors'
-})
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">Http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">myApi</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">reason</span><span class="p">:</span> <span class="s1">'Because I can'</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span>
+<span class="p">})</span>
+</code></pre>
+</div>
 
 
           

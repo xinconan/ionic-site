@@ -976,50 +976,55 @@ Child of <a href="/docs/nightly/api/directive/ionContent/"><code>ionContent</cod
 
 </h1>
 
-<p>The ionInfiniteScroll directive allows you to call a function whenever
+<p>The ionInfiniteScroll directive allows you to call a function whenever<br />
 the user gets to the bottom of the page or near the bottom of the page.</p>
 
-<p>The expression you pass in for <code class="highlighter-rouge">on-infinite</code> is called when the user scrolls
-greater than <code class="highlighter-rouge">distance</code> away from the bottom of the content.  Once <code class="highlighter-rouge">on-infinite</code>
-is done loading new data, it should broadcast the <code class="highlighter-rouge">scroll.infiniteScrollComplete</code>
+<p>The expression you pass in for <code class="highlighter-rouge">on-infinite</code> is called when the user scrolls<br />
+greater than <code class="highlighter-rouge">distance</code> away from the bottom of the content.  Once <code class="highlighter-rouge">on-infinite</code><br />
+is done loading new data, it should broadcast the <code class="highlighter-rouge">scroll.infiniteScrollComplete</code><br />
 event from your controller (see below example).</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>```html</p>
-<ion-content ng-controller="MyController">
-  <ion-list>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"MyController"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-list&gt;</span>
   ....
   ....
-  </ion-list>
+  <span class="nt">&lt;/ion-list&gt;</span>
 
-  <ion-infinite-scroll on-infinite="loadMore()" distance="1%">
-  </ion-infinite-scroll>
-</ion-content>
-<p><code class="highlighter-rouge">
-</code>js
-function MyController($scope, $http) {
-  $scope.items = [];
-  $scope.loadMore = function() {
-    $http.get(‘/more-items’).success(function(items) {
-      useItems(items);
-      $scope.$broadcast(‘scroll.infiniteScrollComplete’);
-    });
-  };</p>
+  <span class="nt">&lt;ion-infinite-scroll</span>
+    <span class="na">on-infinite=</span><span class="s">"loadMore()"</span>
+    <span class="na">distance=</span><span class="s">"1%"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-infinite-scroll&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">loadMore</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/more-items'</span><span class="p">).</span><span class="nx">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">useItems</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+      <span class="nx">$scope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">'scroll.infiniteScrollComplete'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
 
-<p>$scope.$on(‘$stateChangeSuccess’, function() {
-    $scope.loadMore();
-  });
-}
-```</p>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'$stateChangeSuccess'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">loadMore</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
-<p>An easy to way to stop infinite scroll once there is no more data to load
+<p>An easy to way to stop infinite scroll once there is no more data to load<br />
 is to use angular’s <code class="highlighter-rouge">ng-if</code> directive:</p>
 
-<p>```html</p>
-<ion-infinite-scroll ng-if="moreDataCanBeLoaded()" icon="ion-loading-c" on-infinite="loadMoreData()">
-</ion-infinite-scroll>
-<p>```</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-infinite-scroll</span>
+  <span class="na">ng-if=</span><span class="s">"moreDataCanBeLoaded()"</span>
+  <span class="na">icon=</span><span class="s">"ion-loading-c"</span>
+  <span class="na">on-infinite=</span><span class="s">"loadMoreData()"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/ion-infinite-scroll&gt;</span>
+</code></pre>
+</div>
 
 <h2 id="api" style="clear:both;">API</h2>
 

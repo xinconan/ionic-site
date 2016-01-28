@@ -205,17 +205,17 @@
 
 <p>So first, we need to generate a release build of our app, targeted at each platform we wish to deploy on. Before we deploy, we should take care to adjust plugins needed during development that should not be in production mode. For example, we probably don’t want the debug console plugin enabled, so we should remove it before generating the release builds:</p>
 
-<p><code class="highlighter-rouge">bash
-$ cordova plugin rm cordova-plugin-console
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova plugin rm cordova-plugin-console
+</code></pre>
+</div>
 
 <h1 id="android-publishing">Android Publishing</h1>
 
 <p>To generate a release build for Android, we can use the following cordova cli command:</p>
 
-<p><code class="highlighter-rouge">bash
-$ cordova build --release android
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova build --release android
+</code></pre>
+</div>
 
 <p>This will generate a release build based on the settings in your <code class="highlighter-rouge">config.xml</code>. Your Ionic app will have preset default values in this file, but if you need to customize how your app is built, you can edit this file to fit your preferences. Check out <a href="http://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_config.md.html#Android%20Configuration">the config.xml file</a> documentation for more information.</p>
 
@@ -223,9 +223,9 @@ $ cordova build --release android
 
 <p>Let’s generate our private key using the <code class="highlighter-rouge">keytool</code> command that comes with the JDK. If this tool isn’t found, refer to the <a href="installation.html">installation guide</a>:</p>
 
-<p><code class="highlighter-rouge">bash
-$ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+</code></pre>
+</div>
 
 <p>You’ll first be prompted to create a password for the keystore. Then, answer the rest of the nice tools’s questions and when it’s all done, you should have a file called <code class="highlighter-rouge">my-release-key.keystore</code> created in the current directory.</p>
 
@@ -233,15 +233,15 @@ $ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg
 
 <p>To sign the unsigned APK, run the <code class="highlighter-rouge">jarsigner</code> tool which is also included in the JDK:</p>
 
-<p><code class="highlighter-rouge">bash
-$ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore HelloWorld-release-unsigned.apk alias_name
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore HelloWorld-release-unsigned.apk alias_name
+</code></pre>
+</div>
 
 <p>This signs the apk in place. Finally, we need to run the zip align tool to optimize the APK. The <code class="highlighter-rouge">zipalign</code> tool can be found in <code class="highlighter-rouge">/path/to/Android/sdk/build-tools/VERSION/zipalign</code>. For example, on OS X with Android Studio installed, <code class="highlighter-rouge">zipalign</code> is in <code class="highlighter-rouge">~/Library/Android/sdk/build-tools/VERSION/zipalign</code>:</p>
 
-<p><code class="highlighter-rouge">bash
-$ zipalign -v 4 HelloWorld-release-unsigned.apk HelloWorld.apk
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>zipalign -v 4 HelloWorld-release-unsigned.apk HelloWorld.apk
+</code></pre>
+</div>
 
 <p>Now we have our final release binary called <code class="highlighter-rouge">HelloWorld.apk</code> and we can release this on the Google Play Store for all the world to enjoy!</p>
 

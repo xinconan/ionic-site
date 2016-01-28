@@ -231,349 +231,344 @@ Javascript controllers that give them increased functionality.
 
 <p>With the list code and the Angular <code class="highlighter-rouge">ng-repeat</code>, the center content becomes:</p>
 
-<p>```html</p>
-
-<!-- Center content -->
-<ion-side-menu-content>
-  <ion-header-bar class="bar-dark">
-    <h1 class="title">Todo</h1>
-  </ion-header-bar>
-  <ion-content>
-    <!-- our list and list items -->
-    <ion-list>
-      <ion-item ng-repeat="task in tasks">
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">&lt;!-- Center content --&gt;</span>
+<span class="nt">&lt;ion-side-menu-content&gt;</span>
+  <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Todo<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/ion-header-bar&gt;</span>
+  <span class="nt">&lt;ion-content&gt;</span>
+    <span class="c">&lt;!-- our list and list items --&gt;</span>
+    <span class="nt">&lt;ion-list&gt;</span>
+      <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"task in tasks"</span><span class="nt">&gt;</span>
         {{task.title}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-side-menu-content>
+      <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;/ion-list&gt;</span>
+  <span class="nt">&lt;/ion-content&gt;</span>
+<span class="nt">&lt;/ion-side-menu-content&gt;</span>
 
-<p>```</p>
+</code></pre>
+</div>
 
 <p>But this doesn’t do anything yet, because we don’t have any tasks or any code to drive our application. To do this, we need to create an Angular controller and add it to the page. We are going to just use one controller for this app, called <code class="highlighter-rouge">TodoCtrl</code>. We are going to add it directly to the body tag:</p>
 
-<p>```html</p>
-<body ng-app="todo" ng-controller="TodoCtrl">
-```
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span> <span class="na">ng-controller=</span><span class="s">"TodoCtrl"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
 
-Then, we need to define this controller in our `app.js` file, and we can add some testing tasks in:
+<p>Then, we need to define this controller in our <code class="highlighter-rouge">app.js</code> file, and we can add some testing tasks in:</p>
 
-```javascript
-angular.module('todo', ['ionic'])
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 
-.controller('TodoCtrl', function($scope) {
-  $scope.tasks = [
-    { title: 'Collect coins' },
-    { title: 'Eat mushrooms' },
-    { title: 'Get high enough to grab the flag' },
-    { title: 'Find the Princess' }
-  ];
-});
-```
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TodoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">tasks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Collect coins'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Eat mushrooms'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Get high enough to grab the flag'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Find the Princess'</span> <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">});</span>
+</code></pre>
+</div>
 
-Run the example again, and we should see our list of very important tasks!
+<p>Run the example again, and we should see our list of very important tasks!</p>
 
-<img src="http://ionicframework.com.s3.amazonaws.com/guide/0.1.0/4-list.png" alt="Running" style="border: 1px solid #ccc; border-radius: 4px;" />
+<p><img src="http://ionicframework.com.s3.amazonaws.com/guide/0.1.0/4-list.png" alt="Running" style="border: 1px solid #ccc; border-radius: 4px;" /></p>
 
-## Creating tasks
+<h2 id="creating-tasks">Creating tasks</h2>
 
-Okay, so we have some testing data for tasks, but what about creating them? We need some ways to do that. Working with our test data, let's add a simple Modal window that slides up, letting us put in a new task. Place
-the following script tag after the closing `` tag in the `<body>` of the HTML file:
+<p>Okay, so we have some testing data for tasks, but what about creating them? We need some ways to do that. Working with our test data, let’s add a simple Modal window that slides up, letting us put in a new task. Place<br />
+the following script tag after the closing <code class="highlighter-rouge">&lt;/ion-side-menu&gt;</code> tag in the <code class="highlighter-rouge">&lt;body&gt;</code> of the HTML file:</p>
 
-```html
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"new-task.html"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
 
-<script id="new-task.html" type="text/ng-template">
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"modal"</span><span class="o">&gt;</span>
 
-  <div class="modal">
+    <span class="c">&lt;!--</span> <span class="nx">Modal</span> <span class="nx">header</span> <span class="nx">bar</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">header</span><span class="o">-</span><span class="nx">bar</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"bar-secondary"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="nx">New</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"button button-clear button-positive"</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">click</span><span class="o">=</span><span class="s2">"closeNewTask()"</span><span class="o">&gt;</span><span class="nx">Cancel</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-header-bar</span><span class="err">&gt;
+</span>
+    <span class="c">&lt;!--</span> <span class="nx">Modal</span> <span class="nx">content</span> <span class="nx">area</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
 
-    <!-- Modal header bar -->
-    <ion-header-bar class="bar-secondary">
-      <h1 class="title">New Task</h1>
-      <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
-    </ion-header-bar>
+      <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">submit</span><span class="o">=</span><span class="s2">"createTask(task)"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"list"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">label</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"item item-input"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">"What do you need to do?"</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">"task.title"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"padding"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"submit"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"button button-block button-positive"</span><span class="o">&gt;</span><span class="nx">Create</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
+</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="nt">&lt;/script&gt;</span>
 
-    <!-- Modal content area -->
-    <ion-content>
+</code></pre>
+</div>
 
-      <form ng-submit="createTask(task)">
-        <div class="list">
-          <label class="item item-input">
-            <input type="text" placeholder="What do you need to do?" ng-model="task.title">
-          </label>
-        </div>
-        <div class="padding">
-          <button type="submit" class="button button-block button-positive">Create Task</button>
-        </div>
-      </form>
+<p>There is a lot of information in the above code. First of all, we are defining this template as an Angular template using <code class="highlighter-rouge">&lt;script id="new-task.html" type="text/ng-template"&gt;</code>. The good thing about Angular templates is they can be loaded from anywhere: locally or remote. The URL of the template is the unique identifier, and if the template is defined locally, it will be fetched locally. Templates are a great way to separate layouts and UIs, so we use them extensively.</p>
 
-    </ion-content>
+<p>We then set a header with a button to close the modal, and then set up our content area. For the form, we are calling <code class="highlighter-rouge">createTask(task)</code> when the form is submitted. The <code class="highlighter-rouge">task</code> that is passed to <code class="highlighter-rouge">createTask</code> is the object corresponding to the entered form data. Since our text input has <code class="highlighter-rouge">ng-model="task.title"</code>, that text input will set the <code class="highlighter-rouge">title</code> property of the <code class="highlighter-rouge">task</code> object.</p>
 
-  </div>
+<p>In order to trigger the Modal to open, we need a button in the main header bar and some code to open the modal, the center content then becomes:</p>
 
-</script>
-
-```
-
-There is a lot of information in the above code. First of all, we are defining this template as an Angular template using `<script id="new-task.html" type="text/ng-template">`. The good thing about Angular templates is they can be loaded from anywhere: locally or remote. The URL of the template is the unique identifier, and if the template is defined locally, it will be fetched locally. Templates are a great way to separate layouts and UIs, so we use them extensively.
-
-We then set a header with a button to close the modal, and then set up our content area. For the form, we are calling `createTask(task)` when the form is submitted. The `task` that is passed to `createTask` is the object corresponding to the entered form data. Since our text input has `ng-model="task.title"`, that text input will set the `title` property of the `task` object.
-
-In order to trigger the Modal to open, we need a button in the main header bar and some code to open the modal, the center content then becomes:
-
-```html
-
-  <!-- Center content -->
-  <ion-side-menu-content>
-    <ion-header-bar class="bar-dark">
-      <h1 class="title">Todo</h1>
-      <!-- New Task button-->
-      <button class="button button-icon" ng-click="newTask()">
-        <i class="icon ion-compose"></i>
-      </button>
-    </ion-header-bar>
-    <ion-content>
-      <!-- our list and list items -->
-      <ion-list>
-        <ion-item ng-repeat="task in tasks">
+<div class="highlighter-rouge"><pre class="highlight"><code>
+  <span class="c">&lt;!-- Center content --&gt;</span>
+  <span class="nt">&lt;ion-side-menu-content&gt;</span>
+    <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Todo<span class="nt">&lt;/h1&gt;</span>
+      <span class="c">&lt;!-- New Task button--&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-icon"</span> <span class="na">ng-click=</span><span class="s">"newTask()"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon ion-compose"</span><span class="nt">&gt;&lt;/i&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-header-bar&gt;</span>
+    <span class="nt">&lt;ion-content&gt;</span>
+      <span class="c">&lt;!-- our list and list items --&gt;</span>
+      <span class="nt">&lt;ion-list&gt;</span>
+        <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"task in tasks"</span><span class="nt">&gt;</span>
           {{task.title}}
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu-content>
+        <span class="nt">&lt;/ion-item&gt;</span>
+      <span class="nt">&lt;/ion-list&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
+  <span class="nt">&lt;/ion-side-menu-content&gt;</span>
 
-```
+</code></pre>
+</div>
 
-And in our controller code:
+<p>And in our controller code:</p>
 
-```javascript
-angular.module('todo', ['ionic'])
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 
-.controller('TodoCtrl', function($scope, $ionicModal) {
-  // No need for testing data anymore
-  $scope.tasks = [];
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TodoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicModal</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// No need for testing data anymore</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">tasks</span> <span class="o">=</span> <span class="p">[];</span>
 
-  // Create and load the Modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
-  }, {
-    scope: $scope,
-    animation: 'slide-in-up'
-  });
+  <span class="c1">// Create and load the Modal</span>
+  <span class="nx">$ionicModal</span><span class="p">.</span><span class="nx">fromTemplateUrl</span><span class="p">(</span><span class="s1">'new-task.html'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span> <span class="o">=</span> <span class="nx">modal</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="na">scope</span><span class="p">:</span> <span class="nx">$scope</span><span class="p">,</span>
+    <span class="na">animation</span><span class="p">:</span> <span class="s1">'slide-in-up'</span>
+  <span class="p">});</span>
 
-  // Called when the form is submitted
-  $scope.createTask = function(task) {
-    $scope.tasks.push({
-      title: task.title
-    });
-    $scope.taskModal.hide();
-    task.title = "";
-  };
+  <span class="c1">// Called when the form is submitted</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">createTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">task</span><span class="p">.</span><span class="nx">title</span>
+    <span class="p">});</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="nx">task</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="p">};</span>
 
-  // Open our new task modal
-  $scope.newTask = function() {
-    $scope.taskModal.show();
-  };
+  <span class="c1">// Open our new task modal</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">newTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+  <span class="p">};</span>
 
-  // Close the new task modal
-  $scope.closeNewTask = function() {
-    $scope.taskModal.hide();
-  };
-});
-```
+  <span class="c1">// Close the new task modal</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">closeNewTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+</div>
 
-Now run the example and try adding a task. It should slide up the modal and then show the new task after submitting it.
+<p>Now run the example and try adding a task. It should slide up the modal and then show the new task after submitting it.</p>
 
+<h2 id="adding-projects">Adding projects</h2>
 
-## Adding projects
+<p>Now we can add support for adding and selecting projects. To do this, we are going to do a lot of the same work we did for the tasks list. We will add a list to display the projects, and a button to add a new project. We are also going to take the chance to abstract away the <code class="highlighter-rouge">Project</code> model into an angular service that will also handle saving and loading our projects and tasks from localStorage.</p>
 
-Now we can add support for adding and selecting projects. To do this, we are going to do a lot of the same work we did for the tasks list. We will add a list to display the projects, and a button to add a new project. We are also going to take the chance to abstract away the `Project` model into an angular service that will also handle saving and loading our projects and tasks from localStorage.
+<p>We are also going to slip in a few more little things to make the app feel right. Specifically, we’ve added support for selecting a project (and showing that it’s selected), and automatically closing the side menu when creating a new project or selecting an existing one.</p>
 
-We are also going to slip in a few more little things to make the app feel right. Specifically, we've added support for selecting a project (and showing that it's selected), and automatically closing the side menu when creating a new project or selecting an existing one.
+<p>Here is the new content area markup:</p>
 
-Here is the new content area markup:
-
-```html
-
-<!-- Center content -->
-<ion-side-menu-content>
-  <ion-header-bar class="bar-dark">
-    <button class="button button-icon" ng-click="toggleProjects()">
-      <i class="icon ion-navicon"></i>
-    </button>
-    <h1 class="title">{{activeProject.title}}</h1>
-    <!-- New Task button-->
-    <button class="button button-icon" ng-click="newTask()">
-      <i class="icon ion-compose"></i>
-    </button>
-  </ion-header-bar>
-  <ion-content scroll="false">
-    <ion-list>
-      <ion-item ng-repeat="task in activeProject.tasks">
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">&lt;!-- Center content --&gt;</span>
+<span class="nt">&lt;ion-side-menu-content&gt;</span>
+  <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-icon"</span> <span class="na">ng-click=</span><span class="s">"toggleProjects()"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon ion-navicon"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>{{activeProject.title}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="c">&lt;!-- New Task button--&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-icon"</span> <span class="na">ng-click=</span><span class="s">"newTask()"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon ion-compose"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-header-bar&gt;</span>
+  <span class="nt">&lt;ion-content</span> <span class="na">scroll=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-list&gt;</span>
+      <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"task in activeProject.tasks"</span><span class="nt">&gt;</span>
         {{task.title}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-side-menu-content>
+      <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;/ion-list&gt;</span>
+  <span class="nt">&lt;/ion-content&gt;</span>
+<span class="nt">&lt;/ion-side-menu-content&gt;</span>
 
-```
+</code></pre>
+</div>
 
-And the new side menu markup:
+<p>And the new side menu markup:</p>
 
-
-```html
-
-  <!-- Left menu -->
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-dark">
-      <h1 class="title">Projects</h1>
-      <button class="button button-icon ion-plus" ng-click="newProject()">
-      </button>
-    </ion-header-bar>
-    <ion-content scroll="false">
-      <ion-list>
-        <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}">
+<div class="highlighter-rouge"><pre class="highlight"><code>
+  <span class="c">&lt;!-- Left menu --&gt;</span>
+  <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-header-bar</span> <span class="na">class=</span><span class="s">"bar-dark"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Projects<span class="nt">&lt;/h1&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-icon ion-plus"</span> <span class="na">ng-click=</span><span class="s">"newProject()"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-header-bar&gt;</span>
+    <span class="nt">&lt;ion-content</span> <span class="na">scroll=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-list&gt;</span>
+        <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"project in projects"</span> <span class="na">ng-click=</span><span class="s">"selectProject(project, $index)"</span> <span class="na">ng-class=</span><span class="s">"{active: activeProject == project}"</span><span class="nt">&gt;</span>
           {{project.title}}
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+        <span class="nt">&lt;/ion-item&gt;</span>
+      <span class="nt">&lt;/ion-list&gt;</span>
+    <span class="nt">&lt;/ion-content&gt;</span>
+  <span class="nt">&lt;/ion-side-menu&gt;</span>
 
-```
+</code></pre>
+</div>
 
+<p>This adds a side menu of projects, letting us click on each project and also add a new one with a small plus icon button in the header bar. The <code class="highlighter-rouge">ng-class</code> directive in the <code class="highlighter-rouge">&lt;ion-item&gt;</code> makes sure to add the <code class="highlighter-rouge">active</code> class to the currently active project.</p>
 
-This adds a side menu of projects, letting us click on each project and also add a new one with a small plus icon button in the header bar. The `ng-class` directive in the `<ion-item>` makes sure to add the `active` class to the currently active project.
+<p>To enable adding, saving, and loading projects, we’ve had to add a bit of code to the controller. Here is the new version of the <code class="highlighter-rouge">app.js</code> file:</p>
 
-To enable adding, saving, and loading projects, we've had to add a bit of code to the controller. Here is the new version of the `app.js` file:
-
-```javascript
-
-angular.module('todo', ['ionic'])
-/**
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<span class="cm">/**
  * The Projects factory handles saving and loading projects
  * from local storage, and also lets us save and load the
  * last active project index.
- */
-.factory('Projects', function() {
-  return {
-    all: function() {
-      var projectString = window.localStorage['projects'];
-      if(projectString) {
-        return angular.fromJson(projectString);
-      }
-      return [];
-    },
-    save: function(projects) {
-      window.localStorage['projects'] = angular.toJson(projects);
-    },
-    newProject: function(projectTitle) {
-      // Add a new project
-      return {
-        title: projectTitle,
-        tasks: []
-      };
-    },
-    getLastActiveIndex: function() {
-      return parseInt(window.localStorage['lastActiveProject']) || 0;
-    },
-    setLastActiveIndex: function(index) {
-      window.localStorage['lastActiveProject'] = index;
-    }
-  }
-})
+ */</span>
+<span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'Projects'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">all</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">projectString</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">'projects'</span><span class="p">];</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">projectString</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">fromJson</span><span class="p">(</span><span class="nx">projectString</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">},</span>
+    <span class="na">save</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">projects</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">'projects'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">toJson</span><span class="p">(</span><span class="nx">projects</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">newProject</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Add a new project</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="nx">projectTitle</span><span class="p">,</span>
+        <span class="na">tasks</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="na">getLastActiveIndex</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">'lastActiveProject'</span><span class="p">])</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">setLastActiveIndex</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">[</span><span class="s1">'lastActiveProject'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">index</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 
-.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TodoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">,</span> <span class="nx">$ionicModal</span><span class="p">,</span> <span class="nx">Projects</span><span class="p">,</span> <span class="nx">$ionicSideMenuDelegate</span><span class="p">)</span> <span class="p">{</span>
 
-  // A utility function for creating a new project
-  // with the given projectTitle
-  var createProject = function(projectTitle) {
-    var newProject = Projects.newProject(projectTitle);
-    $scope.projects.push(newProject);
-    Projects.save($scope.projects);
-    $scope.selectProject(newProject, $scope.projects.length-1);
-  }
-
-
-  // Load or initialize projects
-  $scope.projects = Projects.all();
-
-  // Grab the last active, or the first project
-  $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
-
-  // Called to create a new project
-  $scope.newProject = function() {
-    var projectTitle = prompt('Project name');
-    if(projectTitle) {
-      createProject(projectTitle);
-    }
-  };
-
-  // Called to select the given project
-  $scope.selectProject = function(project, index) {
-    $scope.activeProject = project;
-    Projects.setLastActiveIndex(index);
-    $ionicSideMenuDelegate.toggleLeft(false);
-  };
-
-  // Create our modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
-  }, {
-    scope: $scope
-  });
-
-  $scope.createTask = function(task) {
-    if(!$scope.activeProject || !task) {
-      return;
-    }
-    $scope.activeProject.tasks.push({
-      title: task.title
-    });
-    $scope.taskModal.hide();
-
-    // Inefficient, but save all the projects
-    Projects.save($scope.projects);
-
-    task.title = "";
-  };
-
-  $scope.newTask = function() {
-    $scope.taskModal.show();
-  };
-
-  $scope.closeNewTask = function() {
-    $scope.taskModal.hide();
-  }
-
-  $scope.toggleProjects = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
+  <span class="c1">// A utility function for creating a new project</span>
+  <span class="c1">// with the given projectTitle</span>
+  <span class="kd">var</span> <span class="nx">createProject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">newProject</span> <span class="o">=</span> <span class="nx">Projects</span><span class="p">.</span><span class="nx">newProject</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">);</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newProject</span><span class="p">);</span>
+    <span class="nx">Projects</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">);</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">selectProject</span><span class="p">(</span><span class="nx">newProject</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
 
 
-  // Try to create the first project, make sure to defer
-  // this by using $timeout so everything is initialized
-  // properly
-  $timeout(function() {
-    if($scope.projects.length == 0) {
-      while(true) {
-        var projectTitle = prompt('Your first project title:');
-        if(projectTitle) {
-          createProject(projectTitle);
-          break;
-        }
-      }
-    }
-  });
+  <span class="c1">// Load or initialize projects</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span> <span class="o">=</span> <span class="nx">Projects</span><span class="p">.</span><span class="nx">all</span><span class="p">();</span>
 
-});
+  <span class="c1">// Grab the last active, or the first project</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeProject</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">[</span><span class="nx">Projects</span><span class="p">.</span><span class="nx">getLastActiveIndex</span><span class="p">()];</span>
 
-```
+  <span class="c1">// Called to create a new project</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">newProject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">projectTitle</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s1">'Project name'</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">createProject</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
 
-I know, that was a lot of code to jump right to, but it's largely the same concepts from before, just with more details. If you run this version of the app, you should now have a pretty polished and usable multi-project Todo app!
+  <span class="c1">// Called to select the given project</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">selectProject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeProject</span> <span class="o">=</span> <span class="nx">project</span><span class="p">;</span>
+    <span class="nx">Projects</span><span class="p">.</span><span class="nx">setLastActiveIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+    <span class="nx">$ionicSideMenuDelegate</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Create our modal</span>
+  <span class="nx">$ionicModal</span><span class="p">.</span><span class="nx">fromTemplateUrl</span><span class="p">(</span><span class="s1">'new-task.html'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span> <span class="o">=</span> <span class="nx">modal</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="na">scope</span><span class="p">:</span> <span class="nx">$scope</span>
+  <span class="p">});</span>
+
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">createTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">activeProject</span> <span class="o">||</span> <span class="o">!</span><span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeProject</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">task</span><span class="p">.</span><span class="nx">title</span>
+    <span class="p">});</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+
+    <span class="c1">// Inefficient, but save all the projects</span>
+    <span class="nx">Projects</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">);</span>
+
+    <span class="nx">task</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">newTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+  <span class="p">};</span>
+
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">closeNewTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">taskModal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleProjects</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$ionicSideMenuDelegate</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">();</span>
+  <span class="p">};</span>
 
 
-[Chapter 6: Publishing your app](publishing.html)
+  <span class="c1">// Try to create the first project, make sure to defer</span>
+  <span class="c1">// this by using $timeout so everything is initialized</span>
+  <span class="c1">// properly</span>
+  <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">projects</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">projectTitle</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s1">'Your first project title:'</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">createProject</span><span class="p">(</span><span class="nx">projectTitle</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 
-</script></body></body>
+<span class="p">});</span>
+
+</code></pre>
+</div>
+
+<p>I know, that was a lot of code to jump right to, but it’s largely the same concepts from before, just with more details. If you run this version of the app, you should now have a pretty polished and usable multi-project Todo app!</p>
+
+<p><a href="publishing.html">Chapter 6: Publishing your app</a></p>
+
 
         </div>
 

@@ -976,33 +976,33 @@ Delegate: <a href="/docs/nightly/api/service/$ionicNavBarDelegate/"><code>$ionic
 
 </h1>
 
-<p>If we have an <a href="/docs/nightly/api/directive/ionNavView/"><code>ionNavView</code></a> directive, we can also create an
+<p>If we have an <a href="/docs/nightly/api/directive/ionNavView/"><code>ionNavView</code></a> directive, we can also create an<br />
 <code class="highlighter-rouge">&lt;ion-nav-bar&gt;</code>, which will create a topbar that updates as the application state changes.</p>
 
 <p>We can add a back button by putting an <a href="/docs/nightly/api/directive/ionNavBackButton/"><code>ionNavBackButton</code></a> inside.</p>
 
-<p>We can add buttons depending on the currently visible view using
+<p>We can add buttons depending on the currently visible view using<br />
 <a href="/docs/nightly/api/directive/ionNavButtons/"><code>ionNavButtons</code></a>.</p>
 
-<p>Note that the ion-nav-bar element will only work correctly if your content has an
+<p>Note that the ion-nav-bar element will only work correctly if your content has an<br />
 ionView around it.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>```html</p>
-<body ng-app="starter">
-  <!-- The nav bar that will be updated as we navigate -->
-  <ion-nav-bar class="bar-positive">
-  </ion-nav-bar>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"starter"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The nav bar that will be updated as we navigate --&gt;</span>
+  <span class="nt">&lt;ion-nav-bar</span> <span class="na">class=</span><span class="s">"bar-positive"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ion-nav-bar&gt;</span>
 
-  <!-- where the initial view template will be rendered -->
-  <ion-nav-view>
-    <ion-view>
-      <ion-content>Hello!</ion-content>
-    </ion-view>
-  </ion-nav-view>
-</body>
-<p>```</p>
+  <span class="c">&lt;!-- where the initial view template will be rendered --&gt;</span>
+  <span class="nt">&lt;ion-nav-view&gt;</span>
+    <span class="nt">&lt;ion-view&gt;</span>
+      <span class="nt">&lt;ion-content&gt;</span>Hello!<span class="nt">&lt;/ion-content&gt;</span>
+    <span class="nt">&lt;/ion-view&gt;</span>
+  <span class="nt">&lt;/ion-nav-view&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre>
+</div>
 
 <h2 id="api" style="clear:both;">API</h2>
 

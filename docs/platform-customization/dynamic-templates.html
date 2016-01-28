@@ -198,19 +198,19 @@
 
 <p>Sometimes showing or changing elements based on the platform isn’t enough. There may be times when you need to use two different structures for your project, and you don’t want to place the logic in the HTML. In these cases, you can use <code class="highlighter-rouge">ionic.Platform</code> to decide which template to load in a given state. For example, the following code will load the <code class="highlighter-rouge">templates/home-android.html</code> file if the platform is Android, and <code class="highlighter-rouge">templates/home.html</code> for all other platforms:</p>
 
-<p><code class="highlighter-rouge">javascript
-.state('tab', {
-  url: "/tab",
-  abstract: true,
-  controller: 'AppCtrl',
-  templateUrl: function() {
-    if (ionic.Platform.isAndroid()) {
-        return  "templates/home-android.html";
-    }
-    return "templates/home.html";
-  }
-})
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'tab'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"/tab"</span><span class="p">,</span>
+  <span class="na">abstract</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">controller</span><span class="p">:</span> <span class="s1">'AppCtrl'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">isAndroid</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span>  <span class="s2">"templates/home-android.html"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="s2">"templates/home.html"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+</div>
 
 <h2 id="merges-directory">Merges Directory</h2>
 
@@ -222,18 +222,17 @@
 
 <p>For example, if you wanted to have a platform-specific <code class="highlighter-rouge">index.html</code> file, you would create the following directory structure:</p>
 
-<p><code class="highlighter-rouge">
-merges/
+<div class="highlighter-rouge"><pre class="highlight"><code>merges/
     ios/
         index.html
     android/
         index.html
-</code></p>
+</code></pre>
+</div>
 
 <p>If you wanted to have platform-specific styles or javascript, you could override those, too:</p>
 
-<p><code class="highlighter-rouge">
-merges/
+<div class="highlighter-rouge"><pre class="highlight"><code>merges/
     ios/
         index.html
         css/
@@ -246,7 +245,8 @@ merges/
             platform.css
         js/
             app.js
-</code></p>
+</code></pre>
+</div>
 
 <p>Cordova will copy the platform specific files to the <code class="highlighter-rouge">www</code> directory in the <code class="highlighter-rouge">platforms</code> directory when you run the app. Note that you will not be able to see these differences in the browser, only when you run the app on a device or simulator.</p>
 

@@ -891,8 +891,8 @@
 
 <p>Delegate for controlling the <a href="/docs/api/directive/ionList/"><code>ionList</code></a> directive.</p>
 
-<p>Methods called directly on the $ionicListDelegate service will control all lists.
-Use the <a href="/docs/api/service/$ionicListDelegate/#$getByHandle">$getByHandle</a>
+<p>Methods called directly on the $ionicListDelegate service will control all lists.<br />
+Use the <a href="/docs/api/service/$ionicListDelegate/#$getByHandle">$getByHandle</a><br />
 method to control specific ionList instances.</p>
 
 <h2 id="usage">Usage</h2>
@@ -906,14 +906,14 @@ method to control specific ionList instances.</p>
     </ion-item>
   </ion-list>
 </ion-content>
-<p><code class="highlighter-rouge">
-</code>js
+<div class="highlighter-rouge"><pre class="highlight"><code>```js
 function MyCtrl($scope, $ionicListDelegate) {
   $scope.showDeleteButtons = function() {
     $ionicListDelegate.showDelete(true);
   };
 }
-```</p>
+</code></pre>
+</div>
 
 <h2 id="methods">Methods</h2>
 
@@ -954,7 +954,7 @@ function MyCtrl($scope, $ionicListDelegate) {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether the reorder buttons are shown.</li>
 </ul>
 
@@ -995,7 +995,7 @@ function MyCtrl($scope, $ionicListDelegate) {
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether the delete buttons are shown.</li>
 </ul>
 
@@ -1037,7 +1037,7 @@ option buttons.</p>
 </table>
 
 <ul>
-  <li>Returns: 
+  <li>Returns: <br />
 <code>boolean</code> Whether the list is able to swipe to show option buttons.</li>
 </ul>
 
@@ -1085,9 +1085,9 @@ option buttons.</p>
 </table>
 
 <ul>
-  <li>Returns: 
- <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the
-<a href="/docs/api/directive/ionList/"><code>ionList</code></a> directives with <code class="highlighter-rouge">delegate-handle</code> matching
+  <li>Returns: <br />
+ <code class="highlighter-rouge">delegateInstance</code> A delegate instance that controls only the<br />
+<a href="/docs/api/directive/ionList/"><code>ionList</code></a> directives with <code class="highlighter-rouge">delegate-handle</code> matching<br />
 the given handle.</li>
 </ul>
 
