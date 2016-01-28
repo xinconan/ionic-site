@@ -18,7 +18,8 @@
   <body id="docs-page-{{HideWhen | slugify}}"
         class="v2 docs page-{{HideWhen | slugify}}"
         data-spy="scroll"
-        data-target="#components-index">
+        data-target="#components-index"
+        ng-app="IonicDocs">
     <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,8 +28,7 @@
               class="navbar-toggle collapsed"
               data-toggle="collapse"
               data-target="#navbar-collapse"
-              aria-expanded="false"
-              ng-model="searchTerm">
+              aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <i class="ion-md-more"></i>
       </button>
@@ -53,7 +53,8 @@
           <input type="text"
                  class="form-control search-input"
                  placeholder="Search"
-                 data-searchpos="header">
+                 data-searchpos="header"
+                 ng-model="searchTerm">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
@@ -94,7 +95,6 @@
 </nav>
 
     <div class="docs-container"
-         ng-app="IonicDocs"
          
            ng-controller="APIDemoCtrl"
          >
