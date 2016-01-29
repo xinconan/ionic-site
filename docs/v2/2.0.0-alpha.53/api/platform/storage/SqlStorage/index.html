@@ -15,8 +15,8 @@
     <title>SqlStorage - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-{{SqlStorage | slugify}}"
-        class="v2 docs page-{{SqlStorage | slugify}}"
+  <body id="docs-page-sqlstorage"
+        class="v2 docs page-sqlstorage"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -308,7 +308,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/2.0.0-alpha.53/api/components/slides/Slides">Slides</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/2.0.0-alpha.53/api/platform/storage/SqlStorage">SqlStorage</a>
 </li>
 <li class="capitalize ">
@@ -399,7 +399,7 @@ storage.query(&#39;select * from projects&#39;).then((resp) =&gt; {})
 
 <h3>
 <code>query(query,&nbsp;params)</code>
-  
+
 
 </h3>
 
@@ -416,47 +416,47 @@ like SELECT, INSERT, and UPDATE.</p>
     </tr>
   </thead>
   <tbody>
-    
+
     <tr>
       <td>
         query
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>the query to run</p>
 
-        
+
       </td>
     </tr>
-    
+
     <tr>
       <td>
         params
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>array</code>
       </td>
       <td>
         <p>the additional params to use for query placeholders</p>
 
-        
+
       </td>
     </tr>
-    
+
   </tbody>
 </table>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
+<b>Returns:</b>
   <code>Promise</code> that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}
 </div>
 
@@ -464,7 +464,7 @@ like SELECT, INSERT, and UPDATE.</p>
 
 <h3>
 <code>get(key)</code>
-  
+
 
 </h3>
 
@@ -479,30 +479,30 @@ like SELECT, INSERT, and UPDATE.</p>
     </tr>
   </thead>
   <tbody>
-    
+
     <tr>
       <td>
         key
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>the key</p>
 
-        
+
       </td>
     </tr>
-    
+
   </tbody>
 </table>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
+<b>Returns:</b>
   <code>Promise</code> that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}
 </div>
 
@@ -510,7 +510,7 @@ like SELECT, INSERT, and UPDATE.</p>
 
 <h3>
 <code>set(key,&nbsp;value)</code>
-  
+
 
 </h3>
 
@@ -525,47 +525,47 @@ like SELECT, INSERT, and UPDATE.</p>
     </tr>
   </thead>
   <tbody>
-    
+
     <tr>
       <td>
         key
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>the key</p>
 
-        
+
       </td>
     </tr>
-    
+
     <tr>
       <td>
         value
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>The value (as a string)</p>
 
-        
+
       </td>
     </tr>
-    
+
   </tbody>
 </table>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
+<b>Returns:</b>
   <code>Promise</code> that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}
 </div>
 
@@ -573,7 +573,7 @@ like SELECT, INSERT, and UPDATE.</p>
 
 <h3>
 <code>remove(key,&nbsp;value)</code>
-  
+
 
 </h3>
 
@@ -588,47 +588,47 @@ like SELECT, INSERT, and UPDATE.</p>
     </tr>
   </thead>
   <tbody>
-    
+
     <tr>
       <td>
         key
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>the key</p>
 
-        
+
       </td>
     </tr>
-    
+
     <tr>
       <td>
         value
-        
-        
+
+
       </td>
       <td>
-        
+
   <code>string</code>
       </td>
       <td>
         <p>The value (as a string)</p>
 
-        
+
       </td>
     </tr>
-    
+
   </tbody>
 </table>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
+<b>Returns:</b>
   <code>Promise</code> that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}
 </div>
 
@@ -636,7 +636,6 @@ like SELECT, INSERT, and UPDATE.</p>
 <!-- end content block -->
 
 <!-- end body block -->
-
 
       </main>
     </div>
