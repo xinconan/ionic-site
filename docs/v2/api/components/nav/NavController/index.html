@@ -1287,7 +1287,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 <div id="remove"></div>
 
 <h3>
-<code>remove(startIndex,&nbsp;opts,&nbsp;opts)</code>
+<code>remove(startIndex,&nbsp;removeCount,&nbsp;opts)</code>
   
 
 </h3>
@@ -1325,7 +1325,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
   <code>number</code>
       </td>
       <td>
-        <p>The starting index to remove views from the nav stack</p>
+        <p>The starting index to remove pages from the stack. Default is the index of the last page.</p>
 
         
       </td>
@@ -1333,16 +1333,16 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
     
     <tr>
       <td>
-        opts
+        removeCount
         
         
       </td>
       <td>
         
-  <code>removeCount</code>
+  <code>number</code>
       </td>
       <td>
-        <p>The number of views to remove, defaults to remove <code>1</code>.</p>
+        <p>The number of pages to remove, defaults to remove <code>1</code>.</p>
 
         
       </td>
@@ -1359,7 +1359,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
   <code>object</code>
       </td>
       <td>
-        <p>Any options you want to use pass to transtion</p>
+        <p>Any options you want to use pass to transtion.</p>
 
         
       </td>
@@ -1371,7 +1371,7 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when the view has been removed
+  <code>Promise</code> Returns a promise when the page has been removed.
 </div>
 
 <div id="isSwipeBackEnabled"></div>
