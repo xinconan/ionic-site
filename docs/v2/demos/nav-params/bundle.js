@@ -46410,7 +46410,7 @@
 	 * ```html
 	 * <ion-navbar *navbar>
 	 *
-	 *   <ion-buttons>
+	 *   <ion-buttons start>
 	 *     <button (click)="toggleItems()">
 	 *       toggle
 	 *     </button>
@@ -46420,7 +46420,7 @@
 	 *     Page Title
 	 *   </ion-title>
 	 *
-	 *   <ion-buttons>
+	 *   <ion-buttons end>
 	 *     <button (click)="openModal()">
 	 *       Modal
 	 *     </button>
@@ -46449,6 +46449,9 @@
 	            this.hideBackButton = (hideBackButton === '' || hideBackButton === 'true');
 	        }
 	    };
+	    /**
+	     * @private
+	     */
 	    Navbar.prototype.setBackButtonText = function (text) {
 	        this._bbText = text;
 	    };
@@ -59119,6 +59122,7 @@
 	 * component) to be loaded initially by any Nav you create, using
 	 * the 'root' property:
 	 *
+	 * @usage
 	 * ```ts
 	 * import {GettingStartedPage} from 'getting-started';
 	 * @App({
