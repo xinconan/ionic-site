@@ -217,7 +217,7 @@
 </code></pre>
 </div>
 
-<p>This will generate a release build based on the settings in your <code class="highlighter-rouge">config.xml</code>. Your Ionic app will have preset default values in this file, but if you need to customize how your app is built, you can edit this file to fit your preferences. Check out <a href="http://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_config.md.html#Android%20Configuration">the config.xml file</a> documentation for more information.</p>
+<p>This will generate a release build based on the settings in your <code class="highlighter-rouge">config.xml</code>. Your Ionic app will have preset default values in this file, but if you need to customize how your app is built, you can edit this file to fit your preferences. Check out <a href="http://cordova.apache.org/docs/en/latest/guide/platforms/android/config.html">the config.xml file</a> documentation for more information.</p>
 
 <p>Next, we can find our <em>unsigned</em> APK file in <code class="highlighter-rouge">platforms/android/build/outputs/apk</code>. In our example, the file was <code class="highlighter-rouge">platforms/android/build/outputs/apk/HelloWorld-release-unsigned.apk</code>. Now, we need to sign the unsigned APK and run an alignment utility on it to optimize it and prepare it for the app store. If you already have a signing key, skip these steps and use that one instead.</p>
 
