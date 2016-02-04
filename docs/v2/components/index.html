@@ -158,6 +158,7 @@
           <li class="nav-item-hidden"><a href="#alert-confirm"></a></li>
           <li class="nav-item-hidden"><a href="#alert-prompt"></a></li>
           <li class="nav-item-hidden"><a href="#alert-radio"></a></li>
+          <li class="nav-item-hidden"><a href="#alert-checkbox"></a></li>
         </ul>
 
       <li><a href="#badges">Badges</a></li>
@@ -478,6 +479,7 @@
   <li class="docs-content-item"><a href="#alert-prompt">Prompt Alerts</a></li>
   <li class="docs-content-item"><a href="#alert-confirm">Confirmation Alerts</a></li>
   <li class="docs-content-item"><a href="#alert-radio">Radio Alerts</a></li>
+  <li class="docs-content-item"><a href="#alert-checkbox">Checkbox Alerts</a></li>
 </ul>
 
 <h3 class="section-nav" id="alerts">Basic Usage:</h3>
@@ -590,6 +592,44 @@
         this.testRadioResult = data;
       }
     });
+</code></pre>
+</div>
+
+<h3 class="section-nav" id="alert-checkbox">Checkbox</h3>
+
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/alerts/checkbox">
+  Demo Source
+</a></p>
+
+<p>Checkbox Alerts are simply another type of Confirmation Alert, but use the <a href="/docs/v2/components/#checkbox">Checkbox</a> component to offer several choices. They offer the user a set of options to choose from.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  doCheckbox() {
+    let alert = Alert.create();
+    alert.setTitle('Which planets have you visited?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Alderaan',
+      value: 'value1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Bespin',
+      value: 'value2'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data =&gt; {
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen = false;
+        this.testCheckboxResult = data;
+      }
+    });
+  }
 </code></pre>
 </div>
 
