@@ -442,13 +442,9 @@ class MyApp {
 
 <p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/hello-ionic/</code> folder, let’s open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
 
-<p><button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#naming-conventions">
-  Naming conventions
-</button></p>
-
-<div id="naming-conventions" class="collapse well">
-You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code>.html</code> and a <code>.scss</code> file with the same name. For example, inside of <code>hello-ionic/</code> we will find <code>hello-ionic.js</code>, <code>hello-ionic.html</code>, and <code>hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.
-</div>
+<blockquote>
+  <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find<code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
+</blockquote>
 
 <p>Below, you will see the <code class="highlighter-rouge">HelloIonicPage</code> class which has a <code class="highlighter-rouge">Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component and an Angular view configured with all the necessary directives already that is meant to be loaded dynamically, so it does not use a tag selector:</p>
 
@@ -524,7 +520,7 @@ export class ListPage {
 
 <p>This page will create a basic list page containing a number of items. Notice that we are also defining an <code class="highlighter-rouge">itemTapped</code> function that logs the title of an item to the console. Let’s go check out how this function gets called. Open up <code class="highlighter-rouge">app/list/list.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ng-for=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemTapped</span><span class="err">($</span><span class="na">event</span><span class="err">,</span> <span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemTapped</span><span class="err">($</span><span class="na">event</span><span class="err">,</span> <span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
 </code></pre>
 </div>
 
