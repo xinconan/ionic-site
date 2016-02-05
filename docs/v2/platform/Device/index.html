@@ -15,8 +15,8 @@
     <title>Device - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-device"
-        class="v2 docs page-device"
+  <body id="docs-page-{{Device | slugify}}"
+        class="v2 docs page-{{Device | slugify}}"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -256,7 +256,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/platform/Contacts">Contacts</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/platform/Device">Device</a>
 </li>
 <li class="capitalize ">
@@ -423,6 +423,7 @@ Improve this doc
 <!-- end content block -->
 
 <!-- end body block -->
+
 
       </main>
     </div>

@@ -15,8 +15,8 @@
     <title>Calendar - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-calendar"
-        class="v2 docs page-calendar"
+  <body id="docs-page-{{Calendar | slugify}}"
+        class="v2 docs page-{{Calendar | slugify}}"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -247,7 +247,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/platform/BLE">BLE</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/platform/Calendar">Calendar</a>
 </li>
 <li class="capitalize ">
@@ -415,6 +415,7 @@ Improve this doc
 <!-- end content block -->
 
 <!-- end body block -->
+
 
       </main>
     </div>

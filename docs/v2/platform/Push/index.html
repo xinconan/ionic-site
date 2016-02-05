@@ -15,8 +15,8 @@
     <title>Push - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-push"
-        class="v2 docs page-push"
+  <body id="docs-page-{{Push | slugify}}"
+        class="v2 docs page-{{Push | slugify}}"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -265,7 +265,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/platform/Geolocation">Geolocation</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/platform/Push">Push</a>
 </li>
 <li class="capitalize ">
@@ -415,6 +415,7 @@ Improve this doc
 <!-- end content block -->
 
 <!-- end body block -->
+
 
       </main>
     </div>
