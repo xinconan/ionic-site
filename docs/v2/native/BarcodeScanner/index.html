@@ -12,11 +12,11 @@
 
 
 
-    <title>ActionSheet - Class in module  -  Ionic Framework</title>
+    <title>BarcodeScanner - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-actionsheet"
-        class="v2 docs page-actionsheet"
+  <body id="docs-page-barcodescanner"
+        class="v2 docs page-barcodescanner"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -393,7 +393,7 @@
         <h1 class="api-title">
 
 
-ActionSheet
+BarcodeScanner
 
 
 
@@ -402,14 +402,26 @@ ActionSheet
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/actionsheet.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/barcodescanner.ts#L0">
 Improve this doc
 </a></p>
 
 <!-- description -->
 <h2>Description</h2>
 
+<p>The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.</p>
+<p>Requires Cordova plugin: <code>phonegap-plugin-barcodescanner</code>. For more info, please see the <a href="https://github.com/phonegap/phonegap-plugin-barcodescanner">BardcodeScanner plugin docs</a>.</p>
+
 <!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-js">BarcodeScanner.scan(options).then((barcodeData) =&gt; {
+ // Success! Barcode data is here
+}, (err) =&gt; {
+    // An error occurred
+});
+</code></pre>
 
 <!-- @property tags -->
 
