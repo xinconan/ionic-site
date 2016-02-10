@@ -479,19 +479,15 @@ ionic g page myPage
 
 <p>This will give you a html file, sass file, and a js file with your component definition.</p>
 
-<p>To create a service, you can replace <code class="highlighter-rouge">page</code> with <code class="highlighter-rouge">injectable</code>:</p>
+<p>To create a service, you can replace <code class="highlighter-rouge">page</code> with <code class="highlighter-rouge">provider</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ionic g injectable MyData
+<div class="highlighter-rouge"><pre class="highlight"><code>ionic g provider MyData
 
 √ Create app/pages/my-data/my-data.js
 </code></pre>
 </div>
 
 <p>This will create a standard class with a simple <code class="highlighter-rouge">http</code> get request using Angular’s <code class="highlighter-rouge">http</code> class.</p>
-
-<blockquote>
-  <p>They’re called injectables because to use the class, you first have to annotate it with the <code class="highlighter-rouge">@Injectable()</code> decorator. This will let you use the class in your app.</p>
-</blockquote>
 
 <h3 id="a-quick-note-on-naming-conventions">A quick note on naming conventions</h3>
 
