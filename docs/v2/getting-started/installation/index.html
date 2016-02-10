@@ -395,9 +395,9 @@
 
 <p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/guide/index.md">Improve this doc</a></p>
 
-<p>Like Ionic 1, Ionic 2 apps can be quickly created from the Ionic CLI or GUI tool, or built and tested right in the browser.</p>
+<p>Like Ionic 1, Ionic 2 apps can be quickly created from the Ionic CLI or GUI tool or built and tested right in the browser.</p>
 
-<p>To install the Ionic SDK and create Ionic 2 projects, we need to install the latest beta release:</p>
+<p>To install the Ionic SDK and create Ionic 2 projects, you’ll need to install the latest beta release:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
 </code></pre>
@@ -415,45 +415,45 @@
 </code></pre>
 </div>
 
-<p>To run our app, let’s <code class="highlighter-rouge">cd</code> in to the directory that was created, and then run the <code class="highlighter-rouge">ionic serve</code> command:</p>
+<p>To run your app, <code class="highlighter-rouge">cd</code> into the directory that was created and then run the <code class="highlighter-rouge">ionic serve</code> command:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>cutePuppyPics
 <span class="gp">$ </span>ionic serve
 </code></pre>
 </div>
 
-<p>And we can play with it right in the browser!</p>
+<p>You can play with it right in the browser!</p>
 
 <h3 id="building-to-a-devicebuilding-to-a-device"><a href="#building-to-a-device">Building to a Device</a></h3>
-<p>After you have Ionic installed, we can build our app to a physical device. If you don’t have a physical device on hand, you can still build to a device emulator. Check out the <a href="../../resources/developer-tips/#using-ios-simulator">iOS simulator</a> docs if you are on Mac, or the <a href="../../resources/developer-tips/#using-genymotion">Genymotion</a> docs if you are looking to emulate an Android device. We will also need <a href="../../resources/what-is/#cordova">Cordova</a> to run your app on a native device. To install Cordova, run:</p>
+<p>After you have Ionic installed, you can build your app to a physical device. If you don’t have a physical device on hand, you can still build to a device emulator. Check out the <a href="../../resources/developer-tips/#using-ios-simulator">iOS simulator</a> docs if you are on a Mac, or the <a href="../../resources/developer-tips/#using-genymotion">Genymotion</a> docs if you are looking to emulate an Android device. You will also need <a href="../../resources/what-is/#cordova">Cordova</a> to run your app on a native device. To install Cordova, run:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g cordova
 </code></pre>
 </div>
 
-<p>Once you have Cordova installed, and a device or emulator ready to go, we can move on and begin building your app!</p>
+<p>Once you have Cordova installed and a device or emulator ready to go, you can move on and begin building your app!</p>
 
 <h3 id="building-for-iosbuilding-for-ios"><a href="#building-for-ios">Building for iOS</a></h3>
 <p>To build for iOS, we need to add the iOS platform module to Cordova:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ionic platform add ios</code></pre></figure>
 
-<p>Next, we will need to install <a href="../../resources/what-is/#xcode">Xcode</a>. Xcode allows us to build compile to a target device running iOS.</p>
+<p>Next, you’ll need to install <a href="../../resources/what-is/#xcode">Xcode</a>. Xcode allows you to build compile to a target device running iOS.</p>
 
-<p>From there, we should be able to run the iOS emulator using the following command:</p>
+<p>From there, you should be able to run the iOS emulator using the following command:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic emulate ios
 </code></pre>
 </div>
 
 <h3 id="building-for-androidbuilding-for-android"><a href="#building-for-android">Building for Android</a></h3>
-<p>To build for Android, we need to add the Android platform module to Cordova:&lt;/p&gt;</p>
+<p>To build for Android, you’ll need to add the Android platform module to Cordova:&lt;/p&gt;</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform add android
 </code></pre>
 </div>
 
-<p>Next, we will need to install the <a href="../../resources/what-is/#android-sdk">Android SDK</a>. The Android SDK allows us to build compile to a target device running Android. Although the Android SDK comes with a stock emulator, <a href="../../resources/what-is/#genymotion">Genymotion</a> is recommended since is is much faster. Once installed, we can run an Android image and run:</p>
+<p>Next, you’ll need to install the <a href="../../resources/what-is/#android-sdk">Android SDK</a>. The Android SDK allows you to build compile to a target device running Android. Although the Android SDK comes with a stock emulator, <a href="../../resources/what-is/#genymotion">Genymotion</a> is recommended, since it’s much faster. Once installed, run an Android image and run:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run android
 </code></pre>
