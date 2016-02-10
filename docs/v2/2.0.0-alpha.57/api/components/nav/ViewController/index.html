@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ionic makes it incredibly easy to build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<meta name="author" content="Drifty">
+<meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
+
+<link href="/css/v2.css?4" rel="stylesheet">
+
+
+
+    <title>ViewController - Class in module  -  Ionic Framework</title>
+
+  </head>
+  <body id="docs-page-viewcontroller"
+        class="v2 docs page-viewcontroller"
+        data-spy="scroll"
+        data-target="#components-index"
+        ng-app="IonicDocs">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand" href="/docs/v2">
+        <img src="/img/ionic-docs-logo-sm.png" id="ionic-docs-logo" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/docs/v2/getting-started/installation/">Getting Started</a></li>
+        <li class="active"><a href="/docs/v2/">Docs</a></li>
+        <li><a href="http://blog.ionic.io/">Blog</a></li>
+        <li><a href="http://forum.ionicframework.com/">Forum</a></li>
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">
+            More <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="http://ionic.io/">
+              Ionic Platform</a></li>
+            <li><a target="_blank" href="http://showcase.ionicframework.com/">
+              Showcase</a></li>
+            <li><a target="_blank" href="http://jobs.ionic.io/">
+              Job Board</a></li>
+            <li><a target="_blank" href="http://market.ionic.io/">
+              Market</a></li>
+            <li><a target="_blank" href="http://ionicworldwide.herokuapp.com/">
+              Ionic Worldwide</a></li>
+            <li><a target="_blank" href="http://play.ionic.io/">
+              Playground</a></li>
+            <li><a target="_blank" href="http://creator.ionic.io/">
+              Creator</a></li>
+            <li><a target="_blank" href="http://shop.ionic.io/">Shop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="docs-container"
+         >
+      <nav class="side-nav" id="side-nav">
+        <form class="form-group search" role="search">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="sidebar"
+                 ng-model="searchTerm">
+        </form>
+        
+          <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/v2/api/"
+   >
+    2.0.0-nightly 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.57/api/"
+   selected>
+    2.0.0-alpha.57 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.56/api/"
+   >
+    2.0.0-alpha.56 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.55/api/"
+   >
+    2.0.0-alpha.55 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.54/api/"
+   >
+    2.0.0-alpha.54 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.53/api/"
+   >
+    2.0.0-alpha.53 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.44/api/"
+   >
+    2.0.0-alpha.44 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.43/api/"
+   >
+    2.0.0-alpha.43 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.42/api/"
+   >
+    2.0.0-alpha.42 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.40/api/"
+   >
+    2.0.0-alpha.40 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.37/api/"
+   >
+    2.0.0-alpha.37 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.36/api/"
+   >
+    2.0.0-alpha.36 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.35/api/"
+   >
+    2.0.0-alpha.35 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="/docs/v2">Back to Main Docs</a>
+  </li>
+  
+    
+
+    
+  
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api"></a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/action-sheet/ActionSheet">ActionSheet</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/alert/Alert">Alert</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/decorators/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/app/Id">Id</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/util/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/platform/storage/LocalStorage">LocalStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/modal/Modal">Modal</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/navbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/decorators/Page">Page</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/scroll/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/platform/storage/SqlStorage">SqlStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/input/TextArea">TextArea</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-alpha.57/api/components/nav/ViewController">ViewController</a>
+</li>
+
+
+    
+
+
+</ul>
+
+        
+      </nav>
+      
+      <main>
+        <h1 class="api-title">
+
+
+ViewController
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/ionic/components/nav/view-controller.ts#L4">
+Improve this doc
+</a></p>
+
+<p>Access various features and information about the current view</p>
+
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-ts">import {Page, ViewController} from &#39;ionic/ionic&#39;;
+@Page....
+export class MyPage{
+ constructor(viewCtrl: ViewController){
+   this.viewCtrl = viewCtrl;
+ }
+}
+</code></pre>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2>Instance Methods</h2>
+
+<div id="componentType"></div>
+
+<h3>
+<code>componentType()</code>
+  
+
+</h3>
+
+<div id="data"></div>
+
+<h3>
+<code>data()</code>
+  
+
+</h3>
+
+<div id="subscribe"></div>
+
+<h3>
+<code>subscribe()</code>
+  
+
+</h3>
+
+<div id="onDismiss"></div>
+
+<h3>
+<code>onDismiss()</code>
+  
+
+</h3>
+
+<div id="dismiss"></div>
+
+<h3>
+<code>dismiss()</code>
+  
+
+</h3>
+
+<div id="enableBack"></div>
+
+<h3>
+<code>enableBack(Check)</code>
+  
+
+</h3>
+
+<p>Check to see if you can go back in the navigation stack</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        Check
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>whether or not you can go back from this page</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Returns if it's possible to go back from this Page.
+</div>
+
+<div id="index"></div>
+
+<h3>
+<code>index()</code>
+  
+
+</h3>
+
+<p>You can find out the index of the current view is in the current navigation stack</p>
+
+<pre><code class="language-typescript"> export class Page1 {
+   constructor(view: ViewController){
+     this.view = view;
+     // Just log out the index
+     console.log(this.view.index);
+   }
+ }
+</code></pre>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> Returns the index of this page within its NavController.
+</div>
+
+<div id="isRoot"></div>
+
+<h3>
+<code>isRoot()</code>
+  
+
+</h3>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Returns if this Page is the root page of the NavController.
+</div>
+
+<div id="hasNavbar"></div>
+
+<h3>
+<code>hasNavbar()</code>
+  
+
+</h3>
+
+<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageWillEnter</code> method in order to make sure the view has rendered fully.</p>
+
+<pre><code class="language-typescript">export class Page1 {
+ constructor(view: ViewController) {
+   this.view = view
+ }
+ onPageWillEnter(){
+   console.log('Do we have a Navbar?', this.view.hasNavbar());
+ }
+}
+</code></pre>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Returns a boolean if this Page has a navbar or not.
+</div>
+
+<div id="setBackButtonText"></div>
+
+<h3>
+<code>setBackButtonText(backButtonText)</code>
+  
+
+</h3>
+
+<p>You can change the text of the back button on a view-by-view basis.</p>
+
+<pre><code class="language-ts">export class MyClass{
+ constructor(viewCtrl: ViewController){
+   this.viewCtrl = viewCtrl
+ }
+ onPageWillEnter() {
+   this.viewCtrl.setBackButtonText('Previous');
+ }
+}
+</code></pre>
+<p>Make sure you use the view events when calling this method, otherwise the back-button will not have been created</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        backButtonText
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Set the back button text.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="showBackButton"></div>
+
+<h3>
+<code>showBackButton(Set)</code>
+  
+
+</h3>
+
+<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onPageWillEnter</code> to make sure the has been compleltly rendered.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        Set
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>if this Page&#39;s back button should show or not.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+
+        <hr>
+        
+        
+      </main>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?1"></script>
+
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-platform">
+        <h3>Platform</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+  </body>
+</html>
