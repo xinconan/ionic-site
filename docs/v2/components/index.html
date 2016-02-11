@@ -233,6 +233,7 @@
         </ul>
 
       <li><a href="#toggle">Toggle</a></li>
+      <li><a href="#toolbar">Toolbar</a></li>
 
     </ul>
   </li>
@@ -2240,6 +2241,54 @@ export class TabsTextPage {
   <span class="nt">&lt;ion-label&gt;</span> Sam<span class="nt">&lt;/ion-label&gt;</span>
   <span class="nt">&lt;ion-toggle</span> <span class="na">disabled</span> <span class="na">checked=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/ion-toggle&gt;</span>
 <span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="toolbar" class="section-header">Toolbar</h2>
+
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/toolbar.html">
+  Improve this Doc</a></p>
+
+<p>A toolbar is a generic bar that can be used in an app as a header, sub-header, footer, or even sub-footer. Since <code class="highlighter-rouge">ion-toolbar</code> is based on flexbox, no matter how many toolbars you have in your page, they will be displayed correctly and <code class="highlighter-rouge">ion-content</code> will adjust accordingly.</p>
+
+<h3 class="no-para">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/toolbar/basic">
+  Demo Source
+</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Toolbar<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+
+<h3 class="no-para">Footer</h3>
+
+<p>Add the property <code class="highlighter-rouge">position="bottom"</code> to place the tool bar below the content</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
+
+<span class="nt">&lt;ion-toolbar</span> <span class="na">position=</span><span class="s">"toolbar"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Footer<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+</code></pre>
+</div>
+
+<h3 class="no-para">Color</h3>
+
+<p>To change the color of the toolbar, you can use the theme properties defined in your styles.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar</span> <span class="na">primary</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Primary<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-toolbar</span> <span class="na">danger</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Danger<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
 </code></pre>
 </div>
 
