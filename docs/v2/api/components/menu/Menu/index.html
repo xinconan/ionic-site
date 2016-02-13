@@ -762,6 +762,34 @@ left menus, but only one of them should be able to be dragged open.</p>
   <code>Menu</code> Returns the instance of the menu, which is useful for chaining.
 </div>
 
+<div id="isOpen"></div>
+
+<h3>
+<code>isOpen()</code>
+  
+
+</h3>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Returns true if the menu is currently open, otherwise false.
+</div>
+
+<div id="isEnabled"></div>
+
+<h3>
+<code>isEnabled()</code>
+  
+
+</h3>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> Returns true if the menu is currently enabled, otherwise false.
+</div>
+
 <div id="get"></div>
 
 <h3>
@@ -770,7 +798,10 @@ left menus, but only one of them should be able to be dragged open.</p>
 
 </h3>
 
-<p>Used to get a menu instance.</p>
+<p>Used to get a menu instance. If a <code class="highlighter-rouge">menuId</code> is not provided then it’ll return<br />
+the first menu found. If a <code class="highlighter-rouge">menuId</code> is provided, then it’ll first try to find<br />
+the menu using the menu’s <code class="highlighter-rouge">id</code> attribute. If a menu is not found using the <code class="highlighter-rouge">id</code><br />
+attribute, then it’ll try to find the menu by its <code class="highlighter-rouge">side</code> name.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
