@@ -445,7 +445,7 @@ class MyApp {
 
 <h3 id="creating-a-page">Creating a Page</h3>
 
-<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/hello-ionic/</code> folder, let’s open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
+<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/pages/hello-ionic/</code> folder, let’s open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
 
 <blockquote>
   <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find<code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
@@ -456,7 +456,7 @@ class MyApp {
 <pre><code class="language-ts">import {Page, NavController} from 'ionic/ionic';
 
 @Page({
-  templateUrl: 'app/hello-ionic/hello-ionic.html'
+  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
 })
 export class HelloIonicPage {
   constructor(nav: NavController) {
