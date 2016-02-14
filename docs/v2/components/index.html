@@ -1616,7 +1616,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 
 <p>Along with <a href="#tabs">Tabs</a>, Menus are a common way to navigate through an app if you have several “root” or “top-level” pages. For the basics of navigating through an Ionic app, see the <a href="#navigation">Navigation section</a>.</p>
 
-<p>For situations where using Tabs might not be desirable, for example if you have a large number of root pages (making a TabBar impractical), a menu might be a better solution.</p>
+<p>For UX reasons, we first recommend using Tabs. However, for situations where using Tabs might not be desirable, for example if you have a large number of root pages (making a TabBar impractical), a menu might be a better solution.</p>
 
 <p>Menus also allow you to return to root pages at any point. This can be helpful if you have particularly deep navigation by allowing you to return to the top level of your app quickly.</p>
 
@@ -1656,7 +1656,8 @@ class MyApp {}
 
 <p>Then in our <a href="../api/config/App/">@App</a> component we have two buttons with click handlers that navigate to a new root page:</p>
 
-<pre><code class="language-typescript">import {LoginPage} from 'login';
+<pre><code class="language-typescript">import {MenuController, IonicApp} from 'ionic/ionic';
+import {LoginPage} from 'login';
 import {SignupPage} from 'signup';
 
 @App({
@@ -1664,15 +1665,16 @@ import {SignupPage} from 'signup';
 })
 class MyApp {
 
-  constructor(ionicApp: IonicApp) {
-    this.app = ionicApp;
+  constructor(app: IonicApp, menu: MenuController) {
+    this.app = app;
+    this.menu = menu;
     this.loginPage = LoginPage;
     this.signupPage = SignupPage;
   }
 
   openPage(page) {
     // close the menu when clicking a link from the menu
-    this.app.getComponent('menu').close();
+    this.menu.close();
 
     // Reset the nav controller to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -1682,7 +1684,7 @@ class MyApp {
 }
 </code></pre>
 
-<p>We inject the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service so we can use Ionic’s <a href="../api/components/app/IdRef">id system</a> to get references to the menu and the nav controller.  We then use the NavController’s <a href="../api/components/nav/NavController/#setRoot"><code class="highlighter-rouge">setRoot</code></a> function to clear the navigation stack and set the selected page as the new navigation root.</p>
+<p>We inject the <a href="../api/components/menu/Menu/"><code class="highlighter-rouge">MenuController</code></a> provider so we can close the opened menu.  We then use the NavController’s <a href="../api/components/nav/NavController/#setRoot"><code class="highlighter-rouge">setRoot</code></a> function to clear the navigation stack and set the selected page as the new navigation root.</p>
 
 <p>Menus can be a little more complicated, but they allow for many different configuration options.  For example, the Google Maps app uses a drawer style Menu that exposes a list of items that open <a href="#modals">Modals</a> over the main map content area and toggle settings on and off.</p>
 
