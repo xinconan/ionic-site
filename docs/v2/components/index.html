@@ -1559,6 +1559,31 @@ You can also add a placeholder so that users have a hint of what type of text th
   Demo Source
 </a></p>
 
+<p>Sliding items can be swiped to the left to reveal a set of buttons. To use a sliding item, add a <code class="highlighter-rouge">&lt;ion-item-sliding&gt;</code> component inside of a list:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
+  <span class="nt">&lt;ion-item-sliding&gt;</span>
+    <span class="nt">&lt;ion-item&gt;</span>
+      <span class="nt">&lt;ion-avatar</span> <span class="na">item-left</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/slimer.png"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/ion-avatar&gt;</span>
+      <span class="nt">&lt;h2&gt;</span>Slimer<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;ion-item-options&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">primary</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+        Text
+      <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">secondary</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"call"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+        Call
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-item-options&gt;</span>
+  <span class="nt">&lt;/ion-item-sliding&gt;</span>
+<span class="nt">&lt;/ion-list&gt;</span>
+</code></pre>
+</div>
+
 <h3 class="section-nav" id="thumbnail-list">Thumbnail List</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/lists/thumbnail">
   Demo Source
