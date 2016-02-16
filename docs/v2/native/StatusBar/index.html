@@ -404,7 +404,7 @@ StatusBar
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/statusbar.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/src/plugins/statusbar.ts#L2">
 Improve this doc
 </a></p>
 
@@ -412,15 +412,9 @@ Improve this doc
 <h2>Description</h2>
 
 <p>Manage the appearance of the native status bar.</p>
+<p>Requires Cordova plugin: <code>cordova-plugin-statusbar</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-statusbar">StatusBar plugin docs</a>.</p>
 
 <!-- @usage tag -->
-
-<h2>Usage</h2>
-
-<pre><code class="lang-js">StatusBar.hide(); // Hide the bar
-
-StatusBar.setStyle(StatusBar.LIGHT_CONTENT) // Good for dark backgrounds
-</code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
@@ -450,10 +444,10 @@ is true.</p>
       </td>
       <td>
         
-  
+  <code>boolean</code>
       </td>
       <td>
-        <p>whether the status bar overlays the main app view.</p>
+        <p>Whether the status bar overlays the main app view.</p>
 
         
       </td>
@@ -467,23 +461,31 @@ is true.</p>
   
 </h3>
 
+<p>Use the default statusbar (dark text, for light backgrounds).</p>
+
 <div id="styleLightContent"></div>
 <h3><code>styleLightContent()</code>
   
 </h3>
+
+<p>Use the lightContent statusbar (light text, for dark backgrounds).</p>
 
 <div id="styleBlackTranslucent"></div>
 <h3><code>styleBlackTranslucent()</code>
   
 </h3>
 
+<p>Use the blackTranslucent statusbar (light text, for dark backgrounds).</p>
+
 <div id="styleBlackOpaque"></div>
 <h3><code>styleBlackOpaque()</code>
   
 </h3>
 
+<p>Use the blackOpaque statusbar (light text, for dark backgrounds).</p>
+
 <div id="backgroundColorByName"></div>
-<h3><code>backgroundColorByName(name)</code>
+<h3><code>backgroundColorByName(colorName)</code>
   
 </h3>
 
@@ -504,16 +506,16 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
     
     <tr>
       <td>
-        name
+        colorName
         
         
       </td>
       <td>
         
-  
+  <code>string</code>
       </td>
       <td>
-        <p>the name of the color (from above)</p>
+        <p>The name of the color (from above)</p>
 
         
       </td>
@@ -523,7 +525,7 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
 </table>
 
 <div id="backgroundColorByHexString"></div>
-<h3><code>backgroundColorByHexString(hex)</code>
+<h3><code>backgroundColorByHexString(hexString)</code>
   
 </h3>
 
@@ -543,16 +545,16 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
     
     <tr>
       <td>
-        hex
+        hexString
         
         
       </td>
       <td>
         
-  
+  <code>string</code>
       </td>
       <td>
-        <p>the hex value of the color.</p>
+        <p>The hex value of the color.</p>
 
         
       </td>
@@ -562,48 +564,11 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
 </table>
 
 <div id="hide"></div>
-<h3><code>hide(style)</code>
+<h3><code>hide()</code>
   
 </h3>
 
 <p>Hide the StatusBar</p>
-
-<p>Options:</p>
-
-<p>StatusBar.DEFAULT<br />
-StatusBar.LIGHT_CONTENT<br />
-StatusBar.BLACK_TRANSLUCENT<br />
-StatusBar.BLACK_OPAQUE</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        style
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        <p>the style from above</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
 
 <div id="show"></div>
 <h3><code>show()</code>
@@ -611,6 +576,13 @@ StatusBar.BLACK_OPAQUE</p>
 </h3>
 
 <p>Show the StatusBar</p>
+
+<div id="isVisible"></div>
+<h3><code>isVisible()</code>
+  
+</h3>
+
+<p>Whether the StatusBar is currently visible or not.</p>
 
 <!-- methods on the class -->
 <!-- related link -->
