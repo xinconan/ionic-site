@@ -452,7 +452,7 @@ class MyApp {
 
 <p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="na">id=</span><span class="s">"leftMenu"</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
 
   <span class="nt">&lt;ion-toolbar&gt;</span>
     <span class="nt">&lt;ion-title&gt;</span>Pages<span class="nt">&lt;/ion-title&gt;</span>
@@ -472,9 +472,9 @@ class MyApp {
 </code></pre>
 </div>
 
-<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then a navigation controller<br />
-to act as the main content area. The <code class="highlighter-rouge">ion-menu</code> takes a property of <code class="highlighter-rouge">content</code>, and we can pass the local variable of <code class="highlighter-rouge">#content</code> from our <code class="highlighter-rouge">ion-nav</code>.<br />
-This will let the menu know what element should be the main content. The app will let the user select sections from the side menu which will change what they see in the content area. The user will be able to navigate inside the content menu if the section has other pages to navigate to.</p>
+<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then a navigation controller to act as the main content area. The <code class="highlighter-rouge">ion-menu</code> takes a property of <code class="highlighter-rouge">content</code>, and we can pass the local variable of <code class="highlighter-rouge">#content</code> from our <code class="highlighter-rouge">ion-nav</code>.</p>
+
+<p>This will let the menu know what element should be the main content. The app will let the user select sections from the side menu which will change what they see in the content area. The user will be able to navigate inside the content menu if the section has other pages to navigate to.</p>
 
 <p>Let’s go and see how to create more pages and perform basic navigation.</p>
 
