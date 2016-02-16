@@ -208,6 +208,7 @@
           <li class="nav-item-hidden"><a href="#list-lines"></a></li>
           <li class="nav-item-hidden"><a href="#list-no-lines"></a></li>
           <li class="nav-item-hidden"><a href="#inset-list"></a></li>
+          <li class="nav-item-hidden"><a href="#list-dividers"></a></li>
           <li class="nav-item-hidden"><a href="#list-headers"></a></li>
           <li class="nav-item-hidden"><a href="#icon-list"></a></li>
           <li class="nav-item-hidden"><a href="#avatar-list"></a></li>
@@ -1425,8 +1426,8 @@ You can also add a placeholder so that users have a hint of what type of text th
 <ul class="docs-content">
   <li class="docs-content-header">Contents</li>
   <li class="docs-content-item"><a href="#lists">Basic Lists</a></li>
-  <li class="docs-content-item"><a href="#list-dividers">List Dividers</a></li>
   <li class="docs-content-item"><a href="#inset-list">Inset List</a></li>
+  <li class="docs-content-item"><a href="#list-dividers">List Dividers</a></li>
   <li class="docs-content-item"><a href="#list-headers">List Headers</a></li>
   <li class="docs-content-item"><a href="#icon-list">Icon List</a></li>
   <li class="docs-content-item"><a href="#avatar-list">Avatar List</a></li>
@@ -1477,6 +1478,27 @@ You can also add a placeholder so that users have a hint of what type of text th
     {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
+</code></pre>
+</div>
+
+<h3 class="section-nav" id="list-dividers">List Dividers</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/lists/dividers">
+  Demo Source
+</a></p>
+
+<p>To divide groups of items, use <code class="highlighter-rouge">&lt;ion-item-group&gt;</code> instead of <code class="highlighter-rouge">&lt;ion-list&gt;</code>. Use <code class="highlighter-rouge">&lt;ion-item-divider&gt;</code> components to divide the group in to various sections:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content&gt;</span>
+    <span class="nt">&lt;ion-item-group&gt;</span>
+
+      <span class="nt">&lt;ion-item-divider</span> <span class="na">light</span><span class="nt">&gt;</span>A<span class="nt">&lt;/ion-item-divider&gt;</span>
+      <span class="nt">&lt;ion-item&gt;</span>Angola<span class="nt">&lt;/ion-item&gt;</span>
+      <span class="nt">&lt;ion-item&gt;</span>Argentina<span class="nt">&lt;/ion-item&gt;</span>
+
+      <span class="nt">&lt;ion-item-divider</span> <span class="na">light</span><span class="nt">&gt;</span>B<span class="nt">&lt;/ion-item-divider&gt;</span>
+
+    <span class="nt">&lt;/ion-item-group&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
 </code></pre>
 </div>
 
