@@ -403,13 +403,6 @@ Improve this doc
 <p>Recall from the previous section we had a function inside our <code class="highlighter-rouge">ListPage</code> class that looked something like this:</p>
 
 <pre><code class="language-ts">itemTapped(event, item) {
-    console.log('You selected:', item.title);
-}
-</code></pre>
-
-<p>Let’s improve it so it navigates to a new page:</p>
-
-<pre><code class="language-ts">itemTapped(event, item) {
     this.nav.push(ItemDetailsPage, {
       item: item
     });

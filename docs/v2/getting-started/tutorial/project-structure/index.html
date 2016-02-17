@@ -402,7 +402,7 @@
 
 <p>Let’s walk through the anatomy of an Ionic 2 app. Inside of the folder that was created, we have a typical <a href="/docs/what-is/#cordova">Cordova</a> project structure where we can install native plugins, and create platform-specific project files. The bulk of our application lives inside the <code class="highlighter-rouge">app</code> folder, and so we are going to spend most of our time there.</p>
 
-<h3 class="file-title">www/index.html</h3>
+<h3 class="file-title">./www/index.html</h3>
 
 <p><code class="highlighter-rouge">www/index.html</code> is the main entry point for the app, though its purpose is to set up script and CSS includes and <code class="highlighter-rouge">bootstrap</code>, or start running, our app. We won’t spend much of our time in this file.</p>
 
@@ -428,16 +428,16 @@
   </li>
 </ul>
 
-<h3 class="file-title">app/app.js</h3>
+<h3 class="file-title">./app/app.js</h3>
 
-<p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled Javascript code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="/docs/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="/docs/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="/docs/what-is/es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
+<p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="/docs/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="/docs/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="/docs/what-is/es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
 
 <p><code class="highlighter-rouge">app/app.js</code> is the entry point for our app.</p>
 
 <p>Near the top of the file, we should see this:</p>
 
 <pre><code class="language-ts">@App({
-  templateUrl: 'app/app.html'
+  templateUrl: 'build/app.html'
 })
 class MyApp {
   constructor() {
@@ -447,9 +447,9 @@ class MyApp {
 
 <p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. To specify a root component with Ionic, we use the <code class="highlighter-rouge">@App</code> decorator.</p>
 
-<p>In this component, we set the template to be the file at <code class="highlighter-rouge">app/app.html</code>, let’s take a look!</p>
+<p>In this component, we set the template to be the file at <code class="highlighter-rouge">build/app.html</code>, which is a compiled version of <code class="highlighter-rouge">app/app.html</code>, let’s take a look!</p>
 
-<h3 class="file-title">app/app.html</h3>
+<h3 class="file-title">./app/app.html</h3>
 
 <p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
 
