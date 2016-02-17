@@ -416,13 +416,13 @@ Improve this doc
 }
 </code></pre>
 
-<p>You might have noticed we are referencing <code class="highlighter-rouge">ItemDetailsPage</code>. This is a page included in the tutorial starter.  Let’s import it in <code class="highlighter-rouge">app/list/list.js</code> so we can use it:</p>
+<p>You might have noticed we are referencing <code class="highlighter-rouge">ItemDetailsPage</code>. This is a page included in the tutorial starter.  Let’s import it in <code class="highlighter-rouge">app/pages/list/list.js</code> so we can use it:</p>
 
 <pre><code class="language-ts">...
 import {ItemDetailsPage} from '../item-details/item-details';
 </code></pre>
 
-<p>After saving the file, you will notice the <code class="highlighter-rouge">ionic serve</code> process will recompile your app with the new changes, and reload the browser. Let’s revisit our app in the browser, and when we tap an item, it will navigate to the item details page!</p>
+<p>After saving the file, you will notice the <code class="highlighter-rouge">ionic serve</code> process will recompile your app with the new changes, and reload the browser. Let’s revisit our app in the browser, and when we tap an item, it will navigate to the item details page! Notice that the menu-toggle is replaced with a back button instead. This is a native style that Ionic follows, but can be configured.</p>
 
 <h3 id="how-it-works">How It Works</h3>
 
@@ -441,6 +441,9 @@ import {ItemDetailsPage} from '../item-details/item-details';
     
     <div class="footer-links">
       <hr>
+      
+        <a class="footer-link prev" href="/docs/v2/getting-started/tutorial/adding-pages/">
+          Adding Pages</a>
       
       
         <a class="footer-link next" href="/docs/v2/components">
