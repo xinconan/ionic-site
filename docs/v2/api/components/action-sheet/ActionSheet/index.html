@@ -492,6 +492,84 @@ presentActionSheet() {
   
 </h3>
 
+<p>Open an action sheet with the following options</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>The title for the actionsheet</td>
+    </tr>
+    <tr>
+      <td>subTitle</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>The sub-title for the actionsheet</td>
+    </tr>
+    <tr>
+      <td>cssClass</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>An additional class for custom styles</td>
+    </tr>
+    <tr>
+      <td>enableBackdropDismiss</td>
+      <td><code class="highlighter-rouge">boolean</code></td>
+      <td>If the actionsheet should close when the user taps the backdrop</td>
+    </tr>
+    <tr>
+      <td>buttons</td>
+      <td><code class="highlighter-rouge">array&lt;any&gt;</code></td>
+      <td>An array of buttons to display</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For the buttons:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>text</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>The buttons text</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td><code class="highlighter-rouge">icon</code></td>
+      <td>The buttons icons</td>
+    </tr>
+    <tr>
+      <td>handler</td>
+      <td><code class="highlighter-rouge">any</code></td>
+      <td>An express the button shoule evaluate</td>
+    </tr>
+    <tr>
+      <td>cssClass</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>An additional class for custom styles</td>
+    </tr>
+    <tr>
+      <td>role</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>How the button should be displayed, <code class="highlighter-rouge">destructive</code> or <code class="highlighter-rouge">cancel</code>. If not role is provided, it will display the button without any additional styles</td>
+    </tr>
+  </tbody>
+</table>
+
 <table class="table param-table" style="margin:0;">
   <thead>
     <tr>
