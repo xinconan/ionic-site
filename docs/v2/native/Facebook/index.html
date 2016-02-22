@@ -409,6 +409,19 @@ Facebook
 Improve this doc
 </a></p>
 
+<!-- decorators -->
+
+<pre>
+<code>
+$ ionic plugin add cordova-plugin-facebook4
+</code>
+</pre>
+<p>
+<a href="https://github.com/jeduan/cordova-plugin-facebook4">
+Repo: https://github.com/jeduan/cordova-plugin-facebook4
+</a>
+</p>
+
 <!-- description -->
 
 <p>Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.</p>
@@ -448,17 +461,6 @@ Improve this doc
 <p>Events are listed on the <a href="https://www.facebook.com/insights/">insights page</a>.</p>
 <p>For tracking events, see <code>logEvent</code> and <code>logPurchase</code>.</p>
 
-<pre>
-<code>
-$ ionic plugin add cordova-plugin-facebook4
-</code>
-</pre>
-<p>
-<a href="">
-Repo: 
-</a>
-</p>
-
 <!-- @usage tag -->
 
 <!-- @property tags -->
@@ -470,19 +472,18 @@ Repo:
 
 <p>Login to Facebook to authenticate this app.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="err">status:</span><span class="w"> </span><span class="nt">"connected"</span><span class="err">,</span><span class="w">
-  </span><span class="err">authResponse</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">session_key:</span><span class="w"> </span><span class="err">true,</span><span class="w">
-    </span><span class="err">accessToken:</span><span class="w"> </span><span class="nt">"kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn"</span><span class="err">,</span><span class="w">
-    </span><span class="err">expiresIn</span><span class="p">:</span><span class="w"> </span><span class="mi">5183979</span><span class="p">,</span><span class="w">
-    </span><span class="err">sig</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="err">secret</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="err">userID</span><span class="p">:</span><span class="w"> </span><span class="s2">"634565435"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<pre><code class="language-ts">{
+  status: "connected",
+  authResponse: {
+    session_key: true,
+    accessToken: "kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn",
+    expiresIn: 5183979,
+    sig: "...",
+    secret: "...",
+    userID: "634565435"
+  }
+}
+</code></pre>
 
 <table class="table param-table" style="margin:0;">
   <thead>
