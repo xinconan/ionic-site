@@ -443,11 +443,63 @@ ActionSheet.show({
 <!-- @property tags -->
 <h2>Static Methods</h2>
 <div id="show"></div>
-<h3><code>show(options)</code>
+<h3><code>show(Options)</code>
   
 </h3>
 
-<p>Show the ActionSheet.</p>
+<p>Show the ActionSheet. The ActionSheet’s options is an object with the following propterties.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>The title for the actionsheet</td>
+    </tr>
+    <tr>
+      <td>buttonLabels</td>
+      <td><code class="highlighter-rouge">string[]</code></td>
+      <td>the labels for the buttons. Uses the index x</td>
+    </tr>
+    <tr>
+      <td>androidTheme</td>
+      <td><code class="highlighter-rouge">number</code></td>
+      <td>Theme to bue used on Android</td>
+    </tr>
+    <tr>
+      <td>androidEnableCancelButton</td>
+      <td><code class="highlighter-rouge">boolean</code></td>
+      <td>Enable a cancel on Android</td>
+    </tr>
+    <tr>
+      <td>winphoneEnableCancelButton</td>
+      <td><code class="highlighter-rouge">boolean</code></td>
+      <td>Enable a cancel on Android</td>
+    </tr>
+    <tr>
+      <td>addCancelButtonWithLabel</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>Add a cancle button with text</td>
+    </tr>
+    <tr>
+      <td>addDestructiveButtonWithLabel</td>
+      <td><code class="highlighter-rouge">string</code></td>
+      <td>Add a destructive button with text</td>
+    </tr>
+    <tr>
+      <td>position</td>
+      <td><code class="highlighter-rouge">number[]</code></td>
+      <td>On an iPad, set the X,Y position</td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -461,7 +513,7 @@ ActionSheet.show({
     
     <tr>
       <td>
-        options
+        Options
         
         
       </td>
@@ -470,14 +522,7 @@ ActionSheet.show({
   <code>options</code>
       </td>
       <td>
-        <p><code>buttonLabels</code>: string[]
-  <code>title</code>: string
-  <code>androidTheme</code> (Android only): number 1-5
-  <code>androidEnableCancelButton</code> (Android only): boolean, default false
-  <code>winphoneEnableCancelButton</code> (WP only): boolean, default false
-  <code>addCancelButtonWithLabel</code>: string
-  <code>addDestructiveButtonWithLabel</code>: string
-  <code>position</code>: [x, y] (iPad pass in [x, y] coords of popover)</p>
+        <p>See table above</p>
 
         
       </td>
