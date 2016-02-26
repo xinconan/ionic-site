@@ -232,6 +232,7 @@
         <ul class="nav">
           <li class="nav-item-hidden"><a href="#tabs-icon"></a></li>
           <li class="nav-item-hidden"><a href="#tabs-icon-text"></a></li>
+          <li class="nav-item-hidden"><a href="#tabs-badges"></a></li>
         </ul>
 
       <li><a href="#toggle">Toggle</a></li>
@@ -2134,6 +2135,8 @@ class SearchPage {
   <li class="docs-content-item"><a href="#tabs">Text Tabs</a></li>
   <li class="docs-content-item"><a href="#tabs-icon">Icon Tabs</a></li>
   <li class="docs-content-item"><a href="#tabs-icon-text">Text and Icon Tabs</a></li>
+  <li class="docs-content-item"><a href="#tabs-badges">Badge Tabs</a></li>
+
 </ul>
 
 <h3 id="basic-usage-1">Basic Usage</h3>
@@ -2274,6 +2277,42 @@ export class TabsTextPage {
     this.tab1 = TabsTextContentPage;
     this.tab2 = TabsTextContentPage;
     ...
+  }
+}
+</code></pre>
+
+<h3 class="section-nav" id="tabs-badges">Badges</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/tabs/icon-text">
+  Demo Source
+</a></p>
+
+<p>To add a badge to a tab, use the <code class="highlighter-rouge">tabBadge</code> and <code class="highlighter-rouge">tabBadgeStyle</code> attributes. The <code class="highlighter-rouge">tabBadgeStyle</code> attribute can be passed the name of any <a href="/docs/v2/theming/theming-your-app/">color</a>:</p>
+
+<pre><code class="language-typescript">@Page({
+  template: `
+  &lt;ion-navbar *navbar&gt;
+    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
+  &lt;/ion-navbar&gt;
+  &lt;ion-content&gt;
+  &lt;/ion-content&gt;`,
+})
+class TabBadgePage {
+  constructor() {
+  }
+}
+
+@Page({
+  template: 
+    '&lt;ion-tabs&gt;' +
+      '&lt;ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
+      '&lt;ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
+      '&lt;ion-tab tabIcon="musical-notes" [root]="tabThree"&gt;&lt;/ion-tab&gt;' +
+    '&lt;/ion-tabs&gt;',
+})
+export class BadgesPage {
+  constructor() {
+    this.tabOne = TabBadgePage;
+    this.tabTwo = TabBadgePage;
   }
 }
 </code></pre>
