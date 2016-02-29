@@ -50826,11 +50826,12 @@
 	        if (this.state === STATE_INACTIVE) {
 	            // this refresh is not already actively pulling down
 	            // get the content's scrollTop
-	            var scrollHostScrollTop = this._content.scrollElement.scrollTop;
+	            var scrollHostScrollTop = this._content.getContentDimensions().scrollTop;
 	            // if the scrollTop is greater than zero then it's
 	            // not possible to pull the content down yet
 	            if (scrollHostScrollTop > 0) {
 	                this.progress = 0;
+	                this.startY = null;
 	                return 7;
 	            }
 	            // content scrolled all the way to the top, and dragging down
@@ -63309,8 +63310,6 @@
 	            }
 	        });
 	        this.nav.present(alert);
-	    };
-	    InitialPage.prototype.doCustomAnimation = function () {
 	    };
 	    InitialPage = __decorate([
 	        ionic_angular_1.Page({
