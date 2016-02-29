@@ -254,6 +254,9 @@
   <a href="/docs/v2/api/components/app/Id">Id</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
@@ -611,6 +614,34 @@ export class MyPage{
   
 
 </h3>
+
+<div id="getContentDimensions"></div>
+
+<h3>
+<code>getContentDimensions()</code>
+  
+
+</h3>
+
+<p>Returns the content and scroll elements’ dimensions.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>object</code> dimensions  The content and scroll elements' dimensions
+{number} dimensions.contentHeight  content offsetHeight
+{number} dimensions.contentTop  content offsetTop
+{number} dimensions.contentBottom  content offsetTop+offsetHeight
+{number} dimensions.contentWidth  content offsetWidth
+{number} dimensions.contentLeft  content offsetLeft
+{number} dimensions.contentRight  content offsetLeft + offsetWidth
+{number} dimensions.scrollHeight  scroll scrollHeight
+{number} dimensions.scrollTop  scroll scrollTop
+{number} dimensions.scrollBottom  scroll scrollTop + scrollHeight
+{number} dimensions.scrollWidth  scroll scrollWidth
+{number} dimensions.scrollLeft  scroll scrollLeft
+{number} dimensions.scrollRight  scroll scrollLeft + scrollWidth
+</div>
 
 <!-- related link -->
 <!-- end content block -->
