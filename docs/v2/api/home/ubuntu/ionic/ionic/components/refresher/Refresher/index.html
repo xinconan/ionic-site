@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ionic makes it incredibly easy to build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<meta name="author" content="Drifty">
+<meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
+
+<link href="/css/v2.css?6" rel="stylesheet">
+
+
+
+    <title>Refresher - Class in module  -  Ionic Framework</title>
+
+  </head>
+  <body id="docs-page-refresher"
+        class="v2 docs page-refresher"
+        data-spy="scroll"
+        data-target="#components-index"
+        ng-app="IonicDocs">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand" href="/docs/v2">
+        <img src="/img/ionic-docs-logo-sm.png" id="ionic-docs-logo" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/docs/v2/getting-started/installation/">Getting Started</a></li>
+        <li class="active"><a href="/docs/v2/">Docs</a></li>
+        <li><a href="http://blog.ionic.io/">Blog</a></li>
+        <li><a href="http://forum.ionicframework.com/">Forum</a></li>
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">
+            More <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="http://ionic.io/">
+              Ionic Platform</a></li>
+            <li><a target="_blank" href="http://showcase.ionicframework.com/">
+              Showcase</a></li>
+            <li><a target="_blank" href="http://jobs.ionic.io/">
+              Job Board</a></li>
+            <li><a target="_blank" href="http://market.ionic.io/">
+              Market</a></li>
+            <li><a target="_blank" href="http://ionicworldwide.herokuapp.com/">
+              Ionic Worldwide</a></li>
+            <li><a target="_blank" href="http://play.ionic.io/">
+              Playground</a></li>
+            <li><a target="_blank" href="http://creator.ionic.io/">
+              Creator</a></li>
+            <li><a target="_blank" href="http://shop.ionic.io/">Shop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="docs-container"
+         
+           ng-controller="APIDemoCtrl"
+         >
+      <nav class="side-nav" id="side-nav">
+        <form class="form-group search" role="search">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="sidebar"
+                 ng-model="searchTerm">
+        </form>
+        
+          <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/v2/api/"
+   selected>
+    2.0.0-nightly 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.1/api/"
+   >
+    2.0.0-beta.1 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.0/api/"
+   >
+    2.0.0-beta.0 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.57/api/"
+   >
+    2.0.0-alpha.57 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.56/api/"
+   >
+    2.0.0-alpha.56 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.55/api/"
+   >
+    2.0.0-alpha.55 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.54/api/"
+   >
+    2.0.0-alpha.54 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.53/api/"
+   >
+    2.0.0-alpha.53 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.44/api/"
+   >
+    2.0.0-alpha.44 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.43/api/"
+   >
+    2.0.0-alpha.43 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.42/api/"
+   >
+    2.0.0-alpha.42 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.40/api/"
+   >
+    2.0.0-alpha.40 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.37/api/"
+   >
+    2.0.0-alpha.37 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.36/api/"
+   >
+    2.0.0-alpha.36 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.35/api/"
+   >
+    2.0.0-alpha.35 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="/docs/v2">Back to Main Docs</a>
+  </li>
+  
+    
+
+    
+  
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/action-sheet/ActionSheet">ActionSheet</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/alert/Alert">Alert</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/decorators/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/app/Id">Id</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/util/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/platform/storage/LocalStorage">LocalStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/modal/Modal">Modal</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/navbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/decorators/Page">Page</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize active">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/platform/storage/SqlStorage">SqlStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/input/TextArea">TextArea</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api//home/ubuntu/ionic/ionic/components/nav/ViewController">ViewController</a>
+</li>
+
+
+    
+
+
+</ul>
+
+        
+      </nav>
+      
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+        </div>
+        <div id="demo-device-ios" ng-class="previewPlatform">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/refresher/?ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android" ng-class="previewPlatform">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/refresher/?ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
+      
+      <main>
+        <h1 class="api-title">
+
+
+Refresher
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//home/ubuntu/ionic/ionic/components/refresher/refresher.ts#L6">
+Improve this doc
+</a></p>
+
+<p>Allows you to add Pull-To-Refresh to an Content component.
+Place <code>ion-refresher</code> as the first child of your <code>ion-content</code> element.</p>
+<p>Pages can then can listen to the refreshers various output events. The
+<code>refresh</code> output event is the one that&#39;s fired when the user has pulled
+down far enough to kick off the refreshing process. Once the async operation
+has completed and the refreshing should end, call <code>endRefreshing()</code>.</p>
+
+<h2>Directive</h2>
+<h3>selector: <code>ion-refresher</code></h3>
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-html">&lt;ion-content&gt;
+
+  &lt;ion-refresher (refresh)=&quot;doRefresh($event)&quot;&gt;
+    &lt;ion-refresher-content&gt;&lt;/ion-refresher-content&gt;
+  &lt;/ion-refresher&gt;
+
+&lt;/ion-content&gt;
+</code></pre>
+<pre><code class="lang-ts">@Page({...})
+export class NewsFeedPage {
+
+  doRefresh(refresher) {
+    console.log(&#39;Begin async operation&#39;, refresher);
+
+    setTimeout(() =&gt; {
+      console.log(&#39;Async operation has ended&#39;);
+      refresher.endRefreshing();
+    }, 2000);
+  }
+
+}
+</code></pre>
+<h2 id="refresher-content">Refresher Content</h2>
+<p>By default, Ionic provides the pulling icon and refreshing spinner that
+looks best for the platform the user is on. However, you can change the
+default icon and spinner, along with adding text for each state by
+adding properties to the child <code>ion-refresher-content</code> component.</p>
+<pre><code class="lang-html">&lt;ion-content&gt;
+
+  &lt;ion-refresher (refresh)=&quot;doRefresh($event)&quot;&gt;
+    &lt;ion-refresher-content
+      pullingIcon=&quot;arrow-dropdown&quot;
+      pullingText=&quot;Pull to refresh&quot;
+      refreshingSpinner=&quot;circles&quot;
+      refreshingText=&quot;Refreshing...&quot;&gt;
+    &lt;/ion-refresher-content&gt;
+  &lt;/ion-refresher&gt;
+
+&lt;/ion-content&gt;
+</code></pre>
+<h2 id="further-customizing-refresher-content">Further Customizing Refresher Content</h2>
+<p>The <code>ion-refresh</code> component holds the refresh logic, and it requires a
+child refresher content component for its display. The <code>ion-refresher-content</code>
+component is Ionic&#39;s default that shows the actual display of the refresher
+and changes its look depending on the refresher&#39;s state. With this separation,
+it also allows developers to create their own refresher content components.
+Ideas include having some cool SVG or CSS animations that are customized to
+your app and animates the various refresher states to your liking.</p>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2>Instance Methods</h2>
+
+<div id="state"></div>
+
+<h3>
+<code>state()</code>
+  
+
+</h3>
+
+<p>The current state which the refresher is in. The refresher’s states include:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">inactive</code> - The refresher is not being pulled down or refreshing and is currently hidden.</li>
+  <li><code class="highlighter-rouge">pulling</code> - The user is actively pulling down the refresher, but has not reached the point yet that if the user lets go, it’ll refresh.</li>
+  <li><code class="highlighter-rouge">cancelling</code> - The user pulled down the refresher and let go, but did not pull down far enough to kick off the <code class="highlighter-rouge">refreshing</code> state. After letting go, the refresher is in the <code class="highlighter-rouge">cancelling</code> state while it is closing, and will go back to the <code class="highlighter-rouge">inactive</code> state once closed.</li>
+  <li><code class="highlighter-rouge">ready</code> - The user has pulled down the refresher far enough that if they let go, it’ll begin the <code class="highlighter-rouge">refreshing</code> state.</li>
+  <li><code class="highlighter-rouge">refreshing</code> - The refresher is actively waiting on the async operation to end. Once the refresh handler calls <code class="highlighter-rouge">endRefreshing()</code> it will begin the <code class="highlighter-rouge">ending</code> state.</li>
+  <li><code class="highlighter-rouge">ending</code> - The <code class="highlighter-rouge">refreshing</code> state has finished and the refresher is in the process of closing itself. Once closed, the refresher will go back to the <code class="highlighter-rouge">inactive</code> state.</li>
+</ul>
+
+<div id="startY"></div>
+
+<h3>
+<code>startY()</code>
+  
+
+</h3>
+
+<p>The Y coordinate of where the user started to the pull down the content.</p>
+
+<div id="currentY"></div>
+
+<h3>
+<code>currentY()</code>
+  
+
+</h3>
+
+<p>The current touch or mouse event’s Y coordinate.</p>
+
+<div id="deltaY"></div>
+
+<h3>
+<code>deltaY()</code>
+  
+
+</h3>
+
+<p>The distance between the start of the pull and the current touch or<br />
+mouse event’s Y coordinate.</p>
+
+<div id="progress"></div>
+
+<h3>
+<code>progress()</code>
+  
+
+</h3>
+
+<p>A number representing how far down the user has pulled.<br />
+The number <code class="highlighter-rouge">0</code> represents the user hasn’t pulled down at all. The<br />
+number <code class="highlighter-rouge">1</code>, and anything greater than <code class="highlighter-rouge">1</code>, represents that the user<br />
+has pulled far enough down that when they let go then the refresh will<br />
+happen. If they let go and the number is less than <code class="highlighter-rouge">1</code>, then the<br />
+refresh will not happen, and the content will return to it’s original<br />
+position.</p>
+
+<div id="endRefreshing"></div>
+
+<h3>
+<code>endRefreshing()</code>
+  
+
+</h3>
+
+<p>Call <code class="highlighter-rouge">endRefreshing()</code> when your async operation has completed.<br />
+For example, the <code class="highlighter-rouge">refreshing</code> state is while the app is performing<br />
+an asynchronous operation, such as receiving more data from an<br />
+AJAX request. Once the data has been received, you then call this<br />
+method to signify that the refreshing has completed and to close<br />
+the refresher. This method also changes the refresher’s state from<br />
+<code class="highlighter-rouge">refreshing</code> to <code class="highlighter-rouge">ending</code>.</p>
+
+<div id="cancelRefreshing"></div>
+
+<h3>
+<code>cancelRefreshing()</code>
+  
+
+</h3>
+
+<p>Changes the refresher’s state from <code class="highlighter-rouge">refreshing</code> to <code class="highlighter-rouge">cancelling</code>.</p>
+
+<!-- input methods on the class -->
+<h2>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>pullMin</td>
+      <td><code>number</code></td>
+      <td><p> The min distance the user must pull down until the
+refresher can go into the <code>refreshing</code> state. Default is <code>60</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>pullMax</td>
+      <td><code>number</code></td>
+      <td><p> The maximum distance of the pull until the refresher
+will automatically go into the <code>refreshing</code> state. By default, the pull
+maximum will be the result of <code>pullMin + 60</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>closeDuration</td>
+      <td><code>number</code></td>
+      <td><p> How many milliseconds it takes to close the refresher. Default is <code>280</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>snapbackDuration</td>
+      <td><code>number</code></td>
+      <td><p> How many milliseconds it takes the refresher to to snap back to the <code>refreshing</code> state. Default is <code>280</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>enabled</td>
+      <td><code>boolean</code></td>
+      <td><p> If the refresher is enabled or not. Default is <code>true</code>.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<!-- output events on the class -->
+<h2>Output Events</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>refresh</td>
+      <td><p> When the user lets go and has pulled down far enough, which would be
+farther than the <code>pullMin</code>, then your refresh hander if fired and the state is
+updated to <code>refreshing</code>. From within your refresh handler, you must call the
+<code>endRefreshing()</code> method when your async operation has completed.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>pulling</td>
+      <td><p> While the user is pulling down the content and exposing the refresher.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>start</td>
+      <td><p> When the user begins to start pulling down.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+      </main>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?4"></script>
+
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?4"></script>
+
+
+  </body>
+</html>
