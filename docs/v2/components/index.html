@@ -1578,7 +1578,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 </div>
 
 <h3 class="section-nav" id="sliding-list">Sliding List</h3>
-<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/lists/thumbnail">
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/lists/sliding">
   Demo Source
 </a></p>
 
@@ -1726,9 +1726,9 @@ class MyApp {
   Demo Source
 </a></p>
 
-<p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code> and <code class="highlighter-rouge">NavController</code>:</p>
+<p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>, <code class="highlighter-rouge">NavController</code> and <code class="highlighter-rouge">ViewController</code>:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController} from 'ionic-framework/ionic';
+<pre><code class="language-typescript">import {Modal, NavController, ViewController} from 'ionic-framework/ionic';
 </code></pre>
 
 <p>Next, let’s create our modal and define add its template:</p>
@@ -1741,7 +1741,12 @@ class MyApp {
   &lt;/ion-content&gt;`
 })
 class MyModal {
-  constructor() {
+  constructor(viewCtrl: ViewController) {
+    this.viewCtrl = viewCtrl;
+  }
+  
+  close() {
+    this.viewCtrl.dismiss();
   }
 }
 </code></pre>
