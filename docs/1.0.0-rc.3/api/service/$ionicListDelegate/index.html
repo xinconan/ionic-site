@@ -966,22 +966,21 @@ Use the <a href="/docs/api/service/$ionicListDelegate/#$getByHandle">$getByHandl
 method to control specific ionList instances.</p>
 
 <h2 id="usage">Usage</h2>
-<p>````html</p>
-<ion-content ng-controller="MyCtrl">
-  <button class="button" ng-click="showDeleteButtons()"></button>
-  <ion-list>
-    <ion-item ng-repeat="i in items">
+<pre><code class="language-`html">&lt;ion-content ng-controller="MyCtrl"&gt;
+  &lt;button class="button" ng-click="showDeleteButtons()"&gt;&lt;/button&gt;
+  &lt;ion-list&gt;
+    &lt;ion-item ng-repeat="i in items"&gt;
       Hello, {{i}}!
-      <ion-delete-button class="ion-minus-circled"></ion-delete-button>
-    </ion-item>
-  </ion-list>
-</ion-content>
-<div class="highlighter-rouge"><pre class="highlight"><code>```js
-function MyCtrl($scope, $ionicListDelegate) {
-  $scope.showDeleteButtons = function() {
-    $ionicListDelegate.showDelete(true);
-  };
-}
+      &lt;ion-delete-button class="ion-minus-circled"&gt;&lt;/ion-delete-button&gt;
+    &lt;/ion-item&gt;
+  &lt;/ion-list&gt;
+&lt;/ion-content&gt;
+</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicListDelegate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">showDeleteButtons</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$ionicListDelegate</span><span class="p">.</span><span class="nx">showDelete</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
