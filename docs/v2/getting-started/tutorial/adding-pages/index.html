@@ -409,28 +409,19 @@
 </code></pre>
 </div>
 
-<p>Pay attention to the <code class="highlighter-rouge">[root]</code> property binding. This sets what is essentially the first, or “root” page for the <code class="highlighter-rouge">ion-nav</code> controller. When the navigation controller loads, the component referenced by <code class="highlighter-rouge">rootPage</code> will be the root page.</p>
+<p>Pay attention to the <code class="highlighter-rouge">[root]</code> property binding. This sets what is essentially the first, or “root” page for the <code class="highlighter-rouge">ion-nav</code> component. When <code class="highlighter-rouge">ion-nav</code> loads, the component referenced by the variable <code class="highlighter-rouge">rootPage</code> will be the root page.</p>
 
-<p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> root component specifies this in its constructor:</p>
+<p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> component specifies this in its constructor:</p>
 
-<pre><code class="language-ts">import {App, IonicApp, Platform} from 'ionic-angular';
+<pre><code class="language-ts">...
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
-import {ListPage} from './pages/list/list';
+...
 
 class MyApp {
+  ...
 
-  constructor(app: IonicApp, platform: Platform) {
-
-    // set up our app
-    this.app = app;
-    this.platform = platform;
-    this.initializeApp();
-
-    // set our app's pages
-    this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
-    ];
+  constructor(app, platform, menu) {
+    ...
 
     // make HelloIonicPage the root (or first) page
     this.rootPage = HelloIonicPage;
@@ -445,27 +436,23 @@ class MyApp {
 
 <h3 id="creating-a-page">Creating a Page</h3>
 
-<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/pages/hello-ionic/</code> folder, let’s open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
+<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/pages/hello-ionic/</code> folder, go and open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
 
 <blockquote>
-  <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find<code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
+  <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find <code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
 </blockquote>
 
-<p>Below, you will see the <code class="highlighter-rouge">HelloIonicPage</code> class which has a <code class="highlighter-rouge">Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component and an Angular view configured with all the necessary directives already that is meant to be loaded dynamically, so it does not use a tag selector:</p>
+<p>Below, we see the <code class="highlighter-rouge">HelloIonicPage</code> class which has the <code class="highlighter-rouge">@Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component with all Ionic directives already provided, to be loaded using Ionic’s navigation system.  Notice that because Pages are meant to be loaded dynamically, they don’t have a selector:</p>
 
 <pre><code class="language-ts">import {Page} from 'ionic-angular';
 
 @Page({
   templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
 })
-export class HelloIonicPage {
-  constructor() {
-  }
-
-}
+export class HelloIonicPage {}
 </code></pre>
 
-<p>All pages have both a class, and an associated template that’s being compiled as well. Let’s checkout <code class="highlighter-rouge">app/pages/hello-ionic/hello-ionic.html</code> - the template file for this page:</p>
+<p>All pages have both a class, and an associated template that’s being compiled as well. Let’s check out <code class="highlighter-rouge">app/pages/hello-ionic/hello-ionic.html</code> - the template file for this page:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>
 <span class="nt">&lt;ion-navbar</span> <span class="err">*</span><span class="na">navbar</span><span class="nt">&gt;</span>
@@ -495,18 +482,17 @@ export class HelloIonicPage {
 </code></pre>
 </div>
 
-<p>The <code class="highlighter-rouge">&lt;ion-navbar *navbar&gt;</code> component functions as configuration data for the navigation bar. As we navigate to the page, the nav bar will be updated with the various <code class="highlighter-rouge">ion-nav-items</code> for buttons in the bar, and <code class="highlighter-rouge">&lt;ion-title&gt;</code> for the title of the bar.</p>
+<p>The <code class="highlighter-rouge">&lt;ion-navbar *navbar&gt;</code> is a template for the navigation bar on this page. As we navigate to this page, the button and title of the navigation bar transition in as part of the page transition.</p>
 
-<p>The rest of the template is standard Ionic code that sets up our content area, and then renders our welcome message.</p>
+<p>The rest of the template is standard Ionic code that sets up our content area and prints our welcome message.</p>
 
 <h3 id="creating-additional-pages">Creating Additional Pages</h3>
 
 <p>To create an additional page, we don’t need to do much beyond making sure we correctly configure the title and anything else we want the navigation bar to display.</p>
 
-<p>Let’s check out the contents of <code class="highlighter-rouge">app/list/list.js</code>. Inside, you will see a new page is being defined:</p>
+<p>Let’s check out the contents of <code class="highlighter-rouge">app/list/list.js</code>. Inside, you will see a new page is defined:</p>
 
-<pre><code class="language-ts">
-import {Page, NavController, NavParams} from 'ionic-angular';
+<pre><code class="language-ts">import {Page, NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
 
 
@@ -514,7 +500,12 @@ import {ItemDetailsPage} from '../item-details/item-details';
   templateUrl: 'build/pages/list/list.html'
 })
 export class ListPage {
-  constructor(nav: NavController, navParams: NavParams) {
+  // provide Angular with metadata about things it should inject in the constructor
+  static get parameters() {
+    return [[NavController], [NavParams]];
+  }
+
+  constructor(nav, navParams) {
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -539,12 +530,15 @@ export class ListPage {
      });
   }
 }
-
 </code></pre>
 
 <p>This page will create a basic list page containing a number of items.</p>
 
-<p>Overall, this page is very similar to the <code class="highlighter-rouge">HelloIonicPage</code> we saw earlier. In the next section, we will learn about how this wiring up our navigation to a new page!</p>
+<blockquote>
+  <p>What the heck is that <code class="highlighter-rouge">static get parameters()</code>? Angular2 is written in TypeScript, and normally depends on <a href="http://www.typescriptlang.org/Handbook#basic-types">types</a> to know what kind of objects to inject into class constructors as part of its <a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">dependency injection</a> framework.  Since these examples are in JavaScript and not TypeScript, we need a way to tell Angular what “types” of objects should be injected, without actually using types. The way we do this is with the static getter <code class="highlighter-rouge">parameters</code> which attaches this type information to the class.</p>
+</blockquote>
+
+<p>Overall, this page is very similar to the <code class="highlighter-rouge">HelloIonicPage</code> we saw earlier. In the next section, we will learn how to navigate to a new page!</p>
 
       </main>
     </div>

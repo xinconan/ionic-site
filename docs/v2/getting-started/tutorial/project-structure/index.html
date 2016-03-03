@@ -405,7 +405,7 @@
 
 <h3 class="file-title">./www/index.html</h3>
 
-<p><code class="highlighter-rouge">www/index.html</code> is the main entry point for the app, though its purpose is to set up script and CSS includes and <code class="highlighter-rouge">bootstrap</code>, or start running, our app. We won’t spend much of our time in this file.</p>
+<p><code class="highlighter-rouge">www/index.html</code> is the main entry point for the app, though its purpose is to set up script and CSS includes and bootstrap, or start running, our app. We won’t spend much of our time in this file.</p>
 
 <p>For your app to function, Ionic looks for the <code class="highlighter-rouge">&lt;ion-app&gt;</code> tag in your HTML. In this example we have:</p>
 
@@ -425,13 +425,13 @@
     <p><code class="highlighter-rouge">build/js/app.bundle.js</code> is a concatenated file containing Ionic, Angular and your app’s JavaScript.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">cordova.js</code> will 404 during local development, as it gets injected into your project during cordova’s build process.</p>
+    <p><code class="highlighter-rouge">cordova.js</code> will 404 during local development, as it gets injected into your project during Cordova’s build process.</p>
   </li>
 </ul>
 
 <h3 class="file-title">./app/app.js</h3>
 
-<p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="/docs/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="/docs/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="/docs/what-is/es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
+<p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="docs/v2/resources/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="docs/v2/resources/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="docs/v2/resources/what-is/#es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
 
 <p><code class="highlighter-rouge">app/app.js</code> is the entry point for our app.</p>
 
@@ -454,7 +454,7 @@ class MyApp {
 
 <p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="na">id=</span><span class="s">"leftMenu"</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
 
   <span class="nt">&lt;ion-toolbar&gt;</span>
     <span class="nt">&lt;ion-title&gt;</span>Pages<span class="nt">&lt;/ion-title&gt;</span>
@@ -474,11 +474,9 @@ class MyApp {
 </code></pre>
 </div>
 
-<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then a navigation controller to act as the main content area. The <code class="highlighter-rouge">ion-menu</code> takes a property of <code class="highlighter-rouge">content</code>, and we can pass the local variable of <code class="highlighter-rouge">#content</code> from our <code class="highlighter-rouge">ion-nav</code>.</p>
+<p>In this template, we set up an <code class="highlighter-rouge">ion-menu</code> to function as a side menu, and then an <code class="highlighter-rouge">ion-nav</code> component to act as the main content area. The <code class="highlighter-rouge">ion-menu</code>’s <code class="highlighter-rouge">[content]</code> property is bound to the local variable <code class="highlighter-rouge">content</code> from our <code class="highlighter-rouge">ion-nav</code>, so it knows where it should animate around.</p>
 
-<p>This will let the menu know what element should be the main content. The app will let the user select sections from the side menu which will change what they see in the content area. The user will be able to navigate inside the content menu if the section has other pages to navigate to.</p>
-
-<p>Let’s go and see how to create more pages and perform basic navigation.</p>
+<p>Next let’s see how to create more pages and perform basic navigation.</p>
 
       </main>
     </div>
