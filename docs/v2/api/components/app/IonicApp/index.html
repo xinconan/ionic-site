@@ -265,6 +265,9 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
+<li class="capitalize active">
+  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+</li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/item/Item">Item</a>
 </li>
@@ -390,18 +393,7 @@
       </nav>
       
       <main>
-        <div class="improve-docs">
-  <a href="http://github.com/driftyco/ionic2/tree/master/ionic/components/app/app.ts#L5">
-    View Source
-  </a>
-  &nbsp;
-  <a href="http://github.com/driftyco/ionic2/edit/master/ionic/components/app/app.ts#L5">
-    Improve this doc
-  </a>
-
-</div>
-
-<h1 class="api-title">
+        <h1 class="api-title">
 
 
 IonicApp
@@ -413,23 +405,32 @@ IonicApp
 
 </h1>
 
-<h2>Description</h2>
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0/ionic/components/app/app.ts#L5">
+Improve this doc
+</a></p>
 
-<p>Component registry service.  For more information on registering
-components see the <a href="../id/IdRef/">IdRef API reference</a>.</p>
+<p>App utility service.  Allows you to look up components that have been
+registered using the <a href="../Id/">Id directive</a>.</p>
 
-<h2>Methods</h2>
+<!-- @usage tag -->
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2>Instance Methods</h2>
 
 <div id="setTitle"></div>
 
 <h3>
 <code>setTitle(val)</code>
+  
 
 </h3>
 
 <p>Sets the document title.</p>
 
-<table class="table" style="margin:0;">
+<table class="table param-table" style="margin:0;">
   <thead>
     <tr>
       <th>Param</th>
@@ -459,264 +460,51 @@ components see the <a href="../id/IdRef/">IdRef API reference</a>.</p>
   </tbody>
 </table>
 
-<div id="setEnabled"></div>
+<div id="isProd"></div>
 
 <h3>
-<code>setEnabled(isEnabled, fallback)</code>
+<code>isProd()</code>
+  
 
 </h3>
 
-<p>Sets if the app is currently enabled or not, meaning if it’s<br />
-available to accept new user commands. For example, this is set to <code class="highlighter-rouge">false</code><br />
-while views transition, a modal slides up, an action-sheet<br />
-slides up, etc. After the transition completes it is set back to <code class="highlighter-rouge">true</code>.</p>
+<p>Returns if the app has been set to be in be in production mode or not.<br />
+Production mode can only be set within the config of <code class="highlighter-rouge">@App</code>. Defaults<br />
+to <code class="highlighter-rouge">false</code>.</p>
 
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        isEnabled
-        
-        
-      </td>
-      <td>
-        
-  <code>bool</code>
-      </td>
-      <td>
-        
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        fallback
-        
-        
-      </td>
-      <td>
-        
-  <code>bool</code>
-      </td>
-      <td>
-        <p>When <code>isEnabled</code> is set to <code>false</code>, this argument
-is used to set the maximum number of milliseconds that app will wait until
-it will automatically enable the app again. It&#39;s basically a fallback incase
-something goes wrong during a transition and the app wasn&#39;t re-enabled correctly.</p>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> 
+</div>
 
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="isEnabled"></div>
+<div id="isScrolling"></div>
 
 <h3>
-<code>isEnabled()</code>
+<code>isScrolling()</code>
+  
 
 </h3>
 
-<p>Boolean if the app is actively enabled or not.</p>
+<p>Boolean if the app is actively scrolling or not.</p>
 
-<ul>
-  <li>Returns: <br />
-<code>bool</code></li>
-</ul>
-
-<div id="register"></div>
-
-<h3>
-<code>register(id, component)</code>
-
-</h3>
-
-<p>Register a known component with a key, for easy lookups later.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        id
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The id to use to register the component</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        component
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The component to register</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="unregister"></div>
-
-<h3>
-<code>unregister(id)</code>
-
-</h3>
-
-<p>Unregister a known component with a key.</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        id
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>The id to use to unregister</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="getRegisteredComponent"></div>
-
-<h3>
-<code>getRegisteredComponent(cls)</code>
-
-</h3>
-
-<p>Get a registered component with the given type (returns the first)</p>
-
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        cls
-        
-        
-      </td>
-      <td>
-        
-  <code>Object</code>
-      </td>
-      <td>
-        <p>the type to search for</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
- the matching component, or undefined if none was found</li>
-</ul>
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> 
+</div>
 
 <div id="getComponent"></div>
 
 <h3>
-<code>getComponent(key)</code>
+<code>getComponent()</code>
+  
 
 </h3>
 
 <p>Get the component for the given key.</p>
 
-<table class="table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        key
-        
-        
-      </td>
-      <td>
-        
-  <code>TODO</code>
-      </td>
-      <td>
-        <p>TODO</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<ul>
-  <li>Returns: <br />
-<code>TODO</code> TODO</li>
-</ul>
-
+<!-- related link -->
 <!-- end content block -->
 
 <!-- end body block -->

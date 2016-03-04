@@ -1876,9 +1876,35 @@ class OtherPage {
   }
 }
 </code></pre>
-<p>For more information on navigation controllers, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
 
-<p>But what if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menu">Menu</a>.</p>
+<p>For more information on basic navigation, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
+
+<h3 id="navigating_from_root">Navigating from the Root Component</h3>
+<p>What if you want to control navigation from your root app component (the one decorated with <code class="highlighter-rouge">@App</code>, not <code class="highlighter-rouge">@Page</code>)? You can’t inject <code class="highlighter-rouge">NavController</code> because any components that are navigation controllers are <em>children</em> of the root component so they aren’t available to be injected.</p>
+
+<p>By adding an <a href="../api/components/app/Id/"><code class="highlighter-rouge">id</code></a> to <code class="highlighter-rouge">ion-nav</code>, you can use the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service to get a reference to the <code class="highlighter-rouge">Nav</code> component, which is a navigation controller (it extends <code class="highlighter-rouge">NavController</code>):</p>
+
+<pre><code class="language-typescript">@App({
+  template: '&lt;ion-nav id="my-nav" [root]="rootPage"&gt;&lt;/ion-nav&gt;'
+})
+export class MyApp {
+  constructor(app: IonicApp) {
+    this.rootPage = TabsPage;
+    this.app = app;
+  }
+
+  // Wait for the components in MyApp's template to be initialized
+  // In this case, we are waiting for the Nav with id="my-nav"
+  ngAfterViewInit() {
+    var nav = this.app.getComponent('my-nav');
+    // Let's navigate from TabsPage to Page1
+    nav.push(Page1);
+  }
+}
+</code></pre>
+
+<h3 id="advanced_navigation">Advanced Navigation</h3>
+<p>What if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menu">Menu</a>.</p>
 
 <h2 id="radio" class="section-header">Radio</h2>
 
@@ -2133,7 +2159,7 @@ class SearchPage {
 
 <p>For iOS, tabs will appear at the bottom of the screen. For Android, tabs will be at the top of the screen, below the nav-bar. This follows each platform’s design specification, but can be configured with <a href="../api/config/Config/">Config</a>.</p>
 
-<p>Tabs are useful if you have a few “root” or “top-level” pages.  They are obvious to the user and quickly accessed, since they are always on the screen.  However if screen space is limited, or you have a large number of root pages, a <a href="#menu">Menu</a> may be a better option.</p>
+<p>Tabs are useful if you have a few “root” or “top-level” pages.  They are obvious to the user and quickly accessed, since they are always on the screen.  However if screen space is limited, or you have a large number of root pages, a <a href="#menus">Menu</a> may be a better option.</p>
 
 <ul class="docs-content">
   <li class="docs-content-header">Contents</li>
@@ -2307,7 +2333,7 @@ class TabBadgePage {
 }
 
 @Page({
-  template: 
+  template:
     '&lt;ion-tabs&gt;' +
       '&lt;ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
       '&lt;ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
