@@ -443,7 +443,9 @@ With this information you can completely custimize your app to fit any device an
 <h2>Usage</h2>
 
 <pre><code class="lang-ts">import {Platform} from &#39;ionic-angular&#39;;
-export MyClass {
+
+@Page({...})
+export MyPage {
    constructor(platform: Platform){
      this.platform = platform;
    }
@@ -464,15 +466,39 @@ export MyClass {
 
 </h3>
 
-<p>Depending on the platform name, isPlatform will return true or flase</p>
+<p>Depending on the platform the user is on, <code class="highlighter-rouge">is(platformName)</code> will<br />
+return <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>. Note that the same app can return <code class="highlighter-rouge">true</code><br />
+for more than one platform name. For example, an app running from<br />
+an iPad would return <code class="highlighter-rouge">true</code> for the platform names: <code class="highlighter-rouge">mobile</code>,<br />
+<code class="highlighter-rouge">ios</code>, <code class="highlighter-rouge">ipad</code>, and <code class="highlighter-rouge">tablet</code>. Additionally, if the app was running<br />
+from Cordova then <code class="highlighter-rouge">cordova</code> would be true, and if it was running<br />
+from a web browser on the iPad then then <code class="highlighter-rouge">mobileweb</code> would also<br />
+be <code class="highlighter-rouge">true</code>.</p>
+
+<p>Possible built-in platform names:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">android</code></li>
+  <li><code class="highlighter-rouge">cordova</code></li>
+  <li><code class="highlighter-rouge">core</code></li>
+  <li><code class="highlighter-rouge">ios</code></li>
+  <li><code class="highlighter-rouge">ipad</code></li>
+  <li><code class="highlighter-rouge">iphone</code></li>
+  <li><code class="highlighter-rouge">mobile</code></li>
+  <li><code class="highlighter-rouge">mobileweb</code></li>
+  <li><code class="highlighter-rouge">phablet</code></li>
+  <li><code class="highlighter-rouge">tablet</code></li>
+  <li><code class="highlighter-rouge">windows</code></li>
+</ul>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
-export MyClass {
-   constructor(platform: Platform){
-     this.platform = platform;
-     if(this.platform.is('ios'){
-       // what ever you need to do for
-       // if the platfomr is ios
+
+@Page({...})
+export MyPage {
+   constructor(platform: Platform) {
+     if (platform.is('ios')) {
+       // what ever you need to do
+       // if the platform is ios
      }
    }
 }
@@ -511,7 +537,7 @@ export MyClass {
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>boolean</code> returns true/false based on platform you place
+  <code>boolean</code> returns true/false based on platform.
 </div>
 
 <div id="platforms"></div>
@@ -527,8 +553,8 @@ Each possible value is a hierarchy of platforms. For example, on an iPhone,<br /
 it would return mobile, ios, and iphone.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
-export MyClass {
-   constructor(platform: Platform){
+export MyPage {
+   constructor(platform: Platform) {
      this.platform = platform;
      console.log(this.platform.platforms());
      // This will return an array of all the availble platforms
@@ -555,8 +581,10 @@ export MyClass {
 <p>Returns an object containing information about the paltform</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
-export MyClass {
-   constructor(platform: Platform){
+
+@Page({...})
+export MyPage {
+   constructor(platform: Platform) {
      this.platform = platform;
      console.log(this.platform.versions());
    }
@@ -611,8 +639,10 @@ export MyClass {
 <p>Returns a promise when the platform is ready and native functionality can be called</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
-export MyClass {
-   constructor(platform: Platform){
+
+@Page({...})
+export MyPage {
+   constructor(platform: Platform) {
      this.platform = platform;
      this.platform.ready().then(() =&gt; {
        console.log('Platform ready');
