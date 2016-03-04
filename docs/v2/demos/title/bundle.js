@@ -51142,7 +51142,7 @@
 	 * ```ts
 	 * @Page({
 	 *  template: `
-	 *     <ion-slides pager (change)="onSlideChanged($event)" (move)="onSlideMove($event)" loop="true" autoplay="true">
+	 *     <ion-slides pager (change)="onSlideChanged($event)" (move)="onSlideMove($event)">
 	 *      <ion-slide>
 	 *        <h3>Thank you for choosing the Awesome App!</h3>
 	 *        <p>
@@ -60972,13 +60972,14 @@
 	 * service:
 	 * ```ts
 	 * constructor(app: IonicApp) {
-	 *    this.app = app
+	 *   this.app = app
 	 * }
-	 * ngAfterViewInit{
-	 *  var checkbox = this.app.getComponent("myCheckbox");
-	 *  if (checkbox.checked) {
-	 *    console.log('checkbox is checked');
-	 *  }
+	 *
+	 * ngAfterViewInit() {
+	 *   var checkbox = this.app.getComponent("myCheckbox");
+	 *   if (checkbox.checked) {
+	 *     console.log('checkbox is checked');
+	 *   }
 	 * }
 	 * ```
 	 *
