@@ -12,11 +12,11 @@
 
 
 
-    <title>Ionic 2 Guide | Using Platform Plugins - Ionic 2 Developer Preview -  Ionic Framework</title>
+    <title>DatePicker - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-tutorial"
-        class="v2 docs page-tutorial"
+  <body id="docs-page-datepicker"
+        class="v2 docs page-datepicker"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -115,12 +115,9 @@
   </li>
 
   
-  <li class="
-             active">
+  <li class="">
     <a ng-click="showGettingStarted = !showGettingStarted">Getting Started</a>
     <ul ng-show="showGettingStarted"
-        
-          ng-init="showGettingStarted = true"
         >
       <li class="">
         <a href="/docs/v2/getting-started">Welcome</a>
@@ -128,7 +125,7 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
       <li class="">
@@ -241,9 +238,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -267,7 +266,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Contacts">Contacts</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/DatePicker">DatePicker</a>
 </li>
 <li class="capitalize ">
@@ -401,23 +400,97 @@
       </nav>
       
       <main>
-        <h1 id="using-platform-plugins">Using Platform Plugins</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/ionic2/docs/v2/guide/adding-pages/index.md">
+
+DatePicker
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/datepicker.ts#L0">
 Improve this doc
 </a></p>
 
-<p>Great Ionic apps don’t just live in a web view in an app, they embrace the entire native environment they run on. They take pictures, track location, integrate with bluetooth devices, and power Watch apps (among many other things!)</p>
+<!-- decorators -->
 
-<h2 id="ionic-platform">Ionic Platform</h2>
+<pre><code>$ ionic plugin add cordova-plugin-datepicker</code></pre>
+<p>Repo:
+<a href="">
 
-<h2 id="cordova-plugins">Cordova Plugins</h2>
+</a>
+</p>
 
-<h2 id="geolocation-plugin">Geolocation Plugin</h2>
+<!-- description -->
 
-<h2 id="push-notifications">Push Notifications</h2>
+<p>The DatePicker plugin allows the user to fetch date or time using native dialogs.</p>
+<p>Platforms supported: iOS, Android, Windows</p>
+<p>Requires cordova-plugin-datepicker by VitaliiBlagodir that can be <a href="https://github.com/VitaliiBlagodir/cordova-plugin-datepicker">found here</a>.</p>
+<p>Install the plugin by running the following command:</p>
+<pre><code class="lang-shell">ionic plugin add cordova-plugin-datepicker
+</code></pre>
 
-<p><a href="../building-forms/" class="btn btn-primary" role="button">Building Forms</a></p>
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-js">DatePicker.
+</code></pre>
+
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="show"></div>
+<h3><code>show(options)</code>
+  
+</h3>
+
+<p>Shows the date and/or time picker dialog(s)</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;Date&gt;</code> Returns a promise that resolves with the picked date and/or time, or rejects with an error.</p>
+</div>
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
     </div>
