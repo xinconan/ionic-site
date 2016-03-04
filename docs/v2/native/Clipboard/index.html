@@ -12,11 +12,11 @@
 
 
 
-    <title>Ionic 2 | CLI | Generators - Ionic 2 Developer Preview -  Ionic Framework</title>
+    <title>Clipboard - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-cli-serve"
-        class="v2 docs page-cli-serve"
+  <body id="docs-page-clipboard"
+        class="v2 docs page-clipboard"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -238,9 +238,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -258,7 +260,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Camera">Camera</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Clipboard">Clipboard</a>
 </li>
 <li class="capitalize ">
@@ -317,11 +319,9 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showCli = !showCli">CLI</a>
     <ul ng-show="showCli"
-        
-          ng-init="showCli = true"
         >
       <li class="">
         <a href="/docs/v2/cli/">Intro</a>
@@ -344,7 +344,7 @@
       <li class="">
         <a href="/docs/v2/cli/run">run</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/cli/serve">serve</a>
       </li>
       <li class="">
@@ -397,233 +397,117 @@
       </nav>
       
       <main>
+        <h1 class="api-title">
+
+
+Clipboard
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/clipboard.ts#L0">
+Improve this doc
+</a></p>
+
+<!-- decorators -->
+
+<pre><code>$ ionic plugin add com.verso.cordova.clipboard</code></pre>
+<p>Repo:
+<a href="">
+
+</a>
+</p>
+
+<!-- description -->
+
+<p>Clipboard management plugin for Cordova that supports iOS, Android, and Windows Phone 8.</p>
+<p>Requires Cordova plugin: <a href="https://github.com/VersoSolutions/CordovaClipboard">https://github.com/VersoSolutions/CordovaClipboard</a></p>
+<pre><code>ionic plugin add https://github.com/VersoSolutions/CordovaClipboard.git
+</code></pre>
+
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-js">Clipboard.copy(&quot;Hello world&quot;);
+
+Clipboard.paste().then(
+   (resolve : string) =&gt; {
+    alert(resolve);
+    },
+    (reject : string) =&gt; {
+    alert(&quot;Error: &quot; + reject);
+    }
+    );
+);
+</code></pre>
+
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="copy"></div>
+<h3><code>copy(text)</code>
+  
+</h3>
+
+<p>Copies the given text</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        text
+        
+        
+      </td>
+      <td>
         
   
-
-  
-
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
     
-      <h1 style="margin-bottom: 2em">serve</h1>
-    
+  </tbody>
+</table>
 
-    <table class="table param-table" style="margin:0;">
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            ionic serve
-          </td>
-          <td>
-            Start a local development server for app dev/testing
-          </td>
-        </tr>
-      </tbody>
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;T&gt;</code></p>
+</div>
 
-      
-        <thead>
-          <tr>
-            <th>Flags</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>
-              --consolelogs|-c
-            </td>
-            <td>
-              Print app console logs to Ionic CLI
-            </td>
-            
-          <tr>
-            <td>
-              --serverlogs|-s
-            </td>
-            <td>
-              Print dev server logs to Ionic CLI
-            </td>
-            
-          <tr>
-            <td>
-              --port|-p
-            </td>
-            <td>
-              
-            </td>
-            
-          <tr>
-            <td>
-              --livereload-port|-r
-            </td>
-            <td>
-              
-            </td>
-            
-          <tr>
-            <td>
-              --nobrowser|-b
-            </td>
-            <td>
-              Disable launching a browser
-            </td>
-            
-          <tr>
-            <td>
-              --nolivereload|-d
-            </td>
-            <td>
-              Do not start live reload
-            </td>
-            
-          <tr>
-            <td>
-              --noproxy|-x
-            </td>
-            <td>
-              Do not add proxies
-            </td>
-            
-          <tr>
-            <td>
-              --address
-            </td>
-            <td>
-              
-            </td>
-            
-          <tr>
-            <td>
-              --all|-a
-            </td>
-            <td>
-              Have the server listen on all addresses (0.0.0.0)
-            </td>
-            
-          <tr>
-            <td>
-              --browser|-w
-            </td>
-            <td>
-              
-            </td>
-            
-          <tr>
-            <td>
-              --browseroption|-o
-            </td>
-            <td>
-              
-            </td>
-            
-          <tr>
-            <td>
-              --lab|-l
-            </td>
-            <td>
-              Test your apps on multiple screen sizes and platform types
-            </td>
-            
-          <tr>
-            <td>
-              --nogulp
-            </td>
-            <td>
-              Disable running gulp during serve
-            </td>
-            
-          <tr>
-            <td>
-              --platform|-t
-            </td>
-            <td>
-              
-            </td>
-            
-          </tr>
-        </tbody>
-      
-
-
-    </table>
+<div id="paste"></div>
+<h3><code>paste()</code>
   
+</h3>
 
-  
+<p>Pastes the text stored in clipboard</p>
 
-  
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;T&gt;</code></p>
+</div>
 
-  
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-<h2 id="description">Description</h2>
-
-<p>Use <code class="highlighter-rouge">ionic serve</code> to start a local development server for app dev and testing. This is useful for both desktop browser testing, and to test within a device browser which is connected to the same network. Additionally, this command starts LiveReload which is used to monitor changes in the file system. As soon as you save a file the browser is refreshed automatically.</p>
-
+<!-- end body block -->
 
 
       </main>
