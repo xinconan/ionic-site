@@ -236,7 +236,13 @@
         </ul>
 
       <li><a href="#toggle">Toggle</a></li>
+
       <li><a href="#toolbar">Toolbar</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="#toolbar-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="#toolbar-segment"></a></li>
+          <li class="nav-item-hidden"><a href="#toolbar-searchbar"></a></li>
+        </ul>
 
     </ul>
   </li>
@@ -2391,44 +2397,31 @@ export class BadgesPage {
 
 <p>A toolbar is a generic bar that can be used in an app as a header, sub-header, footer, or even sub-footer. Since <code class="highlighter-rouge">ion-toolbar</code> is based on flexbox, no matter how many toolbars you have in your page, they will be displayed correctly and <code class="highlighter-rouge">ion-content</code> will adjust accordingly.</p>
 
+<ul class="docs-content">
+    <li class="docs-content-header">Contents</li>
+    <li class="docs-content-item"><a href="#toolbar">Basic Usage</a></li>
+    <li class="docs-content-item"><a href="#toolbar-buttons">Buttons in Toolbars</a></li>
+    <li class="docs-content-item"><a href="#toolbar-segment">Segment in Toolbars</a></li>
+    <!-- <li class="docs-content-item"><a href="#toolbar-searchbar">Searchbar in Toolbars</a></li> -->
+
+  </ul>
+
 <h3 class="no-para">Basic Usage</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/toolbar/basic">
   Demo Source
 </a></p>
+
+<p>Add the property <code class="highlighter-rouge">position="bottom"</code> to place the tool bar below the content:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar&gt;</span>
   <span class="nt">&lt;ion-title&gt;</span>Toolbar<span class="nt">&lt;/ion-title&gt;</span>
 <span class="nt">&lt;/ion-toolbar&gt;</span>
 
 <span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
-</code></pre>
-</div>
-
-<h3 class="no-para">Footer</h3>
-
-<p>Add the property <code class="highlighter-rouge">position="bottom"</code> to place the tool bar below the content</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
 
 <span class="nt">&lt;ion-toolbar</span> <span class="na">position=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-title&gt;</span>Footer<span class="nt">&lt;/ion-title&gt;</span>
 <span class="nt">&lt;/ion-toolbar&gt;</span>
-</code></pre>
-</div>
-
-<h3 class="no-para">Color</h3>
-
-<p>To change the color of the toolbar, you can use the theme properties defined in your styles.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar</span> <span class="na">primary</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-title&gt;</span>Primary<span class="nt">&lt;/ion-title&gt;</span>
-<span class="nt">&lt;/ion-toolbar&gt;</span>
-
-<span class="nt">&lt;ion-toolbar</span> <span class="na">danger</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-title&gt;</span>Danger<span class="nt">&lt;/ion-title&gt;</span>
-<span class="nt">&lt;/ion-toolbar&gt;</span>
-
-<span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
 </code></pre>
 </div>
 
@@ -2453,6 +2446,69 @@ export class BadgesPage {
   <span class="nt">&lt;p&gt;</span>There is a header above me!<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/ion-content&gt;</span>
 
+</code></pre>
+</div>
+
+<h3 id="toolbar-buttons" class="section-nav">Buttons in Toolbars</h3>
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/toolbar.html">
+  Improve this Doc</a></p>
+
+<p>Buttons can be added to both header and footer toolbars. To add a button to a toolbar, we need to first add an <code class="highlighter-rouge">ion-buttons</code> component. This component wraps one or more buttons, and can be given the <code class="highlighter-rouge">start</code> or <code class="highlighter-rouge">end</code> attributes to control the placement of the buttons it contains:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar&gt;</span>
+  <span class="nt">&lt;ion-buttons</span> <span class="na">start</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">royal</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"search"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-buttons&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Send To...<span class="nt">&lt;/ion-title&gt;</span>
+  <span class="nt">&lt;ion-buttons</span> <span class="na">end</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">royal</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"person-add"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-buttons&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-content&gt;&lt;/ion-content&gt;</span>
+
+<span class="nt">&lt;ion-toolbar</span> <span class="na">position=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Ash, Misty, Brock<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;ion-buttons</span> <span class="na">end</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">royal</span><span class="nt">&gt;</span>
+      Send
+      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"send"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-buttons&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="toolbar-segment" class="section-nav">Segment in Toolbars</h3>
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/toolbar.html">
+  Improve this Doc</a></p>
+
+<p><a href="#segment">Segments</a> are a great way to allow users to switch between different sets of data. Use the following markup to add a segment to a toolbar:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar&gt;</span>
+  <span class="nt">&lt;ion-buttons</span> <span class="na">start</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button&gt;</span>
+      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"create"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-buttons&gt;</span>
+  <span class="nt">&lt;ion-segment&gt;</span>
+    <span class="nt">&lt;ion-segment-button</span> <span class="na">value=</span><span class="s">"new"</span><span class="nt">&gt;</span>
+      New
+    <span class="nt">&lt;/ion-segment-button&gt;</span>
+    <span class="nt">&lt;ion-segment-button</span> <span class="na">value=</span><span class="s">"hot"</span><span class="nt">&gt;</span>
+      Hot
+    <span class="nt">&lt;/ion-segment-button&gt;</span>
+  <span class="nt">&lt;/ion-segment&gt;</span>
+  <span class="nt">&lt;ion-buttons</span> <span class="na">end</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button&gt;</span>
+      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"more"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/ion-buttons&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
 </code></pre>
 </div>
 
