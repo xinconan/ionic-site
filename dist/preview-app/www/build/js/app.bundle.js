@@ -3187,11 +3187,11 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var ionic_angular_2 = __webpack_require__(5);
-	var menus_1 = __webpack_require__(361);
-	var helpers = __webpack_require__(363);
+	var menus_1 = __webpack_require__(362);
+	var helpers = __webpack_require__(364);
 	// Change the import if you want to change the first page, for example:
 	// import { ImagePage as rootPage } from './pages/cards/cards';
-	var action_sheets_1 = __webpack_require__(364);
+	var action_sheets_1 = __webpack_require__(365);
 	var DemoApp = (function () {
 	    function DemoApp(app, platform, config) {
 	        var _this = this;
@@ -3318,6 +3318,7 @@
 	__webpack_require__(358);
 	__webpack_require__(359);
 	__webpack_require__(360);
+	__webpack_require__(361);
 
 
 /***/ },
@@ -3395,7 +3396,7 @@
 	        linkEle.href = href;
 	    }
 	    // set the mode class name
-	    // ios/md
+	    // ios/md/wp
 	    bodyEle.classList.add(mode);
 	    // language and direction
 	    platform.setDir(document.documentElement.dir, false);
@@ -26274,7 +26275,8 @@
 	 * @name Config
 	 * @demo /docs/v2/demos/config/
 	 * @description
-	 * Config lets you change multiple or a single value in an apps mode configuration. Things such as tab placement, icon changes, and view animations can be set here.
+	 * The Config lets you configure your entire app or specific platforms.
+	 * You can set the tab placement, icon mode, animations, and more here.
 	 *
 	 * ```ts
 	 * @App({
@@ -26290,7 +26292,7 @@
 	 * })
 	 * ```
 	 *
-	 * Or change the whole mode
+	 * To change the mode to always use Material Design (md).
 	 *
 	 * ```ts
 	 * @App({
@@ -26301,7 +26303,7 @@
 	 * })
 	 * ```
 	 *
-	 * Config can be overwritting at multiple levels, allowing deeper configuration. Taking the example from earlier, we can override any setting we want based on a platform.
+	 * Config can be overwritten at multiple levels allowing for more configuration. Taking the example from earlier, we can override any setting we want based on a platform.
 	 * ```ts
 	 * @App({
 	 *   template: `<ion-nav [root]="root"></ion-nav>`
@@ -26323,8 +26325,6 @@
 	 *    <ion-tab tabTitle="Dash" tabIcon="pulse" [root]="tabRoot"></ion-tab>
 	 *  </ion-tabs>
 	 * ```
-	 *
-	 * The property will override anything else set in the apps.
 	 *
 	 * The last way we could configure is through URL query strings. This is useful for testing while in the browser.
 	 * Simply add `?ionic<PROPERTYNAME>=<value>` to the url.
@@ -26485,7 +26485,10 @@
 	     * @param {string} [value] - The config value being stored.
 	     */
 	    Config.prototype.set = function () {
-	        var args = arguments;
+	        var args = [];
+	        for (var _i = 0; _i < arguments.length; _i++) {
+	            args[_i - 0] = arguments[_i];
+	        }
 	        var arg0 = args[0];
 	        var arg1 = args[1];
 	        switch (args.length) {
@@ -26572,8 +26575,10 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {Platform} 'ionic-angular';
-	 * export MyClass {
+	 * import {Platform} from 'ionic-angular';
+	 *
+	 * @Page({...})
+	 * export MyPage {
 	 *    constructor(platform: Platform){
 	 *      this.platform = platform;
 	 *    }
@@ -26594,18 +26599,40 @@
 	    // **********************************************
 	    /**
 	     * @param {string} platformName
-	     * @returns {boolean} returns true/false based on platform you place
+	     * @returns {boolean} returns true/false based on platform.
 	     * @description
-	     * Depending on the platform name, isPlatform will return true or flase
+	     * Depending on the platform the user is on, `is(platformName)` will
+	     * return `true` or `false`. Note that the same app can return `true`
+	     * for more than one platform name. For example, an app running from
+	     * an iPad would return `true` for the platform names: `mobile`,
+	     * `ios`, `ipad`, and `tablet`. Additionally, if the app was running
+	     * from Cordova then `cordova` would be true, and if it was running
+	     * from a web browser on the iPad then then `mobileweb` would also
+	     * be `true`.
+	     *
+	     * Possible built-in platform names:
+	     *
+	     * - `android`
+	     * - `cordova`
+	     * - `core`
+	     * - `ios`
+	     * - `ipad`
+	     * - `iphone`
+	     * - `mobile`
+	     * - `mobileweb`
+	     * - `phablet`
+	     * - `tablet`
+	     * - `windows`
 	     *
 	     * ```
-	     * import {Platform} 'ionic-angular';
-	     * export MyClass {
-	     *    constructor(platform: Platform){
-	     *      this.platform = platform;
-	     *      if(this.platform.is('ios'){
-	     *        // what ever you need to do for
-	     *        // if the platfomr is ios
+	     * import {Platform} from 'ionic-angular';
+	     *
+	     * @Page({...})
+	     * export MyPage {
+	     *    constructor(platform: Platform) {
+	     *      if (platform.is('ios')) {
+	     *        // what ever you need to do
+	     *        // if the platform is ios
 	     *      }
 	     *    }
 	     * }
@@ -26622,9 +26649,9 @@
 	     * it would return mobile, ios, and iphone.
 	     *
 	     * ```
-	     * import {Platform} 'ionic-angular';
-	     * export MyClass {
-	     *    constructor(platform: Platform){
+	     * import {Platform} from 'ionic-angular';
+	     * export MyPage {
+	     *    constructor(platform: Platform) {
 	     *      this.platform = platform;
 	     *      console.log(this.platform.platforms());
 	     *      // This will return an array of all the availble platforms
@@ -26642,9 +26669,11 @@
 	     * Returns an object containing information about the paltform
 	     *
 	     * ```
-	     * import {Platform} 'ionic-angular';
-	     * export MyClass {
-	     *    constructor(platform: Platform){
+	     * import {Platform} from 'ionic-angular';
+	     *
+	     * @Page({...})
+	     * export MyPage {
+	     *    constructor(platform: Platform) {
 	     *      this.platform = platform;
 	     *      console.log(this.platform.versions());
 	     *    }
@@ -26678,9 +26707,11 @@
 	     * Returns a promise when the platform is ready and native functionality can be called
 	     *
 	     * ```
-	     * import {Platform} 'ionic-angular';
-	     * export MyClass {
-	     *    constructor(platform: Platform){
+	     * import {Platform} from 'ionic-angular';
+	     *
+	     * @Page({...})
+	     * export MyPage {
+	     *    constructor(platform: Platform) {
 	     *      this.platform = platform;
 	     *      this.platform.ready().then(() => {
 	     *        console.log('Platform ready');
@@ -26937,13 +26968,6 @@
 	    /**
 	     * @private
 	     */
-	    Platform.prototype.testUserAgent = function (userAgentExpression) {
-	        var rgx = new RegExp(userAgentExpression, 'i');
-	        return rgx.test(this._ua || '');
-	    };
-	    /**
-	     * @private
-	     */
 	    Platform.prototype.testNavigatorPlatform = function (navigatorPlatformExpression) {
 	        var rgx = new RegExp(navigatorPlatformExpression, 'i');
 	        return rgx.test(this._bPlt);
@@ -26965,15 +26989,25 @@
 	    /**
 	     * @private
 	     */
-	    Platform.prototype.isPlatform = function (queryTestValue, userAgentExpression) {
-	        if (!userAgentExpression) {
-	            userAgentExpression = queryTestValue;
-	        }
+	    Platform.prototype.isPlatformMatch = function (queryStringName, userAgentAtLeastHas, userAgentMustNotHave) {
+	        if (userAgentMustNotHave === void 0) { userAgentMustNotHave = []; }
 	        var queryValue = this.query('ionicplatform');
 	        if (queryValue) {
-	            return this.testQuery(queryValue, queryTestValue);
+	            return this.testQuery(queryValue, queryStringName);
 	        }
-	        return this.testUserAgent(userAgentExpression);
+	        userAgentAtLeastHas = userAgentAtLeastHas || [queryStringName];
+	        var userAgent = this._ua.toLowerCase();
+	        for (var i = 0; i < userAgentAtLeastHas.length; i++) {
+	            if (userAgent.indexOf(userAgentAtLeastHas[i]) > -1) {
+	                for (var j = 0; j < userAgentMustNotHave.length; j++) {
+	                    if (userAgent.indexOf(userAgentMustNotHave[j]) > -1) {
+	                        return false;
+	                    }
+	                }
+	                return true;
+	            }
+	        }
+	        return false;
 	    };
 	    /**
 	     * @private
@@ -27290,6 +27324,7 @@
 	exports.isFunction = function (val) { return typeof val === 'function'; };
 	exports.isDefined = function (val) { return typeof val !== 'undefined'; };
 	exports.isUndefined = function (val) { return typeof val === 'undefined'; };
+	exports.isPresent = function (val) { return val !== undefined && val !== null; };
 	exports.isBlank = function (val) { return val === undefined || val === null; };
 	exports.isObject = function (val) { return typeof val === 'object'; };
 	exports.isArray = Array.isArray;
@@ -27299,6 +27334,22 @@
 	        return (val === 'true' || val === 'on' || val === '');
 	    }
 	    return !!val;
+	};
+	exports.isCheckedProperty = function (a, b) {
+	    if (a === undefined || a === null || a === '') {
+	        return (b === undefined || b === null || b === '');
+	    }
+	    else if (a === true || a === 'true') {
+	        return (b === true || b === 'true');
+	    }
+	    else if (a === false || a === 'false') {
+	        return (b === false || b === 'false');
+	    }
+	    else if (a === 0 || a === '0') {
+	        return (b === 0 || b === '0');
+	    }
+	    // not using strict comparison on purpose
+	    return (a == b);
 	};
 	/**
 	 * Convert a string in the format thisIsAString to a slug format this-is-a-string
@@ -27347,10 +27398,14 @@
 	        var startIndex = url.indexOf('?');
 	        if (startIndex !== -1) {
 	            var queries = url.slice(startIndex + 1).split('&');
-	            queries.forEach(function (param) {
-	                var split = param.split('=');
-	                queryParams[split[0].toLowerCase()] = split[1].split('#')[0];
-	            });
+	            for (var i = 0; i < queries.length; i++) {
+	                if (queries[i].indexOf('=') > 0) {
+	                    var split = queries[i].split('=');
+	                    if (split.length > 1) {
+	                        queryParams[split[0].toLowerCase()] = split[1].split('#')[0];
+	                    }
+	                }
+	            }
 	        }
 	    }
 	    return queryParams;
@@ -27659,8 +27714,9 @@
 	/**
 	 * @name Events
 	 * @description
-	 * Events is a pub/sub style event system for sending and responding to application-level
+	 * Events is a publish-subscribe style event system for sending and responding to application-level
 	 * events across your app.
+	 *
 	 * @usage
 	 * ```ts
 	 * // first page (publish an event when a user is created)
@@ -27915,9 +27971,8 @@
 	var config_1 = __webpack_require__(161);
 	var click_block_1 = __webpack_require__(160);
 	/**
-	 * @private
-	 * Component registry service.  For more information on registering
-	 * components see the [IdRef API reference](../id/IdRef/).
+	 * App utility service.  Allows you to look up components that have been
+	 * registered using the [Id directive](../Id/).
 	 */
 	var IonicApp = (function () {
 	    function IonicApp(_config, _clickBlock, _zone) {
@@ -27991,7 +28046,6 @@
 	        this._scrollTime = Date.now();
 	    };
 	    /**
-	     * @private
 	     * Boolean if the app is actively scrolling or not.
 	     * @return {boolean}
 	     */
@@ -28030,7 +28084,6 @@
 	        }
 	    };
 	    /**
-	     * @private
 	     * Get the component for the given key.
 	     */
 	    IonicApp.prototype.getComponent = function (id) {
@@ -41254,7 +41307,7 @@
 	/**
 	 * @name Keyboard
 	 * @description
-	 * The `Keyboard` class allows you to work with the keyboard events provide by the Ionic keyboard plugin.
+	 * The `Keyboard` class allows you to work with the keyboard events provided by the Ionic keyboard plugin.
 	 *
 	 * @usage
 	 * ```ts
@@ -41431,7 +41484,7 @@
 	 * _For basic Menu usage, see the [Menu section](../../../../components/#menus)
 	 * of the Component docs._
 	 *
-	 * Menu is a side-menu interface that can be dragged out or toggled to open or closed.
+	 * Menu is a side-menu interface that can be dragged and toggled to open or close.
 	 * An Ionic app can have numerous menus, all of which can be controlled within
 	 * template HTML, or programmatically.
 	 *
@@ -45645,8 +45698,8 @@
 	        */
 	        get: function () {
 	            if (this._inNavbar && this._viewCtrl) {
-	                if (this._viewCtrl.isRoot()) {
-	                    // this is the root view, so it should always show
+	                if (this._viewCtrl.isFirst()) {
+	                    // this is the first view, so it should always show
 	                    return false;
 	                }
 	                var menu = this._menu.get(this.menuToggle);
@@ -45703,6 +45756,7 @@
 	};
 	var core_1 = __webpack_require__(7);
 	var nav_params_1 = __webpack_require__(297);
+	var util_1 = __webpack_require__(163);
 	/**
 	 * @name ViewController
 	 * @description
@@ -45720,7 +45774,6 @@
 	 */
 	var ViewController = (function () {
 	    function ViewController(componentType, data) {
-	        if (data === void 0) { data = {}; }
 	        this.componentType = componentType;
 	        this._destroys = [];
 	        this._hdAttr = null;
@@ -45754,7 +45807,7 @@
 	         */
 	        this._emitter = new core_1.EventEmitter();
 	        // passed in data could be NavParams, but all we care about is its data object
-	        this.data = (data instanceof nav_params_1.NavParams ? data.data : data);
+	        this.data = (data instanceof nav_params_1.NavParams ? data.data : util_1.isPresent(data) ? data : {});
 	    }
 	    ViewController.prototype.subscribe = function (generatorOrNext) {
 	        return this._emitter.subscribe(generatorOrNext);
@@ -45850,15 +45903,29 @@
 	        configurable: true
 	    });
 	    /**
-	     * @returns {boolean} Returns if this Page is the root page of the NavController.
+	     * @private
 	     */
 	    ViewController.prototype.isRoot = function () {
-	        return (this.index === 0);
+	        // deprecated warning
+	        void 0;
+	        return this.isFirst();
+	    };
+	    /**
+	     * @returns {boolean} Returns if this Page is the first in the stack of pages within its NavController.
+	     */
+	    ViewController.prototype.isFirst = function () {
+	        return (this._nav ? this._nav.first() === this : false);
+	    };
+	    /**
+	     * @returns {boolean} Returns if this Page is the last in the stack of pages within its NavController.
+	     */
+	    ViewController.prototype.isLast = function () {
+	        return (this._nav ? this._nav.last() === this : false);
 	    };
 	    /**
 	     * @private
 	     */
-	    ViewController.prototype.domCache = function (shouldShow, renderer) {
+	    ViewController.prototype.domShow = function (shouldShow, renderer) {
 	        // using hidden element attribute to display:none and not render views
 	        // renderAttr of '' means the hidden attribute will be added
 	        // renderAttr of null means the hidden attribute will be removed
@@ -46290,17 +46357,14 @@
 	 * @name Navbar
 	 * @description
 	 * Navbar is a global level toolbar that gets updated every time a page gets
-	 * loaded. You can pass the navbar a `ion-title` or any number of buttons.
+	 * loaded. You can pass the navbar an `ion-title`, any number of buttons, a segment, or a searchbar.
 	 *
 	 * @usage
 	 * ```html
 	 * <ion-navbar *navbar>
-	 *
-	 *   <ion-buttons start>
-	 *     <button (click)="toggleItems()">
-	 *       toggle
-	 *     </button>
-	 *   </ion-buttons>
+	 *   <button menuToggle>
+	 *     <ion-icon name="menu"></ion-icon>
+	 *   </button>
 	 *
 	 *   <ion-title>
 	 *     Page Title
@@ -46308,7 +46372,7 @@
 	 *
 	 *   <ion-buttons end>
 	 *     <button (click)="openModal()">
-	 *       Modal
+	 *       <ion-icon name="options"></ion-icon>
 	 *     </button>
 	 *   </ion-buttons>
 	 * </ion-navbar>
@@ -46484,12 +46548,12 @@
 	 * For a full list of available icons, check out the
 	 * [Ionicons resource docs](../../../../resources/ionicons).
 	 *
-	 * One feature of Ionicons is that when icon names are set, the actual icon
+	 * One feature of Ionicons in Ionic is when icon names are set, the actual icon
 	 * which is rendered can change slightly depending on the mode the app is
 	 * running from. For example, by setting the icon name of `alarm`, on iOS the
 	 * icon will automatically apply `ios-alarm`, and on Material Design it will
-	 * automatically apply `md-alarm`. This allow the developer to write the
-	 * markup once, and let Ionic automatically apply the appropriate icon.
+	 * automatically apply `md-alarm`. This allows the developer to write the
+	 * markup once while Ionic applies the appropriate icon based on the mode.
 	 *
 	 * @usage
 	 * ```html
@@ -46906,40 +46970,43 @@
 	};
 	var core_1 = __webpack_require__(7);
 	var config_1 = __webpack_require__(161);
+	var util_1 = __webpack_require__(163);
 	/**
 	  * @name Button
 	  * @module ionic
-	  * @property [outline] - for an unfilled outline button
-	  * @property [clear] - for a transparent button that only shows text and icons
-	  * @property [round] - for a button with rounded corners
-	  * @property [block] - for a block button that fills it's parent container
-	  * @property [full] - for a full width button
-	  * @property [small] - sets button size to small
-	  * @property [large] - sets button size to large
-	  * @property [disabled] - disables the button
-	  * @property [fab] - for a floating action button
-	  * @property [fab-left] - position a fab button to the left
-	  * @property [fab-right] - position a fab button to the right
-	  * @property [fab-center] - position a fab button towards the center
-	  * @property [fab-top] - position a fab button towards the top
-	  * @property [fab-bottom] - position a fab button towards the bottom
-	  * @property [color] - Dynamically set which color attribute this button should use.
+	  *
 	  * @description
-	  * Buttons are simple components in Ionic, can consist of text, an icon, or both, and can be enhanced with a wide range of attributes.
+	  * Buttons are simple components in Ionic. They can consist of text and icons
+	  * and be enhanced by a wide range of attributes.
+	  *
+	  * @property [outline] - A transparent button with a border.
+	  * @property [clear] - A transparent button without a border.
+	  * @property [round] - A button with rounded corners.
+	  * @property [block] - A button that fills its parent container with a border-radius.
+	  * @property [full] - A button that fills its parent container without a border-radius or borders on the left/right.
+	  * @property [small] - A button with size small.
+	  * @property [large] - A button with size large.
+	  * @property [disabled] - A disabled button.
+	  * @property [fab] - A floating action button.
+	  * @property [fab-left] - Position a fab button to the left.
+	  * @property [fab-right] - Position a fab button to the right.
+	  * @property [fab-center] - Position a fab button towards the center.
+	  * @property [fab-top] - Position a fab button towards the top.
+	  * @property [fab-bottom] - Position a fab button towards the bottom.
+	  * @property [color] - Dynamically set which color attribute this button should use.
+	  *
 	  * @demo /docs/v2/demos/button/
 	  * @see {@link /docs/v2/components#buttons Button Component Docs}
-	
 	 */
 	var Button = (function () {
 	    function Button(config, _elementRef, _renderer, ionItem) {
 	        this._elementRef = _elementRef;
 	        this._renderer = _renderer;
 	        this._role = 'button'; // bar-button/item-button
-	        this._size = null; // large/small
+	        this._size = null; // large/small/default
 	        this._style = 'default'; // outline/clear/solid
 	        this._shape = null; // round/fab
 	        this._display = null; // block/full
-	        this._lastColor = null;
 	        this._colors = []; // primary/secondary
 	        this._icon = null; // left/right/only
 	        this._disabled = false; // disabled
@@ -46958,27 +47025,125 @@
 	        }
 	        this._readAttrs(element);
 	    }
+	    Object.defineProperty(Button.prototype, "large", {
+	        /**
+	         * @input {string} Large button.
+	         */
+	        set: function (val) {
+	            this._attr('_size', 'large', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "small", {
+	        /**
+	         * @input {string} Small button.
+	         */
+	        set: function (val) {
+	            this._attr('_size', 'small', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "default", {
+	        /**
+	         * @input {string} Default button.
+	         */
+	        set: function (val) {
+	            this._attr('_size', 'default', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "outline", {
+	        /**
+	         * @input {string} A transparent button with a border.
+	         */
+	        set: function (val) {
+	            this._attr('_style', 'outline', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "clear", {
+	        /**
+	         * @input {string} A transparent button without a border.
+	         */
+	        set: function (val) {
+	            this._attr('_style', 'clear', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "solid", {
+	        /**
+	         * @input {string} Force a solid button. Useful for buttons within an item.
+	         */
+	        set: function (val) {
+	            this._attr('_style', 'solid', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "round", {
+	        /**
+	         * @input {string} A button with rounded corners.
+	         */
+	        set: function (val) {
+	            this._attr('_shape', 'round', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "block", {
+	        /**
+	         * @input {string} A button that fills its parent container with a border-radius.
+	         */
+	        set: function (val) {
+	            this._attr('_display', 'block', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Button.prototype, "full", {
+	        /**
+	         * @input {string} A button that fills its parent container without a border-radius or borders on the left/right.
+	         */
+	        set: function (val) {
+	            this._attr('_display', 'full', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Button.prototype._attr = function (type, attrName, attrValue) {
+	        this._setClass(this[type], false);
+	        if (util_1.isTrueProperty(attrValue)) {
+	            this[type] = attrName;
+	            this._setClass(attrName, true);
+	        }
+	        else {
+	            this[type] = null;
+	        }
+	    };
+	    Object.defineProperty(Button.prototype, "color", {
+	        /**
+	         * @input {string} Dynamically set which color attribute this button should use.
+	         */
+	        set: function (val) {
+	            this._assignCss(false);
+	            this._colors = [val];
+	            this._assignCss(true);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
 	    Button.prototype.ngAfterContentInit = function () {
-	        this._lastColor = this.color;
-	        if (this.color) {
-	            this._colors = [this.color];
-	        }
+	        this._init = true;
 	        this._readIcon(this._elementRef.nativeElement);
 	        this._assignCss(true);
-	    };
-	    /**
-	     * @private
-	     */
-	    Button.prototype.ngAfterContentChecked = function () {
-	        if (this._lastColor !== this.color) {
-	            this._assignCss(false);
-	            this._lastColor = this.color;
-	            this._colors = [this.color];
-	            this._assignCss(true);
-	        }
 	    };
 	    /**
 	     * @private
@@ -47084,7 +47249,7 @@
 	     * @private
 	     */
 	    Button.prototype._setClass = function (type, assignCssClass) {
-	        if (type) {
+	        if (type && this._init) {
 	            this._renderer.setElementClass(this._elementRef.nativeElement, this._role + '-' + type, assignCssClass);
 	        }
 	    };
@@ -47099,8 +47264,54 @@
 	    };
 	    __decorate([
 	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], Button.prototype, "color", void 0);
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "large", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "small", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "default", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "outline", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "clear", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "solid", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "round", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "block", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "full", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String), 
+	        __metadata('design:paramtypes', [String])
+	    ], Button.prototype, "color", null);
 	    Button = __decorate([
 	        core_1.Component({
 	            selector: 'button:not([ion-item]),[button]',
@@ -47115,7 +47326,7 @@
 	    return Button;
 	})();
 	exports.Button = Button;
-	var BUTTON_SIZE_ATTRS = ['large', 'small'];
+	var BUTTON_SIZE_ATTRS = ['large', 'small', 'default'];
 	var BUTTON_STYLE_ATTRS = ['clear', 'outline', 'solid'];
 	var BUTTON_SHAPE_ATTRS = ['round', 'fab'];
 	var BUTTON_DISPLAY_ATTRS = ['block', 'full'];
@@ -47275,8 +47486,6 @@
 	     * @returns {Promise} Returns a promise when done
 	     */
 	    NavController.prototype.setRoot = function (page, params, opts) {
-	        if (params === void 0) { params = {}; }
-	        if (opts === void 0) { opts = {}; }
 	        return this.setPages([{ page: page, params: params }], opts);
 	    };
 	    /**
@@ -47353,9 +47562,11 @@
 	     * @returns {Promise} Returns a promise when the pages are set
 	     */
 	    NavController.prototype.setPages = function (pages, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        if (!pages || !pages.length) {
 	            return Promise.resolve(false);
+	        }
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
 	        }
 	        // deprecated warning
 	        pages.forEach(function (pg) {
@@ -47391,7 +47602,6 @@
 	     * @private
 	     */
 	    NavController.prototype.setViews = function (components, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        void 0;
 	        return this.setPages(components, opts);
 	    };
@@ -47461,8 +47671,6 @@
 	     * @returns {Promise} Returns a promise, which resolves when the transition has completed
 	     */
 	    NavController.prototype.push = function (page, params, opts) {
-	        if (params === void 0) { params = {}; }
-	        if (opts === void 0) { opts = {}; }
 	        return this.insertPages(-1, [{ page: page, params: params }], opts);
 	    };
 	    /**
@@ -47491,13 +47699,15 @@
 	     * @returns {Promise} Returns a promise, which resolves when the transition has completed
 	     */
 	    NavController.prototype.present = function (enteringView, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        var rootNav = this.rootNav;
 	        if (rootNav['_tabs']) {
 	            // TODO: must have until this goes in
 	            // https://github.com/angular/angular/issues/5481
 	            void 0;
 	            return;
+	        }
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
 	        }
 	        enteringView.setNav(rootNav);
 	        opts.keyboardClose = false;
@@ -47537,8 +47747,6 @@
 	     * @returns {Promise} Returns a promise when the page has been inserted into the navigation stack
 	     */
 	    NavController.prototype.insert = function (insertIndex, page, params, opts) {
-	        if (params === void 0) { params = {}; }
-	        if (opts === void 0) { opts = {}; }
 	        return this.insertPages(insertIndex, [{ page: page, params: params }], opts);
 	    };
 	    /**
@@ -47570,14 +47778,15 @@
 	     * @returns {Promise} Returns a promise when the pages have been inserted into the navigation stack
 	     */
 	    NavController.prototype.insertPages = function (insertIndex, insertPages, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        var views = insertPages.map(function (p) { return new view_controller_1.ViewController(p.page, p.params); });
 	        return this._insertViews(insertIndex, views, opts);
 	    };
 	    NavController.prototype._insertViews = function (insertIndex, insertViews, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        if (!insertViews || !insertViews.length) {
 	            return Promise.reject('invalid pages');
+	        }
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
 	        }
 	        // insert the new page into the stack
 	        // returns the newly created entering view
@@ -47681,15 +47890,17 @@
 	     * @returns {Promise} Returns a promise when the transition is completed
 	     */
 	    NavController.prototype.pop = function (opts) {
-	        if (opts === void 0) { opts = {}; }
 	        // get the index of the active view
 	        // which will become the view to be leaving
 	        var activeView = this.getByState(STATE_TRANS_ENTER) ||
 	            this.getByState(STATE_INIT_ENTER) ||
 	            this.getActive();
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
+	        }
 	        // if not set, by default climb up the nav controllers if
 	        // there isn't a previous view in this nav controller
-	        if (util_1.isUndefined(opts.climbNav)) {
+	        if (util_1.isBlank(opts.climbNav)) {
 	            opts.climbNav = true;
 	        }
 	        return this.remove(this.indexOf(activeView), 1, opts);
@@ -47699,7 +47910,6 @@
 	     * @param {object} [opts={}] Any options you want to use pass to transtion
 	     */
 	    NavController.prototype.popToRoot = function (opts) {
-	        if (opts === void 0) { opts = {}; }
 	        return this.popTo(this.first(), opts);
 	    };
 	    /**
@@ -47708,7 +47918,6 @@
 	     * @param {object} [opts={}]  Any options you want to use pass to transtion
 	     */
 	    NavController.prototype.popTo = function (view, opts) {
-	        if (opts === void 0) { opts = {}; }
 	        var startIndex = this.indexOf(view);
 	        var activeView = this.getByState(STATE_TRANS_ENTER) ||
 	            this.getByState(STATE_INIT_ENTER) ||
@@ -47738,12 +47947,14 @@
 	    NavController.prototype.remove = function (startIndex, removeCount, opts) {
 	        if (startIndex === void 0) { startIndex = -1; }
 	        if (removeCount === void 0) { removeCount = 1; }
-	        if (opts === void 0) { opts = {}; }
 	        if (startIndex === -1) {
 	            startIndex = this._views.length - 1;
 	        }
 	        else if (startIndex < 0 || startIndex >= this._views.length) {
 	            return Promise.reject("remove index out of range");
+	        }
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
 	        }
 	        // default the direction to "back"
 	        opts.direction = opts.direction || 'back';
@@ -47918,8 +48129,10 @@
 	        }
 	        // lets time this sucker, ready go
 	        var wtfScope = instrumentation_1.wtfStartTimeRange('NavController#_transition', (enteringView && enteringView.name));
-	        if (this.config.get('animate') === false ||
-	            (this._views.length === 1 && !this._init)) {
+	        if (util_1.isBlank(opts)) {
+	            opts = {};
+	        }
+	        if (this.config.get('animate') === false || (this._views.length === 1 && !this._init)) {
 	            opts.animate = false;
 	        }
 	        if (!leavingView) {
@@ -48010,8 +48223,8 @@
 	                // the previous transition was still going when this one started
 	                // so to be safe, only update showing the entering/leaving
 	                // don't hide the others when they could still be transitioning
-	                enteringView.domCache(true, this._renderer);
-	                leavingView.domCache(true, this._renderer);
+	                enteringView.domShow(true, this._renderer);
+	                leavingView.domShow(true, this._renderer);
 	            }
 	            else {
 	                // there are no other transitions happening but this one
@@ -48026,7 +48239,7 @@
 	                        (view === leavingView) ||
 	                        view.isOverlay ||
 	                        (i < ii - 1 ? this._views[i + 1].isOverlay : false);
-	                    view.domCache(shouldShow, this._renderer);
+	                    view.domShow(shouldShow, this._renderer);
 	                }
 	            }
 	            // call each view's lifecycle events
@@ -48178,11 +48391,20 @@
 	                this._cleanup();
 	                // make sure only this entering view and PREVIOUS view are the
 	                // only two views that are not display:none
+	                // do not make any changes to the stack's current visibility
+	                // if there is an overlay somewhere in the stack
 	                leavingView = this.getPrevious(enteringView);
-	                this._views.forEach(function (view) {
-	                    var shouldShow = (view === enteringView) || (view === leavingView);
-	                    view.domCache(shouldShow, _this._renderer);
-	                });
+	                if (this.hasOverlay()) {
+	                    // ensure the entering view is showing
+	                    enteringView.domShow(true, this._renderer);
+	                }
+	                else {
+	                    // only possibly hide a view if there are no overlays in the stack
+	                    this._views.forEach(function (view) {
+	                        var shouldShow = (view === enteringView) || (view === leavingView);
+	                        view.domShow(shouldShow, _this._renderer);
+	                    });
+	                }
 	                // this check only needs to happen once, which will add the css
 	                // class to the nav when it's finished its first transition
 	                if (!this._init) {
@@ -48241,7 +48463,17 @@
 	            _this._views.splice(_this.indexOf(view), 1);
 	            view.destroy();
 	        });
+	        // if any z-index goes under 0, then reset them all
+	        var shouldResetZIndex = this._views.some(function (v) { return v.zIndex < 0; });
+	        if (shouldResetZIndex) {
+	            this._views.forEach(function (view) {
+	                view.setZIndex(view.zIndex + INIT_ZINDEX + 1, _this._renderer);
+	            });
+	        }
 	    };
+	    /**
+	     * @private
+	     */
 	    NavController.prototype.ngOnDestroy = function () {
 	        for (var i = this._views.length - 1; i >= 0; i--) {
 	            this._views[i].destroy();
@@ -48436,6 +48668,18 @@
 	    };
 	    /**
 	     * @private
+	     * @returns {boolean}
+	     */
+	    NavController.prototype.hasOverlay = function () {
+	        for (var i = this._views.length - 1; i >= 0; i--) {
+	            if (this._views[i].isOverlay) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    };
+	    /**
+	     * @private
 	     * @returns {ViewController}
 	     */
 	    NavController.prototype.getByState = function (state) {
@@ -48564,7 +48808,7 @@
 	var STATE_REMOVE = 'remove';
 	var STATE_REMOVE_AFTER_TRANS = 'remove_after_trans';
 	var STATE_FORCE_ACTIVE = 'force_active';
-	var INIT_ZINDEX = 10;
+	var INIT_ZINDEX = 100;
 	var ctrlIds = -1;
 
 
@@ -48707,6 +48951,7 @@
 	        this._pFns = [];
 	        this._fFns = [];
 	        this._fOnceFns = [];
+	        this._easing = this._dur = null;
 	    };
 	    Animation.prototype.element = function (ele) {
 	        var i;
@@ -49606,7 +49851,7 @@
 	     *   ngAfterViewInit() {
 	     *     // Here 'my-content' is the ID of my ion-content
 	     *     this.content = this.app.getComponent('my-content');
-	     *     this.content.addScrollEventListener(this.myScroll);
+	     *     this.content.addScrollListener(this.myScroll);
 	     *   }
 	     *     myScroll() {
 	     *      console.info('They see me scrolling...');
@@ -51216,7 +51461,7 @@
 	 * ```ts
 	 * @Page({
 	 *  template: `
-	 *     <ion-slides pager (change)="onSlideChanged($event)" (move)="onSlideMove($event)" loop="true" autoplay="true">
+	 *     <ion-slides pager (change)="onSlideChanged($event)" (move)="onSlideMove($event)">
 	 *      <ion-slide>
 	 *        <h3>Thank you for choosing the Awesome App!</h3>
 	 *        <p>
@@ -55835,7 +56080,7 @@
 	    Tabs.prototype.ngAfterContentInit = function () {
 	        var _this = this;
 	        var selectedIndex = this.selectedIndex ? parseInt(this.selectedIndex, 10) : 0;
-	        var preloadTabs = (util_1.isUndefined(this.preloadTabs) ? this._config.getBoolean('preloadTabs') : util_1.isTrueProperty(this.preloadTabs));
+	        var preloadTabs = (util_1.isBlank(this.preloadTabs) ? this._config.getBoolean('preloadTabs') : util_1.isTrueProperty(this.preloadTabs));
 	        this._tabs.forEach(function (tab, index) {
 	            if (index === selectedIndex) {
 	                _this.select(tab);
@@ -55850,7 +56095,7 @@
 	     */
 	    Tabs.prototype._setConfig = function (attrKey, fallback) {
 	        var val = this[attrKey];
-	        if (util_1.isUndefined(val)) {
+	        if (util_1.isBlank(val)) {
 	            val = this._config.get(attrKey, fallback);
 	        }
 	        this._renderer.setElementAttribute(this._elementRef.nativeElement, attrKey, val);
@@ -56098,11 +56343,13 @@
 	        _super.call(this, elementRef);
 	        this.select = new core_1.EventEmitter();
 	        this.disHover = (config.get('hoverCSS') === false);
+	        this._layout = config.get('tabbarLayout');
 	    }
 	    TabButton.prototype.ngOnInit = function () {
 	        this.tab.btn = this;
+	        this._layout = this.tab.parent.tabbarLayout || this._layout;
 	        this.hasTitle = !!this.tab.tabTitle;
-	        this.hasIcon = !!this.tab.tabIcon;
+	        this.hasIcon = !!this.tab.tabIcon && this._layout != 'icon-hide';
 	        this.hasTitleOnly = (this.hasTitle && !this.hasIcon);
 	        this.hasIconOnly = (this.hasIcon && !this.hasTitle);
 	        this.hasBadge = !!this.tab.tabBadge;
@@ -56935,7 +57182,9 @@
 	         */
 	        set: function (buttons) {
 	            buttons.toArray().forEach(function (button) {
-	                if (!button.isItem) {
+	                // Don't add the item-button class if the user specifies
+	                // a different size button
+	                if (!button.isItem && !button._size) {
 	                    button.addClass('item-button');
 	                }
 	            });
@@ -57019,10 +57268,8 @@
 	/**
 	 * @name Label
 	 * @description
-	 * Labels describe the data that the user should enter in to an input
-	 * element. You can give `ion-label` attributes to tell it how to
-	 * handle its display type, which is especially useful for an
-	 * `ion-item` which contains a text input.
+	 * Labels are placed inside of an `ion-item` element and can be used
+	 * to describe an `ion-input`, `ion-toggle`, `ion-checkbox`, and more.
 	 *
 	 * @property [fixed] - a persistant label that sits next the the input
 	 * @property [floating] - a label that will float about the input if the input is empty of looses focus
@@ -57037,7 +57284,7 @@
 	 *  </ion-item>
 	 *
 	 *  <ion-item>
-	 *    <ion-labe fixed>Website</ion-label>
+	 *    <ion-label fixed>Website</ion-label>
 	 *    <ion-input type="url"></ion-input>
 	 *  </ion-item>
 	 *
@@ -57051,6 +57298,15 @@
 	 *    <ion-input type="tel"></ion-input>
 	 *  </ion-item>
 	 *
+	 *  <ion-item>
+	 *    <ion-label>Toggle</ion-label>
+	 *    <ion-toggle></ion-toggle>
+	 *  </ion-item>
+	 *
+	 *  <ion-item>
+	 *    <ion-label>Checkbox</ion-label>
+	 *    <ion-checkbox></ion-checkbox>
+	 *  </ion-item>
 	 * ```
 	 *
 	 * @demo /docs/v2/demos/label/
@@ -57208,9 +57464,12 @@
 	var util_1 = __webpack_require__(163);
 	var CHECKBOX_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Checkbox; }), multi: true });
 	/**
-	 * The checkbox is no different than the HTML checkbox input, except
-	 * it's styled accordingly to the the platform and design mode, such
-	 * as iOS or Material Design.
+	 * @name Checkbox
+	 * @module ionic
+	 *
+	 * @description
+	 * The Checkbox is a simple component styled based on the mode. It can be
+	 * placed in an `ion-item` or used as a stand-alone checkbox.
 	 *
 	 * See the [Angular 2 Docs](https://angular.io/docs/ts/latest/guide/forms.html)
 	 * for more info on forms and inputs.
@@ -57238,6 +57497,7 @@
 	 *
 	 *  </ion-list>
 	 * ```
+	 *
 	 * @demo /docs/v2/demos/checkbox/
 	 * @see {@link /docs/v2/components#checkbox Checkbox Component Docs}
 	 */
@@ -57515,6 +57775,7 @@
 	        this._values = [];
 	        this._texts = [];
 	        this._text = '';
+	        this._isOpen = false;
 	        /**
 	         * @private
 	         * @input {string}  The text of the cancel button. Defatuls to `Cancel`
@@ -57552,13 +57813,22 @@
 	            void 0;
 	        }
 	    }
-	    /**
-	     * @private
-	     */
 	    Select.prototype._click = function (ev) {
-	        var _this = this;
+	        if (ev.detail === 0) {
+	            // do not continue if the click event came from a form submit
+	            return;
+	        }
 	        ev.preventDefault();
 	        ev.stopPropagation();
+	        this._open();
+	    };
+	    Select.prototype._keyup = function (ev) {
+	        if (!this._isOpen) {
+	            this._open();
+	        }
+	    };
+	    Select.prototype._open = function () {
+	        var _this = this;
 	        if (this._disabled)
 	            return;
 	        void 0;
@@ -57604,6 +57874,10 @@
 	            }
 	        });
 	        this._nav.present(alert, alertOptions);
+	        this._isOpen = true;
+	        alert.onDismiss(function () {
+	            _this._isOpen = false;
+	        });
 	    };
 	    Object.defineProperty(Select.prototype, "multiple", {
 	        /**
@@ -57653,7 +57927,9 @@
 	        if (this._options) {
 	            this._options.toArray().forEach(function (option) {
 	                // check this option if the option's value is in the values array
-	                option.checked = (_this._values.indexOf(option.value) > -1);
+	                option.checked = _this._values.some(function (selectValue) {
+	                    return util_1.isCheckedProperty(selectValue, option.value);
+	                });
 	                if (option.checked) {
 	                    _this._texts.push(option.text);
 	                }
@@ -57710,7 +57986,13 @@
 	    /**
 	     * @private
 	     */
-	    Select.prototype.onChange = function (_) { };
+	    Select.prototype.onChange = function (val) {
+	        // onChange used when there is not an ngControl
+	        void 0;
+	        this._values = (Array.isArray(val) ? val : util_1.isBlank(val) ? [] : [val]);
+	        this._updOpts();
+	        this.onTouched();
+	    };
 	    /**
 	     * @private
 	     */
@@ -57751,6 +58033,12 @@
 	        __metadata('design:paramtypes', [Object]), 
 	        __metadata('design:returntype', void 0)
 	    ], Select.prototype, "_click", null);
+	    __decorate([
+	        core_1.HostListener('keyup.space', ['$event']), 
+	        __metadata('design:type', Function), 
+	        __metadata('design:paramtypes', [Object]), 
+	        __metadata('design:returntype', void 0)
+	    ], Select.prototype, "_keyup", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
@@ -57820,31 +58108,44 @@
 	/**
 	 * @name Alert
 	 * @description
-	 * An Alert is a dialog that presents users with either information, or used
-	 * to receive information from the user using inputs. An alert appears on top
+	 * An Alert is a dialog that presents users with information or collects
+	 * information from the user using inputs. An alert appears on top
 	 * of the app's content, and must be manually dismissed by the user before
-	 * they can resume interaction with the app.
+	 * they can resume interaction with the app. It can also optionally have a
+	 * `title`, `subTitle` and `message`.
 	 *
-	 * An alert is created from an array of `buttons` and optionally an array of
-	 * `inputs`. Each button includes properties for its `text`, and optionally a
-	 * `handler`. If a handler returns `false` then the alert will not be dismissed.
-	 * An alert can also optionally have a `title`, `subTitle` and `message`.
+	 * You can pass all of the alert's options in the first argument of
+	 * the create method: `Alert.create(opts)`. Otherwise the alert's instance
+	 * has methods to add options, such as `setTitle()` or `addButton()`.
 	 *
-	 * All buttons will show up in the order they have been added to the `buttons`
-	 * array, from left to right. Note: The right most button (the last one in the
-	 * array) is the main button.
+	 *
+	 * ### Alert Buttons
+	 *
+	 * In the array of `buttons`, each button includes properties for its `text`,
+	 * and optionally a `handler`. If a handler returns `false` then the alert
+	 * will not automatically be dismissed when the button is clicked. All
+	 * buttons will show  up in the order they have been added to the `buttons`
+	 * array, from left to right. Note: The right most button (the last one in
+	 * the array) is the main button.
 	 *
 	 * Optionally, a `role` property can be added to a button, such as `cancel`.
-	 * If a `cancel` role is on one of the buttons, then if the alert is dismissed
-	 * by tapping the backdrop, then it will fire the handler from the button
-	 * with a cancel role.
+	 * If a `cancel` role is on one of the buttons, then if the alert is
+	 * dismissed by tapping the backdrop, then it will fire the handler from
+	 * the button with a cancel role.
 	 *
-	 * Alerts can also include inputs whos data can be passed back to the app.
-	 * Inputs can be used to prompt users for information.
 	 *
-	 * Its shorthand is to add all the alert's options from within the
-	 * `Alert.create(opts)` first argument. Otherwise the alert's instance
-	 * has methods to add options, such as `setTitle()` or `addButton()`.
+	 * ### Alert Inputs
+	 *
+	 * Alerts can also include several different inputs whose data can be passed
+	 * back to the app. Inputs can be used as a simple way to prompt users for
+	 * information. Radios, checkboxes and text inputs are all accepted, but they
+	 * cannot be mixed. For example, an alert could have all radio button inputs,
+	 * or all checkbox inputs, but the same alert cannot mix radio and checkbox
+	 * inputs. Do note however, different types of "text"" inputs can be mixed,
+	 * such as `url`, `email`, `text`, etc. If you require a complex form UI
+	 * which doesn't fit within the guidelines of an alert then we recommend
+	 * building the form within a modal instead.
+	 *
 	 *
 	 * @usage
 	 * ```ts
@@ -57931,7 +58232,7 @@
 	        if (opts === void 0) { opts = {}; }
 	        opts.inputs = opts.inputs || [];
 	        opts.buttons = opts.buttons || [];
-	        opts.enableBackdropDismiss = util_1.isDefined(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
+	        opts.enableBackdropDismiss = util_1.isPresent(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
 	        _super.call(this, AlertCmp, opts);
 	        this.viewType = 'alert';
 	        this.isOverlay = true;
@@ -58035,10 +58336,10 @@
 	        var _this = this;
 	        // normalize the data
 	        var data = this.d;
-	        if (data.body) {
+	        if (data['body']) {
 	            // deprecated warning
 	            void 0;
-	            data.message = data.body;
+	            data.message = data['body'];
 	        }
 	        data.buttons = data.buttons.map(function (button) {
 	            if (typeof button === 'string') {
@@ -58049,43 +58350,52 @@
 	        data.inputs = data.inputs.map(function (input, index) {
 	            return {
 	                type: input.type || 'text',
-	                name: util_1.isDefined(input.name) ? input.name : index,
-	                placeholder: util_1.isDefined(input.placeholder) ? input.placeholder : '',
-	                value: util_1.isDefined(input.value) ? input.value : '',
+	                name: util_1.isPresent(input.name) ? input.name : index,
+	                placeholder: util_1.isPresent(input.placeholder) ? input.placeholder : '',
+	                value: util_1.isPresent(input.value) ? input.value : '',
 	                label: input.label,
 	                checked: !!input.checked,
 	                id: 'alert-input-' + _this.id + '-' + index
 	            };
 	        });
-	        this.inputType = (data.inputs.length ? data.inputs[0].type : null);
+	        // An alert can be created with several different inputs. Radios,
+	        // checkboxes and inputs are all accepted, but they cannot be mixed.
+	        var inputTypes = [];
+	        data.inputs.forEach(function (input) {
+	            if (inputTypes.indexOf(input.type) < 0) {
+	                inputTypes.push(input.type);
+	            }
+	        });
+	        if (inputTypes.length > 1 && (inputTypes.indexOf('checkbox') > -1 || inputTypes.indexOf('radio') > -1)) {
+	            void 0;
+	        }
+	        this.inputType = inputTypes.length ? inputTypes[0] : null;
 	        var checkedInput = this.d.inputs.find(function (input) { return input.checked; });
 	        if (checkedInput) {
 	            this.activeId = checkedInput.id;
 	        }
-	        var self = this;
-	        self.keyUp = function (ev) {
+	    };
+	    AlertCmp.prototype._keyUp = function (ev) {
+	        if (this._viewCtrl.isLast()) {
 	            if (ev.keyCode === 13) {
 	                void 0;
-	                var button = self.d.buttons[self.d.buttons.length - 1];
-	                self.btnClick(button);
+	                var button = this.d.buttons[this.d.buttons.length - 1];
+	                this.btnClick(button);
 	            }
 	            else if (ev.keyCode === 27) {
 	                void 0;
-	                self.bdClick();
+	                this.bdClick();
 	            }
-	        };
-	        document.addEventListener('keyup', this.keyUp);
+	        }
 	    };
 	    AlertCmp.prototype.onPageDidEnter = function () {
 	        var activeElement = document.activeElement;
-	        if (activeElement) {
+	        if (document.activeElement) {
 	            activeElement.blur();
 	        }
-	        if (this.d.inputs.length) {
-	            var firstInput = this._elementRef.nativeElement.querySelector('input');
-	            if (firstInput) {
-	                firstInput.focus();
-	            }
+	        var focusableEle = this._elementRef.nativeElement.querySelector('input,button');
+	        if (focusableEle) {
+	            focusableEle.focus();
 	        }
 	    };
 	    AlertCmp.prototype.btnClick = function (button, dismissDelay) {
@@ -58148,12 +58458,12 @@
 	        });
 	        return values;
 	    };
-	    AlertCmp.prototype.onPageWillLeave = function () {
-	        document.removeEventListener('keyup', this.keyUp);
-	    };
-	    AlertCmp.prototype.ngOnDestroy = function () {
-	        document.removeEventListener('keyup', this.keyUp);
-	    };
+	    __decorate([
+	        core_1.HostListener('body:keyup', ['$event']), 
+	        __metadata('design:type', Function), 
+	        __metadata('design:paramtypes', [KeyboardEvent]), 
+	        __metadata('design:returntype', void 0)
+	    ], AlertCmp.prototype, "_keyUp", null);
 	    AlertCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-alert',
@@ -58167,22 +58477,22 @@
 	                '<div *ngIf="d.inputs.length" [ngSwitch]="inputType">' +
 	                '<template ngSwitchWhen="radio">' +
 	                '<div class="alert-radio-group" role="radiogroup" [attr.aria-labelledby]="hdrId" [attr.aria-activedescendant]="activeId">' +
-	                '<div *ngFor="#i of d.inputs" (click)="rbClick(i)" [attr.aria-checked]="i.checked" [attr.id]="i.id" class="alert-tappable alert-radio" tappable role="radio">' +
+	                '<button *ngFor="#i of d.inputs" (click)="rbClick(i)" [attr.aria-checked]="i.checked" [attr.id]="i.id" class="alert-tappable alert-radio" role="radio">' +
 	                '<div class="alert-radio-icon"></div>' +
 	                '<div class="alert-radio-label">' +
 	                '{{i.label}}' +
 	                '</div>' +
-	                '</div>' +
+	                '</button>' +
 	                '</div>' +
 	                '</template>' +
 	                '<template ngSwitchWhen="checkbox">' +
 	                '<div class="alert-checkbox-group">' +
-	                '<div *ngFor="#i of d.inputs" (click)="cbClick(i)" [attr.aria-checked]="i.checked" class="alert-tappable alert-checkbox" tappable role="checkbox">' +
+	                '<button *ngFor="#i of d.inputs" (click)="cbClick(i)" [attr.aria-checked]="i.checked" class="alert-tappable alert-checkbox" role="checkbox">' +
 	                '<div class="alert-checkbox-icon"><div class="alert-checkbox-inner"></div></div>' +
 	                '<div class="alert-checkbox-label">' +
 	                '{{i.label}}' +
 	                '</div>' +
-	                '</div>' +
+	                '</button>' +
 	                '</div>' +
 	                '</template>' +
 	                '<template ngSwitchDefault>' +
@@ -58286,6 +58596,42 @@
 	    return AlertMdPopOut;
 	})(transition_1.Transition);
 	transition_1.Transition.register('alert-md-pop-out', AlertMdPopOut);
+	var AlertWpPopIn = (function (_super) {
+	    __extends(AlertWpPopIn, _super);
+	    function AlertWpPopIn(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        var ele = enteringView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
+	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.3', '1');
+	        backdrop.fromTo('opacity', '0.01', '0.5');
+	        this
+	            .easing('cubic-bezier(0,0 0.05,1)')
+	            .duration(200)
+	            .add(backdrop)
+	            .add(wrapper);
+	    }
+	    return AlertWpPopIn;
+	})(transition_1.Transition);
+	transition_1.Transition.register('alert-wp-pop-in', AlertWpPopIn);
+	var AlertWpPopOut = (function (_super) {
+	    __extends(AlertWpPopOut, _super);
+	    function AlertWpPopOut(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        var ele = leavingView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
+	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '1.3');
+	        backdrop.fromTo('opacity', '0.5', '0');
+	        this
+	            .easing('ease-out')
+	            .duration(150)
+	            .add(backdrop)
+	            .add(wrapper);
+	    }
+	    return AlertWpPopOut;
+	})(transition_1.Transition);
+	transition_1.Transition.register('alert-wp-pop-out', AlertWpPopOut);
 	var alertIds = -1;
 
 
@@ -58338,7 +58684,7 @@
 	         * @input {any} The value of the option
 	         */
 	        get: function () {
-	            if (util_1.isDefined(this._value)) {
+	            if (util_1.isPresent(this._value)) {
 	                return this._value;
 	            }
 	            return this.text;
@@ -58744,7 +59090,7 @@
 	            template: '<input [type]="type" [(ngModel)]="_value" [placeholder]="placeholder" class="text-input">' +
 	                '<input [type]="type" aria-hidden="true" next-input *ngIf="_useAssist">' +
 	                '<button clear *ngIf="clearInput && value" class="text-input-clear-icon" (click)="clearTextInput()" (mousedown)="clearTextInput()"></button>' +
-	                '<div (touchstart)="pointerStart($event)" (touchend)="pointerEnd($event)" (mousedown)="pointerStart($event)" (mouseup)="pointerEnd($event)" class="input-cover" *ngIf="_useAssist"></div>',
+	                '<div (touchstart)="pointerStart($event)" (touchend)="pointerEnd($event)" (mousedown)="pointerStart($event)" (mouseup)="pointerEnd($event)" class="input-cover" tappable *ngIf="_useAssist"></div>',
 	            directives: [
 	                common_1.NgIf,
 	                native_input_1.NextInput,
@@ -59642,7 +59988,7 @@
 	     * @private
 	     */
 	    SegmentButton.prototype.ngOnInit = function () {
-	        if (!util_1.isDefined(this.value)) {
+	        if (!util_1.isPresent(this.value)) {
 	            void 0;
 	        }
 	    };
@@ -59753,7 +60099,7 @@
 	     * Write a new value to the element.
 	     */
 	    Segment.prototype.writeValue = function (value) {
-	        this.value = util_1.isDefined(value) ? value : '';
+	        this.value = util_1.isPresent(value) ? value : '';
 	        if (this._buttons) {
 	            var buttons = this._buttons.toArray();
 	            for (var _i = 0; _i < buttons.length; _i++) {
@@ -59775,7 +60121,7 @@
 	                _this.onChange(selectedButton.value);
 	                _this.change.emit(selectedButton);
 	            });
-	            if (util_1.isDefined(this.value)) {
+	            if (util_1.isPresent(this.value)) {
 	                button.isActive = (button.value === this.value);
 	            }
 	        }
@@ -59862,7 +60208,7 @@
 	        this._disabled = false;
 	        this._value = null;
 	        /**
-	         * @output {RadioButton} expression to be evaluated when selected
+	         * @output {any} expression to be evaluated when selected
 	         */
 	        this.select = new core_1.EventEmitter();
 	        _form.register(this);
@@ -59936,8 +60282,8 @@
 	     * @private
 	     */
 	    RadioButton.prototype.ngOnInit = function () {
-	        if (this._group && util_1.isDefined(this._group.value) && this._group.value === this.value) {
-	            this.checked = true;
+	        if (this._group && util_1.isPresent(this._group.value)) {
+	            this.checked = util_1.isCheckedProperty(this._group.value, this.value);
 	        }
 	    };
 	    /**
@@ -60011,6 +60357,7 @@
 	var core_1 = __webpack_require__(7);
 	var common_1 = __webpack_require__(172);
 	var list_1 = __webpack_require__(323);
+	var util_1 = __webpack_require__(163);
 	var RADIO_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return RadioGroup; }), multi: true });
 	/**
 	 * @name RadioGroup
@@ -60103,6 +60450,7 @@
 	        var _this = this;
 	        this._fn = fn;
 	        this.onChange = function (val) {
+	            // onChange used when there's an ngControl
 	            void 0;
 	            fn(val);
 	            _this.value = val;
@@ -60121,14 +60469,16 @@
 	    RadioGroup.prototype._update = function () {
 	        var _this = this;
 	        // loop through each of the radiobuttons
+	        var hasChecked = false;
 	        this._btns.forEach(function (radioButton) {
 	            // check this radiobutton if its value is
 	            // the same as the radiogroups value
-	            radioButton.checked = (radioButton.value === _this.value);
+	            radioButton.checked = util_1.isCheckedProperty(_this.value, radioButton.value) && !hasChecked;
 	            if (radioButton.checked) {
 	                // if this button is checked, then set it as
 	                // the radiogroup's active descendant
 	                _this._setActive(radioButton);
+	                hasChecked = true;
 	            }
 	        });
 	    };
@@ -60154,7 +60504,7 @@
 	    RadioGroup.prototype.remove = function (button) {
 	        var index = this._btns.indexOf(button);
 	        if (index > -1) {
-	            if (button.value === this.value) {
+	            if (button.value == this.value) {
 	                this.value = null;
 	            }
 	            this._btns.splice(index, 1);
@@ -60178,7 +60528,14 @@
 	    /**
 	     * @private
 	     */
-	    RadioGroup.prototype.onChange = function (_) { };
+	    RadioGroup.prototype.onChange = function (val) {
+	        // onChange used when there is not an ngControl
+	        void 0;
+	        this.value = val;
+	        this._update();
+	        this.onTouched();
+	        this.change.emit(val);
+	    };
 	    /**
 	     * @private
 	     */
@@ -60244,9 +60601,9 @@
 	    function SearchbarInput(_elementRef) {
 	        this._elementRef = _elementRef;
 	    }
-	    SearchbarInput.prototype.stopInput = function (event) {
-	        event.preventDefault();
-	        event.stopPropagation();
+	    SearchbarInput.prototype.stopInput = function (ev) {
+	        ev.preventDefault();
+	        ev.stopPropagation();
 	    };
 	    __decorate([
 	        core_1.HostListener('input', ['$event']), 
@@ -60288,6 +60645,10 @@
 	        _super.call(this, _elementRef);
 	        this._elementRef = _elementRef;
 	        this._config = _config;
+	        /**
+	         * @input {number} How long, in milliseconds, to wait to trigger the `input` event after each keystroke. Default `250`.
+	         */
+	        this.debounce = 250;
 	        /**
 	         * @output {event} When the Searchbar input has changed including cleared
 	         */
@@ -60357,7 +60718,7 @@
 	    Searchbar.prototype.ngAfterViewInit = function () {
 	        // If the user passes an undefined variable to ngModel this will warn
 	        // and set the value to an empty string
-	        if (!util_1.isDefined(this.value)) {
+	        if (!util_1.isPresent(this.value)) {
 	            void 0;
 	            this.value = '';
 	            this.onChange(this.value);
@@ -60404,9 +60765,14 @@
 	     * Update the Searchbar input value when the input changes
 	     */
 	    Searchbar.prototype.inputChanged = function (ev) {
-	        this.value = ev.target.value;
-	        this.onChange(this.value);
-	        this.input.emit(this);
+	        var _this = this;
+	        var value = ev.target.value;
+	        clearTimeout(this._tmr);
+	        this._tmr = setTimeout(function () {
+	            _this.value = value;
+	            _this.onChange(value);
+	            _this.input.emit(_this);
+	        }, Math.round(this.debounce));
 	    };
 	    /**
 	     * @private
@@ -60493,6 +60859,10 @@
 	    ], Searchbar.prototype, "hideCancelButton", void 0);
 	    __decorate([
 	        core_1.Input(), 
+	        __metadata('design:type', Number)
+	    ], Searchbar.prototype, "debounce", void 0);
+	    __decorate([
+	        core_1.Input(), 
 	        __metadata('design:type', String)
 	    ], Searchbar.prototype, "placeholder", void 0);
 	    __decorate([
@@ -60531,6 +60901,7 @@
 	        core_1.Component({
 	            selector: 'ion-searchbar',
 	            host: {
+	                '[class.searchbar-has-value]': 'value',
 	                '[class.searchbar-hide-cancel]': 'hideCancelButton'
 	            },
 	            template: '<div class="searchbar-input-container">' +
@@ -60538,7 +60909,7 @@
 	                '<ion-icon name="arrow-back"></ion-icon>' +
 	                '</button>' +
 	                '<div class="searchbar-search-icon"></div>' +
-	                '<input [value]="value" (keyup)="inputChanged($event)" (blur)="inputBlurred()" (focus)="inputFocused()" class="searchbar-input" type="search" [attr.placeholder]="placeholder" autocomplete="off">' +
+	                '<input [value]="value" (keyup)="inputChanged($event)" (blur)="inputBlurred()" (focus)="inputFocused()" class="searchbar-input" type="search" [attr.placeholder]="placeholder" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' +
 	                '<button clear *ngIf="value" class="searchbar-clear-icon" (click)="clearInput()" (mousedown)="clearInput()"></button>' +
 	                '</div>' +
 	                '<button clear (click)="cancelSearchbar()" (mousedown)="cancelSearchbar()" [hidden]="hideCancelButton" class="searchbar-ios-cancel">{{cancelButtonText}}</button>',
@@ -60678,6 +61049,7 @@
 	    __extends(Nav, _super);
 	    function Nav(hostNavCtrl, viewCtrl, app, config, keyboard, elementRef, compiler, viewManager, zone, renderer) {
 	        _super.call(this, hostNavCtrl, app, config, keyboard, elementRef, 'contents', compiler, viewManager, zone, renderer);
+	        this._hasInit = false;
 	        if (viewCtrl) {
 	            // an ion-nav can also act as an ion-page within a parent ion-nav
 	            // this would happen when an ion-nav nests a child ion-nav.
@@ -60685,21 +61057,38 @@
 	            viewCtrl.setContentRef(elementRef);
 	        }
 	    }
+	    Object.defineProperty(Nav.prototype, "root", {
+	        /**
+	         * @input {Page} The Page component to load as the root page within this nav.
+	         */
+	        get: function () {
+	            return this._root;
+	        },
+	        set: function (page) {
+	            this._root = page;
+	            if (this._hasInit) {
+	                this.setRoot(page);
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
 	    Nav.prototype.ngOnInit = function () {
-	        if (this.root) {
-	            if (typeof this.root !== 'function') {
+	        this._hasInit = true;
+	        if (this._root) {
+	            if (typeof this._root !== 'function') {
 	                throw 'The [root] property in <ion-nav> must be given a reference to a component class from within the constructor.';
 	            }
-	            this.push(this.root);
+	            this.push(this._root);
 	        }
 	    };
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', core_1.Type)
-	    ], Nav.prototype, "root", void 0);
+	    ], Nav.prototype, "root", null);
 	    Nav = __decorate([
 	        core_1.Component({
 	            selector: 'ion-nav',
@@ -61013,12 +61402,9 @@
 	/**
 	 * @name Id
 	 * @description
-	 * IdRef is an easy way to identify unique components in an app and access them
+	 * The `id` attribute is an easy way to identify unique components in an app and access them
 	 * no matter where in the UI hierarchy you are. For example, this makes toggling
-	 * a global side menu feasible from any place in the application.
-	 *
-	 * See the [Menu section](http://ionicframework.com/docs/v2/components/#menus) of
-	 * the Component docs for an example of how Menus rely on ID's.
+	 * a global side menu possible from any place in the application.
 	 *
 	 * @usage
 	 * To give any component an ID, simply set its `id` property:
@@ -61030,13 +61416,14 @@
 	 * service:
 	 * ```ts
 	 * constructor(app: IonicApp) {
-	 *    this.app = app
+	 *   this.app = app
 	 * }
-	 * ngAfterViewInit{
-	 *  var checkbox = this.app.getComponent("myCheckbox");
-	 *  if (checkbox.checked) {
-	 *    console.log('checkbox is checked');
-	 *  }
+	 *
+	 * ngAfterViewInit() {
+	 *   var checkbox = this.app.getComponent("myCheckbox");
+	 *   if (checkbox.checked) {
+	 *     console.log('checkbox is checked');
+	 *   }
 	 * }
 	 * ```
 	 *
@@ -61177,12 +61564,30 @@
 	 *
 	 * @name ShowWhen
 	 * @description
-	 * The `showWhen` attribute takes a string that represents a plaform or screen orientation.
+	 * The `showWhen` attribute takes a string that represents a platform or screen orientation.
 	 * The element the attribute is added to will only be shown when that platform or screen orientation is active.
 	 * Complements the [hideWhen attribute](../HideWhen).
 	 * @usage
 	 * ```html
-	 * <div showWhen="ios">I am only visible on iOS!</div>
+	 * <div showWhen="android">
+	 *  I am visible on Android!
+	 * </div>
+	 *
+	 * <div showWhen="ios">
+	 *  I am visible on iOS!
+	 * </div>
+	 *
+	 * <div showWhen="android,ios">
+	 *  I am visible on Android and iOS!
+	 * </div>
+	 *
+	 * <div showWhen="portrait">
+	 *  I am visible on Portrait!
+	 * </div>
+	 *
+	 * <div showWhen="landscape">
+	 *  I am visible on Landscape!
+	 * </div>
 	 * ```
 	 * @demo /docs/v2/demos/show-when/
 	 * @see {@link ../HideWhen HideWhen API Docs}
@@ -61223,8 +61628,27 @@
 	 * Complements the [showWhen attribute](../ShowWhen).
 	 * @usage
 	 * ```html
-	 * <div hideWhen="android">I am hidden on Android!</div>
+	 * <div hideWhen="android">
+	 *  I am hidden on Android!
+	 * </div>
+	 *
+	 * <div hideWhen="ios">
+	 *  I am hidden on iOS!
+	 * </div>
+	 *
+	 * <div hideWhen="android,ios">
+	 *  I am hidden on Android and iOS!
+	 * </div>
+	 *
+	 * <div hideWhen="portrait">
+	 *  I am hidden on Portrait!
+	 * </div>
+	 *
+	 * <div hideWhen="landscape">
+	 *  I am hidden on Landscape!
+	 * </div>
 	 * ```
+	 *
 	 * @demo /docs/v2/demos/hide-when/
 	 * @see {@link ../ShowWhen ShowWhen API Docs}
 	 */
@@ -61510,7 +61934,7 @@
 	 * An Action Sheet is a dialog that lets the user choose from a set of
 	 * options. It appears on top of the app's content, and must be manually
 	 * dismissed by the user before they can resume interaction with the app.
-	 * Dangerous (destructive) options are made obvious. There are easy
+	 * Dangerous (destructive) options are made obvious in `ios` mode. There are easy
 	 * ways to cancel out of the action sheet, such as tapping the backdrop or
 	 * hitting the escape key on desktop.
 	 *
@@ -61520,16 +61944,16 @@
 	 * action sheet can also optionally have a `title` and a `subTitle`.
 	 *
 	 * A button's `role` property can either be `destructive` or `cancel`. Buttons
-	 * without a role property will have a default look for its platform. Buttons
+	 * without a role property will have the default look for the platform. Buttons
 	 * with the `cancel` role will always load as the bottom button, no matter where
-	 * it shows up in the array. All other buttons will show up in the order they
+	 * they are in the array. All other buttons will be displayed in the order they
 	 * have been added to the `buttons` array. Note: We recommend that `destructive`
-	 * buttons show be the first button in the array, making it the button on top.
+	 * buttons are always the first button in the array, making them the top button.
 	 * Additionally, if the action sheet is dismissed by tapping the backdrop, then
 	 * it will fire the handler from the button with the cancel role.
 	 *
-	 * Its shorthand is to add all the action sheet's options from within the
-	 * `ActionSheet.create(opts)` first argument. Otherwise the action sheet's
+	 * You can pass all of the action sheet's options in the first argument of
+	 * the create method: `ActionSheet.create(opts)`. Otherwise the action sheet's
 	 * instance has methods to add options, like `setTitle()` or `addButton()`.
 	 *
 	 * @usage
@@ -61577,7 +62001,7 @@
 	    function ActionSheet(opts) {
 	        if (opts === void 0) { opts = {}; }
 	        opts.buttons = opts.buttons || [];
-	        opts.enableBackdropDismiss = util_1.isDefined(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
+	        opts.enableBackdropDismiss = util_1.isPresent(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
 	        _super.call(this, ActionSheetCmp, opts);
 	        this.viewType = 'action-sheet';
 	        this.isOverlay = true;
@@ -61647,12 +62071,20 @@
 	* @private
 	*/
 	var ActionSheetCmp = (function () {
-	    function ActionSheetCmp(_viewCtrl, _config, elementRef, params, renderer) {
+	    function ActionSheetCmp(_viewCtrl, _config, _elementRef, params, renderer) {
 	        this._viewCtrl = _viewCtrl;
 	        this._config = _config;
+	        this._elementRef = _elementRef;
 	        this.d = params.data;
 	        if (this.d.cssClass) {
-	            renderer.setElementClass(elementRef.nativeElement, this.d.cssClass, true);
+	            renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	        }
+	        this.id = (++actionSheetIds);
+	        if (this.d.title) {
+	            this.hdrId = 'acst-hdr-' + this.id;
+	        }
+	        if (this.d.subTitle) {
+	            this.descId = 'acst-subhdr-' + this.id;
 	        }
 	    }
 	    ActionSheetCmp.prototype.onPageLoaded = function () {
@@ -61682,14 +62114,24 @@
 	            }
 	        });
 	        this.d.buttons = buttons;
-	        var self = this;
-	        self.keyUp = function (ev) {
+	    };
+	    ActionSheetCmp.prototype.onPageDidEnter = function () {
+	        var activeElement = document.activeElement;
+	        if (document.activeElement) {
+	            activeElement.blur();
+	        }
+	        var focusableEle = this._elementRef.nativeElement.querySelector('button');
+	        if (focusableEle) {
+	            focusableEle.focus();
+	        }
+	    };
+	    ActionSheetCmp.prototype._keyUp = function (ev) {
+	        if (this._viewCtrl.isLast()) {
 	            if (ev.keyCode === 27) {
 	                void 0;
-	                self.bdClick();
+	                this.bdClick();
 	            }
-	        };
-	        document.addEventListener('keyup', this.keyUp);
+	        }
 	    };
 	    ActionSheetCmp.prototype.click = function (button, dismissDelay) {
 	        var _this = this;
@@ -61720,12 +62162,12 @@
 	    ActionSheetCmp.prototype.dismiss = function (role) {
 	        return this._viewCtrl.dismiss(null, role);
 	    };
-	    ActionSheetCmp.prototype.onPageWillLeave = function () {
-	        document.removeEventListener('keyup', this.keyUp);
-	    };
-	    ActionSheetCmp.prototype.ngOnDestroy = function () {
-	        document.removeEventListener('keyup', this.keyUp);
-	    };
+	    __decorate([
+	        core_1.HostListener('body:keyup', ['$event']), 
+	        __metadata('design:type', Function), 
+	        __metadata('design:paramtypes', [KeyboardEvent]), 
+	        __metadata('design:returntype', void 0)
+	    ], ActionSheetCmp.prototype, "_keyUp", null);
 	    ActionSheetCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-action-sheet',
@@ -61733,8 +62175,8 @@
 	                '<div class="action-sheet-wrapper">' +
 	                '<div class="action-sheet-container">' +
 	                '<div class="action-sheet-group">' +
-	                '<div class="action-sheet-title" *ngIf="d.title">{{d.title}}</div>' +
-	                '<div class="action-sheet-sub-title" *ngIf="d.subTitle">{{d.subTitle}}</div>' +
+	                '<div class="action-sheet-title" id="{{hdrId}}" *ngIf="d.title">{{d.title}}</div>' +
+	                '<div class="action-sheet-sub-title" id="{{descId}}" *ngIf="d.subTitle">{{d.subTitle}}</div>' +
 	                '<button (click)="click(b)" *ngFor="#b of d.buttons" class="action-sheet-button disable-hover" [ngClass]="b.cssClass">' +
 	                '<ion-icon [name]="b.icon" *ngIf="b.icon" class="action-sheet-icon"></ion-icon> ' +
 	                '{{b.text}}' +
@@ -61751,7 +62193,9 @@
 	                '</div>' +
 	                '</div>',
 	            host: {
-	                'role': 'dialog'
+	                'role': 'dialog',
+	                '[attr.aria-labelledby]': 'hdrId',
+	                '[attr.aria-describedby]': 'descId'
 	            },
 	            directives: [common_1.NgFor, common_1.NgIf, icon_1.Icon]
 	        }), 
@@ -61796,7 +62240,7 @@
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.01, 0.26);
 	        wrapper.fromTo('translateY', '100%', '0%');
-	        this.easing('cubic-bezier(.36,.66,.04,1)').duration(450).add(backdrop).add(wrapper);
+	        this.easing('cubic-bezier(.36,.66,.04,1)').duration(400).add(backdrop).add(wrapper);
 	    }
 	    return ActionSheetMdSlideIn;
 	})(transition_1.Transition);
@@ -61815,6 +62259,35 @@
 	    return ActionSheetMdSlideOut;
 	})(transition_1.Transition);
 	transition_1.Transition.register('action-sheet-md-slide-out', ActionSheetMdSlideOut);
+	var ActionSheetWpSlideIn = (function (_super) {
+	    __extends(ActionSheetWpSlideIn, _super);
+	    function ActionSheetWpSlideIn(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        var ele = enteringView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
+	        backdrop.fromTo('opacity', 0.01, 0.16);
+	        wrapper.fromTo('translateY', '100%', '0%');
+	        this.easing('cubic-bezier(.36,.66,.04,1)').duration(400).add(backdrop).add(wrapper);
+	    }
+	    return ActionSheetWpSlideIn;
+	})(transition_1.Transition);
+	transition_1.Transition.register('action-sheet-wp-slide-in', ActionSheetWpSlideIn);
+	var ActionSheetWpSlideOut = (function (_super) {
+	    __extends(ActionSheetWpSlideOut, _super);
+	    function ActionSheetWpSlideOut(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        var ele = leavingView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
+	        backdrop.fromTo('opacity', 0.1, 0);
+	        wrapper.fromTo('translateY', '0%', '100%');
+	        this.easing('cubic-bezier(.36,.66,.04,1)').duration(450).add(backdrop).add(wrapper);
+	    }
+	    return ActionSheetWpSlideOut;
+	})(transition_1.Transition);
+	transition_1.Transition.register('action-sheet-wp-slide-out', ActionSheetWpSlideOut);
+	var actionSheetIds = -1;
 
 
 /***/ },
@@ -62669,6 +63142,24 @@
 	    tabbarPlacement: 'top',
 	    tabSubPages: true,
 	});
+	// Windows Mode Settings
+	config_1.Config.setModeConfig('wp', {
+	    activator: 'highlight',
+	    actionSheetEnter: 'action-sheet-wp-slide-in',
+	    actionSheetLeave: 'action-sheet-wp-slide-out',
+	    alertEnter: 'alert-wp-pop-in',
+	    alertLeave: 'alert-wp-pop-out',
+	    backButtonText: '',
+	    backButtonIcon: 'ios-arrow-back',
+	    iconMode: 'ios',
+	    menuType: 'overlay',
+	    modalEnter: 'modal-md-slide-in',
+	    modalLeave: 'modal-md-slide-out',
+	    pageTransition: 'wp-transition',
+	    pageTransitionDelay: 96,
+	    tabbarPlacement: 'top',
+	    tabSubPages: true,
+	});
 
 
 /***/ },
@@ -62742,7 +63233,7 @@
 	        scrollAssist: true,
 	    },
 	    isMatch: function (p) {
-	        return p.isPlatform('android', 'android|silk');
+	        return p.isPlatformMatch('android', ['android', 'silk'], ['windows phone']);
 	    },
 	    versionParser: function (p) {
 	        return p.matchUserAgentVersion(/Android (\d+).(\d+)?/);
@@ -62767,7 +63258,7 @@
 	        tapPolyfill: isIOSDevice,
 	    },
 	    isMatch: function (p) {
-	        return p.isPlatform('ios', 'iphone|ipad|ipod');
+	        return p.isPlatformMatch('ios', ['iphone', 'ipad', 'ipod']);
 	    },
 	    versionParser: function (p) {
 	        return p.matchUserAgentVersion(/OS (\d+)_(\d+)?/);
@@ -62780,7 +63271,7 @@
 	        keyboardHeight: 500,
 	    },
 	    isMatch: function (p) {
-	        return p.isPlatform('ios', 'ipad');
+	        return p.isPlatformMatch('ipad');
 	    }
 	});
 	platform_1.Platform.register({
@@ -62789,21 +63280,24 @@
 	        'phablet'
 	    ],
 	    isMatch: function (p) {
-	        return p.isPlatform('ios', 'iphone');
+	        return p.isPlatformMatch('iphone');
 	    }
 	});
 	platform_1.Platform.register({
-	    name: 'windowsphone',
+	    name: 'windows',
 	    superset: 'mobile',
 	    subsets: [
 	        'phablet',
 	        'tablet'
 	    ],
 	    settings: {
-	        mode: 'md',
+	        mode: 'wp',
+	        autoFocusAssist: 'immediate',
+	        clickBlock: true,
+	        hoverCSS: false
 	    },
 	    isMatch: function (p) {
-	        return p.isPlatform('windowsphone', 'windows phone');
+	        return p.isPlatformMatch('windows', ['windows phone']);
 	    },
 	    versionParser: function (p) {
 	        return p.matchUserAgentVersion(/Windows Phone (\d+).(\d+)?/);
@@ -63138,15 +63632,77 @@
 /* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(362));
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var animation_1 = __webpack_require__(306);
+	var transition_1 = __webpack_require__(305);
+	var SHOW_BACK_BTN_CSS = 'show-back-button';
+	var SCALE_SMALL = .95;
+	var WPTransition = (function (_super) {
+	    __extends(WPTransition, _super);
+	    function WPTransition(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        // what direction is the transition going
+	        var backDirection = (opts.direction === 'back');
+	        // do they have navbars?
+	        var enteringHasNavbar = enteringView.hasNavbar();
+	        var leavingHasNavbar = leavingView && leavingView.hasNavbar();
+	        // entering content scale from smaller to larger
+	        var enteringPage = new animation_1.Animation(enteringView.pageRef());
+	        enteringPage.before.addClass('show-page');
+	        this.add(enteringPage);
+	        if (backDirection) {
+	            this.duration(opts.duration || 120).easing('cubic-bezier(0.47,0,0.745,0.715)');
+	            enteringPage.before.clearStyles(['scale']);
+	        }
+	        else {
+	            this.duration(opts.duration || 280).easing('cubic-bezier(0,0 0.05,1)');
+	            enteringPage
+	                .fromTo('scale', SCALE_SMALL, 1, true)
+	                .fadeIn();
+	        }
+	        if (enteringHasNavbar) {
+	            var enteringNavBar = new animation_1.Animation(enteringView.navbarRef());
+	            enteringNavBar.before.addClass('show-navbar');
+	            this.add(enteringNavBar);
+	            var enteringBackButton = new animation_1.Animation(enteringView.backBtnRef());
+	            this.add(enteringBackButton);
+	            if (enteringView.enableBack()) {
+	                enteringBackButton.before.addClass(SHOW_BACK_BTN_CSS);
+	            }
+	            else {
+	                enteringBackButton.before.removeClass(SHOW_BACK_BTN_CSS);
+	            }
+	        }
+	        // setup leaving view
+	        if (leavingView && backDirection) {
+	            // leaving content
+	            this.duration(opts.duration || 200).easing('cubic-bezier(0.47,0,0.745,0.715)');
+	            var leavingPage = new animation_1.Animation(leavingView.pageRef());
+	            this.add(leavingPage.fromTo('scale', 1, SCALE_SMALL).fadeOut());
+	        }
+	    }
+	    return WPTransition;
+	})(transition_1.Transition);
+	transition_1.Transition.register('wp-transition', WPTransition);
 
 
 /***/ },
 /* 362 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(363));
+
+
+/***/ },
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63161,7 +63717,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage(app) {
 	        this.app = app;
@@ -63219,7 +63775,7 @@
 
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63234,28 +63790,28 @@
 	};
 	var core_1 = __webpack_require__(7);
 	var ionic_angular_1 = __webpack_require__(5);
-	var actionSheets = __webpack_require__(364);
-	var alerts = __webpack_require__(366);
-	var badges = __webpack_require__(372);
-	var buttons = __webpack_require__(374);
-	var cards = __webpack_require__(385);
-	var checkboxes = __webpack_require__(394);
-	var grid = __webpack_require__(396);
-	var icons = __webpack_require__(398);
-	var inputs = __webpack_require__(400);
-	var lists = __webpack_require__(408);
-	var menus = __webpack_require__(361);
-	var modals = __webpack_require__(419);
-	var navigation = __webpack_require__(421);
-	var radios = __webpack_require__(423);
-	var ranges = __webpack_require__(425);
-	var searchbars = __webpack_require__(427);
-	var segments = __webpack_require__(429);
-	var selects = __webpack_require__(431);
-	var slides = __webpack_require__(433);
-	var tabs = __webpack_require__(435);
-	var toggles = __webpack_require__(440);
-	var toolbar = __webpack_require__(442);
+	var actionSheets = __webpack_require__(365);
+	var alerts = __webpack_require__(367);
+	var badges = __webpack_require__(373);
+	var buttons = __webpack_require__(375);
+	var cards = __webpack_require__(386);
+	var checkboxes = __webpack_require__(395);
+	var grid = __webpack_require__(397);
+	var icons = __webpack_require__(399);
+	var inputs = __webpack_require__(401);
+	var lists = __webpack_require__(409);
+	var menus = __webpack_require__(362);
+	var modals = __webpack_require__(420);
+	var navigation = __webpack_require__(422);
+	var radios = __webpack_require__(424);
+	var ranges = __webpack_require__(426);
+	var searchbars = __webpack_require__(428);
+	var segments = __webpack_require__(430);
+	var selects = __webpack_require__(432);
+	var slides = __webpack_require__(434);
+	var tabs = __webpack_require__(436);
+	var toggles = __webpack_require__(441);
+	var toolbar = __webpack_require__(443);
 	var AndroidAttribute = (function () {
 	    function AndroidAttribute(platform, elementRef, renderer) {
 	        this.platform = platform;
@@ -63397,18 +63953,18 @@
 
 
 /***/ },
-/* 364 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(365));
+	__export(__webpack_require__(366));
 
 
 /***/ },
-/* 365 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63423,85 +63979,49 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage(platform, nav) {
 	        this.platform = platform;
 	        this.nav = nav;
 	    }
 	    BasicPage.prototype.openMenu = function () {
-	        var buttonHandler = function (index) {
-	            console.log('Button clicked', index);
-	            if (index == 1) {
-	                return false;
-	            }
-	            return true;
-	        };
-	        if (this.platform.is('android')) {
-	            var androidSheet = {
-	                title: 'Albums',
-	                buttons: [
-	                    {
-	                        text: 'Delete',
-	                        style: 'destructive',
-	                        icon: 'md-trash',
-	                        handler: function () {
-	                            console.log('Destructive clicked');
-	                        }
-	                    },
-	                    { text: 'Share',
-	                        handler: buttonHandler,
-	                        icon: 'share'
-	                    },
-	                    { text: 'Play',
-	                        handler: buttonHandler,
-	                        icon: 'arrow-dropright-circle'
-	                    },
-	                    { text: 'Favorite',
-	                        handler: buttonHandler,
-	                        icon: 'md-heart-outline'
-	                    },
-	                    {
-	                        text: 'Cancel',
-	                        style: 'cancel',
-	                        icon: 'md-close',
-	                        handler: function () {
-	                            console.log('Cancel clicked');
-	                        }
-	                    }
-	                ],
-	            };
-	        }
-	        var actionSheet = ionic_angular_1.ActionSheet.create(androidSheet || {
+	        var actionSheet = ionic_angular_1.ActionSheet.create({
+	            title: 'Albums',
 	            buttons: [
 	                {
 	                    text: 'Delete',
-	                    style: 'destructive',
+	                    role: 'destructive',
+	                    icon: !this.platform.is('ios') ? 'trash' : null,
 	                    handler: function () {
-	                        console.log('Destructive clicked');
+	                        console.log('Delete clicked');
 	                    }
 	                },
 	                {
 	                    text: 'Share',
+	                    icon: !this.platform.is('ios') ? 'share' : null,
 	                    handler: function () {
 	                        console.log('Share clicked');
 	                    }
 	                },
 	                {
 	                    text: 'Play',
+	                    icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
 	                    handler: function () {
 	                        console.log('Play clicked');
 	                    }
 	                },
 	                {
 	                    text: 'Favorite',
+	                    icon: !this.platform.is('ios') ? 'heart-outline' : null,
 	                    handler: function () {
 	                        console.log('Favorite clicked');
 	                    }
 	                },
 	                {
 	                    text: 'Cancel',
-	                    style: 'cancel',
+	                    role: 'cancel',
+	                    icon: !this.platform.is('ios') ? 'close' : null,
 	                    handler: function () {
 	                        console.log('Cancel clicked');
 	                    }
@@ -63526,59 +64046,18 @@
 
 
 /***/ },
-/* 366 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(367));
 	__export(__webpack_require__(368));
 	__export(__webpack_require__(369));
 	__export(__webpack_require__(370));
 	__export(__webpack_require__(371));
-
-
-/***/ },
-/* 367 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
-	var core_1 = __webpack_require__(7);
-	var BasicPage = (function () {
-	    function BasicPage(nav) {
-	        this.nav = nav;
-	    }
-	    BasicPage.prototype.doAlert = function () {
-	        var alert = ionic_angular_1.Alert.create({
-	            title: 'New Friend!',
-	            body: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
-	            buttons: ['Ok']
-	        });
-	        this.nav.present(alert);
-	    };
-	    BasicPage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/alerts/basic/template.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [ionic_angular_1.NavController])
-	    ], BasicPage);
-	    return BasicPage;
-	}());
-	exports.BasicPage = BasicPage;
+	__export(__webpack_require__(372));
 
 
 /***/ },
@@ -63596,7 +64075,48 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var core_1 = __webpack_require__(7);
+	var BasicPage = (function () {
+	    function BasicPage(nav) {
+	        this.nav = nav;
+	    }
+	    BasicPage.prototype.doAlert = function () {
+	        var alert = ionic_angular_1.Alert.create({
+	            title: 'New Friend!',
+	            message: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+	            buttons: ['Ok']
+	        });
+	        this.nav.present(alert);
+	    };
+	    BasicPage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/alerts/basic/template.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [ionic_angular_1.NavController])
+	    ], BasicPage);
+	    return BasicPage;
+	}());
+	exports.BasicPage = BasicPage;
+
+
+/***/ },
+/* 369 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var helpers_1 = __webpack_require__(364);
 	var core_1 = __webpack_require__(7);
 	var ConfirmPage = (function () {
 	    function ConfirmPage(nav) {
@@ -63605,7 +64125,7 @@
 	    ConfirmPage.prototype.doConfirm = function () {
 	        var confirm = ionic_angular_1.Alert.create({
 	            title: 'Use this lightsaber?',
-	            body: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+	            message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
 	            buttons: [
 	                {
 	                    text: 'Disagree',
@@ -63636,7 +64156,7 @@
 
 
 /***/ },
-/* 369 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63650,7 +64170,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var core_1 = __webpack_require__(7);
 	var PromptPage = (function () {
 	    function PromptPage(nav) {
@@ -63696,7 +64216,7 @@
 
 
 /***/ },
-/* 370 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63710,7 +64230,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var core_1 = __webpack_require__(7);
 	var RadioPage = (function () {
 	    function RadioPage(nav) {
@@ -63782,7 +64302,7 @@
 
 
 /***/ },
-/* 371 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63796,7 +64316,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var core_1 = __webpack_require__(7);
 	var CheckboxPage = (function () {
 	    function CheckboxPage(nav) {
@@ -63878,18 +64398,18 @@
 
 
 /***/ },
-/* 372 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(373));
+	__export(__webpack_require__(374));
 
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63904,7 +64424,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage() {
 	    }
@@ -63921,14 +64441,13 @@
 
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(375));
 	__export(__webpack_require__(376));
 	__export(__webpack_require__(377));
 	__export(__webpack_require__(378));
@@ -63938,38 +64457,7 @@
 	__export(__webpack_require__(382));
 	__export(__webpack_require__(383));
 	__export(__webpack_require__(384));
-
-
-/***/ },
-/* 375 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BasicPage = (function () {
-	    function BasicPage() {
-	    }
-	    BasicPage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/basic/basic.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], BasicPage);
-	    return BasicPage;
-	}());
-	exports.BasicPage = BasicPage;
+	__export(__webpack_require__(385));
 
 
 /***/ },
@@ -63988,20 +64476,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BlockPage = (function () {
-	    function BlockPage() {
+	var helpers_1 = __webpack_require__(364);
+	var BasicPage = (function () {
+	    function BasicPage() {
 	    }
-	    BlockPage = __decorate([
+	    BasicPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/block/block.html',
+	            templateUrl: './build/pages/buttons/basic/basic.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], BlockPage);
-	    return BlockPage;
+	    ], BasicPage);
+	    return BasicPage;
 	}());
-	exports.BlockPage = BlockPage;
+	exports.BasicPage = BasicPage;
 
 
 /***/ },
@@ -64020,20 +64508,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var ClearPage = (function () {
-	    function ClearPage() {
+	var helpers_1 = __webpack_require__(364);
+	var BlockPage = (function () {
+	    function BlockPage() {
 	    }
-	    ClearPage = __decorate([
+	    BlockPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/clear/clear.html',
+	            templateUrl: './build/pages/buttons/block/block.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], ClearPage);
-	    return ClearPage;
+	    ], BlockPage);
+	    return BlockPage;
 	}());
-	exports.ClearPage = ClearPage;
+	exports.BlockPage = BlockPage;
 
 
 /***/ },
@@ -64052,20 +64540,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var ComponentsPage = (function () {
-	    function ComponentsPage() {
+	var helpers_1 = __webpack_require__(364);
+	var ClearPage = (function () {
+	    function ClearPage() {
 	    }
-	    ComponentsPage = __decorate([
+	    ClearPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/components/components.html',
+	            templateUrl: './build/pages/buttons/clear/clear.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], ComponentsPage);
-	    return ComponentsPage;
+	    ], ClearPage);
+	    return ClearPage;
 	}());
-	exports.ComponentsPage = ComponentsPage;
+	exports.ClearPage = ClearPage;
 
 
 /***/ },
@@ -64084,20 +64572,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var FabPage = (function () {
-	    function FabPage() {
+	var helpers_1 = __webpack_require__(364);
+	var ComponentsPage = (function () {
+	    function ComponentsPage() {
 	    }
-	    FabPage = __decorate([
+	    ComponentsPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/fab/fab.html',
+	            templateUrl: './build/pages/buttons/components/components.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], FabPage);
-	    return FabPage;
+	    ], ComponentsPage);
+	    return ComponentsPage;
 	}());
-	exports.FabPage = FabPage;
+	exports.ComponentsPage = ComponentsPage;
 
 
 /***/ },
@@ -64116,20 +64604,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var FullPage = (function () {
-	    function FullPage() {
+	var helpers_1 = __webpack_require__(364);
+	var FabPage = (function () {
+	    function FabPage() {
 	    }
-	    FullPage = __decorate([
+	    FabPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/full/full.html',
+	            templateUrl: './build/pages/buttons/fab/fab.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], FullPage);
-	    return FullPage;
+	    ], FabPage);
+	    return FabPage;
 	}());
-	exports.FullPage = FullPage;
+	exports.FabPage = FabPage;
 
 
 /***/ },
@@ -64148,20 +64636,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var IconsPage = (function () {
-	    function IconsPage() {
+	var helpers_1 = __webpack_require__(364);
+	var FullPage = (function () {
+	    function FullPage() {
 	    }
-	    IconsPage = __decorate([
+	    FullPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/icons/icons.html',
+	            templateUrl: './build/pages/buttons/full/full.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], IconsPage);
-	    return IconsPage;
+	    ], FullPage);
+	    return FullPage;
 	}());
-	exports.IconsPage = IconsPage;
+	exports.FullPage = FullPage;
 
 
 /***/ },
@@ -64180,20 +64668,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var OutlinePage = (function () {
-	    function OutlinePage() {
+	var helpers_1 = __webpack_require__(364);
+	var IconsPage = (function () {
+	    function IconsPage() {
 	    }
-	    OutlinePage = __decorate([
+	    IconsPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/outline/outline.html',
+	            templateUrl: './build/pages/buttons/icons/icons.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], OutlinePage);
-	    return OutlinePage;
+	    ], IconsPage);
+	    return IconsPage;
 	}());
-	exports.OutlinePage = OutlinePage;
+	exports.IconsPage = IconsPage;
 
 
 /***/ },
@@ -64212,20 +64700,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var RoundPage = (function () {
-	    function RoundPage() {
+	var helpers_1 = __webpack_require__(364);
+	var OutlinePage = (function () {
+	    function OutlinePage() {
 	    }
-	    RoundPage = __decorate([
+	    OutlinePage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/buttons/round/round.html',
+	            templateUrl: './build/pages/buttons/outline/outline.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], RoundPage);
-	    return RoundPage;
+	    ], OutlinePage);
+	    return OutlinePage;
 	}());
-	exports.RoundPage = RoundPage;
+	exports.OutlinePage = OutlinePage;
 
 
 /***/ },
@@ -64244,7 +64732,39 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var RoundPage = (function () {
+	    function RoundPage() {
+	    }
+	    RoundPage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/buttons/round/round.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], RoundPage);
+	    return RoundPage;
+	}());
+	exports.RoundPage = RoundPage;
+
+
+/***/ },
+/* 385 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var core_1 = __webpack_require__(7);
+	var helpers_1 = __webpack_require__(364);
 	var SizesPage = (function () {
 	    function SizesPage() {
 	    }
@@ -64261,14 +64781,13 @@
 
 
 /***/ },
-/* 385 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(386));
 	__export(__webpack_require__(387));
 	__export(__webpack_require__(388));
 	__export(__webpack_require__(389));
@@ -64276,38 +64795,7 @@
 	__export(__webpack_require__(391));
 	__export(__webpack_require__(392));
 	__export(__webpack_require__(393));
-
-
-/***/ },
-/* 386 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var AdvancedMapPage = (function () {
-	    function AdvancedMapPage() {
-	    }
-	    AdvancedMapPage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/advanced-map/template.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AdvancedMapPage);
-	    return AdvancedMapPage;
-	}());
-	exports.AdvancedMapPage = AdvancedMapPage;
+	__export(__webpack_require__(394));
 
 
 /***/ },
@@ -64326,20 +64814,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var AdvancedSocialPage = (function () {
-	    function AdvancedSocialPage() {
+	var helpers_1 = __webpack_require__(364);
+	var AdvancedMapPage = (function () {
+	    function AdvancedMapPage() {
 	    }
-	    AdvancedSocialPage = __decorate([
+	    AdvancedMapPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/advanced-social/template.html',
+	            templateUrl: './build/pages/cards/advanced-map/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], AdvancedSocialPage);
-	    return AdvancedSocialPage;
+	    ], AdvancedMapPage);
+	    return AdvancedMapPage;
 	}());
-	exports.AdvancedSocialPage = AdvancedSocialPage;
+	exports.AdvancedMapPage = AdvancedMapPage;
 
 
 /***/ },
@@ -64358,20 +64846,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var AdvancedWeatherPage = (function () {
-	    function AdvancedWeatherPage() {
+	var helpers_1 = __webpack_require__(364);
+	var AdvancedSocialPage = (function () {
+	    function AdvancedSocialPage() {
 	    }
-	    AdvancedWeatherPage = __decorate([
+	    AdvancedSocialPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/advanced-weather/template.html',
+	            templateUrl: './build/pages/cards/advanced-social/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], AdvancedWeatherPage);
-	    return AdvancedWeatherPage;
+	    ], AdvancedSocialPage);
+	    return AdvancedSocialPage;
 	}());
-	exports.AdvancedWeatherPage = AdvancedWeatherPage;
+	exports.AdvancedSocialPage = AdvancedSocialPage;
 
 
 /***/ },
@@ -64390,20 +64878,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BackgroundPage = (function () {
-	    function BackgroundPage() {
+	var helpers_1 = __webpack_require__(364);
+	var AdvancedWeatherPage = (function () {
+	    function AdvancedWeatherPage() {
 	    }
-	    BackgroundPage = __decorate([
+	    AdvancedWeatherPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/background/template.html',
+	            templateUrl: './build/pages/cards/advanced-weather/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], BackgroundPage);
-	    return BackgroundPage;
+	    ], AdvancedWeatherPage);
+	    return AdvancedWeatherPage;
 	}());
-	exports.BackgroundPage = BackgroundPage;
+	exports.AdvancedWeatherPage = AdvancedWeatherPage;
 
 
 /***/ },
@@ -64422,20 +64910,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BasicPage = (function () {
-	    function BasicPage() {
+	var helpers_1 = __webpack_require__(364);
+	var BackgroundPage = (function () {
+	    function BackgroundPage() {
 	    }
-	    BasicPage = __decorate([
+	    BackgroundPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/basic/template.html',
+	            templateUrl: './build/pages/cards/background/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], BasicPage);
-	    return BasicPage;
+	    ], BackgroundPage);
+	    return BackgroundPage;
 	}());
-	exports.BasicPage = BasicPage;
+	exports.BackgroundPage = BackgroundPage;
 
 
 /***/ },
@@ -64454,20 +64942,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var HeaderPage = (function () {
-	    function HeaderPage() {
+	var helpers_1 = __webpack_require__(364);
+	var BasicPage = (function () {
+	    function BasicPage() {
 	    }
-	    HeaderPage = __decorate([
+	    BasicPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/header/template.html',
+	            templateUrl: './build/pages/cards/basic/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], HeaderPage);
-	    return HeaderPage;
+	    ], BasicPage);
+	    return BasicPage;
 	}());
-	exports.HeaderPage = HeaderPage;
+	exports.BasicPage = BasicPage;
 
 
 /***/ },
@@ -64486,20 +64974,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var ImagePage = (function () {
-	    function ImagePage() {
+	var helpers_1 = __webpack_require__(364);
+	var HeaderPage = (function () {
+	    function HeaderPage() {
 	    }
-	    ImagePage = __decorate([
+	    HeaderPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/cards/image/template.html',
+	            templateUrl: './build/pages/cards/header/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], ImagePage);
-	    return ImagePage;
+	    ], HeaderPage);
+	    return HeaderPage;
 	}());
-	exports.ImagePage = ImagePage;
+	exports.HeaderPage = HeaderPage;
 
 
 /***/ },
@@ -64518,7 +65006,39 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var ImagePage = (function () {
+	    function ImagePage() {
+	    }
+	    ImagePage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/cards/image/template.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ImagePage);
+	    return ImagePage;
+	}());
+	exports.ImagePage = ImagePage;
+
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var core_1 = __webpack_require__(7);
+	var helpers_1 = __webpack_require__(364);
 	var ListPage = (function () {
 	    function ListPage() {
 	    }
@@ -64535,18 +65055,18 @@
 
 
 /***/ },
-/* 394 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(395));
+	__export(__webpack_require__(396));
 
 
 /***/ },
-/* 395 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64561,7 +65081,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var CheckboxPage = (function () {
 	    function CheckboxPage() {
 	    }
@@ -64578,18 +65098,18 @@
 
 
 /***/ },
-/* 396 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(397));
+	__export(__webpack_require__(398));
 
 
 /***/ },
-/* 397 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64604,7 +65124,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage() {
 	    }
@@ -64621,18 +65141,18 @@
 
 
 /***/ },
-/* 398 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(399));
+	__export(__webpack_require__(400));
 
 
 /***/ },
-/* 399 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64647,7 +65167,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage() {
 	    }
@@ -64664,24 +65184,24 @@
 
 
 /***/ },
-/* 400 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(401));
 	__export(__webpack_require__(402));
 	__export(__webpack_require__(403));
 	__export(__webpack_require__(404));
 	__export(__webpack_require__(405));
 	__export(__webpack_require__(406));
 	__export(__webpack_require__(407));
+	__export(__webpack_require__(408));
 
 
 /***/ },
-/* 401 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64697,7 +65217,7 @@
 	var core_1 = __webpack_require__(7);
 	var common_1 = __webpack_require__(172);
 	var ionic_angular_1 = __webpack_require__(5);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage() {
 	        this.form = new common_1.ControlGroup({
@@ -64723,38 +65243,6 @@
 
 
 /***/ },
-/* 402 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var FixedInlinePage = (function () {
-	    function FixedInlinePage() {
-	    }
-	    FixedInlinePage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/inputs/fixed-inline/template.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], FixedInlinePage);
-	    return FixedInlinePage;
-	}());
-	exports.FixedInlinePage = FixedInlinePage;
-
-
-/***/ },
 /* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -64770,20 +65258,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var FloatingPage = (function () {
-	    function FloatingPage() {
+	var helpers_1 = __webpack_require__(364);
+	var FixedInlinePage = (function () {
+	    function FixedInlinePage() {
 	    }
-	    FloatingPage = __decorate([
+	    FixedInlinePage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/inputs/floating/template.html',
+	            templateUrl: './build/pages/inputs/fixed-inline/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], FloatingPage);
-	    return FloatingPage;
+	    ], FixedInlinePage);
+	    return FixedInlinePage;
 	}());
-	exports.FloatingPage = FloatingPage;
+	exports.FixedInlinePage = FixedInlinePage;
 
 
 /***/ },
@@ -64802,20 +65290,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var InlinePage = (function () {
-	    function InlinePage() {
+	var helpers_1 = __webpack_require__(364);
+	var FloatingPage = (function () {
+	    function FloatingPage() {
 	    }
-	    InlinePage = __decorate([
+	    FloatingPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/inputs/inline/template.html',
+	            templateUrl: './build/pages/inputs/floating/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], InlinePage);
-	    return InlinePage;
+	    ], FloatingPage);
+	    return FloatingPage;
 	}());
-	exports.InlinePage = InlinePage;
+	exports.FloatingPage = FloatingPage;
 
 
 /***/ },
@@ -64834,20 +65322,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var InsetPage = (function () {
-	    function InsetPage() {
+	var helpers_1 = __webpack_require__(364);
+	var InlinePage = (function () {
+	    function InlinePage() {
 	    }
-	    InsetPage = __decorate([
+	    InlinePage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/inputs/inset/template.html',
+	            templateUrl: './build/pages/inputs/inline/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], InsetPage);
-	    return InsetPage;
+	    ], InlinePage);
+	    return InlinePage;
 	}());
-	exports.InsetPage = InsetPage;
+	exports.InlinePage = InlinePage;
 
 
 /***/ },
@@ -64866,20 +65354,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var PlaceholderPage = (function () {
-	    function PlaceholderPage() {
+	var helpers_1 = __webpack_require__(364);
+	var InsetPage = (function () {
+	    function InsetPage() {
 	    }
-	    PlaceholderPage = __decorate([
+	    InsetPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/inputs/placeholder/template.html',
+	            templateUrl: './build/pages/inputs/inset/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], PlaceholderPage);
-	    return PlaceholderPage;
+	    ], InsetPage);
+	    return InsetPage;
 	}());
-	exports.PlaceholderPage = PlaceholderPage;
+	exports.InsetPage = InsetPage;
 
 
 /***/ },
@@ -64898,7 +65386,39 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var PlaceholderPage = (function () {
+	    function PlaceholderPage() {
+	    }
+	    PlaceholderPage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/inputs/placeholder/template.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], PlaceholderPage);
+	    return PlaceholderPage;
+	}());
+	exports.PlaceholderPage = PlaceholderPage;
+
+
+/***/ },
+/* 408 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var core_1 = __webpack_require__(7);
+	var helpers_1 = __webpack_require__(364);
 	var StackedPage = (function () {
 	    function StackedPage() {
 	    }
@@ -64915,14 +65435,13 @@
 
 
 /***/ },
-/* 408 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(409));
 	__export(__webpack_require__(410));
 	__export(__webpack_require__(411));
 	__export(__webpack_require__(412));
@@ -64932,38 +65451,7 @@
 	__export(__webpack_require__(416));
 	__export(__webpack_require__(417));
 	__export(__webpack_require__(418));
-
-
-/***/ },
-/* 409 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var AvatarPage = (function () {
-	    function AvatarPage() {
-	    }
-	    AvatarPage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/avatar/template.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], AvatarPage);
-	    return AvatarPage;
-	}());
-	exports.AvatarPage = AvatarPage;
+	__export(__webpack_require__(419));
 
 
 /***/ },
@@ -64982,20 +65470,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BasicPage = (function () {
-	    function BasicPage() {
+	var helpers_1 = __webpack_require__(364);
+	var AvatarPage = (function () {
+	    function AvatarPage() {
 	    }
-	    BasicPage = __decorate([
+	    AvatarPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/basic/template.html',
+	            templateUrl: './build/pages/lists/avatar/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], BasicPage);
-	    return BasicPage;
+	    ], AvatarPage);
+	    return AvatarPage;
 	}());
-	exports.BasicPage = BasicPage;
+	exports.AvatarPage = AvatarPage;
 
 
 /***/ },
@@ -65014,20 +65502,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var HeadersPage = (function () {
-	    function HeadersPage() {
+	var helpers_1 = __webpack_require__(364);
+	var BasicPage = (function () {
+	    function BasicPage() {
 	    }
-	    HeadersPage = __decorate([
+	    BasicPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/headers/template.html',
+	            templateUrl: './build/pages/lists/basic/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], HeadersPage);
-	    return HeadersPage;
+	    ], BasicPage);
+	    return BasicPage;
 	}());
-	exports.HeadersPage = HeadersPage;
+	exports.BasicPage = BasicPage;
 
 
 /***/ },
@@ -65046,20 +65534,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var IconPage = (function () {
-	    function IconPage() {
+	var helpers_1 = __webpack_require__(364);
+	var HeadersPage = (function () {
+	    function HeadersPage() {
 	    }
-	    IconPage = __decorate([
+	    HeadersPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/icon/template.html',
+	            templateUrl: './build/pages/lists/headers/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], IconPage);
-	    return IconPage;
+	    ], HeadersPage);
+	    return HeadersPage;
 	}());
-	exports.IconPage = IconPage;
+	exports.HeadersPage = HeadersPage;
 
 
 /***/ },
@@ -65078,20 +65566,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var InsetPage = (function () {
-	    function InsetPage() {
+	var helpers_1 = __webpack_require__(364);
+	var IconPage = (function () {
+	    function IconPage() {
 	    }
-	    InsetPage = __decorate([
+	    IconPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/inset/template.html',
+	            templateUrl: './build/pages/lists/icon/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], InsetPage);
-	    return InsetPage;
+	    ], IconPage);
+	    return IconPage;
 	}());
-	exports.InsetPage = InsetPage;
+	exports.IconPage = IconPage;
 
 
 /***/ },
@@ -65110,20 +65598,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var NoLinesPage = (function () {
-	    function NoLinesPage() {
+	var helpers_1 = __webpack_require__(364);
+	var InsetPage = (function () {
+	    function InsetPage() {
 	    }
-	    NoLinesPage = __decorate([
+	    InsetPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/no-lines/template.html',
+	            templateUrl: './build/pages/lists/inset/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], NoLinesPage);
-	    return NoLinesPage;
+	    ], InsetPage);
+	    return InsetPage;
 	}());
-	exports.NoLinesPage = NoLinesPage;
+	exports.InsetPage = InsetPage;
 
 
 /***/ },
@@ -65142,20 +65630,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var MultilinePage = (function () {
-	    function MultilinePage() {
+	var helpers_1 = __webpack_require__(364);
+	var NoLinesPage = (function () {
+	    function NoLinesPage() {
 	    }
-	    MultilinePage = __decorate([
+	    NoLinesPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/multiline/template.html',
+	            templateUrl: './build/pages/lists/no-lines/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], MultilinePage);
-	    return MultilinePage;
+	    ], NoLinesPage);
+	    return NoLinesPage;
 	}());
-	exports.MultilinePage = MultilinePage;
+	exports.NoLinesPage = NoLinesPage;
 
 
 /***/ },
@@ -65174,20 +65662,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var SlidingPage = (function () {
-	    function SlidingPage() {
+	var helpers_1 = __webpack_require__(364);
+	var MultilinePage = (function () {
+	    function MultilinePage() {
 	    }
-	    SlidingPage = __decorate([
+	    MultilinePage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/sliding/template.html',
+	            templateUrl: './build/pages/lists/multiline/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], SlidingPage);
-	    return SlidingPage;
+	    ], MultilinePage);
+	    return MultilinePage;
 	}());
-	exports.SlidingPage = SlidingPage;
+	exports.MultilinePage = MultilinePage;
 
 
 /***/ },
@@ -65206,20 +65694,20 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var ThumbnailPage = (function () {
-	    function ThumbnailPage() {
+	var helpers_1 = __webpack_require__(364);
+	var SlidingPage = (function () {
+	    function SlidingPage() {
 	    }
-	    ThumbnailPage = __decorate([
+	    SlidingPage = __decorate([
 	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/lists/thumbnail/template.html',
+	            templateUrl: './build/pages/lists/sliding/template.html',
 	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
 	        }), 
 	        __metadata('design:paramtypes', [])
-	    ], ThumbnailPage);
-	    return ThumbnailPage;
+	    ], SlidingPage);
+	    return SlidingPage;
 	}());
-	exports.ThumbnailPage = ThumbnailPage;
+	exports.SlidingPage = SlidingPage;
 
 
 /***/ },
@@ -65238,7 +65726,39 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var ThumbnailPage = (function () {
+	    function ThumbnailPage() {
+	    }
+	    ThumbnailPage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/lists/thumbnail/template.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ThumbnailPage);
+	    return ThumbnailPage;
+	}());
+	exports.ThumbnailPage = ThumbnailPage;
+
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var core_1 = __webpack_require__(7);
+	var helpers_1 = __webpack_require__(364);
 	var DividersPage = (function () {
 	    function DividersPage() {
 	    }
@@ -65255,18 +65775,18 @@
 
 
 /***/ },
-/* 419 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(420));
+	__export(__webpack_require__(421));
 
 
 /***/ },
-/* 420 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65282,7 +65802,7 @@
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
 	var common_1 = __webpack_require__(172);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var ModalsInitialPage = (function () {
 	    function ModalsInitialPage(nav) {
 	        this.nav = nav;
@@ -65376,18 +65896,18 @@
 
 
 /***/ },
-/* 421 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(422));
+	__export(__webpack_require__(423));
 
 
 /***/ },
-/* 422 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65403,7 +65923,7 @@
 	var ionic_angular_1 = __webpack_require__(5);
 	var ionic_angular_2 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var NavigationDetailsPage = (function () {
 	    function NavigationDetailsPage(params) {
 	        this.item = params.data.item;
@@ -65494,18 +66014,18 @@
 
 
 /***/ },
-/* 423 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(424));
+	__export(__webpack_require__(425));
 
 
 /***/ },
-/* 424 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65521,7 +66041,7 @@
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
 	var common_1 = __webpack_require__(172);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var RadioPage = (function () {
 	    function RadioPage() {
 	        this.langs = new common_1.Control("");
@@ -65546,18 +66066,18 @@
 
 
 /***/ },
-/* 425 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(426));
+	__export(__webpack_require__(427));
 
 
 /***/ },
-/* 426 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65572,7 +66092,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var RangePage = (function () {
 	    function RangePage() {
 	    }
@@ -65589,18 +66109,18 @@
 
 
 /***/ },
-/* 427 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(428));
+	__export(__webpack_require__(429));
 
 
 /***/ },
-/* 428 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65615,7 +66135,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var SearchPage = (function () {
 	    function SearchPage() {
 	        this.searchQuery = '';
@@ -65691,18 +66211,18 @@
 
 
 /***/ },
-/* 429 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(430));
+	__export(__webpack_require__(431));
 
 
 /***/ },
-/* 430 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65717,7 +66237,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var SegmentPage = (function () {
 	    function SegmentPage(platform) {
 	        this.platform = platform;
@@ -65737,18 +66257,18 @@
 
 
 /***/ },
-/* 431 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(432));
+	__export(__webpack_require__(433));
 
 
 /***/ },
-/* 432 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65763,7 +66283,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var SelectPage = (function () {
 	    function SelectPage() {
 	        this.gaming = "n64";
@@ -65789,18 +66309,18 @@
 
 
 /***/ },
-/* 433 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(434));
+	__export(__webpack_require__(435));
 
 
 /***/ },
-/* 434 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65815,7 +66335,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var BasicPage = (function () {
 	    function BasicPage(nav, app) {
 	        this.nav = nav;
@@ -65851,21 +66371,21 @@
 
 
 /***/ },
-/* 435 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(436));
 	__export(__webpack_require__(437));
 	__export(__webpack_require__(438));
 	__export(__webpack_require__(439));
+	__export(__webpack_require__(440));
 
 
 /***/ },
-/* 436 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65880,7 +66400,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var TabTextPage = (function () {
 	    function TabTextPage(platform) {
 	        this.platform = platform;
@@ -65922,7 +66442,7 @@
 
 
 /***/ },
-/* 437 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65937,7 +66457,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var TabIconPage = (function () {
 	    function TabIconPage(platform) {
 	        this.platform = platform;
@@ -65989,7 +66509,7 @@
 
 
 /***/ },
-/* 438 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66004,7 +66524,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var TabIconTextPage = (function () {
 	    function TabIconTextPage(platform) {
 	        this.platform = platform;
@@ -66057,7 +66577,7 @@
 
 
 /***/ },
-/* 439 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66072,7 +66592,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers = __webpack_require__(363);
+	var helpers = __webpack_require__(364);
 	var TabBadgePage = (function () {
 	    function TabBadgePage(platform) {
 	        this.platform = platform;
@@ -66114,18 +66634,18 @@
 
 
 /***/ },
-/* 440 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(441));
+	__export(__webpack_require__(442));
 
 
 /***/ },
-/* 441 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66140,7 +66660,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var TogglePage = (function () {
 	    function TogglePage() {
 	    }
@@ -66157,49 +66677,17 @@
 
 
 /***/ },
-/* 442 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(443));
 	__export(__webpack_require__(444));
 	__export(__webpack_require__(445));
 	__export(__webpack_require__(446));
-
-
-/***/ },
-/* 443 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var ionic_angular_1 = __webpack_require__(5);
-	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
-	var BasicPage = (function () {
-	    function BasicPage() {
-	    }
-	    BasicPage = __decorate([
-	        ionic_angular_1.Page({
-	            templateUrl: './build/pages/toolbar/basic/template.html',
-	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
-	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], BasicPage);
-	    return BasicPage;
-	}());
-	exports.BasicPage = BasicPage;
+	__export(__webpack_require__(447));
 
 
 /***/ },
@@ -66218,7 +66706,39 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
+	var BasicPage = (function () {
+	    function BasicPage() {
+	    }
+	    BasicPage = __decorate([
+	        ionic_angular_1.Page({
+	            templateUrl: './build/pages/toolbar/basic/template.html',
+	            directives: [core_1.forwardRef(function () { return helpers_1.AndroidAttribute; })]
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], BasicPage);
+	    return BasicPage;
+	}());
+	exports.BasicPage = BasicPage;
+
+
+/***/ },
+/* 445 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_angular_1 = __webpack_require__(5);
+	var core_1 = __webpack_require__(7);
+	var helpers_1 = __webpack_require__(364);
 	var ToolbarButtonsPage = (function () {
 	    function ToolbarButtonsPage(platform) {
 	        this.platform = platform;
@@ -66246,7 +66766,7 @@
 
 
 /***/ },
-/* 445 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66261,7 +66781,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var ToolbarSegmentPage = (function () {
 	    function ToolbarSegmentPage(platform) {
 	        this.platform = platform;
@@ -66288,7 +66808,7 @@
 
 
 /***/ },
-/* 446 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66303,7 +66823,7 @@
 	};
 	var ionic_angular_1 = __webpack_require__(5);
 	var core_1 = __webpack_require__(7);
-	var helpers_1 = __webpack_require__(363);
+	var helpers_1 = __webpack_require__(364);
 	var SearchbarPage = (function () {
 	    function SearchbarPage() {
 	    }
