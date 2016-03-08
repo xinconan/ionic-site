@@ -425,7 +425,7 @@
 
 <h2 id="ionic-npm-packages---whats-in-a-name">Ionic NPM packages - What’s in a name?</h2>
 
-<p>There are two packages related to Ionic on NPM — the Ionic CLI package and the Ionic-Framework package.</p>
+<p>There are two packages related to Ionic on NPM — the Ionic CLI package and the Ionic-Angular package.</p>
 
 <h3 id="ionic-cli">Ionic CLI</h3>
 
@@ -445,32 +445,32 @@ npm install -g ionic@beta
 
 <p>Then we can use the CLI from the command line by running <code class="highlighter-rouge">ionic &lt;command&gt;</code>.</p>
 
-<h3 id="ionic-framework">Ionic Framework</h3>
+<h3 id="ionic-angular">Ionic Angular</h3>
 
-<p>The framework is available on NPM under the name <code class="highlighter-rouge">ionic-framework</code>. When you create a project using the CLI, you will automatically get the Ionic Framework package installed. The package and its version are managed through NPM and a project’s <code class="highlighter-rouge">package.json</code>. A simple project should have a <code class="highlighter-rouge">package.json</code> that looks like this.</p>
+<p>The framework is available on NPM under the name <code class="highlighter-rouge">ionic-angular</code>. When you create a project using the CLI, you will automatically get the Ionic Angular package installed. The package and its version are managed through NPM and a project’s <code class="highlighter-rouge">package.json</code>. A simple project should have a <code class="highlighter-rouge">package.json</code> that looks like this.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
   <span class="s2">"devDependencies"</span><span class="err">:</span> <span class="p">{</span>
   <span class="c1">// List of devDependencies</span>
   <span class="p">},</span>
   <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
-    <span class="s2">"ionic-framework"</span><span class="err">:</span> <span class="s2">"2.0.0-alpha.44"</span>
+    <span class="s2">"ionic-angular"</span><span class="err">:</span> <span class="s2">"2.0.0-beta.3"</span>
   <span class="p">}</span>
   <span class="c1">// and anything else</span>
 <span class="p">}</span>
 </code></pre>
 </div>
 
-<p>Here we are saying that this project depends on the <code class="highlighter-rouge">ionic-framework</code> package and it uses the version <code class="highlighter-rouge">2.0.0-alpha.44</code>. But how do we update a packaged when a new version comes out? To check if there is an update, we can run</p>
+<p>Here we are saying that this project depends on the <code class="highlighter-rouge">ionic-angular</code> package and it uses the version <code class="highlighter-rouge">2.0.0-beta.3</code>. But how do we update a packaged when a new version comes out? To check if there is an update, we can run</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>npm outdated
 
 Package                           Current          Wanted          Latest  Location
-ionic-framework            2.0.0-alpha.44  2.0.0-alpha.44  2.0.0-alpha.45  myApp
+ionic-angular                2.0.0-beta.2    2.0.0-beta.2    2.0.0-beta.3  myApp
 </code></pre>
 </div>
 
-<p>This tells us that there is an update to the ionic-framework package, version <code class="highlighter-rouge">2.0.0-alpha.45</code>. To get this update, we can run <code class="highlighter-rouge">npm install ionic-framework@latest</code>. Alternatively, we could update our <code class="highlighter-rouge">package.json</code> to <code class="highlighter-rouge">"ionic-framework": "2.0.0-alpha.45"</code>, and then run <code class="highlighter-rouge">npm update</code>.</p>
+<p>This tells us that there is an update to the ionic-framework package, version <code class="highlighter-rouge">2.0.0-beta.3</code>. To get this update, we can run <code class="highlighter-rouge">npm install ionic-angular@latest</code>. Alternatively, we could update our <code class="highlighter-rouge">package.json</code> to <code class="highlighter-rouge">"ionic-angular": "2.0.0-beta.3"</code>, and then run <code class="highlighter-rouge">npm update</code>.</p>
 
       </main>
     </div>
