@@ -270,19 +270,7 @@
   <a href="/docs/v2/native/BarcodeScanner">BarcodeScanner</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/native/Battery Status
-
-Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
-
-```
-cordova plugin add cordova-plugin-batterystatus
-```">Battery Status
-
-Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see the [BatteryStatus plugin docs](https://github.com/apache/cordova-plugin-battery-status).
-
-```
-cordova plugin add cordova-plugin-batterystatus
-```</a>
+  <a href="/docs/v2/native/Battery Status">Battery Status</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/BLE">BLE</a>
@@ -345,73 +333,7 @@ cordova plugin add cordova-plugin-batterystatus
   <a href="/docs/v2/native/LaunchNavigator">LaunchNavigator</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/native/Local Notifications
-
-Usage:
-```ts
-// Schedule a single notification
-LocalNotifications.schedule({
-  id: 1,
-  text: "Single Notification",
-  sound: isAndroid? 'file://sound.mp3' : 'file://beep.caf'
-  data: { secret: key }
-});
-
-
-// Schedule multiple notifications
-LocalNotifications.schedule([{
-   id: 1,
-   text: "Multi Notification 1",
-   sound: isAndroid ? 'file://sound.mp3' : 'file://beep.caf',
-   data: { secret:key }
-  },{
-   id: 2,
-   title: "Local Notification Example",
-   text: "Multi Notification 2",
-   icon: "http://example.com/icon.png"
-}]);
-
-
-// Schedule delayed notification
-LocalNotifications.schedule({
-  t ext: "Delayed Notification",
-   at: new Date(new Date() + 3600),
-   led: "FF0000",
-   sound: null
-});">Local Notifications
-
-Usage:
-```ts
-// Schedule a single notification
-LocalNotifications.schedule({
-  id: 1,
-  text: "Single Notification",
-  sound: isAndroid? 'file://sound.mp3' : 'file://beep.caf'
-  data: { secret: key }
-});
-
-
-// Schedule multiple notifications
-LocalNotifications.schedule([{
-   id: 1,
-   text: "Multi Notification 1",
-   sound: isAndroid ? 'file://sound.mp3' : 'file://beep.caf',
-   data: { secret:key }
-  },{
-   id: 2,
-   title: "Local Notification Example",
-   text: "Multi Notification 2",
-   icon: "http://example.com/icon.png"
-}]);
-
-
-// Schedule delayed notification
-LocalNotifications.schedule({
-  t ext: "Delayed Notification",
-   at: new Date(new Date() + 3600),
-   led: "FF0000",
-   sound: null
-});</a>
+  <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Plugin">Plugin</a>
@@ -565,10 +487,10 @@ Improve this doc
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-flashlight</code></pre>
 <p>Repo:
-<a href="">
-
+<a href="https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git">
+https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git
 </a>
 </p>
 
@@ -576,6 +498,8 @@ Improve this doc
 
 <p>This plugin allows you to switch the flashlight / torch of the device on and off.</p>
 <p>Requires Cordova plugin: <code>cordova-plugin-flashlight</code>. For more info, please see the <a href="https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin">Flashlight plugin docs</a>.</p>
+<pre><code class="lang-shell">cordova plugin add cordova-plugin-flashlight
+</code></pre>
 
 <!-- @usage tag -->
 
