@@ -12,11 +12,11 @@
 
 
 
-    <title>Platform Specific Styles - Platform Specific Styles -  Ionic Framework</title>
+    <title>Globalization - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-platform-specific-styles"
-        class="v2 docs page-platform-specific-styles"
+  <body id="docs-page-globalization"
+        class="v2 docs page-globalization"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -244,9 +244,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -309,7 +311,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Geolocation">Geolocation</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Globalization">Globalization</a>
 </li>
 <li class="capitalize ">
@@ -341,11 +343,9 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showTheming = !showTheming">Theming</a>
     <ul ng-show="showTheming"
-        
-          ng-init="showTheming = true"
         >
       <li class="">
         <a href="/docs/v2/theming/">Intro</a>
@@ -356,8 +356,7 @@
       <li class="">
         <a href="/docs/v2/theming/sass-variables/">Sass Variables</a>
       </li>
-      <li class="active
-                 ">
+      <li class="">
         <a href="/docs/v2/theming/platform-specific-styles/">
           Platform Styles
         </a>
@@ -449,94 +448,247 @@
       </nav>
       
       <main>
-        <h1 class="title">Platform Specific Styles</h1>
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/theming/platform-specific-styles/index.md">
-  Improve this doc
+        <h1 class="api-title">
+
+
+Globalization
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/globalization.ts#L0">
+Improve this doc
 </a></p>
 
-<p>Ionic uses modes to customize the look of components to match the platform you are using. For example, when you are viewing the app on an Android device, the <code class="highlighter-rouge">&lt;body&gt;</code> will have <code class="highlighter-rouge">class="md"</code> added to it by default:</p>
+<!-- decorators -->
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"md"</span><span class="nt">&gt;</span>
-</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-globalization</code></pre>
+<p>Repo:
+<a href="https://github.com/apache/cordova-plugin-globalization">
+https://github.com/apache/cordova-plugin-globalization
+</a>
+</p>
+
+<!-- description -->
+
+<!-- @usage tag -->
+
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="getPreferredLanguage"></div>
+<h3><code>getPreferredLanguage()</code>
+  
+</h3>
+
+<p>Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;{value:string}&gt;</code></p>
 </div>
 
-<p>Here is a chart of the default mode that gets added based on platform:</p>
+<div id="getLocaleName"></div>
+<h3><code>getLocaleName()</code>
+  
+</h3>
 
-<table class="table">
-  <tr>
-    <th>Platform</th>
-    <th>Mode</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>iOS</td>
-    <td>ios</td>
-    <td>Applies iOS styling to all components.</td>
-  </tr>
-  <tr>
-    <td>Android</td>
-    <td>md</td>
-    <td>Applies Material Design styling to all components.</td>
-  </tr>
-  <tr>
-    <td>Windows Phone</td>
-    <td>md</td>
-    <td>Applies Material Design styling to all components.</td>
-  </tr>
-  <tr>
-    <td>All Other Platforms</td>
-    <td>ios</td>
-    <td>If you are not on one of the above devices, the app will get iOS styling by default.</td>
-  </tr>
+<p>Returns the BCP 47 compliant locale identifier string to the successCallback with a properties object as a parameter.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;{value:string}&gt;</code></p>
+</div>
+
+<div id="dateToString"></div>
+<h3><code>dateToString(date,&nbsp;options)</code>
+  
+</h3>
+
+<p>Converts date to string</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        date
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
 </table>
 
-<p>You can change the mode that gets assigned in the configuration of your app. Therefore, if you wanted the Material Design <code class="highlighter-rouge">md</code> mode on iOS, you could do it.</p>
-
-<h2 id="overriding-the-mode-styles">Overriding the Mode Styles</h2>
-
-<p>Each Ionic component has up to three stylesheets used to style it. For example, the tabs component has a core stylesheet that consists of styles shared between all modes, a Material stylesheet which contains the styles for the <code class="highlighter-rouge">md</code> mode, and an iOS stylesheet for, you guessed it, the <code class="highlighter-rouge">ios</code> mode. Not all components are styled differently for each mode, so some of them will only have the core stylesheet, or the core stylesheet and one of the modes.</p>
-
-<p>You can use the class that is applied to the body to override specific properties in mode components. For example, if you wanted to override all Material Design (md) mode buttons to have capitalized text:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.md</span> <span class="nt">button</span> <span class="p">{</span>
-  <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">capitalize</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise&lt;{value:string}&gt;</code></p>
 </div>
 
-<p>The Sass files for these modes also have unique variables that can be used to override the styles. Using the same example above, we could change the <code class="highlighter-rouge">md</code> button’s <code class="highlighter-rouge">border-radius</code> by changing the value of the <code class="highlighter-rouge">$button-md-border-radius</code> variable. You can do this in your own custom Sass file or in our main Sass file, before Ionic is imported:</p>
+<div id="stringToDate"></div>
+<h3><code>stringToDate(dateString,&nbsp;options)</code>
+  
+</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$button-md-border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        dateString
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
-<span class="c1">// Ionic Sass
-// ---------------------------------
-</span><span class="k">@import</span> <span class="s2">"ionic"</span><span class="p">;</span>
-</code></pre>
-</div>
+<div id="getDatePattern"></div>
+<h3><code>getDatePattern(options)</code>
+  
+</h3>
 
-<h2 id="setting-attributes-dynamically">Setting Attributes Dynamically</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
-<p>By setting an attribute dynamically, you can add or remove functionality from a component based on a certain condition. To set an attribute dynamically, use the following syntax:</p>
+<div id="getDateNames"></div>
+<h3><code>getDateNames(options)</code>
+  
+</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="err">[</span><span class="na">attr</span><span class="err">.</span><span class="na">no-lines</span><span class="err">]="</span><span class="na">isMD</span> <span class="err">?</span> <span class="err">''</span> <span class="na">:</span> <span class="na">null</span><span class="err">"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
-<p>This will set the <code class="highlighter-rouge">no-lines</code> attribute on the list component if <code class="highlighter-rouge">isMD</code> evaluates to true.</p>
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
-    </div>
-    
-    <div class="footer-links">
-      <hr>
-      
-        <a class="footer-link prev" href="/docs/v2/theming/platform-specific-styles/">
-          Platform Specific Theming</a>
-      
-      
-        <a class="footer-link next" href="/docs/v2/theming/overriding-ionic-variables/">
-          Overriding Ionic Variables</a>
-      
     </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
