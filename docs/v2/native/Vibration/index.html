@@ -12,11 +12,11 @@
 
 
 
-    <title>Ionic 2 | CLI | Generators - Ionic 2 Developer Preview -  Ionic Framework</title>
+    <title>Vibration - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-cli-platform"
-        class="v2 docs page-cli-platform"
+  <body id="docs-page-vibration"
+        class="v2 docs page-vibration"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -244,9 +244,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -351,7 +353,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/TouchID">TouchID</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Vibration">Vibration</a>
 </li>
 
@@ -386,11 +388,9 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showCli = !showCli">CLI</a>
     <ul ng-show="showCli"
-        
-          ng-init="showCli = true"
         >
       <li class="">
         <a href="/docs/v2/cli/">Intro</a>
@@ -407,7 +407,7 @@
       <li class="">
         <a href="/docs/v2/cli/info">info</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/cli/platform">platform</a>
       </li>
       <li class="">
@@ -466,137 +466,97 @@
       </nav>
       
       <main>
+        <h1 class="api-title">
+
+
+Vibration
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/vibration.ts#L0">
+Improve this doc
+</a></p>
+
+<!-- decorators -->
+
+<pre><code>$ ionic plugin add cordova-plugin-vibration</code></pre>
+<p>Repo:
+<a href="https://github.com/apache/cordova-plugin-vibration">
+https://github.com/apache/cordova-plugin-vibration
+</a>
+</p>
+
+<!-- description -->
+
+<p>Vibrates the device</p>
+
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-ts">// Vibrate the device for a second
+Vibration.vibrate(1000);
+
+// Vibrate 2 seconds
+// Pause for 1 second
+// Vibrate for 2 seconds
+// Patterns work on Android and Windows only
+Vibration.vibrate([2000,1000,2000]);
+
+// Stop any current vibrations immediately
+// Works on Android and Windows only
+Vibration.vibrate(0);
+</code></pre>
+
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="vibrate"></div>
+<h3><code>vibrate(time)</code>
+  
+</h3>
+
+<p>Vibrates the device for given amount of time.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        time
         
-  
+        
+      </td>
+      <td>
+        
+  <code>Number</code>|<code>Array.&lt;Number&gt;</code>
+      </td>
+      <td>
+        <p>Milliseconds to vibrate the device. If passed an array of numbers, it will define a vibration pattern. Pass 0 to stop any vibration immediately.</p>
 
-  
-
-  
-
+        
+      </td>
+    </tr>
     
-      <h1 style="margin-bottom: 2em">platform</h1>
-    
+  </tbody>
+</table>
 
-    <table class="table param-table" style="margin:0;">
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            ionic platform
-          </td>
-          <td>
-            Add platform target for building an Ionic app
-          </td>
-        </tr>
-      </tbody>
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
 
-      
-        <thead>
-          <tr>
-            <th>Flags</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>
-              --noresources|-r
-            </td>
-            <td>
-              Do not add default Ionic icons and splash screen resources
-            </td>
-            
-          <tr>
-            <td>
-              --nosave|-e
-            </td>
-            <td>
-              Do not save the platform to the package.json file
-            </td>
-            
-          </tr>
-        </tbody>
-      
-
-
-    </table>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-<h2 id="description">Description</h2>
-
-<p>The <code class="highlighter-rouge">platform</code> command adds a new platform for your application. Run <code class="highlighter-rouge">ionic platform add $platform</code> to add a specific platform, where <code class="highlighter-rouge">$platform</code> can be either <code class="highlighter-rouge">ios</code> or <code class="highlighter-rouge">android</code>.</p>
-
+<!-- end body block -->
 
 
       </main>
