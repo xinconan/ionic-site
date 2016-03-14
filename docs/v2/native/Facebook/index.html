@@ -468,27 +468,27 @@
       <main>
         <h1 class="api-title">
 
+  
+  Facebook
+  
 
-Facebook
+  
 
-
-
-
-
+  
 
 </h1>
 
 <p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/facebook.ts#L0">
-Improve this doc
+  Improve this doc
 </a></p>
 
 <!-- decorators -->
 
 <pre><code>$ cordova plugin add cordova-plugin-facebook4</code></pre>
 <p>Repo:
-<a href="https://github.com/jeduan/cordova-plugin-facebook4">
-https://github.com/jeduan/cordova-plugin-facebook4
-</a>
+  <a href="https://github.com/jeduan/cordova-plugin-facebook4">
+    https://github.com/jeduan/cordova-plugin-facebook4
+  </a>
 </p>
 
 <!-- description -->
@@ -536,7 +536,7 @@ https://github.com/jeduan/cordova-plugin-facebook4
 <h2>Static Methods</h2>
 <div id="login"></div>
 <h3><code>login(permissions)</code>
-  
+
 </h3>
 
 <p>Login to Facebook to authenticate this app.</p>
@@ -556,44 +556,44 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>
-        permissions
-        
-        
-      </td>
-      <td>
-        
-  <code>string[]</code>
-      </td>
-      <td>
-        <p>List of <a href="https://developers.facebook.com/docs/facebook-login/permissions">permissions</a> this app has upon logging in.</p>
+  
+  <tr>
+    <td>
+      permissions
+      
+      
+    </td>
+    <td>
+      
+<code>string[]</code>
+    </td>
+    <td>
+      <p>List of <a href="https://developers.facebook.com/docs/facebook-login/permissions">permissions</a> this app has upon logging in.</p>
 
-        
-      </td>
-    </tr>
-    
+      
+    </td>
+  </tr>
+  
   </tbody>
 </table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.</p>
 
 </div>
 
 <div id="logout"></div>
 <h3><code>logout()</code>
-  
+
 </h3>
 
 <p>Logout of Facebook.</p>
@@ -602,14 +602,14 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves on a successful logout, and rejects if logout fails.</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves on a successful logout, and rejects if logout fails.</p>
 
 </div>
 
 <div id="getLoginStatus"></div>
 <h3><code>getLoginStatus()</code>
-  
+
 </h3>
 
 <p>Determine if a user is logged in to Facebook and has authenticated your app.  There are three possible states for a user:</p>
@@ -637,28 +637,28 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with a status, or rejects with an error</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with a status, or rejects with an error</p>
 
 </div>
 
 <div id="getAccessToken"></div>
 <h3><code>getAccessToken()</code>
-  
+
 </h3>
 
 <p>Get a Facebook access token for using Facebook services.</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with an access token, or rejects with an error</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with an access token, or rejects with an error</p>
 
 </div>
 
 <div id="showDialog"></div>
 <h3><code>showDialog()</code>
-  
+
 </h3>
 
 <p>Show one of various Facebook dialogs. Example of options for a Share dialog:</p>
@@ -677,14 +677,14 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with success data, or rejects with an error</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with success data, or rejects with an error</p>
 
 </div>
 
 <div id="api"></div>
 <h3><code>api(requestPath,&nbsp;permissions)</code>
-  
+
 </h3>
 
 <p>Make a call to Facebook Graph API. Can take additional permissions beyond those granted on login.</p>
@@ -697,199 +697,199 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>
-        requestPath
-        
-        
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>Graph API endpoint you want to call</p>
+  
+  <tr>
+    <td>
+      requestPath
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Graph API endpoint you want to call</p>
 
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        permissions
-        
-        
-      </td>
-      <td>
-        
-  <code>string[]</code>
-      </td>
-      <td>
-        <p>List of <a href="https://developers.facebook.com/docs/facebook-login/permissions">permissions</a> for this request.</p>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      permissions
+      
+      
+    </td>
+    <td>
+      
+<code>string[]</code>
+    </td>
+    <td>
+      <p>List of <a href="https://developers.facebook.com/docs/facebook-login/permissions">permissions</a> for this request.</p>
 
-        
-      </td>
-    </tr>
-    
+      
+    </td>
+  </tr>
+  
   </tbody>
 </table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with the result of the request, or rejects with an error</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with the result of the request, or rejects with an error</p>
 
 </div>
 
 <div id="logEvent"></div>
 <h3><code>logEvent(name,&nbsp;params,&nbsp;valueToSum)</code>
-  
+
 </h3>
 
 <p>Log an event.  For more information see the Events section above.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>
-        name
-        
-        
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>Name of the event</p>
+  
+  <tr>
+    <td>
+      name
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of the event</p>
 
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        params
-        
-        
-      </td>
-      <td>
-        
-  <code>Object</code>
-      </td>
-      <td>
-        <p>An object containing extra data to log with the event</p>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      params
+      
+      
+    </td>
+    <td>
+      
+<code>Object</code>
+    </td>
+    <td>
+      <p>An object containing extra data to log with the event</p>
 
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        valueToSum
-        
-        
-      </td>
-      <td>
-        
-  <code>number</code>
-      </td>
-      <td>
-        <p>any value to be added to added to a sum on each event</p>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      valueToSum
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      <p>any value to be added to added to a sum on each event</p>
 
-        
-      </td>
-    </tr>
-    
+      
+    </td>
+  </tr>
+  
   </tbody>
 </table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b></p>
+  <b>Returns:</b></p>
 
 </div>
 
 <div id="logPurchase"></div>
 <h3><code>logPurchase(value,&nbsp;currency)</code>
-  
+
 </h3>
 
 <p>Log a purchase. For more information see the Events section above.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>
-        value
-        
-        
-      </td>
-      <td>
-        
-  <code>number</code>
-      </td>
-      <td>
-        <p>Value of the purchase.</p>
+  
+  <tr>
+    <td>
+      value
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      <p>Value of the purchase.</p>
 
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        currency
-        
-        
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>The currency, as an <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency code</a></p>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      currency
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>The currency, as an <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency code</a></p>
 
-        
-      </td>
-    </tr>
-    
+      
+    </td>
+  </tr>
+  
   </tbody>
 </table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise</p>
+  <b>Returns:</b> 
+ Returns a Promise</p>
 
 </div>
 
 <div id="appInvite"></div>
 <h3><code>appInvite(options)</code>
-  
+
 </h3>
 
 <p>Open App Invite dialog. Does not require login.</p>
@@ -901,40 +901,40 @@ https://github.com/jeduan/cordova-plugin-facebook4
 
 <table class="table param-table" style="margin:0;">
   <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>
-        options
-        
-        
-      </td>
-      <td>
-        
-  <code>Object</code>
-      </td>
-      <td>
-        <p>An object containing an <a href="https://developers.facebook.com/docs/applinks">App Link</a> URL to your app and an optional image URL.
+  
+  <tr>
+    <td>
+      options
+      
+      
+    </td>
+    <td>
+      
+<code>Object</code>
+    </td>
+    <td>
+      <p>An object containing an <a href="https://developers.facebook.com/docs/applinks">App Link</a> URL to your app and an optional image URL.
   url: <a href="https://developers.facebook.com/docs/applinks">App Link</a> to your app
   picture: image to be displayed in the App Invite dialog</p>
 
-        
-      </td>
-    </tr>
-    
+      
+    </td>
+  </tr>
+  
   </tbody>
 </table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with the result data, or rejects with an error</p>
+  <b>Returns:</b> 
+ Returns a Promise that resolves with the result data, or rejects with an error</p>
 
 </div>
 
