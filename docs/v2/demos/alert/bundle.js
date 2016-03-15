@@ -63801,7 +63801,7 @@
 	    SqlStorage.prototype.get = function (key) {
 	        return this.query('select key, value from kv where key = ? limit 1', [key]).then(function (data) {
 	            if (data.res.rows.length > 0) {
-	                return data.res.rows.item(0);
+	                return data.res.rows.item(0).value;
 	            }
 	        });
 	    };
@@ -64042,7 +64042,7 @@
 	        tapPolyfill: isIOSDevice,
 	    },
 	    isMatch: function (p) {
-	        return p.isPlatformMatch('ios', ['iphone', 'ipad', 'ipod']);
+	        return p.isPlatformMatch('ios', ['iphone', 'ipad', 'ipod'], ['windows phone']);
 	    },
 	    versionParser: function (p) {
 	        return p.matchUserAgentVersion(/OS (\d+)_(\d+)?/);
