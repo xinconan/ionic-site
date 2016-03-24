@@ -12,11 +12,11 @@
 
 
 
-    <title>Status Bar - Class in module  -  Ionic Framework</title>
+    <title>Spinner Dialog - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-status-bar"
-        class="v2 docs page-status-bar"
+  <body id="docs-page-spinner-dialog"
+        class="v2 docs page-spinner-dialog"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -341,13 +341,13 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/SMS">SMS</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Spinner Dialog">Spinner Dialog</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
 </li>
 <li class="capitalize ">
@@ -472,7 +472,7 @@
         <h1 class="api-title">
 
   
-  Status Bar
+  Spinner Dialog
   
 
   
@@ -481,46 +481,53 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/statusbar.ts#L2">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/spinnerdialog.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ cordova plugin add cordova-plugin-statusbar</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-spinner-dialog</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-statusbar">
-    https://github.com/apache/cordova-plugin-statusbar
+  <a href="https://github.com/Paldom/SpinnerDialog">
+    https://github.com/Paldom/SpinnerDialog
   </a>
 </p>
 
-<!-- description -->
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
 
-<p>Manage the appearance of the native status bar.</p>
-<p>Requires Cordova plugin: <code>cordova-plugin-statusbar</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-statusbar">StatusBar plugin docs</a>.</p>
+<ul>
+  <li>Android</li>
+  
+  <li>iOS</li>
+  
+  <li>Windows Phone 8</li>
+  </ul>
+
+<!-- description -->
 
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-ts">import {StatusBar} from &#39;ionic-native&#39;;
+<pre><code class="lang-js">import {SpinnerDialog} from &#39;ionic-native&#39;;
 
 
 
-StatuBar.overlaysWebView(true);
+SpinnerDialog.show();
 
-StatusBar.
+SpinnerDialog.hide();
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="overlaysWebView"></div>
-<h3><code>overlaysWebView(doesOverlay)</code>
+<div id="show"></div>
+<h3><code>show(title,&nbsp;message,&nbsp;cancelCallback,&nbsp;iOSOptions)</code>
 
 </h3>
 
-<p>Set whether the status bar overlays the main app view. The default<br />
-is true.</p>
+<p>Shows the spinner dialog</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -534,75 +541,7 @@ is true.</p>
   
   <tr>
     <td>
-      doesOverlay
-      
-      
-    </td>
-    <td>
-      
-<code>boolean</code>
-    </td>
-    <td>
-      <p>Whether the status bar overlays the main app view.</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="styleDefault"></div>
-<h3><code>styleDefault()</code>
-
-</h3>
-
-<p>Use the default statusbar (dark text, for light backgrounds).</p>
-
-<div id="styleLightContent"></div>
-<h3><code>styleLightContent()</code>
-
-</h3>
-
-<p>Use the lightContent statusbar (light text, for dark backgrounds).</p>
-
-<div id="styleBlackTranslucent"></div>
-<h3><code>styleBlackTranslucent()</code>
-
-</h3>
-
-<p>Use the blackTranslucent statusbar (light text, for dark backgrounds).</p>
-
-<div id="styleBlackOpaque"></div>
-<h3><code>styleBlackOpaque()</code>
-
-</h3>
-
-<p>Use the blackOpaque statusbar (light text, for dark backgrounds).</p>
-
-<div id="backgroundColorByName"></div>
-<h3><code>backgroundColorByName(colorName)</code>
-
-</h3>
-
-<p>Set the status bar to a specific named color. Valid options:<br />
-black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown.</p>
-
-<p>iOS note: you must call StatusBar.setOverlay(false) to enable color changing.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      colorName
+      title
       
       
     </td>
@@ -611,37 +550,15 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
 <code>string</code>
     </td>
     <td>
-      <p>The name of the color (from above)</p>
+      <p>Spinner title (shows on Android only)</p>
 
       
     </td>
   </tr>
   
-  </tbody>
-</table>
-
-<div id="backgroundColorByHexString"></div>
-<h3><code>backgroundColorByHexString(hexString)</code>
-
-</h3>
-
-<p>Set the status bar to a specific hex color (CSS shorthand supported!).</p>
-
-<p>iOS note: you must call StatusBar.setOverlay(false) to enable color changing.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
   <tr>
     <td>
-      hexString
+      message
       
       
     </td>
@@ -650,7 +567,41 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
 <code>string</code>
     </td>
     <td>
-      <p>The hex value of the color.</p>
+      <p>Spinner message</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      cancelCallback
+      
+      
+    </td>
+    <td>
+      
+<code>boolean</code>|<code>function()</code>
+    </td>
+    <td>
+      <p>Set to false to set spinner not cancelable. Or provide a function to call when the user cancels the spinner.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      iOSOptions
+      
+      
+    </td>
+    <td>
+      
+<code>object</code>
+    </td>
+    <td>
+      <p>Options for iOS only</p>
 
       
     </td>
@@ -664,21 +615,7 @@ black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta
 
 </h3>
 
-<p>Hide the StatusBar</p>
-
-<div id="show"></div>
-<h3><code>show()</code>
-
-</h3>
-
-<p>Show the StatusBar</p>
-
-<div id="isVisible"></div>
-<h3><code>isVisible()</code>
-
-</h3>
-
-<p>Whether the StatusBar is currently visible or not.</p>
+<p>Hides the spinner dialog if visible</p>
 
 <!-- methods on the class -->
 <!-- related link -->
