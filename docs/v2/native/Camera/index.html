@@ -494,6 +494,11 @@
   </a>
 </p>
 
+<!-- description -->
+
+<p>Take a photo or capture video.</p>
+<p>Requires <a href="module:driftyco/ionic-native">ionic-native</a> and the Cordova plugin: <code>cordova-plugin-camera</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-camera">Cordova Camera Plugin Docs</a>.</p>
+
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
 
@@ -517,10 +522,7 @@
   <li>Ubuntu</li>
   </ul>
 
-<!-- description -->
-
-<p>Take a photo or capture video.</p>
-<p>Requires <a href="module:driftyco/ionic-native">ionic-native</a> and the Cordova plugin: <code>cordova-plugin-camera</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-camera">Cordova Camera Plugin Docs</a>.</p>
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
@@ -586,10 +588,8 @@ Camera.getPicture(options).then((imageData) =&gt; {
 
 </h3>
 
-<h4>Platforms:</h4>
-<ul>
-<li>iOS</li>
-</ul>
+<p><b>Platforms:</b><br />
+<code>iOS</code> </p>
 
 <p>Remove intermediate image files that are kept in temporary storage after calling camera.getPicture.<br />
 Applies only when the value of Camera.sourceType equals Camera.PictureSourceType.CAMERA and the Camera.destinationType equals Camera.DestinationType.FILE_URI.</p>
