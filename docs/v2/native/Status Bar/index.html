@@ -12,11 +12,11 @@
 
 
 
-    <title>Globalization - Class in module  -  Ionic Framework</title>
+    <title>Status Bar - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-globalization"
-        class="v2 docs page-globalization"
+  <body id="docs-page-status-bar"
+        class="v2 docs page-status-bar"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -317,7 +317,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Geolocation">Geolocation</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/Globalization">Globalization</a>
 </li>
 <li class="capitalize ">
@@ -344,7 +344,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
 </li>
 <li class="capitalize ">
@@ -469,7 +469,7 @@
         <h1 class="api-title">
 
   
-  Globalization
+  Status Bar
   
 
   
@@ -478,62 +478,46 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/globalization.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/statusbar.ts#L2">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ cordova plugin add cordova-plugin-globalization</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-statusbar</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-globalization">
-    https://github.com/apache/cordova-plugin-globalization
+  <a href="https://github.com/apache/cordova-plugin-statusbar">
+    https://github.com/apache/cordova-plugin-statusbar
   </a>
 </p>
 
 <!-- description -->
 
+<p>Manage the appearance of the native status bar.</p>
+<p>Requires Cordova plugin: <code>cordova-plugin-statusbar</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-statusbar">StatusBar plugin docs</a>.</p>
+
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {Globalization} from &#39;ionic-native&#39;;
+<pre><code class="lang-ts">import {StatusBar} from &#39;ionic-native&#39;;
+
+
+
+StatuBar.overlaysWebView(true);
+
+StatusBar.
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="getPreferredLanguage"></div>
-<h3><code>getPreferredLanguage()</code>
+<div id="overlaysWebView"></div>
+<h3><code>overlaysWebView(doesOverlay)</code>
 
 </h3>
 
-<p>Returns the BCP-47 compliant language identifier tag to the successCallback with a properties object as a parameter. That object should have a value property with a String value.</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
-</div>
-
-<div id="getLocaleName"></div>
-<h3><code>getLocaleName()</code>
-
-</h3>
-
-<p>Returns the BCP 47 compliant locale identifier string to the successCallback with a properties object as a parameter.</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
-</div>
-
-<div id="dateToString"></div>
-<h3><code>dateToString(date,&nbsp;options)</code>
-
-</h3>
-
-<p>Converts date to string</p>
+<p>Set whether the status bar overlays the main app view. The default<br />
+is true.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -547,32 +531,17 @@
   
   <tr>
     <td>
-      date
+      doesOverlay
       
       
     </td>
     <td>
       
+<code>boolean</code>
+    </td>
+    <td>
+      <p>Whether the status bar overlays the main app view.</p>
 
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
       
     </td>
   </tr>
@@ -580,16 +549,43 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
-</div>
-
-<div id="stringToDate"></div>
-<h3><code>stringToDate(dateString,&nbsp;options)</code>
+<div id="styleDefault"></div>
+<h3><code>styleDefault()</code>
 
 </h3>
+
+<p>Use the default statusbar (dark text, for light backgrounds).</p>
+
+<div id="styleLightContent"></div>
+<h3><code>styleLightContent()</code>
+
+</h3>
+
+<p>Use the lightContent statusbar (light text, for dark backgrounds).</p>
+
+<div id="styleBlackTranslucent"></div>
+<h3><code>styleBlackTranslucent()</code>
+
+</h3>
+
+<p>Use the blackTranslucent statusbar (light text, for dark backgrounds).</p>
+
+<div id="styleBlackOpaque"></div>
+<h3><code>styleBlackOpaque()</code>
+
+</h3>
+
+<p>Use the blackOpaque statusbar (light text, for dark backgrounds).</p>
+
+<div id="backgroundColorByName"></div>
+<h3><code>backgroundColorByName(colorName)</code>
+
+</h3>
+
+<p>Set the status bar to a specific named color. Valid options:<br />
+black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown.</p>
+
+<p>iOS note: you must call StatusBar.setOverlay(false) to enable color changing.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -603,32 +599,17 @@
   
   <tr>
     <td>
-      dateString
+      colorName
       
       
     </td>
     <td>
       
+<code>string</code>
+    </td>
+    <td>
+      <p>The name of the color (from above)</p>
 
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
       
     </td>
   </tr>
@@ -636,10 +617,14 @@
   </tbody>
 </table>
 
-<div id="getDatePattern"></div>
-<h3><code>getDatePattern(options)</code>
+<div id="backgroundColorByHexString"></div>
+<h3><code>backgroundColorByHexString(hexString)</code>
 
 </h3>
+
+<p>Set the status bar to a specific hex color (CSS shorthand supported!).</p>
+
+<p>iOS note: you must call StatusBar.setOverlay(false) to enable color changing.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -653,16 +638,17 @@
   
   <tr>
     <td>
-      options
+      hexString
       
       
     </td>
     <td>
       
+<code>string</code>
+    </td>
+    <td>
+      <p>The hex value of the color.</p>
 
-    </td>
-    <td>
-      
       
     </td>
   </tr>
@@ -670,234 +656,26 @@
   </tbody>
 </table>
 
-<div id="getDateNames"></div>
-<h3><code>getDateNames(options)</code>
+<div id="hide"></div>
+<h3><code>hide()</code>
 
 </h3>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
+<p>Hide the StatusBar</p>
 
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="isDayLightSavingsTime"></div>
-<h3><code>isDayLightSavingsTime(date)</code>
+<div id="show"></div>
+<h3><code>show()</code>
 
 </h3>
 
-<p>Check if day light saving is active</p>
+<p>Show the StatusBar</p>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      date
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="getFirstDayOfWeek"></div>
-<h3><code>getFirstDayOfWeek()</code>
+<div id="isVisible"></div>
+<h3><code>isVisible()</code>
 
 </h3>
 
-<p>Get first day of week</p>
-
-<div id="numberToString"></div>
-<h3><code>numberToString(options)</code>
-
-</h3>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="stringToNumber"></div>
-<h3><code>stringToNumber(string,&nbsp;options)</code>
-
-</h3>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      string
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="getNumberPattern"></div>
-<h3><code>getNumberPattern(options)</code>
-
-</h3>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div id="getCurrencyPattern"></div>
-<h3><code>getCurrencyPattern(currencyCode)</code>
-
-</h3>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      currencyCode
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>Whether the StatusBar is currently visible or not.</p>
 
 <!-- methods on the class -->
 <!-- related link -->
