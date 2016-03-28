@@ -12,11 +12,11 @@
 
 
 
-    <title>BarcodeScanner - Class in module  -  Ionic Framework</title>
+    <title>Network - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-barcodescanner"
-        class="v2 docs page-barcodescanner"
+  <body id="docs-page-network"
+        class="v2 docs page-network"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -344,7 +344,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Network">Network</a>
 </li>
 <li class="capitalize ">
@@ -486,59 +486,122 @@
       <main>
         <h1 class="api-title">
 
+  
+  Network
+  
 
-BarcodeScanner
+  
 
-
-
-
-
+  
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/barcodescanner.ts#L0">
-Improve this doc
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/network.ts#L3">
+  Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add phonegap-plugin-barcodescanner</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-network-information</code></pre>
 <p>Repo:
-<a href="https://github.com/phonegap/phonegap-plugin-barcodescanner">
-https://github.com/phonegap/phonegap-plugin-barcodescanner
-</a>
+  <a href="https://github.com/apache/cordova-plugin-network-information">
+    https://github.com/apache/cordova-plugin-network-information
+  </a>
 </p>
 
 <!-- description -->
 
-<p>The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.</p>
-<p>Requires Cordova plugin: <code>phonegap-plugin-barcodescanner</code>. For more info, please see the <a href="https://github.com/phonegap/phonegap-plugin-barcodescanner">BarcodeScanner plugin docs</a>.</p>
+<p>Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the <a href="https://github.com/apache/cordova-plugin-network-information">Network plugin docs</a>.</p>
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Amazon Fire OS</li>
+  
+  <li>iOS</li>
+  
+  <li>Android</li>
+  
+  <li>BlackBerry 10</li>
+  
+  <li>Windows Phone 7</li>
+  
+  <li>Windows Phone 8</li>
+  
+  <li>Windows</li>
+  
+  <li>Firefox OS</li>
+  
+  <li>Browser</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">BarcodeScanner.scan().then((barcodeData) =&gt; {
- // Success! Barcode data is here
-}, (err) =&gt; {
-    // An error occurred
+<pre><code class="lang-js">import {Network, Connection} from &#39;ionic-native&#39;;
+
+// watch network for a disconnect
+let disconnectSubscription = Network.onDisconnect().subscribe(() =&gt; {
+  console.log(&#39;network was disconnected :-( &#39;)
 });
+
+// stop disconnect watch
+disconnectSubscription.unsubscribe();
+
+
+// watch network for a connection
+let connectSubscription = Network.onConnect().subscribe(() =&gt; {
+  console.log(&#39;network connected!&#39;);
+  // use a timeout so that we can determine what type of connection we have
+  setTimeout(() =&gt; {
+    console.log(Network.connection);
+    if (Network.connection === Connection.WIFI) {
+      console.log(&#39;we got a wifi connection, woohoo!&#39;);
+    }
+  });
+});
+
+// stop connect watch
+connectSubscription.unsubscribe();
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="scan"></div>
-<h3><code>scan()</code>
-  
+<div id="connection"></div>
+<h3><code>connection()</code>
+
 </h3>
 
-<p>Open the barcode scanner.</p>
+<p>Return the network connection type</p>
+
+<div id="onDisconnect"></div>
+<h3><code>onDisconnect()</code>
+
+</h3>
+
+<p>Watch the network for a disconnect (i.e. network goes offline)</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-   Returns a Promise that resolves with scanner data, or rejects with an error.</p>
+  <b>Returns:</b> 
+<code>Observable&lt;any&gt;</code> Returns an observable.</p>
+</div>
 
+<div id="onConnect"></div>
+<h3><code>onConnect()</code>
+
+</h3>
+
+<p>Watch the network for a connection (i.e. network goes online)</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable&lt;any&gt;</code> Returns an observable.</p>
 </div>
 
 <!-- methods on the class -->
