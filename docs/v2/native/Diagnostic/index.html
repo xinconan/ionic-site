@@ -12,11 +12,11 @@
 
 
 
-    <title>DB Meter - Class in module  -  Ionic Framework</title>
+    <title>Diagnostic - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-db-meter"
-        class="v2 docs page-db-meter"
+  <body id="docs-page-diagnostic"
+        class="v2 docs page-diagnostic"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -296,7 +296,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Date Picker">Date Picker</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/DB Meter">DB Meter</a>
 </li>
 <li class="capitalize ">
@@ -308,7 +308,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -490,7 +490,7 @@
         <h1 class="api-title">
 
   
-  DB Meter
+  Diagnostic
   
 
   
@@ -499,109 +499,97 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/dbmeter.ts#L1">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/diagnostic.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ cordova plugin add cordova-plugin-dbmeter</code></pre>
+<pre><code>$ cordova plugin add cordova.plugins.diagnostic</code></pre>
 <p>Repo:
-  <a href="https://github.com/akofman/cordova-plugin-dbmeter">
-    https://github.com/akofman/cordova-plugin-dbmeter
+  <a href="">
+    
   </a>
 </p>
 
 <!-- description -->
 
-<p>This plugin defines a global DBMeter object, which permits to get the decibel values from the microphone.</p>
-
-<!-- @platforms tag -->
-<h2>Supported platforms</h2>
-
-<ul>
-  <li>iOS</li>
-  
-  <li>Android</li>
-  </ul>
-
-<!-- @platforms tag end -->
-
 <!-- @usage tag -->
-
-<h2>Usage</h2>
-
-<pre><code class="lang-ts">import {DBMeter} from &#39;ionic-native&#39;;
-
-
-
-// Start listening
-let subscription = DBMeter.start().subscribe(
-  data =&gt; console.log(data)
-);
-
-// Check if we are listening
-DBMeter.isListening().then(
-  (isListening : boolean) =&gt; console.log(isListening)
-);
-
-// Stop listening
-subscription.unsubscribe();
-
-// Delete DBMeter instance from memory
-DBMeter.delete().then(
-  () =&gt; console.log(&quot;Deleted DB Meter instance&quot;),
-  error =&gt; console.log(&quot;Error occurred while deleting DB Meter instance&quot;)
-);
-</code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="start"></div>
-<h3><code>start()</code>
+<div id="isLocationEnabled"></div>
+<h3><code>isLocationEnabled()</code>
 
 </h3>
 
-<p>Starts listening</p>
+<p>Checks if app is able to access device location.</p>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Observable&lt;string&gt;</code> Returns an observable. Subscribe to start listening. Unsubscribe to stop listening.</p>
-</div>
-
-<div id="stop"></div>
-<h3><code>stop()</code>
+<div id="isWifiEnabled"></div>
+<h3><code>isWifiEnabled()</code>
 
 </h3>
 
-<p>Stops listening</p>
+<p>Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.<br />
+On Android this requires permission <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission></p>
 
-<div id="isListening"></div>
-<h3><code>isListening()</code>
-
-</h3>
-
-<p>Check if the DB Meter is listening</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> Returns a promise that resolves with a boolean that tells us whether the DB meter is listening</p>
-</div>
-
-<div id="delete"></div>
-<h3><code>delete()</code>
+<div id="isCameraEnabled"></div>
+<h3><code>isCameraEnabled()</code>
 
 </h3>
 
-<p>Delete the DB Meter instance</p>
+<div id="isBluetoothEnabled"></div>
+<h3><code>isBluetoothEnabled()</code>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;any&gt;</code> Returns a promise that will resolve if the instance has been deleted, and rejects if errors occur.</p>
-</div>
+</h3>
+
+<div id="requestLocationAuthorization"></div>
+<h3><code>requestLocationAuthorization()</code>
+
+</h3>
+
+<div id="isLocationAuthorized"></div>
+<h3><code>isLocationAuthorized()</code>
+
+</h3>
+
+<div id="isCameraPresent"></div>
+<h3><code>isCameraPresent()</code>
+
+</h3>
+
+<div id="isCameraAuthorized"></div>
+<h3><code>isCameraAuthorized()</code>
+
+</h3>
+
+<div id="isGpsLocationEnabled"></div>
+<h3><code>isGpsLocationEnabled()</code>
+
+</h3>
+
+<div id="isNetworkLocationEnabled"></div>
+<h3><code>isNetworkLocationEnabled()</code>
+
+</h3>
+
+<div id="isRemoteNotificationsEnabled"></div>
+<h3><code>isRemoteNotificationsEnabled()</code>
+
+</h3>
+
+<p>Checks if remote (push) notifications are enabled.<br />
+On iOS 8+, returns true if app is registered for remote notifications AND “Allow Notifications” switch is ON AND alert style is not set to “None” (i.e. “Banners” or “Alerts”).<br />
+On iOS &lt;=7, returns true if app is registered for remote notifications AND alert style is not set to “None” (i.e. “Banners” or “Alerts”) - same as isRegisteredForRemoteNotifications().</p>
+
+<div id="isRegisteredForRemoteNotifications"></div>
+<h3><code>isRegisteredForRemoteNotifications()</code>
+
+</h3>
+
+<p>Indicates if the app is registered for remote (push) notifications on the device.<br />
+On iOS 8+, returns true if the app is registered for remote notifications and received its device token, or false if registration has not occurred, has failed, or has been denied by the user. Note that user preferences for notifications in the Settings app will not affect this.<br />
+On iOS &lt;=7, returns true if app is registered for remote notifications AND alert style is not set to “None” (i.e. “Banners” or “Alerts”) - same as isRemoteNotificationsEnabled().</p>
 
 <!-- methods on the class -->
 <!-- related link -->
