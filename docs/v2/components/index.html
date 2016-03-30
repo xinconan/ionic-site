@@ -141,6 +141,8 @@
   </li>
 
   
+
+ 
   <li id="components-index"
       class="active">
     <a ng-click="showComponents = !showComponents">Components</a>
@@ -149,7 +151,6 @@
        
          ng-init="showComponents = true"
        >
-      
       <li><a href="#overview">Overview</a></li>
       <li><a href="#action-sheets">Action Sheets</a></li>
 
@@ -228,7 +229,7 @@
       <li><a href="#select">Select</a></li>
       <li><a href="#slides">Slides</a></li>
 
-      <li><a href="#tabs">Tabs</a></li>
+      <li id="components-tabs"><a href="#tabs">Tabs</a></li>
         <ul class="nav">
           <li class="nav-item-hidden"><a href="#tabs-icon"></a></li>
           <li class="nav-item-hidden"><a href="#tabs-icon-text"></a></li>
@@ -237,7 +238,7 @@
 
       <li><a href="#toggle">Toggle</a></li>
 
-      <li><a href="#toolbar">Toolbar</a></li>
+      <li id="components-toolbar"><a href="#toolbar">Toolbar</a></li>
         <ul class="nav">
           <li class="nav-item-hidden"><a href="#toolbar-buttons"></a></li>
           <li class="nav-item-hidden"><a href="#toolbar-segment"></a></li>
@@ -497,7 +498,9 @@
           <a ng-class="{active: windowsActive}"
              ng-click="setPlatform('windows')">Windows</a>
         </div>
-        <div id="demo-device-ios" ng-class="previewPlatform">
+        <div id="demo-device-ios"
+             ng-class="previewPlatform"
+             ng-show="iosActive">
           <iframe id="demo-ios"
                 
                   src="/dist/preview-app/www/?production=true&ionicplatform=ios"
@@ -505,7 +508,9 @@
                   frameborder="0">
           </iframe>
         </div>
-        <div id="demo-device-android" ng-class="previewPlatform">
+        <div id="demo-device-android"
+             ng-class="previewPlatform"
+             ng-show="androidActive">
           <iframe id="demo-android"
                 
                   src="/dist/preview-app/www/?production=true&ionicplatform=android"
@@ -513,7 +518,9 @@
                   frameborder="0">
           </iframe>
         </div>
-        <div id="demo-device-windows" ng-class="previewPlatform">
+        <div id="demo-device-windows"
+             ng-class="previewPlatform"
+             ng-show="windowsActive">
           <iframe id="demo-windows"
                 
                   src="/dist/preview-app/www/?production=true&ionicplatform=windows"
