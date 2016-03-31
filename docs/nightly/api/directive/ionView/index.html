@@ -1059,6 +1059,28 @@ removed from the DOM.</td>
  </tr>
 </table>
 
+<h2 id="lifecycle-event-usage">LifeCycle Event Usage</h2>
+
+<p>Below is an example of how to listen to life cycle events and<br />
+access state parameter data</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.beforeEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+   <span class="c1">// handle event</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"State Params: "</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">stateParams</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.enter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+   <span class="c1">// handle event</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"State Params: "</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">stateParams</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.afterEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+   <span class="c1">// handle event</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"State Params: "</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">stateParams</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
 <h2 id="caching">Caching</h2>
 
 <p>Caching can be disabled and enabled in multiple ways. By default, Ionic will<br />
