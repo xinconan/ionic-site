@@ -1780,7 +1780,7 @@ You can also add a placeholder so that users have a hint of what type of text th
       &lt;/ion-content&gt;
     &lt;/ion-menu&gt;
 
-    &lt;ion-nav id="nav" #content [root]="loginPage"&gt;&lt;/ion-nav&gt;`
+    &lt;ion-nav id="nav" #content [root]="rootPage"&gt;&lt;/ion-nav&gt;`
 })
 class MyApp {}
 </code></pre>
@@ -1801,18 +1801,18 @@ class MyApp {
   constructor(app: IonicApp, menu: MenuController) {
     this.app = app;
     this.menu = menu;
+    this.rootPage = LoginPage;
     this.loginPage = LoginPage;
     this.signupPage = SignupPage;
   }
 
   openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-
     // Reset the nav controller to have just this page
     // we wouldn't want the back button to show in this scenario
-    let nav = this.app.getComponent('nav');
-    nav.setRoot(page);
+    this.rootPage = page;
+  
+    // close the menu when clicking a link from the menu
+    this.menu.close();
   }
 }
 </code></pre>
