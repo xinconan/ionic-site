@@ -2664,68 +2664,6 @@ class SearchPage {
 }
 </code></pre>
 
-<h3 class="no-para">Searchbar Toolbar</h3>
-
-<p>Another common design paradigm is to include a searchbar inside your toolbar.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar</span> <span class="na">primary</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
-<span class="nt">&lt;/ion-toolbar&gt;</span>
-
-<span class="nt">&lt;ion-content&gt;</span>
-  <span class="nt">&lt;ion-list&gt;</span>
-    <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
-      {{ item }}
-    <span class="nt">&lt;/ion-item&gt;</span>
-  <span class="nt">&lt;/ion-list&gt;</span>
-<span class="nt">&lt;/ion-content&gt;</span>
-</code></pre>
-</div>
-
-<pre><code class="language-typescript">@Page({
-  templateUrl: 'search/template.html',
-})
-class SearchPage {
-  constructor() {
-    this.searchQuery = '';
-    this.initializeItems();
-  }
-
-  initializeItems() {
-    this.items = [
-      'Angular 1.x',
-      'Angular 2',
-      'ReactJS',
-      'EmberJS',
-      'Meteor',
-      'Typescript',
-      'Dart',
-      'CoffeeScript'
-    ];
-  }
-
-  getItems(searchbar) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set q to the value of the searchbar
-    var q = searchbar.value;
-
-    // if the value is an empty string don't filter the items
-    if (q.trim() == '') {
-      return;
-    }
-
-    this.items = this.items.filter((v) =&gt; {
-      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
-        return true;
-      }
-      return false;
-    })
-  }
-}
-</code></pre>
-
 
       </main>
     </div>
