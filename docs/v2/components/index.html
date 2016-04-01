@@ -2493,8 +2493,7 @@ export class BadgesPage {
     <li class="docs-content-item"><a href="#toolbar">Basic Usage</a></li>
     <li class="docs-content-item"><a href="#toolbar-buttons">Buttons in Toolbars</a></li>
     <li class="docs-content-item"><a href="#toolbar-segment">Segment in Toolbars</a></li>
-    <!-- <li class="docs-content-item"><a href="#toolbar-searchbar">Searchbar in Toolbars</a></li> -->
-
+    <li class="docs-content-item"><a href="#toolbar-searchbar">Searchbar in Toolbars</a></li>
   </ul>
 
 <h3 class="no-para">Basic Usage</h3>
@@ -2602,6 +2601,130 @@ export class BadgesPage {
 <span class="nt">&lt;/ion-toolbar&gt;</span>
 </code></pre>
 </div>
+
+<h3 id="toolbar-searchbar" class="no-para">Searchbar in Toolbars</h3>
+
+<p>Another common design paradigm is to include a searchbar inside your toolbar.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar</span> <span class="na">primary</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-content&gt;</span>
+  <span class="nt">&lt;ion-list&gt;</span>
+    <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
+      {{ item }}
+    <span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;/ion-list&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+
+<pre><code class="language-typescript">@Page({
+  templateUrl: 'search/template.html',
+})
+class SearchPage {
+  constructor() {
+    this.searchQuery = '';
+    this.initializeItems();
+  }
+
+  initializeItems() {
+    this.items = [
+      'Angular 1.x',
+      'Angular 2',
+      'ReactJS',
+      'EmberJS',
+      'Meteor',
+      'Typescript',
+      'Dart',
+      'CoffeeScript'
+    ];
+  }
+
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      return;
+    }
+
+    this.items = this.items.filter((v) =&gt; {
+      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
+        return true;
+      }
+      return false;
+    })
+  }
+}
+</code></pre>
+
+<h3 class="no-para">Searchbar Toolbar</h3>
+
+<p>Another common design paradigm is to include a searchbar inside your toolbar.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-toolbar</span> <span class="na">primary</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
+<span class="nt">&lt;/ion-toolbar&gt;</span>
+
+<span class="nt">&lt;ion-content&gt;</span>
+  <span class="nt">&lt;ion-list&gt;</span>
+    <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
+      {{ item }}
+    <span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;/ion-list&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
+</code></pre>
+</div>
+
+<pre><code class="language-typescript">@Page({
+  templateUrl: 'search/template.html',
+})
+class SearchPage {
+  constructor() {
+    this.searchQuery = '';
+    this.initializeItems();
+  }
+
+  initializeItems() {
+    this.items = [
+      'Angular 1.x',
+      'Angular 2',
+      'ReactJS',
+      'EmberJS',
+      'Meteor',
+      'Typescript',
+      'Dart',
+      'CoffeeScript'
+    ];
+  }
+
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      return;
+    }
+
+    this.items = this.items.filter((v) =&gt; {
+      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
+        return true;
+      }
+      return false;
+    })
+  }
+}
+</code></pre>
 
 
       </main>
