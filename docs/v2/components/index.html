@@ -2192,15 +2192,17 @@ class SearchPage {
 
 <div class="highlighter-rouge"><pre class="highlight"><code>
 <span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-label&gt;</span>Gaming<span class="nt">&lt;/ion-label&gt;</span>
-  <span class="nt">&lt;ion-select</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">gaming</span><span class="err">"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"nes"</span><span class="nt">&gt;</span>NES<span class="nt">&lt;/ion-option&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"n64"</span><span class="nt">&gt;</span>Nintendo64<span class="nt">&lt;/ion-option&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"ps"</span><span class="nt">&gt;</span>PlayStation<span class="nt">&lt;/ion-option&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"genesis"</span><span class="nt">&gt;</span>Sega Genesis<span class="nt">&lt;/ion-option&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"saturn"</span><span class="nt">&gt;</span>Sega Saturn<span class="nt">&lt;/ion-option&gt;</span>
-    <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"snes"</span><span class="nt">&gt;</span>SNES<span class="nt">&lt;/ion-option&gt;</span>
-  <span class="nt">&lt;/ion-select&gt;</span>
+  <span class="nt">&lt;ion-item&gt;</span>
+    <span class="nt">&lt;ion-label&gt;</span>Gaming<span class="nt">&lt;/ion-label&gt;</span>
+    <span class="nt">&lt;ion-select</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">gaming</span><span class="err">"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"nes"</span><span class="nt">&gt;</span>NES<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"n64"</span><span class="nt">&gt;</span>Nintendo64<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"ps"</span><span class="nt">&gt;</span>PlayStation<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"genesis"</span><span class="nt">&gt;</span>Sega Genesis<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"saturn"</span><span class="nt">&gt;</span>Sega Saturn<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"snes"</span><span class="nt">&gt;</span>SNES<span class="nt">&lt;/ion-option&gt;</span>
+      <span class="nt">&lt;/ion-select&gt;</span>
+      <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 
 </code></pre>
@@ -2210,20 +2212,20 @@ class SearchPage {
 
 <div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-list&gt;
   &lt;ion-item&gt;
-  &lt;ion-label&gt;Toppings&lt;/ion-label&gt;
-  &lt;ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!"&gt;
-    &lt;ion-option value="bacon" checked="true"&gt;Bacon&lt;/ion-option&gt;
-    &lt;ion-option value="olives"&gt;Black Olives&lt;/ion-option&gt;
-    &lt;ion-option value="xcheese" checked="true"&gt;Extra Cheese&lt;/ion-option&gt;
-    &lt;ion-option value="peppers"&gt;Green Peppers&lt;/ion-option&gt;
-    &lt;ion-option value="mushrooms"&gt;Mushrooms&lt;/ion-option&gt;
-    &lt;ion-option value="onions"&gt;Onions&lt;/ion-option&gt;
-    &lt;ion-option value="pepperoni"&gt;Pepperoni&lt;/ion-option&gt;
-    &lt;ion-option value="pineapple"&gt;Pineapple&lt;/ion-option&gt;
-    &lt;ion-option value="sausage"&gt;Sausage&lt;/ion-option&gt;
-    &lt;ion-option value="Spinach"&gt;Spinach&lt;/ion-option&gt;
-  &lt;/ion-select&gt;
-&lt;/ion-item&gt;
+    &lt;ion-label&gt;Toppings&lt;/ion-label&gt;
+    &lt;ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!"&gt;
+      &lt;ion-option value="bacon" checked="true"&gt;Bacon&lt;/ion-option&gt;
+      &lt;ion-option value="olives"&gt;Black Olives&lt;/ion-option&gt;
+      &lt;ion-option value="xcheese" checked="true"&gt;Extra Cheese&lt;/ion-option&gt;
+      &lt;ion-option value="peppers"&gt;Green Peppers&lt;/ion-option&gt;
+      &lt;ion-option value="mushrooms"&gt;Mushrooms&lt;/ion-option&gt;
+      &lt;ion-option value="onions"&gt;Onions&lt;/ion-option&gt;
+      &lt;ion-option value="pepperoni"&gt;Pepperoni&lt;/ion-option&gt;
+      &lt;ion-option value="pineapple"&gt;Pineapple&lt;/ion-option&gt;
+      &lt;ion-option value="sausage"&gt;Sausage&lt;/ion-option&gt;
+      &lt;ion-option value="Spinach"&gt;Spinach&lt;/ion-option&gt;
+    &lt;/ion-select&gt;
+  &lt;/ion-item&gt;
 &lt;/ion-list&gt;
 </code></pre>
 </div>
