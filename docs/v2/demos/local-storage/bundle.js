@@ -25872,6 +25872,10 @@
 	 *
 	 * @usage
 	 * ```ts
+	 * import {Events} from 'ionic-angular';
+	 *
+	 * constructor(public events: Event) {}
+	 *
 	 * // first page (publish an event when a user is created)
 	 * function createUser(user) {
 	 *   console.log('User created!')
@@ -49168,7 +49172,7 @@
 	        return this._scroll.scrollTo(x, y, duration);
 	    };
 	    /**
-	     * Scroll to the specified position.
+	     * Scroll to the top of the content component.
 	     *
 	     * ```ts
 	     * @Page({
@@ -49186,7 +49190,7 @@
 	     *     this.content = this.app.getComponent('my-content');
 	     *   }
 	     *    scrollTop() {
-	     *      this.content.scrollTop();
+	     *      this.content.scrollToTop();
 	     *    }
 	     * }
 	     * ```
