@@ -897,33 +897,33 @@
   <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
-<p><code class="highlighter-rouge">collection-repeat</code> is a directive that allows you to render lists with<br />
+<p><code class="highlighter-rouge">collection-repeat</code> is a directive that allows you to render lists with
 thousands of items in them, and experience little to no performance penalty.</p>
 
 <p>Demo:</p>
 
-<p>The directive renders onto the screen only the items that should be currently visible.<br />
-So if you have 1,000 items in your list but only ten fit on your screen,<br />
-collection-repeat will only render into the DOM the ten that are in the current<br />
+<p>The directive renders onto the screen only the items that should be currently visible.
+So if you have 1,000 items in your list but only ten fit on your screen,
+collection-repeat will only render into the DOM the ten that are in the current
 scroll position.</p>
 
 <p>Here are a few things to keep in mind while using collection-repeat:</p>
 
 <ol>
   <li>The data supplied to collection-repeat must be an array.</li>
-  <li>You must explicitly tell the directive what size your items will be in the DOM, using directive attributes.<br />
+  <li>You must explicitly tell the directive what size your items will be in the DOM, using directive attributes.
 Pixel amounts or percentages are allowed (see below).</li>
-  <li>The elements rendered will be absolutely positioned: be sure to let your CSS work with<br />
+  <li>The elements rendered will be absolutely positioned: be sure to let your CSS work with
 this (see below).</li>
-  <li>Keep the HTML of your repeated elements as simple as possible.<br />
-The more complicated your elements, the more likely it is that the on-demand compilation will cause<br />
+  <li>Keep the HTML of your repeated elements as simple as possible.
+The more complicated your elements, the more likely it is that the on-demand compilation will cause
 some jerkiness in the user’s scrolling.</li>
-  <li>Each collection-repeat list will take up all of its parent scrollView’s space.<br />
-If you wish to have multiple lists on one page, put each list within its own<br />
+  <li>Each collection-repeat list will take up all of its parent scrollView’s space.
+If you wish to have multiple lists on one page, put each list within its own
 <a href="/docs/api/directive/ionScroll/">ionScroll</a> container.</li>
-  <li>You should not use the ng-show and ng-hide directives on your ion-content/ion-scroll elements that<br />
-have a collection-repeat inside.  ng-show and ng-hide apply the <code class="highlighter-rouge">display: none</code> css rule to the content’s<br />
-style, causing the scrollView to read the width and height of the content as 0.  Resultingly,<br />
+  <li>You should not use the ng-show and ng-hide directives on your ion-content/ion-scroll elements that
+have a collection-repeat inside.  ng-show and ng-hide apply the <code class="highlighter-rouge">display: none</code> css rule to the content’s
+style, causing the scrollView to read the width and height of the content as 0.  Resultingly,
 collection-repeat will render elements that have just been un-hidden incorrectly.</li>
 </ol>
 
@@ -931,9 +931,9 @@ collection-repeat will render elements that have just been un-hidden incorrectly
 
 <h4 id="basic-usage-single-rows-of-items">Basic Usage (single rows of items)</h4>
 
-<p>Notice two things here: we use ng-style to set the height of the item to match<br />
-what the repeater thinks our item height is.  Additionally, we add a css rule<br />
-to make our item stretch to fit the full screen (since it will be absolutely<br />
+<p>Notice two things here: we use ng-style to set the height of the item to match
+what the repeater thinks our item height is.  Additionally, we add a css rule
+to make our item stretch to fit the full screen (since it will be absolutely
 positioned).</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content</span> <span class="na">ng-controller=</span><span class="s">"ContentCtrl"</span><span class="nt">&gt;</span>
@@ -981,7 +981,7 @@ positioned).</p>
 <span class="nt">&lt;/ion-content&gt;</span>
 </code></pre>
 </div>
-<p>Percentage of total visible list dimensions. This example shows a 3 by 3 matrix that fits on the screen (3 rows and 3 colums). Note that dimensions are used in the creation of the element and therefore a measurement of the item cannnot be used as an input dimension.<br />
+<p>Percentage of total visible list dimensions. This example shows a 3 by 3 matrix that fits on the screen (3 rows and 3 colums). Note that dimensions are used in the creation of the element and therefore a measurement of the item cannnot be used as an input dimension.
 <code class="highlighter-rouge">css
 .my-image-item img {
   height: 33%;

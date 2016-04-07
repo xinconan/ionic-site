@@ -964,30 +964,30 @@ collection-repeat
   <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
-<p><code class="highlighter-rouge">collection-repeat</code> allows an app to show huge lists of items much more performantly than<br />
+<p><code class="highlighter-rouge">collection-repeat</code> allows an app to show huge lists of items much more performantly than
 <code class="highlighter-rouge">ng-repeat</code>.</p>
 
 <p>It renders into the DOM only as many items as are currently visible.</p>
 
-<p>This means that on a phone screen that can fit eight items, only the eight items matching<br />
+<p>This means that on a phone screen that can fit eight items, only the eight items matching
 the current scroll position will be rendered.</p>
 
 <p><strong>The Basics</strong>:</p>
 
 <ul>
   <li>The data given to collection-repeat must be an array.</li>
-  <li>If the <code class="highlighter-rouge">item-height</code> and <code class="highlighter-rouge">item-width</code> attributes are not supplied, it will be assumed that<br />
+  <li>If the <code class="highlighter-rouge">item-height</code> and <code class="highlighter-rouge">item-width</code> attributes are not supplied, it will be assumed that
 every item in the list has the same dimensions as the first item.</li>
-  <li>Don’t use angular one-time binding (<code class="highlighter-rouge">::</code>) with collection-repeat. The scope of each item is<br />
-assigned new data and re-digested as you scroll. Bindings need to update, and one-time bindings<br />
+  <li>Don’t use angular one-time binding (<code class="highlighter-rouge">::</code>) with collection-repeat. The scope of each item is
+assigned new data and re-digested as you scroll. Bindings need to update, and one-time bindings
 won’t.</li>
 </ul>
 
 <p><strong>Performance Tips</strong>:</p>
 
 <ul>
-  <li>The iOS webview has a performance bottleneck when switching out <code class="highlighter-rouge">&lt;img src&gt;</code> attributes.<br />
-To increase performance of images on iOS, cache your images in advance and,<br />
+  <li>The iOS webview has a performance bottleneck when switching out <code class="highlighter-rouge">&lt;img src&gt;</code> attributes.
+To increase performance of images on iOS, cache your images in advance and,
 if possible, lower the number of unique images. We’re working on <a href="https://github.com/driftyco/ionic/issues/3194">a solution</a>.</li>
 </ul>
 

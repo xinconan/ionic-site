@@ -203,7 +203,7 @@
 
 <p><code class="highlighter-rouge">hooks</code> is for custom actions to be taken as your app moves through the Cordova development process. It may be useful for larger projects that require automated processes to run and source code modification but will normally be unused.</p>
 
-<p>‘merges’ is to override files for specific platforms. Say you have <code class="highlighter-rouge">merges/ios/someFile.js</code> and <code class="highlighter-rouge">www/someFile.js</code>. When deploying to iOS, someFile will be replaced by the version in merges. It can be an effective way to create platform-specific modifications to your app, but other methods are often preferred. See Cross Platform Development for more on<br />
+<p>‘merges’ is to override files for specific platforms. Say you have <code class="highlighter-rouge">merges/ios/someFile.js</code> and <code class="highlighter-rouge">www/someFile.js</code>. When deploying to iOS, someFile will be replaced by the version in merges. It can be an effective way to create platform-specific modifications to your app, but other methods are often preferred. See Cross Platform Development for more on
 this topic.</p>
 
 <p>Plugins are where Cordova stores the plugins that you add to your project. Plugins are added by the command:</p>
@@ -224,7 +224,7 @@ this topic.</p>
 
 <p>IMG is pretty self explanatory; put your images there.</p>
 
-<p>JS gets more complicated. By default, our starter apps are broken up into <br />
+<p>JS gets more complicated. By default, our starter apps are broken up into 
 app.js, which contains your Angular run and config methods. This is where you define your app’s routing and environmental variables, like what kind of tab style to use, or whether you should use iOS style headers on Android.</p>
 
 <p>controllers.js contains your Angular controllers for the states that require them. services.js is not always included in the starters, but it contains the custom Angular services your app may use, such as one that calls out to a 3rd party API to get information your app uses.</p>

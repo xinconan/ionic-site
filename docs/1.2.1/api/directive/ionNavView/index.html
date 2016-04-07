@@ -964,31 +964,31 @@ ion-nav-view
   <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
-<p>As a user navigates throughout your app, Ionic is able to keep track of their<br />
-navigation history. By knowing their history, transitions between views<br />
-correctly enter and exit using the platform’s transition style. An additional<br />
-benefit to Ionic’s navigation system is its ability to manage multiple<br />
+<p>As a user navigates throughout your app, Ionic is able to keep track of their
+navigation history. By knowing their history, transitions between views
+correctly enter and exit using the platform’s transition style. An additional
+benefit to Ionic’s navigation system is its ability to manage multiple
 histories. For example, each tab can have it’s own navigation history stack.</p>
 
-<p>Ionic uses the AngularUI Router module so app interfaces can be organized<br />
-into various “states”. Like Angular’s core $route service, URLs can be used<br />
-to control the views. However, the AngularUI Router provides a more powerful<br />
-state manager in that states are bound to named, nested, and parallel views,<br />
-allowing more than one template to be rendered on the same page.<br />
-Additionally, each state is not required to be bound to a URL, and data can<br />
+<p>Ionic uses the AngularUI Router module so app interfaces can be organized
+into various “states”. Like Angular’s core $route service, URLs can be used
+to control the views. However, the AngularUI Router provides a more powerful
+state manager in that states are bound to named, nested, and parallel views,
+allowing more than one template to be rendered on the same page.
+Additionally, each state is not required to be bound to a URL, and data can
 be pushed to each state which allows much flexibility.</p>
 
-<p>The ionNavView directive is used to render templates in your application. Each template<br />
-is part of a state. States are usually mapped to a url, and are defined programatically<br />
-using angular-ui-router (see <a href="https://github.com/angular-ui/ui-router/wiki">their docs</a>,<br />
+<p>The ionNavView directive is used to render templates in your application. Each template
+is part of a state. States are usually mapped to a url, and are defined programatically
+using angular-ui-router (see <a href="https://github.com/angular-ui/ui-router/wiki">their docs</a>,
 and remember to replace ui-view with ion-nav-view in examples).</p>
 
 <h2 id="usage">Usage</h2>
 
 <p>In this example, we will create a navigation view that contains our different states for the app.</p>
 
-<p>To do this, in our markup we use ionNavView top level directive. To display a header bar we use<br />
-the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive that updates as we navigate through the<br />
+<p>To do this, in our markup we use ionNavView top level directive. To display a header bar we use
+the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive that updates as we navigate through the
 navigation stack.</p>
 
 <p>Next, we need to setup our states that will be rendered.</p>
@@ -1007,11 +1007,11 @@ navigation stack.</p>
 <span class="p">});</span>
 </code></pre>
 </div>
-<p>Then on app start, $stateProvider will look at the url, see if it matches the index state,<br />
+<p>Then on app start, $stateProvider will look at the url, see if it matches the index state,
 and then try to load home.html into the <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
-<p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put<br />
-them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.<br />
+<p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put
+them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.
 So here is one way to put home.html into our app:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"home"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
@@ -1026,30 +1026,30 @@ So here is one way to put home.html into our app:</p>
 </code></pre>
 </div>
 
-<p>This is good to do because the template will be cached for very fast loading, instead of<br />
+<p>This is good to do because the template will be cached for very fast loading, instead of
 having to fetch them from the network.</p>
 
 <h2 id="caching">Caching</h2>
 
-<p>By default, views are cached to improve performance. When a view is navigated away from, its<br />
-element is left in the DOM, and its scope is disconnected from the <code class="highlighter-rouge">$watch</code> cycle. When<br />
-navigating to a view that is already cached, its scope is then reconnected, and the existing<br />
-element that was left in the DOM becomes the active view. This also allows for the scroll<br />
+<p>By default, views are cached to improve performance. When a view is navigated away from, its
+element is left in the DOM, and its scope is disconnected from the <code class="highlighter-rouge">$watch</code> cycle. When
+navigating to a view that is already cached, its scope is then reconnected, and the existing
+element that was left in the DOM becomes the active view. This also allows for the scroll
 position of previous views to be maintained.</p>
 
-<p>Caching can be disabled and enabled in multiple ways. By default, Ionic will cache a maximum of<br />
-10 views, and not only can this be configured, but apps can also explicitly state which views<br />
+<p>Caching can be disabled and enabled in multiple ways. By default, Ionic will cache a maximum of
+10 views, and not only can this be configured, but apps can also explicitly state which views
 should and should not be cached.</p>
 
-<p>Note that because we are caching these views, <em>we aren’t destroying scopes</em>. Instead, scopes<br />
-are being disconnected from the watch cycle. Because scopes are not being destroyed and<br />
-recreated, controllers are not loading again on a subsequent viewing. If the app/controller<br />
-needs to know when a view has entered or has left, then view events emitted from the<br />
+<p>Note that because we are caching these views, <em>we aren’t destroying scopes</em>. Instead, scopes
+are being disconnected from the watch cycle. Because scopes are not being destroyed and
+recreated, controllers are not loading again on a subsequent viewing. If the app/controller
+needs to know when a view has entered or has left, then view events emitted from the
 <a href="/docs/api/directive/ionView/"><code>ionView</code></a> scope, such as <code class="highlighter-rouge">$ionicView.enter</code>, may be useful.</p>
 
-<p>By default, when navigating back in the history, the “forward” views are removed from the cache.<br />
-If you navigate forward to the same view again, it’ll create a new DOM element and controller<br />
-instance. Basically, any forward views are reset each time. This can be configured using the<br />
+<p>By default, when navigating back in the history, the “forward” views are removed from the cache.
+If you navigate forward to the same view again, it’ll create a new DOM element and controller
+instance. Basically, any forward views are reset each time. This can be configured using the
 <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a>:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">forwardCache</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
@@ -1058,7 +1058,7 @@ instance. Basically, any forward views are reset each time. This can be configur
 
 <h4 id="disable-cache-globally">Disable cache globally</h4>
 
-<p>The <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a> can be used to set the maximum allowable views<br />
+<p>The <a href="/docs/api/provider/$ionicConfigProvider/"><code>$ionicConfigProvider</code></a> can be used to set the maximum allowable views
 which can be cached, but this can also be use to disable all caching by setting it to 0.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
@@ -1085,8 +1085,8 @@ which can be cached, but this can also be use to disable all caching by setting 
 
 <h2 id="angularui-router">AngularUI Router</h2>
 
-<p>Please visit <a href="https://github.com/angular-ui/ui-router/wiki">AngularUI Router’s docs</a> for<br />
-more info. Below is a great video by the AngularUI Router team that may help to explain<br />
+<p>Please visit <a href="https://github.com/angular-ui/ui-router/wiki">AngularUI Router’s docs</a> for
+more info. Below is a great video by the AngularUI Router team that may help to explain
 how it all works:</p>
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/dqJRoh8MnBo" frameborder="0" allowfullscreen=""></iframe>

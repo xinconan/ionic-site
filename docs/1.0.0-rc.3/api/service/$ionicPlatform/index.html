@@ -961,7 +961,7 @@
 
 <p>An angular abstraction of <a href="/docs/api/utility/ionic.Platform/"><code>ionic.Platform</code></a>.</p>
 
-<p>Used to detect the current platform, as well as do things like override the<br />
+<p>Used to detect the current platform, as well as do things like override the
 Android back button in PhoneGap/Cordova.</p>
 
 <h2 id="methods">Methods</h2>
@@ -972,7 +972,7 @@ Android back button in PhoneGap/Cordova.</p>
 
 </h2>
 
-<p>Some platforms have a hardware back button, so this is one way to<br />
+<p>Some platforms have a hardware back button, so this is one way to
 bind to it.</p>
 
 <table class="table" style="margin:0;">
@@ -1050,25 +1050,25 @@ originally bound.</p>
 
 </h2>
 
-<p>Register a hardware back button action. Only one action will execute<br />
-when the back button is clicked, so this method decides which of<br />
+<p>Register a hardware back button action. Only one action will execute
+when the back button is clicked, so this method decides which of
 the registered back button actions has the highest priority.</p>
 
-<p>For example, if an actionsheet is showing, the back button should<br />
-close the actionsheet, but it should not also go back a page view<br />
+<p>For example, if an actionsheet is showing, the back button should
+close the actionsheet, but it should not also go back a page view
 or close a modal which may be open.</p>
 
-<p>The priorities for the existing back button hooks are as follows:<br />
-  Return to previous view = 100<br />
-  Close side menu = 150<br />
-  Dismiss modal = 200<br />
-  Close action sheet = 300<br />
-  Dismiss popup = 400<br />
+<p>The priorities for the existing back button hooks are as follows:
+  Return to previous view = 100
+  Close side menu = 150
+  Dismiss modal = 200
+  Close action sheet = 300
+  Dismiss popup = 400
   Dismiss loading overlay = 500</p>
 
-<p>Your back button action will override each of the above actions<br />
-whose priority is less than the priority you provide. For example,<br />
-an action assigned a priority of 101 will override the ‘return to<br />
+<p>Your back button action will override each of the above actions
+whose priority is less than the priority you provide. For example,
+an action assigned a priority of 101 will override the ‘return to
 previous view’ action, but not any of the other actions.</p>
 
 <table class="table" style="margin:0;">
@@ -1138,8 +1138,8 @@ random unique id.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
-<code>function</code> A function that, when called, will deregister<br />
+  <li>Returns: 
+<code>function</code> A function that, when called, will deregister
 this backButtonAction.</li>
 </ul>
 
@@ -1149,8 +1149,8 @@ this backButtonAction.</li>
 
 </h2>
 
-<p>Add Cordova event listeners, such as <code class="highlighter-rouge">pause</code>, <code class="highlighter-rouge">resume</code>, <code class="highlighter-rouge">volumedownbutton</code>, <code class="highlighter-rouge">batterylow</code>,<br />
-<code class="highlighter-rouge">offline</code>, etc. More information about available event types can be found in<br />
+<p>Add Cordova event listeners, such as <code class="highlighter-rouge">pause</code>, <code class="highlighter-rouge">resume</code>, <code class="highlighter-rouge">volumedownbutton</code>, <code class="highlighter-rouge">batterylow</code>,
+<code class="highlighter-rouge">offline</code>, etc. More information about available event types can be found in
 <a href="https://cordova.apache.org/docs/en/edge/cordova_events_events.md.html#Events">Cordova’s event documentation</a>.</p>
 
 <table class="table" style="margin:0;">
@@ -1201,7 +1201,7 @@ this backButtonAction.</li>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>function</code> Returns a deregistration function to remove the event listener.</li>
 </ul>
 
@@ -1211,7 +1211,7 @@ this backButtonAction.</li>
 
 </h2>
 
-<p>Trigger a callback once the device is ready,<br />
+<p>Trigger a callback once the device is ready,
 or immediately if the device is already ready.</p>
 
 <table class="table" style="margin:0;">
@@ -1245,7 +1245,7 @@ or immediately if the device is already ready.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>promise</code> A promise which is resolved when the device is ready.</li>
 </ul>
 

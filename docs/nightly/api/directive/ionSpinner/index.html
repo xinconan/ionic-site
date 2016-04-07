@@ -974,17 +974,17 @@ ion-spinner
 
 </h1>
 
-<p>The <code class="highlighter-rouge">ionSpinner</code> directive provides a variety of animated spinners.<br />
-Spinners enables you to give your users feedback that the app is<br />
-processing/thinking/waiting/chillin’ out, or whatever you’d like it to indicate.<br />
-By default, the <a href="/docs/nightly/api/directive/ionRefresher/"><code>ionRefresher</code></a> feature uses this spinner, rather<br />
-than rotating font icons (previously included in <a href="http://ionicons.com/">ionicons</a>).<br />
-While font icons are great for simple or stationary graphics, they’re not suited to<br />
+<p>The <code class="highlighter-rouge">ionSpinner</code> directive provides a variety of animated spinners.
+Spinners enables you to give your users feedback that the app is
+processing/thinking/waiting/chillin’ out, or whatever you’d like it to indicate.
+By default, the <a href="/docs/nightly/api/directive/ionRefresher/"><code>ionRefresher</code></a> feature uses this spinner, rather
+than rotating font icons (previously included in <a href="http://ionicons.com/">ionicons</a>).
+While font icons are great for simple or stationary graphics, they’re not suited to
 provide great animations, which is why Ionic uses SVG instead.</p>
 
-<p>Ionic offers ten spinners out of the box, and by default, it will use the appropriate spinner<br />
-for the platform on which it’s running. Under the hood, the <code class="highlighter-rouge">ionSpinner</code> directive dynamically<br />
-builds the required SVG element, which allows Ionic to provide all ten of the animated SVGs<br />
+<p>Ionic offers ten spinners out of the box, and by default, it will use the appropriate spinner
+for the platform on which it’s running. Under the hood, the <code class="highlighter-rouge">ionSpinner</code> directive dynamically
+builds the required SVG element, which allows Ionic to provide all ten of the animated SVGs
 within 3KB.</p>
 
 <style>
@@ -1106,20 +1106,20 @@ within 3KB.</p>
  </tr>
 </table>
 
-<p>Each spinner uses SVG with SMIL animations, however, the Android spinner also uses JavaScript<br />
-so it also works on Android 4.0-4.3. Additionally, each spinner can be styled with CSS,<br />
+<p>Each spinner uses SVG with SMIL animations, however, the Android spinner also uses JavaScript
+so it also works on Android 4.0-4.3. Additionally, each spinner can be styled with CSS,
 and scaled to any size.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>The following code would use the default spinner for the platform it’s running from. If it’s neither<br />
+<p>The following code would use the default spinner for the platform it’s running from. If it’s neither
 iOS or Android, it’ll default to use <code class="highlighter-rouge">ios</code>.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-spinner&gt;&lt;/ion-spinner&gt;</span>
 </code></pre>
 </div>
 
-<p>By setting the <code class="highlighter-rouge">icon</code> attribute, you can specify which spinner to use, no matter what<br />
+<p>By setting the <code class="highlighter-rouge">icon</code> attribute, you can specify which spinner to use, no matter what
 the platform is.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-spinner</span> <span class="na">icon=</span><span class="s">"spiral"</span><span class="nt">&gt;&lt;/ion-spinner&gt;</span>
@@ -1127,7 +1127,7 @@ the platform is.</p>
 </div>
 
 <h2 id="spinner-colors">Spinner Colors</h2>
-<p>Like with most of Ionic’s other components, spinners can also be styled using<br />
+<p>Like with most of Ionic’s other components, spinners can also be styled using
 Ionic’s standard color naming convention. For example:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-spinner</span> <span class="na">class=</span><span class="s">"spinner-energized"</span><span class="nt">&gt;&lt;/ion-spinner&gt;</span>
@@ -1135,8 +1135,8 @@ Ionic’s standard color naming convention. For example:</p>
 </div>
 
 <h2 id="styling-svg-with-css">Styling SVG with CSS</h2>
-<p>One cool thing about SVG is its ability to be styled with CSS! Some of the properties<br />
-have different names, for example, SVG uses the term <code class="highlighter-rouge">stroke</code> instead of <code class="highlighter-rouge">border</code>, and<br />
+<p>One cool thing about SVG is its ability to be styled with CSS! Some of the properties
+have different names, for example, SVG uses the term <code class="highlighter-rouge">stroke</code> instead of <code class="highlighter-rouge">border</code>, and
 <code class="highlighter-rouge">fill</code> instead of <code class="highlighter-rouge">background-color</code>.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.spinner</span> <span class="nt">svg</span> <span class="p">{</span>

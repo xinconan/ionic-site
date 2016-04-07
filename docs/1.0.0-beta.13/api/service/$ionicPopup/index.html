@@ -938,16 +938,16 @@
   <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
-<p>The Ionic Popup service allows programmatically creating and showing popup<br />
+<p>The Ionic Popup service allows programmatically creating and showing popup
 windows that require the user to respond in order to continue.</p>
 
-<p>The popup system has support for more flexible versions of the built in <code class="highlighter-rouge">alert()</code>, <code class="highlighter-rouge">prompt()</code>,<br />
-and <code class="highlighter-rouge">confirm()</code> functions that users are used to, in addition to allowing popups with completely<br />
+<p>The popup system has support for more flexible versions of the built in <code class="highlighter-rouge">alert()</code>, <code class="highlighter-rouge">prompt()</code>,
+and <code class="highlighter-rouge">confirm()</code> functions that users are used to, in addition to allowing popups with completely
 custom content and look.</p>
 
-<p>An input can be given an <code class="highlighter-rouge">autofocus</code> attribute so it automatically receives focus when<br />
-the popup first shows. However, depending on certain use-cases this can cause issues with<br />
-the tap/click system, which is why Ionic prefers using the <code class="highlighter-rouge">autofocus</code> attribute as<br />
+<p>An input can be given an <code class="highlighter-rouge">autofocus</code> attribute so it automatically receives focus when
+the popup first shows. However, depending on certain use-cases this can cause issues with
+the tap/click system, which is why Ionic prefers using the <code class="highlighter-rouge">autofocus</code> attribute as
 an opt-in feature and not the default.</p>
 
 <h2 id="usage">Usage</h2>
@@ -1028,11 +1028,11 @@ an opt-in feature and not the default.</p>
 
 <p>Show a complex popup. This is the master show function for all popups.</p>
 
-<p>A complex popup has a <code class="highlighter-rouge">buttons</code> array, with each button having a <code class="highlighter-rouge">text</code> and <code class="highlighter-rouge">type</code><br />
-field, in addition to an <code class="highlighter-rouge">onTap</code> function.  The <code class="highlighter-rouge">onTap</code> function, called when<br />
-the correspondingbutton on the popup is tapped, will by default close the popup<br />
-and resolve the popup promise with its return value.  If you wish to prevent the<br />
-default and keep the popup open on button tap, call <code class="highlighter-rouge">event.preventDefault()</code> on the<br />
+<p>A complex popup has a <code class="highlighter-rouge">buttons</code> array, with each button having a <code class="highlighter-rouge">text</code> and <code class="highlighter-rouge">type</code>
+field, in addition to an <code class="highlighter-rouge">onTap</code> function.  The <code class="highlighter-rouge">onTap</code> function, called when
+the correspondingbutton on the popup is tapped, will by default close the popup
+and resolve the popup promise with its return value.  If you wish to prevent the
+default and keep the popup open on button tap, call <code class="highlighter-rouge">event.preventDefault()</code> on the
 passed in tap event.  Details below.</p>
 
 <table class="table" style="margin:0;">
@@ -1088,8 +1088,8 @@ passed in tap event.  Details below.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
-<code>object</code> A promise which is resolved when the popup is closed. Has an additional<br />
+  <li>Returns: 
+<code>object</code> A promise which is resolved when the popup is closed. Has an additional
 <code class="highlighter-rouge">close</code> function, which can be used to programmatically close the popup.</li>
 </ul>
 
@@ -1099,7 +1099,7 @@ passed in tap event.  Details below.</p>
 
 </h2>
 
-<p>Show a simple alert popup with a message and one button that the user can<br />
+<p>Show a simple alert popup with a message and one button that the user can
 tap to close the popup.</p>
 
 <table class="table" style="margin:0;">
@@ -1141,9 +1141,9 @@ tap to close the popup.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
-<code>object</code> A promise which is resolved when the popup is closed. Has one additional<br />
-function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup<br />
+  <li>Returns: 
+<code>object</code> A promise which is resolved when the popup is closed. Has one additional
+function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup
 with the given value.</li>
 </ul>
 
@@ -1155,7 +1155,7 @@ with the given value.</li>
 
 <p>Show a simple confirm popup with a Cancel and OK button.</p>
 
-<p>Resolves the promise with true if the user presses the OK button, and false if the<br />
+<p>Resolves the promise with true if the user presses the OK button, and false if the
 user presses the Cancel button.</p>
 
 <table class="table" style="margin:0;">
@@ -1199,9 +1199,9 @@ user presses the Cancel button.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
-<code>object</code> A promise which is resolved when the popup is closed. Has one additional<br />
-function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup<br />
+  <li>Returns: 
+<code>object</code> A promise which is resolved when the popup is closed. Has one additional
+function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup
 with the given value.</li>
 </ul>
 
@@ -1211,8 +1211,8 @@ with the given value.</li>
 
 </h2>
 
-<p>Show a simple prompt popup, which has an input, OK button, and Cancel button.<br />
-Resolves the promise with the value of the input if the user presses OK, and with undefined<br />
+<p>Show a simple prompt popup, which has an input, OK button, and Cancel button.
+Resolves the promise with the value of the input if the user presses OK, and with undefined
 if the user presses Cancel.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code> <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">prompt</span><span class="p">({</span>
@@ -1269,9 +1269,9 @@ if the user presses Cancel.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
-<code>object</code> A promise which is resolved when the popup is closed. Has one additional<br />
-function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup<br />
+  <li>Returns: 
+<code>object</code> A promise which is resolved when the popup is closed. Has one additional
+function <code class="highlighter-rouge">close</code>, which can be called with any value to programmatically close the popup
 with the given value.</li>
 </ul>
 

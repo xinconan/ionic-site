@@ -897,34 +897,34 @@
   <script async="" src="//codepen.io/assets/embed/ei.js"></script>
  </div>
 
-<p>As a user navigates throughout your app, Ionic is able to keep track of their<br />
-navigation history. By knowing their history, transitions between views<br />
-correctly slide either left or right, or no transition at all. An additional<br />
-benefit to Ionic’s navigation system is its ability to manage multiple<br />
+<p>As a user navigates throughout your app, Ionic is able to keep track of their
+navigation history. By knowing their history, transitions between views
+correctly slide either left or right, or no transition at all. An additional
+benefit to Ionic’s navigation system is its ability to manage multiple
 histories.</p>
 
-<p>Ionic uses the AngularUI Router module so app interfaces can be organized<br />
-into various “states”. Like Angular’s core $route service, URLs can be used<br />
-to control the views. However, the AngularUI Router provides a more powerful<br />
-state manager in that states are bound to named, nested, and parallel views,<br />
-allowing more than one template to be rendered on the same page.<br />
-Additionally, each state is not required to be bound to a URL, and data can<br />
+<p>Ionic uses the AngularUI Router module so app interfaces can be organized
+into various “states”. Like Angular’s core $route service, URLs can be used
+to control the views. However, the AngularUI Router provides a more powerful
+state manager in that states are bound to named, nested, and parallel views,
+allowing more than one template to be rendered on the same page.
+Additionally, each state is not required to be bound to a URL, and data can
 be pushed to each state which allows much flexibility.</p>
 
-<p>The ionNavView directive is used to render templates in your application. Each template<br />
-is part of a state. States are usually mapped to a url, and are defined programatically<br />
-using angular-ui-router (see <a href="https://github.com/angular-ui/ui-router/wiki">their docs</a>,<br />
+<p>The ionNavView directive is used to render templates in your application. Each template
+is part of a state. States are usually mapped to a url, and are defined programatically
+using angular-ui-router (see <a href="https://github.com/angular-ui/ui-router/wiki">their docs</a>,
 and remember to replace ui-view with ion-nav-view in examples).</p>
 
 <h2 id="usage">Usage</h2>
 
 <p>In this example, we will create a navigation view that contains our different states for the app.</p>
 
-<p>To do this, in our markup we use ionNavView top level directive. To display a header bar we use<br />
-the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive that updates as we navigate through the<br />
+<p>To do this, in our markup we use ionNavView top level directive. To display a header bar we use
+the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive that updates as we navigate through the
 navigation stack.</p>
 
-<p>You can use any <a href="/docs/components#animation">animation class</a> on the navView’s <code class="highlighter-rouge">animation</code> attribute<br />
+<p>You can use any <a href="/docs/components#animation">animation class</a> on the navView’s <code class="highlighter-rouge">animation</code> attribute
 to have its pages animate.</p>
 
 <p>Recommended for page transitions: ‘slide-left-right’, ‘slide-left-right-ios7’, ‘slide-in-up’.</p>
@@ -952,11 +952,11 @@ to have its pages animate.</p>
 <span class="p">});</span>
 </code></pre>
 </div>
-<p>Then on app start, $stateProvider will look at the url, see it matches the index state,<br />
+<p>Then on app start, $stateProvider will look at the url, see it matches the index state,
 and then try to load home.html into the <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
-<p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put<br />
-them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.<br />
+<p>Pages are loaded by the URLs given. One simple way to create templates in Angular is to put
+them directly into your HTML file and use the <code class="highlighter-rouge">&lt;script type="text/ng-template"&gt;</code> syntax.
 So here is one way to put home.html into our app:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"home"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
@@ -971,11 +971,11 @@ So here is one way to put home.html into our app:</p>
 </code></pre>
 </div>
 
-<p>This is good to do because the template will be cached for very fast loading, instead of<br />
+<p>This is good to do because the template will be cached for very fast loading, instead of
 having to fetch them from the network.</p>
 
-<p>Please visit <a href="https://github.com/angular-ui/ui-router/wiki">AngularUI Router’s docs</a> for<br />
-more info. Below is a great video by the AngularUI Router guys that may help to explain<br />
+<p>Please visit <a href="https://github.com/angular-ui/ui-router/wiki">AngularUI Router’s docs</a> for
+more info. Below is a great video by the AngularUI Router guys that may help to explain
 how it all works:</p>
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/dqJRoh8MnBo" frameborder="0" allowfullscreen=""></iframe>

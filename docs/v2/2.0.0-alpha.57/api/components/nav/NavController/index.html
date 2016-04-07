@@ -839,11 +839,11 @@ import {Detail} from '../detail/detail';
 
 </h3>
 
-<p>Present is how we display overlays on top of the content, from within the<br />
-root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such<br />
-as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code><br />
-and <code class="highlighter-rouge">present</code>, is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas<br />
-<code class="highlighter-rouge">push</code> takes a <code class="highlighter-rouge">Page</code> component class. Additionally, <code class="highlighter-rouge">present</code> will place<br />
+<p>Present is how we display overlays on top of the content, from within the
+root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such
+as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code>
+and <code class="highlighter-rouge">present</code>, is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas
+<code class="highlighter-rouge">push</code> takes a <code class="highlighter-rouge">Page</code> component class. Additionally, <code class="highlighter-rouge">present</code> will place
 the overlay in the root NavController’s stack.</p>
 
 <pre><code class="language-typescript">class MyClass{
@@ -919,7 +919,7 @@ the overlay in the root NavController’s stack.</p>
 
 </h3>
 
-<p>Inserts a view into the nav stack at the specified index.<br />
+<p>Inserts a view into the nav stack at the specified index.
 This is useful if you need to add a view at any point in your navigation stack</p>
 
 <pre><code class="language-typescript">export class Detail {
@@ -1046,8 +1046,8 @@ This is useful if you need to add a view at any point in your navigation stack</
  }
 </code></pre>
 
-<p>This will insert each of the pages in the array, starting at the third slot<br />
-(second index) of the nav stack. The last page in the array will animate<br />
+<p>This will insert each of the pages in the array, starting at the third slot
+(second index) of the nav stack. The last page in the array will animate
 in and become the active page.</p>
 
 <table class="table param-table" style="margin:0;">
@@ -1128,7 +1128,7 @@ in and become the active page.</p>
 
 </h3>
 
-<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code><br />
+<p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code>
 Similar to <code class="highlighter-rouge">push()</code>, you can pass animation options.</p>
 
 <pre><code class="language-typescript">class SecondView{
@@ -1418,9 +1418,9 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 
 </h3>
 
-<p>If it’s possible to use swipe back or not. If it’s not possible<br />
-to go back, or swipe back is not enable then this will return false.<br />
-If it is possible to go back, and swipe back is enabled, then this<br />
+<p>If it’s possible to use swipe back or not. If it’s not possible
+to go back, or swipe back is not enable then this will return false.
+If it is possible to go back, and swipe back is enabled, then this
 will return true.</p>
 
 <div class="return-value">
@@ -1437,7 +1437,7 @@ will return true.</p>
 
 </h3>
 
-<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.<br />
+<p>Returns <code class="highlighter-rouge">true</code> if there’s a valid previous page that we can pop back to.
 Otherwise returns false.</p>
 
 <div class="return-value">

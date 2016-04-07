@@ -959,28 +959,28 @@ $ionicConfigProvider
 
 </h1>
 
-<p>Ionic automatically takes platform configurations into account to adjust things like what<br />
-transition style to use and whether tab icons should show on the top or bottom. For example,<br />
-iOS will move forward by transitioning the entering view from right to center and the leaving<br />
-view from center to left. However, Android will transition with the entering view going from<br />
-bottom to center, covering the previous view, which remains stationary. It should be noted<br />
-that when a platform is not iOS or Android, then it’ll default to iOS. So if you are<br />
+<p>Ionic automatically takes platform configurations into account to adjust things like what
+transition style to use and whether tab icons should show on the top or bottom. For example,
+iOS will move forward by transitioning the entering view from right to center and the leaving
+view from center to left. However, Android will transition with the entering view going from
+bottom to center, covering the previous view, which remains stationary. It should be noted
+that when a platform is not iOS or Android, then it’ll default to iOS. So if you are
 developing on a desktop browser, it’s going to take on iOS default configs.</p>
 
-<p>These configs can be changed using the <code class="highlighter-rouge">$ionicConfigProvider</code> during the configuration phase<br />
-of your app. Additionally, <code class="highlighter-rouge">$ionicConfig</code> can also set and get config values during the run<br />
+<p>These configs can be changed using the <code class="highlighter-rouge">$ionicConfigProvider</code> during the configuration phase
+of your app. Additionally, <code class="highlighter-rouge">$ionicConfig</code> can also set and get config values during the run
 phase and within the app itself.</p>
 
-<p>By default, all base config variables are set to <code class="highlighter-rouge">'platform'</code>, which means it’ll take on the<br />
-default config of the platform on which it’s running. Config variables can be set at this<br />
-level so all platforms follow the same setting, rather than its platform config.<br />
+<p>By default, all base config variables are set to <code class="highlighter-rouge">'platform'</code>, which means it’ll take on the
+default config of the platform on which it’s running. Config variables can be set at this
+level so all platforms follow the same setting, rather than its platform config.
 The following code would set the same config variable for all platforms:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </code></pre>
 </div>
 
-<p>Additionally, each platform can have it’s own config within the <code class="highlighter-rouge">$ionicConfigProvider.platform</code><br />
+<p>Additionally, each platform can have it’s own config within the <code class="highlighter-rouge">$ionicConfigProvider.platform</code>
 property. The config below would only apply to Android devices.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
@@ -1048,7 +1048,7 @@ to <code>ios</code>.</li>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> value</li>
 </ul>
 
@@ -1058,12 +1058,12 @@ to <code>ios</code>.</li>
 
 </h2>
 
-<p>Maximum number of view elements to cache in the DOM. When the max number is<br />
-exceeded, the view with the longest time period since it was accessed is removed. Views that<br />
-stay in the DOM cache the view’s scope, current state, and scroll position. The scope is<br />
-disconnected from the <code class="highlighter-rouge">$watch</code> cycle when it is cached and reconnected when it enters again.<br />
-When the maximum cache is <code class="highlighter-rouge">0</code>, the leaving view’s element will be removed from the DOM after<br />
-each view transition, and the next time the same view is shown, it will have to re-compile,<br />
+<p>Maximum number of view elements to cache in the DOM. When the max number is
+exceeded, the view with the longest time period since it was accessed is removed. Views that
+stay in the DOM cache the view’s scope, current state, and scroll position. The scope is
+disconnected from the <code class="highlighter-rouge">$watch</code> cycle when it is cached and reconnected when it enters again.
+When the maximum cache is <code class="highlighter-rouge">0</code>, the leaving view’s element will be removed from the DOM after
+each view transition, and the next time the same view is shown, it will have to re-compile,
 attach to the DOM, and link the element again. This disables caching, in effect.</p>
 
 <table class="table" style="margin:0;">
@@ -1097,7 +1097,7 @@ attach to the DOM, and link the element again. This disables caching, in effect.
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>number</code> How many views Ionic will hold onto until the a view is removed.</li>
 </ul>
 
@@ -1107,11 +1107,11 @@ attach to the DOM, and link the element again. This disables caching, in effect.
 
 </h2>
 
-<p>By default, when navigating, views that were recently visited are cached, and<br />
-the same instance data and DOM elements are referenced when navigating back. However, when<br />
-navigating back in the history, the “forward” views are removed from the cache. If you<br />
-navigate forward to the same view again, it’ll create a new DOM element and controller<br />
-instance. Basically, any forward views are reset each time. Set this config to <code class="highlighter-rouge">true</code> to have<br />
+<p>By default, when navigating, views that were recently visited are cached, and
+the same instance data and DOM elements are referenced when navigating back. However, when
+navigating back in the history, the “forward” views are removed from the cache. If you
+navigate forward to the same view again, it’ll create a new DOM element and controller
+instance. Basically, any forward views are reset each time. Set this config to <code class="highlighter-rouge">true</code> to have
 forward views cached and not reset on each load.</p>
 
 <table class="table" style="margin:0;">
@@ -1144,7 +1144,7 @@ forward views cached and not reset on each load.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code></li>
 </ul>
 
@@ -1154,7 +1154,7 @@ forward views cached and not reset on each load.</p>
 
 </h2>
 
-<p>Whether to use JS or Native scrolling. Defaults to native scrolling. Setting this to<br />
+<p>Whether to use JS or Native scrolling. Defaults to native scrolling. Setting this to
 <code class="highlighter-rouge">true</code> has the same effect as setting each <code class="highlighter-rouge">ion-content</code> to have <code class="highlighter-rouge">overflow-scroll='false'</code>.</p>
 
 <table class="table" style="margin:0;">
@@ -1188,7 +1188,7 @@ forward views cached and not reset on each load.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code></li>
 </ul>
 
@@ -1230,7 +1230,7 @@ forward views cached and not reset on each load.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1273,7 +1273,7 @@ forward views cached and not reset on each load.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1283,7 +1283,7 @@ forward views cached and not reset on each load.</p>
 
 </h2>
 
-<p>If the previous title text should become the back button text. This<br />
+<p>If the previous title text should become the back button text. This
 is the default for iOS.</p>
 
 <table class="table" style="margin:0;">
@@ -1316,7 +1316,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>boolean</code></li>
 </ul>
 
@@ -1358,7 +1358,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1400,7 +1400,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1444,7 +1444,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1487,7 +1487,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1530,7 +1530,7 @@ is the default for iOS.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1540,8 +1540,8 @@ is the default for iOS.</p>
 
 </h2>
 
-<p>Sets the maximum number of templates to prefetch from the templateUrls defined in<br />
-$stateProvider.state. If set to <code class="highlighter-rouge">0</code>, the user will have to wait<br />
+<p>Sets the maximum number of templates to prefetch from the templateUrls defined in
+$stateProvider.state. If set to <code class="highlighter-rouge">0</code>, the user will have to wait
 for a template to be fetched the first time when navigating to a new page. Default <code class="highlighter-rouge">30</code>.</p>
 
 <table class="table" style="margin:0;">
@@ -1576,7 +1576,7 @@ for a template to be fetched the first time when navigating to a new page. Defau
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>integer</code></li>
 </ul>
 
@@ -1630,7 +1630,7 @@ If the platform is <code>android</code>, it will default to <code>left</code>. I
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> value</li>
 </ul>
 
@@ -1683,7 +1683,7 @@ If the platform is <code>android</code>, it will default to <code>right</code>. 
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> value</li>
 </ul>
 
@@ -1736,7 +1736,7 @@ If the platform is <code>android</code>, it will default to <code>right</code>. 
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> value</li>
 </ul>
 

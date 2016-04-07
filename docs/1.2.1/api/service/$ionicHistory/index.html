@@ -959,14 +959,14 @@ $ionicHistory
 
 </h1>
 
-<p>$ionicHistory keeps track of views as the user navigates through an app. Similar to the way a<br />
-browser behaves, an Ionic app is able to keep track of the previous view, the current view, and<br />
-the forward view (if there is one).  However, a typical web browser only keeps track of one<br />
+<p>$ionicHistory keeps track of views as the user navigates through an app. Similar to the way a
+browser behaves, an Ionic app is able to keep track of the previous view, the current view, and
+the forward view (if there is one).  However, a typical web browser only keeps track of one
 history stack in a linear fashion.</p>
 
-<p>Unlike a traditional browser environment, apps and webapps have parallel independent histories,<br />
-such as with tabs. Should a user navigate few pages deep on one tab, and then switch to a new<br />
-tab and back, the back button relates not to the previous tab, but to the previous pages<br />
+<p>Unlike a traditional browser environment, apps and webapps have parallel independent histories,
+such as with tabs. Should a user navigate few pages deep on one tab, and then switch to a new
+tab and back, the back button relates not to the previous tab, but to the previous pages
 visited within <em>that</em> tab.</p>
 
 <p><code class="highlighter-rouge">$ionicHistory</code> facilitates this parallel history architecture.</p>
@@ -979,11 +979,11 @@ visited within <em>that</em> tab.</p>
 
 </h2>
 
-<p>The app’s view history data, such as all the views and histories, along<br />
+<p>The app’s view history data, such as all the views and histories, along
 with how they are ordered and linked together within the navigation stack.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> Returns an object containing the apps view history data.</li>
 </ul>
 
@@ -996,7 +996,7 @@ with how they are ordered and linked together within the navigation stack.</p>
 <p>The app’s current view.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> Returns the current view.</li>
 </ul>
 
@@ -1009,7 +1009,7 @@ with how they are ordered and linked together within the navigation stack.</p>
 <p>The ID of the history stack which is the parent container of the current view.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> Returns the current history ID.</li>
 </ul>
 
@@ -1052,7 +1052,7 @@ with how they are ordered and linked together within the navigation stack.</p>
 </table>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> Returns the current view’s title.</li>
 </ul>
 
@@ -1062,12 +1062,12 @@ with how they are ordered and linked together within the navigation stack.</p>
 
 </h2>
 
-<p>Returns the view that was before the current view in the history stack.<br />
-If the user navigated from View A to View B, then View A would be the back view, and<br />
+<p>Returns the view that was before the current view in the history stack.
+If the user navigated from View A to View B, then View A would be the back view, and
 View B would be the current view.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> Returns the back view.</li>
 </ul>
 
@@ -1080,7 +1080,7 @@ View B would be the current view.</p>
 <p>Gets the back view’s title.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code> Returns the back view’s title.</li>
 </ul>
 
@@ -1090,13 +1090,13 @@ View B would be the current view.</p>
 
 </h2>
 
-<p>Returns the view that was in front of the current view in the history stack.<br />
-A forward view would exist if the user navigated from View A to View B, then<br />
-navigated back to View A. At this point then View B would be the forward view, and View<br />
+<p>Returns the view that was in front of the current view in the history stack.
+A forward view would exist if the user navigated from View A to View B, then
+navigated back to View A. At this point then View B would be the forward view, and View
 A would be the current view.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>object</code> Returns the forward view.</li>
 </ul>
 
@@ -1109,7 +1109,7 @@ A would be the current view.</p>
 <p>Returns the current state name.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
 <code>string</code></li>
 </ul>
 
@@ -1170,11 +1170,11 @@ cross history stacks, meaning it can only go as far back as the current history.
 
 </h2>
 
-<p>Removes all cached views within every <a href="/docs/api/directive/ionNavView/"><code>ionNavView</code></a>.<br />
+<p>Removes all cached views within every <a href="/docs/api/directive/ionNavView/"><code>ionNavView</code></a>.
 This both removes the view element from the DOM, and destroy it’s scope.</p>
 
 <ul>
-  <li>Returns: <br />
+  <li>Returns: 
  promise</li>
 </ul>
 
@@ -1184,11 +1184,11 @@ This both removes the view element from the DOM, and destroy it’s scope.</p>
 
 </h2>
 
-<p>Sets options for the next view. This method can be useful to override<br />
-certain view/transition defaults right before a view transition happens. For example,<br />
-the <a href="/docs/api/directive/menuClose/"><code>menuClose</code></a> directive uses this method internally to ensure<br />
-an animated view transition does not happen when a side menu is open, and also sets<br />
-the next view as the root of its history stack. After the transition these options<br />
+<p>Sets options for the next view. This method can be useful to override
+certain view/transition defaults right before a view transition happens. For example,
+the <a href="/docs/api/directive/menuClose/"><code>menuClose</code></a> directive uses this method internally to ensure
+an animated view transition does not happen when a side menu is open, and also sets
+the next view as the root of its history stack. After the transition these options
 are set back to null.</p>
 
 <p>Available options:</p>

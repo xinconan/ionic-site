@@ -513,7 +513,7 @@ watch.unsubscribe();
 <p>Spent way too long diagnosing an issue only to realize a plugin wasn’t firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.</p>
 
 <h3 id="Installation">Installation</h3>
-<p>Run following commmand to install ionic-native in your project. <br />
+<p>Run following commmand to install ionic-native in your project. 
 <code class="highlighter-rouge">shell
 npm install ionic-native --save
 </code></p>
@@ -527,34 +527,34 @@ npm install ionic-native --save
 <p>Ionic Native will <em>not</em> install plugins for you automatically. You still need to install the plugins you need using the Cordova CLI or Ionic CLI. Ionic Native will notify you if you are missing a plugin, and will also provide you with the plugin name to install.</p>
 
 <h4 id="Using_Ionic_Native_Wrappers">Use Ionic Native Wrappers</h4>
-<p>We can call the functions of that plugin directly without the requirement of performing any checks, such as ensuring that the <code class="highlighter-rouge">deviceready</code> event has fired.<br />
-```js<br />
-// Example with plain JS<br />
-window.IonicNative.Camera.getPicture().then(<br />
-  function(res) {<br />
-    console.log(“We have taken a picture!”);<br />
-    // Run code to save the picture or use it elsewhere<br />
-  }<br />
+<p>We can call the functions of that plugin directly without the requirement of performing any checks, such as ensuring that the <code class="highlighter-rouge">deviceready</code> event has fired.
+```js
+// Example with plain JS
+window.IonicNative.Camera.getPicture().then(
+  function(res) {
+    console.log(“We have taken a picture!”);
+    // Run code to save the picture or use it elsewhere
+  }
 );</p>
 
-<p>// Example with AngularJS<br />
-angular.module(‘MyApp’, [‘ngCordova’])<br />
-.controller(‘MyController’, function(){<br />
-    ngCordova.Camera.getPicture().then(<br />
-      function(res) {<br />
-        console.log(“We have taken a picture!”);<br />
-        // Run code to save the picture or use it elsewhere<br />
-      }<br />
-    );<br />
+<p>// Example with AngularJS
+angular.module(‘MyApp’, [‘ngCordova’])
+.controller(‘MyController’, function(){
+    ngCordova.Camera.getPicture().then(
+      function(res) {
+        console.log(“We have taken a picture!”);
+        // Run code to save the picture or use it elsewhere
+      }
+    );
 });</p>
 
-<p>// Example with TypeScript and Angular 2.0<br />
-import {Camera} from ‘ionic-native’;<br />
-Camera.getPicture().then(<br />
-  res =&gt; {<br />
-    console.log(“We have taken a picture!”);<br />
-  }<br />
-);<br />
+<p>// Example with TypeScript and Angular 2.0
+import {Camera} from ‘ionic-native’;
+Camera.getPicture().then(
+  res =&gt; {
+    console.log(“We have taken a picture!”);
+  }
+);
 ```</p>
 
       </main>

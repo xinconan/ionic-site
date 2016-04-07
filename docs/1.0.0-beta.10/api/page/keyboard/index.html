@@ -892,19 +892,19 @@
 
 </h1>
 
-<p>On both Android and iOS, Ionic will attempt to prevent the keyboard from<br />
-obscuring inputs and focusable elements when it appears by scrolling them<br />
-into view.  In order for this to work, any focusable elements must be within<br />
-a <a href="http://ionicframework.com/docs/api/directive/ionScroll/">Scroll View</a><br />
-or a directive such as <a href="http://ionicframework.com/docs/api/directive/ionContent/">Content</a><br />
+<p>On both Android and iOS, Ionic will attempt to prevent the keyboard from
+obscuring inputs and focusable elements when it appears by scrolling them
+into view.  In order for this to work, any focusable elements must be within
+a <a href="http://ionicframework.com/docs/api/directive/ionScroll/">Scroll View</a>
+or a directive such as <a href="http://ionicframework.com/docs/api/directive/ionContent/">Content</a>
 that has a Scroll View.</p>
 
-<p>It will also attempt to prevent the native overflow scrolling on focus,<br />
+<p>It will also attempt to prevent the native overflow scrolling on focus,
 which can cause layout issues such as pushing headers up and out of view.</p>
 
-<p>The keyboard fixes work best in conjunction with the <br />
-<a href="https://github.com/driftyco/ionic-plugins-keyboard">Ionic Keyboard Plugin</a>,<br />
-although it will perform reasonably well without.  However, if you are using<br />
+<p>The keyboard fixes work best in conjunction with the 
+<a href="https://github.com/driftyco/ionic-plugins-keyboard">Ionic Keyboard Plugin</a>,
+although it will perform reasonably well without.  However, if you are using
 Cordova there is no reason not to use the plugin.</p>
 
 <h3 id="hide-when-keyboard-shows">Hide when keyboard shows</h3>
@@ -919,7 +919,7 @@ Cordova there is no reason not to use the plugin.</p>
 <hr />
 
 <h3 id="plugin-usage">Plugin Usage</h3>
-<p>Information on using the plugin can be found at <br />
+<p>Information on using the plugin can be found at 
 <a href="https://github.com/driftyco/ionic-plugins-keyboard">https://github.com/driftyco/ionic-plugins-keyboard</a>.</p>
 
 <hr />
@@ -927,16 +927,16 @@ Cordova there is no reason not to use the plugin.</p>
 <h3 id="android-notes">Android Notes</h3>
 <ul>
   <li>
-    <p>If your app is running in fullscreen, i.e. you have <br />
-<code class="highlighter-rouge">&lt;preference name="Fullscreen" value="true" /&gt;</code> in your <code class="highlighter-rouge">config.xml</code> file<br />
+    <p>If your app is running in fullscreen, i.e. you have 
+<code class="highlighter-rouge">&lt;preference name="Fullscreen" value="true" /&gt;</code> in your <code class="highlighter-rouge">config.xml</code> file
 you will need to set <code class="highlighter-rouge">ionic.Platform.isFullScreen = true</code> manually.</p>
   </li>
   <li>
-    <p>You can configure the behavior of the web view when the keyboard shows by setting <br />
-<a href="http://developer.android.com/reference/android/R.attr.html#windowSoftInputMode">android:windowSoftInputMode</a><br />
-to either <code class="highlighter-rouge">adjustPan</code>, <code class="highlighter-rouge">adjustResize</code> or <code class="highlighter-rouge">adjustNothing</code> in your app’s<br />
-activity in <code class="highlighter-rouge">AndroidManifest.xml</code>. <code class="highlighter-rouge">adjustResize</code> is the recommended setting<br />
-for Ionic, but if for some reason you do use <code class="highlighter-rouge">adjustPan</code> you will need to<br />
+    <p>You can configure the behavior of the web view when the keyboard shows by setting 
+<a href="http://developer.android.com/reference/android/R.attr.html#windowSoftInputMode">android:windowSoftInputMode</a>
+to either <code class="highlighter-rouge">adjustPan</code>, <code class="highlighter-rouge">adjustResize</code> or <code class="highlighter-rouge">adjustNothing</code> in your app’s
+activity in <code class="highlighter-rouge">AndroidManifest.xml</code>. <code class="highlighter-rouge">adjustResize</code> is the recommended setting
+for Ionic, but if for some reason you do use <code class="highlighter-rouge">adjustPan</code> you will need to
 set <code class="highlighter-rouge">ionic.Platform.isFullScreen = true</code>.</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;activity</span> <span class="na">android:windowSoftInputMode=</span><span class="s">"adjustResize"</span><span class="nt">&gt;</span>
@@ -948,10 +948,10 @@ set <code class="highlighter-rouge">ionic.Platform.isFullScreen = true</code>.</
 
 <h3 id="ios-notes">iOS Notes</h3>
 <ul>
-  <li>If the content of your app (including the header) is being pushed up and<br />
-out of view on input focus, try setting <code class="highlighter-rouge">cordova.plugins.Keyboard.disableScroll(true)</code>.<br />
-This does <strong>not</strong> disable scrolling in the Ionic scroll view, rather it<br />
-disables the native overflow scrolling that happens automatically as a<br />
+  <li>If the content of your app (including the header) is being pushed up and
+out of view on input focus, try setting <code class="highlighter-rouge">cordova.plugins.Keyboard.disableScroll(true)</code>.
+This does <strong>not</strong> disable scrolling in the Ionic scroll view, rather it
+disables the native overflow scrolling that happens automatically as a
 result of focusing on inputs below the keyboard.</li>
 </ul>
 

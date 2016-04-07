@@ -1025,22 +1025,22 @@
 
 <h2 id="actions">Actions</h2>
 
-<p><b>Go to slide</b>: <br />
-The slide index numbers start from 0, 1, 2 …. n.<br />
+<p><b>Go to slide</b>: 
+The slide index numbers start from 0, 1, 2 …. n.
 <code class="highlighter-rouge">javascript
 var gotoSlide = function(index) {
   $scope.$broadcast('slideBox.setSlide', index);
 };
 </code></p>
 
-<p><b>Previous slide</b>:<br />
+<p><b>Previous slide</b>:
 <code class="highlighter-rouge">javascript
 var prevSlide = function() {
   $scope.$broadcast('slideBox.prevSlide');
 };
 </code></p>
 
-<p><b>Next slide</b>:<br />
+<p><b>Next slide</b>:
 <code class="highlighter-rouge">javascript
 var nextSlide = function() {
   $scope.$broadcast('slideBox.nextSlide');

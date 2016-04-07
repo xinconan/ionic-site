@@ -214,12 +214,12 @@
       <div class="col-md-10 col-sm-9 main-content">
         <h1 id="testing-in-a-browser">Testing in a Browser</h1>
 
-<p>Use <code class="highlighter-rouge">ionic serve</code> to start a local development server for app dev and testing.<br />
- This is useful for both desktop browser testing, and to test within a device <br />
-browser which is connected to the same network. Additionally, this command <br />
-starts LiveReload which is used to monitor changes in the file system. As soon <br />
-as you save a file the browser is refreshed automatically. Take a look at the <br />
-<a href="/docs/cli/sass.html">Sass docs</a> if you would also like to have <code class="highlighter-rouge">ionic serve</code> <br />
+<p>Use <code class="highlighter-rouge">ionic serve</code> to start a local development server for app dev and testing.
+ This is useful for both desktop browser testing, and to test within a device 
+browser which is connected to the same network. Additionally, this command 
+starts LiveReload which is used to monitor changes in the file system. As soon 
+as you save a file the browser is refreshed automatically. Take a look at the 
+<a href="/docs/cli/sass.html">Sass docs</a> if you would also like to have <code class="highlighter-rouge">ionic serve</code> 
 watch the project’s Sass files.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve <span class="o">[</span>options]
@@ -228,9 +228,9 @@ watch the project’s Sass files.</p>
 
 <h3 id="livereload">LiveReload</h3>
 
-<p>By default, LiveReload will watch for changes in your <code class="highlighter-rouge">www/</code> directory, <br />
-excluding <code class="highlighter-rouge">www/lib/</code>.  To change this, you can specify a <code class="highlighter-rouge">watchPatterns</code> <br />
-property in the <code class="highlighter-rouge">ionic.project</code> file located in your project root to watch <br />
+<p>By default, LiveReload will watch for changes in your <code class="highlighter-rouge">www/</code> directory, 
+excluding <code class="highlighter-rouge">www/lib/</code>.  To change this, you can specify a <code class="highlighter-rouge">watchPatterns</code> 
+property in the <code class="highlighter-rouge">ionic.project</code> file located in your project root to watch 
 (or not watch) for specific changes.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
@@ -244,8 +244,8 @@ property in the <code class="highlighter-rouge">ionic.project</code> file locate
 </span></code></pre>
 </div>
 
-<p>For a reference on glob pattern syntax, check out <br />
-<a href="http://gruntjs.com/configuring-tasks#globbing-patterns">globbing patterns</a> on <br />
+<p>For a reference on glob pattern syntax, check out 
+<a href="http://gruntjs.com/configuring-tasks#globbing-patterns">globbing patterns</a> on 
 the Grunt website.</p>
 
 <p>Note:</p>
@@ -254,23 +254,23 @@ the Grunt website.</p>
 </code></pre>
 </div>
 
-<p>will add a <code class="highlighter-rouge">watchPatterns</code> propery with the default values to your <code class="highlighter-rouge">ionic.project</code> <br />
-file that you can then edit, in addition to the <code class="highlighter-rouge">gulpStartupTasks</code> property as <br />
+<p>will add a <code class="highlighter-rouge">watchPatterns</code> propery with the default values to your <code class="highlighter-rouge">ionic.project</code> 
+file that you can then edit, in addition to the <code class="highlighter-rouge">gulpStartupTasks</code> property as 
 described in the <a href="/docs/cli/sass.html">Sass documentation</a>.</p>
 
 <h3 id="ionic-lab">Ionic Lab</h3>
 
 <p><img src="http://ionicframework.com/img/blog/lab.png" alt="Ionic Lab" /></p>
 
-<p>Ionic Lab is a feature on top of <code class="highlighter-rouge">ionic serve</code> that makes it easy to test your <br />
-app in a phone frame and with iOS and Android platforms side-by-side. To use it, <br />
+<p>Ionic Lab is a feature on top of <code class="highlighter-rouge">ionic serve</code> that makes it easy to test your 
+app in a phone frame and with iOS and Android platforms side-by-side. To use it, 
 just run</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve --lab
 </code></pre>
 </div>
 
-<p>Read the <a href="http://ionicframework.com/blog/ionic-lab/">full release announcement</a> <br />
+<p>Read the <a href="http://ionicframework.com/blog/ionic-lab/">full release announcement</a> 
 for all the details!</p>
 
 <h3 id="specifying-an-ip-address-to-use">Specifying an IP Address to use</h3>
@@ -283,13 +283,13 @@ for all the details!</p>
 
 <h3 id="service-proxies">Service Proxies</h3>
 
-<p>The <code class="highlighter-rouge">serve</code> command can add some proxies to the http server. These proxies are <br />
-useful if you are developing in the browser and you need to make calls to an <br />
-external API. With this feature you can proxy request to the external api <br />
+<p>The <code class="highlighter-rouge">serve</code> command can add some proxies to the http server. These proxies are 
+useful if you are developing in the browser and you need to make calls to an 
+external API. With this feature you can proxy request to the external api 
 through the ionic http server preventing the <code class="highlighter-rouge">No 'Access-Control-Allow-Origin' 
 header is present on the requested resource</code> error.</p>
 
-<p>In the <code class="highlighter-rouge">ionic.project</code> file you can add a property with an array of proxies you <br />
+<p>In the <code class="highlighter-rouge">ionic.project</code> file you can add a property with an array of proxies you 
 want to add. The proxies are object with two properties:</p>
 
 <ul>
@@ -311,7 +311,7 @@ want to add. The proxies are object with two properties:</p>
 </span></code></pre>
 </div>
 
-<p>Using the above configuration, you can now make requests to your local server <br />
+<p>Using the above configuration, you can now make requests to your local server 
 at <code class="highlighter-rouge">http://localhost:8100/v1</code> to have it proxy out requests to <code class="highlighter-rouge">https://api.instagram.com/v1</code></p>
 
 <p>For example:</p>
