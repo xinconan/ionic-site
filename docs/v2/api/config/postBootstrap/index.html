@@ -12,11 +12,11 @@
 
 
 
-    <title>LocalStorage - Class in module  -  Ionic Framework</title>
+    <title>postBootstrap - Function in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-localstorage"
-        class="v2 docs page-localstorage"
+  <body id="docs-page-postbootstrap"
+        class="v2 docs page-postbootstrap"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -97,8 +97,6 @@
 </nav>
 
     <div class="docs-container"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <form class="form-group search" role="search">
@@ -303,7 +301,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/loading/Loading">Loading</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
 </li>
 <li class="capitalize ">
@@ -345,7 +343,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/api/config/postBootstrap">postBootstrap</a>
 </li>
 <li class="capitalize ">
@@ -418,52 +416,11 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-          <a ng-class="{active: windowsActive}"
-             ng-click="setPlatform('windows')">Windows</a>
-        </div>
-        <div id="demo-device-ios"
-             ng-class="previewPlatform"
-             ng-show="iosActive">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/local-storage/?production=true&ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android"
-             ng-class="previewPlatform"
-             ng-show="androidActive">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/local-storage/?production=true&ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-windows"
-             ng-class="previewPlatform"
-             ng-show="windowsActive">
-          <iframe id="demo-windows"
-                
-                  src="/docs/v2/demos/local-storage/?production=true&ionicplatform=windows"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
-<a class="anchor" name="local-storage" href="#local-storage"></a>
+<a class="anchor" name="post-bootstrap" href="#post-bootstrap"></a>
 
-LocalStorage
+postBootstrap
 
 
 
@@ -472,184 +429,17 @@ LocalStorage
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//home/ubuntu/ionic/ionic/platform/storage/local-storage.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/config/bootstrap.ts#L63">
 Improve this doc
 </a></p>
 
-<p>The LocalStorage storage engine uses the browser&#39;s local storage system for
-storing key/value pairs.</p>
-<p>Note: LocalStorage should ONLY be used for temporary data that you can afford to lose.
-Given disk space constraints on a mobile device, local storage might be &quot;cleaned up&quot;
-by the operating system (iOS).</p>
-<p>For guaranteed, long-term storage, use the SqlStorage engine which stores data in a file.</p>
-
 <!-- @usage tag -->
-
-<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
-
-<pre><code class="lang-ts">import {Page, Storage, LocalStorage} from &#39;ionic-angular&#39;;
-@Page({
-  template: `&lt;ion-content&gt;&lt;/ion-content&gt;`
-});
-export class MyClass{
- constructor(){
-   this.local = new Storage(LocalStorage);
-   this.local.set(&#39;didTutorial&#39;, true);
- }
-}
-</code></pre>
 
 <!-- @property tags -->
 
 <!-- instance methods on the class -->
-
-<h2><a class="anchor" name="instance-methods" href="#instance-methods"></a>Instance Methods</h2>
-
-<div id="get"></div>
-
-<h3>
-<a class="anchor" name="get" href="#get"></a>
-<code>get(key)</code>
-  
-
-</h3>
-
-<p>Get the value of a key in LocalStorage</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        key
-        
-        
-      </td>
-      <td>
-        
-  <code>String</code>
-      </td>
-      <td>
-        <p>the key you want to lookup in LocalStorage</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="set"></div>
-
-<h3>
-<a class="anchor" name="set" href="#set"></a>
-<code>set(key,&nbsp;value)</code>
-  
-
-</h3>
-
-<p>Set a key value pair and save it to LocalStorage</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        key
-        
-        
-      </td>
-      <td>
-        
-  <code>String</code>
-      </td>
-      <td>
-        <p>the key you want to save to LocalStorage</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        value
-        
-        
-      </td>
-      <td>
-        
-  <code>Any</code>
-      </td>
-      <td>
-        <p>the value of the key you&#39;re saving</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="remove"></div>
-
-<h3>
-<a class="anchor" name="remove" href="#remove"></a>
-<code>remove(key)</code>
-  
-
-</h3>
-
-<p>Remove a key from LocalStorage</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        key
-        
-        
-      </td>
-      <td>
-        
-  <code>String</code>
-      </td>
-      <td>
-        <p>the key you want to remove from LocalStorage</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
 <!-- related link -->
-
-<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
-
-<p><a href="/docs/v2/platform/storage/">Storage Platform Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 
