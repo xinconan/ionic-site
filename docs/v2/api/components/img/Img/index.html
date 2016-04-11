@@ -12,11 +12,11 @@
 
 
 
-    <title>Checkbox - Class in module ionic -  Ionic Framework</title>
+    <title>Img - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-checkbox"
-        class="v2 docs page-checkbox"
+  <body id="docs-page-img"
+        class="v2 docs page-img"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -97,8 +97,6 @@
 </nav>
 
     <div class="docs-container"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <form class="form-group search" role="search">
@@ -252,7 +250,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/button/Button">Button</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
 </li>
 <li class="capitalize ">
@@ -273,7 +271,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/app/Id">Id</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/api/components/img/Img">Img</a>
 </li>
 <li class="capitalize ">
@@ -415,52 +413,11 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-          <a ng-class="{active: windowsActive}"
-             ng-click="setPlatform('windows')">Windows</a>
-        </div>
-        <div id="demo-device-ios"
-             ng-class="previewPlatform"
-             ng-show="iosActive">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/checkbox/?production=true&ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android"
-             ng-class="previewPlatform"
-             ng-show="androidActive">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/checkbox/?production=true&ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-windows"
-             ng-class="previewPlatform"
-             ng-show="windowsActive">
-          <iframe id="demo-windows"
-                
-                  src="/docs/v2/demos/checkbox/?production=true&ionicplatform=windows"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
-<a class="anchor" name="checkbox" href="#checkbox"></a>
+<a class="anchor" name="img" href="#img"></a>
 
-Checkbox
+Img
 
 
 
@@ -469,44 +426,38 @@ Checkbox
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/components/checkbox/checkbox.ts#L8">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/components/img/img.ts#L4">
 Improve this doc
 </a></p>
 
-<p>The Checkbox is a simple component styled based on the mode. It can be
-placed in an <code>ion-item</code> or used as a stand-alone checkbox.</p>
-<p>See the <a href="https://angular.io/docs/ts/latest/guide/forms.html">Angular 2 Docs</a>
-for more info on forms and inputs.</p>
-
 <h2><a class="anchor" name="Component" href="#Component"></a>Component</h2>
-<h3>selector: <code>ion-checkbox</code></h3>
+<h3>selector: <code>ion-img</code></h3>
 <!-- @usage tag -->
-
-<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
-
-<pre><code class="lang-html">&lt;ion-list&gt;
-
-  &lt;ion-item&gt;
-    &lt;ion-label&gt;Pepperoni&lt;/ion-label&gt;
-    &lt;ion-checkbox [(ngModel)]=&quot;pepperoni&quot;&gt;&lt;/ion-checkbox&gt;
-  &lt;/ion-item&gt;
-
-  &lt;ion-item&gt;
-    &lt;ion-label&gt;Sausage&lt;/ion-label&gt;
-    &lt;ion-checkbox [(ngModel)]=&quot;sausage&quot; disabled=&quot;true&quot;&gt;&lt;/ion-checkbox&gt;
-  &lt;/ion-item&gt;
-
-  &lt;ion-item&gt;
-    &lt;ion-label&gt;Mushrooms&lt;/ion-label&gt;
-    &lt;ion-checkbox [(ngModel)]=&quot;mushrooms&quot;&gt;&lt;/ion-checkbox&gt;
-  &lt;/ion-item&gt;
-
-&lt;/ion-list&gt;
-</code></pre>
 
 <!-- @property tags -->
 
 <!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-methods" href="#instance-methods"></a>Instance Methods</h2>
+
+<div id="enable"></div>
+
+<h3>
+<a class="anchor" name="enable" href="#enable"></a>
+<code>enable()</code>
+  
+
+</h3>
+
+<div id="isVisible"></div>
+
+<h3>
+<a class="anchor" name="isVisible" href="#isVisible"></a>
+<code>isVisible()</code>
+  
+
+</h3>
+
 <!-- input methods on the class -->
 <h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
 <table class="table param-table" style="margin:0;">
@@ -520,45 +471,27 @@ for more info on forms and inputs.</p>
   <tbody>
     
     <tr>
-      <td>checked</td>
-      <td><code>boolean</code></td>
-      <td><p> whether or not the checkbox is checked (defaults to false)</p>
-</td>
+      <td>src</td>
+      <td><code></code></td>
+      <td></td>
     </tr>
     
     <tr>
-      <td>disabled</td>
-      <td><code>boolean</code></td>
-      <td><p> whether or not the checkbox is disabled or not.</p>
-</td>
+      <td>width</td>
+      <td><code></code></td>
+      <td></td>
     </tr>
     
-  </tbody>
-</table>
-<!-- output events on the class -->
-<h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
-<table class="table param-table" style="margin:0;">
-  <thead>
     <tr>
-      <th>Attr</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>change</td>
-      <td><p> expression to evaluate when the checkbox value changes</p>
-</td>
+      <td>height</td>
+      <td><code></code></td>
+      <td></td>
     </tr>
     
   </tbody>
 </table>
 <!-- related link -->
-
-<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
-
-<p><a href="/docs/v2/components#checkbox">Checkbox Component Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 
