@@ -12,11 +12,11 @@
 
 
 
-    <title>Badge - Class in module  -  Ionic Framework</title>
+    <title>Email Composer - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-badge"
-        class="v2 docs page-badge"
+  <body id="docs-page-email-composer"
+        class="v2 docs page-email-composer"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -264,7 +264,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/App Version">App Version</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/Badge">Badge</a>
 </li>
 <li class="capitalize ">
@@ -315,7 +315,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Dialogs">Dialogs</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Email Composer">Email Composer</a>
 </li>
 <li class="capitalize ">
@@ -497,7 +497,7 @@
         <h1 class="api-title">
 
   
-  Badge
+  Email Composer
   
 
   
@@ -506,23 +506,22 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/badge.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/emailcomposer.ts#L16">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ cordova plugin add cordova-plugin-badge</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-email-composer</code></pre>
 <p>Repo:
-  <a href="https://github.com/katzer/cordova-plugin-badge">
-    https://github.com/katzer/cordova-plugin-badge
+  <a href="https://github.com/katzer/cordova-plugin-email-composer.git">
+    https://github.com/katzer/cordova-plugin-email-composer.git
   </a>
 </p>
 
 <!-- description -->
 
-<p>The essential purpose of badge numbers is to enable an application to inform its users that it has something for them — for example, unread messages — when the application isn’t running in the foreground.</p>
-<p>Requires Cordova plugin: cordova-plugin-badge. For more info, please see the <a href="https://github.com/katzer/cordova-plugin-badge">Badge plugin docs</a>.</p>
+<p>Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the <a href="https://github.com/katzer/cordova-plugin-email-composer">Email Composer plugin docs</a>.</p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
@@ -531,12 +530,6 @@
   <li>Android</li>
   
   <li>iOS</li>
-  
-  <li>Browser</li>
-  
-  <li>Windows</li>
-  
-  <li>Amazon FireOS</li>
   
   <li>Windows Phone 8</li>
   </ul>
@@ -547,29 +540,41 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {Badge} from &#39;ionic-native&#39;;
+<pre><code class="lang-ts">import {EmailComposer} from &#39;ionic-native&#39;;
 
 
-Badge.set(10);
-Badge.increase();
-Badge.clear();
+EmailComposer.isAvailable().then((available) =&gt;{
+ if(available) {
+   //Now we know we can send
+ }
+});
+
+let email = {
+  to: &#39;max@mustermann.de&#39;,
+  cc: &#39;erika@mustermann.de&#39;,
+  bcc: [&#39;john@doe.com&#39;, &#39;jane@doe.com&#39;],
+  attachments: [
+    &#39;file://img/logo.png&#39;,
+    &#39;res://icon.png&#39;,
+    &#39;base64:icon.png//iVBORw0KGgoAAAANSUhEUg...&#39;,
+    &#39;file://README.pdf&#39;
+  ],
+  subject: &#39;Cordova Icons&#39;,
+  body: &#39;How are you? Nice greetings from Leipzig&#39;,
+  isHtml: true
+};
+
+// Send a text message using default options
+EmailComposer.send(email);
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="clear"></div>
-<h3><code>clear()</code>
+<div id="isAvailable"></div>
+<h3><code>isAvailable(app,&nbsp;scope)</code>
 
 </h3>
-
-<p>Clear the badge of the app icon.</p>
-
-<div id="set"></div>
-<h3><code>set(number)</code>
-
-</h3>
-
-<p>Set the badge of the app icon.</p>
+<p>Verifies if sending emails is supported on the device.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -583,16 +588,33 @@ Badge.clear();
   
   <tr>
     <td>
-      number
+      app
       
       
     </td>
     <td>
       
-<code>number</code>
+<code>string</code>
     </td>
     <td>
-      <p>The new badge number.</p>
+      <p>An optional app id or uri scheme. Defaults to mailto.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      scope
+      
+      
+    </td>
+    <td>
+      
+<code>any</code>
+    </td>
+    <td>
+      <p>An optional scope for the promise</p>
 
       
     </td>
@@ -604,28 +626,15 @@ Badge.clear();
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise</code></p>
+<code>Promise&lt;boolean&gt;</code> Resolves promise with boolean whether EmailComposer is available</p>
 </div>
 
-<div id="get"></div>
-<h3><code>get()</code>
+<div id="addAlias"></div>
+<h3><code>addAlias(alias,&nbsp;packageName)</code>
 
 </h3>
 
-<p>Get the badge of the app icon.</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise</code></p>
-</div>
-
-<div id="increase"></div>
-<h3><code>increase(count)</code>
-
-</h3>
-
-<p>Increase the badge number.</p>
+<p>Adds a new mail app alias.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -639,16 +648,33 @@ Badge.clear();
   
   <tr>
     <td>
-      count
+      alias
       
       
     </td>
     <td>
       
-<code>number</code>
+<code>string</code>
     </td>
     <td>
-      <p>Count to add to the current badge number</p>
+      <p>The alias name</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      packageName
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>The package name</p>
 
       
     </td>
@@ -657,18 +683,12 @@ Badge.clear();
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise</code></p>
-</div>
-
-<div id="decrease"></div>
-<h3><code>decrease(count)</code>
+<div id="open"></div>
+<h3><code>open(email,&nbsp;scope)</code>
 
 </h3>
 
-<p>Decrease the badge number.</p>
+<p>Displays the email composer pre-filled with data.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -682,16 +702,33 @@ Badge.clear();
   
   <tr>
     <td>
-      count
+      email
       
       
     </td>
     <td>
       
-<code>number</code>
+<code>email</code>
     </td>
     <td>
-      <p>Count to subtract from the current badge number</p>
+      <p>Email</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      scope
+      
+      
+    </td>
+    <td>
+      
+<code>any</code>
+    </td>
+    <td>
+      <p>An optional scope for the promise</p>
 
       
     </td>
@@ -703,27 +740,7 @@ Badge.clear();
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise</code></p>
-</div>
-
-<div id="hasPermission"></div>
-<h3><code>hasPermission()</code>
-
-</h3>
-
-<p>Determine if the app has permission to show badges.</p>
-
-<div id="registerPermission"></div>
-<h3><code>registerPermission()</code>
-
-</h3>
-
-<p>Register permission to set badge notifications</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise</code></p>
+<code>Promise&lt;any&gt;</code> Resolves promise when the EmailComposer has been opened</p>
 </div>
 
 <!-- methods on the class -->
