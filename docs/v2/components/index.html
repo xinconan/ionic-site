@@ -219,6 +219,7 @@
         </ul>
 
 
+      <li><a href="#loading">Loading</a></li>
       <li><a href="#menus">Menus</a></li>
       <li><a href="#modals">Modals</a></li>
       <li><a href="#navigation">Navigation</a></li>
@@ -1747,6 +1748,34 @@ You can also add a placeholder so that users have a hint of what type of text th
 <span class="nt">&lt;/ion-list&gt;</span>
 </code></pre>
 </div>
+
+<h2 id="loading" class="section-header">Loading</h2>
+
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/loading.html">
+  Improve this Doc
+</a></p>
+
+<p>The Loading component is an overlay that prevents user interaction while indicating activity.
+By default, it shows a spinner based on the mode. It can also be passed any HTML content to
+display with the spinner. You can hide or change the spinner to any of our predefined
+spinners. The loading indicator is styled to display on top of other content even during
+navigation.</p>
+
+<p>Check out the <a href="../api/components/loading/Loading">API docs</a> for more information.</p>
+
+<h3 class="section-nav">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/loading/basic">
+  Demo Source
+</a></p>
+
+<pre><code class="language-typescript">presentLoading() {
+  let loading = Loading.create({
+    content: "Please wait...",
+    duration: 3000
+  });
+  this.nav.present(loading);
+}
+</code></pre>
 
 <h2 id="menus" class="section-header">Menus</h2>
 
