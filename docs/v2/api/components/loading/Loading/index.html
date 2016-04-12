@@ -250,6 +250,9 @@
   <a href="/docs/v2/api/decorators/App">App</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/button/Button">Button</a>
 </li>
 <li class="capitalize ">
@@ -382,6 +385,9 @@
   <a href="/docs/v2/api/components/slides/Slides">Slides</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/platform/storage/SqlStorage">SqlStorage</a>
 </li>
 <li class="capitalize ">
@@ -489,8 +495,8 @@ in the <code>content</code> property. If you do not pass a value to <code>spinne
 the loading indicator will use the spinner specified by the mode. To
 set the spinner name across the app, set the value of <code>loadingSpinner</code>
 in your app&#39;s config. To hide the spinner, set <code>loadingSpinner: &#39;hide&#39;</code>
-in the apps&#39; config or pass <code>spinner: &#39;hide&#39;</code> in the loading
-options. See the create method below for all available options.</p>
+in the app&#39;s config or pass <code>spinner: &#39;hide&#39;</code> in the loading
+options. See the <a href="#create">create</a> method below for all available options.</p>
 <h3 id="dismissing">Dismissing</h3>
 <p>The loading indicator can be dismissed automatically after a specific
 amount of time by passing the number of milliseconds to display it in
@@ -600,7 +606,7 @@ presentLoadingText() {
     <tr>
       <td>duration</td>
       <td><code class="highlighter-rouge">number</code></td>
-      <td>How many milliseconds to wait before hiding the indicator. By default, it will show until <code class="highlighter-rouge">hide()</code> is called.</td>
+      <td>How many milliseconds to wait before hiding the indicator. By default, it will show until <code class="highlighter-rouge">dismiss()</code> is called.</td>
     </tr>
   </tbody>
 </table>
