@@ -243,6 +243,7 @@
           <li class="nav-item-hidden"><a href="#toolbar-buttons"></a></li>
           <li class="nav-item-hidden"><a href="#toolbar-segment"></a></li>
           <li class="nav-item-hidden"><a href="#toolbar-searchbar"></a></li>
+          <li class="nav-item-hidden"><a href="#toolbar-colors"></a></li>
         </ul>
 
     </ul>
@@ -2504,6 +2505,7 @@ export class BadgesPage {
     <li class="docs-content-item"><a href="#toolbar-buttons">Buttons in Toolbars</a></li>
     <li class="docs-content-item"><a href="#toolbar-segment">Segment in Toolbars</a></li>
     <li class="docs-content-item"><a href="#toolbar-searchbar">Searchbar in Toolbars</a></li>
+    <li class="docs-content-item"><a href="#toolbar-colors">Changing the Color</a></li>
   </ul>
 
 <h3 class="no-para">Basic Usage</h3>
@@ -2533,13 +2535,13 @@ export class BadgesPage {
   <span class="nt">&lt;ion-buttons</span> <span class="na">start</span><span class="nt">&gt;</span>
     <span class="nt">&lt;icon</span> <span class="na">name=</span><span class="s">"content"</span><span class="nt">&gt;&lt;/icon&gt;</span>
   <span class="nt">&lt;/ion-buttons&gt;</span>
-  
+
   <span class="nt">&lt;ion-title&gt;</span>Header<span class="nt">&lt;/ion-title&gt;</span>
-  
+
   <span class="nt">&lt;ion-buttons</span> <span class="na">end</span><span class="nt">&gt;</span>
     <span class="nt">&lt;icon</span> <span class="na">name=</span><span class="s">"search"</span><span class="nt">&gt;&lt;/icon&gt;</span>
   <span class="nt">&lt;/ion-buttons&gt;</span>
-  
+
 <span class="nt">&lt;/ion-toolbar&gt;</span>
 
 <span class="nt">&lt;ion-content&gt;</span>
@@ -2673,6 +2675,52 @@ class SearchPage {
   }
 }
 </code></pre>
+
+<h3 id="toolbar-colors" class="no-para">Changing the Color</h3>
+
+<p>You can change the toolbars color by changing the property on the element.</p>
+
+<pre><code class="language-typescript">
+@Page({
+  template: `
+    &lt;ion-toolbar primary&gt;
+      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+
+
+    &lt;ion-toolbar secondary&gt;
+      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+
+    &lt;ion-toolbar danger&gt;
+      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+
+
+    &lt;ion-toolbar dark&gt;
+      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  `
+  })
+
+</code></pre>
+
+<p>You can also change the navbar’s color the same way. This will allow you to have a different color navbar per page in your app.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-navbar</span> <span class="err">*</span><span class="na">navbar</span> <span class="na">dark</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Dark<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-navbar&gt;</span>
+
+
+<span class="nt">&lt;ion-navbar</span> <span class="err">*</span><span class="na">navbar</span> <span class="na">danger</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Danger<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-navbar&gt;</span>
+
+<span class="nt">&lt;ion-navbar</span> <span class="err">*</span><span class="na">navbar</span> <span class="na">secondary</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-title&gt;</span>Secondary<span class="nt">&lt;/ion-title&gt;</span>
+<span class="nt">&lt;/ion-navbar&gt;</span>
+</code></pre>
+</div>
 
 
       </main>
