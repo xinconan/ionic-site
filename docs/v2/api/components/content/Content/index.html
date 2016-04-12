@@ -455,15 +455,6 @@ methods to control the scrollable area.</p>
 
 <h2><a class="anchor" name="instance-methods" href="#instance-methods"></a>Instance Methods</h2>
 
-<div id="onScrollElementTransitionEnd"></div>
-
-<h3>
-<a class="anchor" name="onScrollElementTransitionEnd" href="#onScrollElementTransitionEnd"></a>
-<code>onScrollElementTransitionEnd()</code>
-  
-
-</h3>
-
 <div id="scrollTo"></div>
 
 <h3>
@@ -475,23 +466,22 @@ methods to control the scrollable area.</p>
 
 <p>Scroll to the specified position.</p>
 
-<pre><code class="language-ts">@Page({
-  template: `&lt;ion-content id="my-content"&gt;
-     &lt;button (click)="scrollTo()"&gt; Down 500px&lt;/button&gt;
-  &lt;/ion-content&gt;`
+<pre><code class="language-ts">import {ViewChild} from 'angular2/core';
+import {Content} from 'ionic-angular';
+
+@Page({
+  template: `&lt;ion-content&gt;
+               &lt;button (click)="scrollTo()"&gt;Down 500px&lt;/button&gt;
+             &lt;/ion-content&gt;`
 )}
 export class MyPage{
-   constructor(app: IonicApp){
-       this.app = app;
-   }
-  // Need to wait until the component has been initialized
-  ngAfterViewInit() {
-    // Here 'my-content' is the ID of my ion-content
-    this.content = this.app.getComponent('my-content');
+  @ViewChild(Content) content: Content;
+
+  scrollTo() {
+    // set the scrollLeft to 0px, and scrollTop to 500px
+    // the scroll duration should take 200ms
+    this.content.scrollTo(0, 500, 200);
   }
-   scrollTo() {
-     this.content.scrollTo(0, 500, 200);
-   }
 }
 </code></pre>
 
@@ -550,7 +540,7 @@ export class MyPage{
   <code>number</code>
       </td>
       <td>
-        <p>Duration of the scroll animation in ms.</p>
+        <p>Duration of the scroll animation in milliseconds. Defaults to <code>300</code>.</p>
 
         
       </td>
@@ -562,45 +552,129 @@ export class MyPage{
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when done
+  <code>Promise</code> Returns a promise which is resolved when the scroll has completed.
 </div>
 
 <div id="scrollToTop"></div>
 
 <h3>
 <a class="anchor" name="scrollToTop" href="#scrollToTop"></a>
-<code>scrollToTop()</code>
+<code>scrollToTop(duration)</code>
   
 
 </h3>
 
 <p>Scroll to the top of the content component.</p>
 
-<pre><code class="language-ts">@Page({
-  template: `&lt;ion-content id="my-content"&gt;
-     &lt;button (click)="scrollTop()"&gt; Down 500px&lt;/button&gt;
-  &lt;/ion-content&gt;`
+<pre><code class="language-ts">import {ViewChild} from 'angular2/core';
+import {Content} from 'ionic-angular';
+
+@Page({
+  template: `&lt;ion-content&gt;
+               &lt;button (click)="scrollToTop()"&gt;Scroll to top&lt;/button&gt;
+             &lt;/ion-content&gt;`
 )}
 export class MyPage{
-   constructor(app: IonicApp){
-       this.app = app;
-   }
-  // Need to wait until the component has been initialized
-  ngAfterViewInit() {
-    // Here 'my-content' is the ID of my ion-content
-    this.content = this.app.getComponent('my-content');
+  @ViewChild(Content) content: Content;
+
+  scrollToTop() {
+    this.content.scrollToTop();
   }
-   scrollTop() {
-     this.content.scrollToTop();
-   }
 }
 </code></pre>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        duration
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Duration of the scroll animation in milliseconds. Defaults to <code>300</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Promise</code> Returns a promise when done
+  <code>Promise</code> Returns a promise which is resolved when the scroll has completed.
 </div>
+
+<div id="getScrollTop"></div>
+
+<h3>
+<a class="anchor" name="getScrollTop" href="#getScrollTop"></a>
+<code>getScrollTop()</code>
+  
+
+</h3>
+
+<p>Get the <code class="highlighter-rouge">scrollTop</code> property of the content’s scrollable element.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> 
+</div>
+
+<div id="setScrollTop"></div>
+
+<h3>
+<a class="anchor" name="setScrollTop" href="#setScrollTop"></a>
+<code>setScrollTop(top)</code>
+  
+
+</h3>
+
+<p>Set the <code class="highlighter-rouge">scrollTop</code> property of the content’s scrollable element.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        top
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 <div id="getContentDimensions"></div>
 
