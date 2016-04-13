@@ -12,11 +12,11 @@
 
 
 
-    <title>Geolocation - Class in module  -  Ionic Framework</title>
+    <title>Ionic 2 Resources | Windows Platform Setup - Ionic 2 Developer Preview -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-geolocation"
-        class="v2 docs page-geolocation"
+  <body id="docs-page-windows_setup"
+        class="v2 docs page-windows_setup"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -247,11 +247,9 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
-        
-          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -329,7 +327,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Flashlight">Flashlight</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/Geolocation">Geolocation</a>
 </li>
 <li class="capitalize ">
@@ -466,9 +464,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showResources = !showResources">Resources</a>
     <ul ng-show="showResources"
+        
+          ng-init="showResources = true"
         >
       
       
@@ -491,7 +491,7 @@
       <li class="">
         <a href="/docs/v2/resources/platform-setup/mac-setup.html">OSX Setup</a>
       </li>
-      <li class="">
+      <li class="active">
         <a href="/docs/v2/resources/platform-setup/windows-setup.html">Windows Setup</a>
       </li>
     </ul>
@@ -502,160 +502,75 @@
       </nav>
       
       <main>
-        <h1 class="api-title">
+        <h2 id="windows">Windows</h2>
 
-  
-  Geolocation
-  
+<p>There are two paths you can take to set up a Windows machine. One is installing all the dependencies one by one, and the other is installing the Tools for Cordova plugin for Visual Studio 2015. We go over the process of using the Visual Studio installer in <a href="http://blog.ionic.io/visual-studio-tools-for-apache-cordova/">our blog</a>.</p>
 
-  
+<h3 id="common-tools">Common Tools</h3>
 
-  
+<p>For the most part, Node and NPM are going to be used extensively for Ionic and Cordova. You can use the installer from <a href="https://nodejs.org">the Node website</a> or <a href="https://chocolatey.org">Chocolatey package manager</a></p>
 
-</h1>
+<p>Once installed, you should have access to both <code class="highlighter-rouge">node</code> and <code class="highlighter-rouge">npm</code> from your command line.</p>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/geolocation.ts#L91">
-  Improve this doc
-</a></p>
+<h3 id="ios">iOS</h3>
+<p>The iOS SDK does not run on Windows, so nothing to do here. Still want to build for iOS, though? Check out <a href="http://ionic.io/platform#packaging">Package</a>, part of the Ionic Platform.</p>
 
-<!-- decorators -->
+<h3 id="java">Java</h3>
+<p>We’ll need to download Java from <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">their website</a>. The install puts Java in your <code class="highlighter-rouge">C:\Program Files\Java</code> folder, so navigate there and pick the version of Java you’ve installed. Copy this location (including the version number) as you’ll need it for later.</p>
 
-<pre><code>$ cordova plugin add cordova-plugin-geolocation</code></pre>
-<p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-geolocation">
-    https://github.com/apache/cordova-plugin-geolocation
-  </a>
-</p>
+<h3 id="android">Android</h3>
+<p>Download Android Studio and go through the installer and set up the IDE. It should print out a location for where the Android SDK gets installed; copy this down for future use.</p>
 
-<!-- description -->
+<p>Next, inside the new <code class="highlighter-rouge">SDK</code> location, we’ll run <code class="highlighter-rouge">tools/android</code> to open the Android SDK Manager. We’ll want to install:</p>
 
-<p>This plugin provides information about the device&#39;s location, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs.</p>
-<p> This API is based on the W3C Geolocation API Specification, and only executes on devices that don&#39;t already provide an implementation.</p>
+<ul>
+  <li>Android Platform SDK for your targeted version of Android</li>
+  <li>Android Platform-Tools</li>
+  <li>Android SDK build-tools version 19.1.0 or higher</li>
+  <li>Android Support Repository (found under “Extras”)</li>
+</ul>
 
-<!-- @usage tag -->
+<p>Accept the license and let the packages install.</p>
 
-<h2>Usage</h2>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>Now that everything’s installed, we’ll need to set some environment variables for our command line.
+From the startmenu, search for “System Environment Variables”. From here, we’ll update the user variable <code class="highlighter-rouge">PATH</code> and create a new variable of <code class="highlighter-rouge">JAVA_HOME</code></p>
 
-<pre><code class="lang-ts">import {Geolocation} from &#39;ionic-native&#39;;
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">JAVA_HOME</code> : The path to where Java is installed.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">PATH</code> : Two entries, one where Tools are installed for the Android SDK, and another for Platform tools</p>
+  </li>
+</ul>
 
+<p>From here, we should be able to run</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># check java version</span>
+java -version
 
-Geolocation.getCurrentPosition().then((resp) =&gt; {
- //resp.coords.latitude
- //resp.coords.longitude
-})
-
-let watch = Geolocation.watchPosition();
-watch.subscribe((data) =&gt; {
- //data.coords.latitude
- //data.coords.longitude
-})
+<span class="c"># start android SDK manager</span>
+android
 </code></pre>
-
-<!-- @property tags -->
-<h2>Static Methods</h2>
-<div id="getCurrentPosition"></div>
-<h3><code>getCurrentPosition(options)</code>
-
-</h3>
-
-<p>Get the device’s current position.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-<code>GeolocationOptions</code>
-    </td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions">geolocation options</a>.</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Position">position</a> of the device, or rejects with an error.</p>
-
 </div>
 
-<div id="watchPosition"></div>
-<h3><code>watchPosition(options)</code>
+<p>Now, you should be able to create and build an Android project from the command line.
+### Windows Universal Apps</p>
 
-</h3>
+<p>To build apps for Windows Universal, download and install Visual Studio 2015 Community Edition. During the installation, Select “Tools for Cross Platform Development” as well as the SDK for Windows Universal Apps.</p>
 
-<p>Watch the current device’s position.  Clear the watch by unsubscribing from
-Observable changes.</p>
+<p>With everything installed, you’ll be able to add a windows platform from the command line with this command:</p>
 
-<pre><code class="language-ts">var subscription = Geolocation.watchPosition().subscribe(position =&gt; {
-  console.log(position.coords.longitude + ' ' + position.coords.latitude);
-});
-
-// To stop notifications
-subscription.unsubscribe();
+<div class="highlighter-rouge"><pre class="highlight"><code>ionic platform add windows
 </code></pre>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      options
-      
-      
-    </td>
-    <td>
-      
-<code>GeolocationOptions</code>
-    </td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions">geolocation options</a>.</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns an Observable that notifies with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Position">position</a> of the device, or errors.</p>
-
 </div>
 
-<!-- methods on the class -->
-<!-- related link -->
-<!-- end content block -->
+<p>By default the <code class="highlighter-rouge">build</code> command produces two packages: Windows 8.1 and Windows Phone 8.1, which Ionic does not support. To upgrade Windows package to version 10 the following configuration setting must be added to configuration file (config.xml).</p>
 
-<!-- end body block -->
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;preference</span> <span class="na">name=</span><span class="s">"windows-target-version"</span> <span class="na">value=</span><span class="s">"10.0"</span> <span class="nt">/&gt;</span>
+</code></pre>
+</div>
 
 
       </main>
