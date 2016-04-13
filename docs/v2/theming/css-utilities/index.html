@@ -12,11 +12,11 @@
 
 
 
-    <title>Network - Class in module  -  Ionic Framework</title>
+    <title>CSS Utilities - Ionic Theming -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-network"
-        class="v2 docs page-network"
+  <body id="docs-page-css_utilities"
+        class="v2 docs page-css_utilities"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -247,11 +247,9 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
-        
-          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -353,7 +351,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
 </li>
 <li class="capitalize ">
@@ -391,9 +389,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showTheming = !showTheming">Theming</a>
     <ul ng-show="showTheming"
+        
+          ng-init="showTheming = true"
         >
       <li class="">
         <a href="/docs/v2/theming/">Intro</a>
@@ -505,136 +505,118 @@
       </nav>
       
       <main>
-        <h1 class="api-title">
+        <h1 class="title">Utility Attributes</h1>
 
-  
-  Network
-  
-
-  
-
-  
-
-</h1>
-
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/network.ts#L3">
+<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/theming/css-utilities/index.md">
   Improve this doc
 </a></p>
 
-<!-- decorators -->
+<p>Ionic provides a set SCSS/CSS utility attributes that can help when developing your app.</p>
 
-<pre><code>$ cordova plugin add cordova-plugin-network-information</code></pre>
-<p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-network-information">
-    https://github.com/apache/cordova-plugin-network-information
-  </a>
-</p>
+<h3 id="text-transformation">Text Transformation</h3>
 
-<!-- description -->
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">text-left</code></td>
+      <td>align the text of the element to it’s left</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-center</code></td>
+      <td>align the text of the element to it’s center</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-right</code></td>
+      <td>align the text of the element to it’s right</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-justify</code></td>
+      <td>Stretches the lines so that each line has equal width</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-nowrap</code></td>
+      <td>don’t wrap text</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-uppercase</code></td>
+      <td>transforms text to all caps</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-lowercase </code></td>
+      <td>transforms text to all lowercase</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">text-capitalize</code></td>
+      <td>transforms the first letter of the text to capitals.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Requires Cordova plugin: cordova-plugin-network-information. For more info, please see the <a href="https://github.com/apache/cordova-plugin-network-information">Network plugin docs</a>.</p>
+<h3 id="element-padding">Element Padding</h3>
 
-<!-- @platforms tag -->
-<h2>Supported platforms</h2>
-
-<ul>
-  <li>Amazon Fire OS</li>
-  
-  <li>iOS</li>
-  
-  <li>Android</li>
-  
-  <li>BlackBerry 10</li>
-  
-  <li>Windows Phone 7</li>
-  
-  <li>Windows Phone 8</li>
-  
-  <li>Windows</li>
-  
-  <li>Firefox OS</li>
-  
-  <li>Browser</li>
-  </ul>
-
-<!-- @platforms tag end -->
-
-<!-- @usage tag -->
-
-<h2>Usage</h2>
-
-<pre><code class="lang-js">import {Network, Connection} from &#39;ionic-native&#39;;
-
-// watch network for a disconnect
-let disconnectSubscription = Network.onDisconnect().subscribe(() =&gt; {
-  console.log(&#39;network was disconnected :-( &#39;)
-});
-
-// stop disconnect watch
-disconnectSubscription.unsubscribe();
-
-
-// watch network for a connection
-let connectSubscription = Network.onConnect().subscribe(() =&gt; {
-  console.log(&#39;network connected!&#39;); 
-  // We just got a connection but we need to wait briefly
- // before we determine the connection type.  Might need to wait 
-  // prior to doing any api requests as well.
-  setTimeout(() =&gt; {
-    console.log(Network.connection);
-    if (Network.connection === Connection.WIFI) {
-      console.log(&#39;we got a wifi connection, woohoo!&#39;);
-    }
-  });
-});
-
-// stop connect watch
-connectSubscription.unsubscribe();
-</code></pre>
-
-<!-- @property tags -->
-<h2>Static Methods</h2>
-<div id="connection"></div>
-<h3><code>connection()</code>
-
-</h3>
-
-<p>Return the network connection type</p>
-
-<div id="onDisconnect"></div>
-<h3><code>onDisconnect()</code>
-
-</h3>
-
-<p>Watch the network for a disconnect (i.e. network goes offline)</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Observable&lt;any&gt;</code> Returns an observable.</p>
-</div>
-
-<div id="onConnect"></div>
-<h3><code>onConnect()</code>
-
-</h3>
-
-<p>Watch the network for a connection (i.e. network goes online)</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Observable&lt;any&gt;</code> Returns an observable.</p>
-</div>
-
-<!-- methods on the class -->
-<!-- related link -->
-<!-- end content block -->
-
-<!-- end body block -->
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">padding</code></td>
+      <td>adds padding to the whole element</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-top</code></td>
+      <td>adds padding-top</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-left</code></td>
+      <td>adds padding-left</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-right</code></td>
+      <td>adds padding-right</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-bottom</code></td>
+      <td>adds padding-bottom</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-vertical</code></td>
+      <td>adds padding to the top and botttom</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">padding-horizontal</code></td>
+      <td>adds padding to the left and right</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">no-padding</code></td>
+      <td>removes any padding</td>
+    </tr>
+  </tbody>
+</table>
 
 
       </main>
+    </div>
+    
+    <div class="footer-links">
+      <hr>
+      
+        <a class="footer-link prev" href="/docs/v2/theming/sass-variables/">
+          Sass Variables</a>
+      
+      
+        <a class="footer-link next" href="/docs/v2/theming/platform-specific-styles/">
+          Platform Specific Theming</a>
+      
     </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
