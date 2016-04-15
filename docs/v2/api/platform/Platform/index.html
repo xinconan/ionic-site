@@ -479,10 +479,13 @@ Platform
 Improve this doc
 </a></p>
 
-<p>Platform returns the availble information about your current platform.
-Platforms in Ionic 2 are much more complex then in V1, returns not just a single platform,
-but a hierarchy of information, such as a devices OS, phone vs tablet, or mobile vs browser.
-With this information you can completely custimize your app to fit any device and platform.</p>
+<p>The Platform service can be used to get information about your current device.
+You can get all of the platforms associated with the device using the <a href="#platforms">platforms</a>
+method, including whether the app is being viewed from a tablet, if it&#39;s
+on a mobile device or browser, and the exact platform (ios, android, etc).
+You can also get the orientation of the device, if it uses right-to-left
+language direction, and much much more. With this information you can completely
+customize your app to fit any device.</p>
 
 <!-- @usage tag -->
 
@@ -492,9 +495,9 @@ With this information you can completely custimize your app to fit any device an
 
 @Page({...})
 export MyPage {
-   constructor(platform: Platform){
-     this.platform = platform;
-   }
+  constructor(platform: Platform) {
+    this.platform = platform;
+  }
 }
 </code></pre>
 
@@ -519,38 +522,78 @@ for more than one platform name. For example, an app running from
 an iPad would return <code class="highlighter-rouge">true</code> for the platform names: <code class="highlighter-rouge">mobile</code>,
 <code class="highlighter-rouge">ios</code>, <code class="highlighter-rouge">ipad</code>, and <code class="highlighter-rouge">tablet</code>. Additionally, if the app was running
 from Cordova then <code class="highlighter-rouge">cordova</code> would be true, and if it was running
-from a web browser on the iPad then then <code class="highlighter-rouge">mobileweb</code> would also
-be <code class="highlighter-rouge">true</code>.</p>
-
-<p>Possible built-in platform names:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">android</code></li>
-  <li><code class="highlighter-rouge">cordova</code></li>
-  <li><code class="highlighter-rouge">core</code></li>
-  <li><code class="highlighter-rouge">ios</code></li>
-  <li><code class="highlighter-rouge">ipad</code></li>
-  <li><code class="highlighter-rouge">iphone</code></li>
-  <li><code class="highlighter-rouge">mobile</code></li>
-  <li><code class="highlighter-rouge">mobileweb</code></li>
-  <li><code class="highlighter-rouge">phablet</code></li>
-  <li><code class="highlighter-rouge">tablet</code></li>
-  <li><code class="highlighter-rouge">windows</code></li>
-</ul>
+from a web browser on the iPad then <code class="highlighter-rouge">mobileweb</code> would be <code class="highlighter-rouge">true</code>.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
 
 @Page({...})
 export MyPage {
-   constructor(platform: Platform) {
-     if (platform.is('ios')) {
-       // what ever you need to do
-       // if the platform is ios
-     }
-   }
+  constructor(platform: Platform) {
+    this.platform = platform;
+
+    if (this.platform.is('ios')) {
+      // This will only print when on ios
+      console.log("I'm an ios device!");
+    }
+  }
 }
 </code></pre>
 </div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Platform Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>android</td>
+      <td>on a device running Android.</td>
+    </tr>
+    <tr>
+      <td>cordova</td>
+      <td>on a device running Cordova.</td>
+    </tr>
+    <tr>
+      <td>core</td>
+      <td>on a desktop device.</td>
+    </tr>
+    <tr>
+      <td>ios</td>
+      <td>on a device running iOS.</td>
+    </tr>
+    <tr>
+      <td>ipad</td>
+      <td>on an iPad device.</td>
+    </tr>
+    <tr>
+      <td>iphone</td>
+      <td>on an iPhone device.</td>
+    </tr>
+    <tr>
+      <td>mobile</td>
+      <td>on a mobile device.</td>
+    </tr>
+    <tr>
+      <td>mobileweb</td>
+      <td>in a browser on a mobile device.</td>
+    </tr>
+    <tr>
+      <td>phablet</td>
+      <td>on a phablet device.</td>
+    </tr>
+    <tr>
+      <td>tablet</td>
+      <td>on a tablet device.</td>
+    </tr>
+    <tr>
+      <td>windows</td>
+      <td>on a device running Windows.</td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -599,16 +642,18 @@ export MyPage {
 
 <p>Depending on what device you are on, <code class="highlighter-rouge">platforms</code> can return multiple values.
 Each possible value is a hierarchy of platforms. For example, on an iPhone,
-it would return mobile, ios, and iphone.</p>
+it would return <code class="highlighter-rouge">mobile</code>, <code class="highlighter-rouge">ios</code>, and <code class="highlighter-rouge">iphone</code>.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
+
+@Page({...})
 export MyPage {
-   constructor(platform: Platform) {
-     this.platform = platform;
-     console.log(this.platform.platforms());
-     // This will return an array of all the availble platforms
-     // From if your on mobile, to mobile os, and device name
-   }
+  constructor(platform: Platform) {
+    this.platform = platform;
+
+    // This will print an array of the current platforms
+    console.log(this.platform.platforms());
+  }
 }
 </code></pre>
 </div>
@@ -629,15 +674,19 @@ export MyPage {
 
 </h3>
 
-<p>Returns an object containing information about the platforms.</p>
+<p>Returns an object containing version information about all of the platforms.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
 
 @Page({...})
 export MyPage {
-   constructor(platform: Platform) {
-     console.log(platform.versions());
-   }
+  constructor(platform: Platform) {
+    this.platform = platform;
+
+    // This will print an object containing
+    // all of the platforms and their versions
+    console.log(platform.versions());
+  }
 }
 </code></pre>
 </div>
@@ -698,12 +747,12 @@ will resolve when Cordova triggers the <code class="highlighter-rouge">devicerea
 
 @Page({...})
 export MyPage {
-   constructor(platform: Platform) {
-     platform.ready().then(() =&gt; {
-       console.log('Platform ready');
-       // The platform is now ready, execute any native code you want
-      });
-   }
+  constructor(platform: Platform) {
+    platform.ready().then(() =&gt; {
+      console.log('Platform ready');
+      // The platform is now ready, execute any native code you want
+    });
+  }
 }
 </code></pre>
 </div>
