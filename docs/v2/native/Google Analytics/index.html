@@ -12,11 +12,11 @@
 
 
 
-    <title>File - Class in module  -  Ionic Framework</title>
+    <title>Google Analytics - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-file"
-        class="v2 docs page-file"
+  <body id="docs-page-google-analytics"
+        class="v2 docs page-google-analytics"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -323,7 +323,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Facebook">Facebook</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/File">File</a>
 </li>
 <li class="capitalize ">
@@ -335,7 +335,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Globalization">Globalization</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
@@ -511,7 +511,7 @@
         <h1 class="api-title">
 
   
-  File
+  Google Analytics
   
 
   
@@ -520,41 +520,51 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/file.ts#L2">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/googleanalytics.ts#L2">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ cordova plugin add cordova-plugin-file</code></pre>
+<pre><code>$ cordova plugin add cordova-plugin-google-analytics</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-file">
-    https://github.com/apache/cordova-plugin-file
+  <a href="https://github.com/danwilson/google-analytics-plugin">
+    https://github.com/danwilson/google-analytics-plugin
   </a>
 </p>
 
 <!-- description -->
 
-<p>This plugin implements a File API allowing read/write access to files residing on the device.</p>
-<p> This plugin is based on several specs, including : The HTML5 File API <a href="http://www.w3.org/TR/FileAPI/">http://www.w3.org/TR/FileAPI/</a>
- The (now-defunct) Directories and System extensions Latest: <a href="http://www.w3.org/TR/2012/WD-file-system-api-20120417/">http://www.w3.org/TR/2012/WD-file-system-api-20120417/</a>
- Although most of the plugin code was written when an earlier spec was current: <a href="http://www.w3.org/TR/2011/WD-file-system-api-20110419/">http://www.w3.org/TR/2011/WD-file-system-api-20110419/</a>
- It also implements the FileWriter spec : <a href="http://dev.w3.org/2009/dap/file-system/file-writer.html">http://dev.w3.org/2009/dap/file-system/file-writer.html</a></p>
+<p>This plugin connects to Google&#39;s native Universal Analytics SDK
+Prerequisites:</p>
+<ul>
+<li>A Cordova 3.0+ project for iOS and/or Android</li>
+<li>A Mobile App property through the Google Analytics Admin Console</li>
+<li>(Android) Google Play Services SDK installed via <a href="https://developer.android.com/sdk/installing/adding-packages.html">Android SDK Manager</a></li>
+</ul>
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Android</li>
+  
+  <li>iOS</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="cordovaFileError"></div>
-<h3><code>cordovaFileError()</code>
+<div id="startTrackerWithId"></div>
+<h3><code>startTrackerWithId(id)</code>
 
 </h3>
 
-<div id="checkDir"></div>
-<h3><code>checkDir(path,&nbsp;dir)</code>
-
-</h3>
-<p>Check if a directory exists in a certain path, directory.</p>
+<p>In your ‘deviceready’ handler, set up your Analytics tracker.
+https://developers.google.com/analytics/devguides/collection/analyticsjs/</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -568,7 +578,7 @@
   
   <tr>
     <td>
-      path
+      id
       
       
     </td>
@@ -577,24 +587,7 @@
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dir
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory to check</p>
+      <p>Your Google Analytics Mobile App property</p>
 
       
     </td>
@@ -603,20 +596,13 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="createDir"></div>
-<h3><code>createDir(path,&nbsp;dirName,&nbsp;replace)</code>
+<div id="trackView"></div>
+<h3><code>trackView(title)</code>
 
 </h3>
-<p>Creates a new directory in the specific path.
-The replace boolean value determines whether to replace an existing directory with the same name.
-If an existing directory exists and the replace value is false, the promise will fail and return an error.</p>
+
+<p>Track a screen
+https://developers.google.com/analytics/devguides/collection/analyticsjs/screens</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -630,7 +616,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      title
       
       
     </td>
@@ -639,15 +625,36 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+      <p>Screen title</p>
 
       
     </td>
   </tr>
   
+  </tbody>
+</table>
+
+<div id="trackEvent"></div>
+<h3><code>trackEvent(category,&nbsp;action,&nbsp;label,&nbsp;value)</code>
+
+</h3>
+
+<p>Track an event
+https://developers.google.com/analytics/devguides/collection/analyticsjs/events</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
   <tr>
     <td>
-      dirName
+      category
       
       
     </td>
@@ -656,15 +663,98 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Name of directory to create</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      replace
+      action
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      label
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      value
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="trackException"></div>
+<h3><code>trackException(description,&nbsp;fatal)</code>
+
+</h3>
+
+<p>Track an exception</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      description
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      fatal
       
       
     </td>
@@ -673,8 +763,7 @@ If an existing directory exists and the replace value is false, the promise will
 <code>boolean</code>
     </td>
     <td>
-      <p>If true, replaces file with same name. If false returns error</p>
-
+      
       
     </td>
   </tr>
@@ -682,18 +771,12 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="removeDir"></div>
-<h3><code>removeDir(path,&nbsp;dirName)</code>
+<div id="trackTiming"></div>
+<h3><code>trackTiming(category,&nbsp;intervalInMilliseconds,&nbsp;variable,&nbsp;label)</code>
 
 </h3>
-<p>Remove a directory at a given path</p>
+
+<p>Track User Timing (App Speed)</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -707,7 +790,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      category
       
       
     </td>
@@ -716,15 +799,30 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>The path to the directory</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      dirName
+      intervalInMilliseconds
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      variable
       
       
     </td>
@@ -733,8 +831,23 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>The directory name</p>
-
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      label
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
       
     </td>
   </tr>
@@ -742,18 +855,13 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="moveDir"></div>
-<h3><code>moveDir(path,&nbsp;dirName,&nbsp;newPath,&nbsp;newDirName)</code>
+<div id="addTransaction"></div>
+<h3><code>addTransaction(id,&nbsp;affiliation,&nbsp;revenue,&nbsp;tax,&nbsp;shipping,&nbsp;currencyCode)</code>
 
 </h3>
-<p>Move a directory to a given path</p>
+
+<p>Add a Transaction (Ecommerce)
+https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addTrans</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -767,7 +875,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      id
       
       
     </td>
@@ -776,15 +884,14 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>The source path to the directory</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      dirName
+      affiliation
       
       
     </td>
@@ -793,32 +900,62 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>The source directory name</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      newPath
+      revenue
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>number</code>
     </td>
     <td>
-      <p>The destionation path to the directory</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      newDirName
+      tax
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      shipping
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      currencyCode
       
       
     </td>
@@ -827,8 +964,7 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>The destination directory name</p>
-
+      
       
     </td>
   </tr>
@@ -836,18 +972,13 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="copyDir"></div>
-<h3><code>copyDir(path,&nbsp;dirName,&nbsp;newPath,&nbsp;newDirName)</code>
+<div id="addTransactionItem"></div>
+<h3><code>addTransactionItem(id,&nbsp;name,&nbsp;sku,&nbsp;category,&nbsp;price,&nbsp;quantity,&nbsp;currencyCode)</code>
 
 </h3>
-<p>Copy a directory in various methods. If destination directory exists, will fail to copy.</p>
+
+<p>Add a Transaction Item (Ecommerce)
+https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addItem</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -861,7 +992,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      id
       
       
     </td>
@@ -870,15 +1001,14 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      dirName
+      name
       
       
     </td>
@@ -887,15 +1017,14 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Name of directory to copy</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      newPath
+      sku
       
       
     </td>
@@ -904,15 +1033,14 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem of new location</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      newDirName
+      category
       
       
     </td>
@@ -921,8 +1049,55 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>New name of directory to copy to (leave blank to remain the same)</p>
-
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      price
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      quantity
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      currencyCode
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
       
     </td>
   </tr>
@@ -930,18 +1105,13 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="listDir"></div>
-<h3><code>listDir(path,&nbsp;dirName)</code>
+<div id="addCustomDimension"></div>
+<h3><code>addCustomDimension(key,&nbsp;value)</code>
 
 </h3>
-<p>List files and directory from a given path</p>
+
+<p>Add a Custom Dimension
+https://developers.google.com/analytics/devguides/platform/customdimsmets</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -955,7 +1125,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      key
       
       
     </td>
@@ -964,15 +1134,14 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
+      
       
     </td>
   </tr>
   
   <tr>
     <td>
-      dirName
+      value
       
       
     </td>
@@ -981,8 +1150,7 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Name of directory</p>
-
+      
       
     </td>
   </tr>
@@ -990,18 +1158,13 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="removeRecursively"></div>
-<h3><code>removeRecursively(path,&nbsp;dirName)</code>
+<div id="setUserId"></div>
+<h3><code>setUserId(id)</code>
 
 </h3>
-<p>Removes all files and the directory from a desired location.</p>
+
+<p>Set a UserId
+https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1015,7 +1178,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      id
       
       
     </td>
@@ -1024,25 +1187,7 @@ If an existing directory exists and the replace value is false, the promise will
 <code>string</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
       
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory</p>
-
       
     </td>
   </tr>
@@ -1050,18 +1195,19 @@ If an existing directory exists and the replace value is false, the promise will
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="checkFile"></div>
-<h3><code>checkFile(path,&nbsp;file)</code>
+<div id="debugMode"></div>
+<h3><code>debugMode()</code>
 
 </h3>
-<p>Check if a file exists in a certain path, directory.</p>
+
+<p>Enable verbose logging</p>
+
+<div id="enableUncaughtExceptionReporting"></div>
+<h3><code>enableUncaughtExceptionReporting(shouldEnable)</code>
+
+</h3>
+
+<p>Enable/disable automatic reporting of uncaught exceptions</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1075,103 +1221,7 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      file
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to check</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="createFile"></div>
-<h3><code>createFile(path,&nbsp;fileName,&nbsp;replace)</code>
-
-</h3>
-<p>Creates a new file in the specific path.
-The replace boolean value determines whether to replace an existing file with the same name.
-If an existing file exists and the replace value is false, the promise will fail and return an error.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to create</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      replace
+      shouldEnable
       
       
     </td>
@@ -1180,269 +1230,13 @@ If an existing file exists and the replace value is false, the promise will fail
 <code>boolean</code>
     </td>
     <td>
-      <p>If true, replaces file with same name. If false returns error</p>
-
+      
       
     </td>
   </tr>
   
   </tbody>
 </table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="removeFile"></div>
-<h3><code>removeFile(path,&nbsp;fileName)</code>
-
-</h3>
-<p>Removes a file from a desired location.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to remove</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="moveFile"></div>
-<h3><code>moveFile(path,&nbsp;fileName,&nbsp;newPath,&nbsp;newFileName)</code>
-
-</h3>
-<p>Move a file to a given path.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to move</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem of new location</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newFileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>New name of file to move to (leave blank to remain the same)</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
-
-<div id="copyFile"></div>
-<h3><code>copyFile(path,&nbsp;fileName,&nbsp;newPath,&nbsp;newFileName)</code>
-
-</h3>
-<p>Copy a file in various methods. If file exists, will fail to copy.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to copy</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem of new location</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newFileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>New name of file to copy to (leave blank to remain the same)</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
-
-</div>
 
 <!-- methods on the class -->
 <!-- related link -->
