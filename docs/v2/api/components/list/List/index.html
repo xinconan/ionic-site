@@ -509,11 +509,12 @@ removing items.</p>
 
 <p>Enable sliding items if your page has them</p>
 
-<pre><code class="language-ts">export class MyClass {
-   constructor(app: IonicApp){
-     this.app = app;
-     this.list = this.app.getComponent('my-list');
-   }
+<pre><code class="language-ts">import {Page, List} from 'ionic-angular';
+import {ViewChild} from 'angular2/core';
+@Page...
+export class MyClass {
+   @ViewChild(List) list: List;
+   constructor(){}
    stopSliding(){
      this.list.enableSlidingItems(false);
    }
@@ -561,13 +562,12 @@ removing items.</p>
 
 <p>Enable sliding items if your page has</p>
 
-<pre><code class="language-ts">export class MyClass {
-   constructor(app: IonicApp){
-     this.app = app;
-     this.list = this.app.getComponent('my-list');
-   }
-   // Here we have some method that will close the items
-   // when called
+<pre><code class="language-ts">import {Page, List} from 'ionic-angular';
+import {ViewChild} from 'angular2/core';
+@Page...
+export class MyClass {
+   @ViewChild(List) list: List;
+   constructor(){}
    closeItmes(){
      this.list.closeSlidingItems();
    }
