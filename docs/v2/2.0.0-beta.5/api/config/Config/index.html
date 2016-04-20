@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ionic makes it incredibly easy to build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<meta name="author" content="Drifty">
+<meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
+
+<link href="/css/v2.css?7" rel="stylesheet">
+
+
+
+    <title>Config - Ionic API Documentation -  Ionic Framework</title>
+
+  </head>
+  <body id="docs-page-config"
+        class="v2 docs page-config"
+        data-spy="scroll"
+        data-target="#components-index"
+        ng-app="IonicDocs">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand" href="/docs/v2">
+        <img src="/img/ionic-docs-logo-sm.png" id="ionic-docs-logo" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/docs/v2/getting-started/installation/">Getting Started</a></li>
+        <li class="active"><a href="/docs/v2/">Docs</a></li>
+        <li><a href="http://blog.ionic.io/">Blog</a></li>
+        <li><a href="http://forum.ionicframework.com/">Forum</a></li>
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">
+            More <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="http://ionic.io/">
+              Ionic Platform</a></li>
+            <li><a target="_blank" href="http://showcase.ionicframework.com/">
+              Showcase</a></li>
+            <li><a target="_blank" href="http://jobs.ionic.io/">
+              Job Board</a></li>
+            <li><a target="_blank" href="http://market.ionic.io/">
+              Market</a></li>
+            <li><a target="_blank" href="http://ionicworldwide.herokuapp.com/">
+              Ionic Worldwide</a></li>
+            <li><a target="_blank" href="http://play.ionic.io/">
+              Playground</a></li>
+            <li><a target="_blank" href="http://creator.ionic.io/">
+              Creator</a></li>
+            <li><a target="_blank" href="http://shop.ionic.io/">Shop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="docs-container"
+         
+           ng-controller="APIDemoCtrl"
+         >
+      <nav class="side-nav" id="side-nav">
+        <form class="form-group search" role="search">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="sidebar"
+                 ng-model="searchTerm">
+        </form>
+        
+          <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/v2/api/"
+   >
+    2.0.0-nightly 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.5/api/"
+   selected>
+    2.0.0-beta.5 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.4/api/"
+   >
+    2.0.0-beta.4 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.3/api/"
+   >
+    2.0.0-beta.3 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.2/api/"
+   >
+    2.0.0-beta.2 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.1/api/"
+   >
+    2.0.0-beta.1 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.0/api/"
+   >
+    2.0.0-beta.0 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.57/api/"
+   >
+    2.0.0-alpha.57 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.56/api/"
+   >
+    2.0.0-alpha.56 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.55/api/"
+   >
+    2.0.0-alpha.55 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.54/api/"
+   >
+    2.0.0-alpha.54 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.53/api/"
+   >
+    2.0.0-alpha.53 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.44/api/"
+   >
+    2.0.0-alpha.44 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.43/api/"
+   >
+    2.0.0-alpha.43 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.42/api/"
+   >
+    2.0.0-alpha.42 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.40/api/"
+   >
+    2.0.0-alpha.40 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.37/api/"
+   >
+    2.0.0-alpha.37 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.36/api/"
+   >
+    2.0.0-alpha.36 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.35/api/"
+   >
+    2.0.0-alpha.35 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="/docs/v2">Back to Main Docs</a>
+  </li>
+  
+    
+
+    
+  
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/action-sheet/ActionSheet">ActionSheet</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/alert/Alert">Alert</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/decorators/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize active">
+  <a href="/docs/v2/2.0.0-beta.5/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/app/IonicApp">IonicApp</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/util/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/loading/Loading">Loading</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/platform/storage/LocalStorage">LocalStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/modal/Modal">Modal</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/navbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/decorators/Page">Page</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/platform/storage/SqlStorage">SqlStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/input/TextArea">TextArea</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/nav/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/2.0.0-beta.5/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+    
+
+
+</ul>
+
+        
+      </nav>
+      
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+          <a ng-class="{active: windowsActive}"
+             ng-click="setPlatform('windows')">Windows</a>
+        </div>
+        <div id="demo-device-ios"
+             ng-class="previewPlatform"
+             ng-show="iosActive">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/config/?production=true&ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android"
+             ng-class="previewPlatform"
+             ng-show="androidActive">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/config/?production=true&ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-windows"
+             ng-class="previewPlatform"
+             ng-show="windowsActive">
+          <iframe id="demo-windows"
+                
+                  src="/docs/v2/demos/config/?production=true&ionicplatform=windows"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
+      
+      <main>
+        <h1 class="api-title">
+<a class="anchor" name="config" href="#config"></a>
+
+Config
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/config/config.ts#L9">
+Improve this doc
+</a></p>
+
+<p>The Config lets you configure your entire app or specific platforms.
+You can set the tab placement, icon mode, animations, and more here.</p>
+<pre><code class="lang-ts">@App({
+  template: `&lt;ion-nav [root]=&quot;root&quot;&gt;&lt;/ion-nav&gt;`
+  config: {
+    backButtonText: &#39;Go Back&#39;,
+    iconMode: &#39;ios&#39;,
+    modalEnter: &#39;modal-slide-in&#39;,
+    modalLeave: &#39;modal-slide-out&#39;,
+    tabbarPlacement: &#39;bottom&#39;,
+    pageTransition: &#39;ios&#39;,
+  }
+})
+</code></pre>
+<p>To change the mode to always use Material Design (md).</p>
+<pre><code class="lang-ts">@App({
+  template: `&lt;ion-nav [root]=&quot;root&quot;&gt;&lt;/ion-nav&gt;`
+  config: {
+    mode: &#39;md&#39;
+  }
+})
+</code></pre>
+<p>Config can be overwritten at multiple levels allowing for more configuration. Taking the example from earlier, we can override any setting we want based on a platform.</p>
+<pre><code class="lang-ts">@App({
+  template: `&lt;ion-nav [root]=&quot;root&quot;&gt;&lt;/ion-nav&gt;`
+  config: {
+    tabbarPlacement: &#39;bottom&#39;,
+    platforms: {
+     ios: {
+       tabbarPlacement: &#39;top&#39;,
+     }
+    }
+  }
+})
+</code></pre>
+<p>We could also configure these values at a component level. Take <code>tabbarPlacement</code>, we can configure this as a property on our <code>ion-tabs</code>.</p>
+<pre><code class="lang-html">&lt;ion-tabs tabbarPlacement=&quot;top&quot;&gt;
+  &lt;ion-tab tabTitle=&quot;Dash&quot; tabIcon=&quot;pulse&quot; [root]=&quot;tabRoot&quot;&gt;&lt;/ion-tab&gt;
+&lt;/ion-tabs&gt;
+</code></pre>
+<p>The last way we could configure is through URL query strings. This is useful for testing while in the browser.
+Simply add <code>?ionic&lt;PROPERTYNAME&gt;=&lt;value&gt;</code> to the url.</p>
+<pre><code class="lang-bash">http://localhost:8100/?ionicTabbarPlacement=bottom
+</code></pre>
+<p>Custom values can be added to config, and looked up at a later point in time.</p>
+<pre><code class="lang-javascript">config.set(&#39;ios&#39;, &#39;favoriteColor&#39;, &#39;green&#39;);
+// from any page in your app:
+config.get(&#39;favoriteColor&#39;); // &#39;green&#39;
+</code></pre>
+<p>A config value can come from anywhere and be anything, but there are a default set of values.</p>
+<table>
+<thead>
+<tr>
+<th>Config property</th>
+<th>Default iOS Value</th>
+<th>Default MD Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activator</td>
+<td>highlight</td>
+<td>ripple</td>
+</tr>
+<tr>
+<td>actionSheetEnter</td>
+<td>action-sheet-slide-in</td>
+<td>action-sheet-md-slide-in</td>
+</tr>
+<tr>
+<td>actionSheetLeave</td>
+<td>action-sheet-slide-out</td>
+<td>action-sheet-md-slide-out</td>
+</tr>
+<tr>
+<td>alertEnter</td>
+<td>alert-pop-in</td>
+<td>alert-md-pop-in</td>
+</tr>
+<tr>
+<td>alertLeave</td>
+<td>alert-pop-out</td>
+<td>alert-md-pop-out</td>
+</tr>
+<tr>
+<td>backButtonText</td>
+<td>Back</td>
+<td></td>
+</tr>
+<tr>
+<td>backButtonIcon</td>
+<td>ion-ios-arrow-back</td>
+<td>ion-md-arrow-back</td>
+</tr>
+<tr>
+<td>iconMode</td>
+<td>ios</td>
+<td>md</td>
+</tr>
+<tr>
+<td>menuType</td>
+<td>reveal</td>
+<td>overlay</td>
+</tr>
+<tr>
+<td>modalEnter</td>
+<td>modal-slide-in</td>
+<td>modal-md-slide-in</td>
+</tr>
+<tr>
+<td>modalLeave</td>
+<td>modal-slide-out</td>
+<td>modal-md-slide-out</td>
+</tr>
+<tr>
+<td>pageTransition</td>
+<td>ios-transition</td>
+<td>md-transition</td>
+</tr>
+<tr>
+<td>pageTransitionDelay</td>
+<td>16</td>
+<td>120</td>
+</tr>
+<tr>
+<td>tabbarPlacement</td>
+<td>bottom</td>
+<td>top</td>
+</tr>
+<tr>
+<td>tabbarHighlight</td>
+<td></td>
+<td>top</td>
+</tr>
+<tr>
+<td>tabbarLayout</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tabSubPages</td>
+<td></td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+
+<!-- @usage tag -->
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="get"></div>
+
+<h3>
+<a class="anchor" name="get" href="#get"></a>
+<code>get(key,&nbsp;fallbackValue)</code>
+  
+
+</h3>
+
+<p>Returns a single config value, given a key.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        key
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>the key for the config value</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        fallbackValue
+        
+        
+      </td>
+      <td>
+        
+  <code>any</code>
+      </td>
+      <td>
+        <p>a fallback value to use when the config
+value was not found, or is config value is <code>null</code>. Fallback value
+ defaults to <code>null</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="getBoolean"></div>
+
+<h3>
+<a class="anchor" name="getBoolean" href="#getBoolean"></a>
+<code>getBoolean(key,&nbsp;fallbackValue)</code>
+  
+
+</h3>
+
+<p>Same as <code class="highlighter-rouge">get()</code>, however always returns a boolean value. If the
+value from <code class="highlighter-rouge">get()</code> is <code class="highlighter-rouge">null</code>, then it’ll return the <code class="highlighter-rouge">fallbackValue</code>
+which defaults to <code class="highlighter-rouge">false</code>. Otherwise, <code class="highlighter-rouge">getBoolean()</code> will return
+if the config value is truthy or not. It also returns <code class="highlighter-rouge">true</code> if
+the config value was the string value <code class="highlighter-rouge">"true"</code>.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        key
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>the key for the config value</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        fallbackValue
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>a fallback value to use when the config
+value was <code>null</code>. Fallback value defaults to <code>false</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="getNumber"></div>
+
+<h3>
+<a class="anchor" name="getNumber" href="#getNumber"></a>
+<code>getNumber(key,&nbsp;fallbackValue)</code>
+  
+
+</h3>
+
+<p>Same as <code class="highlighter-rouge">get()</code>, however always returns a number value. Uses <code class="highlighter-rouge">parseFloat()</code>
+on the value received from <code class="highlighter-rouge">get()</code>. If the result from the parse is <code class="highlighter-rouge">NaN</code>,
+then it will return the value passed to <code class="highlighter-rouge">fallbackValue</code>. If no fallback
+value was provided then it’ll default to returning <code class="highlighter-rouge">NaN</code> when the result
+is not a valid number.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        key
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>the key for the config value</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        fallbackValue
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>a fallback value to use when the config
+value turned out to be <code>NaN</code>. Fallback value defaults to <code>NaN</code>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="set"></div>
+
+<h3>
+<a class="anchor" name="set" href="#set"></a>
+<code>set(platform,&nbsp;key,&nbsp;value)</code>
+  
+
+</h3>
+
+<p>Sets a single config value.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        platform
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The platform (either &#39;ios&#39; or &#39;android&#39;) that the config value should apply to. Leaving this blank will apply the config value to all platforms.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        key
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The key used to look up the value at a later point in time.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        value
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>The config value being stored.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
+
+      </main>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?5"></script>
+
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?5"></script>
+
+
+  </body>
+</html>
