@@ -191,6 +191,8 @@
 
       <li><a href="#checkbox">Checkbox</a></li>
 
+      <li><a href="#events">Events</a></li>
+
       <li><a href="#grid">Grid</a></li>
       <li><a href="#icons">Icons</a></li>
 
@@ -1254,6 +1256,29 @@
   <span class="nt">&lt;ion-label&gt;</span>Arya Stark<span class="nt">&lt;/ion-label&gt;</span>
   <span class="nt">&lt;ion-checkbox</span> <span class="na">disabled=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/ion-checkbox&gt;</span>
 <span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="events" class="section-header">Events</h2>
+
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/events.html">
+  Improve this Doc
+</a></p>
+
+<p>You an target specific events to trigger specific functionality. Built on top of Hammer.js, you can bind to <code class="highlighter-rouge">tap</code>, <code class="highlighter-rouge">press</code>, <code class="highlighter-rouge">pan</code>, <code class="highlighter-rouge">swipe</code>, <code class="highlighter-rouge">rotate</code>, and <code class="highlighter-rouge">pinch</code>.
+Methods can be bound to these events they say way you bind events to the <code class="highlighter-rouge">click</code>A</p>
+
+<h3 class="no-para">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/events">
+  Demo Source
+</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="nt">&lt;ion-card</span> <span class="err">(</span><span class="na">tap</span><span class="err">)="</span><span class="na">tapEvent</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-item&gt;</span>
+      Tapped:  times
+    <span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;/ion-card&gt;</span>
+
 </code></pre>
 </div>
 
