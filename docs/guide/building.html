@@ -237,7 +237,7 @@ Javascript controllers that give them increased functionality.
   <span class="nt">&lt;ion-content&gt;</span>
     <span class="c">&lt;!-- our list and list items --&gt;</span>
     <span class="nt">&lt;ion-list&gt;</span>
-      <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"task in tasks"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-item</span> <span class="na">ng-repeat=</span><span class="s">"task in activeProject.tasks"</span><span class="nt">&gt;</span>
         {{task.title}}
       <span class="nt">&lt;/ion-item&gt;</span>
     <span class="nt">&lt;/ion-list&gt;</span>
@@ -555,7 +555,7 @@ the following script tag after the closing <code class="highlighter-rouge">&lt;/
         <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">});</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
 
 <span class="p">});</span>
 
