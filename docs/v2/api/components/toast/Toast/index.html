@@ -488,8 +488,27 @@ Toast
 Improve this doc
 </a></p>
 
-<p>An Toast is a small message that appears in the lower part of the screen.
-It&#39;s useful for displaying success messages, error messages, etc.</p>
+<p>A Toast is a subtle notification that appears at the bottom of the
+screen. It can be used to provide feedback about an operation or to
+display a system message. The toast appears on top of the app&#39;s content,
+and can be dismissed by the app to resume user interaction with
+the app. It includes a backdrop, which can optionally be clicked to
+dismiss the toast.</p>
+<h3 id="creating">Creating</h3>
+<p>All of the toast options should be passed in the first argument of
+the create method: <code>Toast.create(opts)</code>. The message to display should be
+passed in the <code>message</code> property. The <code>showCloseButton</code> option can be set to
+true in order to display a close button on the toast. See the <a href="#create">create</a>
+method below for all available options.</p>
+<h3 id="dismissing">Dismissing</h3>
+<p>The toast can be dismissed automatically after a specific amount of time
+by passing the number of milliseconds to display it in the <code>duration</code> of
+the toast options. It can also be dismissed by clicking on the backdrop,
+unless <code>enableBackdropDismiss</code> is set to <code>false</code> upon creation. If <code>showCloseButton</code>
+is set to true, then the close button will dismiss the toast. To dismiss
+the toast after creation, call the <code>dismiss()</code> method on the Toast instance.
+The <code>onDismiss</code> function can be called to perform an action after the toast
+is dismissed.</p>
 
 <!-- @usage tag -->
 
@@ -504,6 +523,11 @@ presentToast() {
     message: &#39;User was added successfully&#39;,
     duration: 3000
   });
+
+  toast.onDismiss(() =&gt; {
+    console.log(&#39;Dismissed toast&#39;);
+  });
+
   this.nav.present(toast);
 }
 </code></pre>
@@ -511,7 +535,7 @@ presentToast() {
 <!-- @property tags -->
 <h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
 <div id="create"></div>
-<h3><a class="anchor" name="create" href="#create"></a><code>create(ToastOptions)</code>
+<h3><a class="anchor" name="create" href="#create"></a><code>create(opts)</code>
   
 </h3>
 
@@ -522,6 +546,7 @@ presentToast() {
     <tr>
       <th>Property</th>
       <th>Type</th>
+      <th>Default</th>
       <th>Description</th>
     </tr>
   </thead>
@@ -529,32 +554,38 @@ presentToast() {
     <tr>
       <td>message</td>
       <td><code class="highlighter-rouge">string</code></td>
-      <td>The message for the toast. Long strings will wrap and the toast container will expand. <strong>(required)</strong></td>
+      <td>-</td>
+      <td>The message for the toast. Long strings will wrap and the toast container will expand.</td>
     </tr>
     <tr>
       <td>duration</td>
       <td><code class="highlighter-rouge">number</code></td>
-      <td>The amount of time in milliseconds the toast should appear <em>(optional)</em></td>
+      <td>-</td>
+      <td>How many milliseconds to wait before hiding the toast. By default, it will show until <code class="highlighter-rouge">dismiss()</code> is called.</td>
     </tr>
     <tr>
       <td>cssClass</td>
       <td><code class="highlighter-rouge">string</code></td>
-      <td>Any additional class for the toast <em>(optional)</em></td>
+      <td>-</td>
+      <td>Any additional class for custom styles.</td>
     </tr>
     <tr>
       <td>showCloseButton</td>
       <td><code class="highlighter-rouge">boolean</code></td>
-      <td>Whether or not to show an optional button to close the toast. <em>(optional)</em></td>
+      <td>false</td>
+      <td>Whether or not to show a button to close the toast.</td>
     </tr>
     <tr>
       <td>closeButtonText</td>
       <td><code class="highlighter-rouge">string</code></td>
-      <td>Text to display in the close button. <em>(optional)</em></td>
+      <td>“Close”</td>
+      <td>Text to display in the close button.</td>
     </tr>
     <tr>
       <td>enableBackdropDismiss</td>
       <td><code class="highlighter-rouge">boolean</code></td>
-      <td>Whether the toast should be dismissed by tapping the backdrop <em>(optional)</em></td>
+      <td>true</td>
+      <td>Whether the toast should be dismissed by tapping the backdrop.</td>
     </tr>
   </tbody>
 </table>
@@ -571,7 +602,7 @@ presentToast() {
     
     <tr>
       <td>
-        ToastOptions
+        opts
         
         
       </td>
@@ -580,7 +611,7 @@ presentToast() {
   <code>object</code>
       </td>
       <td>
-        <p>Toast. See the above table for available options.</p>
+        <p>Toast options. See the above table for available options.</p>
 
         
       </td>
