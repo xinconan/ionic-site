@@ -728,17 +728,24 @@ export MyPage {
 <p>Returns a promise when the platform is ready and native functionality
 can be called. If the app is running from within a web browser, then
 the promise will resolve when the DOM is ready. When the app is running
-from an application engine such as Cordova, then the promise
-will resolve when Cordova triggers the <code class="highlighter-rouge">deviceready</code> event.</p>
+from an application engine such as Cordova, then the promise will
+resolve when Cordova triggers the <code class="highlighter-rouge">deviceready</code> event.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
+<p>The resolved value is the <code class="highlighter-rouge">readySource</code>, which states which platform
+ready was used. For example, when Cordova is ready, the resolved ready
+source is <code class="highlighter-rouge">cordova</code>. The default ready source value will be <code class="highlighter-rouge">dom</code>. The
+<code class="highlighter-rouge">readySource</code> is useful if different logic should run depending on the
+platform the app is running from. For example, only Cordova can execute
+the status bar plugin, so the web should not run status bar plugin logic.</p>
 
-@Page({...})
-export MyPage {
+<div class="highlighter-rouge"><pre class="highlight"><code>import {App, Platform} from 'ionic-angular';
+
+@App({...})
+export MyApp {
   constructor(platform: Platform) {
-    platform.ready().then(() =&gt; {
-      console.log('Platform ready');
-      // The platform is now ready, execute any native code you want
+    platform.ready().then((readySource) =&gt; {
+      console.log('Platform ready from', readySource);
+      // Platform now ready, execute any required native code
     });
   }
 }
