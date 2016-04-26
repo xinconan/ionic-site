@@ -12,11 +12,11 @@
 
 
 
-    <title>Toast - Ionic API Documentation -  Ionic Framework</title>
+    <title>Picker - Ionic API Documentation -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-toast"
-        class="v2 docs page-toast"
+  <body id="docs-page-picker"
+        class="v2 docs page-picker"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -97,8 +97,6 @@
 </nav>
 
     <div class="docs-container"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <form class="form-group search" role="search">
@@ -357,6 +355,9 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/decorators/Page">Page</a>
 </li>
+<li class="capitalize active">
+  <a href="/docs/v2/api/components/picker/Picker">Picker</a>
+</li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
@@ -411,9 +412,6 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/toolbar/Title">Title</a>
 </li>
-<li class="capitalize active">
-  <a href="/docs/v2/api/components/toast/Toast">Toast</a>
-</li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
 </li>
@@ -436,52 +434,11 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-          <a ng-class="{active: windowsActive}"
-             ng-click="setPlatform('windows')">Windows</a>
-        </div>
-        <div id="demo-device-ios"
-             ng-class="previewPlatform"
-             ng-show="iosActive">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/toast/?production=true&ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android"
-             ng-class="previewPlatform"
-             ng-show="androidActive">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/toast/?production=true&ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-windows"
-             ng-class="previewPlatform"
-             ng-show="windowsActive">
-          <iframe id="demo-windows"
-                
-                  src="/docs/v2/demos/toast/?production=true&ionicplatform=windows"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
-<a class="anchor" name="toast" href="#toast"></a>
+<a class="anchor" name="picker" href="#picker"></a>
 
-Toast
+Picker
 
 
 
@@ -490,157 +447,28 @@ Toast
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/components/toast/toast.ts#L13">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//ionic/components/picker/picker.ts#L8">
 Improve this doc
 </a></p>
 
-<p>A Toast is a subtle notification that appears at the bottom of the
-screen. It can be used to provide feedback about an operation or to
-display a system message. The toast appears on top of the app&#39;s content,
-and can be dismissed by the app to resume user interaction with
-the app. It includes a backdrop, which can optionally be clicked to
-dismiss the toast.</p>
-<h3 id="creating">Creating</h3>
-<p>All of the toast options should be passed in the first argument of
-the create method: <code>Toast.create(opts)</code>. The message to display should be
-passed in the <code>message</code> property. The <code>showCloseButton</code> option can be set to
-true in order to display a close button on the toast. See the <a href="#create">create</a>
-method below for all available options.</p>
-<h3 id="dismissing">Dismissing</h3>
-<p>The toast can be dismissed automatically after a specific amount of time
-by passing the number of milliseconds to display it in the <code>duration</code> of
-the toast options. It can also be dismissed by clicking on the backdrop,
-unless <code>enableBackdropDismiss</code> is set to <code>false</code> upon creation. If <code>showCloseButton</code>
-is set to true, then the close button will dismiss the toast. To dismiss
-the toast after creation, call the <code>dismiss()</code> method on the Toast instance.
-The <code>onDismiss</code> function can be called to perform an action after the toast
-is dismissed.</p>
-
 <!-- @usage tag -->
-
-<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
-
-<pre><code class="lang-ts">constructor(nav: NavController) {
-  this.nav = nav;
-}
-
-presentToast() {
-  let toast = Toast.create({
-    message: &#39;User was added successfully&#39;,
-    duration: 3000
-  });
-
-  toast.onDismiss(() =&gt; {
-    console.log(&#39;Dismissed toast&#39;);
-  });
-
-  this.nav.present(toast);
-}
-</code></pre>
 
 <!-- @property tags -->
 <h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
 <div id="create"></div>
-<h3><a class="anchor" name="create" href="#create"></a><code>create(opts)</code>
+<h3><a class="anchor" name="create" href="#create"></a><code>create()</code>
   
 </h3>
-
-<p>Toast options</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>message</td>
-      <td><code class="highlighter-rouge">string</code></td>
-      <td>-</td>
-      <td>The message for the toast. Long strings will wrap and the toast container will expand.</td>
-    </tr>
-    <tr>
-      <td>duration</td>
-      <td><code class="highlighter-rouge">number</code></td>
-      <td>-</td>
-      <td>How many milliseconds to wait before hiding the toast. By default, it will show until <code class="highlighter-rouge">dismiss()</code> is called.</td>
-    </tr>
-    <tr>
-      <td>cssClass</td>
-      <td><code class="highlighter-rouge">string</code></td>
-      <td>-</td>
-      <td>Any additional class for custom styles.</td>
-    </tr>
-    <tr>
-      <td>showCloseButton</td>
-      <td><code class="highlighter-rouge">boolean</code></td>
-      <td>false</td>
-      <td>Whether or not to show a button to close the toast.</td>
-    </tr>
-    <tr>
-      <td>closeButtonText</td>
-      <td><code class="highlighter-rouge">string</code></td>
-      <td>“Close”</td>
-      <td>Text to display in the close button.</td>
-    </tr>
-    <tr>
-      <td>enableBackdropDismiss</td>
-      <td><code class="highlighter-rouge">boolean</code></td>
-      <td>true</td>
-      <td>Whether the toast should be dismissed by tapping the backdrop.</td>
-    </tr>
-    <tr>
-      <td>dismissOnPageChange</td>
-      <td><code class="highlighter-rouge">boolean</code></td>
-      <td>false</td>
-      <td>Whether to dismiss the toast when navigating to a new page.</td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        opts
-        
-        
-      </td>
-      <td>
-        
-  <code>object</code>
-      </td>
-      <td>
-        <p>Toast options. See the above table for available options.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
 
 <!-- instance methods on the class -->
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="setMessage"></div>
+<div id="addButton"></div>
 
 <h3>
-<a class="anchor" name="setMessage" href="#setMessage"></a>
-<code>setMessage(message)</code>
+<a class="anchor" name="addButton" href="#addButton"></a>
+<code>addButton(button)</code>
   
 
 </h3>
@@ -657,7 +485,85 @@ presentToast() {
     
     <tr>
       <td>
-        message
+        button
+        
+        
+      </td>
+      <td>
+        
+  <code>any</code>
+      </td>
+      <td>
+        <p>Picker toolbar button</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="addColumn"></div>
+
+<h3>
+<a class="anchor" name="addColumn" href="#addColumn"></a>
+<code>addColumn(button)</code>
+  
+
+</h3>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        button
+        
+        
+      </td>
+      <td>
+        
+  <code>any</code>
+      </td>
+      <td>
+        <p>Picker toolbar button</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="setCssClass"></div>
+
+<h3>
+<a class="anchor" name="setCssClass" href="#setCssClass"></a>
+<code>setCssClass(cssClass)</code>
+  
+
+</h3>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        cssClass
         
         
       </td>
@@ -666,7 +572,7 @@ presentToast() {
   <code>string</code>
       </td>
       <td>
-        <p>Toast message content</p>
+        <p>CSS class name to add to the picker&#39;s outer wrapper.</p>
 
         
       </td>
