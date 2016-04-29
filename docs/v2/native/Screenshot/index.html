@@ -12,11 +12,11 @@
 
 
 
-    <title>Tutorial - Getting Started with Ionic -  Ionic Framework</title>
+    <title>Screenshot - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-tutorial"
-        class="v2 docs page-tutorial"
+  <body id="docs-page-screenshot"
+        class="v2 docs page-screenshot"
         data-spy="scroll"
         data-target="#components-index"
         ng-app="IonicDocs">
@@ -116,12 +116,9 @@
   </li>
 
   
-  <li class="
-             active">
+  <li class="">
     <a ng-click="showGettingStarted = !showGettingStarted">Getting Started</a>
     <ul ng-show="showGettingStarted"
-        
-          ng-init="showGettingStarted = true"
         >
       <li class="">
         <a href="/docs/v2/getting-started">Welcome</a>
@@ -129,7 +126,7 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
       <li class="">
@@ -254,9 +251,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -367,7 +366,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/Push">Push</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/Screenshot">Screenshot</a>
 </li>
 <li class="capitalize ">
@@ -524,57 +523,156 @@
       </nav>
       
       <main>
-        <h1 id="ionic-2-tutorial">Ionic 2 Tutorial</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/getting-started/tutorial/index.md">
+  
+  Screenshot
+  
+
+  
+
+  
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/screenshot.ts#L0">
   Improve this doc
 </a></p>
 
-<p>Now that you have <a href="../installation">Ionic and its dependencies installed</a>, you can build your first app! This section will guide you through the process of starting a new application, adding pages, navigating between those pages, and more. Let’s get started!</p>
+<!-- decorators -->
 
-<h3 id="starting-a-new-ionic-2-app">Starting a New Ionic 2 App</h3>
+<pre><code>$ ionic plugin add https://github.com/gitawego/cordova-screenshot.git</code></pre>
+<p>Repo:
+  <a href="https://github.com/gitawego/cordova-screenshot.git">
+    https://github.com/gitawego/cordova-screenshot.git
+  </a>
+</p>
 
-<p>Let’s create a new app! Use the <code class="highlighter-rouge">start</code> command to initialize a new Ionic app. Specify that you want it to be an Ionic 2 app by passing in the <code class="highlighter-rouge">--v2</code> option. We also specify that the <code class="highlighter-rouge">tutorial</code> template should be used.</p>
+<!-- description -->
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start MyIonic2Project tutorial --v2
-</code></pre>
-</div>
+<!-- @usage tag -->
 
-<p>This will pull Ionic 2 down, install <a href="../../resources/what-is/#npm">npm modules</a> for the application, and get <a href="../../resources/what-is/#cordova">Cordova</a> set up and ready to go.</p>
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="save"></div>
+<h3><code>save(format.,&nbsp;quality.,&nbsp;filename.)</code>
 
-<p><strong>Want to use TypeScript instead? Pass the <code class="highlighter-rouge">--ts</code> flag and get a project set up for TypeScript instead.</strong></p>
+</h3>
 
-<blockquote>
-  <p>You may have noticed that we passed in <strong>tutorial</strong> to the <code class="highlighter-rouge">ionic start</code> command. This tells Ionic to initialize your application using the <a href="https://github.com/driftyco/ionic2-starter-tutorial">tutorial template</a>. If you don’t specify a template by running <code class="highlighter-rouge">ionic start MyIonic2Project --v2</code>, the <a href="https://github.com/driftyco/ionic2-starter-tabs">tabs template</a> will be used.</p>
-</blockquote>
+<p>Takes screenshot and saves the image</p>
 
-<h3 id="viewing-the-app-in-a-browser">Viewing the app in a browser</h3>
-<p>Now, you can <code class="highlighter-rouge">cd</code> into the folder that was created. To get a quick preview of your app in the browser, use the <code class="highlighter-rouge">serve</code> command.</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      format.
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Format can take the value of either &#39;jpg&#39; or &#39;png&#39;
+On ios, only &#39;jpg&#39; format is supported</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>MyIonic2Project/
-<span class="gp">$ </span>ionic serve
-</code></pre>
-</div>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      quality.
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      <p>Determines the quality of the screenshot. 
+       Default quality is set to 100.</p>
 
-<p><img src="/img/docs/tutorial-screen.png" style="max-width: 320px" /></p>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      filename.
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of the file as stored on the storage</p>
 
-<p>You should see the welcome message shown above if everything was installed successfully.</p>
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
-<p>In the next section, let’s go over the project structure created by the <code class="highlighter-rouge">ionic start</code> command.</p>
+<div id="URI"></div>
+<h3><code>URI(quality.)</code>
+
+</h3>
+
+<p>Takes screenshot and returns the image as an URI</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      quality.
+      
+      
+    </td>
+    <td>
+      
+<code>number</code>
+    </td>
+    <td>
+      <p>Determines the quality of the screenshot. 
+       Default quality is set to 100.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
-    </div>
-    
-    <div class="footer-links">
-      <hr>
-      
-        <a class="footer-link prev" href="/docs/v2/getting-started/installation/">
-          Installing Ionic</a>
-      
-      
-        <a class="footer-link next" href="/docs/v2/getting-started/tutorial/project-structure/">
-          Project Structure</a>
-      
     </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
