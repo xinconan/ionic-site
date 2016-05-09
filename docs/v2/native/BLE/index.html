@@ -18,6 +18,7 @@
   <body id="docs-page-ble"
         class="v2 docs page-ble"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -262,6 +263,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -319,6 +323,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -346,6 +353,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -362,6 +372,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -383,6 +396,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -906,7 +922,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="read"></div>
-<h3><code>read(device_id,&nbsp;service_uuid,&nbsp;characteristic_uuid)</code>
+<h3><code>read(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
 
 </h3>
 
@@ -924,7 +940,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>
@@ -941,7 +957,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      service_uuid
+      serviceUUID
       
       
     </td>
@@ -958,7 +974,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      characteristic_uuid
+      characteristicUUID
       
       
     </td>
@@ -984,7 +1000,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="write"></div>
-<h3><code>write(device_id,&nbsp;service_uuid,&nbsp;characteristic_uuid,&nbsp;value)</code>
+<h3><code>write(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID,&nbsp;value)</code>
 
 </h3>
 
@@ -1002,7 +1018,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>
@@ -1019,7 +1035,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      service_uuid
+      serviceUUID
       
       
     </td>
@@ -1036,7 +1052,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      characteristic_uuid
+      characteristicUUID
       
       
     </td>
@@ -1079,7 +1095,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="writeWithoutResponse"></div>
-<h3><code>writeWithoutResponse(device_id,&nbsp;service_uuid,&nbsp;characteristic_uuid,&nbsp;value)</code>
+<h3><code>writeWithoutResponse(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID,&nbsp;value)</code>
 
 </h3>
 
@@ -1097,7 +1113,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>
@@ -1114,7 +1130,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      service_uuid
+      serviceUUID
       
       
     </td>
@@ -1131,7 +1147,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      characteristic_uuid
+      characteristicUUID
       
       
     </td>
@@ -1174,7 +1190,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="startNotification"></div>
-<h3><code>startNotification(device_id,&nbsp;service_uuid,&nbsp;characteristic_uuid)</code>
+<h3><code>startNotification(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
 
 </h3>
 
@@ -1192,7 +1208,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>
@@ -1209,7 +1225,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      service_uuid
+      serviceUUID
       
       
     </td>
@@ -1226,7 +1242,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      characteristic_uuid
+      characteristicUUID
       
       
     </td>
@@ -1252,7 +1268,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="stopNotification"></div>
-<h3><code>stopNotification(device_id,&nbsp;service_uuid,&nbsp;characteristic_uuid)</code>
+<h3><code>stopNotification(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
 
 </h3>
 
@@ -1270,7 +1286,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>
@@ -1287,7 +1303,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      service_uuid
+      serviceUUID
       
       
     </td>
@@ -1304,7 +1320,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      characteristic_uuid
+      characteristicUUID
       
       
     </td>
@@ -1330,7 +1346,7 @@ function bytesToString(buffer) {
 </div>
 
 <div id="isConnected"></div>
-<h3><code>isConnected(device_id)</code>
+<h3><code>isConnected(deviceId)</code>
 
 </h3>
 
@@ -1348,7 +1364,7 @@ function bytesToString(buffer) {
   
   <tr>
     <td>
-      device_id
+      deviceId
       
       
     </td>

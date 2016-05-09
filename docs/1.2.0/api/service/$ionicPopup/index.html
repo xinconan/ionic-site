@@ -984,7 +984,7 @@ an opt-in feature and not the default.</p>
 <h2 id="usage">Usage</h2>
 <p>A few basic examples, see below for details about all of the options available.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'mySuperApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'mySuperApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'PopupCtrl'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicPopup</span><span class="p">,</span> <span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
 
 <span class="c1">// Triggered on a button click, or some other target</span>
@@ -1254,7 +1254,7 @@ with the given value.</li>
 Resolves the promise with the value of the input if the user presses OK, and with undefined
 if the user presses Cancel.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">prompt</span><span class="p">({</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="nx">$ionicPopup</span><span class="p">.</span><span class="nx">prompt</span><span class="p">({</span>
    <span class="na">title</span><span class="p">:</span> <span class="s1">'Password Check'</span><span class="p">,</span>
    <span class="na">template</span><span class="p">:</span> <span class="s1">'Enter your secret password'</span><span class="p">,</span>
    <span class="na">inputType</span><span class="p">:</span> <span class="s1">'password'</span><span class="p">,</span>

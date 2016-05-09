@@ -987,7 +987,7 @@ template file, remove the script tags and call it by file name.</li>
 </ul>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"my-modal.html"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"my-modal.html"</span> <span class="na">type=</span><span class="s">"text/ng-template"</span><span class="nt">&gt;</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">modal</span><span class="o">-</span><span class="nx">view</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">header</span><span class="o">-</span><span class="nx">bar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">h1</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="nx">My</span> <span class="nx">Modal</span> <span class="nx">title</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
@@ -999,7 +999,7 @@ template file, remove the script tags and call it by file name.</li>
 </span><span class="nt">&lt;/script&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'testApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'testApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MyController'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicModal</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$ionicModal</span><span class="p">.</span><span class="nx">fromTemplateUrl</span><span class="p">(</span><span class="s1">'my-modal.html'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">scope</span><span class="p">:</span> <span class="nx">$scope</span><span class="p">,</span>

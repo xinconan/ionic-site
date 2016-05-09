@@ -18,6 +18,7 @@
   <body id="docs-page-globalization"
         class="v2 docs page-globalization"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -262,6 +263,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -319,6 +323,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -346,6 +353,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -362,6 +372,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -383,6 +396,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -546,8 +562,8 @@
 
 <pre><code>$ ionic plugin add cordova-plugin-globalization</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-globalization">
-    https://github.com/apache/cordova-plugin-globalization
+  <a href="https: //github.com/apache/cordova-plugin-globalization">
+    https: //github.com/apache/cordova-plugin-globalization
   </a>
 </p>
 
@@ -572,7 +588,7 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
+<code>Promise&lt;{value: string}&gt;</code></p>
 </div>
 
 <div id="getLocaleName"></div>
@@ -585,7 +601,7 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
+<code>Promise&lt;{value: string}&gt;</code></p>
 </div>
 
 <div id="dateToString"></div>
@@ -643,7 +659,7 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;{value:string}&gt;</code></p>
+<code>Promise&lt;{value: string}&gt;</code></p>
 </div>
 
 <div id="stringToDate"></div>
@@ -842,7 +858,7 @@
 </table>
 
 <div id="stringToNumber"></div>
-<h3><code>stringToNumber(string,&nbsp;options)</code>
+<h3><code>stringToNumber(stringToConvert,&nbsp;options)</code>
 
 </h3>
 
@@ -858,7 +874,7 @@
   
   <tr>
     <td>
-      string
+      stringToConvert
       
       
     </td>

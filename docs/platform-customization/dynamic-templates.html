@@ -195,7 +195,7 @@
 
 <p>Sometimes showing or changing elements based on the platform isn’t enough. There may be times when you need to use two different structures for your project, and you don’t want to place the logic in the HTML. In these cases, you can use <code class="highlighter-rouge">ionic.Platform</code> to decide which template to load in a given state. For example, the following code will load the <code class="highlighter-rouge">templates/home-android.html</code> file if the platform is Android, and <code class="highlighter-rouge">templates/home.html</code> for all other platforms:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'tab'</span><span class="p">,</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'tab'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">url</span><span class="p">:</span> <span class="s2">"/tab"</span><span class="p">,</span>
   <span class="na">abstract</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="na">controller</span><span class="p">:</span> <span class="s1">'AppCtrl'</span><span class="p">,</span>

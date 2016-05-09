@@ -938,14 +938,14 @@
 <h2 id="usage">Usage</h2>
 <p>State templates are cached automatically, but you can optionally cache other templates.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicTemplateCache</span><span class="p">(</span><span class="s1">'myNgIncludeTemplate.html'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicTemplateCache</span><span class="p">(</span><span class="s1">'myNgIncludeTemplate.html'</span><span class="p">);</span>
 </code></pre>
 </div>
 
 <p>Optionally disable all preemptive caching with the <code class="highlighter-rouge">$ionicConfigProvider</code> or individual states by setting <code class="highlighter-rouge">prefetchTemplate</code>
 in the <code class="highlighter-rouge">$state</code> definition</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code>  <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
   <span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">,</span> <span class="nx">$ionicConfigProvider</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// disable preemptive template caching globally</span>

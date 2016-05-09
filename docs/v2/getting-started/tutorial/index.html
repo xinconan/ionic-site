@@ -18,6 +18,7 @@
   <body id="docs-page-tutorial"
         class="v2 docs page-tutorial"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -263,6 +264,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -320,6 +324,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -347,6 +354,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -363,6 +373,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -384,6 +397,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -539,7 +555,7 @@
 
 <p>Let’s create a new app! Use the <code class="highlighter-rouge">start</code> command to initialize a new Ionic app. Specify that you want it to be an Ionic 2 app by passing in the <code class="highlighter-rouge">--v2</code> option. We also specify that the <code class="highlighter-rouge">tutorial</code> template should be used.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start MyIonic2Project tutorial --v2
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start MyIonic2Project tutorial --v2
 </code></pre>
 </div>
 
@@ -554,7 +570,7 @@
 <h3 id="viewing-the-app-in-a-browser">Viewing the app in a browser</h3>
 <p>Now, you can <code class="highlighter-rouge">cd</code> into the folder that was created. To get a quick preview of your app in the browser, use the <code class="highlighter-rouge">serve</code> command.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>MyIonic2Project/
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>MyIonic2Project/
 <span class="gp">$ </span>ionic serve
 </code></pre>
 </div>

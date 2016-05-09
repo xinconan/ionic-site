@@ -950,7 +950,7 @@ method to control specific ionList instances.</p>
   &lt;/ion-list&gt;
 &lt;/ion-content&gt;
 </code></pre>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicListDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicListDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">showDeleteButtons</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicListDelegate</span><span class="p">.</span><span class="nx">showDelete</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">};</span>

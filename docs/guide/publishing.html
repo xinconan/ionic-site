@@ -202,7 +202,7 @@
 
 <p>So first, we need to generate a release build of our app, targeted at each platform we wish to deploy on. Before we deploy, we should take care to adjust plugins needed during development that should not be in production mode. For example, we probably don’t want the debug console plugin enabled, so we should remove it before generating the release builds:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova plugin rm cordova-plugin-console
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova plugin rm cordova-plugin-console
 </code></pre>
 </div>
 
@@ -210,7 +210,7 @@
 
 <p>To generate a release build for Android, we can use the following cordova cli command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova build --release android
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cordova build --release android
 </code></pre>
 </div>
 
@@ -220,7 +220,7 @@
 
 <p>Let’s generate our private key using the <code class="highlighter-rouge">keytool</code> command that comes with the JDK. If this tool isn’t found, refer to the <a href="installation.html">installation guide</a>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
 </code></pre>
 </div>
 
@@ -230,13 +230,13 @@
 
 <p>To sign the unsigned APK, run the <code class="highlighter-rouge">jarsigner</code> tool which is also included in the JDK:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore HelloWorld-release-unsigned.apk alias_name
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore HelloWorld-release-unsigned.apk alias_name
 </code></pre>
 </div>
 
 <p>This signs the apk in place. Finally, we need to run the zip align tool to optimize the APK. The <code class="highlighter-rouge">zipalign</code> tool can be found in <code class="highlighter-rouge">/path/to/Android/sdk/build-tools/VERSION/zipalign</code>. For example, on OS X with Android Studio installed, <code class="highlighter-rouge">zipalign</code> is in <code class="highlighter-rouge">~/Library/Android/sdk/build-tools/VERSION/zipalign</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>zipalign -v 4 HelloWorld-release-unsigned.apk HelloWorld.apk
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>zipalign -v 4 HelloWorld-release-unsigned.apk HelloWorld.apk
 </code></pre>
 </div>
 

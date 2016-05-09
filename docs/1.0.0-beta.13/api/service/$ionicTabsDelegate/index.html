@@ -940,7 +940,7 @@ directives. Use the <a href="/docs/api/service/$ionicTabsDelegate/#$getByHandle"
 method to control specific ionTabs instances.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-tabs&gt;</span>
 
     <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Tab 1"</span><span class="nt">&gt;</span>
@@ -953,7 +953,7 @@ method to control specific ionTabs instances.</p>
 <span class="nt">&lt;/body&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicTabsDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicTabsDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">selectTabWithIndex</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$ionicTabsDelegate</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
   <span class="p">}</span>

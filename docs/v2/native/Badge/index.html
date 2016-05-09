@@ -18,6 +18,7 @@
   <body id="docs-page-badge"
         class="v2 docs page-badge"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -262,6 +263,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -319,6 +323,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -346,6 +353,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -362,6 +372,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -383,6 +396,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -597,7 +613,7 @@ Badge.clear();
 <p>Clear the badge of the app icon.</p>
 
 <div id="set"></div>
-<h3><code>set(number)</code>
+<h3><code>set(badgeNumber)</code>
 
 </h3>
 
@@ -615,7 +631,7 @@ Badge.clear();
   
   <tr>
     <td>
-      number
+      badgeNumber
       
       
     </td>
@@ -653,7 +669,7 @@ Badge.clear();
 </div>
 
 <div id="increase"></div>
-<h3><code>increase(count)</code>
+<h3><code>increase(increaseBy)</code>
 
 </h3>
 
@@ -671,7 +687,7 @@ Badge.clear();
   
   <tr>
     <td>
-      count
+      increaseBy
       
       
     </td>
@@ -696,7 +712,7 @@ Badge.clear();
 </div>
 
 <div id="decrease"></div>
-<h3><code>decrease(count)</code>
+<h3><code>decrease(decreaseBy)</code>
 
 </h3>
 
@@ -714,7 +730,7 @@ Badge.clear();
   
   <tr>
     <td>
-      count
+      decreaseBy
       
       
     </td>

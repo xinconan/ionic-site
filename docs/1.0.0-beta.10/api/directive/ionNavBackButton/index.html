@@ -908,7 +908,7 @@ examples below.</p>
 
 <p>With default click action:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;</span>
   <span class="nt">&lt;ion-nav-back-button</span> <span class="na">class=</span><span class="s">"button-clear"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"ion-arrow-left-c"</span><span class="nt">&gt;&lt;/i&gt;</span> Back
   <span class="nt">&lt;/ion-nav-back-button&gt;</span>
@@ -918,7 +918,7 @@ examples below.</p>
 
 <p>With custom click action, using <a href="/docs/api/service/$ionicNavBarDelegate/"><code>$ionicNavBarDelegate</code></a>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-nav-back-button</span> <span class="na">class=</span><span class="s">"button-clear"</span>
     <span class="na">ng-click=</span><span class="s">"doSomethingCool()"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"ion-arrow-left-c"</span><span class="nt">&gt;&lt;/i&gt;</span> Back
@@ -926,7 +926,7 @@ examples below.</p>
 <span class="nt">&lt;/ion-nav-bar&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">goBack</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicNavBarDelegate</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
   <span class="p">};</span>
@@ -937,14 +937,14 @@ examples below.</p>
 <p>Displaying the previous title on the back button, again using
 <a href="/docs/api/service/$ionicNavBarDelegate/"><code>$ionicNavBarDelegate</code></a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-nav-back-button</span> <span class="na">class=</span><span class="s">"button-icon"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon ion-arrow-left-c"</span><span class="nt">&gt;&lt;/i&gt;</span>{{getPreviousTitle() || 'Back'}}
   <span class="nt">&lt;/ion-nav-back-button&gt;</span>
 <span class="nt">&lt;/ion-nav-bar&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">getPreviousTitle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">.</span><span class="nx">getPreviousTitle</span><span class="p">();</span>
   <span class="p">};</span>

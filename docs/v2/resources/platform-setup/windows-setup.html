@@ -18,6 +18,7 @@
   <body id="docs-page-windows_setup"
         class="v2 docs page-windows_setup"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -260,6 +261,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -317,6 +321,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -344,6 +351,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -360,6 +370,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -381,6 +394,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -571,7 +587,7 @@ From the startmenu, search for “System Environment Variables”. From here, we
 
 <p>From here, we should be able to run</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># check java version</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># check java version</span>
 java -version
 
 <span class="c"># start android SDK manager</span>
@@ -579,20 +595,21 @@ android
 </code></pre>
 </div>
 
-<p>Now, you should be able to create and build an Android project from the command line.
-### Windows Universal Apps</p>
+<p>Now, you should be able to create and build an Android project from the command line.</p>
+
+<h3 id="windows-universal-apps">Windows Universal Apps</h3>
 
 <p>To build apps for Windows Universal, download and install Visual Studio 2015 Community Edition. During the installation, Select “Tools for Cross Platform Development” as well as the SDK for Windows Universal Apps.</p>
 
 <p>With everything installed, you’ll be able to add a windows platform from the command line with this command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ionic platform add windows
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ionic platform add windows
 </code></pre>
 </div>
 
 <p>By default the <code class="highlighter-rouge">build</code> command produces two packages: Windows 8.1 and Windows Phone 8.1, which Ionic does not support. To upgrade Windows package to version 10 the following configuration setting must be added to configuration file (config.xml).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;preference</span> <span class="na">name=</span><span class="s">"windows-target-version"</span> <span class="na">value=</span><span class="s">"10.0"</span> <span class="nt">/&gt;</span>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;preference</span> <span class="na">name=</span><span class="s">"windows-target-version"</span> <span class="na">value=</span><span class="s">"10.0"</span> <span class="nt">/&gt;</span>
 </code></pre>
 </div>
 

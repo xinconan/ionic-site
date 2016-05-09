@@ -199,7 +199,7 @@
 
 <p>In your <code class="highlighter-rouge">AppCtrl</code> controller, retrieve and set the platform using <code class="highlighter-rouge">ionic.Platform</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AppCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AppCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">platform</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">platform</span><span class="p">();</span>
 <span class="p">})</span>
 </code></pre>
@@ -209,7 +209,7 @@
 
 <p>You can then use this platform to change which elements display and what classes get added to specific elements. For example, if you’re using the tabs structure, and you want to change the way the tabs look on Android but keep the same look and feel for all other devices, you can use Angular’s <code class="highlighter-rouge">ng-class</code> to dynamically add classes based on the platform. Adding the following to the <code class="highlighter-rouge">&lt;ion-tabs&gt;</code> directive will add the <code class="highlighter-rouge">tabs-positive</code> class for Android platforms and the <code class="highlighter-rouge">tabs-icon-top</code> class to all devices but Android:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
 <span class="nt">&lt;ion-tabs</span> <span class="na">class=</span><span class="s">"tabs-stable"</span> <span class="na">ng-class=</span><span class="s">"{'tabs-positive': platform == 'android', 'tabs-icon-top': platform != 'android'}"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- ion-tab directives go here --&gt;</span>
 <span class="nt">&lt;/ion-tabs&gt;</span>
@@ -219,7 +219,7 @@
 
 <p>You can also use Angular’s <code class="highlighter-rouge">ng-attr</code> to dynamically define attributes based on platform. For example, you may want the icons in the tabs to show on all devices except Android. You can dynamically add the icon by using the <code class="highlighter-rouge">ng-attr-icon</code> property. To define an icon for all devices minus Android on the “Home” tab, you could use the following code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
 <span class="c">&lt;!-- if the platform is android don't add an icon, all other devices get an icon --&gt;</span>
 <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">ng-attr-icon=</span><span class="s">"{{ platform != 'android' ? 'ion-home' : undefined}}"</span> <span class="na">href=</span><span class="s">"#/tab/home"</span><span class="nt">&gt;</span>
 

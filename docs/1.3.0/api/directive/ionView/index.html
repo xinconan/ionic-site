@@ -987,7 +987,7 @@ as an attribute on the view itself (see below).</p>
 <p>Below is an example where our page will load with a <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> containing
 “My Page” as the title.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;</span>
 <span class="nt">&lt;ion-nav-view&gt;</span>
   <span class="nt">&lt;ion-view</span> <span class="na">view-title=</span><span class="s">"My Page"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ion-content&gt;</span>
@@ -1054,7 +1054,7 @@ removed from the DOM.</td>
 <p>Below is an example of how to listen to life cycle events and
 access state parameter data</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.beforeEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.beforeEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
    <span class="c1">// handle event</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"State Params: "</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">stateParams</span><span class="p">);</span>
 <span class="p">});</span>

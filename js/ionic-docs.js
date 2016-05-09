@@ -27,11 +27,16 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-44023830-1', 'ionicframework.com');
 ga('send', 'pageview');
 
+ga('create', 'UA-77242104-1', 'auto');
+ga('send', 'pageview');
+
 var IonicDocsModule = angular.module('IonicDocs', ['ngAnimate'])
 .controller('DocsNavCtrl', ['$scope', '$timeout', function($scope, $timeout) {
-  $scope.test = function() {
-    console.log($scope);
-  };
+  var navItemPos = $('#side-nav > ul > .active').offset().top;
+  $sideNav = $('#side-nav');
+  if ($sideNav[0].offsetHeight < navItemPos + 100) {
+    $sideNav[0].scrollTop =  navItemPos - 300;
+  }
 }])
 .controller('ComponentsCtrl', ['$scope', '$timeout',
                        function($scope, $timeout) {

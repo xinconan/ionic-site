@@ -204,7 +204,7 @@
 
 <p>Since every Ionic app is basically a web page, we need to have an <code class="highlighter-rouge">index.html</code> file in our app which defines the first page that loads in the app. Let’s create <code class="highlighter-rouge">www/index.html</code> and initialize it with this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
@@ -236,7 +236,7 @@
 
 <p>To create side menus in Ionic, we can use <a href="http://ionicframework.com/docs/api/directive/ionSideMenus">ion-side-menus</a>. Feel free to read up on it, but the markup needed is simple. Edit the <code class="highlighter-rouge">index.html</code> file and change the <code class="highlighter-rouge">&lt;body&gt;</code> content to look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;ion-side-menus&gt;</span>
     <span class="nt">&lt;ion-side-menu-content&gt;</span>
     <span class="nt">&lt;/ion-side-menu-content&gt;</span>
@@ -255,7 +255,7 @@
 
 <p>Let’s fix that. First, we need to create a new AngularJS module and tell Angular to initialize it. Let’s create a new file located at <code class="highlighter-rouge">www/js/app.js</code>. Put this code into the file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 </code></pre>
 </div>
 
@@ -263,7 +263,7 @@
 
 <p>Now, go back to <code class="highlighter-rouge">index.html</code> and right before the <code class="highlighter-rouge">&lt;script src="cordova.js"&gt;&lt;/script&gt;</code> line, add:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
 </div>
 
@@ -271,7 +271,7 @@
 
 <p>And to make our new app run, we need to add the <code class="highlighter-rouge">ng-app</code> attribute to the body tag:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
 </code></pre>
 </div>
 
@@ -279,7 +279,7 @@
 
 <p>Update the body content to be:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-side-menus&gt;</span>
 
     <span class="c">&lt;!-- Center content --&gt;</span>

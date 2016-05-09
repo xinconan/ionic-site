@@ -973,14 +973,14 @@ views.  Use the <a href="/docs/api/service/$ionicScrollDelegate/#$getByHandle">$
 method to control specific scrollViews.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-content&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"scrollTop()"</span><span class="nt">&gt;</span>Scroll to Top!<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/ion-content&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">();</span>
   <span class="p">};</span>
@@ -991,7 +991,7 @@ method to control specific scrollViews.</p>
 <p>Example of advanced usage, with two scroll areas using <code class="highlighter-rouge">delegate-handle</code>
 for fine control.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MainCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-content</span> <span class="na">delegate-handle=</span><span class="s">"mainScroll"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"scrollMainToTop()"</span><span class="nt">&gt;</span>
       Scroll content to top!
@@ -1005,7 +1005,7 @@ for fine control.</p>
 <span class="nt">&lt;/body&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MainCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicScrollDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">scrollMainToTop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicScrollDelegate</span><span class="p">.</span><span class="nx">$getByHandle</span><span class="p">(</span><span class="s1">'mainScroll'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span>
   <span class="p">};</span>

@@ -1006,7 +1006,7 @@ the content left or right or by toggling a button to show the side menu. Additio
 side menu, and have at least 2 child elements: 1 <code class="highlighter-rouge">&lt;ion-side-menu-content&gt;</code> for the center content,
 and one or more <code class="highlighter-rouge">&lt;ion-side-menu&gt;</code> directives for each side menu(left/right) that you wish to place.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-side-menus&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-side-menus&gt;</span>
   <span class="c">&lt;!-- Left menu --&gt;</span>
   <span class="nt">&lt;ion-side-menu</span> <span class="na">side=</span><span class="s">"left"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/ion-side-menu&gt;</span>
@@ -1022,7 +1022,7 @@ and one or more <code class="highlighter-rouge">&lt;ion-side-menu&gt;</code> dir
 <span class="nt">&lt;/ion-side-menus&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ContentController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicSideMenuDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ContentController</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicSideMenuDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleLeft</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$ionicSideMenuDelegate</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">();</span>
   <span class="p">};</span>

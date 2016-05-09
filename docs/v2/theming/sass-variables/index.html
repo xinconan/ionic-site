@@ -18,6 +18,7 @@
   <body id="docs-page-sass-variables"
         class="v2 docs page-sass-variables"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -260,6 +261,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -317,6 +321,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -344,6 +351,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -360,6 +370,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -381,6 +394,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -534,13 +550,13 @@
 
 <p>Sass Variables allow you to define a value once and use it in multiple places. Variables begin with dollar signs and are set like CSS properties. You can change the value of the variable in one place, and all instances where it is used will be changed, too. For example, if you wanted to set the same height for two different selectors, you could create a variable called <code class="highlighter-rouge">$control-height</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$control-height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$control-height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
 </code></pre>
 </div>
 
 <p>Then, you can use this variable in multiple places. For simplicity’s sake, let’s assign <code class="highlighter-rouge">$control-height</code> to the <code class="highlighter-rouge">height</code> attribute of two selectors:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
   <span class="nl">height</span><span class="p">:</span> <span class="nv">$control-height</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -552,7 +568,7 @@
 
 <p>When translated to CSS, it becomes the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
   <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
 <span class="p">}</span>
 

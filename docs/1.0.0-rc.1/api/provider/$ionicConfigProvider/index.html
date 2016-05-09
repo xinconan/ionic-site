@@ -981,19 +981,19 @@ default config of the platform on which it’s running. Config variables can be 
 level so all platforms follow the same setting, rather than its platform config.
 The following code would set the same config variable for all platforms:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </code></pre>
 </div>
 
 <p>Additionally, each platform can have it’s own config within the <code class="highlighter-rouge">$ionicConfigProvider.platform</code>
 property. The config below would only apply to Android devices.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">android</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </code></pre>
 </div>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'reallyCoolApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">]);</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'reallyCoolApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">]);</span>
 
 <span class="nx">myApp</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$ionicConfigProvider</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$ionicConfigProvider</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">maxCache</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>

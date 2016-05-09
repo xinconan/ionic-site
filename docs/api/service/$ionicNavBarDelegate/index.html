@@ -967,7 +967,7 @@ $ionicNavBarDelegate
 <p>Delegate for controlling the <a href="/docs/api/directive/ionNavBar/"><code>ionNavBar</code></a> directive.</p>
 
 <h2 id="usage">Usage</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">"MyCtrl"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-nav-bar&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">"setNavTitle('banana')"</span><span class="nt">&gt;</span>
       Set title to banana!
@@ -976,7 +976,7 @@ $ionicNavBarDelegate
 <span class="nt">&lt;/body&gt;</span>
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MyCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$ionicNavBarDelegate</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">setNavTitle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$ionicNavBarDelegate</span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
   <span class="p">}</span>

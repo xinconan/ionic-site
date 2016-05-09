@@ -18,6 +18,7 @@
   <body id="docs-page-sms"
         class="v2 docs page-sms"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -262,6 +263,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -319,6 +323,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -346,6 +353,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -362,6 +372,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -383,6 +396,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -583,7 +599,7 @@ SMS.send(&#39;416123456&#39;,&#39;Hello world!&#39;);
 <!-- @property tags -->
 <h2>Static Methods</h2>
 <div id="send"></div>
-<h3><code>send(number,&nbsp;message,&nbsp;options)</code>
+<h3><code>send(phoneNumber,&nbsp;message,&nbsp;options)</code>
 
 </h3>
 
@@ -601,7 +617,7 @@ SMS.send(&#39;416123456&#39;,&#39;Hello world!&#39;);
   
   <tr>
     <td>
-      number
+      phoneNumber
       
       
     </td>
@@ -641,7 +657,7 @@ SMS.send(&#39;416123456&#39;,&#39;Hello world!&#39;);
     </td>
     <td>
       
-<code>smsOptions</code>
+<code>SmsOptions</code>
     </td>
     <td>
       <p>Options</p>

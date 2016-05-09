@@ -14,6 +14,8 @@ app.use(function(req, res, next) {
     res.redirect(301, 'http://blog.ionic.io/' + req.url.replace(/^\/blog\//, ''));
   } else if (parts.path.indexOf('/creator/') == 0) {
     res.redirect(301, 'https://creator.ionic.io/' + req.url.replace(/^\/creator\//, ''))
+  } else if (parts.path.indexOf('/tutorials') == 0) {
+    res.redirect(301, 'http://ionicframework.com/getting-started' + req.url.replace(/^\/creator\//, ''))
   } else if (req.headers.host.indexOf('learn.') == 0) {
     res.redirect(301, 'http://ionicframework.com/docs/');
   } else {
@@ -40,7 +42,7 @@ app.set('trust proxy', true);
 app.use(wwwRedirect);
 app.use(compress());
 app.use(function(req, res, next) {
-  var staticURLS = ['/img/','/css/','/js/','/favicon.ico'];
+  var staticURLS = ['/img/','/css/','/js/','/fonts/','/favicon.ico'];
   for (var i = 0; i < staticURLS.length; i++) {
     if (req.url.indexOf(staticURLS[i]) === 0) {
       res.setHeader('Cache-Control', 'public, max-age=345600'); // 4 days

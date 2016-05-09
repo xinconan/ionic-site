@@ -997,7 +997,7 @@ as an attribute on the view itself (see below).</p>
 <p>Below is an example where our page will load with a <a href="/docs/nightly/api/directive/ionNavBar/"><code>ionNavBar</code></a> containing
 “My Page” as the title.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav-bar&gt;&lt;/ion-nav-bar&gt;</span>
 <span class="nt">&lt;ion-nav-view&gt;</span>
   <span class="nt">&lt;ion-view</span> <span class="na">view-title=</span><span class="s">"My Page"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ion-content&gt;</span>
@@ -1016,6 +1016,10 @@ have been added that are emitted from the view’s scope. These events also
 contain data about the view, such as the title and whether the back button should
 show. Also contained is transition data, such as the transition type and
 direction that will be or was used.</p>
+
+<p>Life cycle events are emitted upwards from the transitioning view’s scope. In some cases, it is
+desirable for a child/nested view to be notified of the event.
+For this use case, <code class="highlighter-rouge">$ionicParentView</code> life cycle events are broadcast downwards.</p>
 
 <table class="table">
  <tr>
@@ -1057,6 +1061,32 @@ active view. This event will fire, whether it is cached or destroyed.</td>
   <td>The view's controller has been destroyed and its element has been
 removed from the DOM.</td>
  </tr>
+ <tr>
+  <td><code>$ionicParentView.enter</code></td>
+  <td>The parent view has fully entered and is now the active view.
+This event will fire, whether it was the first load or a cached view.</td>
+ </tr>
+ <tr>
+  <td><code>$ionicParentView.leave</code></td>
+  <td>The parent view has finished leaving and is no longer the
+active view. This event will fire, whether it is cached or destroyed.</td>
+ </tr>
+ <tr>
+  <td><code>$ionicParentView.beforeEnter</code></td>
+  <td>The parent view is about to enter and become the active view.</td>
+ </tr>
+ <tr>
+  <td><code>$ionicParentView.beforeLeave</code></td>
+  <td>The parent view is about to leave and no longer be the active view.</td>
+ </tr>
+ <tr>
+  <td><code>$ionicParentView.afterEnter</code></td>
+  <td>The parent view has fully entered and is now the active view.</td>
+ </tr>
+ <tr>
+  <td><code>$ionicParentView.afterLeave</code></td>
+  <td>The parent view has finished leaving and is no longer the active view.</td>
+ </tr>
 </table>
 
 <h2 id="lifecycle-event-usage">LifeCycle Event Usage</h2>
@@ -1064,7 +1094,7 @@ removed from the DOM.</td>
 <p>Below is an example of how to listen to life cycle events and
 access state parameter data</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.beforeEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicView.beforeEnter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
    <span class="c1">// handle event</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"State Params: "</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">stateParams</span><span class="p">);</span>
 <span class="p">});</span>

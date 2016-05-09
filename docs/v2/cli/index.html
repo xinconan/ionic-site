@@ -18,6 +18,7 @@
   <body id="docs-page-cli-intro"
         class="v2 docs page-cli-intro"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -260,6 +261,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -317,6 +321,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -344,6 +351,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -360,6 +370,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -381,6 +394,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -534,13 +550,13 @@
 
 <p>To install the CLI, you will need to first install <a href="../resources/what-is#node">node</a> and <a href="../resources/what-is#npm">npm</a>. Note: The CLI requires Node 4.X (Node 5.X has been know to cause a number of issues).  Once installed, run the following command to get the latest version of the Ionic CLI:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
 </code></pre>
 </div>
 
 <p>On Mac and Linux, you’ll need to add <code class="highlighter-rouge">sudo</code> to install Ionic globally:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g ionic@beta
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g ionic@beta
 </code></pre>
 </div>
 
@@ -548,19 +564,19 @@
 
 <p>One of the most important commands is the <code class="highlighter-rouge">start</code> command, which creates a new Ionic project. Let’s try it out:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start myAwesomeApp --v2
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start myAwesomeApp --v2
 </code></pre>
 </div>
 
 <p>This will create a new app named <code class="highlighter-rouge">myAwesomeApp</code>. Let’s <code class="highlighter-rouge">cd</code> in to that directory, and run another Ionic CLI command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic info
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic info
 </code></pre>
 </div>
 
 <p>This should print out details about your Ionic environment, which is useful for debugging. Finally, to view your app in the browser, you can use the <code class="highlighter-rouge">serve</code> command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve
 </code></pre>
 </div>
 

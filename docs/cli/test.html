@@ -216,7 +216,7 @@ as you save a file the browser is refreshed automatically. Take a look at the
 <a href="/docs/cli/sass.html">Sass docs</a> if you would also like to have <code class="highlighter-rouge">ionic serve</code> 
 watch the project’s Sass files.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve <span class="o">[</span>options]
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve <span class="o">[</span>options]
 </code></pre>
 </div>
 
@@ -227,7 +227,7 @@ excluding <code class="highlighter-rouge">www/lib/</code>.  To change this, you 
 property in the <code class="highlighter-rouge">ionic.project</code> file located in your project root to watch 
 (or not watch) for specific changes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myApp"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"watchPatterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -244,7 +244,7 @@ the Grunt website.</p>
 
 <p>Note:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic setup sass 
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic setup sass 
 </code></pre>
 </div>
 
@@ -260,7 +260,7 @@ described in the <a href="/docs/cli/sass.html">Sass documentation</a>.</p>
 app in a phone frame and with iOS and Android platforms side-by-side. To use it, 
 just run</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve --lab
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve --lab
 </code></pre>
 </div>
 
@@ -271,7 +271,7 @@ for all the details!</p>
 
 <p>Say you want to specify what address your browser will connect to, say for testing or external users. Specify the address with the <code class="highlighter-rouge">--address</code> argument.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve --address 68.54.96.105
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve --address 68.54.96.105
 </code></pre>
 </div>
 
@@ -291,7 +291,7 @@ want to add. The proxies are object with two properties:</p>
   <li><code class="highlighter-rouge">proxyUrl</code>: a string with the url of where the proxied request should go.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"appname"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -310,7 +310,7 @@ at <code class="highlighter-rouge">http://localhost:8100/v1</code> to have it pr
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'starter.controllers'</span><span class="p">,</span> <span class="p">[])</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'starter.controllers'</span><span class="p">,</span> <span class="p">[])</span>
 <span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">'InstagramApiUrl'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 <span class="c1">// .constant('InstagramApiUrl','https://api.instagram.com')</span>
 <span class="c1">//In production, make this the real URL</span>

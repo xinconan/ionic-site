@@ -988,29 +988,81 @@ Delegate: <a href="/docs/nightly/api/service/$ionicSlideBoxDelegate/"><code>$ion
 
 <h2 id="usage">Usage</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-slides</span>  <span class="na">options=</span><span class="s">"options"</span> <span class="na">slider=</span><span class="s">"data.slider"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-slide-page&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box blue"</span><span class="nt">&gt;&lt;h1&gt;</span>BLUE<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide-page&gt;</span>
-  <span class="nt">&lt;ion-slide-page&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box yellow"</span><span class="nt">&gt;&lt;h1&gt;</span>YELLOW<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide-page&gt;</span>
-  <span class="nt">&lt;ion-slide-page&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box pink"</span><span class="nt">&gt;&lt;h1&gt;</span>PINK<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/ion-slide-page&gt;</span>
-<span class="nt">&lt;/ion-slides&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-content</span> <span class="na">scroll=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-slides</span>  <span class="na">options=</span><span class="s">"options"</span> <span class="na">slider=</span><span class="s">"data.slider"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-slide-page&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box blue"</span><span class="nt">&gt;&lt;h1&gt;</span>BLUE<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/ion-slide-page&gt;</span>
+    <span class="nt">&lt;ion-slide-page&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box yellow"</span><span class="nt">&gt;&lt;h1&gt;</span>YELLOW<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/ion-slide-page&gt;</span>
+    <span class="nt">&lt;ion-slide-page&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box pink"</span><span class="nt">&gt;&lt;h1&gt;</span>PINK<span class="nt">&lt;/h1&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/ion-slide-page&gt;</span>
+  <span class="nt">&lt;/ion-slides&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">loop</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="na">effect</span><span class="p">:</span> <span class="nx">fade</span><span class="p">,</span>
+  <span class="na">effect</span><span class="p">:</span> <span class="s1">'fade'</span><span class="p">,</span>
   <span class="na">speed</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="nx">$scope</span><span class="p">.</span><span class="nx">$watch</span><span class="p">(</span><span class="s1">'data.slider'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">nv</span><span class="p">,</span> <span class="nx">ov</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">slider</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">slider</span><span class="p">;</span>
-<span class="p">})</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicSlides.sliderInitialized"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="c1">// data.slider is the instance of Swiper</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">slider</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">slider</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicSlides.slideChangeStart"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Slide change is beginning'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicSlides.slideChangeEnd"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="c1">// note: the indexes are 0-based</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">activeIndex</span><span class="p">;</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">previousIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">previousIndex</span><span class="p">;</span>
+<span class="p">});</span>
+
+</code></pre>
+</div>
+
+<h2 id="slide-events">Slide Events</h2>
+
+<p>The slides component dispatches events when the active slide changes</p>
+
+<table class="table">
+  <tr>
+    <td><code>$ionicSlides.slideChangeStart</code></td>
+    <td>This event is emitted when a slide change begins</td>
+  </tr>
+  <tr>
+    <td><code>$ionicSlides.slideChangeEnd</code></td>
+    <td>This event is emitted when a slide change completes</td>
+  </tr>
+  <tr>
+    <td><code>$ionicSlides.sliderInitialized</code></td>
+    <td>This event is emitted when the slider is initialized. It provides access to an instance of the slider.</td>
+  </tr>
+</table>
+
+<h2 id="updating-slides-dynamically">Updating Slides Dynamically</h2>
+<p>When applying data to the slider at runtime, typically everything will work as expected.</p>
+
+<p>In the event that the slides are looped, use the <code class="highlighter-rouge">updateLoop</code> method on the slider to ensure the slides update correctly.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+  // grab an instance of the slider
+  $scope.slider = data.slider;
+});
+
+function dataChangeHandler(){
+  // call this function when data changes, such as an HTTP request, etc
+  if ( $scope.slider ){
+    $scope.slider.updateLoop();
+  }
+}
 </code></pre>
 </div>
 

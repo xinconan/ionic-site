@@ -1049,7 +1049,7 @@
 
 <p>If have an <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code> element, we can also create an <code class="highlighter-rouge">&lt;ion-nav-bar&gt;</code> which will create a topbar that updates as the application state changes. We can also add some styles and set up animations:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"starter"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">"starter"</span><span class="nt">&gt;</span>
 
   <span class="c">&lt;!-- The nav bar that will be updated as we navigate --&gt;</span>
   <span class="nt">&lt;ion-nav-bar</span> <span class="na">animation=</span><span class="s">"nav-title-slide-ios7"</span>
@@ -1068,7 +1068,7 @@
 
 <p>We can set up Angular to listen for various routes, match which state should be loaded, and render the state’s template into the correct <code class="highlighter-rouge">&lt;ion-nav-view&gt;</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 
 <span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$stateProvider</span><span class="p">,</span> <span class="nx">$urlRouterProvider</span><span class="p">)</span> <span class="p">{</span>
 
@@ -1114,7 +1114,7 @@
 
 <p>Next, in each state’s template should contain a <code class="highlighter-rouge">view</code> directive, which provides the view’s title:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
 <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"home.html"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/ng-template"</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">view</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"'Home'"</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">has</span><span class="o">-</span><span class="nx">header</span><span class="o">=</span><span class="s2">"true"</span> <span class="nx">padding</span><span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
@@ -1146,14 +1146,14 @@
 
 <p>Note: To hide the back button for a given view, use the <code class="highlighter-rouge">hide-back-button="true"</code> attribute on the <code class="highlighter-rouge">&lt;ion-view&gt;</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-view</span> <span class="na">ng-controller=</span><span class="s">"AppCtrl"</span> <span class="na">title=</span><span class="s">"myTitle"</span> <span class="na">left-buttons=</span><span class="s">"leftButtons"</span> <span class="na">right-buttons=</span><span class="s">"rightButtons"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-view</span> <span class="na">ng-controller=</span><span class="s">"AppCtrl"</span> <span class="na">title=</span><span class="s">"myTitle"</span> <span class="na">left-buttons=</span><span class="s">"leftButtons"</span> <span class="na">right-buttons=</span><span class="s">"rightButtons"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/ion-view&gt;</span>
 </code></pre>
 </div>
 
 <p>We can then specify these fields on the scope in our controller:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AppCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AppCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">myTitle</span> <span class="o">=</span> <span class="s1">'Page One'</span><span class="p">;</span>
 
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">leftButtons</span> <span class="o">=</span> <span class="p">[</span>

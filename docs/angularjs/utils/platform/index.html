@@ -961,7 +961,7 @@
 
 <p>You can safely run the ready method anywhere within you’re Ionic code and trust it’ll run when Cordova is all set to go. Also, if the app is not wrapped with Cordova, the ready callbacks will fire off after <code class="highlighter-rouge">window.onload</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Cordova is ready, let's do this!"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
@@ -978,7 +978,7 @@
   <li><strong>device.version</strong>: Get the operating system version.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">device</span> <span class="o">=</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">device</span><span class="p">();</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Hey, I'm an"</span><span class="p">,</span> <span class="nx">device</span><span class="p">.</span><span class="nx">platform</span><span class="p">);</span>
 <span class="p">});</span>
@@ -989,7 +989,7 @@
 
 <p>You can put your app in full screen mode, which removes the status bar at the top. By default <code class="highlighter-rouge">showFullScreen</code> is set to true, and <code class="highlighter-rouge">showStatusBar</code> is false. This method does not have to be wrapped in ready().</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">fullScreen</span><span class="p">();</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">fullScreen</span><span class="p">();</span>
 </code></pre>
 </div>
 
@@ -997,7 +997,7 @@
 
 <p>Closes the app.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">exitApp</span><span class="p">();</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">ionic</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">exitApp</span><span class="p">();</span>
 </code></pre>
 </div>
 

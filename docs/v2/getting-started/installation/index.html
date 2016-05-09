@@ -18,6 +18,7 @@
   <body id="docs-page-installation"
         class="v2 docs page-installation"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -263,6 +264,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -320,6 +324,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -347,6 +354,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -363,6 +373,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -384,6 +397,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -535,12 +551,12 @@
 
 <p>To install the Ionic SDK and create Ionic 2 projects, you’ll need to install the latest beta release:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
 </code></pre>
 </div>
 
 <blockquote>
-  <p>Make sure you have NodeJS installed. Download the installer <a href="https://nodejs.org/en/">here</a>. It’s best to get the 4x version of node for stability.
+  <p>Make sure you have NodeJS installed. Download the installer <a href="https://nodejs.org/en/">here</a>. It’s best to get the 5x version of node for stability.
 Unfamiliar with NPM? Learn more about it and what packages we use <a href="/docs/v2/resources/using-npm/">here</a></p>
 </blockquote>
 
@@ -548,13 +564,13 @@ Unfamiliar with NPM? Learn more about it and what packages we use <a href="/docs
 
 <p>Once that’s done, create your first Ionic app:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start cutePuppyPics --v2
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start cutePuppyPics --v2
 </code></pre>
 </div>
 
 <p>To run your app, <code class="highlighter-rouge">cd</code> into the directory that was created and then run the <code class="highlighter-rouge">ionic serve</code> command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>cutePuppyPics
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>cutePuppyPics
 <span class="gp">$ </span>ionic serve
 </code></pre>
 </div>
@@ -564,7 +580,7 @@ Unfamiliar with NPM? Learn more about it and what packages we use <a href="/docs
 <h3 id="building-to-a-devicebuilding-to-a-device"><a href="#building-to-a-device">Building to a Device</a></h3>
 <p>After you have Ionic installed, you can build your app to a physical device. If you don’t have a physical device on hand, you can still build to a device emulator. Check out the <a href="../../resources/developer-tips/#using-ios-simulator">iOS simulator</a> docs if you are on a Mac, or the <a href="../../resources/developer-tips/#using-genymotion">Genymotion</a> docs if you are looking to emulate an Android device. You will also need <a href="../../resources/what-is/#cordova">Cordova</a> to run your app on a native device. To install Cordova, run:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g cordova
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g cordova
 </code></pre>
 </div>
 
@@ -579,20 +595,20 @@ Unfamiliar with NPM? Learn more about it and what packages we use <a href="/docs
 
 <p>From there, you should be able to run the iOS emulator using the following command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic emulate ios
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic emulate ios
 </code></pre>
 </div>
 
 <h3 id="building-for-androidbuilding-for-android"><a href="#building-for-android">Building for Android</a></h3>
 <p>To build for Android, you’ll need to add the Android platform module to Cordova:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform add android
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic platform add android
 </code></pre>
 </div>
 
 <p>Next, you’ll need to install the <a href="../../resources/what-is/#android-sdk">Android SDK</a>. The Android SDK allows you to build compile to a target device running Android. Although the Android SDK comes with a stock emulator, <a href="../../resources/what-is/#genymotion">Genymotion</a> is recommended, since it’s much faster. Once installed, start an Android image and run:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run android
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic run android
 </code></pre>
 </div>
 

@@ -1054,7 +1054,7 @@
   </tbody>
 </table>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
 <span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
 
   <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span><span class="nt">&gt;</span>
@@ -1075,7 +1075,7 @@
 
 <p>To use the tabs, put the content of each tab right into the <code class="highlighter-rouge">&lt;ion-tab&gt;</code> tag, like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ion-header-bar</span> <span class="na">type=</span><span class="s">"bar-positive"</span> <span class="na">title=</span><span class="s">"'Home'"</span><span class="nt">&gt;&lt;/ion-header-bar&gt;</span>
     <span class="nt">&lt;ion-content</span> <span class="na">has-header=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -1090,7 +1090,7 @@
 
 <p>The Tab Bar also emits events when tabs change. To know when a tab is shown, listen for the <code class="highlighter-rouge">tab.shown</code> event, and the <code class="highlighter-rouge">tab.hidden</code> event for when it is hidden:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-tabs</span> <span class="na">tabs-type=</span><span class="s">"tabs-icon-only"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ion-tab</span> <span class="na">title=</span><span class="s">"Home"</span> <span class="na">icon-on=</span><span class="s">"ion-ios7-filing"</span> <span class="na">icon-off=</span><span class="s">"ion-ios7-filing-outline"</span> <span class="na">ng-controller=</span><span class="s">"HomeCtrl"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ion-header-bar</span> <span class="na">type=</span><span class="s">"bar-positive"</span> <span class="na">title=</span><span class="s">"'Home'"</span><span class="nt">&gt;&lt;/ion-header-bar&gt;</span>
     <span class="nt">&lt;ion-content</span> <span class="na">has-header=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -1101,7 +1101,7 @@
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'test'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic'</span><span class="p">])</span>
 <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'HomeCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'tab.shown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Maybe load some content here</span>

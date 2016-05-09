@@ -1020,7 +1020,7 @@
 
 <p>To use the Side Menu Controller with Ionic-Angular, use the <code class="highlighter-rouge">&lt;ion-side-menus&gt;</code> top level directive, adding a <code class="highlighter-rouge">&lt;pane ion-side-menu-content&gt;</code> for the center content, and one or more <code class="highlighter-rouge">&lt;ion-side-menu&gt;</code> directives:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-side-menus&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-side-menus&gt;</span>
   <span class="c">&lt;!-- Center content --&gt;</span>
   <span class="nt">&lt;ion-pane</span> <span class="na">ion-side-menu-content</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/ion-pane&gt;</span>
@@ -1042,13 +1042,13 @@
 
 <p>To access the parent Side Menu Controller on a child scope, access the <code class="highlighter-rouge">$scope.sideMenuController</code> object. For example, the following code enables toggling the left side menu from a button in the header bar:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;header&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;header&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">ng-click=</span><span class="s">"toggleMenu()"</span><span class="nt">&gt;</span>Toggle<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleMenu</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$scope</span><span class="p">.</span><span class="nx">toggleMenu</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">$scope</span><span class="p">.</span><span class="nx">sideMenuController</span><span class="p">.</span><span class="nx">toggleLeft</span><span class="p">();</span>
 <span class="p">};</span>
 </code></pre>
@@ -1058,7 +1058,7 @@
 
 <p>To use the Side Menu Controller low-level API, follow the markup and Javascript below:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
 <span class="c">&lt;!-- Center content --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"content"</span> <span class="na">class=</span><span class="s">"pane"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-header bar-dark"</span><span class="nt">&gt;</span>
@@ -1082,7 +1082,7 @@
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">contentEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">contentEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ionic</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">SideMenuContent</span><span class="p">({</span>
   <span class="na">el</span><span class="p">:</span> <span class="nx">contentEl</span>
 <span class="p">});</span>

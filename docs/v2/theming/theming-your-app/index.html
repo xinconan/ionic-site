@@ -18,6 +18,7 @@
   <body id="docs-page-theming-your-app"
         class="v2 docs page-theming-your-app"
         data-spy="scroll"
+        data-offset="100"
         data-target="#components-index"
         ng-app="IonicDocs">
     <nav class="navbar navbar-default">
@@ -260,6 +261,9 @@
   <a href="/docs/v2/native/Action Sheet">Action Sheet</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/AdMob">AdMob</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/App Availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -317,6 +321,9 @@
   <a href="/docs/v2/native/Device Orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/DeviceAccounts">DeviceAccounts</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Diagnostic">Diagnostic</a>
 </li>
 <li class="capitalize ">
@@ -344,6 +351,9 @@
   <a href="/docs/v2/native/Google Analytics">Google Analytics</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/Google Maps">Google Maps</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/Hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -360,6 +370,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Local Notifications">Local Notifications</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/MediaPlugin">MediaPlugin</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Network">Network</a>
@@ -381,6 +394,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Splashscreen">Splashscreen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/SQLite">SQLite</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/Status Bar">Status Bar</a>
@@ -533,7 +549,7 @@
 
 <p>Theme support is baked right in to your Ionic apps. To change the theme, just tweak the <code class="highlighter-rouge">$colors</code> <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps">map</a> in your <code class="highlighter-rouge">app/theme/app.variables.scss</code> file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
 
   <span class="n">primary</span><span class="o">:</span>    <span class="mh">#387ef5</span><span class="o">,</span>
   <span class="n">secondary</span><span class="o">:</span>  <span class="mh">#32db64</span><span class="o">,</span>
@@ -552,7 +568,7 @@
 
 <p>To add custom colors, just add them to the <code class="highlighter-rouge">$colors</code> map:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="o">//</span> <span class="o">...</span>
   <span class="n">twitter</span><span class="o">:</span>    <span class="mh">#55acee</span>
 
@@ -562,7 +578,7 @@
 
 <p>You can customize this further by suppling a base and contrast property.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="o">//</span> <span class="o">...</span>
   <span class="n">twitter</span><span class="o">:</span><span class="p">(</span>
     <span class="n">base</span><span class="o">:</span> <span class="mh">#55acee</span><span class="o">,</span>
@@ -575,13 +591,13 @@
 
 <p>Ionic makes the <code class="highlighter-rouge">$colors</code> keys available as a property to many components. For example, to use our <code class="highlighter-rouge">twitter</code> color, add the key as a property:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">twitter</span><span class="nt">&gt;</span>I'm a button<span class="nt">&lt;/button&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">twitter</span><span class="nt">&gt;</span>I'm a button<span class="nt">&lt;/button&gt;</span>
 </code></pre>
 </div>
 
 <p>For any custom components, you can use the <code class="highlighter-rouge">color</code> function to get the right colors.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">my-component</span> <span class="p">{</span>
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nt">my-component</span> <span class="p">{</span>
   <span class="nl">background</span> <span class="p">:</span> <span class="nf">color</span><span class="p">(</span><span class="nv">$colors</span><span class="o">,</span> <span class="n">twitter</span><span class="o">,</span> <span class="n">contrast</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
@@ -590,7 +606,7 @@
 <p>The <code class="highlighter-rouge">color</code> function will look up the right color based on the map, the property, and the variant you pass it.
 In this case the compile output would be:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">my-component</span> <span class="p">{</span>
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nt">my-component</span> <span class="p">{</span>
   <span class="nl">background</span> <span class="p">:</span> <span class="m">#55acee</span>
 <span class="p">}</span>
 </code></pre>
