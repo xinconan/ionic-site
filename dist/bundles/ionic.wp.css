@@ -872,6 +872,20 @@ ion-page.modal {
   z-index: 1000;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0); }
+  @media only screen and (min-width: 768px) and (min-height: 600px) {
+    ion-page.modal {
+      position: absolute;
+      top: calc(50% - 250px);
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 500px; } }
+  @media only screen and (min-width: 768px) and (min-height: 768px) {
+    ion-page.modal {
+      position: absolute;
+      top: calc(50% - 300px);
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 600px; } }
 
 ion-refresher {
   position: absolute;
@@ -5628,10 +5642,14 @@ input.text-input:-webkit-autofill {
 
 .text-input-clear-icon {
   position: absolute;
+  display: none;
   margin: 0;
   padding: 0;
   background-repeat: no-repeat;
   background-position: center; }
+
+.input-has-value .text-input-clear-icon {
+  display: block; }
 
 .text-input.cloned-input {
   position: relative;
@@ -5690,7 +5708,7 @@ ion-input[clearInput] {
 .text-input-clear-icon {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='rgba(0,%200,%200,%200.5)'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>");
   right: 8px;
-  bottom: 2px;
+  bottom: 7px;
   width: 30px;
   background-size: 22px; }
 
@@ -6376,10 +6394,21 @@ ion-picker-cmp {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 100%;
-  text-align: center;
+  width: 100%; }
+
+.picker-opt .button-inner {
+  display: block;
+  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out; }
+
+.picker-opt.picker-opt-disabled {
+  pointer-events: none; }
+
+.picker-opt-disabled .button-inner {
+  opacity: 0; }
 
 .picker-opts-left .button-inner {
   -webkit-box-pack: start;
@@ -6444,7 +6473,7 @@ ion-picker-cmp {
   perspective: 1800px; }
 
 .picker-col {
-  padding: 0 12px;
+  padding: 0 4px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
 
@@ -6464,8 +6493,7 @@ ion-picker-cmp {
 
 .picker-opt {
   margin: 0;
-  padding: 0 10px;
-  width: calc(100% - 24px);
+  padding: 0;
   font-size: 18px;
   line-height: 42px;
   background: transparent;
@@ -6482,7 +6510,7 @@ ion-picker-cmp {
 .picker-prefix,
 .picker-suffix,
 .picker-opt-selected {
-  font-size: 24px;
+  font-size: 22px;
   color: #327eff; }
 
 .picker-above-highlight {
@@ -7075,7 +7103,7 @@ tabbar {
   box-shadow: none;
   opacity: .7; }
   .tab-button[aria-selected=true] {
-    border-bottom: 2px solid #327eff;
+    border-bottom-color: #327eff;
     color: #327eff;
     opacity: 1; }
   .tab-button.activated {
@@ -7105,6 +7133,12 @@ tabbar {
 .tab-button.icon-only,
 .tab-button.has-title-only {
   padding: 6px 10px; }
+
+[tabbarPlacement=bottom] .tab-button {
+  border-top: 2px solid transparent;
+  border-bottom-width: 0; }
+  [tabbarPlacement=bottom] .tab-button[aria-selected=true] {
+    border-top-color: #327eff; }
 
 ion-tabs[primary] tabbar {
   background-color: #327eff; }

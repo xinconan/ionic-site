@@ -872,6 +872,20 @@ ion-page.modal {
   z-index: 1000;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0); }
+  @media only screen and (min-width: 768px) and (min-height: 600px) {
+    ion-page.modal {
+      position: absolute;
+      top: calc(50% - 250px);
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 500px; } }
+  @media only screen and (min-width: 768px) and (min-height: 768px) {
+    ion-page.modal {
+      position: absolute;
+      top: calc(50% - 300px);
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 600px; } }
 
 ion-refresher {
   position: absolute;
@@ -5407,6 +5421,29 @@ ion-icon {
   .ios [margin-horizontal] scroll-content {
     margin-right: 16px;
     margin-left: 16px; }
+  .ios ion-datetime {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    max-width: 45%; }
+  .ios .datetime-text {
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 16px;
+    font-size: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .ios .datetime-disabled,
+  .ios .item-datetime-disabled ion-label {
+    opacity: .4;
+    pointer-events: none; }
+  .ios ion-datetime {
+    padding: 12px 8px 13px 16px; }
   .ios ion-input,
   .ios ion-textarea {
     position: relative;
@@ -5475,10 +5512,13 @@ ion-icon {
     pointer-events: none; }
   .ios .text-input-clear-icon {
     position: absolute;
+    display: none;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center; }
+  .ios .input-has-value .text-input-clear-icon {
+    display: block; }
   .ios .text-input.cloned-input {
     position: relative;
     top: 0;
@@ -5515,6 +5555,7 @@ ion-icon {
     right: 8px;
     bottom: 0;
     width: 30px;
+    height: 34px;
     background-size: 18px; }
   .ios .item {
     display: -webkit-box;
@@ -6151,10 +6192,18 @@ ion-icon {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    width: 100%;
-    text-align: center;
+    width: 100%; }
+  .ios .picker-opt .button-inner {
+    display: block;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; }
+    white-space: nowrap;
+    -webkit-transition: opacity 150ms ease-in-out;
+    transition: opacity 150ms ease-in-out; }
+  .ios .picker-opt.picker-opt-disabled {
+    pointer-events: none; }
+  .ios .picker-opt-disabled .button-inner {
+    opacity: 0; }
   .ios .picker-opts-left .button-inner {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
@@ -6201,17 +6250,17 @@ ion-icon {
     background: transparent; }
   .ios .picker-columns {
     height: 216px;
-    -webkit-perspective: 1800px;
-    perspective: 1800px; }
+    -webkit-perspective: 1000px;
+    perspective: 1000px; }
   .ios .picker-col {
-    padding: 0 12px;
+    padding: 0 4px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
   .ios .picker-prefix,
   .ios .picker-suffix,
   .ios .picker-opts {
     top: 77px;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 42px;
     color: #000;
     -webkit-transform-style: preserve-3d;
@@ -6219,9 +6268,8 @@ ion-icon {
     pointer-events: none; }
   .ios .picker-opt {
     margin: 0;
-    padding: 0 10px;
-    width: calc(100% - 24px);
-    font-size: 22px;
+    padding: 0;
+    font-size: 20px;
     line-height: 42px;
     background: transparent;
     -webkit-transform-origin: center center;
@@ -8643,10 +8691,13 @@ ion-icon {
     pointer-events: none; }
   .md .text-input-clear-icon {
     position: absolute;
+    display: none;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center; }
+  .md .input-has-value .text-input-clear-icon {
+    display: block; }
   .md .text-input.cloned-input {
     position: relative;
     top: 0;
@@ -8697,7 +8748,7 @@ ion-icon {
   .md .text-input-clear-icon {
     background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='#5b5b5b'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>");
     right: 8px;
-    bottom: 2px;
+    bottom: 4px;
     width: 30px;
     background-size: 22px; }
   .md .item {
@@ -9304,10 +9355,18 @@ ion-icon {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    width: 100%;
-    text-align: center;
+    width: 100%; }
+  .md .picker-opt .button-inner {
+    display: block;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; }
+    white-space: nowrap;
+    -webkit-transition: opacity 150ms ease-in-out;
+    transition: opacity 150ms ease-in-out; }
+  .md .picker-opt.picker-opt-disabled {
+    pointer-events: none; }
+  .md .picker-opt-disabled .button-inner {
+    opacity: 0; }
   .md .picker-opts-left .button-inner {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
@@ -9352,7 +9411,7 @@ ion-icon {
     -webkit-perspective: 1800px;
     perspective: 1800px; }
   .md .picker-col {
-    padding: 0 12px;
+    padding: 0 8px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
   .md .picker-prefix,
@@ -9369,8 +9428,7 @@ ion-icon {
     display: none; }
   .md .picker-opt {
     margin: 0;
-    padding: 0 10px;
-    width: calc(100% - 24px);
+    padding: 0;
     font-size: 18px;
     line-height: 42px;
     background: transparent;
@@ -9385,7 +9443,7 @@ ion-icon {
   .md .picker-prefix,
   .md .picker-suffix,
   .md .picker-opt-selected {
-    font-size: 24px;
+    font-size: 22px;
     color: #327eff; }
   .md .picker-above-highlight {
     position: absolute;
@@ -12123,10 +12181,13 @@ ion-icon {
     pointer-events: none; }
   .wp .text-input-clear-icon {
     position: absolute;
+    display: none;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center; }
+  .wp .input-has-value .text-input-clear-icon {
+    display: block; }
   .wp .text-input.cloned-input {
     position: relative;
     top: 0;
@@ -12172,7 +12233,7 @@ ion-icon {
   .wp .text-input-clear-icon {
     background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='rgba(0,%200,%200,%200.5)'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>");
     right: 8px;
-    bottom: 2px;
+    bottom: 7px;
     width: 30px;
     background-size: 22px; }
   .wp .item {
@@ -12768,10 +12829,18 @@ ion-icon {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    width: 100%;
-    text-align: center;
+    width: 100%; }
+  .wp .picker-opt .button-inner {
+    display: block;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; }
+    white-space: nowrap;
+    -webkit-transition: opacity 150ms ease-in-out;
+    transition: opacity 150ms ease-in-out; }
+  .wp .picker-opt.picker-opt-disabled {
+    pointer-events: none; }
+  .wp .picker-opt-disabled .button-inner {
+    opacity: 0; }
   .wp .picker-opts-left .button-inner {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
@@ -12825,7 +12894,7 @@ ion-icon {
     -webkit-perspective: 1800px;
     perspective: 1800px; }
   .wp .picker-col {
-    padding: 0 12px;
+    padding: 0 4px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
   .wp .picker-prefix,
@@ -12842,8 +12911,7 @@ ion-icon {
     display: none; }
   .wp .picker-opt {
     margin: 0;
-    padding: 0 10px;
-    width: calc(100% - 24px);
+    padding: 0;
     font-size: 18px;
     line-height: 42px;
     background: transparent;
@@ -12858,7 +12926,7 @@ ion-icon {
   .wp .picker-prefix,
   .wp .picker-suffix,
   .wp .picker-opt-selected {
-    font-size: 24px;
+    font-size: 22px;
     color: #327eff; }
   .wp .picker-above-highlight {
     position: absolute;
@@ -13371,7 +13439,7 @@ ion-icon {
     box-shadow: none;
     opacity: .7; }
     .wp .tab-button[aria-selected=true] {
-      border-bottom: 2px solid #327eff;
+      border-bottom-color: #327eff;
       color: #327eff;
       opacity: 1; }
     .wp .tab-button.activated {
@@ -13396,6 +13464,11 @@ ion-icon {
   .wp .tab-button.icon-only,
   .wp .tab-button.has-title-only {
     padding: 6px 10px; }
+  .wp [tabbarPlacement=bottom] .tab-button {
+    border-top: 2px solid transparent;
+    border-bottom-width: 0; }
+    .wp [tabbarPlacement=bottom] .tab-button[aria-selected=true] {
+      border-top-color: #327eff; }
   .wp ion-tabs[primary] tabbar {
     background-color: #327eff; }
     .wp ion-tabs[primary] tabbar .tab-button {
