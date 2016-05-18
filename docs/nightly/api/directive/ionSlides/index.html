@@ -1027,8 +1027,8 @@ Delegate: <a href="/docs/nightly/api/service/$ionicSlideBoxDelegate/"><code>$ion
 
 <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">"$ionicSlides.slideChangeEnd"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
   <span class="c1">// note: the indexes are 0-based</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">activeIndex</span><span class="p">;</span>
-  <span class="nx">$scope</span><span class="p">.</span><span class="nx">previousIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">previousIndex</span><span class="p">;</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">activeIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">slider</span><span class="p">.</span><span class="nx">activeIndex</span><span class="p">;</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">previousIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">slider</span><span class="p">.</span><span class="nx">previousIndex</span><span class="p">;</span>
 <span class="p">});</span>
 
 </code></pre>

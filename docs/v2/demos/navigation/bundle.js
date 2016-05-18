@@ -30678,7 +30678,9 @@
 	    }
 	})();
 	// use native raf rather than the zone wrapped one
-	exports.nativeRaf = (window[window['Zone']['__symbol__']('requestAnimationFrame')] || window[window['Zone']['__symbol__']('webkitRequestAnimationFrame')])['bind'](window);
+	var originalRaf = (window[window['Zone']['__symbol__']('requestAnimationFrame')] || window[window['Zone']['__symbol__']('webkitRequestAnimationFrame')]);
+	// if the originalRaf from the Zone symbol is not available, we need to provide the polyfilled version
+	exports.nativeRaf = originalRaf !== undefined ? originalRaf['bind'](window) : window.requestAnimationFrame.bind(window);
 	// zone wrapped raf
 	exports.raf = window.requestAnimationFrame.bind(window);
 	exports.cancelRaf = window.cancelAnimationFrame.bind(window);
@@ -32644,7 +32646,7 @@
 	        });
 	    }
 	    /**
-	     * Chech to see if the keyboard is open or not.
+	     * Check to see if the keyboard is open or not.
 	     *
 	     * ```ts
 	     * export class MyClass{
@@ -37764,6 +37766,7 @@
 	var ViewController = (function () {
 	    function ViewController(componentType, data) {
 	        this.componentType = componentType;
+	        this._tbRefs = [];
 	        this._destroys = [];
 	        this._hdAttr = null;
 	        this._leavingOpts = null;
@@ -38005,6 +38008,19 @@
 	    /**
 	     * @private
 	     */
+	    ViewController.prototype.setToolbarRef = function (elementRef) {
+	        this._tbRefs.push(elementRef);
+	    };
+	    /**
+	     * @private
+	     * @returns {elementRef} Returns the Page's Content ElementRef
+	     */
+	    ViewController.prototype.toolbarRefs = function () {
+	        return this._tbRefs;
+	    };
+	    /**
+	     * @private
+	     */
 	    ViewController.prototype.setContent = function (directive) {
 	        this._cntDir = directive;
 	    };
@@ -38202,6 +38218,7 @@
 	            this._destroys[i]();
 	        }
 	        this._destroys.length = 0;
+	        this._tbRefs.length = 0;
 	    };
 	    __decorate([
 	        core_1.Output(), 
@@ -38569,6 +38586,7 @@
 	var config_1 = __webpack_require__(252);
 	var ion_1 = __webpack_require__(269);
 	var navbar_1 = __webpack_require__(281);
+	var view_controller_1 = __webpack_require__(279);
 	/**
 	 * @private
 	 */
@@ -38656,9 +38674,10 @@
 	 */
 	var Toolbar = (function (_super) {
 	    __extends(Toolbar, _super);
-	    function Toolbar(elementRef, config) {
+	    function Toolbar(viewCtrl, elementRef, config) {
 	        _super.call(this, elementRef);
 	        this._sbPadding = config.getBoolean('statusbarPadding', false);
+	        viewCtrl && viewCtrl.setToolbarRef(elementRef);
 	    }
 	    Toolbar = __decorate([
 	        core_1.Component({
@@ -38675,11 +38694,12 @@
 	                '[class.statusbar-padding]': '_sbPadding'
 	            },
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	        }), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _b) || Object])
+	        }),
+	        __param(0, core_1.Optional()), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, (typeof (_c = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _c) || Object])
 	    ], Toolbar);
 	    return Toolbar;
-	    var _a, _b;
+	    var _a, _b, _c;
 	}(ToolbarBase));
 	exports.Toolbar = Toolbar;
 	/**
@@ -49108,7 +49128,7 @@
 	        };
 	    }
 	    ItemSlidingGesture.prototype.onDragStart = function (ev) {
-	        var itemContainerEle = getItemConatiner(ev.target);
+	        var itemContainerEle = getItemContainer(ev.target);
 	        if (!itemContainerEle) {
 	            console.debug('onDragStart, no itemContainerEle');
 	            return false;
@@ -49136,7 +49156,7 @@
 	            this.preventDrag = true;
 	            return;
 	        }
-	        var itemContainerEle = getItemConatiner(ev.target);
+	        var itemContainerEle = getItemContainer(ev.target);
 	        if (!itemContainerEle || !isActive(itemContainerEle)) {
 	            console.debug('onDrag, no itemContainerEle');
 	            return;
@@ -49171,7 +49191,7 @@
 	        var _this = this;
 	        this.preventDrag = false;
 	        this.dragEnded = true;
-	        var itemContainerEle = getItemConatiner(ev.target);
+	        var itemContainerEle = getItemContainer(ev.target);
 	        if (!itemContainerEle || !isActive(itemContainerEle)) {
 	            console.debug('onDragEnd, no itemContainerEle');
 	            return;
@@ -49267,7 +49287,7 @@
 	    console.debug('sliding item preventDefault', ev.type);
 	    ev.preventDefault();
 	}
-	function getItemConatiner(ele) {
+	function getItemContainer(ele) {
 	    return dom_1.closest(ele, 'ion-item-sliding', true);
 	}
 	function isFromOptionButtons(ele) {
@@ -53353,22 +53373,28 @@
 	/**
 	 * @name DateTime
 	 * @description
-	 * The DateTime component can be added to a template using the `<ion-datetime>` element.
-	 * Tapping on the `<ion-datetime>` element will display a dialog that slides up from the
-	 * bottom of the page. The dialog displays scrollable columns that can be used to select
-	 * date and time values.
+	 * The DateTime component is used to present an interface which makes it easy for
+	 * users to select dates and times. Tapping on `<ion-datetime>` will display a picker
+	 * interface that slides up from the bottom of the page. The picker then displays
+	 * scrollable columns that can be used to individually select years, months, days,
+	 * hours and minute values. The DateTime component is similar to the native
+	 * `<input type="datetime-local">` element, however, Ionic's DateTime component makes
+	 * it easy to display the date and time in a preferred format, and manage the datetime
+	 * values.
 	 *
-	 * It is similar to the native `<input type="datetime-local">` element, however, Ionic's
-	 * DateTime component makes it easy for developers to display the date in their preferred
-	 * format and manage the date from their JavaScript.
+	 * ```html
+	 * <ion-item>
+	 *   <ion-label>Date</ion-label>
+	 *   <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+	 * </ion-item>
+	 * ```
 	 *
 	 *
 	 * ## Display and Picker Formats
 	 *
-	 * The DateTime component displays the date/time in two places: in the `<ion-datetime>`
-	 * element, and in the dialog that presents from the bottom of the screen. These both
-	 * can be customized to display in many different formats. The following chart lists
-	 * all of the formats that can be passed to the different inputs.
+	 * The DateTime component displays the values in two places: in the `<ion-datetime>`
+	 * component, and in the interface that is presented from the bottom of the screen.
+	 * The following chart lists all of the formats that can be used.
 	 *
 	 * | Format  | Description                    | Example                 |
 	 * |---------|--------------------------------|-------------------------|
@@ -53399,34 +53425,31 @@
 	 *
 	 * ### Display Format
 	 *
-	 * The `displayFormat` input specifies how a date's value should be displayed
-	 * within the `ion-datetime` element.
+	 * The `displayFormat` input property specifies how a datetime's value should be
+	 * printed, as formatted text, within the `ion-datetime` component.
 	 *
 	 * In the following example, the display in the `<ion-datetime>` will use the
 	 * month's short name, the numerical day with a leading zero, a comma and the
-	 * 4 digit year. In addition to the date, it will display the time with the hours
-	 * in the 24-hour format and the minutes. Both the hour and minutes will be displayed
-	 * with a leading zero, and they are separated by a `:` character. Any character
-	 * can be used as a separator. An example display using this format is: `Jun 17, 2005 11:06`.
+	 * four-digit year. In addition to the date, it will display the time with the hours
+	 * in the 24-hour format and the minutes. Any character can be used as a separator.
+	 * An example display using this format is: `Jun 17, 2005 11:06`.
 	 *
 	 * ```html
 	 * <ion-item>
 	 *   <ion-label>Date</ion-label>
-	 *   <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate">
-	 *   </ion-datetime>
+	 *   <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
 	 * </ion-item>
 	 * ```
 	 *
 	 * ### Picker Format
 	 *
-	 * The `pickerFormat` input determines which columns should be shown in the dialog,
-	 * the order of the columns, and which format to use to display the value. If the
-	 *`pickerFormat` input is not provided then it will use the `displayFormat`.
+	 * The `pickerFormat` input property determines which columns should be shown in the
+	 * interface, the order of the columns, and which format to use within each column.
+	 * If the `pickerFormat` input is not provided then it will default to the `displayFormat`.
 	 *
 	 * In the following example, the display in the `<ion-datetime>` will use the
-	 * numerical month with a leading zero, followed by a forward slash `/` and the
-	 * 4 digit year. An example display using this format is: `06/2020`. The dialog
-	 * will display two columns: the month's long name, and the 4 digit year.
+	 * `MM/YYYY` format, such as `06/2020`. However, the picker interface
+	 * will display two columns with the month's long name, and the four-digit year.
 	 *
 	 * ```html
 	 * <ion-item>
@@ -53437,36 +53460,28 @@
 	 *
 	 * ### Datetime Data
 	 *
-	 * Historically, handling datetime data within JavaScript, or even within HTML
+	 * Historically, handling datetime values within JavaScript, or even within HTML
 	 * inputs, has always been a challenge. Specifically, JavaScript's `Date` object is
 	 * notoriously difficult to correctly parse apart datetime strings or to format
 	 * datetime values. Even worse is how different browsers and JavaScript versions
-	 * parse various datetime strings differently, especially per locale. Additional,
-	 * developers face even more challenges when dealing with timezones using
-	 * JavaScript's core `Date` object.
+	 * parse various datetime strings differently, especially per locale.
 	 *
 	 * But no worries, all is not lost! Ionic's datetime input has been designed so
 	 * developers can avoid the common pitfalls, allowing developers to easily format
-	 * datetime data within the input, and give the user a simple datetime picker for a
-	 * great user experience. Oddly enough, one of the best ways to work with datetime
-	 * values in JavaScript is to not use the `Date` object at all.
+	 * datetime values within the input, and give the user a simple datetime picker for a
+	 * great user experience.
 	 *
 	 * ##### ISO 8601 Datetime Format: YYYY-MM-DDTHH:mmZ
 	 *
-	 * For all the reasons above, and how datetime data is commonly saved within databases,
 	 * Ionic uses the [ISO 8601 datetime format](https://www.w3.org/TR/NOTE-datetime)
-	 * for both its input value, and output value. The value is simply a string, rather
-	 * than using JavaScript's `Date` object, and it strictly follows the standardized
-	 * ISO 8601 format. Additionally, when using the ISO datetime string format, it makes
-	 * it easier on developers when passing data within JSON objects, and sending databases
-	 * a standardized datetime format which it can be easily parse apart and formatted.
-	 * Because of the strict adherence to the ISO 8601 format, and not involving the hundreds
-	 * of other format possibilities and locales, this approach actually makes it easier
-	 * for Ionic apps and backend-services to manage datetime data.
+	 * for its value. The value is simply a string, rather than using JavaScript's `Date`
+	 * object. Additionally, when using the ISO datetime format, it makes it easier
+	 * to serialize and pass within JSON objects, and sending databases a standardized
+	 * format which it can be easily parsed if need be.
 	 *
 	 * An ISO format can be used as a simple year, or just the hour and minute, or get more
 	 * detailed down to the millisecond and timezone. Any of the ISO formats below can be used,
-	 * and after a user selects a new date, Ionic will continue to use the same ISO format
+	 * and after a user selects a new value, Ionic will continue to use the same ISO format
 	 * which datetime value was originally given as.
 	 *
 	 * | Description          | Format                 | Datetime Value Example       |
@@ -54420,10 +54435,10 @@
 	        y = Math.round(y);
 	        this.col.selectedIndex = Math.max(Math.abs(Math.round(y / this.optHeight)), 0);
 	        var colElements = this.colEle.nativeElement.querySelectorAll('.picker-opt');
-	        if (colElements.length != this.col.options.length) {
-	            // TODO: it would be great to find the root of the problem
-	            // and implement a good fix, but at least, this prevents an expection
-	            console.error("colElements.length!=this.col.options.length");
+	        if (colElements.length !== this.col.options.length) {
+	            // TODO: temporary until [style.transform] is fixed within ng2
+	            console.warn('colElements.length!=this.col.options.length');
+	            return;
 	        }
 	        for (var i = 0; i < colElements.length; i++) {
 	            var ele = colElements[i];
@@ -75247,6 +75262,17 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(8);
+	var nav_params_1 = __webpack_require__(280);
 	var view_controller_1 = __webpack_require__(279);
 	var animation_1 = __webpack_require__(287);
 	var transition_1 = __webpack_require__(286);
@@ -75353,7 +75379,8 @@
 	    __extends(Modal, _super);
 	    function Modal(componentType, data) {
 	        if (data === void 0) { data = {}; }
-	        _super.call(this, componentType, data);
+	        data.componentToPresent = componentType;
+	        _super.call(this, ModalComponent, data);
 	        this.viewType = 'modal';
 	        this.isOverlay = true;
 	    }
@@ -75375,6 +75402,34 @@
 	    return Modal;
 	}(view_controller_1.ViewController));
 	exports.Modal = Modal;
+	var ModalComponent = (function () {
+	    function ModalComponent(_loader, _navParams, _viewCtrl) {
+	        this._loader = _loader;
+	        this._navParams = _navParams;
+	        this._viewCtrl = _viewCtrl;
+	    }
+	    ModalComponent.prototype.ngAfterViewInit = function () {
+	        var _this = this;
+	        var component = this._navParams.data.componentToPresent;
+	        this._loader.loadNextToLocation(component, this.wrapper).then(function (componentInstance) {
+	            _this._viewCtrl.setInstance(componentInstance.instance);
+	            // TODO - validate what life cycle events aren't call and possibly call them here if needed
+	        });
+	    };
+	    __decorate([
+	        core_1.ViewChild('wrapper', { read: core_1.ViewContainerRef }), 
+	        __metadata('design:type', (typeof (_a = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _a) || Object)
+	    ], ModalComponent.prototype, "wrapper", void 0);
+	    ModalComponent = __decorate([
+	        core_1.Component({
+	            selector: 'ion-modal',
+	            template: "\n    <div class=\"backdrop\"></div>\n    <div class=\"modal-wrapper\">\n      <div #wrapper></div>\n    </div>\n  "
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.DynamicComponentLoader !== 'undefined' && core_1.DynamicComponentLoader) === 'function' && _b) || Object, (typeof (_c = typeof nav_params_1.NavParams !== 'undefined' && nav_params_1.NavParams) === 'function' && _c) || Object, (typeof (_d = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _d) || Object])
+	    ], ModalComponent);
+	    return ModalComponent;
+	    var _a, _b, _c, _d;
+	}());
 	/**
 	 * Animations for modals
 	 */
@@ -75382,12 +75437,18 @@
 	    __extends(ModalSlideIn, _super);
 	    function ModalSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
+	        var ele = enteringView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        backdrop.fromTo('opacity', 0.01, 0.4);
+	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
+	        wrapper.fromTo('translateY', '100%', '0%');
 	        this
 	            .element(enteringView.pageRef())
 	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
 	            .duration(400)
-	            .fromTo('translateY', '100%', '0%')
-	            .before.addClass('show-page');
+	            .before.addClass('show-page')
+	            .add(backdrop)
+	            .add(wrapper);
 	        if (enteringView.hasNavbar()) {
 	            // entering page has a navbar
 	            var enteringNavBar = new animation_1.Animation(enteringView.navbarRef());
@@ -75402,11 +75463,17 @@
 	    __extends(ModalSlideOut, _super);
 	    function ModalSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
+	        var ele = leavingView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        backdrop.fromTo('opacity', 0.4, 0.0);
+	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
+	        wrapper.fromTo('translateY', '0%', '100%');
 	        this
 	            .element(leavingView.pageRef())
 	            .easing('ease-out')
 	            .duration(250)
-	            .fromTo('translateY', '0%', '100%');
+	            .add(backdrop)
+	            .add(wrapper);
 	    }
 	    return ModalSlideOut;
 	}(transition_1.Transition));
@@ -75415,13 +75482,19 @@
 	    __extends(ModalMDSlideIn, _super);
 	    function ModalMDSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
+	        var ele = enteringView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        backdrop.fromTo('opacity', 0.01, 0.4);
+	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
+	        wrapper.fromTo('translateY', '40px', '0px');
 	        this
 	            .element(enteringView.pageRef())
 	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
 	            .duration(280)
-	            .fromTo('translateY', '40px', '0px')
 	            .fadeIn()
-	            .before.addClass('show-page');
+	            .before.addClass('show-page')
+	            .add(backdrop)
+	            .add(wrapper);
 	        if (enteringView.hasNavbar()) {
 	            // entering page has a navbar
 	            var enteringNavBar = new animation_1.Animation(enteringView.navbarRef());
@@ -75436,12 +75509,18 @@
 	    __extends(ModalMDSlideOut, _super);
 	    function ModalMDSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
+	        var ele = leavingView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        backdrop.fromTo('opacity', 0.4, 0.0);
+	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
+	        wrapper.fromTo('translateY', '0px', '40px');
 	        this
 	            .element(leavingView.pageRef())
 	            .duration(200)
 	            .easing('cubic-bezier(0.47,0,0.745,0.715)')
-	            .fromTo('translateY', '0px', '40px')
-	            .fadeOut();
+	            .fadeOut()
+	            .add(wrapper)
+	            .add(backdrop);
 	    }
 	    return ModalMDSlideOut;
 	}(transition_1.Transition));
@@ -76503,6 +76582,7 @@
 	        this.add(enteringPage);
 	        // entering content
 	        var enteringContent = new animation_1.Animation(enteringView.contentRef());
+	        enteringContent.element(enteringView.toolbarRefs());
 	        this.add(enteringContent);
 	        if (backDirection) {
 	            // entering content, back direction
@@ -76578,6 +76658,7 @@
 	        if (leavingView) {
 	            // leaving content
 	            var leavingContent = new animation_1.Animation(leavingView.contentRef());
+	            leavingContent.element(leavingView.toolbarRefs());
 	            this.add(leavingContent);
 	            if (backDirection) {
 	                // leaving content, back direction
