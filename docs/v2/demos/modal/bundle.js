@@ -51578,7 +51578,9 @@
 	    Checkbox.prototype._setChecked = function (isChecked) {
 	        if (isChecked !== this._checked) {
 	            this._checked = isChecked;
-	            this.change.emit(this);
+	            if (this._init) {
+	                this.change.emit(this);
+	            }
 	            this._item && this._item.setCssClass('item-checkbox-checked', isChecked);
 	        }
 	    };
@@ -51632,6 +51634,12 @@
 	     * @private
 	     */
 	    Checkbox.prototype.onTouched = function () { };
+	    /**
+	     * @private
+	     */
+	    Checkbox.prototype.ngAfterContentInit = function () {
+	        this._init = true;
+	    };
 	    /**
 	     * @private
 	     */
@@ -53547,8 +53555,8 @@
 	 *
 	 * ## Min and Max Datetimes
 	 *
-	 * Dates are infinite in either direction, so for a user selection there should be at
-	 * least some form of restricting the dates can be selected. Be default, the maximum
+	 * Dates are infinite in either direction, so for a user's selection there should be at
+	 * least some form of restricting the dates that can be selected. Be default, the maximum
 	 * date is to the end of the current year, and the minimum date is from the beginning
 	 * of the year that was 100 years ago.
 	 *
@@ -53619,7 +53627,7 @@
 	 * However, it's important to note that `ion-datetime` does not attempt to solve all
 	 * situtations when validating and manipulating datetime values. If datetime values need
 	 * to be parsed from a certain format, or manipulated (such as adding 5 days to a date,
-	 * subtracting 30 minutes), or even formatting data to a specific locale, then we highly
+	 * subtracting 30 minutes, etc.), or even formatting data to a specific locale, then we highly
 	 * recommend using [moment.js](http://momentjs.com/) to "Parse, validate, manipulate, and
 	 * display dates in JavaScript". [Moment.js](http://momentjs.com/) has quickly become
 	 * our goto standard when dealing with datetimes within JavaScript, but Ionic does not
@@ -54221,6 +54229,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(8);
+	var platform_browser_1 = __webpack_require__(187);
 	var animation_1 = __webpack_require__(287);
 	var transition_1 = __webpack_require__(286);
 	var config_1 = __webpack_require__(252);
@@ -54297,7 +54306,8 @@
 	 * @private
 	 */
 	var PickerColumnCmp = (function () {
-	    function PickerColumnCmp(config) {
+	    function PickerColumnCmp(config, _sanitizer) {
+	        this._sanitizer = _sanitizer;
 	        this.y = 0;
 	        this.pos = [];
 	        this.msPrv = 0;
@@ -54471,14 +54481,7 @@
 	        // ensure we've got a good round number :)
 	        y = Math.round(y);
 	        this.col.selectedIndex = Math.max(Math.abs(Math.round(y / this.optHeight)), 0);
-	        var colElements = this.colEle.nativeElement.querySelectorAll('.picker-opt');
-	        if (colElements.length !== this.col.options.length) {
-	            // TODO: temporary until [style.transform] is fixed within ng2
-	            console.warn('colElements.length!=this.col.options.length');
-	            return;
-	        }
-	        for (var i = 0; i < colElements.length; i++) {
-	            var ele = colElements[i];
+	        for (var i = 0; i < this.col.options.length; i++) {
 	            var opt = this.col.options[i];
 	            var optTop = (i * this.optHeight);
 	            var optOffset = (optTop + y);
@@ -54497,11 +54500,8 @@
 	            else {
 	                translateY = optOffset;
 	            }
-	            // TODO: setting by [style.transform]="o.transform" within the template is currently broke
-	            ele.style[dom_1.CSS.transform] = "rotateX(" + rotateX + "deg) translate3d(" + translateX + "px," + translateY + "px," + translateZ + "px)";
-	            ele.style[dom_1.CSS.transitionDuration] = (duration > 0 ? duration + 'ms' : '');
-	            ele.classList[this.col.selectedIndex === i ? 'add' : 'remove']('picker-opt-selected');
-	            ele.classList[opt.disabled ? 'add' : 'remove']('picker-opt-disabled');
+	            opt._trans = this._sanitizer.bypassSecurityTrustStyle("rotateX(" + rotateX + "deg) translate3d(" + translateX + "px," + translateY + "px," + translateZ + "px)");
+	            opt._dur = (duration > 0 ? duration + 'ms' : '');
 	        }
 	        if (saveY) {
 	            this.y = y;
@@ -54569,7 +54569,7 @@
 	            selector: '.picker-col',
 	            template: '<div *ngIf="col.prefix" class="picker-prefix" [style.width]="col.prefixWidth">{{col.prefix}}</div>' +
 	                '<div class="picker-opts" #colEle [style.width]="col.optionsWidth">' +
-	                '<button *ngFor="let o of col.options; let i=index;" (click)="optClick($event, i)" type="button" category="picker-opt">' +
+	                '<button *ngFor="let o of col.options; let i=index" [style.transform]="o._trans" [style.transitionDuration]="o._dur" [class.picker-opt-selected]="col.selectedIndex === i" [class.picker-opt-disabled]="o.disabled" (click)="optClick($event, i)" type="button" category="picker-opt">' +
 	                '{{o.text}}' +
 	                '</button>' +
 	                '</div>' +
@@ -54586,10 +54586,10 @@
 	                '(body:mouseup)': 'pointerEnd($event)',
 	            }
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_c = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _c) || Object])
+	        __metadata('design:paramtypes', [(typeof (_c = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _c) || Object, (typeof (_d = typeof platform_browser_1.DomSanitizationService !== 'undefined' && platform_browser_1.DomSanitizationService) === 'function' && _d) || Object])
 	    ], PickerColumnCmp);
 	    return PickerColumnCmp;
-	    var _a, _b, _c;
+	    var _a, _b, _c, _d;
 	}());
 	/**
 	 * @private
@@ -54965,7 +54965,9 @@
 	    Toggle.prototype._setChecked = function (isChecked) {
 	        if (isChecked !== this._checked) {
 	            this._checked = isChecked;
-	            this.change.emit(this);
+	            if (this._init) {
+	                this.change.emit(this);
+	            }
 	            this._item && this._item.setCssClass('item-toggle-checked', isChecked);
 	        }
 	    };
@@ -55016,6 +55018,12 @@
 	     * @private
 	     */
 	    Toggle.prototype.onTouched = function () { };
+	    /**
+	     * @private
+	     */
+	    Toggle.prototype.ngAfterContentInit = function () {
+	        this._init = true;
+	    };
 	    /**
 	     * @private
 	     */
@@ -75728,11 +75736,6 @@
 	                }, this.d.duration);
 	        }
 	    };
-	    ToastCmp.prototype.bdClick = function () {
-	        if (this.isEnabled() && this.d.enableBackdropDismiss) {
-	            this.dismiss('backdrop');
-	        }
-	    };
 	    ToastCmp.prototype.cbClick = function () {
 	        if (this.isEnabled()) {
 	            this.dismiss('close');
@@ -75750,7 +75753,7 @@
 	    ToastCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-toast',
-	            template: "\n    <div (click)=\"bdClick()\" tappable disable-activated class=\"backdrop\" role=\"presentation\"></div>\n    <div class=\"toast-wrapper\">\n      <div class=\"toast-container\">\n        <div class=\"toast-message\" id=\"{{hdrId}}\" *ngIf=\"d.message\">{{d.message}}</div>\n        <button clear class=\"toast-button\" *ngIf=\"d.showCloseButton\" (click)=\"cbClick()\">\n          {{ d.closeButtonText || 'Close' }}\n         </button>\n      </div>\n    </div>\n  ",
+	            template: "\n    <div class=\"toast-wrapper\">\n      <div class=\"toast-container\">\n        <div class=\"toast-message\" id=\"{{hdrId}}\" *ngIf=\"d.message\">{{d.message}}</div>\n        <button clear class=\"toast-button\" *ngIf=\"d.showCloseButton\" (click)=\"cbClick()\">\n          {{ d.closeButtonText || 'Close' }}\n         </button>\n      </div>\n    </div>\n  ",
 	            host: {
 	                'role': 'dialog',
 	                '[attr.aria-labelledby]': 'hdrId',

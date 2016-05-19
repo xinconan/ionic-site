@@ -1382,7 +1382,9 @@
   Improve this Doc
 </a></p>
 
-<p>Ionic’s grid system is based on <a href="http://www.w3.org/TR/css3-flexbox/">flexbox</a>, a CSS feature supported by all devices that Ionic supports. The grid is composed of two units — <em>rows</em> and <em>columns</em>. Columns will expand to fill their row, and will resize to fit additional columns.</p>
+<p>Ionic’s grid system is based on <a href="http://www.w3.org/TR/css3-flexbox/">flexbox</a>, a CSS feature supported by all devices that Ionic supports. The grid is composed of three units — <em>grid</em>, <em>rows</em> and <em>columns</em>. Columns will expand to fill their row, and will resize to fit additional columns.</p>
+
+<p>Rows have no padding or margin applied to them. If that is needed, <code class="highlighter-rouge">ion-grid</code> can be added to provide additional padding.</p>
 
 <p>In order to set width use <code class="highlighter-rouge">width</code> attribute on ion-col tag.</p>
 
@@ -1390,9 +1392,11 @@
   Demo Source
 </a></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-row&gt;</span>
-  <span class="nt">&lt;ion-col</span> <span class="na">width-10</span><span class="nt">&gt;</span>This column will take 10% of space<span class="nt">&lt;/ion-col&gt;</span>
-<span class="nt">&lt;/ion-row&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-grid&gt;</span>
+  <span class="nt">&lt;ion-row&gt;</span>
+    <span class="nt">&lt;ion-col</span> <span class="na">width-10</span><span class="nt">&gt;</span>This column will take 10% of space<span class="nt">&lt;/ion-col&gt;</span>
+  <span class="nt">&lt;/ion-row&gt;</span>
+<span class="nt">&lt;/ion-grid&gt;</span>
 </code></pre>
 </div>
 
