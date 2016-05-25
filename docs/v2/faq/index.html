@@ -189,6 +189,8 @@
 
       <li><a href="/docs/v2/components/#checkbox">Checkbox</a></li>
 
+      <li><a href="/docs/v2/components/#datetime">DateTime</a></li>
+
       <li><a href="/docs/v2/components/#gestures">Gestures</a></li>
 
       <li><a href="/docs/v2/components/#grid">Grid</a></li>
@@ -271,6 +273,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/backgroundgeolocation">BackgroundGeolocation</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/badge">Badge</a>
@@ -411,6 +416,9 @@
   <a href="/docs/v2/native/touchid">TouchID</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/vibration">Vibration</a>
 </li>
 <li class="capitalize ">
@@ -512,6 +520,9 @@
       
       
       <li class="">
+        <a href="/docs/v2/resources/books-and-courses/">Books and Online Courses</a>
+      </li>
+      <li class="">
         <a href="/docs/v2/resources/developer-tips/">Developer Tips</a>
       </li>
       <li class="">
@@ -543,11 +554,59 @@
       </nav>
       
       <main>
-        <h1 id="troubleshooting">Troubleshooting Your Ionic App</h1>
+        <h1 id="trouble-shooting">Trouble Shooting</h1>
 
 <p>Can’t find a solution on this page? Check out the <a href="http://forum.ionicframework.com">Ionic Forums</a> or join the <a href="http://ionicworldwide.herokuapp.com/">Ionic Worldwide Slack Channel</a>, where the friendly Ions of the community will help you!</p>
 
-<h2 id="blank_app">I have no errors in my app. Why does it show a blank screen?</h2>
+<h2 id="adding-third-party-libs">Adding third party libs</h2>
+
+<p>You can add most third party libraries to your V2 project from NPM. For example let’s add MomentJs.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install moment --save
+
+</code></pre>
+</div>
+
+<p>From here, we can import it into what ever class we want to use it in.</p>
+
+<pre><code class="language-ts">import {Page} from 'ionic-angular';
+import * as moment from 'moment';
+
+export class MyClass {
+  constructor(){
+    moment("20111031", "YYYYMMDD").fromNow();
+  }
+
+}
+</code></pre>
+
+<p>For TypeScript, you might get a warning, <code class="highlighter-rouge">cannot find module 'moment'</code>. This just means that TypeScript doesn’t know MomentJs since it’s Javascript. But we can add external type definitions from <a href="https://github.com/typings/typings">typings</a>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g typings
+<span class="gp">$ </span>typings search moment
+Viewing 5 of 5
+
+NAME            SOURCE HOMEPAGE                             DESCRIPTION VERSIONS UPDATED
+moment          dt     https://github.com/timrwood/moment               1        2016-03-16T15:55:26.000Z
+moment          npm    https://www.npmjs.com/package/moment             1        2016-02-11T00:39:58.000Z
+moment-node     dt     https://github.com/timrwood/moment               1        2016-05-11T04:33:38.000Z
+moment-range    dt     https://github.com/gf3/moment-range              1        2016-03-17T12:06:54.000Z
+moment-timezone dt     http://momentjs.com/timezone/                    1        2016-03-29T22:03:48.000Z
+</code></pre>
+</div>
+<p>We have multiple sources for typings, but we can choose the one from npm</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>typings install npm~moment --save
+</code></pre>
+</div>
+
+<p>Now our editor and TypeScript will be able to provide code-completion and understand moment.</p>
+
+<h2 id="blank-app">Blank App</h2>
+
+<blockquote>
+  <p>I have no errors in my app. Why does it show a blank screen?</p>
+</blockquote>
 
 <p>There are different reasons this can happen. If you are unable to find a solution on the forums, make sure:</p>
 
@@ -562,7 +621,11 @@
   </li>
 </ul>
 
-<h2 id="directive_not_working">Why is my custom component/directive not working?</h2>
+<h2 id="directive-not-working">Directive Not Working</h2>
+
+<blockquote>
+  <p>Why is my custom component/directive not working?</p>
+</blockquote>
 
 <p>There are a few things you can check. Make sure:</p>
 
@@ -597,14 +660,18 @@ class MyDir {
   // Alternatively, if you were attaching the directive to an element it would be:
   // template: `&lt;my-dir&gt;Hello World&lt;/my-dir&gt;`
   // and if you were attaching by class the template would be:
-  // template: `&lt;div class="my-dir"&gt;Hello World&lt;/div&gt;`  
+  // template: `&lt;div class="my-dir"&gt;Hello World&lt;/div&gt;`
 
   directives: [MyDir] // &lt;-- Don't forget me!
 })
 class MyPage {}
 </code></pre>
 
-<h2 id="angular_component">Why is an Ionic component not working in my custom Angular component?</h2>
+<h2 id="angular-components">Angular Components</h2>
+
+<blockquote>
+  <p>Why is an Ionic component not working in my custom Angular component?</p>
+</blockquote>
 
 <p>To include an Ionic component in your custom Angular component you need to import <code class="highlighter-rouge">IONIC_DIRECTIVES</code> and inject those into your component by placing them in the <code class="highlighter-rouge">directives</code> array. You will then be able to include Ionic components in your Angular component.</p>
 
@@ -628,7 +695,11 @@ class MyComponent {
 }
 </code></pre>
 
-<h2 id="tappable_attribute">Why is there a delay on my click event?</h2>
+<h2 id="click-delays">Click Delays</h2>
+
+<blockquote>
+  <p>Why is there a delay on my click event?</p>
+</blockquote>
 
 <p>In general, we recommend only adding <code class="highlighter-rouge">(click)</code> events to elements that are normally clickable. This includes <code class="highlighter-rouge">&lt;button&gt;</code> and <code class="highlighter-rouge">&lt;a&gt;</code> elements. This improves accessibility as a screen reader will be able to tell that the element is clickable.</p>
 
@@ -638,9 +709,9 @@ class MyComponent {
 </code></pre>
 </div>
 
-<h2 id="common_mistakes">Common mistakes</h2>
+<h2 id="common-mistakes">Common mistakes</h2>
 
-<h3 id="forgetting_parentheses">Forgetting the parentheses on a decorator</h3>
+<h3 id="forgetting-parentheses-on-a-decorator">Forgetting Parentheses on a Decorator</h3>
 
 <p>Decorators should have parentheses <code class="highlighter-rouge">()</code> after an annotation. Some examples include: <code class="highlighter-rouge">@Injectable()</code>, <code class="highlighter-rouge">@Optional()</code>, <code class="highlighter-rouge">@Input()</code>, etc.</p>
 
@@ -654,7 +725,7 @@ class MyDirective {
 }
 </code></pre>
 
-<h3 id="multiple_instances"> Multiple instances of a provider</h3>
+<h3 id="multiple-instances-of-a-provider">Multiple instances of a provider</h3>
 
 <p>If you inject a provider in every component because you want it available to all of them you will end up with multiple instances of the provider. You should inject the provider once in the parent component if you want it to be available to the child components. <code class="highlighter-rouge">@App</code> is the parent component in the below example:</p>
 
@@ -694,9 +765,9 @@ class MyApp {
 
 <p>Plunker: <a href="http://plnkr.co/edit/QzgR5H0r8FijHeVtv2dd">http://plnkr.co/edit/QzgR5H0r8FijHeVtv2dd</a></p>
 
-<h2 id="common_pitfalls">Common Pitfalls</h2>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
 
-<h3>Cannot resolve all parameters for 'YourClass'(?). Make sure that all the parameters are decorated with Inject or have valid type annotations and that 'YourClass' is decorated with Injectable.</h3>
+<h3 id="cannot-resolve-all-parameters-for-yourclass-make-sure-that-all-the-parameters-are-decorated-with-inject-or-have-valid-type-annotations-and-that-yourclass-is-decorated-with-injectable">Cannot resolve all parameters for ‘YourClass’(?). Make sure that all the parameters are decorated with Inject or have valid type annotations and that ‘YourClass’ is decorated with Injectable.</h3>
 
 <p>This exception means that Angular is confused about one or more of the parameters for <code class="highlighter-rouge">YourClass</code>’s constructor. In order to do <a href="https://angular.io/docs/ts/latest/guide/dependency-injection.html">dependency injection</a> Angular needs to know the type of the parameter to inject. You let Angular know this by specifying the class of the parameter. Make sure:</p>
 
@@ -735,16 +806,14 @@ class MyButton {
 }
 
 @Directive({
-  selector: 'icon'  
+  selector: 'icon'
 })
 class MyIcon {
   constructor(containerButton: MyButton) {} // MyButton has been defined
 }
 </code></pre>
 
-<hr class="faq-section" />
-
-<h3 id="no_provider">No provider for ParamType! (MyClass -&gt; ParamType)</h3>
+<h3 id="no-provider-for-paramtype-myclass---paramtype">No provider for ParamType! (MyClass -&gt; ParamType)</h3>
 
 <p>This means Angular knows the type of parameter it is supposed to inject, but it doesn’t know how to inject it.</p>
 
@@ -796,16 +865,16 @@ class MyApp {}
 
 <p>Here’s a diagram illustrating what injectors are available:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                 +-------+                                         
-                 |  App  |                                         
-                 +---+---+                                         
-                     |                                                        
-       +-------------+------------+                                       
-       |                          |                                       
-+------+------+          +--------+--------+                      
-| Div (MyDir) |          | MyComp (MyDir)  |  &lt;- MyComp can be injected                    
-+-------------+          +--------+--------+                      
-       ^                          |                                       
+<div class="highlighter-rouge"><pre class="highlight"><code>                 +-------+
+                 |  App  |
+                 +---+---+
+                     |
+       +-------------+------------+
+       |                          |
++------+------+          +--------+--------+
+| Div (MyDir) |          | MyComp (MyDir)  |  &lt;- MyComp can be injected
++-------------+          +--------+--------+
+       ^                          |
 No MyComp to inject        +------+------+
                            | P (MyDir)   | &lt;- MyComp can be injected from parent
                            +-------------+
@@ -827,9 +896,7 @@ class MyDir {
 }
 </code></pre>
 
-<hr class="faq-section" />
-
-<h3 id="cant_bind">Can't bind to 'propertyName' since it isn't a known property of the 'elementName' element and there are no matching directives with a corresponding property</h3>
+<h3 id="cant-bind-to-propertyname-since-it-isnt-a-known-property-of-the-elementname-element-and-there-are-no-matching-directives-with-a-corresponding-property">Can’t bind to ‘propertyName’ since it isn’t a known property of the ‘elementName’ element and there are no matching directives with a corresponding property</h3>
 
 <p>This happens when you try and bind a property on an element that doesn’t have that property. If the element is a component or has one or more directives on it, neither the component nor the directives have that property either.</p>
 
@@ -838,9 +905,7 @@ class MyDir {
 </code></pre>
 </div>
 
-<hr class="faq-section" />
-
-<h3 id="no_provider_control">No provider for ControlContainer! (NgControlName -&gt; ControlContainer)</h3>
+<h3 id="no-provider-for-controlcontainer-ngcontrolname---controlcontainer">No provider for ControlContainer! (NgControlName -&gt; ControlContainer)</h3>
 
 <p>This error is a more specific version of the <code class="highlighter-rouge">No provider</code> error above.  It happens when you use a form control like <a href="https://angular.io/docs/js/latest/api/core/NgControlName-class.html">NgControlName</a> without specifying a parent <a href="https://angular.io/docs/js/latest/api/core/NgForm-class.html">NgForm</a> or <a href="https://angular.io/docs/js/latest/api/core/NgFormModel-class.html">NgFormModel</a>.  In most cases, this can be resolved by making sure your form control is within an actual form element.  NgForm uses <code class="highlighter-rouge">form</code> as a selector so this will instantiate a new NgForm:</p>
 

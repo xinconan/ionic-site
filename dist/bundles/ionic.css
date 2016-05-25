@@ -4773,6 +4773,8 @@ ion-icon {
     padding: 13px;
     text-overflow: ellipsis;
     white-space: nowrap; }
+  .ios .alert-radio[aria-checked=true] .alert-radio-label {
+    color: #327eff; }
   .ios .alert-radio-icon {
     position: relative;
     -webkit-box-ordinal-group: 2;
@@ -4780,8 +4782,6 @@ ion-icon {
     -ms-flex-order: 1;
     order: 1;
     min-width: 30px; }
-  .ios .alert-radio[aria-checked=true] {
-    color: #327eff; }
   .ios .alert-radio[aria-checked=true] .alert-radio-inner {
     position: absolute;
     top: -7px;
@@ -4804,6 +4804,8 @@ ion-icon {
     padding: 13px;
     text-overflow: ellipsis;
     white-space: nowrap; }
+  .ios .alert-checkbox[aria-checked=true] .alert-checkbox-label {
+    color: initial; }
   .ios .alert-checkbox-icon {
     position: relative;
     margin: 10px 6px 10px 16px;
@@ -4940,6 +4942,8 @@ ion-icon {
   .ios a.button,
   .ios a[button] {
     text-decoration: none; }
+  .ios a[disabled],
+  .ios button[disabled],
   .ios .button[disabled] {
     cursor: default;
     opacity: .4;
@@ -5894,14 +5898,16 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .ios ion-label[stacked],
-  .ios ion-label[floating] {
+  .ios .item-label-stacked ion-label,
+  .ios .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
-    margin-bottom: 0;
     width: auto;
     max-width: 100%; }
+  .ios ion-label[stacked],
+  .ios ion-label[floating] {
+    margin-bottom: 0; }
   .ios .item-label-stacked .input-wrapper,
   .ios .item-label-floating .input-wrapper {
     -webkit-box-flex: 1;
@@ -7322,10 +7328,6 @@ ion-icon {
     transform: translateZ(0);
     pointer-events: none; }
   .ios ion-buttons {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     -webkit-box-ordinal-group: 4;
     -webkit-order: 3;
     -ms-flex-order: 3;
@@ -7943,10 +7945,10 @@ ion-icon {
     transform: scale3d(0, 0, 0);
     -webkit-transition: -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1); }
-  .md .alert-radio[aria-checked=true] {
+  .md .alert-radio[aria-checked=true] .alert-radio-label {
     color: #327eff; }
-    .md .alert-radio[aria-checked=true] .alert-radio-icon {
-      border-color: #327eff; }
+  .md .alert-radio[aria-checked=true] .alert-radio-icon {
+    border-color: #327eff; }
   .md .alert-radio[aria-checked=true] .alert-radio-inner {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
@@ -7959,6 +7961,8 @@ ion-icon {
     padding: 13px 26px;
     text-overflow: ellipsis;
     white-space: nowrap; }
+  .md .alert-checkbox[aria-checked=true] .alert-checkbox-label {
+    color: initial; }
   .md .alert-checkbox-icon {
     position: relative;
     top: 0;
@@ -8089,6 +8093,8 @@ ion-icon {
   .md a.button,
   .md a[button] {
     text-decoration: none; }
+  .md a[disabled],
+  .md button[disabled],
   .md .button[disabled] {
     cursor: default;
     opacity: .4;
@@ -8754,7 +8760,7 @@ ion-icon {
   .md .inset-input {
     margin: 6.5px 16px 6.5px 16px;
     padding: 6.5px 8px 6.5px 8px; }
-  .md ion-input::after {
+  .md .item-input::after {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -8763,12 +8769,16 @@ ion-icon {
     border-bottom-style: solid;
     border-bottom-color: transparent;
     content: ""; }
-  .md .input-has-focus::after {
+  .md .item-input.input-has-focus::after {
     border-bottom-color: #327eff; }
-  .md ion-input.ng-valid.input-has-value::after {
+  .md .item-input.ng-valid.input-has-value::after {
     border-bottom-color: #32db64; }
-  .md ion-input.ng-invalid.ng-touched::after {
+  .md .item-input.ng-valid.input-has-value.input-has-focus::after {
+    border-bottom-color: #327eff; }
+  .md .item-input.ng-invalid.ng-touched::after {
     border-bottom-color: #f53d3d; }
+  .md .item-input.ng-invalid.ng-touched.input-has-focus::after {
+    border-bottom-color: #327eff; }
   .md .item-label-stacked .text-input,
   .md .item-label-floating .text-input {
     margin-top: 8px;
@@ -9047,6 +9057,11 @@ ion-icon {
       max-height: 8rem; }
   .md ion-note {
     color: #c5c5c5; }
+  .md ion-item-group .item:first-child .item-inner {
+    border-top-width: 0; }
+  .md ion-item-group .item:last-child .item-inner,
+  .md ion-item-group ion-item-sliding:last-child .item-inner {
+    border: 0; }
   .md ion-item-divider {
     padding: 13px 16px 13px 16px;
     color: #222;
@@ -9096,14 +9111,16 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .md ion-label[stacked],
-  .md ion-label[floating] {
+  .md .item-label-stacked ion-label,
+  .md .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
-    margin-bottom: 0;
     width: auto;
     max-width: 100%; }
+  .md ion-label[stacked],
+  .md ion-label[floating] {
+    margin-bottom: 0; }
   .md .item-label-stacked .input-wrapper,
   .md .item-label-floating .input-wrapper {
     -webkit-box-flex: 1;
@@ -11508,10 +11525,10 @@ ion-icon {
     height: 8px;
     border-radius: 50%;
     background: #327eff; }
-  .wp .alert-radio[aria-checked=true] {
+  .wp .alert-radio[aria-checked=true] .alert-radio-label {
     color: #000; }
-    .wp .alert-radio[aria-checked=true] .alert-radio-icon {
-      border-color: rgba(0, 0, 0, 0.5); }
+  .wp .alert-radio[aria-checked=true] .alert-radio-icon {
+    border-color: rgba(0, 0, 0, 0.5); }
   .wp .alert-radio[aria-checked=true] .alert-radio-inner {
     display: block; }
   .wp .alert-checkbox-label {
@@ -11523,6 +11540,8 @@ ion-icon {
     padding: 13px 26px;
     text-overflow: ellipsis;
     white-space: nowrap; }
+  .wp .alert-checkbox[aria-checked=true] .alert-checkbox-label {
+    color: initial; }
   .wp .alert-checkbox-icon {
     position: relative;
     top: 0;
@@ -11652,6 +11671,8 @@ ion-icon {
   .wp a.button,
   .wp a[button] {
     text-decoration: none; }
+  .wp a[disabled],
+  .wp button[disabled],
   .wp .button[disabled] {
     cursor: default;
     opacity: .4;
@@ -12594,14 +12615,16 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .wp ion-label[stacked],
-  .wp ion-label[floating] {
+  .wp .item-label-stacked ion-label,
+  .wp .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
-    margin-bottom: 0;
     width: auto;
     max-width: 100%; }
+  .wp ion-label[stacked],
+  .wp ion-label[floating] {
+    margin-bottom: 0; }
   .wp .item-label-stacked .input-wrapper,
   .wp .item-label-floating .input-wrapper {
     -webkit-box-flex: 1;

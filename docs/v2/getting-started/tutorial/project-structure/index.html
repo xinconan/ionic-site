@@ -192,6 +192,8 @@
 
       <li><a href="/docs/v2/components/#checkbox">Checkbox</a></li>
 
+      <li><a href="/docs/v2/components/#datetime">DateTime</a></li>
+
       <li><a href="/docs/v2/components/#gestures">Gestures</a></li>
 
       <li><a href="/docs/v2/components/#grid">Grid</a></li>
@@ -274,6 +276,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/backgroundgeolocation">BackgroundGeolocation</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/badge">Badge</a>
@@ -414,6 +419,9 @@
   <a href="/docs/v2/native/touchid">TouchID</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/vibration">Vibration</a>
 </li>
 <li class="capitalize ">
@@ -515,6 +523,9 @@
       
       
       <li class="">
+        <a href="/docs/v2/resources/books-and-courses/">Books and Online Courses</a>
+      </li>
+      <li class="">
         <a href="/docs/v2/resources/developer-tips/">Developer Tips</a>
       </li>
       <li class="">
@@ -552,7 +563,7 @@
   Improve this doc
 </a></p>
 
-<p>Let’s walk through the anatomy of an Ionic 2 app. Inside of the folder that was created, we have a typical <a href="/docs/what-is/#cordova">Cordova</a> project structure where we can install native plugins, and create platform-specific project files. The bulk of our application lives inside the <code class="highlighter-rouge">app</code> folder, and so we are going to spend most of our time there.</p>
+<p>Let’s walk through the anatomy of an Ionic 2 app. Inside of the folder that was created, we have a typical <a href="/docs/what-is/#cordova">Cordova</a> project structure where we can install native plugins, and create platform-specific project files.</p>
 
 <h3 class="file-title">./www/index.html</h3>
 
@@ -613,7 +624,7 @@ class MyApp {
 
   <span class="nt">&lt;ion-content&gt;</span>
     <span class="nt">&lt;ion-list&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#p of pages"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">openPage</span><span class="err">(</span><span class="na">p</span><span class="err">)"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let p of pages"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">openPage</span><span class="err">(</span><span class="na">p</span><span class="err">)"</span><span class="nt">&gt;</span>
         {{p.title}}
       <span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;/ion-list&gt;</span>

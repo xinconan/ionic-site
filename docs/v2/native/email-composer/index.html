@@ -189,6 +189,8 @@
 
       <li><a href="/docs/v2/components/#checkbox">Checkbox</a></li>
 
+      <li><a href="/docs/v2/components/#datetime">DateTime</a></li>
+
       <li><a href="/docs/v2/components/#gestures">Gestures</a></li>
 
       <li><a href="/docs/v2/components/#grid">Grid</a></li>
@@ -273,6 +275,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/backgroundgeolocation">BackgroundGeolocation</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/badge">Badge</a>
@@ -413,6 +418,9 @@
   <a href="/docs/v2/native/touchid">TouchID</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/vibration">Vibration</a>
 </li>
 <li class="capitalize ">
@@ -514,6 +522,9 @@
       
       
       <li class="">
+        <a href="/docs/v2/resources/books-and-courses/">Books and Online Courses</a>
+      </li>
+      <li class="">
         <a href="/docs/v2/resources/developer-tips/">Developer Tips</a>
       </li>
       <li class="">
@@ -557,7 +568,7 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master//home/ubuntu/ionic-native/src/plugins/emailcomposer.ts#L16">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master//home/ubuntu/ionic-native/src/plugins/emailcomposer.ts#L2">
   Improve this doc
 </a></p>
 
@@ -616,13 +627,13 @@ let email = {
 };
 
 // Send a text message using default options
-EmailComposer.send(email);
+EmailComposer.open(email);
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
 <div id="isAvailable"></div>
-<h3><code>isAvailable(app,&nbsp;scope)</code>
+<h3><code>isAvailable(app)</code>
 
 </h3>
 <p>Verifies if sending emails is supported on the device.</p>
@@ -648,24 +659,7 @@ EmailComposer.send(email);
 <code>string</code>
     </td>
     <td>
-      <p>An optional app id or uri scheme. Defaults to mailto.</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      scope
-      
-      
-    </td>
-    <td>
-      
-<code>any</code>
-    </td>
-    <td>
-      <p>An optional scope for the promise</p>
+      <p>An optional app id or uri scheme.</p>
 
       
     </td>
@@ -677,7 +671,7 @@ EmailComposer.send(email);
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> Resolves promise with boolean whether EmailComposer is available</p>
+<code>Promise&lt;boolean&gt;</code> Resolves if available, rejects if not available</p>
 </div>
 
 <div id="addAlias"></div>

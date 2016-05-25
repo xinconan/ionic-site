@@ -193,6 +193,8 @@
 
       <li><a href="#checkbox">Checkbox</a></li>
 
+      <li><a href="#datetime">DateTime</a></li>
+
       <li><a href="#gestures">Gestures</a></li>
 
       <li><a href="#grid">Grid</a></li>
@@ -275,6 +277,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/backgroundgeolocation">BackgroundGeolocation</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/badge">Badge</a>
@@ -415,6 +420,9 @@
   <a href="/docs/v2/native/touchid">TouchID</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/transfer">Transfer</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/vibration">Vibration</a>
 </li>
 <li class="capitalize ">
@@ -515,6 +523,9 @@
       
       
       
+      <li class="">
+        <a href="/docs/v2/resources/books-and-courses/">Books and Online Courses</a>
+      </li>
       <li class="">
         <a href="/docs/v2/resources/developer-tips/">Developer Tips</a>
       </li>
@@ -1354,6 +1365,28 @@
 </code></pre>
 </div>
 
+<h2 id="datetime" class="section-header">DateTime</h2>
+
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/datetime.html">
+  Improve this Doc
+</a></p>
+
+<p>The DateTime component is used to present an interface which makes it easy for users to select dates and times. The DateTime component is similar to the native <code class="highlighter-rouge">&lt;input type="datetime-local"&gt;</code> element, however, Ionic’s DateTime component makes it easy to display the date and time in a preferred format, and manage the datetime values.</p>
+
+<h3 class="no-para">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/datetime">
+  Demo Source
+</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
+  <span class="nt">&lt;ion-label&gt;</span>Start Time<span class="nt">&lt;/ion-label&gt;</span>
+  <span class="nt">&lt;ion-datetime</span> <span class="na">displayFormat=</span><span class="s">"h:mm A"</span> <span class="na">pickerFormat=</span><span class="s">"h mm A"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">event</span><span class="err">.</span><span class="na">timeStarts</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-datetime&gt;</span>
+<span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<p>For more information on tabs, check out the <a href="../api/components/datetime/DateTime/">DateTime API reference</a>.</p>
+
 <h2 id="gestures" class="section-header">Gestures</h2>
 
 <p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/gestures.html">
@@ -1704,7 +1737,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>By default, all lists will be styled with divider lines:</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
     {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
@@ -1719,7 +1752,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>Adding the <code class="highlighter-rouge">no-lines</code> attribute will hide the dividers between list items:</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">no-lines</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
     {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
@@ -1734,7 +1767,7 @@ You can also add a placeholder so that users have a hint of what type of text th
 <p>By default, lists have no outside margin, to add one, add the <code class="highlighter-rouge">inset</code> property to the list component.</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-list</span> <span class="na">inset</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let item of items"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">itemSelected</span><span class="err">(</span><span class="na">item</span><span class="err">)"</span><span class="nt">&gt;</span>
     {{item.title}}
   <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
@@ -1966,7 +1999,7 @@ class MyApp {}
 
 <p>Then in our <a href="../api/config/App/">@App</a> component we have two buttons with click handlers that navigate to a new root page:</p>
 
-<pre><code class="language-typescript">import {MenuController, IonicApp} from 'ionic/ionic';
+<pre><code class="language-typescript">import {MenuController, IonicApp} from 'ionic-angular';
 import {LoginPage} from 'login';
 import {SignupPage} from 'signup';
 
@@ -1987,7 +2020,7 @@ class MyApp {
     // Reset the nav controller to have just this page
     // we wouldn't want the back button to show in this scenario
     this.rootPage = page;
-  
+
     // close the menu when clicking a link from the menu
     this.menu.close();
   }
@@ -2031,7 +2064,7 @@ class MyModal {
   constructor(viewCtrl: ViewController) {
     this.viewCtrl = viewCtrl;
   }
-  
+
   close() {
     this.viewCtrl.dismiss();
   }
@@ -2040,14 +2073,14 @@ class MyModal {
 
 <p>Finally, let’s add the code that will open our Modal:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController} from 'ionic/ionic'
+<pre><code class="language-typescript">import {Modal, NavController} from 'ionic-angular'
 class MyPage {
   constructor(nav: NavController){
     this.nav = nav;
   }
   showModal() {
     let modal = Modal.create(MyModal);
-    this.nav.present(modal)
+    this.nav.present(modal);
   }
 }
 </code></pre>
@@ -2374,8 +2407,8 @@ class SearchPage {
       <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"genesis"</span><span class="nt">&gt;</span>Sega Genesis<span class="nt">&lt;/ion-option&gt;</span>
       <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"saturn"</span><span class="nt">&gt;</span>Sega Saturn<span class="nt">&lt;/ion-option&gt;</span>
       <span class="nt">&lt;ion-option</span> <span class="na">value=</span><span class="s">"snes"</span><span class="nt">&gt;</span>SNES<span class="nt">&lt;/ion-option&gt;</span>
-      <span class="nt">&lt;/ion-select&gt;</span>
-      <span class="nt">&lt;/ion-item&gt;</span>
+    <span class="nt">&lt;/ion-select&gt;</span>
+  <span class="nt">&lt;/ion-item&gt;</span>
 <span class="nt">&lt;/ion-list&gt;</span>
 
 </code></pre>

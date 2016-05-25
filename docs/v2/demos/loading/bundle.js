@@ -33006,6 +33006,11 @@
 	        }
 	        return Promise.resolve(false);
 	    };
+	    MenuController.prototype.tempDisable = function (temporarilyDisable) {
+	        this._menus.forEach(function (menu) {
+	            menu.tempDisable(temporarilyDisable);
+	        });
+	    };
 	    /**
 	     * Toggle the menu. If it's closed, it will open, and if opened, it
 	     * will close.
@@ -34286,6 +34291,14 @@
 	         * @output {event} When the menu is being dragged open.
 	         */
 	        this.opening = new core_1.EventEmitter();
+	        /**
+	         * @output {event} When the menu has been opened.
+	         */
+	        this.opened = new core_1.EventEmitter();
+	        /**
+	         * @output {event} When the menu has been closed.
+	         */
+	        this.closed = new core_1.EventEmitter();
 	    }
 	    Object.defineProperty(Menu.prototype, "enabled", {
 	        /**
@@ -34434,10 +34447,10 @@
 	     */
 	    Menu.prototype.swipeStart = function () {
 	        // user started swiping the menu open/close
-	        if (this._isPrevented() || !this._isEnabled || !this._isSwipeEnabled)
-	            return;
-	        this._before();
-	        this._getType().setProgressStart(this.isOpen);
+	        if (this._isEnabled && this._isSwipeEnabled && !this._isPrevented()) {
+	            this._before();
+	            this._getType().setProgressStart(this.isOpen);
+	        }
 	    };
 	    /**
 	     * @private
@@ -34464,9 +34477,6 @@
 	            });
 	        }
 	    };
-	    /**
-	     * @private
-	     */
 	    Menu.prototype._before = function () {
 	        // this places the menu into the correct location before it animates in
 	        // this css class doesn't actually kick off any animations
@@ -34477,13 +34487,11 @@
 	            this._keyboard.close();
 	        }
 	    };
-	    /**
-	     * @private
-	     */
 	    Menu.prototype._after = function (isOpen) {
 	        // keep opening/closing the menu disabled for a touch more yet
 	        // only add listeners/css if it's enabled and isOpen
 	        // and only remove listeners/css if it's not open
+	        // emit opened/closed events
 	        if ((this._isEnabled && isOpen) || !isOpen) {
 	            this._prevent();
 	            this.isOpen = isOpen;
@@ -34491,24 +34499,34 @@
 	            this._cntEle.removeEventListener('click', this.onContentClick);
 	            if (isOpen) {
 	                this._cntEle.addEventListener('click', this.onContentClick);
+	                this.opened.emit(true);
 	            }
 	            else {
 	                this.getNativeElement().classList.remove('show-menu');
 	                this.getBackdropElement().classList.remove('show-backdrop');
+	                this.closed.emit(true);
 	            }
 	        }
 	    };
 	    /**
 	     * @private
 	     */
+	    Menu.prototype.tempDisable = function (temporarilyDisable) {
+	        if (temporarilyDisable) {
+	            this._prevEnabled = this._isEnabled;
+	            this._getType().setProgessStep(0);
+	            this.enable(false);
+	        }
+	        else {
+	            this.enable(this._prevEnabled);
+	            this._after(false);
+	        }
+	    };
 	    Menu.prototype._prevent = function () {
 	        // used to prevent unwanted opening/closing after swiping open/close
 	        // or swiping open the menu while pressing down on the MenuToggle
 	        this._preventTime = Date.now() + 20;
 	    };
-	    /**
-	     * @private
-	     */
 	    Menu.prototype._isPrevented = function () {
 	        return this._preventTime > Date.now();
 	    };
@@ -34623,6 +34641,14 @@
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
 	    ], Menu.prototype, "opening", void 0);
+	    __decorate([
+	        core_1.Output(), 
+	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
+	    ], Menu.prototype, "opened", void 0);
+	    __decorate([
+	        core_1.Output(), 
+	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
+	    ], Menu.prototype, "closed", void 0);
 	    Menu = __decorate([
 	        core_1.Component({
 	            selector: 'ion-menu',
@@ -34635,10 +34661,10 @@
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_b = typeof menu_controller_1.MenuController !== 'undefined' && menu_controller_1.MenuController) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _d) || Object, (typeof (_e = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _e) || Object, (typeof (_f = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _f) || Object, (typeof (_g = typeof keyboard_1.Keyboard !== 'undefined' && keyboard_1.Keyboard) === 'function' && _g) || Object, (typeof (_h = typeof core_1.NgZone !== 'undefined' && core_1.NgZone) === 'function' && _h) || Object])
+	        __metadata('design:paramtypes', [(typeof (_d = typeof menu_controller_1.MenuController !== 'undefined' && menu_controller_1.MenuController) === 'function' && _d) || Object, (typeof (_e = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _e) || Object, (typeof (_f = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _f) || Object, (typeof (_g = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _g) || Object, (typeof (_h = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _h) || Object, (typeof (_j = typeof keyboard_1.Keyboard !== 'undefined' && keyboard_1.Keyboard) === 'function' && _j) || Object, (typeof (_k = typeof core_1.NgZone !== 'undefined' && core_1.NgZone) === 'function' && _k) || Object])
 	    ], Menu);
 	    return Menu;
-	    var _a, _b, _c, _d, _e, _f, _g, _h;
+	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 	}(ion_1.Ion));
 	exports.Menu = Menu;
 	/**
@@ -39299,6 +39325,7 @@
 	var ion_1 = __webpack_require__(269);
 	var nav_params_1 = __webpack_require__(280);
 	var util_1 = __webpack_require__(254);
+	var menu_controller_1 = __webpack_require__(260);
 	var swipe_back_1 = __webpack_require__(285);
 	var transition_1 = __webpack_require__(286);
 	var view_controller_1 = __webpack_require__(279);
@@ -40650,7 +40677,8 @@
 	                    edge: 'left',
 	                    threshold: this._sbThreshold
 	                };
-	                this._sbGesture = new swipe_back_1.SwipeBackGesture(this.getNativeElement(), opts, this);
+	                var menuCtrl = this._app.getAppInjector().get(menu_controller_1.MenuController);
+	                this._sbGesture = new swipe_back_1.SwipeBackGesture(this.getNativeElement(), opts, this, menuCtrl);
 	            }
 	            if (this.canSwipeBack()) {
 	                // it is be possible to swipe back
@@ -40872,12 +40900,13 @@
 	var util_1 = __webpack_require__(254);
 	var SwipeBackGesture = (function (_super) {
 	    __extends(SwipeBackGesture, _super);
-	    function SwipeBackGesture(element, options, _nav) {
+	    function SwipeBackGesture(element, options, _nav, _menuCtrl) {
 	        _super.call(this, element, util_1.assign({
 	            direction: 'x',
 	            maxEdgeStart: 75
 	        }, options));
 	        this._nav = _nav;
+	        this._menuCtrl = _menuCtrl;
 	    }
 	    SwipeBackGesture.prototype.canStart = function (ev) {
 	        // the gesture swipe angle must be mainly horizontal and the
@@ -40893,9 +40922,10 @@
 	        // nerp, not today
 	        return false;
 	    };
-	    SwipeBackGesture.prototype.onSlideBeforeStart = function () {
-	        console.debug('swipeBack, onSlideBeforeStart');
+	    SwipeBackGesture.prototype.onSlideBeforeStart = function (slideData, ev) {
+	        console.debug('swipeBack, onSlideBeforeStart', ev.srcEvent.type);
 	        this._nav.swipeBackStart();
+	        this._menuCtrl.tempDisable(true);
 	    };
 	    SwipeBackGesture.prototype.onSlide = function (slide) {
 	        var stepValue = (slide.distance / slide.max);
@@ -40907,6 +40937,7 @@
 	        var currentStepValue = (slide.distance / slide.max);
 	        console.debug('swipeBack, onSlideEnd, shouldComplete', shouldComplete, 'currentStepValue', currentStepValue);
 	        this._nav.swipeBackEnd(shouldComplete, currentStepValue);
+	        this._menuCtrl.tempDisable(false);
 	    };
 	    return SwipeBackGesture;
 	}(slide_edge_gesture_1.SlideEdgeGesture));
@@ -42407,7 +42438,7 @@
 	 * <ion-content>
 	 *
 	 *  <ion-list>
-	 *    <ion-item *ngFor="let i of items">{{i}}</ion-item>
+	 *    <ion-item *ngFor="let i of items">{% raw %}{{i}}{% endraw %}</ion-item>
 	 *  </ion-list>
 	 *
 	 *  <ion-infinite-scroll (infinite)="doInfinite($event)">
@@ -48184,7 +48215,7 @@
 	 *```ts
 	 * export class TabsPage {
 	 *
-	 * @ViewChild('myTabs) tabRef: Tabs
+	 * @ViewChild('myTabs') tabRef: Tabs;
 	 *
 	 * onPageDidEnter() {
 	 *   this.tabRef.select(2);
@@ -49049,18 +49080,21 @@
 	        this.ele = this.slidingGesture = null;
 	    };
 	    /**
-	     * Enable sliding items if your page has them
+	     * Enable the sliding items.
 	     *
 	     * ```ts
 	     * import {Page, List} from 'ionic-angular';
 	     * import {ViewChild} from '@angular/core';
-	     * @Page...
+	     *
+	     * @Page({})
 	     * export class MyClass {
-	     *    @ViewChild(List) list: List;
-	     *    constructor(){}
-	     *    stopSliding(){
-	     *      this.list.enableSlidingItems(false);
-	     *    }
+	     *   @ViewChild(List) list: List;
+	     *
+	     *   constructor() { }
+	     *
+	     *   stopSliding() {
+	     *     this.list.enableSlidingItems(false);
+	     *   }
 	     * }
 	     * ```
 	     * @param {boolean} shouldEnable whether the item-sliding should be enabled or not
@@ -49083,18 +49117,21 @@
 	        }
 	    };
 	    /**
-	     * Enable sliding items if your page has
+	     * Close the open sliding item.
 	     *
 	     * ```ts
 	     * import {Page, List} from 'ionic-angular';
 	     * import {ViewChild} from '@angular/core';
-	     * @Page...
+	     *
+	     * @Page({})
 	     * export class MyClass {
-	     *    @ViewChild(List) list: List;
-	     *    constructor(){}
-	     *    closeItems(){
-	     *      this.list.closeSlidingItems();
-	     *    }
+	     *   @ViewChild(List) list: List;
+	     *
+	     *   constructor() { }
+	     *
+	     *   closeItems() {
+	     *     this.list.closeSlidingItems();
+	     *   }
 	     * }
 	     * ```
 	     */
@@ -49406,7 +49443,7 @@
 	 *
 	 *   // default item
 	 *   <ion-item>
-	 *     {{item.title}}
+	 *     {% raw %}{{item.title}}{% endraw %}
 	 *   </ion-item>
 	 *
 	 * </ion-list>
@@ -49902,46 +49939,44 @@
 	 * @name ItemSliding
 	 *
 	 * @description
-	 * Creates a list-item that can easily be swiped, deleted, reordered, edited, and more.
+	 * A sliding item is a list item that can be swiped to reveal buttons. It requires
+	 * an [Item](../Item) component as a child and a [List](../../list/List) component as
+	 * a parent. All buttons to reveal can be placed in the `<ion-item-options>` element.
+	 *
+	 * ### Button Layout
+	 * If an icon is placed with text in the option button, by default it will
+	 * display the icon on top of the text. This can be changed to display the icon
+	 * to the left of the text by setting `icon-left` as an attribute on the
+	 * `<ion-item-options>` element.
+	 *
+	 * ```html
+	 * <ion-item-options icon-left>
+	 *   <button (click)="archive(item)">
+	 *     <ion-icon name="archive"></ion-icon>
+	 *     Archive
+	 *   </button>
+	 * </ion-item-options>
+	 * ```
+	 *
 	 *
 	 * @usage
 	 * ```html
 	 * <ion-list>
-	 *   <ion-item-sliding *ngFor="let item of items">
-	 *     <button ion-item (click)="itemTapped(item)">
-	 *       {{item.title}}
-	 *     </button>
+	 *   <ion-item-sliding>
+	 *     <ion-item>
+	 *       Item
+	 *     </ion-item>
 	 *     <ion-item-options>
 	 *       <button (click)="favorite(item)">Favorite</button>
-	 *       <button (click)="share(item)">Share</button>
+	 *       <button danger (click)="share(item)">Share</button>
 	 *     </ion-item-options>
 	 *   </ion-item-sliding>
 	 * </ion-list>
-	 * ```
-	 * ItemSliding can be closed by API by adding #slidingItem in ion-item-sliding.
-	 * We grab a reference to the item reference by pass the `#slidingItem` to the share method.
-	 *
-	 * ```html
-	 * <ion-list>
-	 *   <ion-item-sliding *ngFor="#item of items" #slidingItem>
-	 *     <button ion-item (click)="itemTapped(item)">
-	 *       {{item}}
-	 *   </button>
-	 *     <ion-item-options>
-	 *       <button (click)="share(item, slidingItem)">Share</button>
-	 *     </ion-item-options>
-	 *   </ion-item-sliding>
-	 * </ion-list>
-	 * ```
-	 *
-	 * ```typescript
-	 * share(item, slidingItem) {
-	 *    slidingItem.close();
-	 * }
 	 * ```
 	 *
 	 * @demo /docs/v2/demos/item-sliding/
 	 * @see {@link /docs/v2/components#lists List Component Docs}
+	 * @see {@link ../Item Item API Docs}
 	 * @see {@link ../../list/List List API Docs}
 	 */
 	var ItemSliding = (function () {
@@ -49951,7 +49986,37 @@
 	        elementRef.nativeElement.$ionSlide = ++slideIds;
 	    }
 	    /**
-	     * @private
+	     * Close the sliding item. Items can also be closed from the [List](../../list/List).
+	     *
+	     * The sliding item can be closed by garbbing a reference to `ItemSliding`. In the
+	     * below example, the template reference variable `slidingItem` is placed on the element
+	     * and passed to the `share` method.
+	     *
+	     * ```html
+	     * <ion-list>
+	     *   <ion-item-sliding #slidingItem>
+	     *     <ion-item>
+	     *       Item
+	     *     </ion-item>
+	     *     <ion-item-options>
+	     *       <button (click)="share(slidingItem)">Share</button>
+	     *     </ion-item-options>
+	     *   </ion-item-sliding>
+	     * </ion-list>
+	     * ```
+	     *
+	     * ```ts
+	     * import {Page, ItemSliding} from 'ionic-angular';
+	     *
+	     * @Page({})
+	     * export class MyClass {
+	     *   constructor() { }
+	     *
+	     *   share(slidingItem: ItemSliding) {
+	     *     slidingItem.close();
+	     *   }
+	     * }
+	     * ```
 	     */
 	    ItemSliding.prototype.close = function () {
 	        this._list.closeSlidingItems();
@@ -50023,7 +50088,7 @@
 	 * <ion-list [virtualScroll]="items">
 	 *
 	 *   <ion-item *virtualItem="#item">
-	 *     {{ item }}
+	 *     {% raw %}{{ item }}{% endraw %}
 	 *   </ion-item>
 	 *
 	 * </ion-list>
@@ -50044,11 +50109,11 @@
 	 * <ion-list [virtualScroll]="items" [headerFn]="myHeaderFn">
 	 *
 	 *   <ion-item-divider *virtualHeader="#header">
-	 *     Header: {{ header }}
+	 *     Header: {% raw %}{{ header }}{% endraw %}
 	 *   </ion-item-divider>
 	 *
 	 *   <ion-item *virtualItem="#item">
-	 *     Item: {{ item }}
+	 *     Item: {% raw %}{{ item }}{% endraw %}
 	 *   </ion-item>
 	 *
 	 * </ion-list>
@@ -50111,7 +50176,7 @@
 	 *     <ion-avatar item-left>
 	 *       <ion-img [src]="item.avatarUrl"></ion-img>
 	 *     </ion-avatar>
-	 *     {{ item.firstName }} {{ item.lastName }}
+	 *    {% raw %} {{ item.firstName }} {{ item.lastName }}{% endraw %}
 	 *   </ion-item>
 	 *
 	 * </ion-list>
@@ -55372,6 +55437,7 @@
 	        this._autoCorrect = config.get('autocorrect', 'off');
 	        if (ngControl) {
 	            ngControl.valueAccessor = this;
+	            this.inputControl = ngControl;
 	        }
 	        _form.register(this);
 	    }
@@ -55403,22 +55469,31 @@
 	                }
 	            }
 	        };
-	        this.setItemControlCss();
+	        this.setItemInputControlCss();
 	    };
 	    InputBase.prototype.ngAfterContentChecked = function () {
-	        this.setItemControlCss();
+	        this.setItemInputControlCss();
 	    };
-	    InputBase.prototype.setItemControlCss = function () {
+	    InputBase.prototype.setItemInputControlCss = function () {
 	        var item = this._item;
-	        var nativeControl = this._native && this._native.ngControl;
-	        if (item && nativeControl) {
-	            item.setCssClass('ng-untouched', nativeControl.untouched);
-	            item.setCssClass('ng-touched', nativeControl.touched);
-	            item.setCssClass('ng-pristine', nativeControl.pristine);
-	            item.setCssClass('ng-dirty', nativeControl.dirty);
-	            item.setCssClass('ng-valid', nativeControl.valid);
-	            item.setCssClass('ng-invalid', !nativeControl.valid);
+	        var nativeInput = this._native;
+	        var inputControl = this.inputControl;
+	        // Set the control classes on the item
+	        if (item && inputControl) {
+	            this.setControlCss(item, inputControl);
 	        }
+	        // Set the control classes on the native input
+	        if (nativeInput && inputControl) {
+	            this.setControlCss(nativeInput, inputControl);
+	        }
+	    };
+	    InputBase.prototype.setControlCss = function (element, control) {
+	        element.setCssClass('ng-untouched', control.untouched);
+	        element.setCssClass('ng-touched', control.touched);
+	        element.setCssClass('ng-pristine', control.pristine);
+	        element.setCssClass('ng-dirty', control.dirty);
+	        element.setCssClass('ng-valid', control.valid);
+	        element.setCssClass('ng-invalid', !control.valid);
 	    };
 	    InputBase.prototype.ngOnDestroy = function () {
 	        this._form.deregister(this);
@@ -55509,7 +55584,7 @@
 	                this._autoComplete = ionInputEle.getAttribute('autocomplete');
 	            }
 	            nativeInputEle.setAttribute('autocomplete', this._autoComplete);
-	            // by default set autocomplete="off" unless specified by the input
+	            // by default set autocorrect="off" unless specified by the input
 	            if (ionInputEle.hasAttribute('autocorrect')) {
 	                this._autoCorrect = ionInputEle.getAttribute('autocorrect');
 	            }
@@ -56012,6 +56087,9 @@
 	    };
 	    NativeInput.prototype.getValue = function () {
 	        return this.element().value;
+	    };
+	    NativeInput.prototype.setCssClass = function (cssClass, shouldAdd) {
+	        this._renderer.setElementClass(this._elementRef.nativeElement, cssClass, shouldAdd);
 	    };
 	    NativeInput.prototype.element = function () {
 	        return this._elementRef.nativeElement;
@@ -75448,8 +75526,8 @@
 	    __extends(Modal, _super);
 	    function Modal(componentType, data) {
 	        if (data === void 0) { data = {}; }
-	        data.componentToPresent = componentType;
-	        _super.call(this, ModalComponent, data);
+	        data.componentType = componentType;
+	        _super.call(this, ModalCmp, data);
 	        this.viewType = 'modal';
 	        this.isOverlay = true;
 	    }
@@ -75471,32 +75549,35 @@
 	    return Modal;
 	}(view_controller_1.ViewController));
 	exports.Modal = Modal;
-	var ModalComponent = (function () {
-	    function ModalComponent(_loader, _navParams, _viewCtrl) {
+	var ModalCmp = (function () {
+	    function ModalCmp(_loader, _navParams, _viewCtrl) {
 	        this._loader = _loader;
 	        this._navParams = _navParams;
 	        this._viewCtrl = _viewCtrl;
 	    }
-	    ModalComponent.prototype.ngAfterViewInit = function () {
+	    ModalCmp.prototype.onPageWillEnter = function () {
 	        var _this = this;
-	        var component = this._navParams.data.componentToPresent;
-	        this._loader.loadNextToLocation(component, this.wrapper).then(function (componentInstance) {
-	            _this._viewCtrl.setInstance(componentInstance.instance);
-	            // TODO - validate what life cycle events aren't call and possibly call them here if needed
+	        this._loader.loadNextToLocation(this._navParams.data.componentType, this.viewport).then(function (componentRef) {
+	            _this._viewCtrl.setInstance(componentRef.instance);
+	            // manually fire onPageWillEnter() since ModalCmp's  onPageWillEnter already happened
+	            _this._viewCtrl.willEnter();
 	        });
 	    };
 	    __decorate([
-	        core_1.ViewChild('wrapper', { read: core_1.ViewContainerRef }), 
+	        core_1.ViewChild('viewport', { read: core_1.ViewContainerRef }), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _a) || Object)
-	    ], ModalComponent.prototype, "wrapper", void 0);
-	    ModalComponent = __decorate([
+	    ], ModalCmp.prototype, "viewport", void 0);
+	    ModalCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-modal',
-	            template: "\n    <div class=\"backdrop\"></div>\n    <div class=\"modal-wrapper\">\n      <div #wrapper></div>\n    </div>\n  "
+	            template: '<div class="backdrop"></div>' +
+	                '<div class="modal-wrapper">' +
+	                '<div #viewport></div>' +
+	                '</div>'
 	        }), 
 	        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.DynamicComponentLoader !== 'undefined' && core_1.DynamicComponentLoader) === 'function' && _b) || Object, (typeof (_c = typeof nav_params_1.NavParams !== 'undefined' && nav_params_1.NavParams) === 'function' && _c) || Object, (typeof (_d = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _d) || Object])
-	    ], ModalComponent);
-	    return ModalComponent;
+	    ], ModalCmp);
+	    return ModalCmp;
 	    var _a, _b, _c, _d;
 	}());
 	/**
@@ -75675,7 +75756,6 @@
 	    __extends(Toast, _super);
 	    function Toast(opts) {
 	        if (opts === void 0) { opts = {}; }
-	        opts.enableBackdropDismiss = util_1.isPresent(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
 	        opts.dismissOnPageChange = util_1.isPresent(opts.dismissOnPageChange) ? !!opts.dismissOnPageChange : false;
 	        _super.call(this, ToastCmp, opts);
 	        this.viewType = 'toast';
@@ -75710,7 +75790,6 @@
 	     *  | cssClass              | `string`  | -               | Any additional class for custom styles.                                                                       |
 	     *  | showCloseButton       | `boolean` | false           | Whether or not to show a button to close the toast.                                                           |
 	     *  | closeButtonText       | `string`  | "Close"         | Text to display in the close button.                                                                          |
-	     *  | enableBackdropDismiss | `boolean` | true            | Whether the toast should be dismissed by tapping the backdrop.                                                |
 	     *  | dismissOnPageChange   | `boolean` | false           | Whether to dismiss the toast when navigating to a new page.                                                   |
 	     *
 	     * @param {object} opts Toast options. See the above table for available options.

@@ -4810,6 +4810,9 @@ ion-alert {
   text-overflow: ellipsis;
   white-space: nowrap; }
 
+.alert-radio[aria-checked=true] .alert-radio-label {
+  color: #327eff; }
+
 .alert-radio-icon {
   position: relative;
   -webkit-box-ordinal-group: 2;
@@ -4817,9 +4820,6 @@ ion-alert {
   -ms-flex-order: 1;
   order: 1;
   min-width: 30px; }
-
-.alert-radio[aria-checked=true] {
-  color: #327eff; }
 
 .alert-radio[aria-checked=true] .alert-radio-inner {
   position: absolute;
@@ -4844,6 +4844,9 @@ ion-alert {
   padding: 13px;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+.alert-checkbox[aria-checked=true] .alert-checkbox-label {
+  color: initial; }
 
 .alert-checkbox-icon {
   position: relative;
@@ -4999,6 +5002,8 @@ a.button,
 a[button] {
   text-decoration: none; }
 
+a[disabled],
+button[disabled],
 .button[disabled] {
   cursor: default;
   opacity: .4;
@@ -6110,14 +6115,17 @@ ion-label[fixed] {
   min-width: 100px;
   max-width: 200px; }
 
-ion-label[stacked],
-ion-label[floating] {
+.item-label-stacked ion-label,
+.item-label-floating ion-label {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  margin-bottom: 0;
   width: auto;
   max-width: 100%; }
+
+ion-label[stacked],
+ion-label[floating] {
+  margin-bottom: 0; }
 
 .item-label-stacked .input-wrapper,
 .item-label-floating .input-wrapper {
@@ -7771,10 +7779,6 @@ ion-title {
   pointer-events: none; }
 
 ion-buttons {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-box-ordinal-group: 4;
   -webkit-order: 3;
   -ms-flex-order: 3;
