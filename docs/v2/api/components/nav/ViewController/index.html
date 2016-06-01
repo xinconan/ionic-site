@@ -503,15 +503,6 @@ export class MyPage{
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="didLoad"></div>
-
-<h3>
-<a class="anchor" name="didLoad" href="#didLoad"></a>
-<code>didLoad</code>
-  
-
-</h3>
-
 <div id="willEnter"></div>
 
 <h3>
@@ -722,13 +713,13 @@ export class MyPage{
 
 </h3>
 
-<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageWillEnter</code> method in order to make sure the view has rendered fully.</p>
+<p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">ionViewWillEnter</code> method in order to make sure the view has rendered fully.</p>
 
 <pre><code class="language-typescript">export class Page1 {
  constructor(view: ViewController) {
    this.view = view
  }
- onPageWillEnter(){
+ ionViewWillEnter(){
    console.log('Do we have a Navbar?', this.view.hasNavbar());
  }
 }
@@ -757,7 +748,7 @@ export class MyPage{
  constructor(viewCtrl: ViewController){
    this.viewCtrl = viewCtrl
  }
- onPageWillEnter() {
+ ionViewWillEnter() {
    this.viewCtrl.setBackButtonText('Previous');
  }
 }
@@ -803,7 +794,7 @@ export class MyPage{
 
 </h3>
 
-<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">onPageWillEnter</code> to make sure the has been compleltly rendered.</p>
+<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">ionViewWillEnter</code> to make sure the has been compleltly rendered.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>

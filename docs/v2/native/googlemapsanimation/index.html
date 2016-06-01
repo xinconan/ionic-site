@@ -12,11 +12,11 @@
 
 
 
-    <title>Project Structure - Tutorial - Getting Started with Ionic -  Ionic Framework</title>
+    <title>GoogleMapsAnimation - Let in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-tutorial"
-        class="v2 docs page-tutorial"
+  <body id="docs-page-googlemapsanimation"
+        class="v2 docs page-googlemapsanimation"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -117,12 +117,9 @@
   </li>
 
   
-  <li class="
-             active">
+  <li class="">
     <a ng-click="showGettingStarted = !showGettingStarted">Getting Started</a>
     <ul ng-show="showGettingStarted"
-        
-          ng-init="showGettingStarted = true"
         >
       <li class="">
         <a href="/docs/v2/getting-started">Welcome</a>
@@ -130,7 +127,7 @@
       <li class="">
         <a href="/docs/v2/getting-started/installation">Installation</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/getting-started/tutorial">Tutorial</a>
       </li>
       <li class="">
@@ -257,9 +254,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -361,7 +360,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/google-maps">Google Maps</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/googlemapsanimation">GoogleMapsAnimation</a>
 </li>
 <li class="capitalize ">
@@ -584,102 +583,35 @@
       </nav>
       
       <main>
-        <h1 id="project-structure">Project Structure</h1>
+        <h1 class="api-title">
 
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/getting-started/tutorial/project-structure/index.md">
+  
+  GoogleMapsAnimation
+  
+
+  
+
+  
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/googlemaps.ts#L31">
   Improve this doc
 </a></p>
 
-<p>Let’s walk through the anatomy of an Ionic 2 app. Inside of the folder that was created, we have a typical <a href="/docs/what-is/#cordova">Cordova</a> project structure where we can install native plugins, and create platform-specific project files.</p>
+<!-- decorators -->
+<!-- @usage tag -->
 
-<h3 class="file-title">./www/index.html</h3>
+<!-- @property tags -->
 
-<p><code class="highlighter-rouge">www/index.html</code> is the main entry point for the app, though its purpose is to set up script and CSS includes and bootstrap, or start running, our app. We won’t spend much of our time in this file.</p>
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
 
-<p>For your app to function, Ionic looks for the <code class="highlighter-rouge">&lt;ion-app&gt;</code> tag in your HTML. In this example we have:</p>
+<!-- end body block -->
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-app&gt;&lt;/ion-app&gt;</span>
-</code></pre>
-</div>
-
-<p>And the following scripts near the bottom:</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"build/js/app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
-
-<ul>
-  <li>
-    <p><code class="highlighter-rouge">build/js/app.bundle.js</code> is a concatenated file containing Ionic, Angular and your app’s JavaScript.</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">cordova.js</code> will 404 during local development, as it gets injected into your project during Cordova’s build process.</p>
-  </li>
-</ul>
-
-<h3 class="file-title">./app/app.js</h3>
-
-<p>Inside of the <code class="highlighter-rouge">app</code> directory we find our pre-compiled code. This is where most of the work for an Ionic 2 app will take place. When we run <code class="highlighter-rouge">ionic serve</code>, our code inside of <code class="highlighter-rouge">app/</code> is <a href="docs/v2/resources/what-is/#transpiler">transpiled</a> into the correct Javascript version that the browser understands (currently, <a href="/docs/v2/resources/what-is/#es5">ES5</a>). That means we can work at a higher level using TypeScript and <a href="docs/v2/resources/what-is/#es2015-es6">ES6+</a>, but compile down to the older form of Javascript the browser needs.</p>
-
-<p><code class="highlighter-rouge">app/app.js</code> is the entry point for our app.</p>
-
-<p>Near the top of the file, we should see this:</p>
-
-<pre><code class="language-ts">@App({
-  templateUrl: 'build/app.html'
-})
-class MyApp {
-  constructor() {
-  }
-}
-</code></pre>
-
-<p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. To specify a root component with Ionic, we use the <code class="highlighter-rouge">@App</code> decorator.</p>
-
-<p>In this component, we set the template to be the file at <code class="highlighter-rouge">build/app.html</code>, which is a compiled version of <code class="highlighter-rouge">app/app.html</code>, let’s take a look!</p>
-
-<h3 class="file-title">./app/app.html</h3>
-
-<p>Here’s the main template for the app in <code class="highlighter-rouge">app/app.html</code>:</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-menu</span> <span class="err">[</span><span class="na">content</span><span class="err">]="</span><span class="na">content</span><span class="err">"</span><span class="nt">&gt;</span>
-
-  <span class="nt">&lt;ion-toolbar&gt;</span>
-    <span class="nt">&lt;ion-title&gt;</span>Pages<span class="nt">&lt;/ion-title&gt;</span>
-  <span class="nt">&lt;/ion-toolbar&gt;</span>
-
-  <span class="nt">&lt;ion-content&gt;</span>
-    <span class="nt">&lt;ion-list&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let p of pages"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">openPage</span><span class="err">(</span><span class="na">p</span><span class="err">)"</span><span class="nt">&gt;</span>
-        {{p.title}}
-      <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/ion-list&gt;</span>
-  <span class="nt">&lt;/ion-content&gt;</span>
-
-<span class="nt">&lt;/ion-menu&gt;</span>
-
-<span class="nt">&lt;ion-nav</span> <span class="na">id=</span><span class="s">"nav"</span> <span class="err">[</span><span class="na">root</span><span class="err">]="</span><span class="na">rootPage</span><span class="err">"</span> <span class="err">#</span><span class="na">content</span> <span class="na">swipe-back-enabled=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/ion-nav&gt;</span>
-</code></pre>
-</div>
-
-<p>In this template, we set up an <a href="/docs/v2/components/#menus"><code class="highlighter-rouge">ion-menu</code></a> to function as a side menu, and then an <a href="/docs/v2/api/components/nav/Nav/"><code class="highlighter-rouge">ion-nav</code></a> component to act as the main content area. The <a href="/docs/v2/components/#menus"><code class="highlighter-rouge">ion-menu</code></a>’s <code class="highlighter-rouge">[content]</code> property is bound to the local variable <code class="highlighter-rouge">content</code> from our <a href="/docs/v2/api/components/nav/Nav/"><code class="highlighter-rouge">ion-nav</code></a>, so it knows where it should animate around.</p>
-
-<p>Next let’s see how to create more pages and perform basic navigation.</p>
 
       </main>
-    </div>
-    
-    <div class="footer-links">
-      <hr>
-      
-        <a class="footer-link prev" href="/docs/v2/getting-started/tutorial/">
-          Learn the basics</a>
-      
-      
-        <a class="footer-link next" href="/docs/v2/getting-started/tutorial/adding-pages">
-          Adding Pages</a>
-      
     </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
