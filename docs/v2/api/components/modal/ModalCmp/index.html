@@ -12,11 +12,11 @@
 
 
 
-    <title>IonicApp - Ionic API Documentation -  Ionic Framework</title>
+    <title>ModalCmp - Ionic API Documentation -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-ionicapp"
-        class="v2 docs page-ionicapp"
+  <body id="docs-page-modalcmp"
+        class="v2 docs page-modalcmp"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -265,7 +265,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -303,8 +303,14 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
-<li class="capitalize active">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -345,6 +351,9 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
+<li class="capitalize active">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
@@ -367,19 +376,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -453,9 +465,9 @@
       
       <main>
         <h1 class="api-title">
-<a class="anchor" name="ionic-app" href="#ionic-app"></a>
+<a class="anchor" name="modal-cmp" href="#modal-cmp"></a>
 
-IonicApp
+ModalCmp
 
 
 
@@ -464,13 +476,12 @@ IonicApp
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/app/app.ts#L5">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/modal/modal.ts#L153">
 Improve this doc
 </a></p>
 
-<p>App utility service.  Allows you to look up components that have been
-registered using the <a href="../Id/">Id directive</a>.</p>
-
+<h2><a class="anchor" name="Component" href="#Component"></a>Component</h2>
+<h3>selector: <code>ion-modal</code></h3>
 <!-- @usage tag -->
 
 <!-- @property tags -->
@@ -479,142 +490,32 @@ registered using the <a href="../Id/">Id directive</a>.</p>
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="setTitle"></div>
+<div id="viewport"></div>
 
 <h3>
-<a class="anchor" name="setTitle" href="#setTitle"></a>
-<code>setTitle(val)</code>
+<a class="anchor" name="viewport" href="#viewport"></a>
+<code>viewport</code>
   
 
 </h3>
 
-<p>Sets the document title.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        val
-        
-        
-      </td>
-      <td>
-        
-  <code>string</code>
-      </td>
-      <td>
-        <p>Value to set the document title to.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="isProd"></div>
+<div id="loadComponent"></div>
 
 <h3>
-<a class="anchor" name="isProd" href="#isProd"></a>
-<code>isProd()</code>
+<a class="anchor" name="loadComponent" href="#loadComponent"></a>
+<code>loadComponent()</code>
   
 
 </h3>
 
-<p>Returns if the app has been set to be in be in production mode or not.
-Production mode can only be set within the config of <code class="highlighter-rouge">@App</code>. Defaults
-to <code class="highlighter-rouge">false</code>.</p>
-
-<div class="return-value">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-  <code>boolean</code> 
-
-</div>
-
-<div id="isScrolling"></div>
+<div id="ngAfterViewInit"></div>
 
 <h3>
-<a class="anchor" name="isScrolling" href="#isScrolling"></a>
-<code>isScrolling()</code>
+<a class="anchor" name="ngAfterViewInit" href="#ngAfterViewInit"></a>
+<code>ngAfterViewInit()</code>
   
 
 </h3>
-
-<p>Boolean if the app is actively scrolling or not.</p>
-
-<div class="return-value">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-  <code>boolean</code> 
-
-</div>
-
-<div id="setAppInjector"></div>
-
-<h3>
-<a class="anchor" name="setAppInjector" href="#setAppInjector"></a>
-<code>setAppInjector(injector)</code>
-  
-
-</h3>
-
-<p>Set the global app injector that contains references to all of the instantiated providers</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        injector
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div id="getAppInjector"></div>
-
-<h3>
-<a class="anchor" name="getAppInjector" href="#getAppInjector"></a>
-<code>getAppInjector()</code>
-  
-
-</h3>
-
-<p>Get an instance of the global app injector that contains references to all of the instantiated providers</p>
-
-<div class="return-value">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-  <code>Injector</code> 
-
-</div>
 
 <!-- related link -->
 <!-- end content block -->

@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -347,6 +353,9 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
 <li class="capitalize active">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -529,15 +541,18 @@ the &#39;root&#39; property:</p>
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
-<pre><code class="lang-ts">import {GettingStartedPage} from &#39;getting-started&#39;;
-@App({
-  template: `&lt;ion-nav [root]=&quot;rootPage&quot;&gt;&lt;/ion-nav&gt;`
+<pre><code class="lang-ts">import {Component} from &#39;@angular/core&#39;;
+import {ionicBootstrap} from &#39;ionic-angular&#39;;
+import {GettingStartedPage} from &#39;./getting-started&#39;;
+
+@Component({
+  template: `&lt;ion-nav [root]=&quot;root&quot;&gt;&lt;/ion-nav&gt;`
 })
 class MyApp {
-  constructor(){
-    this.rootPage = GettingStartedPage;
-  }
+  root = GettingStartedPage;
 }
+
+ionicBootstrap(MyApp);
 </code></pre>
 <h3 id="back-navigation">Back Navigation</h3>
 <p>If a <a href="../NavController/#creating_pages">page</a> you navigate to has a <a href="../NavBar/">NavBar</a>,
@@ -627,6 +642,7 @@ swipe to go back:</p>
     
   </tbody>
 </table>
+
 <!-- related link -->
 
 <h2><a class="anchor" name="related" href="#related"></a>Related</h2>

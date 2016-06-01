@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -507,7 +519,7 @@ Modal
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/modal/modal.ts#L5">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/modal/modal.ts#L8">
 Improve this doc
 </a></p>
 
@@ -536,7 +548,7 @@ standard page.</p>
 
 <pre><code class="lang-ts">import {Page, Modal, NavController, NavParams} from &#39;ionic-angular&#39;;
 
-@Page(...)
+@Component(...)
 class HomePage {
 
  constructor(nav: NavController) {
@@ -550,7 +562,7 @@ class HomePage {
 
 }
 
-@Page(...)
+@Component(...)
 class Profile {
 
  constructor(params: NavParams) {
@@ -563,9 +575,10 @@ class Profile {
 data. For example, a profile page could slide up in a modal, and on submit,
 the submit button could pass the updated profile data, then dismiss the
 modal.</p>
-<pre><code class="lang-ts">import {Page, Modal, NavController, ViewController} from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import {Component} from &#39;@angular/core&#39;;
+import {Modal, NavController, ViewController} from &#39;ionic-angular&#39;;
 
-@Page(...)
+@Component(...)
 class HomePage {
 
  constructor(nav: NavController) {
@@ -587,7 +600,7 @@ class HomePage {
 
 }
 
-@Page(...)
+@Component(...)
 class Profile {
 
  constructor(viewCtrl: ViewController) {
@@ -657,6 +670,27 @@ class Profile {
 </table>
 
 <!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="modalViewType"></div>
+
+<h3>
+<a class="anchor" name="modalViewType" href="#modalViewType"></a>
+<code>modalViewType</code>
+  
+
+</h3>
+
+<div id="loaded"></div>
+
+<h3>
+<a class="anchor" name="loaded" href="#loaded"></a>
+<code>loaded()</code>
+  
+
+</h3>
+
 <!-- related link -->
 
 <h2><a class="anchor" name="related" href="#related"></a>Related</h2>

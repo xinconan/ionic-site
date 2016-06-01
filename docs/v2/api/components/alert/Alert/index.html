@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -719,7 +731,7 @@ out before starting a new transition.</p>
     <tr>
       <td>enableBackdropDismiss</td>
       <td><code class="highlighter-rouge">boolean</code></td>
-      <td>Wheather the alert should be dismissed by tapping the backdrop (optional)</td>
+      <td>Whether the alert should be dismissed by tapping the backdrop (optional)</td>
     </tr>
   </tbody>
 </table>
@@ -746,9 +758,9 @@ out before starting a new transition.</p>
       <td>The name for the input (optional)</td>
     </tr>
     <tr>
-      <td>placeHolder</td>
+      <td>placeholder</td>
       <td><code class="highlighter-rouge">string</code></td>
-      <td>The input’s placeholder (optional)</td>
+      <td>The input’s placeholder (optional, for textual/numeric inputs)</td>
     </tr>
     <tr>
       <td>value</td>
@@ -758,7 +770,7 @@ out before starting a new transition.</p>
     <tr>
       <td>label</td>
       <td><code class="highlighter-rouge">string</code></td>
-      <td>The input’s label (optional)</td>
+      <td>The input’s label (optional, only for radio/checkbox inputs)</td>
     </tr>
     <tr>
       <td>checked</td>

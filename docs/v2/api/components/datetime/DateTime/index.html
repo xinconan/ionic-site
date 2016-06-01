@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -748,7 +760,7 @@ January always has a leading zero, such as <code>01</code>. Additionally, the ho
 in the 24-hour format, so <code>00</code> is <code>12am</code> on a 12-hour clock, <code>13</code> means <code>1pm</code>,
 and <code>23</code> means <code>11pm</code>.</p>
 <p>It&#39;s also important to note that neither the <code>displayFormat</code> or <code>pickerFormat</code> can
-set the datetime value&#39;s output, which is the value that sent the the component&#39;s
+set the datetime value&#39;s output, which is the value that is set by the component&#39;s
 <code>ngModel</code>. The format&#39;s are merely for displaying the value as text and the picker&#39;s
 interface, but the datetime&#39;s value is always persisted as a valid ISO 8601 datetime
 string.</p>
@@ -783,14 +795,14 @@ if the app needs to use names other than the default English version of month an
 names. The month names and day names can be either configured at the app level, or
 individual <code>ion-datetime</code> level.</p>
 <h3 id="app-config-level">App Config Level</h3>
-<pre><code class="lang-ts">@App({
-  config: {
-    monthNames: [&#39;janeiro&#39;, &#39;fevereiro&#39;, &#39;mar\u00e7o&#39;, ... ],
-    monthShortNames: [&#39;jan&#39;, &#39;fev&#39;, &#39;mar&#39;, ... ],
-    dayNames: [&#39;domingo&#39;, &#39;segunda-feira&#39;, &#39;ter\u00e7a-feira&#39;, ... ],
-    dayShortNames: [&#39;dom&#39;, &#39;seg&#39;, &#39;ter&#39;, ... ],
-  }
-})
+<pre><code class="lang-ts">import {ionicBootstrap} from &#39;ionic-angular&#39;;
+
+ionicBootstrap(MyApp, customProviders, {
+  monthNames: [&#39;janeiro&#39;, &#39;fevereiro&#39;, &#39;mar\u00e7o&#39;, ... ],
+  monthShortNames: [&#39;jan&#39;, &#39;fev&#39;, &#39;mar&#39;, ... ],
+  dayNames: [&#39;domingo&#39;, &#39;segunda-feira&#39;, &#39;ter\u00e7a-feira&#39;, ... ],
+  dayShortNames: [&#39;dom&#39;, &#39;seg&#39;, &#39;ter&#39;, ... ],
+});
 </code></pre>
 <h3 id="component-input-level">Component Input Level</h3>
 <pre><code class="lang-html">&lt;ion-item&gt;
@@ -1022,19 +1034,20 @@ See the <a href="../../picker/Picker">Picker API docs</a> for the picker options
   <tbody>
     
     <tr>
-      <td>change</td>
+      <td>ionChange</td>
       <td><p> Any expression to evaluate when the datetime selection has changed.</p>
 </td>
     </tr>
     
     <tr>
-      <td>cancel</td>
+      <td>ionCancel</td>
       <td><p> Any expression to evaluate when the datetime selection was cancelled.</p>
 </td>
     </tr>
     
   </tbody>
 </table>
+
 <!-- related link -->
 <!-- end content block -->
 

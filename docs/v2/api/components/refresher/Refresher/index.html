@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize active">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -529,13 +541,13 @@ display or hide the refresher.</p>
 
 <pre><code class="lang-html">&lt;ion-content&gt;
 
-  &lt;ion-refresher (refresh)=&quot;doRefresh($event)&quot;&gt;
+  &lt;ion-refresher (ionRefresh)=&quot;doRefresh($event)&quot;&gt;
     &lt;ion-refresher-content&gt;&lt;/ion-refresher-content&gt;
   &lt;/ion-refresher&gt;
 
 &lt;/ion-content&gt;
 </code></pre>
-<pre><code class="lang-ts">@Page({...})
+<pre><code class="lang-ts">@Component({...})
 export class NewsFeedPage {
 
   doRefresh(refresher) {
@@ -556,7 +568,7 @@ default icon and spinner, along with adding text for each state by
 adding properties to the child <code>ion-refresher-content</code> component.</p>
 <pre><code class="lang-html">&lt;ion-content&gt;
 
-  &lt;ion-refresher (refresh)=&quot;doRefresh($event)&quot;&gt;
+  &lt;ion-refresher (ionRefresh)=&quot;doRefresh($event)&quot;&gt;
     &lt;ion-refresher-content
       pullingIcon=&quot;arrow-dropdown&quot;
       pullingText=&quot;Pull to refresh&quot;
@@ -746,7 +758,7 @@ maximum will be the result of <code>pullMin + 60</code>.</p>
   <tbody>
     
     <tr>
-      <td>refresh</td>
+      <td>ionRefresh</td>
       <td><p> When the user lets go and has pulled down far enough, which would be
 farther than the <code>pullMin</code>, then your refresh hander if fired and the state is
 updated to <code>refreshing</code>. From within your refresh handler, you must call the
@@ -755,19 +767,20 @@ updated to <code>refreshing</code>. From within your refresh handler, you must c
     </tr>
     
     <tr>
-      <td>pulling</td>
+      <td>ionPull</td>
       <td><p> While the user is pulling down the content and exposing the refresher.</p>
 </td>
     </tr>
     
     <tr>
-      <td>start</td>
+      <td>ionStart</td>
       <td><p> When the user begins to start pulling down.</p>
 </td>
     </tr>
     
   </tbody>
 </table>
+
 <!-- related link -->
 <!-- end content block -->
 

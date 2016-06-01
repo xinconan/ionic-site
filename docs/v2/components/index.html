@@ -363,6 +363,33 @@
   <a href="/docs/v2/native/google-maps">Google Maps</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/googlemapscircle">GoogleMapsCircle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapsevent">GoogleMapsEvent</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapsgroundoverlay">GoogleMapsGroundOverlay</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapskmloverlay">GoogleMapsKmlOverlay</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapslatlng">GoogleMapsLatLng</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapsmarker">GoogleMapsMarker</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapspolygon">GoogleMapsPolygon</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapspolyline">GoogleMapsPolyline</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/googlemapstileoverlay">GoogleMapsTileOverlay</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -531,6 +558,9 @@
       </li>
       <li class="">
         <a href="/docs/v2/resources/what-is/">Glossary</a>
+      </li>
+      <li class="">
+        <a href="/docs/v2/resources/progressive-web-apps/">Progressive Web Apps</a>
       </li>
       <li class="">
         <a href="/docs/v2/resources/editors_and_ides/">Editors and IDEs</a>
@@ -1526,10 +1556,8 @@
 </div>
 
 <pre><code class="language-typescript">export class MyFirstPage {
-  constructor(nav: NavController) {
-    // use the home icon
-    this.myIcon = "home";
-  }
+  // use the home icon
+  myIcon: string = "home";
 }
 </code></pre>
 
@@ -2002,13 +2030,13 @@ import {SignupPage} from 'signup';
 })
 class MyApp {
 
-  constructor(app: IonicApp, menu: MenuController) {
-    this.app = app;
-    this.menu = menu;
-    this.rootPage = LoginPage;
-    this.loginPage = LoginPage;
-    this.signupPage = SignupPage;
-  }
+  private rootPage = LoginPage;
+  private loginPage = LoginPage;
+  private signupPage = SignupPage;
+
+  constructor(
+    private app: IonicApp,
+    private menu: MenuController) {}
 
   openPage(page) {
     // Reset the nav controller to have just this page
@@ -2055,9 +2083,8 @@ class MyApp {
   &lt;/ion-content&gt;`
 })
 class MyModal {
-  constructor(viewCtrl: ViewController) {
-    this.viewCtrl = viewCtrl;
-  }
+  constructor(
+    private viewCtrl: ViewController) {}
 
   close() {
     this.viewCtrl.dismiss();
@@ -2069,9 +2096,8 @@ class MyModal {
 
 <pre><code class="language-typescript">import {Modal, NavController} from 'ionic-angular'
 class MyPage {
-  constructor(nav: NavController){
-    this.nav = nav;
-  }
+  constructor(private nav: NavController){}
+
   showModal() {
     let modal = Modal.create(MyModal);
     this.nav.present(modal);
@@ -2108,10 +2134,9 @@ class MyPage {
     template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
   })
   class MyApp {
-    constructor(){
-      // First page to push onto the stack
-      this.rootPage = StartPage;
-    }
+    // First page to push onto the stack
+    rootPage = StartPage;
+    constructor(){}
   }
 </code></pre>
 
@@ -2126,9 +2151,7 @@ class MyPage {
     &lt;ion-content&gt;Hello World&lt;/ion-content&gt;`
 })
 export class StartPage {
-  constructor(nav: NavController){
-    this.nav = nav;
-  }
+  constructor(private nav: NavController){}
 }
 </code></pre>
 
@@ -2147,9 +2170,7 @@ export class StartPage {
     &lt;/ion-content&gt;`
 })
 export class StartPage {
-  constructor(nav: NavController) {
-    this.nav = nav;
-  }
+  constructor(private nav: NavController) {}
 
   goToOtherPage(){
     //push another page onto the history stack
@@ -2182,9 +2203,8 @@ class OtherPage {}
     &lt;/ion-content&gt;`
 })
 class OtherPage {
-  constructor(nav: NavController) {
-    this.nav = nav;
-  }
+  constructor(private nav: NavController) {}
+
   goBack() {
     this.nav.pop();
   }
@@ -2199,20 +2219,17 @@ class OtherPage {
 <p>By adding an <a href="../api/components/app/Id/"><code class="highlighter-rouge">id</code></a> to <code class="highlighter-rouge">ion-nav</code>, you can use the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service to get a reference to the <code class="highlighter-rouge">Nav</code> component, which is a navigation controller (it extends <code class="highlighter-rouge">NavController</code>):</p>
 
 <pre><code class="language-typescript">@App({
-  template: '&lt;ion-nav id="my-nav" [root]="rootPage"&gt;&lt;/ion-nav&gt;'
+  template: '&lt;ion-nav #myNav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
 })
 export class MyApp {
-  constructor(app: IonicApp) {
-    this.rootPage = TabsPage;
-    this.app = app;
-  }
+  @ViewChild('myNav') nav
+  rootPage = TabsPage;
 
   // Wait for the components in MyApp's template to be initialized
   // In this case, we are waiting for the Nav with id="my-nav"
   ngAfterViewInit() {
-    var nav = this.app.getComponent('my-nav');
     // Let's navigate from TabsPage to Page1
-    nav.push(Page1);
+    this.nav.push(Page1);
   }
 }
 </code></pre>
@@ -2535,9 +2552,10 @@ class Tab2 {}
 ...
 })
 class Tab1 {
-  constructor(nav: NavController) {
+  constructor(
+    private nav: NavController) {
     // Id is 1, nav refers to Tab1
-    console.log(nav.id)
+    console.log(this.nav.id)
   }
 }
 
@@ -2545,9 +2563,9 @@ class Tab1 {
 ...
 })
 class Tab2 {
-  constructor(nav: NavController) {
+  constructor(private nav: NavController) {
     // Id is 2, nav refers to Tab2
-    console.log(nav.id)
+    console.log(this.nav.id)
   }
 }
 </code></pre>
@@ -2568,8 +2586,7 @@ class Tab2 {
   &lt;/ion-content&gt;`,
 })
 class TabContentPage {
-  constructor() {
-  }
+  constructor() {}
 }
 
 @Page({
@@ -2606,8 +2623,7 @@ export class TabsIconPage {
   &lt;/ion-content&gt;`
 })
 class TabsTextContentPage {
-  constructor() {
-  }
+  constructor() {}
 }
 
 @Page({
@@ -2644,8 +2660,7 @@ export class TabsTextPage {
   &lt;/ion-content&gt;`,
 })
 class TabBadgePage {
-  constructor() {
-  }
+  constructor() {}
 }
 
 @Page({

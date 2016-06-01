@@ -12,11 +12,11 @@
 
 
 
-    <title>postBootstrap - Ionic API Documentation -  Ionic Framework</title>
+    <title>App - Ionic API Documentation -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-postbootstrap"
-        class="v2 docs page-postbootstrap"
+  <body id="docs-page-app"
+        class="v2 docs page-app"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -264,8 +264,8 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+<li class="capitalize active">
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -304,7 +304,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -346,6 +352,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -367,19 +376,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -453,9 +465,9 @@
       
       <main>
         <h1 class="api-title">
-<a class="anchor" name="post-bootstrap" href="#post-bootstrap"></a>
+<a class="anchor" name="app" href="#app"></a>
 
-postBootstrap
+App
 
 
 
@@ -464,15 +476,137 @@ postBootstrap
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/config/bootstrap.ts#L64">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/app/app.ts#L5">
 Improve this doc
 </a></p>
+
+<p>Ionic App utility service.</p>
 
 <!-- @usage tag -->
 
 <!-- @property tags -->
 
 <!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="setTitle"></div>
+
+<h3>
+<a class="anchor" name="setTitle" href="#setTitle"></a>
+<code>setTitle(val)</code>
+  
+
+</h3>
+
+<p>Sets the document title.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        val
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Value to set the document title to.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="isScrolling"></div>
+
+<h3>
+<a class="anchor" name="isScrolling" href="#isScrolling"></a>
+<code>isScrolling()</code>
+  
+
+</h3>
+
+<p>Boolean if the app is actively scrolling or not.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> 
+
+</div>
+
+<div id="setAppInjector"></div>
+
+<h3>
+<a class="anchor" name="setAppInjector" href="#setAppInjector"></a>
+<code>setAppInjector(injector)</code>
+  
+
+</h3>
+
+<p>Set the global app injector that contains references to all of the instantiated providers</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        injector
+        
+        
+      </td>
+      <td>
+        
+  
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="getAppInjector"></div>
+
+<h3>
+<a class="anchor" name="getAppInjector" href="#getAppInjector"></a>
+<code>getAppInjector()</code>
+  
+
+</h3>
+
+<p>Get an instance of the global app injector that contains references to all of the instantiated providers</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Injector</code> 
+
+</div>
+
 <!-- related link -->
 <!-- end content block -->
 

@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -530,17 +542,17 @@ on the infinite scroll instance.</p>
    &lt;ion-item *ngFor=&quot;let i of items&quot;&gt;{{i}}&lt;/ion-item&gt;
  &lt;/ion-list&gt;
 
- &lt;ion-infinite-scroll (infinite)=&quot;doInfinite($event)&quot;&gt;
+ &lt;ion-infinite-scroll (ionInfinite)=&quot;doInfinite($event)&quot;&gt;
    &lt;ion-infinite-scroll-content&gt;&lt;/ion-infinite-scroll-content&gt;
  &lt;/ion-infinite-scroll&gt;
 
 &lt;/ion-content&gt;
 </code></pre>
-<pre><code class="lang-ts">@Page({...})
+<pre><code class="lang-ts">@Component({...})
 export class NewsFeedPage {
+  items = [];
 
   constructor() {
-    this.items = [];
     for (var i = 0; i &lt; 30; i++) {
       this.items.push( this.items.length );
     }
@@ -568,7 +580,7 @@ default spinner or add text by adding properties to the
 <code>ion-infinite-scroll-content</code> component.</p>
 <pre><code class="lang-html">&lt;ion-content&gt;
 
-  &lt;ion-infinite-scroll (infinite)=&quot;doInfinite($event)&quot;&gt;
+  &lt;ion-infinite-scroll (ionInfinite)=&quot;doInfinite($event)&quot;&gt;
     &lt;ion-infinite-scroll-content
       loadingSpinner=&quot;bubbles&quot;
       loadingText=&quot;Loading more data...&quot;&gt;
@@ -705,7 +717,7 @@ Default is <code>15%</code>.</p>
   <tbody>
     
     <tr>
-      <td>infinite</td>
+      <td>ionInfinite</td>
       <td><p> The expression to call when the scroll reaches
 the threshold distance. From within your infinite handler,
 you must call the infinite scroll&#39;s <code>complete()</code> method when
@@ -715,6 +727,7 @@ your async operation has completed.</p>
     
   </tbody>
 </table>
+
 <!-- related link -->
 <!-- end content block -->
 

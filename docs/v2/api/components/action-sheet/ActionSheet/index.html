@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -520,7 +532,7 @@ hitting the escape key on desktop.</p>
 <p>An action sheet is created from an array of <code>buttons</code>, with each button
 including properties for its <code>text</code>, and optionally a <code>handler</code> and <code>role</code>.
 If a handler returns <code>false</code> then the action sheet will not be dismissed. An
-action sheet can also optionally have a <code>title</code> and a <code>subTitle</code>.</p>
+action sheet can also optionally have a <code>title</code>, <code>subTitle</code> and an <code>icon</code>.</p>
 <p>A button&#39;s <code>role</code> property can either be <code>destructive</code> or <code>cancel</code>. Buttons
 without a role property will have the default look for the platform. Buttons
 with the <code>cancel</code> role will always load as the bottom button, no matter where
@@ -577,7 +589,7 @@ to another page depending on the handler&#39;s logic. However, because multiple
 transitions were fired at roughly the same time, it&#39;s difficult for the
 nav controller to cleanly animate multiple transitions that may
 have been kicked off asynchronously. This is further described in the
-<a href="../../nav/NavController"><code>Nav Transition Promises</code></a> section. For action sheets,
+<a href="../../nav/NavController/#nav-transition-promises"><code>Nav Transition Promises</code></a> section. For action sheets,
 this means it&#39;s best to wait for the action sheet to finish its transition
 out before starting a new transition on the same nav controller.</p>
 <p>In the example below, after the button has been clicked, its handler

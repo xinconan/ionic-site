@@ -267,7 +267,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -306,7 +306,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -348,6 +354,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -369,19 +378,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -595,7 +607,7 @@ getting the <code>Swiper</code> instance and using its methods directly.</p>
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
-<p>You can add slides to a <code>@Page</code> using the following template:</p>
+<p>You can add slides to a <code>@Component</code> using the following template:</p>
 <pre><code class="lang-html">&lt;ion-slides&gt;
   &lt;ion-slide&gt;
     &lt;h1&gt;Slide 1&lt;/h1&gt;
@@ -609,9 +621,10 @@ getting the <code>Swiper</code> instance and using its methods directly.</p>
 &lt;/ion-slides&gt;
 </code></pre>
 <p>To add <a href="#configuring">options</a>, we will define them in <code>mySlideOptions</code> in our class <code>MyPage</code>:</p>
-<pre><code class="lang-ts">import {Page, Slides} from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import {Component} from &#39;@angular/core&#39;;
+import {Slides} from &#39;ionic-angular&#39;;
 
-@Page({
+@Component({
   templateUrl: &#39;my-page.html&#39;
 })
 class MyPage {
@@ -655,8 +668,8 @@ navigate to a specific slide on a button click. Below we call the
 }
 </code></pre>
 <p>We can also add events to listen to on the <code>&lt;ion-slides&gt;</code> element.
-Let&#39;s add the <code>didChange</code> event and call a method when the slide changes:</p>
-<pre><code class="lang-html">&lt;ion-slides #mySlider (didChange)=&quot;onSlideChanged()&quot; [options]=&quot;mySlideOptions&quot;&gt;
+Let&#39;s add the <code>ionDidChange</code> event and call a method when the slide changes:</p>
+<pre><code class="lang-html">&lt;ion-slides #mySlider (ionDidChange)=&quot;onSlideChanged()&quot; [options]=&quot;mySlideOptions&quot;&gt;
 </code></pre>
 <p>In our class, we add the <code>onSlideChanged()</code> method which gets the active
 index and prints it:</p>
@@ -744,7 +757,7 @@ index and prints it:</p>
   <code>boolean</code>
       </td>
       <td>
-        <p>Whether or not to emit the <code>willChange</code>/<code>didChange</code> events. Optional. Default true.</p>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
 
         
       </td>
@@ -802,7 +815,7 @@ index and prints it:</p>
   <code>boolean</code>
       </td>
       <td>
-        <p>Whether or not to emit the <code>willChange</code>/<code>didChange</code> events. Optional. Default true.</p>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
 
         
       </td>
@@ -860,7 +873,7 @@ index and prints it:</p>
   <code>boolean</code>
       </td>
       <td>
-        <p>Whether or not to emit the <code>willChange</code>/<code>didChange</code> events. Optional. Default true.</p>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
 
         
       </td>
@@ -1019,25 +1032,26 @@ the <code class="highlighter-rouge">Swiper</code> instance directly.</p>
   <tbody>
     
     <tr>
-      <td>willChange</td>
+      <td>ionWillChange</td>
       <td><p> Expression to evaluate when a slide change starts.</p>
 </td>
     </tr>
     
     <tr>
-      <td>didChange</td>
+      <td>ionDidChange</td>
       <td><p> Expression to evaluate when a slide change ends.</p>
 </td>
     </tr>
     
     <tr>
-      <td>move</td>
+      <td>ionDrag</td>
       <td><p> Expression to evaluate when a slide moves.</p>
 </td>
     </tr>
     
   </tbody>
 </table>
+
 <!-- related link -->
 
 <h2><a class="anchor" name="related" href="#related"></a>Related</h2>

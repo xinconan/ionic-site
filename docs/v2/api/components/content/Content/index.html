@@ -265,7 +265,7 @@
   <a href="/docs/v2/api/components/alert/Alert">Alert</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/App">App</a>
+  <a href="/docs/v2/api/components/app/App">App</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/badge/Badge">Badge</a>
@@ -304,7 +304,13 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/app/IonicApp">IonicApp</a>
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -346,6 +352,9 @@
   <a href="/docs/v2/api/components/modal/Modal">Modal</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
 </li>
 <li class="capitalize ">
@@ -367,19 +376,22 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/decorators/Page">Page</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/components/picker/Picker">Picker</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
@@ -485,10 +497,10 @@ some useful methods to control the scrollable area.</p>
 </code></pre>
 <p>To get a reference to the content component from a Page&#39;s logic,
 you can use Angular&#39;s <code>@ViewChild</code> annotation:</p>
-<pre><code class="lang-ts">import {ViewChild} from &#39;@angular/core&#39;;
+<pre><code class="lang-ts">import {Component, ViewChild} from &#39;@angular/core&#39;;
 import {Content} from &#39;ionic-angular&#39;;
 
-@Page({...}
+@Component({...})
 export class MyPage{
   @ViewChild(Content) content: Content;
 
@@ -515,10 +527,10 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<pre><code class="language-ts">import {ViewChild} from '@angular/core';
+<pre><code class="language-ts">import {Component, ViewChild} from '@angular/core';
 import {Content} from 'ionic-angular';
 
-@Page({
+@Component({
   template: `&lt;ion-content&gt;
                &lt;button (click)="scrollTo()"&gt;Down 500px&lt;/button&gt;
              &lt;/ion-content&gt;`
@@ -617,10 +629,10 @@ export class MyPage{
 
 <p>Scroll to the top of the content component.</p>
 
-<pre><code class="language-ts">import {ViewChild} from '@angular/core';
+<pre><code class="language-ts">import {Component, ViewChild} from '@angular/core';
 import {Content} from 'ionic-angular';
 
-@Page({
+@Component({
   template: `&lt;ion-content&gt;
                &lt;button (click)="scrollToTop()"&gt;Scroll to top&lt;/button&gt;
              &lt;/ion-content&gt;`

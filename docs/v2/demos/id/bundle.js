@@ -2521,7 +2521,7 @@
 	__export(__webpack_require__(414));
 	__export(__webpack_require__(415));
 	__export(__webpack_require__(253));
-	__export(__webpack_require__(420));
+	__export(__webpack_require__(421));
 	__export(__webpack_require__(250));
 	__export(__webpack_require__(255));
 	__export(__webpack_require__(259));
@@ -2529,14 +2529,14 @@
 	__export(__webpack_require__(287));
 	__export(__webpack_require__(286));
 	__export(__webpack_require__(266));
-	__export(__webpack_require__(424));
+	__export(__webpack_require__(425));
 	// these modules don't export anything
-	__webpack_require__(425);
 	__webpack_require__(426);
 	__webpack_require__(427);
 	__webpack_require__(428);
 	__webpack_require__(429);
 	__webpack_require__(430);
+	__webpack_require__(431);
 
 /***/ },
 /* 7 */
@@ -30705,6 +30705,8 @@
 	    exports.CSS.transitionDelay = (isWebkit ? '-webkit-' : '') + 'transition-delay';
 	    // To be sure transitionend works everywhere, include *both* the webkit and non-webkit events
 	    exports.CSS.transitionEnd = (isWebkit ? 'webkitTransitionEnd ' : '') + 'transitionend';
+	    // transform origin
+	    exports.CSS.transformOrigin = (isWebkit ? '-webkit-' : '') + 'transform-origin';
 	})();
 	function transitionEnd(el, callback) {
 	    if (el) {
@@ -31006,6 +31008,8 @@
 	 * | `pageTransitionDelay`    | `number`            | The delay in milliseconds before the transition starts while changing pages.                                                                     |
 	 * | `pickerEnter`            | `string`            | The name of the transition to use while a picker is presented.                                                                                   |
 	 * | `pickerLeave`            | `string`            | The name of the transition to use while a picker is dismissed.                                                                                   |
+	 * | `popoverEnter`           | `string`            | The name of the transition to use while a popover is presented.                                                                                   |
+	 * | `popoverLeave`           | `string`            | The name of the transition to use while a popover is dismissed.                                                                                   |
 	 * | `spinner`                | `string`            | The default spinner to use when a name is not defined.                                                                                           |
 	 * | `tabbarHighlight`        | `boolean`           | Whether to show a highlight line under the tab when it is selected.                                                                              |
 	 * | `tabbarLayout`           | `string`            | The layout to use for all tabs. Available options: `"icon-top"`, `"icon-left"`, `"icon-right"`, `"icon-bottom"`, `"icon-hide"`, `"title-hide"`.  |
@@ -34207,15 +34211,15 @@
 	        /**
 	         * @output {event} When the menu is being dragged open.
 	         */
-	        this.opening = new core_1.EventEmitter();
+	        this.ionDrag = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the menu has been opened.
 	         */
-	        this.opened = new core_1.EventEmitter();
+	        this.ionOpen = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the menu has been closed.
 	         */
-	        this.closed = new core_1.EventEmitter();
+	        this.ionClose = new core_1.EventEmitter();
 	    }
 	    Object.defineProperty(Menu.prototype, "enabled", {
 	        /**
@@ -34377,7 +34381,7 @@
 	        if (this._isEnabled && this._isSwipeEnabled) {
 	            this._prevent();
 	            this._getType().setProgessStep(stepValue);
-	            this.opening.next(stepValue);
+	            this.ionDrag.emit(stepValue);
 	        }
 	    };
 	    /**
@@ -34416,12 +34420,12 @@
 	            this._cntEle.removeEventListener('click', this.onContentClick);
 	            if (isOpen) {
 	                this._cntEle.addEventListener('click', this.onContentClick);
-	                this.opened.emit(true);
+	                this.ionOpen.emit(true);
 	            }
 	            else {
 	                this.getNativeElement().classList.remove('show-menu');
 	                this.getBackdropElement().classList.remove('show-backdrop');
-	                this.closed.emit(true);
+	                this.ionClose.emit(true);
 	            }
 	        }
 	    };
@@ -34557,15 +34561,15 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Menu.prototype, "opening", void 0);
+	    ], Menu.prototype, "ionDrag", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Menu.prototype, "opened", void 0);
+	    ], Menu.prototype, "ionOpen", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
-	    ], Menu.prototype, "closed", void 0);
+	    ], Menu.prototype, "ionClose", void 0);
 	    Menu = __decorate([
 	        core_1.Component({
 	            selector: 'ion-menu',
@@ -37808,6 +37812,13 @@
 	        this._emitter = new core_1.EventEmitter();
 	        // passed in data could be NavParams, but all we care about is its data object
 	        this.data = (data instanceof nav_params_1.NavParams ? data.data : (util_1.isPresent(data) ? data : {}));
+	        this.didLoad = new core_1.EventEmitter();
+	        this.willEnter = new core_1.EventEmitter();
+	        this.didEnter = new core_1.EventEmitter();
+	        this.willLeave = new core_1.EventEmitter();
+	        this.didLeave = new core_1.EventEmitter();
+	        this.willUnload = new core_1.EventEmitter();
+	        this.didUnload = new core_1.EventEmitter();
 	    }
 	    ViewController.prototype.subscribe = function (generatorOrNext) {
 	        return this._emitter.subscribe(generatorOrNext);
@@ -38148,6 +38159,16 @@
 	        return this._loaded;
 	    };
 	    /**
+	     * The loaded method is used to load any dynamic content/components
+	     * into the dom before proceeding with the transition.  If a component needs
+	     * dynamic component loading, extending ViewController and overriding
+	     * this method is a good option
+	     * @param {function} done is a callback that must be called when async loading/actions are completed
+	     */
+	    ViewController.prototype.loaded = function (done) {
+	        done();
+	    };
+	    /**
 	     * @private
 	     * The view has loaded. This event only happens once per view being
 	     * created. If a view leaves but is cached, then this will not
@@ -38155,21 +38176,23 @@
 	     * to put your setup code for the view; however, it is not the
 	     * recommended method to use when a view becomes active.
 	     */
-	    ViewController.prototype.loaded = function () {
+	    ViewController.prototype.fireLoaded = function () {
 	        this._loaded = true;
+	        this.didLoad.emit(null);
 	        ctrlFn(this, 'onPageLoaded');
 	    };
 	    /**
 	     * @private
 	     * The view is about to enter and become the active view.
 	     */
-	    ViewController.prototype.willEnter = function () {
+	    ViewController.prototype.fireWillEnter = function () {
 	        if (this._cd) {
 	            // ensure this has been re-attached to the change detector
 	            this._cd.reattach();
 	            // detect changes before we run any user code
 	            this._cd.detectChanges();
 	        }
+	        this.willEnter.emit(null);
 	        ctrlFn(this, 'onPageWillEnter');
 	    };
 	    /**
@@ -38177,16 +38200,18 @@
 	     * The view has fully entered and is now the active view. This
 	     * will fire, whether it was the first load or loaded from the cache.
 	     */
-	    ViewController.prototype.didEnter = function () {
+	    ViewController.prototype.fireDidEnter = function () {
 	        var navbar = this.getNavbar();
 	        navbar && navbar.didEnter();
+	        this.didEnter.emit(null);
 	        ctrlFn(this, 'onPageDidEnter');
 	    };
 	    /**
 	     * @private
 	     * The view has is about to leave and no longer be the active view.
 	     */
-	    ViewController.prototype.willLeave = function () {
+	    ViewController.prototype.fireWillLeave = function () {
+	        this.willLeave.emit(null);
 	        ctrlFn(this, 'onPageWillLeave');
 	    };
 	    /**
@@ -38194,7 +38219,8 @@
 	     * The view has finished leaving and is no longer the active view. This
 	     * will fire, whether it is cached or unloaded.
 	     */
-	    ViewController.prototype.didLeave = function () {
+	    ViewController.prototype.fireDidLeave = function () {
+	        this.didLeave.emit(null);
 	        ctrlFn(this, 'onPageDidLeave');
 	        // when this is not the active page
 	        // we no longer need to detect changes
@@ -38204,7 +38230,8 @@
 	     * @private
 	     * The view is about to be destroyed and have its elements removed.
 	     */
-	    ViewController.prototype.willUnload = function () {
+	    ViewController.prototype.fireWillUnload = function () {
+	        this.willUnload.emit(null);
 	        ctrlFn(this, 'onPageWillUnload');
 	    };
 	    /**
@@ -38217,6 +38244,7 @@
 	     * @private
 	     */
 	    ViewController.prototype.destroy = function () {
+	        this.didUnload.emit(null);
 	        ctrlFn(this, 'onPageDidUnload');
 	        for (var i = 0; i < this._destroys.length; i++) {
 	            this._destroys[i]();
@@ -39679,7 +39707,8 @@
 	        enteringView.setLeavingOpts({
 	            keyboardClose: false,
 	            direction: 'back',
-	            animation: enteringView.getTransitionName('back')
+	            animation: enteringView.getTransitionName('back'),
+	            ev: opts.ev
 	        });
 	        // start the transition
 	        return rootNav._insertViews(-1, [enteringView], opts);
@@ -39955,9 +39984,9 @@
 	                        if (!parentNav['_tabs']) {
 	                            // Tabs can be a parent, but it is not a collection of views
 	                            // only we're looking for an actual NavController w/ stack of views
-	                            leavingView.willLeave();
+	                            leavingView.fireWillLeave();
 	                            return parentNav.pop(opts).then(function (rtnVal) {
-	                                leavingView.didLeave();
+	                                leavingView.fireDidLeave();
 	                                return rtnVal;
 	                            });
 	                        }
@@ -40044,7 +40073,7 @@
 	            // set that it is the init leaving view
 	            // the first view to be removed, it should init leave
 	            view.state = STATE_INIT_LEAVE;
-	            view.willUnload();
+	            view.fireWillUnload();
 	            // from the index of the leaving view, go backwards and
 	            // find the first view that is inactive so it can be the entering
 	            for (var i = this.indexOf(view) - 1; i >= 0; i--) {
@@ -40074,8 +40103,8 @@
 	        // remove views that have been set to be removed, but not
 	        // apart of any transitions that will eventually happen
 	        this._views.filter(function (v) { return v.state === STATE_REMOVE; }).forEach(function (view) {
-	            view.willLeave();
-	            view.didLeave();
+	            view.fireWillLeave();
+	            view.fireDidLeave();
 	            _this._views.splice(_this.indexOf(view), 1);
 	            view.destroy();
 	        });
@@ -40103,7 +40132,7 @@
 	        if (!enteringView) {
 	            // if no entering view then create a bogus one
 	            enteringView = new view_controller_1.ViewController();
-	            enteringView.loaded();
+	            enteringView.fireLoaded();
 	        }
 	        /* Async steps to complete a transition
 	          1. _render: compile the view and render it in the DOM. Load page if it hasn't loaded already. When done call postRender
@@ -40151,19 +40180,8 @@
 	            // DOM WRITE
 	            this.setTransitioning(true, 500);
 	            this.loadPage(enteringView, null, opts, function () {
-	                if (enteringView.onReady) {
-	                    // this entering view needs to wait for it to be ready
-	                    // this is used by Tabs to wait for the first page of
-	                    // the first selected tab to be loaded
-	                    enteringView.onReady(function () {
-	                        enteringView.loaded();
-	                        _this._postRender(transId, enteringView, leavingView, isAlreadyTransitioning, opts, done);
-	                    });
-	                }
-	                else {
-	                    enteringView.loaded();
-	                    _this._postRender(transId, enteringView, leavingView, isAlreadyTransitioning, opts, done);
-	                }
+	                enteringView.fireLoaded();
+	                _this._postRender(transId, enteringView, leavingView, isAlreadyTransitioning, opts, done);
 	            });
 	        }
 	    };
@@ -40214,12 +40232,12 @@
 	            if (leavingView.fireOtherLifecycles) {
 	                // only fire entering lifecycle if the leaving
 	                // view hasn't explicitly set not to
-	                enteringView.willEnter();
+	                enteringView.fireWillEnter();
 	            }
 	            if (enteringView.fireOtherLifecycles) {
 	                // only fire leaving lifecycle if the entering
 	                // view hasn't explicitly set not to
-	                leavingView.willLeave();
+	                leavingView.fireWillLeave();
 	            }
 	        }
 	        else {
@@ -40253,7 +40271,8 @@
 	                duration: opts.duration,
 	                easing: opts.easing,
 	                renderDelay: opts.transitionDelay || _this._trnsDelay,
-	                isRTL: _this.config.platform.isRTL()
+	                isRTL: _this.config.platform.isRTL(),
+	                ev: opts.ev,
 	            };
 	            var transAnimation = transition_1.Transition.createTransition(enteringView, leavingView, transitionOpts);
 	            _this._trans && _this._trans.destroy();
@@ -40305,12 +40324,12 @@
 	                if (leavingView.fireOtherLifecycles) {
 	                    // only fire entering lifecycle if the leaving
 	                    // view hasn't explicitly set not to
-	                    enteringView.didEnter();
+	                    enteringView.fireDidEnter();
 	                }
 	                if (enteringView.fireOtherLifecycles) {
 	                    // only fire leaving lifecycle if the entering
 	                    // view hasn't explicitly set not to
-	                    leavingView.didLeave();
+	                    leavingView.fireDidLeave();
 	                }
 	            }
 	            if (enteringView.state === STATE_INACTIVE) {
@@ -40498,45 +40517,48 @@
 	        ]));
 	        // load the page component inside the nav
 	        this._loader.loadNextToLocation(view.componentType, this._viewport, providers).then(function (component) {
-	            // the ElementRef of the actual ion-page created
-	            var pageElementRef = component.location;
 	            // a new ComponentRef has been created
 	            // set the ComponentRef's instance to its ViewController
 	            view.setInstance(component.instance);
-	            // remember the ChangeDetectorRef for this ViewController
-	            view.setChangeDetector(component.changeDetectorRef);
-	            // remember the ElementRef to the ion-page elementRef that was just created
-	            view.setPageRef(pageElementRef);
-	            // auto-add page css className created from component JS class name
-	            var cssClassName = util_1.pascalCaseToDashCase(view.componentType['name']);
-	            _this._renderer.setElementClass(pageElementRef.nativeElement, cssClassName, true);
-	            view.onDestroy(function () {
-	                // ensure the element is cleaned up for when the view pool reuses this element
-	                _this._renderer.setElementAttribute(pageElementRef.nativeElement, 'class', null);
-	                _this._renderer.setElementAttribute(pageElementRef.nativeElement, 'style', null);
-	                component.destroy();
-	            });
-	            if (!navbarContainerRef) {
-	                // there was not a navbar container ref already provided
-	                // so use the location of the actual navbar template
-	                navbarContainerRef = view.getNavbarViewRef();
-	            }
-	            // find a navbar template if one is in the page
-	            var navbarTemplateRef = view.getNavbarTemplateRef();
-	            // check if we have both a navbar ViewContainerRef and a template
-	            if (navbarContainerRef && navbarTemplateRef) {
-	                // let's now create the navbar view
-	                var navbarViewRef_1 = navbarContainerRef.createEmbeddedView(navbarTemplateRef);
+	            // the component has been loaded, so call the view controller's loaded method to load any dependencies into the dom
+	            view.loaded(function () {
+	                // the ElementRef of the actual ion-page created
+	                var pageElementRef = component.location;
+	                // remember the ChangeDetectorRef for this ViewController
+	                view.setChangeDetector(component.changeDetectorRef);
+	                // remember the ElementRef to the ion-page elementRef that was just created
+	                view.setPageRef(pageElementRef);
+	                // auto-add page css className created from component JS class name
+	                var cssClassName = util_1.pascalCaseToDashCase(view.componentType['name']);
+	                _this._renderer.setElementClass(pageElementRef.nativeElement, cssClassName, true);
 	                view.onDestroy(function () {
-	                    // manually destroy the navbar when the page is destroyed
-	                    navbarViewRef_1.destroy();
+	                    // ensure the element is cleaned up for when the view pool reuses this element
+	                    _this._renderer.setElementAttribute(pageElementRef.nativeElement, 'class', null);
+	                    _this._renderer.setElementAttribute(pageElementRef.nativeElement, 'style', null);
+	                    component.destroy();
 	                });
-	            }
-	            // options may have had a postLoad method
-	            // used mainly by tabs
-	            opts.postLoad && opts.postLoad(view);
-	            // our job is done here
-	            done(view);
+	                if (!navbarContainerRef) {
+	                    // there was not a navbar container ref already provided
+	                    // so use the location of the actual navbar template
+	                    navbarContainerRef = view.getNavbarViewRef();
+	                }
+	                // find a navbar template if one is in the page
+	                var navbarTemplateRef = view.getNavbarTemplateRef();
+	                // check if we have both a navbar ViewContainerRef and a template
+	                if (navbarContainerRef && navbarTemplateRef) {
+	                    // let's now create the navbar view
+	                    var navbarViewRef_1 = navbarContainerRef.createEmbeddedView(navbarTemplateRef);
+	                    view.onDestroy(function () {
+	                        // manually destroy the navbar when the page is destroyed
+	                        navbarViewRef_1.destroy();
+	                    });
+	                }
+	                // options may have had a postLoad method
+	                // used mainly by tabs
+	                opts.postLoad && opts.postLoad(view);
+	                // our job is done here
+	                done(view);
+	            });
 	        });
 	    };
 	    /**
@@ -41015,7 +41037,7 @@
 	                trans: (typeof TRANSFORMS[prop] !== 'undefined'),
 	                wc: ''
 	            };
-	            // add the will-change property fo transforms or opacity
+	            // add the will-change property for transforms or opacity
 	            if (fxProp.trans) {
 	                fxProp.wc = dom_1.CSS.transform;
 	            }
@@ -42242,7 +42264,7 @@
 	/**
 	 * @name Scroll
 	 * @description
-	 * Scroll is a non-flexboxed scroll area that can scroll horizontally or vertically. `ion-Scroll` Can be used in places were you may not need a full page scroller, but a highly customized one, such as image scubber or comment scroller.
+	 * Scroll is a non-flexboxed scroll area that can scroll horizontally or vertically. `ion-Scroll` Can be used in places where you may not need a full page scroller, but a highly customized one, such as image scubber or comment scroller.
 	 * @usage
 	 * ```html
 	 * <ion-scroll scrollX="true">
@@ -42359,7 +42381,7 @@
 	 *    <ion-item *ngFor="let i of items">{% raw %}{{i}}{% endraw %}</ion-item>
 	 *  </ion-list>
 	 *
-	 *  <ion-infinite-scroll (infinite)="doInfinite($event)">
+	 *  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
 	 *    <ion-infinite-scroll-content></ion-infinite-scroll-content>
 	 *  </ion-infinite-scroll>
 	 *
@@ -42404,7 +42426,7 @@
 	 *  ```html
 	 *  <ion-content>
 	 *
-	 *    <ion-infinite-scroll (infinite)="doInfinite($event)">
+	 *    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
 	 *      <ion-infinite-scroll-content
 	 *        loadingSpinner="bubbles"
 	 *        loadingText="Loading more data...">
@@ -42446,7 +42468,7 @@
 	         * you must call the infinite scroll's `complete()` method when
 	         * your async operation has completed.
 	         */
-	        this.infinite = new core_1.EventEmitter();
+	        this.ionInfinite = new core_1.EventEmitter();
 	        _content.addCssClass('has-infinite-scroll');
 	    }
 	    Object.defineProperty(InfiniteScroll.prototype, "threshold", {
@@ -42505,7 +42527,7 @@
 	        if (distanceFromInfinite < 0) {
 	            this._zone.run(function () {
 	                _this.state = STATE_LOADING;
-	                _this.infinite.emit(_this);
+	                _this.ionInfinite.emit(_this);
 	            });
 	            return 5;
 	        }
@@ -42573,7 +42595,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], InfiniteScroll.prototype, "infinite", void 0);
+	    ], InfiniteScroll.prototype, "ionInfinite", void 0);
 	    InfiniteScroll = __decorate([
 	        core_1.Directive({
 	            selector: 'ion-infinite-scroll'
@@ -42691,7 +42713,7 @@
 	 * ```html
 	 * <ion-content>
 	 *
-	 *   <ion-refresher (refresh)="doRefresh($event)">
+	 *   <ion-refresher (ionRefresh)="doRefresh($event)">
 	 *     <ion-refresher-content></ion-refresher-content>
 	 *   </ion-refresher>
 	 *
@@ -42725,7 +42747,7 @@
 	 *  ```html
 	 *  <ion-content>
 	 *
-	 *    <ion-refresher (refresh)="doRefresh($event)">
+	 *    <ion-refresher (ionRefresh)="doRefresh($event)">
 	 *      <ion-refresher-content
 	 *        pullingIcon="arrow-dropdown"
 	 *        pullingText="Pull to refresh"
@@ -42819,15 +42841,15 @@
 	         * updated to `refreshing`. From within your refresh handler, you must call the
 	         * `complete()` method when your async operation has completed.
 	         */
-	        this.refresh = new core_1.EventEmitter();
+	        this.ionRefresh = new core_1.EventEmitter();
 	        /**
 	         * @output {event} While the user is pulling down the content and exposing the refresher.
 	         */
-	        this.pulling = new core_1.EventEmitter();
+	        this.ionPull = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the user begins to start pulling down.
 	         */
-	        this.start = new core_1.EventEmitter();
+	        this.ionStart = new core_1.EventEmitter();
 	        _content.addCssClass('has-refresher');
 	        // deprecated warning
 	        var ele = elementRef.nativeElement;
@@ -42958,10 +42980,10 @@
 	        // emit "start" if it hasn't started yet
 	        if (!this._didStart) {
 	            this._didStart = true;
-	            this.start.emit(this);
+	            this.ionStart.emit(this);
 	        }
 	        // emit "pulling" on every move
-	        this.pulling.emit(this);
+	        this.ionPull.emit(this);
 	        // do nothing if the delta is less than the pull threshold
 	        if (this.deltaY < this.pullMin) {
 	            // ensure it stays in the pulling state, cuz its not ready yet
@@ -43014,7 +43036,7 @@
 	        this._setCss(this.pullMin, (this.snapbackDuration + 'ms'), true, '');
 	        // emit "refresh" because it was pulled down far enough
 	        // and they let go to begin refreshing
-	        this.refresh.emit(this);
+	        this.ionRefresh.emit(this);
 	    };
 	    /**
 	     * Call `complete()` when your async operation has completed.
@@ -43142,15 +43164,15 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Refresher.prototype, "refresh", void 0);
+	    ], Refresher.prototype, "ionRefresh", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Refresher.prototype, "pulling", void 0);
+	    ], Refresher.prototype, "ionPull", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
-	    ], Refresher.prototype, "start", void 0);
+	    ], Refresher.prototype, "ionStart", void 0);
 	    Refresher = __decorate([
 	        core_1.Directive({
 	            selector: 'ion-refresher',
@@ -43202,10 +43224,10 @@
 	     */
 	    RefresherContent.prototype.ngOnInit = function () {
 	        if (!this.pullingIcon) {
-	            this.pullingIcon = this._config.get('refresherPullingIcon', 'arrow-down');
+	            this.pullingIcon = this._config.get('ionPullIcon', 'arrow-down');
 	        }
 	        if (!this.refreshingSpinner) {
-	            this.refreshingSpinner = this._config.get('refresherRefreshingSpinner', this._config.get('spinner', 'ios'));
+	            this.refreshingSpinner = this._config.get('ionRefreshingSpinner', this._config.get('spinner', 'ios'));
 	        }
 	    };
 	    __decorate([
@@ -43415,10 +43437,10 @@
 	 * ```
 	 *
 	 * We can also add events to listen to on the `<ion-slides>` element.
-	 * Let's add the `didChange` event and call a method when the slide changes:
+	 * Let's add the `ionDidChange` event and call a method when the slide changes:
 	 *
 	 * ```html
-	 * <ion-slides #mySlider (didChange)="onSlideChanged()" [options]="mySlideOptions">
+	 * <ion-slides #mySlider (ionDidChange)="onSlideChanged()" [options]="mySlideOptions">
 	 * ```
 	 *
 	 * In our class, we add the `onSlideChanged()` method which gets the active
@@ -43458,25 +43480,17 @@
 	        var _this = this;
 	        _super.call(this, elementRef);
 	        /**
-	         * @private Deprecated
-	         */
-	        this.slideChangeStart = new core_1.EventEmitter();
-	        /**
-	         * @private Deprecated
-	         */
-	        this.change = new core_1.EventEmitter();
-	        /**
 	         * @output {any} Expression to evaluate when a slide change starts.
 	         */
-	        this.willChange = new core_1.EventEmitter();
+	        this.ionWillChange = new core_1.EventEmitter();
 	        /**
 	         * @output {any} Expression to evaluate when a slide change ends.
 	         */
-	        this.didChange = new core_1.EventEmitter();
+	        this.ionDidChange = new core_1.EventEmitter();
 	        /**
 	         * @output {any} Expression to evaluate when a slide moves.
 	         */
-	        this.move = new core_1.EventEmitter();
+	        this.ionDrag = new core_1.EventEmitter();
 	        this.rapidUpdate = util_2.debounce(function () {
 	            _this.update();
 	        }, 10);
@@ -43504,9 +43518,6 @@
 	            // Zoom should be passed as an option
 	            console.warn('The "zoom" attribute has been deprecated. Please pass it in options.');
 	        }
-	        // Deprecated 04-18 beta.5
-	        console.warn('The "slideChangeStart" event has been deprecated. Please use "willChange" instead. Ignore this if you aren\'t using it.');
-	        console.warn('The "change" event has been deprecated. Please use "didChange" instead. Ignore this if you aren\'t using it.');
 	        if (util_2.isPresent(this.options.pager)) {
 	            this.showPager = util_2.isTrueProperty(this.options.pager);
 	        }
@@ -43535,15 +43546,11 @@
 	            return _this.options.onTransitionEnd && _this.options.onTransitionEnd(swiper, e);
 	        };
 	        options.onSlideChangeStart = function (swiper) {
-	            // TODO deprecated 2016-04-18
-	            _this.slideChangeStart.emit(swiper);
-	            _this.willChange.emit(swiper);
+	            _this.ionWillChange.emit(swiper);
 	            return _this.options.onSlideChangeStart && _this.options.onSlideChangeStart(swiper);
 	        };
 	        options.onSlideChangeEnd = function (swiper) {
-	            // TODO deprecated 2016-04-18
-	            _this.change.emit(swiper);
-	            _this.didChange.emit(swiper);
+	            _this.ionDidChange.emit(swiper);
 	            return _this.options.onSlideChangeEnd && _this.options.onSlideChangeEnd(swiper);
 	        };
 	        options.onLazyImageLoad = function (swiper, slide, img) {
@@ -43553,7 +43560,7 @@
 	            return _this.options.onLazyImageReady && _this.options.onLazyImageReady(swiper, slide, img);
 	        };
 	        options.onSliderMove = function (swiper, e) {
-	            _this.move.emit(swiper);
+	            _this.ionDrag.emit(swiper);
 	            return _this.options.onSliderMove && _this.options.onSliderMove(swiper, e);
 	        };
 	        setTimeout(function () {
@@ -43849,7 +43856,7 @@
 	     *
 	     * @param {number} index  The index number of the slide.
 	     * @param {number} speed  Transition duration (in ms). Optional.
-	     * @param {boolean} runCallbacks  Whether or not to emit the `willChange`/`didChange` events. Optional. Default true.
+	     * @param {boolean} runCallbacks  Whether or not to emit the `ionWillChange`/`ionDidChange` events. Optional. Default true.
 	     */
 	    Slides.prototype.slideTo = function (index, speed, runCallbacks) {
 	        this.slider.slideTo(index, speed, runCallbacks);
@@ -43858,7 +43865,7 @@
 	     * Transition to the next slide.
 	     *
 	     * @param {number} speed  Transition duration (in ms). Optional.
-	     * @param {boolean} runCallbacks  Whether or not to emit the `willChange`/`didChange` events. Optional. Default true.
+	     * @param {boolean} runCallbacks  Whether or not to emit the `ionWillChange`/`ionDidChange` events. Optional. Default true.
 	     */
 	    Slides.prototype.slideNext = function (speed, runCallbacks) {
 	        this.slider.slideNext(runCallbacks, speed);
@@ -43867,7 +43874,7 @@
 	     * Transition to the previous slide.
 	     *
 	     * @param {number} speed  Transition duration (in ms). Optional.
-	     * @param {boolean} runCallbacks  Whether or not to emit the `willChange`/`didChange` events. Optional. Default true.
+	     * @param {boolean} runCallbacks  Whether or not to emit the `ionWillChange`/`ionDidChange` events. Optional. Default true.
 	     */
 	    Slides.prototype.slidePrev = function (speed, runCallbacks) {
 	        this.slider.slidePrev(runCallbacks, speed);
@@ -43947,23 +43954,15 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Slides.prototype, "slideChangeStart", void 0);
+	    ], Slides.prototype, "ionWillChange", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Slides.prototype, "change", void 0);
+	    ], Slides.prototype, "ionDidChange", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
-	    ], Slides.prototype, "willChange", void 0);
-	    __decorate([
-	        core_1.Output(), 
-	        __metadata('design:type', (typeof (_d = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _d) || Object)
-	    ], Slides.prototype, "didChange", void 0);
-	    __decorate([
-	        core_1.Output(), 
-	        __metadata('design:type', (typeof (_e = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _e) || Object)
-	    ], Slides.prototype, "move", void 0);
+	    ], Slides.prototype, "ionDrag", void 0);
 	    Slides = __decorate([
 	        core_1.Component({
 	            selector: 'ion-slides',
@@ -43977,10 +43976,10 @@
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_f = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _f) || Object, (typeof (_g = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _g) || Object])
+	        __metadata('design:paramtypes', [(typeof (_d = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _d) || Object, (typeof (_e = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _e) || Object])
 	    ], Slides);
 	    return Slides;
-	    var _a, _b, _c, _d, _e, _f, _g;
+	    var _a, _b, _c, _d, _e;
 	}(ion_1.Ion));
 	exports.Slides = Slides;
 	/**
@@ -43997,10 +43996,14 @@
 	 */
 	var Slide = (function () {
 	    function Slide(elementRef, slides) {
+	        this.slides = slides;
 	        this.ele = elementRef.nativeElement;
 	        this.ele.classList.add('swiper-slide');
 	        slides.rapidUpdate();
 	    }
+	    Slide.prototype.ngOnDestroy = function () {
+	        this.slides.rapidUpdate();
+	    };
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
@@ -48166,7 +48169,7 @@
 	        /**
 	         * @input {any} Expression to evaluate when the tab changes.
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        this.parent = parent;
 	        this.id = ++tabIds;
 	        this.subPages = _config.getBoolean('tabSubPages');
@@ -48186,7 +48189,7 @@
 	        if (viewCtrl) {
 	            viewCtrl.setContent(this);
 	            viewCtrl.setContentRef(_elementRef);
-	            viewCtrl.onReady = function (done) {
+	            viewCtrl.loaded = function (done) {
 	                _this._onReady = done;
 	            };
 	        }
@@ -48204,7 +48207,7 @@
 	            });
 	        }
 	        this._btns.toArray().forEach(function (tabButton) {
-	            tabButton.select.subscribe(function (tab) {
+	            tabButton.ionSelect.subscribe(function (tab) {
 	                _this.select(tab);
 	            });
 	        });
@@ -48276,13 +48279,13 @@
 	        var deselectedPage;
 	        if (deselectedTab) {
 	            deselectedPage = deselectedTab.getActive();
-	            deselectedPage && deselectedPage.willLeave();
+	            deselectedPage && deselectedPage.fireWillLeave();
 	        }
 	        var selectedPage = selectedTab.getActive();
-	        selectedPage && selectedPage.willEnter();
+	        selectedPage && selectedPage.fireWillEnter();
 	        selectedTab.load(opts, function () {
-	            selectedTab.select.emit(selectedTab);
-	            _this.change.emit(selectedTab);
+	            selectedTab.ionSelect.emit(selectedTab);
+	            _this.ionChange.emit(selectedTab);
 	            if (selectedTab.root) {
 	                // only show the selectedTab if it has a root
 	                // it's possible the tab is only for opening modal's or signing out
@@ -48295,8 +48298,8 @@
 	                    _this._highlight.select(selectedTab);
 	                }
 	            }
-	            selectedPage && selectedPage.didEnter();
-	            deselectedPage && deselectedPage.didLeave();
+	            selectedPage && selectedPage.fireDidEnter();
+	            deselectedPage && deselectedPage.fireDidLeave();
 	            if (_this._onReady) {
 	                _this._onReady();
 	                _this._onReady = null;
@@ -48348,8 +48351,8 @@
 	        }
 	        var instance = active.instance;
 	        // If they have a custom tab selected handler, call it
-	        if (instance.tabSelected) {
-	            return instance.tabSelected();
+	        if (instance.ionSelected) {
+	            return instance.ionSelected();
 	        }
 	        // If we're a few pages deep, pop to root
 	        if (tab.length() > 1) {
@@ -48400,7 +48403,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Tabs.prototype, "change", void 0);
+	    ], Tabs.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.ViewChild(tab_highlight_1.TabHighlight), 
 	        __metadata('design:type', (typeof (_b = typeof tab_highlight_1.TabHighlight !== 'undefined' && tab_highlight_1.TabHighlight) === 'function' && _b) || Object)
@@ -48491,7 +48494,7 @@
 	    __extends(TabButton, _super);
 	    function TabButton(config, elementRef) {
 	        _super.call(this, elementRef);
-	        this.select = new core_1.EventEmitter();
+	        this.ionSelect = new core_1.EventEmitter();
 	        this.disHover = (config.get('hoverCSS') === false);
 	        this._layout = config.get('tabbarLayout');
 	    }
@@ -48505,7 +48508,7 @@
 	        this.hasBadge = !!this.tab.tabBadge;
 	    };
 	    TabButton.prototype.onClick = function () {
-	        this.select.emit(this.tab);
+	        this.ionSelect.emit(this.tab);
 	    };
 	    __decorate([
 	        core_1.Input(), 
@@ -48514,7 +48517,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], TabButton.prototype, "select", void 0);
+	    ], TabButton.prototype, "ionSelect", void 0);
 	    __decorate([
 	        core_1.HostListener('click'), 
 	        __metadata('design:type', Function), 
@@ -48647,13 +48650,13 @@
 	 * ```
 	 *
 	 * Sometimes you may want to call a method instead of navigating to a new
-	 * page. You can use the `(select)` event to call a method on your class when
+	 * page. You can use the `(ionSelect)` event to call a method on your class when
 	 * the tab is selected. Below is an example of presenting a modal from one of
 	 * the tabs.
 	 *
 	 * ```html
 	 * <ion-tabs preloadTabs="false">
-	 *   <ion-tab (select)="chat()"></ion-tab>
+	 *   <ion-tab (ionSelect)="chat()"></ion-tab>
 	 * </ion-tabs>
 	 * ```
 	 *
@@ -48688,7 +48691,7 @@
 	        /**
 	         * @output {Tab} Method to call when the current tab is selected
 	         */
-	        this.select = new core_1.EventEmitter();
+	        this.ionSelect = new core_1.EventEmitter();
 	        parentTabs.add(this);
 	        this._panelId = 'tabpanel-' + this.id;
 	        this._btnId = 'tab-' + this.id;
@@ -48867,7 +48870,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Tab.prototype, "select", void 0);
+	    ], Tab.prototype, "ionSelect", void 0);
 	    __decorate([
 	        core_1.ViewChild('viewport', { read: core_1.ViewContainerRef }), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _c) || Object), 
@@ -49773,7 +49776,7 @@
 	 *
 	 * @demo /docs/v2/demos/label/
 	 * @see {@link ../../../../components#inputs Input Component Docs}
-	 * @see {@link ../Input Input API Docs}
+	 * @see {@link ../../input/Input Input API Docs}
 	 *
 	 */
 	var Label = (function () {
@@ -51548,7 +51551,7 @@
 	        /**
 	         * @output {Checkbox} expression to evaluate when the checkbox value changes
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        _form.register(this);
 	        if (_item) {
 	            this.id = 'chk-' + _item.registerInput('checkbox');
@@ -51586,7 +51589,7 @@
 	        if (isChecked !== this._checked) {
 	            this._checked = isChecked;
 	            if (this._init) {
-	                this.change.emit(this);
+	                this.ionChange.emit(this);
 	            }
 	            this._item && this._item.setCssClass('item-checkbox-checked', isChecked);
 	        }
@@ -51656,7 +51659,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Checkbox.prototype, "change", void 0);
+	    ], Checkbox.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.HostListener('click', ['$event']), 
 	        __metadata('design:type', Function), 
@@ -51864,11 +51867,11 @@
 	        /**
 	         * @output {any} Any expression you want to evaluate when the selection has changed.
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        /**
 	         * @output {any} Any expression you want to evaluate when the selection was cancelled.
 	         */
-	        this.cancel = new core_1.EventEmitter();
+	        this.ionCancel = new core_1.EventEmitter();
 	        this._form.register(this);
 	        if (_item) {
 	            this.id = 'sel-' + _item.registerInput('select');
@@ -51907,7 +51910,7 @@
 	                text: this.cancelText,
 	                role: 'cancel',
 	                handler: function () {
-	                    _this.cancel.emit(null);
+	                    _this.ionCancel.emit(null);
 	                }
 	            }];
 	        // if the alertOptions didn't provide an title then use the label's text
@@ -51931,7 +51934,7 @@
 	                    text: input.text,
 	                    handler: function () {
 	                        _this.onChange(input.value);
-	                        _this.change.emit(input.value);
+	                        _this.ionChange.emit(input.value);
 	                    }
 	                };
 	            }));
@@ -51965,7 +51968,7 @@
 	                text: this.okText,
 	                handler: function (selectedValues) {
 	                    _this.onChange(selectedValues);
-	                    _this.change.emit(selectedValues);
+	                    _this.ionChange.emit(selectedValues);
 	                }
 	            });
 	        }
@@ -52122,11 +52125,11 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Select.prototype, "change", void 0);
+	    ], Select.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Select.prototype, "cancel", void 0);
+	    ], Select.prototype, "ionCancel", void 0);
 	    __decorate([
 	        core_1.HostListener('click', ['$event']), 
 	        __metadata('design:type', Function), 
@@ -52462,7 +52465,7 @@
 	     *  | cssClass              | `string`  | Any additional class for the alert (optional)                             |
 	     *  | inputs                | `array`   | An array of inputs for the alert. See input options. (optional)           |
 	     *  | buttons               | `array`   | An array of buttons for the alert. See buttons options. (optional)        |
-	     *  | enableBackdropDismiss | `boolean` | Wheather the alert should be dismissed by tapping the backdrop (optional) |
+	     *  | enableBackdropDismiss | `boolean` | Whether the alert should be dismissed by tapping the backdrop (optional)  |
 	     *
 	     *
 	     *  Input options
@@ -52887,7 +52890,7 @@
 	 * An action sheet is created from an array of `buttons`, with each button
 	 * including properties for its `text`, and optionally a `handler` and `role`.
 	 * If a handler returns `false` then the action sheet will not be dismissed. An
-	 * action sheet can also optionally have a `title` and a `subTitle`.
+	 * action sheet can also optionally have a `title`, `subTitle` and an `icon`.
 	 *
 	 * A button's `role` property can either be `destructive` or `cancel`. Buttons
 	 * without a role property will have the default look for the platform. Buttons
@@ -52947,7 +52950,7 @@
 	 * transitions were fired at roughly the same time, it's difficult for the
 	 * nav controller to cleanly animate multiple transitions that may
 	 * have been kicked off asynchronously. This is further described in the
-	 * [`Nav Transition Promises`](../../nav/NavController) section. For action sheets,
+	 * [`Nav Transition Promises`](../../nav/NavController/#nav-transition-promises) section. For action sheets,
 	 * this means it's best to wait for the action sheet to finish its transition
 	 * out before starting a new transition on the same nav controller.
 	 *
@@ -53329,9 +53332,9 @@
 	        this._elementRef = _elementRef;
 	        this._checked = false;
 	        /**
-	         * @input {any} Event to evaluate when option has changed
+	         * @input {any} Event to evaluate when option is selected
 	         */
-	        this.select = new core_1.EventEmitter();
+	        this.ionSelect = new core_1.EventEmitter();
 	    }
 	    Object.defineProperty(Option.prototype, "checked", {
 	        /**
@@ -53375,7 +53378,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Option.prototype, "select", void 0);
+	    ], Option.prototype, "ionSelect", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
@@ -53554,7 +53557,7 @@
 	 * and `23` means `11pm`.
 	 *
 	 * It's also important to note that neither the `displayFormat` or `pickerFormat` can
-	 * set the datetime value's output, which is the value that sent the the component's
+	 * set the datetime value's output, which is the value that is set by the component's
 	 * `ngModel`. The format's are merely for displaying the value as text and the picker's
 	 * interface, but the datetime's value is always persisted as a valid ISO 8601 datetime
 	 * string.
@@ -53689,11 +53692,11 @@
 	        /**
 	         * @output {any} Any expression to evaluate when the datetime selection has changed.
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        /**
 	         * @output {any} Any expression to evaluate when the datetime selection was cancelled.
 	         */
-	        this.cancel = new core_1.EventEmitter();
+	        this.ionCancel = new core_1.EventEmitter();
 	        this._form.register(this);
 	        if (_item) {
 	            this.id = 'dt-' + _item.registerInput('datetime');
@@ -53735,7 +53738,7 @@
 	                text: this.cancelText,
 	                role: 'cancel',
 	                handler: function () {
-	                    _this.cancel.emit(null);
+	                    _this.ionCancel.emit(null);
 	                }
 	            },
 	            {
@@ -53743,13 +53746,13 @@
 	                handler: function (data) {
 	                    console.log('datetime, done', data);
 	                    _this.onChange(data);
-	                    _this.change.emit(data);
+	                    _this.ionChange.emit(data);
 	                }
 	            }
 	        ];
 	        this.generate(picker);
 	        this.validate(picker);
-	        picker.change.subscribe(function () {
+	        picker.ionChange.subscribe(function () {
 	            _this.validate(picker);
 	        });
 	        this._nav.present(picker, pickerOptions);
@@ -54114,11 +54117,11 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], DateTime.prototype, "change", void 0);
+	    ], DateTime.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], DateTime.prototype, "cancel", void 0);
+	    ], DateTime.prototype, "ionCancel", void 0);
 	    __decorate([
 	        core_1.HostListener('click', ['$event']), 
 	        __metadata('design:type', Function), 
@@ -54259,7 +54262,7 @@
 	        _super.call(this, PickerDisplayCmp, opts);
 	        this.viewType = 'picker';
 	        this.isOverlay = true;
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        // by default, pickers should not fire lifecycle events of other views
 	        // for example, when an picker enters, the current active view should
 	        // not fire its lifecycle events because it's not conceptually leaving
@@ -54304,7 +54307,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Picker.prototype, "change", void 0);
+	    ], Picker.prototype, "ionChange", void 0);
 	    return Picker;
 	    var _a;
 	}(view_controller_1.ViewController));
@@ -54319,7 +54322,7 @@
 	        this.pos = [];
 	        this.msPrv = 0;
 	        this.startY = null;
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        this.rotateFactor = config.getNumber('pickerRotateFactor', 0);
 	    }
 	    PickerColumnCmp.prototype.ngAfterViewInit = function () {
@@ -54522,7 +54525,7 @@
 	                // new selected index has changed from the last index
 	                // update the lastIndex and emit that it has changed
 	                this.lastIndex = this.col.selectedIndex;
-	                this.change.emit(this.col.options[this.col.selectedIndex]);
+	                this.ionChange.emit(this.col.options[this.col.selectedIndex]);
 	            }
 	        }
 	    };
@@ -54570,7 +54573,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], PickerColumnCmp.prototype, "change", void 0);
+	    ], PickerColumnCmp.prototype, "ionChange", void 0);
 	    PickerColumnCmp = __decorate([
 	        core_1.Component({
 	            selector: '.picker-col',
@@ -54665,7 +54668,7 @@
 	    PickerDisplayCmp.prototype._colChange = function (selectedOption) {
 	        // one of the columns has changed its selected index
 	        var picker = this._viewCtrl;
-	        picker.change.emit(this.getSelected());
+	        picker.ionChange.emit(this.getSelected());
 	    };
 	    PickerDisplayCmp.prototype._keyUp = function (ev) {
 	        if (this.isEnabled() && this._viewCtrl.isLast()) {
@@ -54766,7 +54769,7 @@
 	                '</div>' +
 	                '<div class="picker-columns">' +
 	                '<div class="picker-above-highlight"></div>' +
-	                '<div *ngFor="let c of d.columns" [col]="c" class="picker-col"> (change)="_colChange($event)"</div>' +
+	                '<div *ngFor="let c of d.columns" [col]="c" class="picker-col"> (ionChange)="_colChange($event)"</div>' +
 	                '<div class="picker-below-highlight"></div>' +
 	                '</div>' +
 	                '</div>',
@@ -54892,7 +54895,7 @@
 	        /**
 	         * @output {Toggle} expression to evaluate when the toggle value changes
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        this._form.register(this);
 	        if (_item) {
 	            this.id = 'tgl-' + _item.registerInput('toggle');
@@ -54973,7 +54976,7 @@
 	        if (isChecked !== this._checked) {
 	            this._checked = isChecked;
 	            if (this._init) {
-	                this.change.emit(this);
+	                this.ionChange.emit(this);
 	            }
 	            this._item && this._item.setCssClass('item-toggle-checked', isChecked);
 	        }
@@ -55053,7 +55056,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Toggle.prototype, "change", void 0);
+	    ], Toggle.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Boolean)
@@ -56128,10 +56131,10 @@
 	 * @usage
 	 * ```html
 	 * <ion-segment [(ngModel)]="relationship" primary>
-	 *   <ion-segment-button value="friends" (select)="selectedFriends()">
+	 *   <ion-segment-button value="friends" (ionSelect)="selectedFriends()">
 	 *     Friends
 	 *   </ion-segment-button>
-	 *   <ion-segment-button value="enemies" (select)="selectedEnemies()">
+	 *   <ion-segment-button value="enemies" (ionSelect)="selectedEnemies()">
 	 *     Enemies
 	 *   </ion-segment-button>
 	 * </ion-segment>
@@ -56168,7 +56171,7 @@
 	        /**
 	         * @output {SegmentButton} expression to evaluate when a segment button has been clicked
 	         */
-	        this.select = new core_1.EventEmitter();
+	        this.ionSelect = new core_1.EventEmitter();
 	    }
 	    Object.defineProperty(SegmentButton.prototype, "disabled", {
 	        /**
@@ -56196,7 +56199,7 @@
 	     */
 	    SegmentButton.prototype.onClick = function (ev) {
 	        console.debug('SegmentButton, select', this.value);
-	        this.select.emit(this);
+	        this.ionSelect.emit(this);
 	    };
 	    /**
 	     * @private
@@ -56224,7 +56227,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], SegmentButton.prototype, "select", void 0);
+	    ], SegmentButton.prototype, "ionSelect", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Boolean)
@@ -56263,7 +56266,7 @@
 	 *
 	 * @usage
 	 * ```html
-	 * <ion-segment [(ngModel)]="relationship" (change)="onSegmentChanged($event)" danger>
+	 * <ion-segment [(ngModel)]="relationship" (ionChange)="onSegmentChanged($event)" danger>
 	 *   <ion-segment-button value="friends">
 	 *     Friends
 	 *   </ion-segment-button>
@@ -56302,7 +56305,7 @@
 	        /**
 	         * @output {Any}  expression to evaluate when a segment button has been changed
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        /**
 	         * @private
 	         */
@@ -56357,10 +56360,10 @@
 	        var buttons = this._buttons.toArray();
 	        for (var _i = 0, buttons_3 = buttons; _i < buttons_3.length; _i++) {
 	            var button = buttons_3[_i];
-	            button.select.subscribe(function (selectedButton) {
+	            button.ionSelect.subscribe(function (selectedButton) {
 	                _this.writeValue(selectedButton.value);
 	                _this.onChange(selectedButton.value);
-	                _this.change.emit(selectedButton);
+	                _this.ionChange.emit(selectedButton);
 	            });
 	            if (util_1.isPresent(this.value)) {
 	                button.isActive = (button.value === this.value);
@@ -56383,7 +56386,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Segment.prototype, "change", void 0);
+	    ], Segment.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.ContentChildren(SegmentButton), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.QueryList !== 'undefined' && core_1.QueryList) === 'function' && _b) || Object)
@@ -56472,7 +56475,7 @@
 	        /**
 	         * @output {any} expression to be evaluated when selected
 	         */
-	        this.select = new core_1.EventEmitter();
+	        this.ionSelect = new core_1.EventEmitter();
 	        _form.register(this);
 	        if (_group) {
 	            // register with the radiogroup
@@ -56538,7 +56541,7 @@
 	        ev.preventDefault();
 	        ev.stopPropagation();
 	        this.checked = true;
-	        this.select.emit(this.value);
+	        this.ionSelect.emit(this.value);
 	    };
 	    /**
 	     * @private
@@ -56558,7 +56561,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], RadioButton.prototype, "select", void 0);
+	    ], RadioButton.prototype, "ionSelect", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
@@ -56686,7 +56689,7 @@
 	        /**
 	         * @output {any} expression to be evaluated when selection has been changed
 	         */
-	        this.change = new core_1.EventEmitter();
+	        this.ionChange = new core_1.EventEmitter();
 	        this.id = ++radioGroupIds;
 	    }
 	    /**
@@ -56698,7 +56701,7 @@
 	        if (this._init) {
 	            this._update();
 	            this.onTouched();
-	            this.change.emit(val);
+	            this.ionChange.emit(val);
 	        }
 	        this._init = true;
 	    };
@@ -56724,7 +56727,7 @@
 	            _this.value = val;
 	            _this._update();
 	            _this.onTouched();
-	            _this.change.emit(val);
+	            _this.ionChange.emit(val);
 	        };
 	    };
 	    /**
@@ -56760,7 +56763,7 @@
 	        var _this = this;
 	        this._btns.push(button);
 	        // listen for radiobutton select events
-	        button.select.subscribe(function (val) {
+	        button.ionSelect.subscribe(function (val) {
 	            // this radiobutton has been selected
 	            _this.onChange(val);
 	        });
@@ -56802,7 +56805,7 @@
 	        this.value = val;
 	        this._update();
 	        this.onTouched();
-	        this.change.emit(val);
+	        this.ionChange.emit(val);
 	    };
 	    /**
 	     * @private
@@ -56811,7 +56814,7 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], RadioGroup.prototype, "change", void 0);
+	    ], RadioGroup.prototype, "ionChange", void 0);
 	    __decorate([
 	        core_1.ContentChild(list_1.ListHeader), 
 	        __metadata('design:type', Object), 
@@ -56868,16 +56871,6 @@
 	    function SearchbarInput(_elementRef) {
 	        this._elementRef = _elementRef;
 	    }
-	    SearchbarInput.prototype.stopInput = function (ev) {
-	        ev.preventDefault();
-	        ev.stopPropagation();
-	    };
-	    __decorate([
-	        core_1.HostListener('input', ['$event']), 
-	        __metadata('design:type', Function), 
-	        __metadata('design:paramtypes', [Object]), 
-	        __metadata('design:returntype', void 0)
-	    ], SearchbarInput.prototype, "stopInput", null);
 	    SearchbarInput = __decorate([
 	        core_1.Directive({
 	            selector: '.searchbar-input',
@@ -56899,8 +56892,8 @@
 	 * <ion-searchbar
 	 *   [(ngModel)]="myInput"
 	 *   [hideCancelButton]="shouldHideCancel"
-	 *   (input)="onInput($event)"
-	 *   (cancel)="onCancel($event)">
+	 *   (ionInput)="onInput($event)"
+	 *   (ionCancel)="onCancel($event)">
 	 * </ion-searchbar>
 	 * ```
 	 *
@@ -56920,23 +56913,23 @@
 	        /**
 	         * @output {event} When the Searchbar input has changed including cleared
 	         */
-	        this.input = new core_1.EventEmitter();
+	        this.ionInput = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the Searchbar input has blurred
 	         */
-	        this.blur = new core_1.EventEmitter();
+	        this.ionBlur = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the Searchbar input has focused
 	         */
-	        this.focus = new core_1.EventEmitter();
+	        this.ionFocus = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the cancel button is clicked
 	         */
-	        this.cancel = new core_1.EventEmitter();
+	        this.ionCancel = new core_1.EventEmitter();
 	        /**
 	         * @output {event} When the clear input button is clicked
 	         */
-	        this.clear = new core_1.EventEmitter();
+	        this.ionClear = new core_1.EventEmitter();
 	        /**
 	         * @private
 	         */
@@ -57039,7 +57032,7 @@
 	        this._tmr = setTimeout(function () {
 	            _this.value = value;
 	            _this.onChange(value);
-	            _this.input.emit(_this);
+	            _this.ionInput.emit(_this);
 	        }, Math.round(this.debounce));
 	    };
 	    /**
@@ -57047,7 +57040,7 @@
 	     * Sets the Searchbar to focused and aligned left on input focus.
 	     */
 	    Searchbar.prototype.inputFocused = function () {
-	        this.focus.emit(this);
+	        this.ionFocus.emit(this);
 	        this.isFocused = true;
 	        this.shouldLeftAlign = true;
 	        this.setElementLeft();
@@ -57065,7 +57058,7 @@
 	            this.blurInput = true;
 	            return;
 	        }
-	        this.blur.emit(this);
+	        this.ionBlur.emit(this);
 	        this.isFocused = false;
 	        this.shouldLeftAlign = this.value && this.value.trim() !== '';
 	        this.setElementLeft();
@@ -57075,10 +57068,10 @@
 	     * Clears the input field and triggers the control change.
 	     */
 	    Searchbar.prototype.clearInput = function () {
-	        this.clear.emit(this);
+	        this.ionClear.emit(this);
 	        this.value = '';
 	        this.onChange(this.value);
-	        this.input.emit(this);
+	        this.ionInput.emit(this);
 	        this.blurInput = false;
 	    };
 	    /**
@@ -57088,7 +57081,7 @@
 	     * then calls the custom cancel function if the user passed one in.
 	     */
 	    Searchbar.prototype.cancelSearchbar = function () {
-	        this.cancel.emit(this);
+	        this.ionCancel.emit(this);
 	        this.clearInput();
 	        this.blurInput = true;
 	    };
@@ -57140,23 +57133,23 @@
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-	    ], Searchbar.prototype, "input", void 0);
+	    ], Searchbar.prototype, "ionInput", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
-	    ], Searchbar.prototype, "blur", void 0);
+	    ], Searchbar.prototype, "ionBlur", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
-	    ], Searchbar.prototype, "focus", void 0);
+	    ], Searchbar.prototype, "ionFocus", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_d = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _d) || Object)
-	    ], Searchbar.prototype, "cancel", void 0);
+	    ], Searchbar.prototype, "ionCancel", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_e = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _e) || Object)
-	    ], Searchbar.prototype, "clear", void 0);
+	    ], Searchbar.prototype, "ionClear", void 0);
 	    __decorate([
 	        core_1.HostBinding('class.searchbar-focused'), 
 	        __metadata('design:type', Object)
@@ -74811,6 +74804,7 @@
 	__export(__webpack_require__(281));
 	__export(__webpack_require__(317));
 	__export(__webpack_require__(319));
+	__export(__webpack_require__(419));
 	__export(__webpack_require__(325));
 	__export(__webpack_require__(326));
 	__export(__webpack_require__(295));
@@ -74825,7 +74819,7 @@
 	__export(__webpack_require__(299));
 	__export(__webpack_require__(301));
 	__export(__webpack_require__(263));
-	__export(__webpack_require__(419));
+	__export(__webpack_require__(420));
 	__export(__webpack_require__(320));
 	__export(__webpack_require__(282));
 	__export(__webpack_require__(309));
@@ -75337,6 +75331,8 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(8);
+	var dom_1 = __webpack_require__(251);
+	var util_1 = __webpack_require__(254);
 	var nav_params_1 = __webpack_require__(280);
 	var view_controller_1 = __webpack_require__(279);
 	var animation_1 = __webpack_require__(287);
@@ -75446,6 +75442,7 @@
 	        if (data === void 0) { data = {}; }
 	        data.componentType = componentType;
 	        _super.call(this, ModalCmp, data);
+	        this.modalViewType = componentType.name;
 	        this.viewType = 'modal';
 	        this.isOverlay = true;
 	    }
@@ -75464,22 +75461,38 @@
 	        if (data === void 0) { data = {}; }
 	        return new Modal(componentType, data);
 	    };
+	    // Override the load method and load our child component
+	    Modal.prototype.loaded = function (done) {
+	        var _this = this;
+	        // grab the instance, and proxy the ngAfterViewInit method
+	        var originalNgAfterViewInit = this.instance.ngAfterViewInit;
+	        this.instance.ngAfterViewInit = function () {
+	            if (originalNgAfterViewInit) {
+	                originalNgAfterViewInit();
+	            }
+	            _this.instance.loadComponent().then(function (componentRef) {
+	                _this.setInstance(componentRef.instance);
+	                done();
+	            });
+	        };
+	    };
 	    return Modal;
 	}(view_controller_1.ViewController));
 	exports.Modal = Modal;
 	var ModalCmp = (function () {
-	    function ModalCmp(_loader, _navParams, _viewCtrl) {
+	    function ModalCmp(_eleRef, _loader, _navParams, _viewCtrl) {
+	        this._eleRef = _eleRef;
 	        this._loader = _loader;
 	        this._navParams = _navParams;
 	        this._viewCtrl = _viewCtrl;
 	    }
-	    ModalCmp.prototype.onPageWillEnter = function () {
-	        var _this = this;
-	        this._loader.loadNextToLocation(this._navParams.data.componentType, this.viewport).then(function (componentRef) {
-	            _this._viewCtrl.setInstance(componentRef.instance);
-	            // manually fire onPageWillEnter() since ModalCmp's  onPageWillEnter already happened
-	            _this._viewCtrl.willEnter();
+	    ModalCmp.prototype.loadComponent = function () {
+	        return this._loader.loadNextToLocation(this._navParams.data.componentType, this.viewport).then(function (componentRef) {
+	            return componentRef;
 	        });
+	    };
+	    ModalCmp.prototype.ngAfterViewInit = function () {
+	        // intentionally kept empty
 	    };
 	    __decorate([
 	        core_1.ViewChild('viewport', { read: core_1.ViewContainerRef }), 
@@ -75493,11 +75506,12 @@
 	                '<div #viewport></div>' +
 	                '</div>'
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.DynamicComponentLoader !== 'undefined' && core_1.DynamicComponentLoader) === 'function' && _b) || Object, (typeof (_c = typeof nav_params_1.NavParams !== 'undefined' && nav_params_1.NavParams) === 'function' && _c) || Object, (typeof (_d = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _d) || Object])
+	        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, (typeof (_c = typeof core_1.DynamicComponentLoader !== 'undefined' && core_1.DynamicComponentLoader) === 'function' && _c) || Object, (typeof (_d = typeof nav_params_1.NavParams !== 'undefined' && nav_params_1.NavParams) === 'function' && _d) || Object, (typeof (_e = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _e) || Object])
 	    ], ModalCmp);
 	    return ModalCmp;
-	    var _a, _b, _c, _d;
+	    var _a, _b, _c, _d, _e;
 	}());
+	exports.ModalCmp = ModalCmp;
 	/**
 	 * Animations for modals
 	 */
@@ -75509,6 +75523,11 @@
 	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
 	        backdrop.fromTo('opacity', 0.01, 0.4);
 	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
+	        var page = ele.querySelector('ion-page');
+	        page.classList.add('show-page');
+	        // auto-add page css className created from component JS class name
+	        var cssClassName = util_1.pascalCaseToDashCase(enteringView.modalViewType);
+	        page.classList.add(cssClassName);
 	        wrapper.fromTo('translateY', '100%', '0%');
 	        this
 	            .element(enteringView.pageRef())
@@ -75534,8 +75553,13 @@
 	        var ele = leavingView.pageRef().nativeElement;
 	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
 	        backdrop.fromTo('opacity', 0.4, 0.0);
-	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
-	        wrapper.fromTo('translateY', '0%', '100%');
+	        var wrapperEle = ele.querySelector('.modal-wrapper');
+	        var wrapperEleRect = wrapperEle.getBoundingClientRect();
+	        var wrapper = new animation_1.Animation(wrapperEle);
+	        // height of the screen - top of the container tells us how much to scoot it down
+	        // so it's off-screen
+	        var screenDimensions = dom_1.windowDimensions();
+	        wrapper.fromTo('translateY', '0px', (screenDimensions.height - wrapperEleRect.top) + "px");
 	        this
 	            .element(leavingView.pageRef())
 	            .easing('ease-out')
@@ -75555,6 +75579,11 @@
 	        backdrop.fromTo('opacity', 0.01, 0.4);
 	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
 	        wrapper.fromTo('translateY', '40px', '0px');
+	        var page = ele.querySelector('ion-page');
+	        page.classList.add('show-page');
+	        // auto-add page css className created from component JS class name
+	        var cssClassName = util_1.pascalCaseToDashCase(enteringView.modalViewType);
+	        page.classList.add(cssClassName);
 	        this
 	            .element(enteringView.pageRef())
 	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
@@ -75596,6 +75625,460 @@
 
 /***/ },
 /* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(8);
+	var core_2 = __webpack_require__(8);
+	var animation_1 = __webpack_require__(287);
+	var transition_1 = __webpack_require__(286);
+	var config_1 = __webpack_require__(252);
+	var nav_params_1 = __webpack_require__(280);
+	var util_1 = __webpack_require__(254);
+	var dom_1 = __webpack_require__(251);
+	var view_controller_1 = __webpack_require__(279);
+	var POPOVER_IOS_BODY_PADDING = 2;
+	var POPOVER_MD_BODY_PADDING = 12;
+	/**
+	 * @name Popover
+	 * @description
+	 * A Popover is a dialog that appears on top of the current page.
+	 * It can be used for anything, but generally it is used for overflow
+	 * actions that don't fit in the navigation bar.
+	 *
+	 * ### Creating
+	 * A popover can be created by calling the `create` method. The view
+	 * to display in the popover should be passed as the first argument.
+	 * Any data to pass to the popover view can optionally be passed in
+	 * the second argument. Options for the popover can optionally be
+	 * passed in the third argument. See the [create](#create) method
+	 * below for all available options.
+	 *
+	 * ### Presenting
+	 * To present a popover, call the `present` method on the [NavController](../../nav/NavController).
+	 * The first argument passed to the `present` should be the popover. In order
+	 * to position the popover relative to the element clicked, the event needs to be
+	 * passed as the second argument. If the event is not passed, the popover will be
+	 * positioned in the center of the current view. See the [usage](#usage) section for
+	 * an example of passing this event.
+	 *
+	 * ### Dismissing
+	 * To dismiss the popover after creation, call the `dismiss()` method on the
+	 * `Popover` instance. The popover can also be dismissed from within the popover's
+	 * view by calling the `dismiss()` method on the [ViewController](../../nav/ViewController).
+	 * The `onDismiss` function can be called to perform an action after the popover
+	 * is dismissed. The popover will dismiss when the backdrop is clicked, but this
+	 * can be disabled by setting `enableBackdropDismiss` to `false` in the popover
+	 * options.
+	 *
+	 * > Note that after the component is dismissed, it will not be usable anymore and
+	 * another one must be created. This can be avoided by wrapping the creation and
+	 * presentation of the component in a reusable function as shown in the [usage](#usage)
+	 * section below.
+	 *
+	 * @usage
+	 *
+	 * To open a popover on the click of a button, pass `$event` to the method
+	 * which creates and presents the popover:
+	 *
+	 * ```html
+	 * <button (click)="presentPopover($event)">
+	 *   <ion-icon name="more"></ion-icon>
+	 * </button>
+	 * ```
+	 *
+	 * ```js
+	 * @Page({})
+	 * class MyPage {
+	 *   constructor(private nav: NavController) {}
+	 *
+	 *   presentPopover(myEvent) {
+	 *     let popover = Popover.create(PopoverPage);
+	 *     this.nav.present(popover, {
+	 *       ev: myEvent
+	 *     });
+	 *   }
+	 * }
+	 * ```
+	 *
+	 * The `PopoverPage` will display inside of the popover, and
+	 * can be anything. Below is an example of a page with items
+	 * that close the popover on click.
+	 *
+	 * ```js
+	 * @Page({
+	 *   template: `
+	 *     <ion-list>
+	 *       <ion-list-header>Ionic</ion-list-header>
+	 *       <button ion-item (click)="close()">Learn Ionic</button>
+	 *       <button ion-item (click)="close()">Documentation</button>
+	 *       <button ion-item (click)="close()">Showcase</button>
+	 *       <button ion-item (click)="close()">GitHub Repo</button>
+	 *     </ion-list>
+	 *   `
+	 * })
+	 * class PopoverPage {
+	 *   constructor(private viewCtrl: ViewController) {}
+	 *
+	 *   close() {
+	 *     this.viewCtrl.dismiss();
+	 *   }
+	 * }
+	 * ```
+	 *
+	 *
+	 * @demo /docs/v2/demos/popover/
+	 */
+	var Popover = (function (_super) {
+	    __extends(Popover, _super);
+	    function Popover(componentType, data, opts) {
+	        if (data === void 0) { data = {}; }
+	        if (opts === void 0) { opts = {}; }
+	        opts.showBackdrop = util_1.isPresent(opts.showBackdrop) ? !!opts.showBackdrop : true;
+	        opts.enableBackdropDismiss = util_1.isPresent(opts.enableBackdropDismiss) ? !!opts.enableBackdropDismiss : true;
+	        data.componentType = componentType;
+	        data.opts = opts;
+	        _super.call(this, PopoverCmp, data);
+	        this.viewType = 'popover';
+	        this.isOverlay = true;
+	        // by default, popovers should not fire lifecycle events of other views
+	        // for example, when a popover enters, the current active view should
+	        // not fire its lifecycle events because it's not conceptually leaving
+	        this.fireOtherLifecycles = false;
+	    }
+	    /**
+	    * @private
+	    */
+	    Popover.prototype.getTransitionName = function (direction) {
+	        var key = (direction === 'back' ? 'popoverLeave' : 'popoverEnter');
+	        return this._nav && this._nav.config.get(key);
+	    };
+	    /**
+	     * Create a popover with the following options
+	     *
+	     * | Option                | Type       | Description                                                                                                      |
+	     * |-----------------------|------------|------------------------------------------------------------------------------------------------------------------|
+	     * | cssClass              |`string`    | An additional class for custom styles.                                                                           |
+	     * | showBackdrop          |`boolean`   | Whether to show the backdrop. Default true.                                                                      |
+	     * | enableBackdropDismiss |`boolean`   | Whether the popover should be dismissed by tapping the backdrop. Default true.                                   |
+	     *
+	     *
+	     * @param {object} componentType The Popover
+	     * @param {object} data Any data to pass to the Popover view
+	     * @param {object} opts Popover options
+	     */
+	    Popover.create = function (componentType, data, opts) {
+	        if (data === void 0) { data = {}; }
+	        if (opts === void 0) { opts = {}; }
+	        return new Popover(componentType, data, opts);
+	    };
+	    return Popover;
+	}(view_controller_1.ViewController));
+	exports.Popover = Popover;
+	/**
+	* @private
+	*/
+	var PopoverCmp = (function () {
+	    function PopoverCmp(_loader, _elementRef, _renderer, _config, _navParams, _viewCtrl) {
+	        this._loader = _loader;
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
+	        this._config = _config;
+	        this._navParams = _navParams;
+	        this._viewCtrl = _viewCtrl;
+	        this.d = _navParams.data.opts;
+	        this.created = Date.now();
+	        if (this.d.cssClass) {
+	            _renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	        }
+	        this.id = (++popoverIds);
+	    }
+	    PopoverCmp.prototype.onPageWillEnter = function () {
+	        var _this = this;
+	        this._loader.loadNextToLocation(this._navParams.data.componentType, this.viewport).then(function (componentRef) {
+	            _this._viewCtrl.setInstance(componentRef.instance);
+	            // manually fire onPageWillEnter() since PopoverCmp's onPageWillEnter already happened
+	            _this._viewCtrl.fireWillEnter();
+	        });
+	    };
+	    PopoverCmp.prototype.onPageDidEnter = function () {
+	        var activeElement = document.activeElement;
+	        if (document.activeElement) {
+	            activeElement.blur();
+	        }
+	    };
+	    PopoverCmp.prototype.dismiss = function (role) {
+	        return this._viewCtrl.dismiss(null, role);
+	    };
+	    PopoverCmp.prototype.bdTouch = function (ev) {
+	        ev.preventDefault();
+	        ev.stopPropagation();
+	    };
+	    PopoverCmp.prototype.bdClick = function () {
+	        if (this.isEnabled() && this.d.enableBackdropDismiss) {
+	            this.dismiss('backdrop');
+	        }
+	    };
+	    PopoverCmp.prototype.isEnabled = function () {
+	        var tm = this._config.getNumber('overlayCreatedDiff', 750);
+	        return (this.created + tm < Date.now());
+	    };
+	    __decorate([
+	        core_1.ViewChild('viewport', { read: core_1.ViewContainerRef }), 
+	        __metadata('design:type', (typeof (_a = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _a) || Object)
+	    ], PopoverCmp.prototype, "viewport", void 0);
+	    PopoverCmp = __decorate([
+	        core_1.Component({
+	            selector: 'ion-popover',
+	            template: '<div class="backdrop" (touchmove)="bdTouch($event)" (click)="bdClick($event)" [class.hide-backdrop]="!d.showBackdrop" disable-activated tappable role="presentation"></div>' +
+	                '<div class="popover-wrapper">' +
+	                '<div class="popover-arrow"></div>' +
+	                '<div class="popover-content">' +
+	                '<div class="popover-viewport">' +
+	                '<div #viewport></div>' +
+	                '</div>' +
+	                '</div>' +
+	                '</div>'
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.DynamicComponentLoader !== 'undefined' && core_1.DynamicComponentLoader) === 'function' && _b) || Object, (typeof (_c = typeof core_2.ElementRef !== 'undefined' && core_2.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof core_2.Renderer !== 'undefined' && core_2.Renderer) === 'function' && _d) || Object, (typeof (_e = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _e) || Object, (typeof (_f = typeof nav_params_1.NavParams !== 'undefined' && nav_params_1.NavParams) === 'function' && _f) || Object, (typeof (_g = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _g) || Object])
+	    ], PopoverCmp);
+	    return PopoverCmp;
+	    var _a, _b, _c, _d, _e, _f, _g;
+	}());
+	/**
+	 * Animations for popover
+	 */
+	var PopoverTransition = (function (_super) {
+	    __extends(PopoverTransition, _super);
+	    function PopoverTransition(opts) {
+	        _super.call(this, opts);
+	    }
+	    PopoverTransition.prototype.mdPositionView = function (nativeEle, ev) {
+	        var originY = 'top';
+	        var originX = 'left';
+	        var popoverWrapperEle = nativeEle.querySelector('.popover-wrapper');
+	        // Popover content width and height
+	        var popoverEle = nativeEle.querySelector('.popover-content');
+	        var popoverDim = popoverEle.getBoundingClientRect();
+	        var popoverWidth = popoverDim.width;
+	        var popoverHeight = popoverDim.height;
+	        // Window body width and height
+	        var bodyWidth = window.innerWidth;
+	        var bodyHeight = window.innerHeight;
+	        // If ev was passed, use that for target element
+	        var targetDim = ev && ev.target && ev.target.getBoundingClientRect();
+	        var targetTop = targetDim && targetDim.top || (bodyHeight / 2) - (popoverHeight / 2);
+	        var targetLeft = targetDim && targetDim.left || bodyWidth / 2 - (popoverWidth / 2);
+	        var targetWidth = targetDim && targetDim.width || 0;
+	        var targetHeight = targetDim && targetDim.height || 0;
+	        var popoverCSS = {
+	            top: targetTop,
+	            left: targetLeft
+	        };
+	        // If the popover left is less than the padding it is off screen
+	        // to the left so adjust it, else if the width of the popover
+	        // exceeds the body width it is off screen to the right so adjust
+	        if (popoverCSS.left < POPOVER_MD_BODY_PADDING) {
+	            popoverCSS.left = POPOVER_MD_BODY_PADDING;
+	        }
+	        else if (popoverWidth + POPOVER_MD_BODY_PADDING + popoverCSS.left > bodyWidth) {
+	            popoverCSS.left = bodyWidth - popoverWidth - POPOVER_MD_BODY_PADDING;
+	            originX = 'right';
+	        }
+	        // If the popover when popped down stretches past bottom of screen,
+	        // make it pop up if there's room above
+	        if (targetTop + targetHeight + popoverHeight > bodyHeight && targetTop - popoverHeight > 0) {
+	            popoverCSS.top = targetTop - popoverHeight;
+	            nativeEle.className = nativeEle.className + ' popover-bottom';
+	            originY = 'bottom';
+	        }
+	        else if (targetTop + targetHeight + popoverHeight > bodyHeight) {
+	            popoverEle.style.bottom = POPOVER_MD_BODY_PADDING + 'px';
+	        }
+	        popoverEle.style.top = popoverCSS.top + 'px';
+	        popoverEle.style.left = popoverCSS.left + 'px';
+	        popoverEle.style[dom_1.CSS.transformOrigin] = originY + ' ' + originX;
+	        // Since the transition starts before styling is done we
+	        // want to wait for the styles to apply before showing the wrapper
+	        popoverWrapperEle.style.opacity = '1';
+	    };
+	    PopoverTransition.prototype.iosPositionView = function (nativeEle, ev) {
+	        var originY = 'top';
+	        var originX = 'left';
+	        var popoverWrapperEle = nativeEle.querySelector('.popover-wrapper');
+	        // Popover content width and height
+	        var popoverEle = nativeEle.querySelector('.popover-content');
+	        var popoverDim = popoverEle.getBoundingClientRect();
+	        var popoverWidth = popoverDim.width;
+	        var popoverHeight = popoverDim.height;
+	        // Window body width and height
+	        var bodyWidth = window.innerWidth;
+	        var bodyHeight = window.innerHeight;
+	        // If ev was passed, use that for target element
+	        var targetDim = ev && ev.target && ev.target.getBoundingClientRect();
+	        var targetTop = targetDim && targetDim.top || (bodyHeight / 2) - (popoverHeight / 2);
+	        var targetLeft = targetDim && targetDim.left || bodyWidth / 2;
+	        var targetWidth = targetDim && targetDim.width || 0;
+	        var targetHeight = targetDim && targetDim.height || 0;
+	        // The arrow that shows above the popover on iOS
+	        var arrowEle = nativeEle.querySelector('.popover-arrow');
+	        var arrowDim = arrowEle.getBoundingClientRect();
+	        var arrowWidth = arrowDim.width;
+	        var arrowHeight = arrowDim.height;
+	        var arrowCSS = {
+	            top: targetTop + targetHeight,
+	            left: targetLeft + (targetWidth / 2) - (arrowWidth / 2)
+	        };
+	        var popoverCSS = {
+	            top: targetTop + targetHeight + (arrowHeight - 1),
+	            left: targetLeft + (targetWidth / 2) - (popoverWidth / 2)
+	        };
+	        // If the popover left is less than the padding it is off screen
+	        // to the left so adjust it, else if the width of the popover
+	        // exceeds the body width it is off screen to the right so adjust
+	        if (popoverCSS.left < POPOVER_IOS_BODY_PADDING) {
+	            popoverCSS.left = POPOVER_IOS_BODY_PADDING;
+	        }
+	        else if (popoverWidth + POPOVER_IOS_BODY_PADDING + popoverCSS.left > bodyWidth) {
+	            popoverCSS.left = bodyWidth - popoverWidth - POPOVER_IOS_BODY_PADDING;
+	            originX = 'right';
+	        }
+	        // If the popover when popped down stretches past bottom of screen,
+	        // make it pop up if there's room above
+	        if (targetTop + targetHeight + popoverHeight > bodyHeight && targetTop - popoverHeight > 0) {
+	            arrowCSS.top = targetTop - (arrowHeight + 1);
+	            popoverCSS.top = targetTop - popoverHeight - (arrowHeight - 1);
+	            nativeEle.className = nativeEle.className + ' popover-bottom';
+	            originY = 'bottom';
+	        }
+	        else if (targetTop + targetHeight + popoverHeight > bodyHeight) {
+	            popoverEle.style.bottom = POPOVER_IOS_BODY_PADDING + '%';
+	        }
+	        arrowEle.style.top = arrowCSS.top + 'px';
+	        arrowEle.style.left = arrowCSS.left + 'px';
+	        popoverEle.style.top = popoverCSS.top + 'px';
+	        popoverEle.style.left = popoverCSS.left + 'px';
+	        popoverEle.style[dom_1.CSS.transformOrigin] = originY + ' ' + originX;
+	        // Since the transition starts before styling is done we
+	        // want to wait for the styles to apply before showing the wrapper
+	        popoverWrapperEle.style.opacity = '1';
+	    };
+	    return PopoverTransition;
+	}(transition_1.Transition));
+	var PopoverPopIn = (function (_super) {
+	    __extends(PopoverPopIn, _super);
+	    function PopoverPopIn(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        this.enteringView = enteringView;
+	        this.leavingView = leavingView;
+	        this.opts = opts;
+	        var ele = enteringView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.popover-wrapper'));
+	        wrapper.fromTo('opacity', '0.01', '1');
+	        backdrop.fromTo('opacity', '0.01', '0.08');
+	        this
+	            .easing('ease')
+	            .duration(100)
+	            .add(backdrop)
+	            .add(wrapper);
+	    }
+	    PopoverPopIn.prototype.play = function () {
+	        var _this = this;
+	        dom_1.nativeRaf(function () {
+	            _this.iosPositionView(_this.enteringView.pageRef().nativeElement, _this.opts.ev);
+	            _super.prototype.play.call(_this);
+	        });
+	    };
+	    return PopoverPopIn;
+	}(PopoverTransition));
+	transition_1.Transition.register('popover-pop-in', PopoverPopIn);
+	var PopoverPopOut = (function (_super) {
+	    __extends(PopoverPopOut, _super);
+	    function PopoverPopOut(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        this.enteringView = enteringView;
+	        this.leavingView = leavingView;
+	        this.opts = opts;
+	        var ele = leavingView.pageRef().nativeElement;
+	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var wrapper = new animation_1.Animation(ele.querySelector('.popover-wrapper'));
+	        wrapper.fromTo('opacity', '1', '0');
+	        backdrop.fromTo('opacity', '0.08', '0');
+	        this
+	            .easing('ease')
+	            .duration(500)
+	            .add(backdrop)
+	            .add(wrapper);
+	    }
+	    return PopoverPopOut;
+	}(PopoverTransition));
+	transition_1.Transition.register('popover-pop-out', PopoverPopOut);
+	var PopoverMdPopIn = (function (_super) {
+	    __extends(PopoverMdPopIn, _super);
+	    function PopoverMdPopIn(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        this.enteringView = enteringView;
+	        this.leavingView = leavingView;
+	        this.opts = opts;
+	        var ele = enteringView.pageRef().nativeElement;
+	        var content = new animation_1.Animation(ele.querySelector('.popover-content'));
+	        var viewport = new animation_1.Animation(ele.querySelector('.popover-viewport'));
+	        content.fromTo('scale', '0.001', '1');
+	        viewport.fromTo('opacity', '0', '1');
+	        this
+	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
+	            .duration(300)
+	            .add(content)
+	            .add(viewport);
+	    }
+	    PopoverMdPopIn.prototype.play = function () {
+	        var _this = this;
+	        dom_1.nativeRaf(function () {
+	            _this.mdPositionView(_this.enteringView.pageRef().nativeElement, _this.opts.ev);
+	            _super.prototype.play.call(_this);
+	        });
+	    };
+	    return PopoverMdPopIn;
+	}(PopoverTransition));
+	transition_1.Transition.register('popover-md-pop-in', PopoverMdPopIn);
+	var PopoverMdPopOut = (function (_super) {
+	    __extends(PopoverMdPopOut, _super);
+	    function PopoverMdPopOut(enteringView, leavingView, opts) {
+	        _super.call(this, opts);
+	        this.enteringView = enteringView;
+	        this.leavingView = leavingView;
+	        this.opts = opts;
+	        var ele = leavingView.pageRef().nativeElement;
+	        var wrapper = new animation_1.Animation(ele.querySelector('.popover-wrapper'));
+	        wrapper.fromTo('opacity', '1', '0');
+	        this
+	            .easing('ease')
+	            .duration(500)
+	            .fadeIn()
+	            .add(wrapper);
+	    }
+	    return PopoverMdPopOut;
+	}(PopoverTransition));
+	transition_1.Transition.register('popover-md-pop-out', PopoverMdPopOut);
+	var popoverIds = -1;
+
+/***/ },
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75869,19 +76352,19 @@
 	var toastIds = -1;
 
 /***/ },
-/* 420 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(421));
 	__export(__webpack_require__(422));
 	__export(__webpack_require__(423));
+	__export(__webpack_require__(424));
 
 /***/ },
-/* 421 */
+/* 422 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75965,7 +76448,7 @@
 	exports.StorageEngine = StorageEngine;
 
 /***/ },
-/* 422 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75974,7 +76457,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(421);
+	var storage_1 = __webpack_require__(422);
 	/**
 	 * @name LocalStorage
 	 * @description
@@ -76078,7 +76561,7 @@
 	exports.LocalStorage = LocalStorage;
 
 /***/ },
-/* 423 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76087,7 +76570,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(421);
+	var storage_1 = __webpack_require__(422);
 	var util_1 = __webpack_require__(254);
 	var DB_NAME = '__ionicstorage';
 	var win = window;
@@ -76215,6 +76698,10 @@
 	    SqlStorage.prototype.remove = function (key) {
 	        return this.query('delete from kv where key = ?', [key]);
 	    };
+	    /**
+	    * Clear all keys/values of your database.
+	    * @return {Promise} that resolves or rejects with an object of the form { tx: Transaction, res: Result (or err)}
+	    */
 	    SqlStorage.prototype.clear = function () {
 	        return this.query('delete from kv');
 	    };
@@ -76226,7 +76713,7 @@
 	exports.SqlStorage = SqlStorage;
 
 /***/ },
-/* 424 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76276,7 +76763,7 @@
 	exports.TranslatePipe = TranslatePipe;
 
 /***/ },
-/* 425 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76301,6 +76788,8 @@
 	    pickerEnter: 'picker-slide-in',
 	    pickerLeave: 'picker-slide-out',
 	    pickerRotateFactor: -0.46,
+	    popoverEnter: 'popover-pop-in',
+	    popoverLeave: 'popover-pop-out',
 	    spinner: 'ios',
 	    tabbarPlacement: 'bottom',
 	    toastEnter: 'toast-slide-in',
@@ -76325,6 +76814,8 @@
 	    pageTransitionDelay: 96,
 	    pickerEnter: 'picker-slide-in',
 	    pickerLeave: 'picker-slide-out',
+	    popoverEnter: 'popover-md-pop-in',
+	    popoverLeave: 'popover-md-pop-out',
 	    spinner: 'crescent',
 	    tabbarHighlight: true,
 	    tabbarPlacement: 'top',
@@ -76351,6 +76842,8 @@
 	    pageTransitionDelay: 96,
 	    pickerEnter: 'picker-slide-in',
 	    pickerLeave: 'picker-slide-out',
+	    popoverEnter: 'popover-md-pop-in',
+	    popoverLeave: 'popover-md-pop-out',
 	    spinner: 'circles',
 	    tabbarPlacement: 'top',
 	    tabSubPages: true,
@@ -76359,7 +76852,7 @@
 	});
 
 /***/ },
-/* 426 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76547,7 +77040,7 @@
 	}
 
 /***/ },
-/* 427 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76607,7 +77100,7 @@
 	animation_1.Animation.register('fade-out', FadeOut);
 
 /***/ },
-/* 428 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76783,7 +77276,7 @@
 	transition_1.Transition.register('ios-transition', IOSTransition);
 
 /***/ },
-/* 429 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76847,7 +77340,7 @@
 	transition_1.Transition.register('md-transition', MDTransition);
 
 /***/ },
-/* 430 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
