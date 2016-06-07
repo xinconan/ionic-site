@@ -607,16 +607,17 @@ and then you <code class="highlighter-rouge">pop</code> the top one off to go ba
 
 <p>Open <code class="highlighter-rouge">app/playlists/playlists.js</code>, and add a method to <code class="highlighter-rouge">PlaylistsPage</code> to handle this:</p>
 
-<pre><code class="language-ts">export class PlaylistsPage {
-  // constructor and other methods above here...
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">PlaylistsPage</span> <span class="p">{</span>
+  <span class="c1">// constructor and other methods above here...</span>
 
-  openPlaylist(playlist) {
-    this.nav.push(PlaylistPage, {
-      playlist: playlist
-    })
-  }
-}
+  <span class="nx">openPlaylist</span><span class="p">(</span><span class="nx">playlist</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">PlaylistPage</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">playlist</span><span class="p">:</span> <span class="nx">playlist</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Open the app and navigate to the playlists page. When you tap on the page, you should see the new playlist page open with the title set to the playlist you just clicked!</p>
 

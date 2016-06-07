@@ -602,24 +602,25 @@
 
 <p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> component specifies this in its constructor:</p>
 
-<pre><code class="language-ts">...
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
-...
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">HelloIonicPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'./pages/hello-ionic/hello-ionic'</span><span class="p">;</span>
+<span class="p">...</span>
 
-class MyApp {
-  ...
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="p">...</span>
 
-  constructor(app, platform, menu) {
-    ...
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">platform</span><span class="p">,</span> <span class="nx">menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
 
-    // make HelloIonicPage the root (or first) page
-    this.rootPage = HelloIonicPage;
-  }
+    <span class="c1">// make HelloIonicPage the root (or first) page</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">HelloIonicPage</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  ...
-}
+  <span class="p">...</span>
+<span class="p">}</span>
 
 </code></pre>
+</div>
 
 <p>We see that <code class="highlighter-rouge">this.rootPage</code> is set to <code class="highlighter-rouge">HelloIonicPage</code>, so <code class="highlighter-rouge">HelloIonicPage</code> will be the first page loaded in the nav controller. Let’s take a look at it.</p>
 
@@ -633,13 +634,14 @@ class MyApp {
 
 <p>Below, we see the <code class="highlighter-rouge">HelloIonicPage</code> class which has the <code class="highlighter-rouge">@Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component with all Ionic directives already provided, to be loaded using Ionic’s navigation system.  Notice that because Pages are meant to be loaded dynamically, they don’t have a selector:</p>
 
-<pre><code class="language-ts">import {Page} from 'ionic-angular';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 
-@Page({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
-})
-export class HelloIonicPage {}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/pages/hello-ionic/hello-ionic.html'</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">HelloIonicPage</span> <span class="p">{}</span>
 </code></pre>
+</div>
 
 <p>All pages have both a class, and an associated template that’s being compiled as well. Let’s check out <code class="highlighter-rouge">app/pages/hello-ionic/hello-ionic.html</code> - the template file for this page:</p>
 
@@ -681,45 +683,46 @@ export class HelloIonicPage {}
 
 <p>Let’s check out the contents of <code class="highlighter-rouge">app/pages/list/list.js</code>. Inside, you will see a new page is defined:</p>
 
-<pre><code class="language-ts">import {Page, NavController, NavParams} from 'ionic-angular';
-import {ItemDetailsPage} from '../item-details/item-details';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">,</span> <span class="nx">NavParams</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">ItemDetailsPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../item-details/item-details'</span><span class="p">;</span>
 
 
-@Page({
-  templateUrl: 'build/pages/list/list.html'
-})
-export class ListPage {
-  // provide Angular with metadata about things it should inject in the constructor
-  static get parameters() {
-    return [[NavController], [NavParams]];
-  }
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/pages/list/list.html'</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">ListPage</span> <span class="p">{</span>
+  <span class="c1">// provide Angular with metadata about things it should inject in the constructor</span>
+  <span class="k">static</span> <span class="nx">get</span> <span class="nx">parameters</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="nx">NavController</span><span class="p">],</span> <span class="p">[</span><span class="nx">NavParams</span><span class="p">]];</span>
+  <span class="p">}</span>
 
-  constructor(nav, navParams) {
-    this.nav = nav;
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="p">,</span> <span class="nx">navParams</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
 
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    <span class="c1">// If we navigated to this page, we will have an item available as a nav param</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">selectedItem</span> <span class="o">=</span> <span class="nx">navParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'item'</span><span class="p">);</span>
 
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+    <span class="k">this</span><span class="p">.</span><span class="nx">icons</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'flask'</span><span class="p">,</span> <span class="s1">'wifi'</span><span class="p">,</span> <span class="s1">'beer'</span><span class="p">,</span> <span class="s1">'football'</span><span class="p">,</span> <span class="s1">'basketball'</span><span class="p">,</span> <span class="s1">'paper-plane'</span><span class="p">,</span>
+    <span class="s1">'american-football'</span><span class="p">,</span> <span class="s1">'boat'</span><span class="p">,</span> <span class="s1">'bluetooth'</span><span class="p">,</span> <span class="s1">'build'</span><span class="p">];</span>
 
-    this.items = [];
-    for(let i = 1; i &lt; 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
-  }
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="na">title</span><span class="p">:</span> <span class="s1">'Item '</span> <span class="o">+</span> <span class="nx">i</span><span class="p">,</span>
+        <span class="na">note</span><span class="p">:</span> <span class="s1">'This is item #'</span> <span class="o">+</span> <span class="nx">i</span><span class="p">,</span>
+        <span class="na">icon</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">icons</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">icons</span><span class="p">.</span><span class="nx">length</span><span class="p">)]</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 
-  itemTapped(event, item) {
-     this.nav.push(ItemDetailsPage, {
-       item: item
-     });
-  }
-}
+  <span class="nx">itemTapped</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ItemDetailsPage</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">item</span><span class="p">:</span> <span class="nx">item</span>
+     <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>This page will create a basic list page containing a number of items.</p>
 

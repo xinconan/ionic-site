@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -506,24 +512,25 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<pre><code class="language-ts">import {ViewChild} from 'angular2/core';
-import {Content} from 'ionic-angular';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">ViewChild</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'angular2/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Content</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 
-@Page({
-  template: `&lt;ion-content&gt;
-               &lt;button (click)="scrollTo()"&gt;Down 500px&lt;/button&gt;
-             &lt;/ion-content&gt;`
-)}
-export class MyPage{
-  @ViewChild(Content) content: Content;
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+               <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"scrollTo()"</span><span class="o">&gt;</span><span class="nx">Down</span> <span class="mi">500</span><span class="nx">px</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>             <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">)}</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyPage</span><span class="p">{</span>
+  <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">Content</span><span class="p">)</span> <span class="nx">content</span><span class="err">:</span> <span class="nx">Content</span><span class="p">;</span>
 
-  scrollTo() {
-    // set the scrollLeft to 0px, and scrollTop to 500px
-    // the scroll duration should take 200ms
-    this.content.scrollTo(0, 500, 200);
-  }
-}
+  <span class="nx">scrollTo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// set the scrollLeft to 0px, and scrollTop to 500px</span>
+    <span class="c1">// the scroll duration should take 200ms</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -608,22 +615,23 @@ export class MyPage{
 
 <p>Scroll to the top of the content component.</p>
 
-<pre><code class="language-ts">import {ViewChild} from 'angular2/core';
-import {Content} from 'ionic-angular';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">ViewChild</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'angular2/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Content</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 
-@Page({
-  template: `&lt;ion-content&gt;
-               &lt;button (click)="scrollToTop()"&gt;Scroll to top&lt;/button&gt;
-             &lt;/ion-content&gt;`
-)}
-export class MyPage{
-  @ViewChild(Content) content: Content;
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+               <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"scrollToTop()"</span><span class="o">&gt;</span><span class="nx">Scroll</span> <span class="nx">to</span> <span class="nx">top</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>             <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">)}</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyPage</span><span class="p">{</span>
+  <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">Content</span><span class="p">)</span> <span class="nx">content</span><span class="err">:</span> <span class="nx">Content</span><span class="p">;</span>
 
-  scrollToTop() {
-    this.content.scrollToTop();
-  }
-}
+  <span class="nx">scrollToTop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">scrollToTop</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>

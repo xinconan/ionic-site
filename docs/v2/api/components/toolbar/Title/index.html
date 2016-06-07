@@ -123,9 +123,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -288,7 +294,13 @@
   <a href="/docs/v2/api/components/datetime/DateTime">DateTime</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/gestures/DragGesture">DragGesture</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/Gesture">Gesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/show-hide-when/HideWhen">HideWhen</a>
@@ -420,6 +432,12 @@
   <a href="/docs/v2/api/components/slides/Slide">Slide</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideEdgeGesture">SlideEdgeGesture</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideGesture">SlideGesture</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slides">Slides</a>
 </li>
 <li class="capitalize ">
@@ -519,7 +537,7 @@ Title
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/toolbar/toolbar.ts#L130">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/toolbar/toolbar.ts#L166">
 Improve this doc
 </a></p>
 
@@ -534,13 +552,14 @@ Improve this doc
 <pre><code class="lang-html">&lt;ion-navbar *navbar&gt;
    &lt;ion-title&gt;Tab 1&lt;/ion-title&gt;
 &lt;/ion-navbar&gt;
-
-&lt;!-- or if you wanted to create a subheader title--&gt;
-&lt;ion-navbar *navbar&gt;
+</code></pre>
+<p>Or to create a navbar with a toolbar as a subheader:</p>
+<pre><code class="lang-html">&lt;ion-navbar *navbar&gt;
    &lt;ion-title&gt;Tab 1&lt;/ion-title&gt;
 &lt;/ion-navbar&gt;
+
 &lt;ion-toolbar&gt;
-  &lt;ion-title&gt;SubHeader&lt;/ion-title&gt;
+  &lt;ion-title&gt;Subheader&lt;/ion-title&gt;
 &lt;/ion-toolbar&gt;
 </code></pre>
 

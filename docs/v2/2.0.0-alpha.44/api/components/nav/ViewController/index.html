@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -517,14 +523,15 @@ export class MyPage{
 
 <p>You can find out the index of the current view is in the current navigation stack</p>
 
-<pre><code class="language-typescript"> export class Page1 {
-   constructor(view: ViewController){
-     this.view = view;
-     // Just log out the index
-     console.log(this.view.index);
-   }
- }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code> <span class="k">export</span> <span class="kr">class</span> <span class="nx">Page1</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">view</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">view</span> <span class="o">=</span> <span class="nx">view</span><span class="p">;</span>
+     <span class="c1">// Just log out the index</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <ul>
   <li>Returns: 
@@ -554,15 +561,16 @@ export class MyPage{
 
 <p>You can find out of the current view has a Navbar or not. Be sure to wrap this in an <code class="highlighter-rouge">onPageWillEnter</code> method in order to make sure the view has rendered fully.</p>
 
-<pre><code class="language-typescript">export class Page1 {
- constructor(view: ViewController) {
-   this.view = view
- }
- onPageWillEnter(){
-   console.log('Do we have a Navbar?', this.view.hasNavbar());
- }
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Page1</span> <span class="p">{</span>
+ <span class="kd">constructor</span><span class="p">(</span><span class="nx">view</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">view</span> <span class="o">=</span> <span class="nx">view</span>
+ <span class="p">}</span>
+ <span class="nx">onPageWillEnter</span><span class="p">(){</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Do we have a Navbar?'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">hasNavbar</span><span class="p">());</span>
+ <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <ul>
   <li>Returns: 
@@ -579,15 +587,16 @@ export class MyPage{
 
 <p>You can change the text of the back button on a view-by-view basis.</p>
 
-<pre><code class="language-ts">export class MyClass{
- constructor(viewCtrl: ViewController){
-   this.viewCtrl = viewCtrl
- }
- onPageWillEnter() {
-   this.viewCtrl.setBackButtonText('Previous');
- }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+ <span class="kd">constructor</span><span class="p">(</span><span class="nx">viewCtrl</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">){</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">viewCtrl</span> <span class="o">=</span> <span class="nx">viewCtrl</span>
+ <span class="p">}</span>
+ <span class="nx">onPageWillEnter</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">viewCtrl</span><span class="p">.</span><span class="nx">setBackButtonText</span><span class="p">(</span><span class="s1">'Previous'</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 <p>Make sure you use the view events when calling this method, otherwise the back-button will not have been created</p>
 
 <table class="table" style="margin:0;">

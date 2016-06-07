@@ -123,9 +123,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -288,7 +294,13 @@
   <a href="/docs/v2/api/components/datetime/DateTime">DateTime</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/gestures/DragGesture">DragGesture</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/Gesture">Gesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/show-hide-when/HideWhen">HideWhen</a>
@@ -418,6 +430,12 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideEdgeGesture">SlideEdgeGesture</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideGesture">SlideGesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slides">Slides</a>
@@ -592,18 +610,19 @@ and passed to the <code class="highlighter-rouge">share</code> method.</p>
 </code></pre>
 </div>
 
-<pre><code class="language-ts">import {Component} from '@angular/core';
-import {ItemSliding} from 'ionic-angular';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">ItemSliding</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 
-@Component({...})
-export class MyClass {
-  constructor() { }
+<span class="err">@</span><span class="nx">Component</span><span class="p">({...})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
 
-  share(slidingItem: ItemSliding) {
-    slidingItem.close();
-  }
-}
+  <span class="nx">share</span><span class="p">(</span><span class="nx">slidingItem</span><span class="err">:</span> <span class="nx">ItemSliding</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">slidingItem</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <!-- related link -->
 

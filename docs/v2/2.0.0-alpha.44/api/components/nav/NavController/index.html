@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -528,60 +534,63 @@ class HelloWorld {
 
 <p>Push is how we can pass components and navigate to them. We push the component we want to navigate to on to the navigation stack.</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(){
-     this.nav.push(SecondView);
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>We can also pass along parameters to the next view, such as data that we have on the current view. This is a similar concept to to V1 apps with <code class="highlighter-rouge">$stateParams</code>.</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(user){
-     this.nav.push(SecondView,{
-      // user is an object we have in our view
-      // typically this comes from an ngFor or some array
-      // here we can create an object with a property of
-      // paramUser, and set it's value to the user object we passed in
-      paramUser: user
-     });
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">,{</span>
+      <span class="c1">// user is an object we have in our view</span>
+      <span class="c1">// typically this comes from an ngFor or some array</span>
+      <span class="c1">// here we can create an object with a property of</span>
+      <span class="c1">// paramUser, and set it's value to the user object we passed in</span>
+      <span class="na">paramUser</span><span class="p">:</span> <span class="nx">user</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>We’ll look at how we can access that data in the <code class="highlighter-rouge">SecondView</code> in the navParam docs</p>
 
 <p>We can also pass any options to the transtion from that same method</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(user){
-     this.nav.push(SecondView,{
-      // user is an object we have in our view
-      // typically this comes from an ngFor or some array
-      // here we can create an object with a property of
-      // paramUser, and set it's value to the user object we passed in
-      paramUser: user
-     },{
-      // here we can configure things like the animations direction or
-      // or if the view should animate at all.
-      direction: back
-     });
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">,{</span>
+      <span class="c1">// user is an object we have in our view</span>
+      <span class="c1">// typically this comes from an ngFor or some array</span>
+      <span class="c1">// here we can create an object with a property of</span>
+      <span class="c1">// paramUser, and set it's value to the user object we passed in</span>
+      <span class="na">paramUser</span><span class="p">:</span> <span class="nx">user</span>
+     <span class="p">},{</span>
+      <span class="c1">// here we can configure things like the animations direction or</span>
+      <span class="c1">// or if the view should animate at all.</span>
+      <span class="na">direction</span><span class="p">:</span> <span class="nx">back</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -663,15 +672,16 @@ class HelloWorld {
 <p>If you wanted to navigate back from a current view, you can use the back-button or programatically call <code class="highlighter-rouge">pop()</code>
 Similar to <code class="highlighter-rouge">push()</code>, you can pass animation options.</p>
 
-<pre><code class="language-typescript">class SecondView{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
-   goBack(){
-     this.nav.pop();
-   }
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">SecondView</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">goBack</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -759,15 +769,16 @@ Similar to <code class="highlighter-rouge">push()</code>, you can pass animation
 <p>Inserts a view into the nav stack at the specified index.
 This is useful if you need to add a view at any point in your navigation stack</p>
 
-<pre><code class="language-typescript">export class Detail {
-   constructor(nav: NavController) {
-     this.nav = nav;
-   }
-   insertView(){
-     this.nav.insert(1,Info)
-   }
- }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Detail</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">insertView</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nx">Info</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <p>This will insert the <code class="highlighter-rouge">Info</code> view into the second slot of our navigation stack</p>
 
@@ -833,15 +844,16 @@ This is useful if you need to add a view at any point in your navigation stack</
 
 <p>Removes a view from the nav stack at the specified index.</p>
 
-<pre><code class="language-typescript">export class Detail {
-   constructor(nav: NavController) {
-     this.nav = nav;
-   }
-   removeView(){
-     this.nav.remove(1)
-   }
- }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Detail</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">removeView</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>
@@ -905,64 +917,67 @@ This is useful if you need to add a view at any point in your navigation stack</
 
 <p>You can set the views of the current navigation stack and navigate to the last view past</p>
 
-<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
-import {Detail} from '../detail/detail'
-import {Info} from '../info/info'
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic/ionic'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Detail</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../detail/detail'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Info</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../info/info'</span>
 
- export class Home {
-   constructor(nav: NavController) {
-     this.nav = nav;
-   }
-   setPages() {
-     this.nav.setPages([List,Detail, Info]);
-   }
- }
+ <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([</span><span class="nx">List</span><span class="p">,</span><span class="nx">Detail</span><span class="p">,</span> <span class="nx">Info</span><span class="p">]);</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <p>In this example, we’re giving the current nav stack an array of pages. Then the navigation stack will navigate to the last view in the array and remove the orignal view you came from.</p>
 
 <p>By default, animations are disabled, but they can be enabled by passing options to the navigation controller</p>
 
-<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
-import {Detail} from '../detail/detail'
-import {Info} from '../info/info'
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic/ionic'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Detail</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../detail/detail'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Info</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../info/info'</span>
 
- export class Home {
-   constructor(nav: NavController) {
-     this.nav = nav;
-   }
-   setPages() {
-     this.nav.setPages([List,Detail, Info],{
-       animate: true
-     });
-   }
- }
+ <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([</span><span class="nx">List</span><span class="p">,</span><span class="nx">Detail</span><span class="p">,</span> <span class="nx">Info</span><span class="p">],{</span>
+       <span class="na">animate</span><span class="p">:</span> <span class="kc">true</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <p>You can also pass any navigation params to the individual pages in the array.</p>
 
-<pre><code class="language-typescript">import {Page, NavController} from 'ionic/ionic'
-import {Detail} from '../detail/detail'
-import {Info} from '../info/info'
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic/ionic'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Detail</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../detail/detail'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Info</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../info/info'</span>
 
- export class Home {
-   constructor(nav: NavController) {
-     this.nav = nav;
-   }
-   setPages() {
-     this.nav.setPages([{
-       componentType: List,
-       params: {id: 43}
-     }, {
-       componentType: Detail,
-       params: {id: 45}
-     },{
-       componentType: Info,
-       params: {id: 5}
-     }]);
-   }
- }
+ <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([{</span>
+       <span class="na">componentType</span><span class="p">:</span> <span class="nx">List</span><span class="p">,</span>
+       <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="mi">43</span><span class="p">}</span>
+     <span class="p">},</span> <span class="p">{</span>
+       <span class="na">componentType</span><span class="p">:</span> <span class="nx">Detail</span><span class="p">,</span>
+       <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="mi">45</span><span class="p">}</span>
+     <span class="p">},{</span>
+       <span class="na">componentType</span><span class="p">:</span> <span class="nx">Info</span><span class="p">,</span>
+       <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+     <span class="p">}]);</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>

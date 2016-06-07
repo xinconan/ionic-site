@@ -589,20 +589,21 @@
 <h3 id="Promises_and_Observables">Promises and Observables</h3>
 <p>Ionic Native wraps plugin callbacks in a Promise or <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">Observable</a>, providing a common interface for all plugins and ensuring that native events trigger change detection in Angular 2.</p>
 
-<pre><code class="language-ts">import {Geolocation} from 'ionic-native';
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Geolocation</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-native'</span><span class="p">;</span>
 
-Geolocation.getCurrentPosition().then(pos =&gt; { 
-  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
-});
+<span class="nx">Geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">pos</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'lat: '</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">', lon: '</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">);</span>
+<span class="p">});</span>
 
-let watch = Geolocation.watchPosition();
-watch.subscribe(pos =&gt; {
-  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
-});
+<span class="kd">let</span> <span class="nx">watch</span> <span class="o">=</span> <span class="nx">Geolocation</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">();</span>
+<span class="nx">watch</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">pos</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'lat: '</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">', lon: '</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">);</span>
+<span class="p">});</span>
 
-// to stop watching
-watch.unsubscribe();
+<span class="c1">// to stop watching</span>
+<span class="nx">watch</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span>
 </code></pre>
+</div>
 
 <h3 id="Runtime_Diagnostics">Runtime Diagnostics</h3>
 <p>Spent way too long diagnosing an issue only to realize a plugin wasn’t firing or installed? Ionic Native lets you know what the issue is and how you can resolve it.</p>

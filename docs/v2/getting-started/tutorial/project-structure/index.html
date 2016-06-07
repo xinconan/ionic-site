@@ -626,14 +626,15 @@
 
 <p>Near the top of the file, we should see this:</p>
 
-<pre><code class="language-ts">@App({
-  templateUrl: 'build/app.html'
-})
-class MyApp {
-  constructor() {
-  }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/app.html'</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. To specify a root component with Ionic, we use the <code class="highlighter-rouge">@App</code> decorator.</p>
 

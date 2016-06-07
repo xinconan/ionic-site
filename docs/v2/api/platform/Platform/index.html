@@ -123,9 +123,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -288,7 +294,13 @@
   <a href="/docs/v2/api/components/datetime/DateTime">DateTime</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/gestures/DragGesture">DragGesture</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/Gesture">Gesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/show-hide-when/HideWhen">HideWhen</a>
@@ -418,6 +430,12 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideEdgeGesture">SlideEdgeGesture</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideGesture">SlideGesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slides">Slides</a>
@@ -944,19 +962,6 @@ attribute value set, such as <code class="highlighter-rouge"><span class="nt">&l
 
 </div>
 
-<div id="exitApp"></div>
-
-<h3>
-<a class="anchor" name="exitApp" href="#exitApp"></a>
-<code>exitApp()</code>
-  
-
-</h3>
-
-<p>The <code class="highlighter-rouge">exitApp</code> method is useful when running from a native platform,
-such as Cordova. This adds the ability to place the Cordova app
-in the background.</p>
-
 <div id="backButton"></div>
 
 <h3>
@@ -973,7 +978,7 @@ Windows platforms. This event is not fired on iOS since iOS doesn’t come
 with a hardware back button in the same sense an Android or Windows device
 does. It’s important to note that this event does not emit when the Ionic
 app’s back button within the navbar is clicked, but this event is only
-referencing the platform’s hardward back button.</p>
+referencing the platform’s hardware back button.</p>
 
 <div id="pause"></div>
 

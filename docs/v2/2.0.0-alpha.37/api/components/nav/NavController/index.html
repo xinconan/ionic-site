@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -602,61 +608,64 @@ defined in <a href="https://github.com/driftyco/ionic2/tree/master/ionic/compone
 
 <p>Push is how we can pass components and navigate to them. We push the component we want to navigate to on to the navigation stack.</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(){
-     this.nav.push(SecondView);
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>We can also pass along parameters to the next view, such as data that we have on the current view. This is a similar concept to to V1 apps with <code class="highlighter-rouge">$stateParams</code>.</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(user){
-     this.nav.push(SecondView,{
-      // user is an object we have in our view
-      // typically this comes from an ngFor or some array
-      // here we can create an object with a property of
-      // paramUser, and set it's value to the user object we passed in
-      paramUser: user
-     });
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">,{</span>
+      <span class="c1">// user is an object we have in our view</span>
+      <span class="c1">// typically this comes from an ngFor or some array</span>
+      <span class="c1">// here we can create an object with a property of</span>
+      <span class="c1">// paramUser, and set it's value to the user object we passed in</span>
+      <span class="na">paramUser</span><span class="p">:</span> <span class="nx">user</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>We’ll look at how we can access that data in the <code class="highlighter-rouge">SecondView</code> in the navParam docs</p>
 
 <p>We can also pass any options to the transtion from that same method</p>
 
-<pre><code class="language-typescript">class MyClass{
-   constructor(nav:NavController){
-     this.nav = nav;
-   }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span><span class="nx">NavController</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="p">}</span>
 
-   pushPage(user){
-     this.nav.push(SecondView,{
-      // user is an object we have in our view
-      // typically this comes from an ngFor or some array
-      // here we can create an object with a property of
-      // paramUser, and set it's value to the user object we passed in
-      paramUser: user
-     },{
-      // here we can configure things like the animations direction or
-      // or if the view should animate at all.
-      animate: true,
-      direction: back
-     });
-   }
-}
+   <span class="nx">pushPage</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">SecondView</span><span class="p">,{</span>
+      <span class="c1">// user is an object we have in our view</span>
+      <span class="c1">// typically this comes from an ngFor or some array</span>
+      <span class="c1">// here we can create an object with a property of</span>
+      <span class="c1">// paramUser, and set it's value to the user object we passed in</span>
+      <span class="na">paramUser</span><span class="p">:</span> <span class="nx">user</span>
+     <span class="p">},{</span>
+      <span class="c1">// here we can configure things like the animations direction or</span>
+      <span class="c1">// or if the view should animate at all.</span>
+      <span class="na">animate</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">direction</span><span class="p">:</span> <span class="nx">back</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table" style="margin:0;">
   <thead>

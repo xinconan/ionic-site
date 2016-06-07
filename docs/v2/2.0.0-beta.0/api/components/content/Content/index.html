@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -469,24 +475,25 @@ Improve this doc
 
 <p>Adds the specified scroll handler to the content’ scroll element.</p>
 
-<pre><code class="language-ts">@Page({
-  template: `&lt;ion-content id="my-content"&gt;&lt;/ion-content&gt;`
-)}
-export class MyPage{
-   constructor(app: IonicApp){
-       this.app = app;
-   }
-  // Need to wait until the component has been initialized
-  ngAfterViewInit() {
-    // Here 'my-content' is the ID of my ion-content
-    this.content = this.app.getComponent('my-content');
-    this.content.addScrollEventListener(this.myScroll);
-  }
-    myScroll() {
-     console.info('They see me scrolling...');
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"my-content"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">)}</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyPage</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">){</span>
+       <span class="k">this</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+   <span class="p">}</span>
+  <span class="c1">// Need to wait until the component has been initialized</span>
+  <span class="nx">ngAfterViewInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Here 'my-content' is the ID of my ion-content</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'my-content'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">addScrollEventListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">myScroll</span><span class="p">);</span>
+  <span class="p">}</span>
+    <span class="nx">myScroll</span><span class="p">()</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'They see me scrolling...'</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -574,25 +581,26 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<pre><code class="language-ts">@Page({
-  template: `&lt;ion-content id="my-content"&gt;
-     &lt;button (click)="scrollTo()"&gt; Down 500px&lt;/button&gt;
-  &lt;/ion-content&gt;`
-)}
-export class MyPage{
-   constructor(app: IonicApp){
-       this.app = app;
-   }
-  // Need to wait until the component has been initialized
-  ngAfterViewInit() {
-    // Here 'my-content' is the ID of my ion-content
-    this.content = this.app.getComponent('my-content');
-  }
-   scrollTo() {
-     this.content.scrollTo(0, 500, 200);
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"my-content"</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"scrollTo()"</span><span class="o">&gt;</span> <span class="nx">Down</span> <span class="mi">500</span><span class="nx">px</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">)}</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyPage</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">){</span>
+       <span class="k">this</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+   <span class="p">}</span>
+  <span class="c1">// Need to wait until the component has been initialized</span>
+  <span class="nx">ngAfterViewInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Here 'my-content' is the ID of my ion-content</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'my-content'</span><span class="p">);</span>
+  <span class="p">}</span>
+   <span class="nx">scrollTo</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -691,25 +699,26 @@ export class MyPage{
 
 <p>Scroll to the specified position.</p>
 
-<pre><code class="language-ts">@Page({
-  template: `&lt;ion-content id="my-content"&gt;
-     &lt;button (click)="scrollTop()"&gt; Down 500px&lt;/button&gt;
-  &lt;/ion-content&gt;`
-)}
-export class MyPage{
-   constructor(app: IonicApp){
-       this.app = app;
-   }
-  // Need to wait until the component has been initialized
-  ngAfterViewInit() {
-    // Here 'my-content' is the ID of my ion-content
-    this.content = this.app.getComponent('my-content');
-  }
-   scrollTop() {
-     this.content.scrollTop();
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"my-content"</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"scrollTop()"</span><span class="o">&gt;</span> <span class="nx">Down</span> <span class="mi">500</span><span class="nx">px</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">)}</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyPage</span><span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">){</span>
+       <span class="k">this</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+   <span class="p">}</span>
+  <span class="c1">// Need to wait until the component has been initialized</span>
+  <span class="nx">ngAfterViewInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Here 'my-content' is the ID of my ion-content</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'my-content'</span><span class="p">);</span>
+  <span class="p">}</span>
+   <span class="nx">scrollTop</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>

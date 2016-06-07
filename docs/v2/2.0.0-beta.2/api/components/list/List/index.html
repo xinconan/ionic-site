@@ -123,9 +123,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -510,16 +516,17 @@ removing items.</p>
 
 <p>Enable sliding items if your page has them</p>
 
-<pre><code class="language-ts">export class MyClass {
-   constructor(app: IonicApp){
-     this.app = app;
-     this.list = this.app.getComponent('my-list');
-   }
-   stopSliding(){
-     this.list.enableSlidingItems(false);
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'my-list'</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="nx">stopSliding</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">enableSlidingItems</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -561,18 +568,19 @@ removing items.</p>
 
 <p>Enable sliding items if your page has</p>
 
-<pre><code class="language-ts">export class MyClass {
-   constructor(app: IonicApp){
-     this.app = app;
-     this.list = this.app.getComponent('my-list');
-   }
-   // Here we have some method that will close the items
-   // when called
-   closeItmes(){
-     this.list.closeSlidingItems();
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">app</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">getComponent</span><span class="p">(</span><span class="s1">'my-list'</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="c1">// Here we have some method that will close the items</span>
+   <span class="c1">// when called</span>
+   <span class="nx">closeItmes</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">closeSlidingItems</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <!-- related link -->
 

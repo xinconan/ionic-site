@@ -645,33 +645,34 @@
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">presentActionSheet() {
-  let actionSheet = ActionSheet.create({
-    title: 'Modify your album',
-    buttons: [
-      {
-        text: 'Destructive',
-        role: 'destructive',
-        handler: () =&gt; {
-          console.log('Destructive clicked');
-        }
-      },{
-        text: 'Archive',
-        handler: () =&gt; {
-          console.log('Archive clicked');
-        }
-      },{
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () =&gt; {
-          console.log('Cancel clicked');
-        }
-      }
-    ]
-  });
-  this.nav.present(actionSheet);
-  }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">presentActionSheet</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">actionSheet</span> <span class="o">=</span> <span class="nx">ActionSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'Modify your album'</span><span class="p">,</span>
+    <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Destructive'</span><span class="p">,</span>
+        <span class="na">role</span><span class="p">:</span> <span class="s1">'destructive'</span><span class="p">,</span>
+        <span class="na">handler</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Destructive clicked'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">},{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Archive'</span><span class="p">,</span>
+        <span class="na">handler</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Archive clicked'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">},{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span>
+        <span class="na">role</span><span class="p">:</span> <span class="s1">'cancel'</span><span class="p">,</span>
+        <span class="na">handler</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Cancel clicked'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">present</span><span class="p">(</span><span class="nx">actionSheet</span><span class="p">);</span>
+  <span class="p">}</span>
 </code></pre>
+</div>
 
 <h2 id="alert" class="section-header">Alerts</h2>
 
@@ -1300,22 +1301,28 @@
   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/advance-card-bttf.png"</span><span class="nt">&gt;</span>
 
   <span class="nt">&lt;ion-card-content&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/ion-card-content&gt;</span>
 
-  <span class="nt">&lt;ion-item&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"thumbs-up"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-      <span class="nt">&lt;div&gt;</span>12 Likes<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">item-left</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
-      <span class="nt">&lt;div&gt;</span>4 Comments<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;ion-note</span> <span class="na">item-right</span><span class="nt">&gt;</span>
-      11h ago
-    <span class="nt">&lt;/ion-note&gt;</span>
-  <span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;ion-row&gt;</span>
+    <span class="nt">&lt;ion-col&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">small</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"thumbs-up"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+        <span class="nt">&lt;div&gt;</span>12 Likes<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-col&gt;</span>
+    <span class="nt">&lt;ion-col&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">primary</span> <span class="na">clear</span> <span class="na">small</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ion-icon</span> <span class="na">name=</span><span class="s">"text"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+        <span class="nt">&lt;div&gt;</span>4 Comments<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/ion-col&gt;</span>
+    <span class="nt">&lt;ion-col</span> <span class="na">center</span> <span class="na">text-center</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-note&gt;</span>
+        11h ago
+      <span class="nt">&lt;/ion-note&gt;</span>
+    <span class="nt">&lt;/ion-col&gt;</span>
+  <span class="nt">&lt;/ion-row&gt;</span>
 
 <span class="nt">&lt;/ion-card&gt;</span>
 </code></pre>
@@ -1558,11 +1565,12 @@
 </code></pre>
 </div>
 
-<pre><code class="language-typescript">export class MyFirstPage {
-  // use the home icon
-  myIcon: string = "home";
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyFirstPage</span> <span class="p">{</span>
+  <span class="c1">// use the home icon</span>
+  <span class="nl">myIcon</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">"home"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p><a href="/docs/v2/ionicons/" class="btn btn-lg">
   Explore the full icon set
@@ -1963,14 +1971,15 @@ navigation.</p>
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">presentLoading() {
-  let loading = Loading.create({
-    content: "Please wait...",
-    duration: 3000
-  });
-  this.nav.present(loading);
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="nx">presentLoading</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">loading</span> <span class="o">=</span> <span class="nx">Loading</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">content</span><span class="p">:</span> <span class="s2">"Please wait..."</span><span class="p">,</span>
+    <span class="na">duration</span><span class="p">:</span> <span class="mi">3000</span>
+  <span class="p">});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">present</span><span class="p">(</span><span class="nx">loading</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h2 id="menus" class="section-header">Menus</h2>
 
@@ -1997,60 +2006,62 @@ navigation.</p>
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">@App({
-  template: `
-    &lt;ion-menu [content]="content"&gt;
-      &lt;ion-toolbar&gt;
-        &lt;ion-title&gt;Pages&lt;/ion-title&gt;
-      &lt;/ion-toolbar&gt;
-      &lt;ion-content&gt;
-        &lt;ion-list&gt;
-          &lt;button ion-item (click)="openPage(loginPage)"&gt;
-            Login
-          &lt;/button&gt;
-          &lt;button ion-item (click)="openPage(signupPage)"&gt;
-            Signup
-          &lt;/button&gt;
-        &lt;/ion-list&gt;
-      &lt;/ion-content&gt;
-    &lt;/ion-menu&gt;
-
-    &lt;ion-nav id="nav" #content [root]="rootPage"&gt;&lt;/ion-nav&gt;`
-})
-class MyApp {}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">menu</span> <span class="p">[</span><span class="nx">content</span><span class="p">]</span><span class="o">=</span><span class="s2">"content"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Pages</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">list</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">ion</span><span class="o">-</span><span class="nx">item</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"openPage(loginPage)"</span><span class="o">&gt;</span>
+            <span class="nx">Login</span>
+          <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">ion</span><span class="o">-</span><span class="nx">item</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"openPage(signupPage)"</span><span class="o">&gt;</span>
+            <span class="nx">Signup</span>
+          <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/ion-list</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-menu</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">nav</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"nav"</span> <span class="err">#</span><span class="nx">content</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"rootPage"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-nav&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{}</span>
 </code></pre>
+</div>
 
 <p>The <code class="highlighter-rouge">&lt;ion-menu&gt;</code>s bound <code class="highlighter-rouge">[content]</code> property gets a <a href="https://angular.io/docs/ts/latest/guide/user-input.html#local-variables">reference</a> to the <code class="highlighter-rouge">&lt;ion-nav&gt;</code> in order to listen for drag events on the main content so it knows when to open/close.</p>
 
 <p>Then in our <a href="../api/config/App/">@App</a> component we have two buttons with click handlers that navigate to a new root page:</p>
 
-<pre><code class="language-typescript">import {MenuController, IonicApp} from 'ionic-angular';
-import {LoginPage} from 'login';
-import {SignupPage} from 'signup';
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">MenuController</span><span class="p">,</span> <span class="nx">IonicApp</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">LoginPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'login'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">SignupPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'signup'</span><span class="p">;</span>
 
-@App({
-...
-})
-class MyApp {
+<span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+<span class="p">...</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
 
-  private rootPage = LoginPage;
-  private loginPage = LoginPage;
-  private signupPage = SignupPage;
+  <span class="k">private</span> <span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">LoginPage</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">loginPage</span> <span class="o">=</span> <span class="nx">LoginPage</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">signupPage</span> <span class="o">=</span> <span class="nx">SignupPage</span><span class="p">;</span>
 
-  constructor(
-    private app: IonicApp,
-    private menu: MenuController) {}
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="k">private</span> <span class="nx">app</span><span class="err">:</span> <span class="nx">IonicApp</span><span class="p">,</span>
+    <span class="k">private</span> <span class="nx">menu</span><span class="err">:</span> <span class="nx">MenuController</span><span class="p">)</span> <span class="p">{}</span>
 
-  openPage(page) {
-    // Reset the nav controller to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.rootPage = page;
+  <span class="nx">openPage</span><span class="p">(</span><span class="nx">page</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reset the nav controller to have just this page</span>
+    <span class="c1">// we wouldn't want the back button to show in this scenario</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">page</span><span class="p">;</span>
 
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-  }
-}
+    <span class="c1">// close the menu when clicking a link from the menu</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>We inject the <a href="../api/components/menu/Menu/"><code class="highlighter-rouge">MenuController</code></a> provider so we can close the opened menu.  We then use the NavController’s <a href="../api/components/nav/NavController/#setRoot"><code class="highlighter-rouge">setRoot</code></a> function to clear the navigation stack and set the selected page as the new navigation root.</p>
 
@@ -2073,40 +2084,43 @@ class MyApp {
 
 <p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>, <code class="highlighter-rouge">NavController</code>, <code class="highlighter-rouge">Page</code> and <code class="highlighter-rouge">ViewController</code>:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController, Page, ViewController} from 'ionic-angular';
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Modal</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">,</span> <span class="nx">Page</span><span class="p">,</span> <span class="nx">ViewController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 </code></pre>
+</div>
 
 <p>Next, let’s create our modal and define add its template:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-  &lt;ion-content padding&gt;
-    &lt;h2&gt;I'm a modal!&lt;/h2&gt;
-    &lt;button (click)="close()"&gt;Close&lt;/button&gt;
-  &lt;/ion-content&gt;`
-})
-class MyModal {
-  constructor(
-    private viewCtrl: ViewController) {}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">padding</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">I</span><span class="err">'</span><span class="nx">m</span> <span class="nx">a</span> <span class="nx">modal</span><span class="o">!&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"close()"</span><span class="o">&gt;</span><span class="nx">Close</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyModal</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="k">private</span> <span class="nx">viewCtrl</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">)</span> <span class="p">{}</span>
 
-  close() {
-    this.viewCtrl.dismiss();
-  }
-}
+  <span class="nx">close</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">viewCtrl</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Finally, let’s add the code that will open our Modal:</p>
 
-<pre><code class="language-typescript">import {Modal, NavController} from 'ionic-angular'
-class MyPage {
-  constructor(private nav: NavController){}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Modal</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span>
+<span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">){}</span>
 
-  showModal() {
-    let modal = Modal.create(MyModal);
-    this.nav.present(modal);
-  }
-}
+  <span class="nx">showModal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">Modal</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">MyModal</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">present</span><span class="p">(</span><span class="nx">modal</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>The <code class="highlighter-rouge">Modal.create()</code> function can also receive an object as the second argument that will be passed to the modal. See the <a href="/docs/v2/api/components/modal/Modal/">Modal API docs</a> for more information.</p>
 
@@ -2131,88 +2145,92 @@ class MyPage {
 
 <p>The simplest way to navigate throughout your app is to create and initialize a new navigation controller, using <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a>:</p>
 
-<pre><code class="language-typescript">  import {StartPage} from 'start'
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span><span class="nx">StartPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'start'</span>
 
-  @App({
-    template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
-  })
-  class MyApp {
-    // First page to push onto the stack
-    rootPage = StartPage;
-    constructor(){}
-  }
+  <span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'</span>
+  <span class="p">})</span>
+  <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+    <span class="c1">// First page to push onto the stack</span>
+    <span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">StartPage</span><span class="p">;</span>
+    <span class="kd">constructor</span><span class="p">(){}</span>
+  <span class="p">}</span>
 </code></pre>
+</div>
 
 <p>You can access the navigation controller you create by injecting it into any of your Pages:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Login&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
-
-    &lt;ion-content&gt;Hello World&lt;/ion-content&gt;`
-})
-export class StartPage {
-  constructor(private nav: NavController){}
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">StartPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">){}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>To navigate from one page to another simply push or pop a new page onto the stack:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Login&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"goToOtherPage()"</span><span class="o">&gt;</span>
+        <span class="nx">Go</span> <span class="nx">to</span> <span class="nx">OtherPage</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">StartPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{}</span>
 
-    &lt;ion-content&gt;
-      &lt;button (click)="goToOtherPage()"&gt;
-        Go to OtherPage
-      &lt;/button&gt;
-    &lt;/ion-content&gt;`
-})
-export class StartPage {
-  constructor(private nav: NavController) {}
+  <span class="nx">goToOtherPage</span><span class="p">(){</span>
+    <span class="c1">//push another page onto the history stack</span>
+    <span class="c1">//causing the nav controller to animate the new page in</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">OtherPage</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-  goToOtherPage(){
-    //push another page onto the history stack
-    //causing the nav controller to animate the new page in
-    this.nav.push(OtherPage);
-  }
-}
-
-@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Other Page&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
-
-    &lt;ion-content&gt;I'm the other page!&lt;/ion-content&gt;`
-})
-class OtherPage {}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Other</span> <span class="nx">Page</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span><span class="nx">I</span><span class="err">'</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">other</span> <span class="nx">page</span><span class="o">!&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">OtherPage</span> <span class="p">{}</span>
 </code></pre>
+</div>
 
 <p>If your page has an <a href="../api/components/nav-bar/NavBar/"><code class="highlighter-rouge">&lt;ion-navbar&gt;</code></a>, a back button will automatically be added to it if it is not a root page.</p>
 
 <p>Alternatively, if you want to go back, but don’t have a NavBar, you can pop the current page off the stack:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-    &lt;ion-content&gt;
-      &lt;button (click)="goBack()"&gt;
-        There's no place like home
-      &lt;/button&gt;
-    &lt;/ion-content&gt;`
-})
-class OtherPage {
-  constructor(private nav: NavController) {}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"goBack()"</span><span class="o">&gt;</span>
+        <span class="nx">There</span><span class="err">'</span><span class="nx">s</span> <span class="nx">no</span> <span class="nx">place</span> <span class="nx">like</span> <span class="nx">home</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">OtherPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{}</span>
 
-  goBack() {
-    this.nav.pop();
-  }
-}
+  <span class="nx">goBack</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>For more information on basic navigation, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
 
@@ -2221,21 +2239,22 @@ class OtherPage {
 
 <p>By adding an <a href="../api/components/app/Id/"><code class="highlighter-rouge">id</code></a> to <code class="highlighter-rouge">ion-nav</code>, you can use the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service to get a reference to the <code class="highlighter-rouge">Nav</code> component, which is a navigation controller (it extends <code class="highlighter-rouge">NavController</code>):</p>
 
-<pre><code class="language-typescript">@App({
-  template: '&lt;ion-nav #myNav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
-})
-export class MyApp {
-  @ViewChild('myNav') nav
-  rootPage = TabsPage;
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;ion-nav #myNav [root]="rootPage"&gt;&lt;/ion-nav&gt;'</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="s1">'myNav'</span><span class="p">)</span> <span class="nx">nav</span>
+  <span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">TabsPage</span><span class="p">;</span>
 
-  // Wait for the components in MyApp's template to be initialized
-  // In this case, we are waiting for the Nav with id="my-nav"
-  ngAfterViewInit() {
-    // Let's navigate from TabsPage to Page1
-    this.nav.push(Page1);
-  }
-}
+  <span class="c1">// Wait for the components in MyApp's template to be initialized</span>
+  <span class="c1">// In this case, we are waiting for the Nav with id="my-nav"</span>
+  <span class="nx">ngAfterViewInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Let's navigate from TabsPage to Page1</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">Page1</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h3 id="advanced_navigation">Advanced Navigation</h3>
 <p>What if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menus">Menu</a>.</p>
@@ -2308,44 +2327,45 @@ export class MyApp {
 
 <p>Note that in this example, the Searchbar binds to the <code class="highlighter-rouge">searchQuery</code> variable. The <code class="highlighter-rouge">getItems()</code> function is called when the input changes, which updates the cities that are displayed. Although this example filters the list based on the search input, Searchbar can be used in many different scenarios:</p>
 
-<pre><code class="language-typescript">@Page({
-  templateUrl: 'search/template.html',
-})
-class SearchPage {
-  constructor() {
-    this.searchQuery = '';
-    this.initializeItems();
-  }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'search/template.html'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">SearchPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">searchQuery</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeItems</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-      ...
-    ];
-  }
+  <span class="nx">initializeItems</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="s1">'Amsterdam'</span><span class="p">,</span>
+      <span class="s1">'Bogota'</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">];</span>
+  <span class="p">}</span>
 
-  getItems(searchbar) {
-    // Reset items back to all of the items
-    this.initializeItems();
+  <span class="nx">getItems</span><span class="p">(</span><span class="nx">searchbar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reset items back to all of the items</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeItems</span><span class="p">();</span>
 
-    // set q to the value of the searchbar
-    var q = searchbar.value;
+    <span class="c1">// set q to the value of the searchbar</span>
+    <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">searchbar</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
 
-    // if the value is an empty string don't filter the items
-    if (q.trim() == '') {
-      return;
-    }
+    <span class="c1">// if the value is an empty string don't filter the items</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">q</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="o">==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    this.items = this.items.filter((v) =&gt; {
-      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
-        return true;
-      }
-      return false;
-    })
-  }
-}
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">q</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>The Searchbar takes a number of configuration options on the <code class="highlighter-rouge">&lt;ion-searchbar&gt;</code> element, such as <code class="highlighter-rouge">cancelButtonText</code> and <code class="highlighter-rouge">hideCancelButton</code>. Check out the <a href="../api/components/searchbar/Searchbar/">Searchbar API reference</a> for more information on configuring a Searchbar.</p>
 
@@ -2513,65 +2533,68 @@ class SearchPage {
 
 <p>To initialize Tabs, use <a href="../api/components/tabs/Tabs/"><code class="highlighter-rouge">&lt;ion-tabs&gt;</code></a>, with a child <a href="../api/components/tabs/Tab/"><code class="highlighter-rouge">&lt;ion-tab&gt;</code></a> for each tab:</p>
 
-<pre><code class="language-typescript">@App({
-  template: `
-    &lt;ion-tabs&gt;
-      &lt;ion-tab tabIcon="heart" [root]="tab1"&gt;&lt;/ion-tab&gt;
-      &lt;ion-tab tabIcon="star" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;/ion-tabs&gt;`
-})
-class MyApp {
-  constructor() {
-    this.tab1 = Tab1;
-    this.tab2 = Tab2;
-  }
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"heart"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"star"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab2"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-tabs&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab1</span> <span class="o">=</span> <span class="nx">Tab1</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab2</span> <span class="o">=</span> <span class="nx">Tab2</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Individual tabs are just <a href="../api/config/Page/"><code class="highlighter-rouge">@Pages</code></a>:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Heart&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
-    &lt;ion-content&gt;Tab 1&lt;/ion-content&gt;`
-})
-class Tab1 {}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Heart</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span><span class="nx">Tab</span> <span class="mi">1</span><span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">Tab1</span> <span class="p">{}</span>
 
-@Page({
-  template: `
-    &lt;ion-navbar *navbar&gt;
-      &lt;ion-title&gt;Star&lt;/ion-title&gt;
-    &lt;/ion-navbar&gt;
-    &lt;ion-content&gt;Tab 2&lt;/ion-content&gt;`
-})
-class Tab2 {}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Star</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span><span class="nx">Tab</span> <span class="mi">2</span><span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">Tab2</span> <span class="p">{}</span>
 </code></pre>
+</div>
 
 <p>Notice that each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> binds to a <code class="highlighter-rouge">[root]</code> property, just like <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a> in the <a href="#navigation">Navigation</a> section above.  That is because each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> is really just a navigation controller.  This means that each tab has its own history stack, and <a href="../api/components/nav/NavController/#injecting_nav_controller"><code class="highlighter-rouge">NavController instances injected</code></a> into children <code class="highlighter-rouge">@Pages</code> of each tab will be unique to each tab:</p>
 
-<pre><code class="language-typescript">@Page({
-...
-})
-class Tab1 {
-  constructor(
-    private nav: NavController) {
-    // Id is 1, nav refers to Tab1
-    console.log(this.nav.id)
-  }
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="p">...</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">Tab1</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Id is 1, nav refers to Tab1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-@Page({
-...
-})
-class Tab2 {
-  constructor(private nav: NavController) {
-    // Id is 2, nav refers to Tab2
-    console.log(this.nav.id)
-  }
-}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="p">...</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">Tab2</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Id is 2, nav refers to Tab2</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h3 class="section-nav" id="tabs-icon">Icon Tabs</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/tabs/icon">
@@ -2580,35 +2603,36 @@ class Tab2 {
 
 <p>To add an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> attribute. This attribute can be passed the name of any <a href="#icon">icon</a>:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-  &lt;ion-navbar *navbar&gt;
-    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt;
-  &lt;ion-content&gt;
-  &lt;/ion-content&gt;`,
-})
-class TabContentPage {
-  constructor() {}
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/ion-content&gt;`</span><span class="err">,
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">TabContentPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
 
-@Page({
-  template: `
-  &lt;ion-tabs&gt;
-    &lt;ion-tab tabIcon="contact" [root]="tab1"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="compass" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="analytics" [root]="tab3"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="settings" [root]="tab4"&gt;&lt;/ion-tab&gt;
-  &lt;/ion-tabs&gt;`
-})
-export class TabsIconPage {
-  constructor() {
-    this.tab1 = TabContentPage;
-    this.tab2 = TabContentPage;
-    ...
-  }
-}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"contact"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"compass"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab2"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"analytics"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab3"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"settings"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab4"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-tabs&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">TabsIconPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab1</span> <span class="o">=</span> <span class="nx">TabContentPage</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab2</span> <span class="o">=</span> <span class="nx">TabContentPage</span><span class="p">;</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h3 class="section-nav" id="tabs-icon-text">Icon and Text</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/tabs/icon-text">
@@ -2617,35 +2641,36 @@ export class TabsIconPage {
 
 <p>To add text and an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> and <code class="highlighter-rouge">tab-title</code> attributes:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-  &lt;ion-navbar *navbar&gt;
-    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt;
-  &lt;ion-content&gt;
-  &lt;/ion-content&gt;`
-})
-class TabsTextContentPage {
-  constructor() {}
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/ion-content&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">TabsTextContentPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
 
-@Page({
-  template: `
-  &lt;ion-tabs&gt;
-    &lt;ion-tab tabIcon="water" tabTitle="Water" [root]="tab1"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="leaf" tabTitle="Life" [root]="tab2"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="flame" tabTitle="Fire" [root]="tab3"&gt;&lt;/ion-tab&gt;
-    &lt;ion-tab tabIcon="magnet" tabTitle="Force" [root]="tab4"&gt;&lt;/ion-tab&gt;
-  &lt;/ion-tabs&gt;`
-})
-export class TabsTextPage {
-  constructor() {
-    this.tab1 = TabsTextContentPage;
-    this.tab2 = TabsTextContentPage;
-    ...
-  }
-}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"water"</span> <span class="nx">tabTitle</span><span class="o">=</span><span class="s2">"Water"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"leaf"</span> <span class="nx">tabTitle</span><span class="o">=</span><span class="s2">"Life"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab2"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"flame"</span> <span class="nx">tabTitle</span><span class="o">=</span><span class="s2">"Fire"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab3"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"magnet"</span> <span class="nx">tabTitle</span><span class="o">=</span><span class="s2">"Force"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab4"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-tabs&gt;</span><span class="err">`
+</span><span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">TabsTextPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab1</span> <span class="o">=</span> <span class="nx">TabsTextContentPage</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tab2</span> <span class="o">=</span> <span class="nx">TabsTextContentPage</span><span class="p">;</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h3 class="section-nav" id="tabs-badges">Badges</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/tabs/icon-text">
@@ -2654,33 +2679,34 @@ export class TabsTextPage {
 
 <p>To add a badge to a tab, use the <code class="highlighter-rouge">tabBadge</code> and <code class="highlighter-rouge">tabBadgeStyle</code> attributes. The <code class="highlighter-rouge">tabBadgeStyle</code> attribute can be passed the name of any <a href="/docs/v2/theming/theming-your-app/">color</a>:</p>
 
-<pre><code class="language-typescript">@Page({
-  template: `
-  &lt;ion-navbar *navbar&gt;
-    &lt;ion-title&gt;Tabs&lt;/ion-title&gt;
-  &lt;/ion-navbar&gt;
-  &lt;ion-content&gt;
-  &lt;/ion-content&gt;`,
-})
-class TabBadgePage {
-  constructor() {}
-}
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/ion-content&gt;`</span><span class="err">,
+</span><span class="p">})</span>
+<span class="kr">class</span> <span class="nx">TabBadgePage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
 
-@Page({
-  template:
-    '&lt;ion-tabs&gt;' +
-      '&lt;ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
-      '&lt;ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;' +
-      '&lt;ion-tab tabIcon="musical-notes" [root]="tabThree"&gt;&lt;/ion-tab&gt;' +
-    '&lt;/ion-tabs&gt;',
-})
-export class BadgesPage {
-  constructor() {
-    this.tabOne = TabBadgePage;
-    this.tabTwo = TabBadgePage;
-  }
-}
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span>
+    <span class="s1">'&lt;ion-tabs&gt;'</span> <span class="o">+</span>
+      <span class="s1">'&lt;ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;'</span> <span class="o">+</span>
+      <span class="s1">'&lt;ion-tab tabIcon="chatbubbles" [root]="tabTwo" tabBadge="14" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;'</span> <span class="o">+</span>
+      <span class="s1">'&lt;ion-tab tabIcon="musical-notes" [root]="tabThree"&gt;&lt;/ion-tab&gt;'</span> <span class="o">+</span>
+    <span class="s1">'&lt;/ion-tabs&gt;'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">BadgesPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tabOne</span> <span class="o">=</span> <span class="nx">TabBadgePage</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">tabTwo</span> <span class="o">=</span> <span class="nx">TabBadgePage</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>For more information on tabs, check out the <a href="../api/components/tabs/Tabs/">Tabs API reference</a>.</p>
 
@@ -2699,21 +2725,22 @@ export class BadgesPage {
   Demo Source
 </a></p>
 
-<pre><code class="language-typescript">
-presentToast() {
-  let toast = Toast.create({
-    message: 'User was added successfully',
-    duration: 3000
-  });
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>
+<span class="nx">presentToast</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">toast</span> <span class="o">=</span> <span class="nx">Toast</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'User was added successfully'</span><span class="p">,</span>
+    <span class="na">duration</span><span class="p">:</span> <span class="mi">3000</span>
+  <span class="p">});</span>
 
-  toast.onDismiss(() =&gt; {
-    console.log('Dismissed toast');
-  });
+  <span class="nx">toast</span><span class="p">.</span><span class="nx">onDismiss</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Dismissed toast'</span><span class="p">);</span>
+  <span class="p">});</span>
 
-  this.nav.present(toast);
-  }
+  <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">present</span><span class="p">(</span><span class="nx">toast</span><span class="p">);</span>
+  <span class="p">}</span>
 
 </code></pre>
+</div>
 
 <h2 id="toggle" class="section-header">Toggle</h2>
 
@@ -2874,78 +2901,80 @@ presentToast() {
 </code></pre>
 </div>
 
-<pre><code class="language-typescript">@Page({
-  templateUrl: 'search/template.html',
-})
-class SearchPage {
-  constructor() {
-    this.searchQuery = '';
-    this.initializeItems();
-  }
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'search/template.html'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="kr">class</span> <span class="nx">SearchPage</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">searchQuery</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeItems</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  initializeItems() {
-    this.items = [
-      'Angular 1.x',
-      'Angular 2',
-      'ReactJS',
-      'EmberJS',
-      'Meteor',
-      'Typescript',
-      'Dart',
-      'CoffeeScript'
-    ];
-  }
+  <span class="nx">initializeItems</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="s1">'Angular 1.x'</span><span class="p">,</span>
+      <span class="s1">'Angular 2'</span><span class="p">,</span>
+      <span class="s1">'ReactJS'</span><span class="p">,</span>
+      <span class="s1">'EmberJS'</span><span class="p">,</span>
+      <span class="s1">'Meteor'</span><span class="p">,</span>
+      <span class="s1">'Typescript'</span><span class="p">,</span>
+      <span class="s1">'Dart'</span><span class="p">,</span>
+      <span class="s1">'CoffeeScript'</span>
+    <span class="p">];</span>
+  <span class="p">}</span>
 
-  getItems(searchbar) {
-    // Reset items back to all of the items
-    this.initializeItems();
+  <span class="nx">getItems</span><span class="p">(</span><span class="nx">searchbar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reset items back to all of the items</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeItems</span><span class="p">();</span>
 
-    // set q to the value of the searchbar
-    var q = searchbar.value;
+    <span class="c1">// set q to the value of the searchbar</span>
+    <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">searchbar</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
 
-    // if the value is an empty string don't filter the items
-    if (q.trim() == '') {
-      return;
-    }
+    <span class="c1">// if the value is an empty string don't filter the items</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">q</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="o">==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    this.items = this.items.filter((v) =&gt; {
-      if (v.toLowerCase().indexOf(q.toLowerCase()) &gt; -1) {
-        return true;
-      }
-      return false;
-    })
-  }
-}
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">q</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <h3 id="toolbar-colors" class="no-para">Changing the Color</h3>
 
 <p>You can change the toolbars color by changing the property on the element.</p>
 
-<pre><code class="language-typescript">
-@Page({
-  template: `
-    &lt;ion-toolbar primary&gt;
-      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code>
+<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="nx">primary</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>
 
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="nx">secondary</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="nx">danger</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>
 
-    &lt;ion-toolbar secondary&gt;
-      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
-
-    &lt;ion-toolbar danger&gt;
-      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
-
-
-    &lt;ion-toolbar dark&gt;
-      &lt;ion-title&gt;Toolbar&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
-  `
-  })
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="nx">dark</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>  <span class="err">`</span>
+  <span class="p">})</span>
 
 </code></pre>
+</div>
 
 <p>You can also change the navbar’s color the same way. This will allow you to have a different color navbar per page in your app.</p>
 

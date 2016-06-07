@@ -121,9 +121,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -464,16 +470,17 @@ Improve this doc
 
 <p>Chech to see if the keyboard is open or not.</p>
 
-<pre><code class="language-ts">export class MyClass{
- constructor(keyboard: Keyboard){
-   this.keyboard = keyboard;
- }
- keyboardCheck(){
-   setTimeout(()  =&gt; console.log('is the keyboard open ', this.keyboard.isOpen()));
- }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+ <span class="kd">constructor</span><span class="p">(</span><span class="nx">keyboard</span><span class="err">:</span> <span class="nx">Keyboard</span><span class="p">){</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">keyboard</span> <span class="o">=</span> <span class="nx">keyboard</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="nx">keyboardCheck</span><span class="p">(){</span>
+   <span class="nx">setTimeout</span><span class="p">(()</span>  <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'is the keyboard open '</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nx">isOpen</span><span class="p">()));</span>
+ <span class="p">}</span>
+<span class="p">}</span>
 
 </code></pre>
+</div>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -491,18 +498,19 @@ Improve this doc
 
 <p>When the keyboard is closed, call any methods you want</p>
 
-<pre><code class="language-ts">export class MyClass{
- constructor(keyboard: Keyboard){
-   this.keyboard = keyboard;
-   this.keyboard.onClose(this.closeCallback);
- }
- closeCallback(){
-    // call what ever functionality you want on keyboard close
-    console.log('Closing time");
- }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
+ <span class="kd">constructor</span><span class="p">(</span><span class="nx">keyboard</span><span class="err">:</span> <span class="nx">Keyboard</span><span class="p">){</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">keyboard</span> <span class="o">=</span> <span class="nx">keyboard</span><span class="p">;</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nx">onClose</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">closeCallback</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="nx">closeCallback</span><span class="p">(){</span>
+    <span class="c1">// call what ever functionality you want on keyboard close</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">'</span><span class="nx">Closing</span> <span class="nx">time</span><span class="err">"</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="p">}</span>
 
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>

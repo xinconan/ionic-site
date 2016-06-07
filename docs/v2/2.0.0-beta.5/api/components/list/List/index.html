@@ -123,9 +123,15 @@
   </option>
 
   <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 (latest)
+  </option>
+
+  <option
    value="/docs/v2/2.0.0-beta.7/api/"
    >
-    2.0.0-beta.7 (latest)
+    2.0.0-beta.7 
   </option>
 
   <option
@@ -529,17 +535,18 @@ removing items.</p>
 
 <p>Enable sliding items if your page has them</p>
 
-<pre><code class="language-ts">import {Page, List} from 'ionic-angular';
-import {ViewChild} from 'angular2/core';
-@Page...
-export class MyClass {
-   @ViewChild(List) list: List;
-   constructor(){}
-   stopSliding(){
-     this.list.enableSlidingItems(false);
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">List</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">ViewChild</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'angular2/core'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">Page</span><span class="p">...</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+   <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">List</span><span class="p">)</span> <span class="nx">list</span><span class="err">:</span> <span class="nx">List</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(){}</span>
+   <span class="nx">stopSliding</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">enableSlidingItems</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -582,17 +589,18 @@ export class MyClass {
 
 <p>Enable sliding items if your page has</p>
 
-<pre><code class="language-ts">import {Page, List} from 'ionic-angular';
-import {ViewChild} from 'angular2/core';
-@Page...
-export class MyClass {
-   @ViewChild(List) list: List;
-   constructor(){}
-   closeItmes(){
-     this.list.closeSlidingItems();
-   }
-}
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">List</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">ViewChild</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'angular2/core'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">Page</span><span class="p">...</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+   <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">List</span><span class="p">)</span> <span class="nx">list</span><span class="err">:</span> <span class="nx">List</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(){}</span>
+   <span class="nx">closeItmes</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">closeSlidingItems</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <!-- related link -->
 

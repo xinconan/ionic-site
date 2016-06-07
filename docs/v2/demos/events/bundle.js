@@ -15606,25 +15606,29 @@
 	__export(__webpack_require__(103));
 	__export(__webpack_require__(331));
 	__export(__webpack_require__(339));
-	__export(__webpack_require__(414));
 	__export(__webpack_require__(415));
+	__export(__webpack_require__(416));
+	__export(__webpack_require__(346));
+	__export(__webpack_require__(347));
+	__export(__webpack_require__(344));
+	__export(__webpack_require__(345));
 	__export(__webpack_require__(332));
-	__export(__webpack_require__(421));
+	__export(__webpack_require__(422));
 	__export(__webpack_require__(335));
 	__export(__webpack_require__(336));
 	__export(__webpack_require__(342));
 	__export(__webpack_require__(338));
+	__export(__webpack_require__(362));
 	__export(__webpack_require__(361));
-	__export(__webpack_require__(360));
-	__export(__webpack_require__(413));
-	__export(__webpack_require__(425));
+	__export(__webpack_require__(414));
+	__export(__webpack_require__(426));
 	// these modules don't export anything
-	__webpack_require__(426);
 	__webpack_require__(427);
 	__webpack_require__(428);
 	__webpack_require__(429);
 	__webpack_require__(430);
 	__webpack_require__(431);
+	__webpack_require__(432);
 
 /***/ },
 /* 103 */
@@ -15647,11 +15651,11 @@
 	var keyboard_1 = __webpack_require__(342);
 	var menu_controller_1 = __webpack_require__(351);
 	var dom_1 = __webpack_require__(334);
-	var nav_registry_1 = __webpack_require__(407);
+	var nav_registry_1 = __webpack_require__(408);
 	var platform_1 = __webpack_require__(332);
-	var scroll_view_1 = __webpack_require__(365);
-	var tap_click_1 = __webpack_require__(410);
-	var translate_1 = __webpack_require__(413);
+	var scroll_view_1 = __webpack_require__(366);
+	var tap_click_1 = __webpack_require__(411);
+	var translate_1 = __webpack_require__(414);
 	var _reflect = Reflect;
 	function ionicBootstrap(appRootComponent, customProviders, config) {
 	    // get all Ionic Providers
@@ -47974,7 +47978,7 @@
 	        * with a hardware back button in the same sense an Android or Windows device
 	        * does. It's important to note that this event does not emit when the Ionic
 	        * app's back button within the navbar is clicked, but this event is only
-	        * referencing the platform's hardward back button.
+	        * referencing the platform's hardware back button.
 	        */
 	        this.backButton = new core_1.EventEmitter();
 	        /**
@@ -48232,9 +48236,7 @@
 	    // Provided NOOP methods so they do not error when
 	    // called by engines (the browser)that do not provide them
 	    /**
-	    * The `exitApp` method is useful when running from a native platform,
-	    * such as Cordova. This adds the ability to place the Cordova app
-	    * in the background.
+	    * @private
 	    */
 	    Platform.prototype.exitApp = function () { };
 	    // Getter/Setter Methods
@@ -49364,45 +49366,46 @@
 	"use strict";
 	var common_1 = __webpack_require__(188);
 	var menu_1 = __webpack_require__(340);
-	var menu_toggle_1 = __webpack_require__(352);
-	var menu_close_1 = __webpack_require__(362);
-	var badge_1 = __webpack_require__(363);
-	var button_1 = __webpack_require__(357);
-	var content_1 = __webpack_require__(364);
-	var img_1 = __webpack_require__(366);
-	var scroll_1 = __webpack_require__(367);
-	var infinite_scroll_1 = __webpack_require__(368);
-	var infinite_scroll_content_1 = __webpack_require__(369);
-	var refresher_1 = __webpack_require__(370);
-	var refresher_content_1 = __webpack_require__(371);
-	var slides_1 = __webpack_require__(372);
-	var tabs_1 = __webpack_require__(374);
-	var tab_1 = __webpack_require__(376);
-	var list_1 = __webpack_require__(378);
-	var item_1 = __webpack_require__(380);
-	var item_sliding_1 = __webpack_require__(383);
-	var virtual_scroll_1 = __webpack_require__(384);
-	var virtual_item_1 = __webpack_require__(385);
-	var toolbar_1 = __webpack_require__(356);
-	var icon_1 = __webpack_require__(381);
-	var spinner_1 = __webpack_require__(387);
-	var checkbox_1 = __webpack_require__(388);
-	var select_1 = __webpack_require__(389);
-	var option_1 = __webpack_require__(392);
-	var datetime_1 = __webpack_require__(393);
-	var toggle_1 = __webpack_require__(395);
-	var input_1 = __webpack_require__(396);
-	var label_1 = __webpack_require__(382);
-	var segment_1 = __webpack_require__(399);
-	var radio_button_1 = __webpack_require__(400);
-	var radio_group_1 = __webpack_require__(401);
-	var range_1 = __webpack_require__(402);
-	var searchbar_1 = __webpack_require__(403);
-	var nav_1 = __webpack_require__(404);
-	var nav_push_1 = __webpack_require__(406);
-	var nav_router_1 = __webpack_require__(408);
-	var navbar_1 = __webpack_require__(355);
-	var show_hide_when_1 = __webpack_require__(409);
+	var menu_toggle_1 = __webpack_require__(353);
+	var menu_close_1 = __webpack_require__(363);
+	var backdrop_1 = __webpack_require__(352);
+	var badge_1 = __webpack_require__(364);
+	var button_1 = __webpack_require__(358);
+	var content_1 = __webpack_require__(365);
+	var img_1 = __webpack_require__(367);
+	var scroll_1 = __webpack_require__(368);
+	var infinite_scroll_1 = __webpack_require__(369);
+	var infinite_scroll_content_1 = __webpack_require__(370);
+	var refresher_1 = __webpack_require__(371);
+	var refresher_content_1 = __webpack_require__(372);
+	var slides_1 = __webpack_require__(373);
+	var tabs_1 = __webpack_require__(375);
+	var tab_1 = __webpack_require__(377);
+	var list_1 = __webpack_require__(379);
+	var item_1 = __webpack_require__(381);
+	var item_sliding_1 = __webpack_require__(384);
+	var virtual_scroll_1 = __webpack_require__(385);
+	var virtual_item_1 = __webpack_require__(386);
+	var toolbar_1 = __webpack_require__(357);
+	var icon_1 = __webpack_require__(382);
+	var spinner_1 = __webpack_require__(388);
+	var checkbox_1 = __webpack_require__(389);
+	var select_1 = __webpack_require__(390);
+	var option_1 = __webpack_require__(393);
+	var datetime_1 = __webpack_require__(394);
+	var toggle_1 = __webpack_require__(396);
+	var input_1 = __webpack_require__(397);
+	var label_1 = __webpack_require__(383);
+	var segment_1 = __webpack_require__(400);
+	var radio_button_1 = __webpack_require__(401);
+	var radio_group_1 = __webpack_require__(402);
+	var range_1 = __webpack_require__(403);
+	var searchbar_1 = __webpack_require__(404);
+	var nav_1 = __webpack_require__(405);
+	var nav_push_1 = __webpack_require__(407);
+	var nav_router_1 = __webpack_require__(409);
+	var navbar_1 = __webpack_require__(356);
+	var show_hide_when_1 = __webpack_require__(410);
 	/**
 	 * @name IONIC_DIRECTIVES
 	 * @description
@@ -49479,6 +49482,7 @@
 	    menu_1.Menu,
 	    menu_toggle_1.MenuToggle,
 	    menu_close_1.MenuClose,
+	    backdrop_1.Backdrop,
 	    badge_1.Badge,
 	    button_1.Button,
 	    content_1.Content,
@@ -49557,9 +49561,6 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var __param = (this && this.__param) || function (paramIndex, decorator) {
-	    return function (target, key) { decorator(target, key, paramIndex); }
-	};
 	var core_1 = __webpack_require__(6);
 	var ion_1 = __webpack_require__(341);
 	var config_1 = __webpack_require__(331);
@@ -49568,6 +49569,7 @@
 	var menu_gestures_1 = __webpack_require__(343);
 	var menu_controller_1 = __webpack_require__(351);
 	var util_1 = __webpack_require__(333);
+	var backdrop_1 = __webpack_require__(352);
 	/**
 	 * @name Menu
 	 * @description
@@ -49856,6 +49858,15 @@
 	    /**
 	     * @private
 	     */
+	    Menu.prototype.bdClick = function (ev) {
+	        console.debug('backdrop clicked');
+	        ev.preventDefault();
+	        ev.stopPropagation();
+	        this._menuCtrl.close();
+	    };
+	    /**
+	     * @private
+	     */
 	    Menu.prototype._setListeners = function () {
 	        var self = this;
 	        if (self._init) {
@@ -50070,6 +50081,10 @@
 	        this._cntEle = null;
 	    };
 	    __decorate([
+	        core_1.ViewChild(backdrop_1.Backdrop), 
+	        __metadata('design:type', (typeof (_a = typeof backdrop_1.Backdrop !== 'undefined' && backdrop_1.Backdrop) === 'function' && _a) || Object)
+	    ], Menu.prototype, "backdrop", void 0);
+	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
 	    ], Menu.prototype, "content", void 0);
@@ -50103,15 +50118,15 @@
 	    ], Menu.prototype, "maxEdgeStart", void 0);
 	    __decorate([
 	        core_1.Output(), 
-	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
+	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
 	    ], Menu.prototype, "ionDrag", void 0);
 	    __decorate([
 	        core_1.Output(), 
-	        __metadata('design:type', (typeof (_b = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _b) || Object)
+	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
 	    ], Menu.prototype, "ionOpen", void 0);
 	    __decorate([
 	        core_1.Output(), 
-	        __metadata('design:type', (typeof (_c = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _c) || Object)
+	        __metadata('design:type', (typeof (_d = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _d) || Object)
 	    ], Menu.prototype, "ionClose", void 0);
 	    Menu = __decorate([
 	        core_1.Component({
@@ -50120,49 +50135,16 @@
 	                'role': 'navigation'
 	            },
 	            template: '<ng-content></ng-content>' +
-	                '<div tappable disable-activated class="backdrop"></div>',
-	            directives: [core_1.forwardRef(function () { return MenuBackdrop; })],
+	                '<ion-backdrop (click)="bdClick($event)" disableScroll="false"></ion-backdrop>',
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_d = typeof menu_controller_1.MenuController !== 'undefined' && menu_controller_1.MenuController) === 'function' && _d) || Object, (typeof (_e = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _e) || Object, (typeof (_f = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _f) || Object, (typeof (_g = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _g) || Object, (typeof (_h = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _h) || Object, (typeof (_j = typeof keyboard_1.Keyboard !== 'undefined' && keyboard_1.Keyboard) === 'function' && _j) || Object, (typeof (_k = typeof core_1.NgZone !== 'undefined' && core_1.NgZone) === 'function' && _k) || Object])
+	        __metadata('design:paramtypes', [(typeof (_e = typeof menu_controller_1.MenuController !== 'undefined' && menu_controller_1.MenuController) === 'function' && _e) || Object, (typeof (_f = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _f) || Object, (typeof (_g = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _g) || Object, (typeof (_h = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _h) || Object, (typeof (_j = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _j) || Object, (typeof (_k = typeof keyboard_1.Keyboard !== 'undefined' && keyboard_1.Keyboard) === 'function' && _k) || Object, (typeof (_l = typeof core_1.NgZone !== 'undefined' && core_1.NgZone) === 'function' && _l) || Object])
 	    ], Menu);
 	    return Menu;
-	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 	}(ion_1.Ion));
 	exports.Menu = Menu;
-	/**
-	 * @private
-	 */
-	var MenuBackdrop = (function () {
-	    function MenuBackdrop(_menuCtrl, elementRef) {
-	        this._menuCtrl = _menuCtrl;
-	        this.elementRef = elementRef;
-	        _menuCtrl.backdrop = this;
-	    }
-	    /**
-	     * @private
-	     */
-	    MenuBackdrop.prototype.clicked = function (ev) {
-	        console.debug('backdrop clicked');
-	        ev.preventDefault();
-	        ev.stopPropagation();
-	        this._menuCtrl.close();
-	    };
-	    MenuBackdrop = __decorate([
-	        core_1.Directive({
-	            selector: '.backdrop',
-	            host: {
-	                '(click)': 'clicked($event)',
-	            }
-	        }),
-	        __param(0, core_1.Host()), 
-	        __metadata('design:paramtypes', [Menu, (typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
-	    ], MenuBackdrop);
-	    return MenuBackdrop;
-	    var _a;
-	}());
-	exports.MenuBackdrop = MenuBackdrop;
 
 /***/ },
 /* 341 */
@@ -53642,7 +53624,7 @@
 	     * @private
 	     */
 	    MenuController.create = function (type, menuCmp, platform) {
-	        return new menuTypes[type](menuCmp);
+	        return new menuTypes[type](menuCmp, platform);
 	    };
 	    return MenuController;
 	}());
@@ -53663,12 +53645,92 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
+	var core_1 = __webpack_require__(6);
+	var util_1 = __webpack_require__(333);
+	var DISABLE_SCROLL = 'disable-scroll';
+	/**
+	 * @private
+	 */
+	var Backdrop = (function () {
+	    function Backdrop(elementRef) {
+	        this.elementRef = elementRef;
+	        this.pushed = false;
+	        this.disableScroll = true;
+	    }
+	    Backdrop.push = function () {
+	        if (this.nuBackDrops === 0) {
+	            console.debug('adding .disable-scroll to body');
+	            document.body.classList.add(DISABLE_SCROLL);
+	        }
+	        else {
+	            console.warn('several backdrops on screen? probably a bug');
+	        }
+	        this.nuBackDrops++;
+	    };
+	    Backdrop.pop = function () {
+	        if (this.nuBackDrops === 0) {
+	            console.error('pop requires a push');
+	            return;
+	        }
+	        this.nuBackDrops--;
+	        if (this.nuBackDrops === 0) {
+	            console.debug('removing .disable-scroll from body');
+	            document.body.classList.remove(DISABLE_SCROLL);
+	        }
+	    };
+	    Backdrop.prototype.ngOnInit = function () {
+	        if (util_1.isTrueProperty(this.disableScroll)) {
+	            Backdrop.push();
+	            this.pushed = true;
+	        }
+	    };
+	    Backdrop.prototype.ngOnDestroy = function () {
+	        if (this.pushed) {
+	            Backdrop.pop();
+	            this.pushed = false;
+	        }
+	    };
+	    Backdrop.nuBackDrops = 0;
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Object)
+	    ], Backdrop.prototype, "disableScroll", void 0);
+	    Backdrop = __decorate([
+	        core_1.Directive({
+	            selector: 'ion-backdrop',
+	            host: {
+	                'role': 'presentation',
+	                'tappable': '',
+	                'disable-activated': ''
+	            },
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
+	    ], Backdrop);
+	    return Backdrop;
+	    var _a;
+	}());
+	exports.Backdrop = Backdrop;
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
 	var __param = (this && this.__param) || function (paramIndex, decorator) {
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var view_controller_1 = __webpack_require__(353);
-	var navbar_1 = __webpack_require__(355);
+	var view_controller_1 = __webpack_require__(354);
+	var navbar_1 = __webpack_require__(356);
 	var menu_controller_1 = __webpack_require__(351);
 	/**
 	 * @name MenuToggle
@@ -53687,12 +53749,59 @@
 	 * <button menuToggle>Toggle Menu</button>
 	 * ```
 	 *
-	 * To toggle a certain menu by its id or side, give the `menuToggle`
+	 * To toggle a specific menu by its id or side, give the `menuToggle`
 	 * directive a value.
 	 *
 	 * ```html
 	 * <button menuToggle="right">Toggle Right Menu</button>
 	 * ```
+	 *
+	 * If placing the `menuToggle` in a navbar or toolbar, it should be
+	 * placed as a child of the `<ion-navbar>` or `<ion-toolbar>`, and not in
+	 * the `<ion-buttons>` element:
+	 *
+	 * ```html
+	 * <ion-navbar *navbar>
+	 *   <ion-buttons start>
+	 *     <button>
+	 *       <ion-icon name="contact"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
+	 *   <button menuToggle>
+	 *     <ion-icon name="menu"></ion-icon>
+	 *   </button>
+	 *   <ion-title>
+	 *     Title
+	 *   </ion-title>
+	 *   <ion-buttons end>
+	 *     <button (click)="doClick()">
+	 *       <ion-icon name="more"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
+	 * </ion-navbar>
+	 * ```
+	 *
+	 * Similar to `<ion-buttons>`, the `menuToggle` can be positioned using
+	 * `start`, `end`, `left`, or `right`:
+	 *
+	 * ```html
+	 * <ion-toolbar>
+	 *   <button menuToggle right>
+	 *     <ion-icon name="menu"></ion-icon>
+	 *   </button>
+	 *   <ion-title>
+	 *     Title
+	 *   </ion-title>
+	 *   <ion-buttons end>
+	 *     <button (click)="doClick()">
+	 *       <ion-icon name="more"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
+	 * </ion-toolbar>
+	 * ```
+	 *
+	 * See the [Toolbar API docs](../../toolbar/Toolbar) for more information
+	 * on the different positions.
 	 *
 	 * @demo /docs/v2/demos/menu/
 	 * @see {@link /docs/v2/components#menus Menu Component Docs}
@@ -53762,7 +53871,7 @@
 	exports.MenuToggle = MenuToggle;
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53776,7 +53885,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var nav_params_1 = __webpack_require__(354);
+	var nav_params_1 = __webpack_require__(355);
 	var util_1 = __webpack_require__(333);
 	/**
 	 * @name ViewController
@@ -53855,9 +53964,11 @@
 	    ViewController.prototype.onDismiss = function (callback) {
 	        this._onDismiss = callback;
 	    };
-	    ViewController.prototype.dismiss = function (data, role) {
+	    ViewController.prototype.dismiss = function (data, role, navOptions) {
 	        var _this = this;
-	        return this._nav.remove(this._nav.indexOf(this), 1, this._leavingOpts).then(function () {
+	        if (navOptions === void 0) { navOptions = {}; }
+	        var options = util_1.merge({}, this._leavingOpts, navOptions);
+	        return this._nav.remove(this._nav.indexOf(this), 1, options).then(function () {
 	            _this._onDismiss && _this._onDismiss(data, role);
 	            return data;
 	        });
@@ -54307,7 +54418,7 @@
 	}
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -54367,7 +54478,7 @@
 	exports.NavParams = NavParams;
 
 /***/ },
-/* 355 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54390,12 +54501,12 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var ion_1 = __webpack_require__(341);
-	var toolbar_1 = __webpack_require__(356);
+	var toolbar_1 = __webpack_require__(357);
 	var config_1 = __webpack_require__(331);
 	var app_1 = __webpack_require__(330);
 	var util_1 = __webpack_require__(333);
-	var view_controller_1 = __webpack_require__(353);
-	var nav_controller_1 = __webpack_require__(358);
+	var view_controller_1 = __webpack_require__(354);
+	var nav_controller_1 = __webpack_require__(359);
 	var BackButton = (function (_super) {
 	    __extends(BackButton, _super);
 	    function BackButton(_nav, elementRef, navbar) {
@@ -54627,7 +54738,7 @@
 	exports.NavbarTemplate = NavbarTemplate;
 
 /***/ },
-/* 356 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54649,11 +54760,11 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var button_1 = __webpack_require__(357);
+	var button_1 = __webpack_require__(358);
 	var config_1 = __webpack_require__(331);
 	var ion_1 = __webpack_require__(341);
-	var navbar_1 = __webpack_require__(355);
-	var view_controller_1 = __webpack_require__(353);
+	var navbar_1 = __webpack_require__(356);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @private
 	 */
@@ -54704,17 +54815,41 @@
 	/**
 	 * @name Toolbar
 	 * @description
-	 * The toolbar is generic bar that sits above or below content.
-	 * Unlike an `Navbar`, `Toolbar` can be used for a subheader as well.
-	 * Since it's based on flexbox, you can place the toolbar where you
-	 * need it and flexbox will handle everything else. Toolbars will automatically
-	 * assume they should be placed before an `ion-content`, so to specify that you want it
-	 * below, you can add the property `position="bottom"`. This will change the flex order
+	 * A Toolbar is a generic bar that is positioned above or below content.
+	 * Unlike a [Navbar](../../nav/Navbar), a toolbar can be used as a subheader.
+	 * Toolbars are positioned automatically at the `top`, but they can be
+	 * positioned at the bottom by setting `position="bottom"` on the component.
+	 *
+	 *
+	 * ### Buttons in a Toolbar
+	 * Buttons placed in a toolbar should be placed inside of the `<ion-buttons>`
+	 * element. An exception to this is a [menuToggle](../../menu/MenuToggle) button.
+	 * It should not be placed inside of the `<ion-buttons>` element. Both the
+	 * `<ion-buttons>` element and the `menuToggle` can be positioned inside of the
+	 * toolbar using different properties. The below chart has a description of each
 	 * property.
+	 *
+	 * | Property    | Description                                                                                                           |
+	 * |-------------|-----------------------------------------------------------------------------------------------------------------------|
+	 * | `start`     | Positions element to the left of the content in `ios` mode, and directly to the right in `md` and `wp` mode.    |
+	 * | `end`       | Positions element to the right of the content in `ios` mode, and to the far right in `md` and `wp` mode.        |
+	 * | `left`      | Positions element to the left of all other elements.                                                            |
+	 * | `right`     | Positions element to the right of all other elements.                                                           |
+	 *
+	 * See [usage](#usage) below for some examples.
+	 *
 	 *
 	 * @usage
 	 * ```html
 	 * <ion-toolbar>
+	 *   <ion-buttons start>
+	 *     <button>
+	 *       <ion-icon name="contact"></ion-icon>
+	 *     </button>
+	 *     <button>
+	 *       <ion-icon name="search"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
 	 *   <ion-title>My Toolbar Title</ion-title>
 	 * </ion-toolbar>
 	 *
@@ -54722,16 +54857,28 @@
 	 *   <ion-title>I'm a subheader</ion-title>
 	 * </ion-toolbar>
 	 *
-	 *  <ion-content></ion-content>
+	 * <ion-content></ion-content>
 	 *
 	 * <ion-toolbar position="bottom">
 	 *   <ion-title>I'm a subfooter</ion-title>
+	 *   <ion-buttons right>
+	 *     <button>
+	 *       <ion-icon name="menu"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
 	 * </ion-toolbar>
 	 *
 	 * <ion-toolbar position="bottom">
 	 *   <ion-title>I'm a footer</ion-title>
+	 *   <ion-buttons end>
+	 *     <button>
+	 *       <ion-icon name="more"></ion-icon>
+	 *     </button>
+	 *     <button>
+	 *       <ion-icon name="options"></ion-icon>
+	 *     </button>
+	 *   </ion-buttons>
 	 * </ion-toolbar>
-	 *
 	 *  ```
 	 *
 	 * @property {any} [position] - set position of the toolbar, `top` or `bottom`.
@@ -54773,20 +54920,27 @@
 	 * @name Title
 	 * @description
 	 * `ion-title` is a component that sets the title of the `Toolbar` or `Navbar`
+	 *
 	 * @usage
+	 *
+	 * ```html
+	 * <ion-navbar *navbar>
+	 *    <ion-title>Tab 1</ion-title>
+	 * </ion-navbar>
+	 * ```
+	 *
+	 * Or to create a navbar with a toolbar as a subheader:
+	 *
 	 * ```html
 	 * <ion-navbar *navbar>
 	 *    <ion-title>Tab 1</ion-title>
 	 * </ion-navbar>
 	 *
-	 *<!-- or if you wanted to create a subheader title-->
-	 * <ion-navbar *navbar>
-	 *    <ion-title>Tab 1</ion-title>
-	 * </ion-navbar>
 	 * <ion-toolbar>
-	 *   <ion-title>SubHeader</ion-title>
+	 *   <ion-title>Subheader</ion-title>
 	 * </ion-toolbar>
-	 *  ```
+	 * ```
+	 *
 	 * @demo /docs/v2/demos/title/
 	 */
 	var ToolbarTitle = (function (_super) {
@@ -54828,20 +54982,6 @@
 	        toolbar && toolbar.addItemRef(elementRef);
 	        navbar && navbar.addItemRef(elementRef);
 	        this.inToolbar = !!(toolbar || navbar);
-	        // Deprecation warning
-	        if (elementRef.nativeElement.tagName === 'ION-NAV-ITEMS') {
-	            if (elementRef.nativeElement.hasAttribute('primary')) {
-	                console.warn('<ion-nav-items primary> has been renamed to <ion-buttons start>, please update your HTML');
-	                elementRef.nativeElement.setAttribute('start', '');
-	            }
-	            else if (elementRef.nativeElement.hasAttribute('secondary')) {
-	                console.warn('<ion-nav-items secondary> has been renamed to <ion-buttons end>, please update your HTML');
-	                elementRef.nativeElement.setAttribute('end', '');
-	            }
-	            else {
-	                console.warn('<ion-nav-items> has been renamed to <ion-buttons>, please update your HTML');
-	            }
-	        }
 	    }
 	    Object.defineProperty(ToolbarItem.prototype, "_buttons", {
 	        set: function (buttons) {
@@ -54872,7 +55012,7 @@
 	exports.ToolbarItem = ToolbarItem;
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55293,7 +55433,7 @@
 	var ICON = 2;
 
 /***/ },
-/* 358 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55306,11 +55446,11 @@
 	var bootstrap_1 = __webpack_require__(103);
 	var ion_1 = __webpack_require__(341);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
+	var nav_params_1 = __webpack_require__(355);
 	var menu_controller_1 = __webpack_require__(351);
-	var swipe_back_1 = __webpack_require__(359);
-	var transition_1 = __webpack_require__(360);
-	var view_controller_1 = __webpack_require__(353);
+	var swipe_back_1 = __webpack_require__(360);
+	var transition_1 = __webpack_require__(361);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name NavController
 	 * @description
@@ -55945,6 +56085,9 @@
 	     */
 	    NavController.prototype.popTo = function (view, opts) {
 	        var startIndex = this.indexOf(view);
+	        if (startIndex < 0) {
+	            return Promise.reject('View not found to pop to');
+	        }
 	        var activeView = this.getByState(STATE_TRANS_ENTER) ||
 	            this.getByState(STATE_INIT_ENTER) ||
 	            this.getActive();
@@ -56874,7 +57017,7 @@
 	var ctrlIds = -1;
 
 /***/ },
-/* 359 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -56931,7 +57074,7 @@
 	exports.SwipeBackGesture = SwipeBackGesture;
 
 /***/ },
-/* 360 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -56940,7 +57083,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
+	var animation_1 = __webpack_require__(362);
 	/**
 	 * @private
 	 **/
@@ -56968,7 +57111,7 @@
 	var TransitionRegistry = {};
 
 /***/ },
-/* 361 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57631,7 +57774,7 @@
 	var AnimationRegistry = {};
 
 /***/ },
-/* 362 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57703,7 +57846,7 @@
 	exports.MenuClose = MenuClose;
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57767,7 +57910,7 @@
 	exports.Badge = Badge;
 
 /***/ },
-/* 364 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57794,8 +57937,8 @@
 	var config_1 = __webpack_require__(331);
 	var keyboard_1 = __webpack_require__(342);
 	var dom_1 = __webpack_require__(334);
-	var view_controller_1 = __webpack_require__(353);
-	var scroll_view_1 = __webpack_require__(365);
+	var view_controller_1 = __webpack_require__(354);
+	var scroll_view_1 = __webpack_require__(366);
 	/**
 	 * @name Content
 	 * @description
@@ -58150,7 +58293,7 @@
 	exports.Content = Content;
 
 /***/ },
-/* 365 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58376,7 +58519,7 @@
 	var FRAME_MS = (1000 / 60);
 
 /***/ },
-/* 366 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58514,7 +58657,7 @@
 	exports.Img = Img;
 
 /***/ },
-/* 367 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58617,7 +58760,7 @@
 	exports.Scroll = Scroll;
 
 /***/ },
-/* 368 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58634,7 +58777,7 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var content_1 = __webpack_require__(364);
+	var content_1 = __webpack_require__(365);
 	/**
 	 * @name InfiniteScroll
 	 * @description
@@ -58887,7 +59030,7 @@
 	var STATE_LOADING = 'loading';
 
 /***/ },
-/* 369 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58902,7 +59045,7 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var config_1 = __webpack_require__(331);
-	var infinite_scroll_1 = __webpack_require__(368);
+	var infinite_scroll_1 = __webpack_require__(369);
 	/**
 	 * @private
 	 */
@@ -58949,7 +59092,7 @@
 	exports.InfiniteScrollContent = InfiniteScrollContent;
 
 /***/ },
-/* 370 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58966,7 +59109,7 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var content_1 = __webpack_require__(364);
+	var content_1 = __webpack_require__(365);
 	var util_1 = __webpack_require__(333);
 	var dom_1 = __webpack_require__(334);
 	/**
@@ -59470,7 +59613,7 @@
 	var STATE_COMPLETING = 'completing';
 
 /***/ },
-/* 371 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59485,7 +59628,7 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var config_1 = __webpack_require__(331);
-	var refresher_1 = __webpack_require__(370);
+	var refresher_1 = __webpack_require__(371);
 	/**
 	 * @private
 	 */
@@ -59549,7 +59692,7 @@
 	exports.RefresherContent = RefresherContent;
 
 /***/ },
-/* 372 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59573,12 +59716,12 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
 	var ion_1 = __webpack_require__(341);
-	var animation_1 = __webpack_require__(361);
+	var animation_1 = __webpack_require__(362);
 	var gesture_1 = __webpack_require__(347);
 	var util_1 = __webpack_require__(348);
 	var dom_1 = __webpack_require__(334);
 	var util_2 = __webpack_require__(333);
-	var swiper_widget_1 = __webpack_require__(373);
+	var swiper_widget_1 = __webpack_require__(374);
 	/**
 	 * @name Slides
 	 * @description
@@ -60319,7 +60462,7 @@
 	var slidesId = -1;
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports) {
 
 	/**
@@ -64279,7 +64422,7 @@
 
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64305,11 +64448,11 @@
 	var config_1 = __webpack_require__(331);
 	var ion_1 = __webpack_require__(341);
 	var util_1 = __webpack_require__(333);
-	var nav_controller_1 = __webpack_require__(358);
+	var nav_controller_1 = __webpack_require__(359);
 	var platform_1 = __webpack_require__(332);
-	var tab_button_1 = __webpack_require__(375);
-	var tab_highlight_1 = __webpack_require__(377);
-	var view_controller_1 = __webpack_require__(353);
+	var tab_button_1 = __webpack_require__(376);
+	var tab_highlight_1 = __webpack_require__(378);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name Tabs
 	 * @description
@@ -64741,7 +64884,7 @@
 	}());
 
 /***/ },
-/* 375 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64760,7 +64903,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var tab_1 = __webpack_require__(376);
+	var tab_1 = __webpack_require__(377);
 	var ion_1 = __webpack_require__(341);
 	var config_1 = __webpack_require__(331);
 	/**
@@ -64824,7 +64967,7 @@
 	exports.TabButton = TabButton;
 
 /***/ },
-/* 376 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64850,8 +64993,8 @@
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
 	var keyboard_1 = __webpack_require__(342);
-	var nav_controller_1 = __webpack_require__(358);
-	var tabs_1 = __webpack_require__(374);
+	var nav_controller_1 = __webpack_require__(359);
+	var tabs_1 = __webpack_require__(375);
 	/**
 	 * @name Tab
 	 * @description
@@ -65179,7 +65322,7 @@
 	exports.Tab = Tab;
 
 /***/ },
-/* 377 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65227,7 +65370,7 @@
 	exports.TabHighlight = TabHighlight;
 
 /***/ },
-/* 378 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65250,7 +65393,7 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var ion_1 = __webpack_require__(341);
-	var item_sliding_gesture_1 = __webpack_require__(379);
+	var item_sliding_gesture_1 = __webpack_require__(380);
 	/**
 	 * The List is a widely used interface element in almost any mobile app,
 	 * and can include content ranging from basic text all the way to
@@ -65384,7 +65527,7 @@
 	exports.ListHeader = ListHeader;
 
 /***/ },
-/* 379 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65606,7 +65749,7 @@
 	var DRAG_THRESHOLD = 20;
 
 /***/ },
-/* 380 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65620,10 +65763,10 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var button_1 = __webpack_require__(357);
+	var button_1 = __webpack_require__(358);
 	var form_1 = __webpack_require__(338);
-	var icon_1 = __webpack_require__(381);
-	var label_1 = __webpack_require__(382);
+	var icon_1 = __webpack_require__(382);
+	var label_1 = __webpack_require__(383);
 	/**
 	 * @name Item
 	 * @description
@@ -65787,7 +65930,7 @@
 	                '<ion-label *ngIf="_viewLabel">' +
 	                '<ng-content></ng-content>' +
 	                '</ion-label>' +
-	                '<ng-content select="ion-select,ion-input,ion-textarea,ion-datetime,ion-range"></ng-content>' +
+	                '<ng-content select="ion-select,ion-input,ion-textarea,ion-datetime,ion-range,[item-content]"></ng-content>' +
 	                '</div>' +
 	                '<ng-content select="[item-right],ion-radio,ion-toggle"></ng-content>' +
 	                '</div>' +
@@ -65806,7 +65949,7 @@
 	exports.Item = Item;
 
 /***/ },
-/* 381 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65995,7 +66138,7 @@
 	exports.Icon = Icon;
 
 /***/ },
-/* 382 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66120,7 +66263,7 @@
 	exports.Label = Label;
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66137,7 +66280,7 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var list_1 = __webpack_require__(378);
+	var list_1 = __webpack_require__(379);
 	/**
 	 * @name ItemSliding
 	 *
@@ -66243,7 +66386,7 @@
 	var slideIds = 0;
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66261,14 +66404,14 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var config_1 = __webpack_require__(331);
-	var content_1 = __webpack_require__(364);
+	var content_1 = __webpack_require__(365);
 	var platform_1 = __webpack_require__(332);
-	var view_controller_1 = __webpack_require__(353);
-	var virtual_item_1 = __webpack_require__(385);
-	var virtual_util_1 = __webpack_require__(386);
+	var view_controller_1 = __webpack_require__(354);
+	var virtual_item_1 = __webpack_require__(386);
+	var virtual_util_1 = __webpack_require__(387);
 	var util_1 = __webpack_require__(333);
 	var dom_1 = __webpack_require__(334);
-	var img_1 = __webpack_require__(366);
+	var img_1 = __webpack_require__(367);
 	/**
 	 * @name VirtualScroll
 	 * @description
@@ -66873,7 +67016,7 @@
 	var QUEUE_WRITE_TO_NODES = 1;
 
 /***/ },
-/* 385 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66935,7 +67078,7 @@
 	exports.VirtualItem = VirtualItem;
 
 /***/ },
-/* 386 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67464,7 +67607,7 @@
 	var REQUIRED_DOM_READS = 2;
 
 /***/ },
-/* 387 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67765,7 +67908,7 @@
 	};
 
 /***/ },
-/* 388 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67784,7 +67927,7 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
 	var form_1 = __webpack_require__(338);
-	var item_1 = __webpack_require__(380);
+	var item_1 = __webpack_require__(381);
 	var util_1 = __webpack_require__(333);
 	var CHECKBOX_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Checkbox; }), multi: true });
 	/**
@@ -67987,7 +68130,7 @@
 	exports.Checkbox = Checkbox;
 
 /***/ },
-/* 389 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68005,13 +68148,13 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
-	var alert_1 = __webpack_require__(390);
-	var action_sheet_1 = __webpack_require__(391);
+	var alert_1 = __webpack_require__(391);
+	var action_sheet_1 = __webpack_require__(392);
 	var form_1 = __webpack_require__(338);
-	var item_1 = __webpack_require__(380);
+	var item_1 = __webpack_require__(381);
 	var util_1 = __webpack_require__(333);
-	var nav_controller_1 = __webpack_require__(358);
-	var option_1 = __webpack_require__(392);
+	var nav_controller_1 = __webpack_require__(359);
+	var option_1 = __webpack_require__(393);
 	var SELECT_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Select; }), multi: true });
 	/**
 	 * @name Select
@@ -68468,7 +68611,7 @@
 	exports.Select = Select;
 
 /***/ },
-/* 390 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68487,12 +68630,12 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_params_1 = __webpack_require__(355);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name Alert
 	 * @description
@@ -68962,7 +69105,7 @@
 	    AlertCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-alert',
-	            template: '<div (click)="bdClick()" tappable disable-activated class="backdrop" role="presentation"></div>' +
+	            template: '<ion-backdrop (click)="bdClick()"></ion-backdrop>' +
 	                '<div class="alert-wrapper">' +
 	                '<div class="alert-head">' +
 	                '<h2 id="{{hdrId}}" class="alert-title" *ngIf="d.title" [innerHTML]="d.title"></h2>' +
@@ -69024,7 +69167,7 @@
 	    function AlertPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.1', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.3');
@@ -69042,7 +69185,7 @@
 	    function AlertPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '0.9');
 	        backdrop.fromTo('opacity', '0.3', '0');
@@ -69060,7 +69203,7 @@
 	    function AlertMdPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.1', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.5');
@@ -69078,7 +69221,7 @@
 	    function AlertMdPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '0.9');
 	        backdrop.fromTo('opacity', '0.5', '0');
@@ -69096,7 +69239,7 @@
 	    function AlertWpPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.3', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.5');
@@ -69114,7 +69257,7 @@
 	    function AlertWpPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.alert-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '1.3');
 	        backdrop.fromTo('opacity', '0.5', '0');
@@ -69130,7 +69273,7 @@
 	var alertIds = -1;
 
 /***/ },
-/* 391 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69149,12 +69292,12 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_params_1 = __webpack_require__(355);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name ActionSheet
 	 * @description
@@ -69465,7 +69608,7 @@
 	    ActionSheetCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-action-sheet',
-	            template: '<div (click)="bdClick()" tappable disable-activated class="backdrop" role="presentation"></div>' +
+	            template: '<ion-backdrop (click)="bdClick()"></ion-backdrop>' +
 	                '<div class="action-sheet-wrapper">' +
 	                '<div class="action-sheet-container">' +
 	                '<div class="action-sheet-group">' +
@@ -69501,7 +69644,7 @@
 	    function ActionSheetSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.01, 0.4);
 	        wrapper.fromTo('translateY', '100%', '0%');
@@ -69515,7 +69658,7 @@
 	    function ActionSheetSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.4, 0);
 	        wrapper.fromTo('translateY', '0%', '100%');
@@ -69529,7 +69672,7 @@
 	    function ActionSheetMdSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.01, 0.26);
 	        wrapper.fromTo('translateY', '100%', '0%');
@@ -69543,7 +69686,7 @@
 	    function ActionSheetMdSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.26, 0);
 	        wrapper.fromTo('translateY', '0%', '100%');
@@ -69557,7 +69700,7 @@
 	    function ActionSheetWpSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.01, 0.16);
 	        wrapper.fromTo('translateY', '100%', '0%');
@@ -69571,7 +69714,7 @@
 	    function ActionSheetWpSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.action-sheet-wrapper'));
 	        backdrop.fromTo('opacity', 0.1, 0);
 	        wrapper.fromTo('translateY', '0%', '100%');
@@ -69583,7 +69726,7 @@
 	var actionSheetIds = -1;
 
 /***/ },
-/* 392 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69677,7 +69820,7 @@
 	exports.Option = Option;
 
 /***/ },
-/* 393 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69696,12 +69839,12 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
 	var config_1 = __webpack_require__(331);
-	var picker_1 = __webpack_require__(394);
+	var picker_1 = __webpack_require__(395);
 	var form_1 = __webpack_require__(338);
-	var item_1 = __webpack_require__(380);
+	var item_1 = __webpack_require__(381);
 	var util_1 = __webpack_require__(333);
 	var datetime_util_1 = __webpack_require__(349);
-	var nav_controller_1 = __webpack_require__(358);
+	var nav_controller_1 = __webpack_require__(359);
 	var DATETIME_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return DateTime; }), multi: true });
 	/**
 	 * @name DateTime
@@ -70498,7 +70641,7 @@
 	}
 
 /***/ },
-/* 394 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70518,12 +70661,12 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var platform_browser_1 = __webpack_require__(183);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_params_1 = __webpack_require__(355);
+	var view_controller_1 = __webpack_require__(354);
 	var dom_1 = __webpack_require__(334);
 	/**
 	 * @name Picker
@@ -71035,7 +71178,7 @@
 	    PickerDisplayCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-picker-cmp',
-	            template: '<div (click)="bdClick()" tappable disable-activated class="backdrop" role="presentation"></div>' +
+	            template: '<ion-backdrop (click)="bdClick()"></ion-backdrop>' +
 	                '<div class="picker-wrapper">' +
 	                '<div class="picker-toolbar">' +
 	                '<div *ngFor="let b of d.buttons" class="picker-toolbar-button" [ngClass]="b.cssRole">' +
@@ -71069,7 +71212,7 @@
 	    function PickerSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.picker-wrapper'));
 	        backdrop.fromTo('opacity', 0.01, 0.26);
 	        wrapper.fromTo('translateY', '100%', '0%');
@@ -71083,7 +71226,7 @@
 	    function PickerSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.picker-wrapper'));
 	        backdrop.fromTo('opacity', 0.26, 0);
 	        wrapper.fromTo('translateY', '0%', '100%');
@@ -71097,7 +71240,7 @@
 	var FRAME_MS = (1000 / 60);
 
 /***/ },
-/* 395 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71117,7 +71260,7 @@
 	var common_1 = __webpack_require__(188);
 	var form_1 = __webpack_require__(338);
 	var util_1 = __webpack_require__(333);
-	var item_1 = __webpack_require__(380);
+	var item_1 = __webpack_require__(381);
 	var dom_1 = __webpack_require__(334);
 	var TOGGLE_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Toggle; }), multi: true });
 	/**
@@ -71379,7 +71522,7 @@
 	exports.Toggle = Toggle;
 
 /***/ },
-/* 396 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71403,13 +71546,13 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
 	var config_1 = __webpack_require__(331);
-	var content_1 = __webpack_require__(364);
+	var content_1 = __webpack_require__(365);
 	var form_1 = __webpack_require__(338);
-	var input_base_1 = __webpack_require__(397);
+	var input_base_1 = __webpack_require__(398);
 	var app_1 = __webpack_require__(330);
-	var item_1 = __webpack_require__(380);
-	var native_input_1 = __webpack_require__(398);
-	var nav_controller_1 = __webpack_require__(358);
+	var item_1 = __webpack_require__(381);
+	var native_input_1 = __webpack_require__(399);
+	var nav_controller_1 = __webpack_require__(359);
 	var platform_1 = __webpack_require__(332);
 	/**
 	 * @name Input
@@ -71428,33 +71571,44 @@
 	 * `checkbox`, `radio`, `toggle`, `range`, `select`, etc.
 	 *
 	 * @property [type] - The HTML input type (text, password, email, number, search, tel, or url)
-	 * @property [clearInput] - A clear icon will appear in the input which clears it
+	 * @property [clearInput] - A clear icon will appear in the input when there is a value. Clicking it clears the input.
 	 *
 	 * @usage
 	 * ```html
-	 *  <ion-item>
-	 *    <ion-label>Username</ion-label>
-	 *    <ion-input></ion-input>
-	 *  </ion-item>
+	 * <ion-list>
+	 *   <ion-item>
+	 *     <ion-label primary>Inline Label</ion-label>
+	 *     <ion-input placeholder="Text Input"></ion-input>
+	 *   </ion-item>
 	 *
-	 *  <ion-item>
-	 *    <ion-label fixed>Website</ion-label>
-	 *    <ion-input type="url"></ion-input>
-	 *  </ion-item>
+	 *   <ion-item>
+	 *     <ion-label primary fixed>Fixed Label</ion-label>
+	 *     <ion-input type="tel" placeholder="Tel Input"></ion-input>
+	 *   </ion-item>
 	 *
-	 *  <ion-item>
-	 *    <ion-label floating>Email</ion-label>
-	 *    <ion-input type="email"></ion-input>
-	 *  </ion-item>
+	 *   <ion-item>
+	 *     <ion-input type="number" placeholder="Number Input with no label"></ion-input>
+	 *   </ion-item>
 	 *
-	 *  <ion-item>
-	 *    <ion-label stacked>Phone</ion-label>
-	 *    <ion-input type="tel"></ion-input>
-	 *  </ion-item>
+	 *   <ion-item>
+	 *     <ion-label primary stacked>Stacked Label</ion-label>
+	 *     <ion-input type="email" placeholder="Email Input"></ion-input>
+	 *   </ion-item>
 	 *
-	 *  <ion-item>
-	 *    <ion-input placeholder="Username" clearInput></ion-input>
-	 *  </ion-item>
+	 *   <ion-item>
+	 *     <ion-label primary stacked>Stacked Label</ion-label>
+	 *     <ion-input type="password" placeholder="Password Input"></ion-input>
+	 *   </ion-item>
+	 *
+	 *   <ion-item>
+	 *     <ion-label primary floating>Floating Label</ion-label>
+	 *     <ion-input></ion-input>
+	 *   </ion-item>
+	 *
+	 *   <ion-item>
+	 *     <ion-input placeholder="Clear Input" clearInput></ion-input>
+	 *   </ion-item>
+	 * </ion-list>
 	 * ```
 	 *
 	 * @demo /docs/v2/demos/input/
@@ -71595,7 +71749,7 @@
 	exports.TextArea = TextArea;
 
 /***/ },
-/* 397 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71611,7 +71765,7 @@
 	var core_1 = __webpack_require__(6);
 	var util_1 = __webpack_require__(333);
 	var dom_1 = __webpack_require__(334);
-	var native_input_1 = __webpack_require__(398);
+	var native_input_1 = __webpack_require__(399);
 	var InputBase = (function () {
 	    function InputBase(config, _form, _item, _app, _platform, _elementRef, _scrollView, _nav, ngControl) {
 	        this._form = _form;
@@ -72148,7 +72302,7 @@
 	}
 
 /***/ },
-/* 398 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72382,7 +72536,7 @@
 	exports.NextInput = NextInput;
 
 /***/ },
-/* 399 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72685,7 +72839,7 @@
 	exports.Segment = Segment;
 
 /***/ },
-/* 400 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72704,8 +72858,8 @@
 	var core_1 = __webpack_require__(6);
 	var form_1 = __webpack_require__(338);
 	var util_1 = __webpack_require__(333);
-	var item_1 = __webpack_require__(380);
-	var radio_group_1 = __webpack_require__(401);
+	var item_1 = __webpack_require__(381);
+	var radio_group_1 = __webpack_require__(402);
 	/**
 	 * @description
 	 * A radio button is a button that can be either checked or unchecked. A user can tap
@@ -72887,7 +73041,7 @@
 	exports.RadioButton = RadioButton;
 
 /***/ },
-/* 401 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72902,7 +73056,7 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(188);
-	var list_1 = __webpack_require__(378);
+	var list_1 = __webpack_require__(379);
 	var util_1 = __webpack_require__(333);
 	var RADIO_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return RadioGroup; }), multi: true });
 	/**
@@ -73115,7 +73269,7 @@
 	var radioGroupIds = -1;
 
 /***/ },
-/* 402 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73135,7 +73289,7 @@
 	var common_1 = __webpack_require__(188);
 	var form_1 = __webpack_require__(338);
 	var util_1 = __webpack_require__(333);
-	var item_1 = __webpack_require__(380);
+	var item_1 = __webpack_require__(381);
 	var dom_1 = __webpack_require__(334);
 	var RANGE_VALUE_ACCESSOR = new core_1.Provider(common_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Range; }), multi: true });
 	/**
@@ -73214,6 +73368,8 @@
 	                '<div class="range-knob"></div>',
 	            host: {
 	                '[class.range-knob-pressed]': 'pressed',
+	                '[class.range-knob-min]': '_val===range.min',
+	                '[class.range-knob-max]': '_val===range.max',
 	                '[style.left]': '_x',
 	                '[style.top]': '_y',
 	                '[style.transform]': '_trns',
@@ -73811,7 +73967,7 @@
 	exports.Range = Range;
 
 /***/ },
-/* 403 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74159,7 +74315,7 @@
 	exports.Searchbar = Searchbar;
 
 /***/ },
-/* 404 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74185,9 +74341,9 @@
 	var config_1 = __webpack_require__(331);
 	var keyboard_1 = __webpack_require__(342);
 	var util_1 = __webpack_require__(333);
-	var nav_controller_1 = __webpack_require__(358);
-	var nav_portal_1 = __webpack_require__(405);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_controller_1 = __webpack_require__(359);
+	var nav_portal_1 = __webpack_require__(406);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name Nav
 	 * @description
@@ -74400,7 +74556,7 @@
 	exports.Nav = Nav;
 
 /***/ },
-/* 405 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74425,8 +74581,8 @@
 	var app_1 = __webpack_require__(330);
 	var config_1 = __webpack_require__(331);
 	var keyboard_1 = __webpack_require__(342);
-	var nav_controller_1 = __webpack_require__(358);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_controller_1 = __webpack_require__(359);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @private
 	 */
@@ -74451,7 +74607,7 @@
 	exports.NavPortal = NavPortal;
 
 /***/ },
-/* 406 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74468,8 +74624,8 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var nav_controller_1 = __webpack_require__(358);
-	var nav_registry_1 = __webpack_require__(407);
+	var nav_controller_1 = __webpack_require__(359);
+	var nav_registry_1 = __webpack_require__(408);
 	/**
 	 * @name NavPush
 	 * @description
@@ -74614,7 +74770,7 @@
 	exports.NavPop = NavPop;
 
 /***/ },
-/* 407 */
+/* 408 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74643,7 +74799,7 @@
 	exports.NavRegistry = NavRegistry;
 
 /***/ },
-/* 408 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74674,7 +74830,7 @@
 	exports.NavRouter = NavRouter;
 
 /***/ },
-/* 409 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74863,7 +75019,7 @@
 	exports.HideWhen = HideWhen;
 
 /***/ },
-/* 410 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74880,8 +75036,8 @@
 	var app_1 = __webpack_require__(330);
 	var config_1 = __webpack_require__(331);
 	var dom_1 = __webpack_require__(334);
-	var activator_1 = __webpack_require__(411);
-	var ripple_1 = __webpack_require__(412);
+	var activator_1 = __webpack_require__(412);
+	var ripple_1 = __webpack_require__(413);
 	/**
 	 * @private
 	 */
@@ -75064,7 +75220,7 @@
 	var DISABLE_NATIVE_CLICK_AMOUNT = 2500;
 
 /***/ },
-/* 411 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75149,7 +75305,7 @@
 	var CLEAR_STATE_DEFERS = 5;
 
 /***/ },
-/* 412 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75158,7 +75314,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var activator_1 = __webpack_require__(411);
+	var activator_1 = __webpack_require__(412);
 	var dom_1 = __webpack_require__(334);
 	/**
 	 * @private
@@ -75259,7 +75415,7 @@
 	var TOUCH_DOWN_ACCEL = 300;
 
 /***/ },
-/* 413 */
+/* 414 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75327,7 +75483,7 @@
 	exports.Translate = Translate;
 
 /***/ },
-/* 414 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75353,7 +75509,7 @@
 	exports.Page = Page;
 
 /***/ },
-/* 415 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75361,61 +75517,61 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(330));
+	__export(__webpack_require__(392));
 	__export(__webpack_require__(391));
-	__export(__webpack_require__(390));
-	__export(__webpack_require__(363));
-	__export(__webpack_require__(357));
-	__export(__webpack_require__(388));
 	__export(__webpack_require__(364));
-	__export(__webpack_require__(393));
-	__export(__webpack_require__(381));
-	__export(__webpack_require__(366));
-	__export(__webpack_require__(368));
-	__export(__webpack_require__(369));
-	__export(__webpack_require__(396));
-	__export(__webpack_require__(380));
-	__export(__webpack_require__(383));
+	__export(__webpack_require__(358));
+	__export(__webpack_require__(389));
+	__export(__webpack_require__(365));
+	__export(__webpack_require__(394));
 	__export(__webpack_require__(382));
-	__export(__webpack_require__(378));
-	__export(__webpack_require__(416));
+	__export(__webpack_require__(367));
+	__export(__webpack_require__(369));
+	__export(__webpack_require__(370));
+	__export(__webpack_require__(397));
+	__export(__webpack_require__(381));
+	__export(__webpack_require__(384));
+	__export(__webpack_require__(383));
+	__export(__webpack_require__(379));
+	__export(__webpack_require__(417));
 	__export(__webpack_require__(351));
 	__export(__webpack_require__(340));
-	__export(__webpack_require__(417));
-	__export(__webpack_require__(352));
-	__export(__webpack_require__(362));
 	__export(__webpack_require__(418));
-	__export(__webpack_require__(404));
-	__export(__webpack_require__(358));
 	__export(__webpack_require__(353));
-	__export(__webpack_require__(354));
-	__export(__webpack_require__(406));
-	__export(__webpack_require__(408));
-	__export(__webpack_require__(355));
-	__export(__webpack_require__(392));
-	__export(__webpack_require__(394));
+	__export(__webpack_require__(363));
 	__export(__webpack_require__(419));
-	__export(__webpack_require__(400));
+	__export(__webpack_require__(405));
+	__export(__webpack_require__(359));
+	__export(__webpack_require__(354));
+	__export(__webpack_require__(355));
+	__export(__webpack_require__(407));
+	__export(__webpack_require__(409));
+	__export(__webpack_require__(356));
+	__export(__webpack_require__(393));
+	__export(__webpack_require__(395));
+	__export(__webpack_require__(420));
 	__export(__webpack_require__(401));
 	__export(__webpack_require__(402));
-	__export(__webpack_require__(370));
-	__export(__webpack_require__(371));
-	__export(__webpack_require__(367));
 	__export(__webpack_require__(403));
-	__export(__webpack_require__(399));
-	__export(__webpack_require__(389));
-	__export(__webpack_require__(409));
+	__export(__webpack_require__(371));
 	__export(__webpack_require__(372));
-	__export(__webpack_require__(387));
-	__export(__webpack_require__(374));
-	__export(__webpack_require__(376));
+	__export(__webpack_require__(368));
+	__export(__webpack_require__(404));
+	__export(__webpack_require__(400));
+	__export(__webpack_require__(390));
 	__export(__webpack_require__(410));
-	__export(__webpack_require__(420));
-	__export(__webpack_require__(395));
-	__export(__webpack_require__(356));
-	__export(__webpack_require__(384));
+	__export(__webpack_require__(373));
+	__export(__webpack_require__(388));
+	__export(__webpack_require__(375));
+	__export(__webpack_require__(377));
+	__export(__webpack_require__(411));
+	__export(__webpack_require__(421));
+	__export(__webpack_require__(396));
+	__export(__webpack_require__(357));
+	__export(__webpack_require__(385));
 
 /***/ },
-/* 416 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75434,12 +75590,12 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_params_1 = __webpack_require__(355);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name Loading
 	 * @description
@@ -75623,7 +75779,7 @@
 	    LoadingCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-loading',
-	            template: '<div disable-activated class="backdrop" [class.hide-backdrop]="!d.showBackdrop" role="presentation"></div>' +
+	            template: '<ion-backdrop [class.hide-backdrop]="!d.showBackdrop"></ion-backdrop>' +
 	                '<div class="loading-wrapper">' +
 	                '<div *ngIf="showSpinner" class="loading-spinner">' +
 	                '<ion-spinner [name]="d.spinner"></ion-spinner>' +
@@ -75648,7 +75804,7 @@
 	    function LoadingPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.1', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.3');
@@ -75666,7 +75822,7 @@
 	    function LoadingPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '0.9');
 	        backdrop.fromTo('opacity', '0.3', '0');
@@ -75684,7 +75840,7 @@
 	    function LoadingMdPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.1', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.50');
@@ -75702,7 +75858,7 @@
 	    function LoadingMdPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '0.9');
 	        backdrop.fromTo('opacity', '0.50', '0');
@@ -75720,7 +75876,7 @@
 	    function LoadingWpPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.3', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.16');
@@ -75738,7 +75894,7 @@
 	    function LoadingWpPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.loading-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '1.3');
 	        backdrop.fromTo('opacity', '0.16', '0');
@@ -75754,7 +75910,7 @@
 	var loadingIds = -1;
 
 /***/ },
-/* 417 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75763,7 +75919,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
+	var animation_1 = __webpack_require__(362);
 	var menu_controller_1 = __webpack_require__(351);
 	/**
 	 * @private
@@ -75819,7 +75975,7 @@
 	 */
 	var MenuRevealType = (function (_super) {
 	    __extends(MenuRevealType, _super);
-	    function MenuRevealType(menu) {
+	    function MenuRevealType(menu, platform) {
 	        _super.call(this);
 	        var openedX = (menu.width() * (menu.side === 'right' ? -1 : 1)) + 'px';
 	        this.ani
@@ -75902,7 +76058,7 @@
 	menu_controller_1.MenuController.registerType('overlay', MenuOverlayType);
 
 /***/ },
-/* 418 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75922,11 +76078,11 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var bootstrap_1 = __webpack_require__(103);
-	var animation_1 = __webpack_require__(361);
-	var nav_params_1 = __webpack_require__(354);
+	var animation_1 = __webpack_require__(362);
+	var nav_params_1 = __webpack_require__(355);
 	var util_1 = __webpack_require__(333);
-	var transition_1 = __webpack_require__(360);
-	var view_controller_1 = __webpack_require__(353);
+	var transition_1 = __webpack_require__(361);
+	var view_controller_1 = __webpack_require__(354);
 	var dom_1 = __webpack_require__(334);
 	/**
 	 * @name Modal
@@ -76093,7 +76249,7 @@
 	    ModalCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-modal',
-	            template: '<div class="backdrop"></div>' +
+	            template: '<ion-backdrop disableScroll="false"></ion-backdrop>' +
 	                '<div class="modal-wrapper">' +
 	                '<div #viewport></div>' +
 	                '</div>'
@@ -76112,22 +76268,18 @@
 	    function ModalSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        backdrop.fromTo('opacity', 0.01, 0.4);
 	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
 	        var page = ele.querySelector('ion-page');
-	        page.classList.add('show-page');
 	        // auto-add page css className created from component JS class name
 	        var cssClassName = util_1.pascalCaseToDashCase(enteringView.modalViewType);
 	        page.classList.add(cssClassName);
 	        wrapper.fromTo('translateY', '100%', '0%');
-	        this
-	            .element(enteringView.pageRef())
-	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
-	            .duration(400)
-	            .before.addClass('show-page')
-	            .add(backdrop)
-	            .add(wrapper);
+	        var DURATION = 400;
+	        var EASING = 'cubic-bezier(0.36,0.66,0.04,1)';
+	        this.element(enteringView.pageRef()).easing(EASING).duration(DURATION).add(backdrop).add(wrapper);
+	        this.element(new core_1.ElementRef(page)).easing(EASING).duration(DURATION).before.addClass('show-page');
 	        if (enteringView.hasNavbar()) {
 	            // entering page has a navbar
 	            var enteringNavBar = new animation_1.Animation(enteringView.navbarRef());
@@ -76143,7 +76295,7 @@
 	    function ModalSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        backdrop.fromTo('opacity', 0.4, 0.0);
 	        var wrapperEle = ele.querySelector('.modal-wrapper');
 	        var wrapperEleRect = wrapperEle.getBoundingClientRect();
@@ -76167,23 +76319,18 @@
 	    function ModalMDSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        backdrop.fromTo('opacity', 0.01, 0.4);
 	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
 	        wrapper.fromTo('translateY', '40px', '0px');
 	        var page = ele.querySelector('ion-page');
-	        page.classList.add('show-page');
 	        // auto-add page css className created from component JS class name
 	        var cssClassName = util_1.pascalCaseToDashCase(enteringView.modalViewType);
 	        page.classList.add(cssClassName);
-	        this
-	            .element(enteringView.pageRef())
-	            .easing('cubic-bezier(0.36,0.66,0.04,1)')
-	            .duration(280)
-	            .fadeIn()
-	            .before.addClass('show-page')
-	            .add(backdrop)
-	            .add(wrapper);
+	        var DURATION = 280;
+	        var EASING = 'cubic-bezier(0.36,0.66,0.04,1)';
+	        this.element(enteringView.pageRef()).easing(EASING).duration(DURATION).fadeIn().add(backdrop).add(wrapper);
+	        this.element(new core_1.ElementRef(page)).easing(EASING).duration(DURATION).before.addClass('show-page');
 	        if (enteringView.hasNavbar()) {
 	            // entering page has a navbar
 	            var enteringNavBar = new animation_1.Animation(enteringView.navbarRef());
@@ -76199,7 +76346,7 @@
 	    function ModalMDSlideOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        backdrop.fromTo('opacity', 0.4, 0.0);
 	        var wrapper = new animation_1.Animation(ele.querySelector('.modal-wrapper'));
 	        wrapper.fromTo('translateY', '0px', '40px');
@@ -76216,7 +76363,7 @@
 	transition_1.Transition.register('modal-md-slide-out', ModalMDSlideOut);
 
 /***/ },
-/* 419 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76236,13 +76383,13 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var core_2 = __webpack_require__(6);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
-	var nav_params_1 = __webpack_require__(354);
+	var nav_params_1 = __webpack_require__(355);
 	var util_1 = __webpack_require__(333);
 	var dom_1 = __webpack_require__(334);
-	var view_controller_1 = __webpack_require__(353);
+	var view_controller_1 = __webpack_require__(354);
 	var POPOVER_IOS_BODY_PADDING = 2;
 	var POPOVER_MD_BODY_PADDING = 12;
 	/**
@@ -76436,7 +76583,7 @@
 	    PopoverCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-popover',
-	            template: '<div class="backdrop" (touchmove)="bdTouch($event)" (click)="bdClick($event)" [class.hide-backdrop]="!d.showBackdrop" disable-activated tappable role="presentation"></div>' +
+	            template: '<ion-backdrop (click)="bdClick($event)" [class.hide-backdrop]="!d.showBackdrop"></ion-backdrop>' +
 	                '<div class="popover-wrapper">' +
 	                '<div class="popover-arrow"></div>' +
 	                '<div class="popover-content">' +
@@ -76579,7 +76726,7 @@
 	        this.leavingView = leavingView;
 	        this.opts = opts;
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.popover-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1');
 	        backdrop.fromTo('opacity', '0.01', '0.08');
@@ -76607,7 +76754,7 @@
 	        this.leavingView = leavingView;
 	        this.opts = opts;
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.popover-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0');
 	        backdrop.fromTo('opacity', '0.08', '0');
@@ -76670,7 +76817,7 @@
 	var popoverIds = -1;
 
 /***/ },
-/* 420 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76689,13 +76836,13 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var config_1 = __webpack_require__(331);
 	var util_1 = __webpack_require__(333);
-	var nav_params_1 = __webpack_require__(354);
-	var nav_controller_1 = __webpack_require__(358);
-	var view_controller_1 = __webpack_require__(353);
+	var nav_params_1 = __webpack_require__(355);
+	var nav_controller_1 = __webpack_require__(359);
+	var view_controller_1 = __webpack_require__(354);
 	/**
 	 * @name Toast
 	 * @description
@@ -76888,7 +77035,7 @@
 	    function ToastMdSlideIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.toast-wrapper'));
 	        backdrop.fromTo('opacity', 0, 0);
 	        wrapper.fromTo('translateY', '120%', '0%');
@@ -76902,7 +77049,7 @@
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
 	        var wrapper = new animation_1.Animation(ele.querySelector('.toast-wrapper'));
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        wrapper.fromTo('translateY', '0%', '120%');
 	        backdrop.fromTo('opacity', 0, 0);
 	        this.easing('cubic-bezier(.36,.66,.04,1)').duration(450).add(backdrop).add(wrapper);
@@ -76914,7 +77061,7 @@
 	    function ToastWpPopIn(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = enteringView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.toast-wrapper'));
 	        wrapper.fromTo('opacity', '0.01', '1').fromTo('scale', '1.3', '1');
 	        backdrop.fromTo('opacity', 0, 0);
@@ -76927,7 +77074,7 @@
 	    function ToastWpPopOut(enteringView, leavingView, opts) {
 	        _super.call(this, opts);
 	        var ele = leavingView.pageRef().nativeElement;
-	        var backdrop = new animation_1.Animation(ele.querySelector('.backdrop'));
+	        var backdrop = new animation_1.Animation(ele.querySelector('ion-backdrop'));
 	        var wrapper = new animation_1.Animation(ele.querySelector('.toast-wrapper'));
 	        wrapper.fromTo('opacity', '1', '0').fromTo('scale', '1', '1.3');
 	        backdrop.fromTo('opacity', 0, 0);
@@ -76944,19 +77091,19 @@
 	var toastIds = -1;
 
 /***/ },
-/* 421 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(422));
 	__export(__webpack_require__(423));
 	__export(__webpack_require__(424));
+	__export(__webpack_require__(425));
 
 /***/ },
-/* 422 */
+/* 423 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77040,7 +77187,7 @@
 	exports.StorageEngine = StorageEngine;
 
 /***/ },
-/* 423 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77049,7 +77196,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(422);
+	var storage_1 = __webpack_require__(423);
 	/**
 	 * @name LocalStorage
 	 * @description
@@ -77154,7 +77301,7 @@
 	exports.LocalStorage = LocalStorage;
 
 /***/ },
-/* 424 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77163,7 +77310,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(422);
+	var storage_1 = __webpack_require__(423);
 	var util_1 = __webpack_require__(333);
 	var DB_NAME = '__ionicstorage';
 	var win = window;
@@ -77306,7 +77453,7 @@
 	exports.SqlStorage = SqlStorage;
 
 /***/ },
-/* 425 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77320,7 +77467,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var translate_1 = __webpack_require__(413);
+	var translate_1 = __webpack_require__(414);
 	/**
 	 * @private
 	 * The Translate pipe makes it easy to translate strings.
@@ -77356,7 +77503,7 @@
 	exports.TranslatePipe = TranslatePipe;
 
 /***/ },
-/* 426 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77406,7 +77553,7 @@
 	    modalEnter: 'modal-md-slide-in',
 	    modalLeave: 'modal-md-slide-out',
 	    pageTransition: 'md-transition',
-	    pageTransitionDelay: 96,
+	    pageTransitionDelay: 16,
 	    pickerEnter: 'picker-slide-in',
 	    pickerLeave: 'picker-slide-out',
 	    pickerRotateFactor: 0,
@@ -77449,7 +77596,7 @@
 	});
 
 /***/ },
-/* 427 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77605,14 +77752,14 @@
 	                doc.addEventListener('deviceready', function () {
 	                    // 3) cordova deviceready event triggered
 	                    // add cordova listeners to emit platform events
-	                    doc.addEventListener('backbutton', function () {
-	                        p.backButton.emit(null);
+	                    doc.addEventListener('backbutton', function (ev) {
+	                        p.backButton.emit(ev);
 	                    });
-	                    doc.addEventListener('pause', function () {
-	                        p.pause.emit(null);
+	                    doc.addEventListener('pause', function (ev) {
+	                        p.pause.emit(ev);
 	                    });
-	                    doc.addEventListener('resume', function () {
-	                        p.resume.emit(null);
+	                    doc.addEventListener('resume', function (ev) {
+	                        p.resume.emit(ev);
 	                    });
 	                    // cordova has its own exitApp method
 	                    p.exitApp = function () {
@@ -77637,7 +77784,7 @@
 	}
 
 /***/ },
-/* 428 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77646,7 +77793,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
+	var animation_1 = __webpack_require__(362);
 	var SlideIn = (function (_super) {
 	    __extends(SlideIn, _super);
 	    function SlideIn(element) {
@@ -77697,7 +77844,7 @@
 	animation_1.Animation.register('fade-out', FadeOut);
 
 /***/ },
-/* 429 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77706,8 +77853,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var DURATION = 500;
 	var EASING = 'cubic-bezier(0.36,0.66,0.04,1)';
 	var OPACITY = 'opacity';
@@ -77873,7 +78020,7 @@
 	transition_1.Transition.register('ios-transition', IOSTransition);
 
 /***/ },
-/* 430 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77882,8 +78029,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var TRANSLATEY = 'translateY';
 	var OFF_BOTTOM = '40px';
 	var CENTER = '0px';
@@ -77937,7 +78084,7 @@
 	transition_1.Transition.register('md-transition', MDTransition);
 
 /***/ },
-/* 431 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -77946,8 +78093,8 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var animation_1 = __webpack_require__(361);
-	var transition_1 = __webpack_require__(360);
+	var animation_1 = __webpack_require__(362);
+	var transition_1 = __webpack_require__(361);
 	var SHOW_BACK_BTN_CSS = 'show-back-button';
 	var SCALE_SMALL = .95;
 	var WPTransition = (function (_super) {
