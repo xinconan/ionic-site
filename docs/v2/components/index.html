@@ -2085,13 +2085,14 @@ navigation.</p>
 
 <p>Next, we need to create the class that will control our modal. Let’s import <code class="highlighter-rouge">Modal</code>, <code class="highlighter-rouge">NavController</code>, <code class="highlighter-rouge">Page</code> and <code class="highlighter-rouge">ViewController</code>:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Modal</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">,</span> <span class="nx">Page</span><span class="p">,</span> <span class="nx">ViewController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Modal</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">,</span><span class="nx">ViewController</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 </code></pre>
 </div>
 
 <p>Next, let’s create our modal and define add its template:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span> <span class="nx">padding</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">I</span><span class="err">'</span><span class="nx">m</span> <span class="nx">a</span> <span class="nx">modal</span><span class="o">!&lt;</span><span class="sr">/h2</span><span class="err">&gt;
@@ -2148,7 +2149,7 @@ navigation.</p>
 
 <div class="language-typescript highlighter-rouge"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span><span class="nx">StartPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'start'</span>
 
-  <span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+  <span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
     <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'</span>
   <span class="p">})</span>
   <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
@@ -2156,12 +2157,14 @@ navigation.</p>
     <span class="nx">rootPage</span> <span class="o">=</span> <span class="nx">StartPage</span><span class="p">;</span>
     <span class="kd">constructor</span><span class="p">(){}</span>
   <span class="p">}</span>
+
+  <span class="nx">ionicBootstrap</span><span class="p">(</span><span class="nx">MyApp</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <p>You can access the navigation controller you create by injecting it into any of your Pages:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2177,7 +2180,7 @@ navigation.</p>
 
 <p>To navigate from one page to another simply push or pop a new page onto the stack:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2199,7 +2202,7 @@ navigation.</p>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Other</span> <span class="nx">Page</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2215,7 +2218,7 @@ navigation.</p>
 
 <p>Alternatively, if you want to go back, but don’t have a NavBar, you can pop the current page off the stack:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"goBack()"</span><span class="o">&gt;</span>
@@ -2236,7 +2239,7 @@ navigation.</p>
 <p>For more information on basic navigation, check out the <a href="../api/components/nav/Nav/">Nav API reference</a>.</p>
 
 <h3 id="navigating_from_root">Navigating from the Root Component</h3>
-<p>What if you want to control navigation from your root app component (the one decorated with <code class="highlighter-rouge">@App</code>, not <code class="highlighter-rouge">@Page</code>)? You can’t inject <code class="highlighter-rouge">NavController</code> because any components that are navigation controllers are <em>children</em> of the root component so they aren’t available to be injected.</p>
+<p>What if you want to control navigation from your root app component (the one decorated with <code class="highlighter-rouge">@App</code>, not <code class="highlighter-rouge">@Component</code>)? You can’t inject <code class="highlighter-rouge">NavController</code> because any components that are navigation controllers are <em>children</em> of the root component so they aren’t available to be injected.</p>
 
 <p>By adding an <a href="../api/components/app/Id/"><code class="highlighter-rouge">id</code></a> to <code class="highlighter-rouge">ion-nav</code>, you can use the <a href="../api/components/app/IonicApp/"><code class="highlighter-rouge">IonicApp</code></a> service to get a reference to the <code class="highlighter-rouge">Nav</code> component, which is a navigation controller (it extends <code class="highlighter-rouge">NavController</code>):</p>
 
@@ -2418,7 +2421,7 @@ export class HomePage{
 
 <p>Note that in this example, the Searchbar binds to the <code class="highlighter-rouge">searchQuery</code> variable. The <code class="highlighter-rouge">getItems()</code> function is called when the input changes, which updates the cities that are displayed. Although this example filters the list based on the search input, Searchbar can be used in many different scenarios:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'search/template.html'</span><span class="p">,</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">SearchPage</span> <span class="p">{</span>
@@ -2624,7 +2627,7 @@ export class HomePage{
 
 <p>To initialize Tabs, use <a href="../api/components/tabs/Tabs/"><code class="highlighter-rouge">&lt;ion-tabs&gt;</code></a>, with a child <a href="../api/components/tabs/Tab/"><code class="highlighter-rouge">&lt;ion-tab&gt;</code></a> for each tab:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"heart"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
@@ -2637,12 +2640,13 @@ export class HomePage{
     <span class="k">this</span><span class="p">.</span><span class="nx">tab2</span> <span class="o">=</span> <span class="nx">Tab2</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
+<span class="nx">ionicBootstrap</span><span class="p">(</span><span class="nx">MyApp</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>Individual tabs are just <a href="../api/config/Page/"><code class="highlighter-rouge">@Pages</code></a>:</p>
+<p>Individual tabs are just <code class="highlighter-rouge">@Components</code></p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Heart</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2651,7 +2655,7 @@ export class HomePage{
 </span><span class="p">})</span>
 <span class="kr">class</span> <span class="nx">Tab1</span> <span class="p">{}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Star</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2662,9 +2666,9 @@ export class HomePage{
 </code></pre>
 </div>
 
-<p>Notice that each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> binds to a <code class="highlighter-rouge">[root]</code> property, just like <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a> in the <a href="#navigation">Navigation</a> section above.  That is because each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> is really just a navigation controller.  This means that each tab has its own history stack, and <a href="../api/components/nav/NavController/#injecting_nav_controller"><code class="highlighter-rouge">NavController instances injected</code></a> into children <code class="highlighter-rouge">@Pages</code> of each tab will be unique to each tab:</p>
+<p>Notice that each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> binds to a <code class="highlighter-rouge">[root]</code> property, just like <a href="../api/components/nav/Nav/"><code class="highlighter-rouge">&lt;ion-nav&gt;</code></a> in the <a href="#navigation">Navigation</a> section above.  That is because each <code class="highlighter-rouge">&lt;ion-tab&gt;</code> is really just a navigation controller.  This means that each tab has its own history stack, and <a href="../api/components/nav/NavController/#injecting_nav_controller"><code class="highlighter-rouge">NavController instances injected</code></a> into children <code class="highlighter-rouge">@Components</code> of each tab will be unique to each tab:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
 <span class="p">...</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">Tab1</span> <span class="p">{</span>
@@ -2675,7 +2679,7 @@ export class HomePage{
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
 <span class="p">...</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">Tab2</span> <span class="p">{</span>
@@ -2694,7 +2698,7 @@ export class HomePage{
 
 <p>To add an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> attribute. This attribute can be passed the name of any <a href="#icon">icon</a>:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2706,7 +2710,7 @@ export class HomePage{
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"contact"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
@@ -2732,7 +2736,7 @@ export class HomePage{
 
 <p>To add text and an icon inside of a tab, use the <code class="highlighter-rouge">tab-icon</code> and <code class="highlighter-rouge">tab-title</code> attributes:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2744,7 +2748,7 @@ export class HomePage{
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tabs</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">tab</span> <span class="nx">tabIcon</span><span class="o">=</span><span class="s2">"water"</span> <span class="nx">tabTitle</span><span class="o">=</span><span class="s2">"Water"</span> <span class="p">[</span><span class="nx">root</span><span class="p">]</span><span class="o">=</span><span class="s2">"tab1"</span><span class="o">&gt;&lt;</span><span class="sr">/ion-tab</span><span class="err">&gt;
@@ -2770,7 +2774,7 @@ export class HomePage{
 
 <p>To add a badge to a tab, use the <code class="highlighter-rouge">tabBadge</code> and <code class="highlighter-rouge">tabBadgeStyle</code> attributes. The <code class="highlighter-rouge">tabBadgeStyle</code> attribute can be passed the name of any <a href="/docs/v2/theming/theming-your-app/">color</a>:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
   <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span> <span class="o">*</span><span class="nx">navbar</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Tabs</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
@@ -2782,7 +2786,7 @@ export class HomePage{
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span>
     <span class="s1">'&lt;ion-tabs&gt;'</span> <span class="o">+</span>
       <span class="s1">'&lt;ion-tab tabIcon="call" [root]="tabOne" tabBadge="3" tabBadgeStyle="danger"&gt;&lt;/ion-tab&gt;'</span> <span class="o">+</span>
@@ -2992,7 +2996,7 @@ export class HomePage{
 </code></pre>
 </div>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'search/template.html'</span><span class="p">,</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">SearchPage</span> <span class="p">{</span>
@@ -3042,7 +3046,7 @@ export class HomePage{
 <p>You can change the toolbars color by changing the property on the element.</p>
 
 <div class="language-typescript highlighter-rouge"><pre class="highlight"><code>
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="nx">primary</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
