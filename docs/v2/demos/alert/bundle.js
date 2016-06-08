@@ -49264,8 +49264,9 @@
 	 * }
 	 *
 	 * // second page (listen for the user created event)
-	 * events.subscribe('user:created', (user) => {
-	 *   console.log('Welcome', user);
+	 * events.subscribe('user:created', (userEventData) => {
+	 *   // userEventData is an array of parameters, so grab our first and only arg
+	 *   console.log('Welcome', userEventData[0]);
 	 * });
 	 *
 	 * ```
@@ -55350,6 +55351,13 @@
 	    /**
 	     * @private
 	     */
+	    Button.prototype.ngAfterContentChecked = function () {
+	        this._readIcon(this._elementRef.nativeElement);
+	        this._assignCss(true);
+	    };
+	    /**
+	     * @private
+	     */
 	    Button.prototype.addClass = function (className) {
 	        this._renderer.setElementClass(this._elementRef.nativeElement, className, true);
 	    };
@@ -55389,6 +55397,8 @@
 	                }
 	            }
 	        }
+	        // Remove any classes that are set already
+	        this._setClass(this._icon, false);
 	        if (nodes.length > 1) {
 	            if (nodes[0] === ICON && nodes[1] === TEXT) {
 	                this._icon = 'icon-left';
@@ -68906,7 +68916,7 @@
 	 *     text: 'Ok',
 	 *     handler: () => {
 	 *       // user has clicked the alert button
-	 *       // begin the alert's dimiss transition
+	 *       // begin the alert's dismiss transition
 	 *       let navTransition = alert.dismiss();
 	 *
 	 *       // start some async method
@@ -73719,6 +73729,12 @@
 	     * @private
 	     */
 	    Range.prototype.pointerDown = function (ev) {
+	        // TODO: we could stop listening for events instead of checking this._disabled.
+	        // since there are a lot of events involved, this solution is
+	        // enough for the moment
+	        if (this._disabled) {
+	            return;
+	        }
 	        console.debug("range, " + ev.type);
 	        // prevent default so scrolling does not happen
 	        ev.preventDefault();

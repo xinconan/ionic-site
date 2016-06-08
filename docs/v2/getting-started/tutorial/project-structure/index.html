@@ -228,8 +228,9 @@
       <li><a href="/docs/v2/components/#menus">Menus</a></li>
       <li><a href="/docs/v2/components/#modals">Modals</a></li>
       <li><a href="/docs/v2/components/#navigation">Navigation</a></li>
+      <li><a href="/docs/v2/components/#popovers">Popover</a></li>
       <li><a href="/docs/v2/components/#radio">Radio</a></li>
-      
+      <li><a href="/docs/v2/components/#range">Range</a></li>
       <li><a href="/docs/v2/components/#searchbar">Searchbar</a></li>
       <li><a href="/docs/v2/components/#segment">Segment</a></li>
       <li><a href="/docs/v2/components/#select">Select</a></li>
@@ -546,7 +547,7 @@
 
   
   <li class="">
-    <a ng-click="showResources = !showResources">Resources</a>
+    <a href="/docs/v2/resources" >Resources</a>
     <ul ng-show="showResources"
         >
       
@@ -626,17 +627,19 @@
 
 <p>Near the top of the file, we should see this:</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/app.html'</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="nx">ionicBootstrap</span><span class="p">(</span><span class="nx">MyApp</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. To specify a root component with Ionic, we use the <code class="highlighter-rouge">@App</code> decorator.</p>
+<p>Every app has a <em>root component</em> that essentially controls the rest of the application. This is very similar to <code class="highlighter-rouge">ng-app</code> from Ionic and Angular 1. This is also where we bootstrap our app using <code class="highlighter-rouge">ionicBootstrap</code>.</p>
 
 <p>In this component, we set the template to be the file at <code class="highlighter-rouge">build/app.html</code>, which is a compiled version of <code class="highlighter-rouge">app/app.html</code>, let’s take a look!</p>
 

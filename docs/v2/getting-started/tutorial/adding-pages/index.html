@@ -228,8 +228,9 @@
       <li><a href="/docs/v2/components/#menus">Menus</a></li>
       <li><a href="/docs/v2/components/#modals">Modals</a></li>
       <li><a href="/docs/v2/components/#navigation">Navigation</a></li>
+      <li><a href="/docs/v2/components/#popovers">Popover</a></li>
       <li><a href="/docs/v2/components/#radio">Radio</a></li>
-      
+      <li><a href="/docs/v2/components/#range">Range</a></li>
       <li><a href="/docs/v2/components/#searchbar">Searchbar</a></li>
       <li><a href="/docs/v2/components/#segment">Segment</a></li>
       <li><a href="/docs/v2/components/#select">Select</a></li>
@@ -546,7 +547,7 @@
 
   
   <li class="">
-    <a ng-click="showResources = !showResources">Resources</a>
+    <a href="/docs/v2/resources" >Resources</a>
     <ul ng-show="showResources"
         >
       
@@ -632,11 +633,11 @@
   <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find <code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
 </blockquote>
 
-<p>Below, we see the <code class="highlighter-rouge">HelloIonicPage</code> class which has the <code class="highlighter-rouge">@Page</code> <a href="../../../resources/what-is/#decorators">decorator</a>. This creates a Page - an Angular component with all Ionic directives already provided, to be loaded using Ionic’s navigation system.  Notice that because Pages are meant to be loaded dynamically, they don’t have a selector:</p>
+<p>Below, we see the <code class="highlighter-rouge">HelloIonicPage</code> class. This creates a Page - an Angular component with all Ionic directives already provided, to be loaded using Ionic’s navigation system.  Notice that because Pages are meant to be loaded dynamically, they don’t have a selector:</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/pages/hello-ionic/hello-ionic.html'</span>
 <span class="p">})</span>
 <span class="k">export</span> <span class="kr">class</span> <span class="nx">HelloIonicPage</span> <span class="p">{}</span>
@@ -683,11 +684,12 @@
 
 <p>Let’s check out the contents of <code class="highlighter-rouge">app/pages/list/list.js</code>. Inside, you will see a new page is defined:</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">NavController</span><span class="p">,</span> <span class="nx">NavParams</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"@angular/core"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">NavController</span><span class="p">,</span> <span class="nx">NavParams</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">ItemDetailsPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'../item-details/item-details'</span><span class="p">;</span>
 
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'build/pages/list/list.html'</span>
 <span class="p">})</span>
 <span class="k">export</span> <span class="kr">class</span> <span class="nx">ListPage</span> <span class="p">{</span>

@@ -229,8 +229,9 @@
       <li><a href="#menus">Menus</a></li>
       <li><a href="#modals">Modals</a></li>
       <li><a href="#navigation">Navigation</a></li>
+      <li><a href="#popovers">Popover</a></li>
       <li><a href="#radio">Radio</a></li>
-      
+      <li><a href="#range">Range</a></li>
       <li><a href="#searchbar">Searchbar</a></li>
       <li><a href="#segment">Segment</a></li>
       <li><a href="#select">Select</a></li>
@@ -547,7 +548,7 @@
 
   
   <li class="">
-    <a ng-click="showResources = !showResources">Resources</a>
+    <a href="/docs/v2/resources" >Resources</a>
     <ul ng-show="showResources"
         >
       
@@ -2259,6 +2260,49 @@ navigation.</p>
 <h3 id="advanced_navigation">Advanced Navigation</h3>
 <p>What if you have several “root” or “top-level” pages that don’t have a parent-child relationship, but rather are siblings? You have two options: <a href="#tabs">Tabs</a> and <a href="#menus">Menu</a>.</p>
 
+<h2 id="popovers" class="section-header">Popover</h2>
+
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/popover.html">
+  Improve this Doc
+</a>
+The Popover is a view that floats above an app’s content. Popovers provide an easy way to present or gather information from the user and are commonly used in the following situations:</p>
+
+<ul>
+  <li>Show more info about the current view</li>
+  <li>Select a commonly used tool or configuration</li>
+  <li>Present a list of actions to perform inside one of your views</li>
+</ul>
+
+<h3 class="no-para">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/popovers">
+    Demo Source
+</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>@Component({
+  template: `This is a popover`
+})
+
+export class MyPopover{}
+
+@Component({
+  templateUrl: 'build/pages/home/home.html'
+})
+
+export class HomePage{
+  constructor(
+    private nav: NavController
+  ){}
+
+  showPopover(){
+    let popover = Popover.create(MyPopover)
+    this.nav.present(popover, {
+      ev: ev
+    })
+  }
+}
+</code></pre>
+</div>
+
 <h2 id="radio" class="section-header">Radio</h2>
 
 <p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/radio.html">
@@ -2295,14 +2339,61 @@ navigation.</p>
 </code></pre>
 </div>
 
-<!-- <h2 id="range" class="section-header">Range</h2>
+<h2 id="range" class="section-header">Range</h2>
 
-<a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/range.html">
+<p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/range.html">
   Improve this Doc
-</a>
+</a></p>
 
-*Coming soon.*
- -->
+<p>A Range is a control that allows you to selecet a range of values.</p>
+
+<h3 class="section-nav">Basic Usage</h3>
+<p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/ranges">
+  Demo Source
+</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
+  <span class="nt">&lt;ion-range</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">brightness</span><span class="err">"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-left</span> <span class="na">small</span> <span class="na">name=</span><span class="s">"sunny"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-right</span> <span class="na">name=</span><span class="s">"sunny"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+  <span class="nt">&lt;/ion-range&gt;</span>
+<span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<p>Note that in this example, you can setup data bindings using ngModel</p>
+
+<p>You can also add tooltip which displays the current value by adding the property <code class="highlighter-rouge">pin</code></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
+  <span class="nt">&lt;ion-range</span> <span class="na">min=</span><span class="s">"-200"</span> <span class="na">max=</span><span class="s">"200"</span> <span class="na">pin=</span><span class="s">"true"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">contrast</span><span class="err">"</span> <span class="na">secondary</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-left</span> <span class="na">small</span> <span class="na">name=</span><span class="s">"contrast"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-right</span> <span class="na">name=</span><span class="s">"contrast"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+  <span class="nt">&lt;/ion-range&gt;</span>
+<span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<p>If you wanted to increment the value based on a certain value, you can add the <code class="highlighter-rouge">step</code> property.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
+  <span class="nt">&lt;ion-range</span> <span class="na">min=</span><span class="s">"1000"</span> <span class="na">max=</span><span class="s">"2000"</span> <span class="na">step=</span><span class="s">"100"</span> <span class="na">snaps=</span><span class="s">"true"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">warmth</span><span class="err">"</span> <span class="na">danger</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-left</span> <span class="na">small</span> <span class="na">danger</span> <span class="na">name=</span><span class="s">"thermometer"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+    <span class="nt">&lt;ion-icon</span> <span class="na">range-right</span> <span class="na">danger</span> <span class="na">name=</span><span class="s">"thermometer"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+  <span class="nt">&lt;/ion-range&gt;</span>
+<span class="nt">&lt;/ion-item&gt;</span>
+</code></pre>
+</div>
+
+<p>If you want to knobs, you can add the <code class="highlighter-rouge">dualKnobs</code> property</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-range dualKnobs="true" pin="true" [(ngModel)]="structure" dark&gt;
+  &lt;ion-icon range-left small name="brush"&gt;&lt;/ion-icon&gt;
+  &lt;ion-icon range-right name="brush"&gt;&lt;/ion-icon&gt;
+&lt;/ion-range&gt;
+</code></pre>
+</div>
+
 <h2 id="searchbar" class="section-header">Searchbar</h2>
 
 <p><a target="_blank" class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/_includes/v2_fluid/component-docs/searchbar.html">
@@ -2375,7 +2466,7 @@ navigation.</p>
   Improve this Doc
 </a></p>
 
-<p>Use the segment to control radio selections.</p>
+<p>Segment is a collection of buttons that are displayed in line. They can act as a filter, showing/hiding elements based on the segments value.</p>
 
 <h3 class="section-nav">Basic Usage</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/segments/basic">
