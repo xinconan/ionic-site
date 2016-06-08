@@ -2345,12 +2345,14 @@ export class HomePage{
   Improve this Doc
 </a></p>
 
-<p>A Range is a control that allows you to selecet a range of values.</p>
+<p>A Range is a control that lets users select from a range of values by moving a slider knob along the slider bar or track.</p>
 
 <h3 class="section-nav">Basic Usage</h3>
 <p><a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/ranges">
   Demo Source
 </a></p>
+
+<p>In the below example, data bindings are set up using <code class="highlighter-rouge">ngModel</code>.</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
   <span class="nt">&lt;ion-range</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">brightness</span><span class="err">"</span><span class="nt">&gt;</span>
@@ -2361,9 +2363,7 @@ export class HomePage{
 </code></pre>
 </div>
 
-<p>Note that in this example, you can setup data bindings using ngModel</p>
-
-<p>You can also add tooltip which displays the current value by adding the property <code class="highlighter-rouge">pin</code></p>
+<p>A tooltip displaying the current value while moving the knob can be added with the property <code class="highlighter-rouge">pin</code>:</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
   <span class="nt">&lt;ion-range</span> <span class="na">min=</span><span class="s">"-200"</span> <span class="na">max=</span><span class="s">"200"</span> <span class="na">pin=</span><span class="s">"true"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">contrast</span><span class="err">"</span> <span class="na">secondary</span><span class="nt">&gt;</span>
@@ -2374,7 +2374,7 @@ export class HomePage{
 </code></pre>
 </div>
 
-<p>If you wanted to increment the value based on a certain value, you can add the <code class="highlighter-rouge">step</code> property.</p>
+<p>To increment the value based on a certain number, add the <code class="highlighter-rouge">step</code> property:</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-item&gt;</span>
   <span class="nt">&lt;ion-range</span> <span class="na">min=</span><span class="s">"1000"</span> <span class="na">max=</span><span class="s">"2000"</span> <span class="na">step=</span><span class="s">"100"</span> <span class="na">snaps=</span><span class="s">"true"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">warmth</span><span class="err">"</span> <span class="na">danger</span><span class="nt">&gt;</span>
@@ -2385,7 +2385,7 @@ export class HomePage{
 </code></pre>
 </div>
 
-<p>If you want to knobs, you can add the <code class="highlighter-rouge">dualKnobs</code> property</p>
+<p>To add two knobs to a range, add the <code class="highlighter-rouge">dualKnobs</code> property:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>&lt;ion-range dualKnobs="true" pin="true" [(ngModel)]="structure" dark&gt;
   &lt;ion-icon range-left small name="brush"&gt;&lt;/ion-icon&gt;
