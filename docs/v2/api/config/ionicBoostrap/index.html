@@ -12,11 +12,11 @@
 
 
 
-    <title>ionicBootstrap - Ionic API Documentation -  Ionic Framework</title>
+    <title>ionicBoostrap - Ionic API Documentation -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-ionicbootstrap"
-        class="v2 docs page-ionicbootstrap"
+  <body id="docs-page-ionicboostrap"
+        class="v2 docs page-ionicboostrap"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -316,13 +316,7 @@
   <a href="/docs/v2/api/components/input/Input">Input</a>
 </li>
 <li class="capitalize active">
-  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/config/ionicPostBootstrap">ionicPostBootstrap</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/config/ionicProviders">ionicProviders</a>
+  <a href="/docs/v2/api/config/ionicBoostrap">ionicBoostrap</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/config/IONIC_DIRECTIVES">IONIC_DIRECTIVES</a>
@@ -483,9 +477,9 @@
       
       <main>
         <h1 class="api-title">
-<a class="anchor" name="ionic-bootstrap" href="#ionic-bootstrap"></a>
+<a class="anchor" name="ionic-boostrap" href="#ionic-boostrap"></a>
 
-ionicBootstrap
+ionicBoostrap
 
 
 
@@ -498,7 +492,16 @@ ionicBootstrap
 Improve this doc
 </a></p>
 
+<p><code>ionicBootstrap</code> allows you to bootstrap your entire application. Similar to Angualr&#39;s <code>bootstrap</code>, <code>ionicBootstrap</code>
+takes a root component in order to start the app. You can pass along any providers that you may want to inject into your
+app as an array for the second argument. You can also pass a config object as the third argument to configure your app&#39;s settings.</p>
+
 <!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<p>import {ionicBootstrap} from &#39;ionic-angular&#39;;
+import {Component} from &#39;@angular/core&#39;;</p>
 
 <!-- @property tags -->
 
