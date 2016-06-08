@@ -15605,9 +15605,9 @@
 	var translate_1 = __webpack_require__(414);
 	var _reflect = Reflect;
 	/**
-	 * @name ionicBoostrap
+	 * @name ionicBootstrap
 	 * @description
-	 * `ionicBootstrap` allows you to bootstrap your entire application. Similar to Angualr's `bootstrap`, `ionicBootstrap`
+	 * `ionicBootstrap` allows you to bootstrap your entire application. Similar to Angular's `bootstrap`, `ionicBootstrap`
 	 * takes a root component in order to start the app. You can pass along any providers that you may want to inject into your
 	 * app as an array for the second argument. You can also pass a config object as the third argument to configure your app's settings.
 	 *
