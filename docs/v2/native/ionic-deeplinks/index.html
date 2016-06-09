@@ -12,11 +12,11 @@
 
 
 
-    <title>App Version - Class in module  -  Ionic Framework</title>
+    <title>Ionic Deeplinks - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-app-version"
-        class="v2 docs page-app-version"
+  <body id="docs-page-ionic-deeplinks"
+        class="v2 docs page-ionic-deeplinks"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -274,7 +274,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/app-rate">App Rate</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
 </li>
 <li class="capitalize ">
@@ -382,7 +382,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/insomnia">Insomnia</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/ionic-deeplinks">Ionic Deeplinks</a>
 </li>
 <li class="capitalize ">
@@ -572,7 +572,7 @@
         <h1 class="api-title">
 
   
-  App Version
+  Ionic Deeplinks
   
 
   
@@ -581,31 +581,31 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/appversion.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/deeplinks.ts#L15">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-app-version</code></pre>
+<pre><code>$ ionic plugin add ionic-plugin-deeplinks</code></pre>
 <p>Repo:
-  <a href="https://github.com/whiteoctober/cordova-plugin-app-version">
-    https://github.com/whiteoctober/cordova-plugin-app-version
+  <a href="https://github.com/driftyo/ionic-plugin-deeplinks">
+    https://github.com/driftyo/ionic-plugin-deeplinks
   </a>
 </p>
 
 <!-- description -->
 
-<p>Reads the version of your app from the target build settings.</p>
-<p>Requires Cordova plugin: <code>cordova-plugin-app-version</code>. For more info, please see the <a href="https://github.com/whiteoctober/cordova-plugin-app-version">Cordova App Version docs</a>.</p>
+<p>This plugin handles deeplinks on iOS and Android for both custom URL scheme links
+and Universal App Links.</p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
   <li>iOS</li>
+  
+  <li>Android</li>
   </ul>
 
 <!-- @platforms tag end -->
@@ -614,67 +614,109 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {AppVersion} from &#39;ionic-native&#39;;
-
-
-AppVersion.getAppName();
-AppVersion.getPackageName();
-AppVersion.getVersionCode();
-AppVersion.getVersionNumber();
+<pre><code class="lang-ts">import {IonicDeeplinks} from &#39;ionic-native&#39;;
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="getAppName"></div>
-<h3><code>getAppName()</code>
+<div id="route"></div>
+<h3><code>route(Define)</code>
 
 </h3>
 
-<p>Returns the name of the app</p>
+<p>Define a set of paths to match against incoming deeplinks.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      Define
+      
+      
+    </td>
+    <td>
+      
+<code>paths</code>
+    </td>
+    <td>
+      <p>a set of paths to match against incoming deeplinks.
+paths takes an object of the form { &#39;path&#39;: data }. If a deeplink
+matches the path, the resulting path-data pair will be returned in the
+promise result which you can then use to navigate in the app as you see fit.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise</code></p>
+<code>Promise</code> Returns a Promise that resolves when a deeplink comes through, and
+is rejected if a deeplink comes through that does not match a given path.</p>
 </div>
 
-<div id="getPackageName"></div>
-<h3><code>getPackageName()</code>
+<div id="routeWithNavController"></div>
+<h3><code>routeWithNavController(Define)</code>
 
 </h3>
 
-<p>Returns the package name of the app</p>
+<p>This is a convenience version of <code class="highlighter-rouge">route</code> that takes a reference to a NavController
+from Ionic 2, or a custom class that conforms to this protocol:</p>
+
+<p>NavController.push = function(View, Params){}</p>
+
+<p>This handler will automatically navigate when a route matches. If you need finer-grained
+control over the behavior of a matching deeplink, use the plain <code class="highlighter-rouge">route</code> method.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      Define
+      
+      
+    </td>
+    <td>
+      
+<code>paths</code>
+    </td>
+    <td>
+      <p>a set of paths to match against incoming deeplinks.
+paths takes an object of the form { &#39;path&#39;: data }. If a deeplink
+matches the path, the resulting path-data pair will be returned in the
+promise result which you can then use to navigate in the app as you see fit.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise</code></p>
-</div>
-
-<div id="getVersionCode"></div>
-<h3><code>getVersionCode()</code>
-
-</h3>
-
-<p>Returns the build identifier of the app</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise</code></p>
-</div>
-
-<div id="getVersionNumber"></div>
-<h3><code>getVersionNumber()</code>
-
-</h3>
-
-<p>Returns the version of the app</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise</code></p>
+<code>Promise</code> Returns a Promise that resolves when a deeplink comes through, and
+is rejected if a deeplink comes through that does not match a given path.</p>
 </div>
 
 <!-- methods on the class -->
