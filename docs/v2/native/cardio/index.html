@@ -12,11 +12,11 @@
 
 
 
-    <title>Image Picker - Class in module  -  Ionic Framework</title>
+    <title>CardIO - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-image-picker"
-        class="v2 docs page-image-picker"
+  <body id="docs-page-cardio"
+        class="v2 docs page-cardio"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -307,7 +307,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/camera">Camera</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/cardio">CardIO</a>
 </li>
 <li class="capitalize ">
@@ -400,7 +400,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/hotspot">Hotspot</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/image-picker">Image Picker</a>
 </li>
 <li class="capitalize ">
@@ -596,7 +596,7 @@
         <h1 class="api-title">
 
   
-  Image Picker
+  CardIO
   
 
   
@@ -605,49 +605,71 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/imagepicker.ts#L17">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/card-io.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-image-picker</code></pre>
+<pre><code>$ ionic plugin add https://github.com/card-io/card.io-Cordova-Plugin</code></pre>
 <p>Repo:
-  <a href="https://github.com/wymsee/cordova-imagePicker">
-    https://github.com/wymsee/cordova-imagePicker
+  <a href="https://github.com/card-io/card.io-Cordova-Plugin">
+    https://github.com/card-io/card.io-Cordova-Plugin
   </a>
 </p>
 
 <!-- description -->
 
-<p>Cordova Plugin For Multiple Image Selection</p>
-<p>Requires Cordova plugin: <code>cordova-plugin-image-picker</code>.
-For more info, please see the <a href="https://github.com/wymsee/cordova-imagePicker">https://github.com/wymsee/cordova-imagePicker</a></p>
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>iOS</li>
+  
+  <li>Android</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {ImagePicker} from &#39;ionic-native&#39;;
+<pre><code>import {CardIO} from &#39;ionic-native&#39;;
 
+...
 
-
-ImagePicker.getPictures(options).then((results) =&gt; {
-  for (var i = 0; i &lt; results.length; i++) {
-      console.log(&#39;Image URI: &#39; + results[i]);
-  }
-}, (err) =&gt; {
-});
+CardIO.canScan()
+  .then(
+    (res: boolean) =&gt; {
+      if(res){
+        let options = {
+          requireExpiry: true,
+          requireCCV: false,
+          requirePostalCode: false
+        };
+        CardIO.scan(options);
+      }
+    }
+  );
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="getPictures"></div>
-<h3><code>getPictures(options)</code>
+<div id="canScan"></div>
+<h3><code>canScan()</code>
 
 </h3>
 
-<p>Pick pictures from the library.</p>
+<p>Check whether card scanning is currently available. (May vary by
+device, OS version, network connectivity, etc.)</p>
+
+<div id="scan"></div>
+<h3><code>scan(options)</code>
+
+</h3>
+
+<p>Scan a credit card with card.io.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -667,7 +689,7 @@ ImagePicker.getPictures(options).then((results) =&gt; {
     </td>
     <td>
       
-<code>ImagePickerOptions</code>
+
     </td>
     <td>
       
@@ -678,13 +700,12 @@ ImagePicker.getPictures(options).then((results) =&gt; {
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves the image file URI
-otherwise rejects with an error.</p>
+<div id="version"></div>
+<h3><code>version()</code>
 
-</div>
+</h3>
+
+<p>Retrieve the version of the card.io library. Useful when contacting support.</p>
 
 <!-- methods on the class -->
 <!-- related link -->

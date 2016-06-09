@@ -12,11 +12,11 @@
 
 
 
-    <title>Image Picker - Class in module  -  Ionic Framework</title>
+    <title>SafariViewController - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-image-picker"
-        class="v2 docs page-image-picker"
+  <body id="docs-page-safariviewcontroller"
+        class="v2 docs page-safariviewcontroller"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -400,7 +400,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/hotspot">Hotspot</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/image-picker">Image Picker</a>
 </li>
 <li class="capitalize ">
@@ -427,7 +427,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/push">Push</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/safariviewcontroller">SafariViewController</a>
 </li>
 <li class="capitalize ">
@@ -596,7 +596,7 @@
         <h1 class="api-title">
 
   
-  Image Picker
+  SafariViewController
   
 
   
@@ -605,49 +605,82 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/imagepicker.ts#L17">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/safari-view-controller.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-image-picker</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-safariviewcontroller</code></pre>
 <p>Repo:
-  <a href="https://github.com/wymsee/cordova-imagePicker">
-    https://github.com/wymsee/cordova-imagePicker
+  <a href="https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller">
+    https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller
   </a>
 </p>
 
 <!-- description -->
 
-<p>Cordova Plugin For Multiple Image Selection</p>
-<p>Requires Cordova plugin: <code>cordova-plugin-image-picker</code>.
-For more info, please see the <a href="https://github.com/wymsee/cordova-imagePicker">https://github.com/wymsee/cordova-imagePicker</a></p>
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>iOS</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {ImagePicker} from &#39;ionic-native&#39;;
+<pre><code>import {SafariViewController} from &#39;ionic-native&#39;;
 
+...
 
+SafariViewController.isAvailable()
+  .then(
+    (available) =&gt; {
+      if(available){
 
-ImagePicker.getPictures(options).then((results) =&gt; {
-  for (var i = 0; i &lt; results.length; i++) {
-      console.log(&#39;Image URI: &#39; + results[i]);
-  }
-}, (err) =&gt; {
-});
+        SafariViewController.show({
+          utl: &#39;http://ionic.io&#39;,
+          hidden: false,
+          animated: false,
+          transition: &#39;curl&#39;,
+          enterReaderModeIfAvailable: true,
+          tintColor: &#39;#ff0000&#39;
+        })
+        .then(
+          (result: any) =&gt; {
+            if(result.event === &#39;opened&#39;) console.log(&quot;Opened&quot;);
+            else if(result.event === &#39;loaded&#39;) console.log(&quot;Loaded&quot;);
+            else if(result.event === &#39;closed&#39;) console.log(&quot;Closed&quot;);
+          },
+          (error: any) =&gt; console.error(error)
+        );
+
+      } else {
+        // use fallback browser, example InAppBrowser
+      }
+    }
+  );
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Methods</h2>
-<div id="getPictures"></div>
-<h3><code>getPictures(options)</code>
+<div id="isAvailable"></div>
+<h3><code>isAvailable()</code>
 
 </h3>
 
-<p>Pick pictures from the library.</p>
+<p>Checks if SafariViewController is available</p>
+
+<div id="show"></div>
+<h3><code>show(options)</code>
+
+</h3>
+
+<p>Shows Safari View Controller</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -667,7 +700,7 @@ ImagePicker.getPictures(options).then((results) =&gt; {
     </td>
     <td>
       
-<code>ImagePickerOptions</code>
+
     </td>
     <td>
       
@@ -678,13 +711,62 @@ ImagePicker.getPictures(options).then((results) =&gt; {
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
- Returns a Promise that resolves the image file URI
-otherwise rejects with an error.</p>
+<div id="hide"></div>
+<h3><code>hide()</code>
 
-</div>
+</h3>
+
+<p>Hides Safari View Controller</p>
+
+<div id="connectToService"></div>
+<h3><code>connectToService()</code>
+
+</h3>
+
+<p>Tries to connect to the  Chrome’s custom tabs service. you must call this method before calling any of the other methods listed below.</p>
+
+<div id="warmUp"></div>
+<h3><code>warmUp()</code>
+
+</h3>
+
+<p>Call this method whenever there’s a chance the user will open an external url.</p>
+
+<div id="mayLaunchUrl"></div>
+<h3><code>mayLaunchUrl(url)</code>
+
+</h3>
+
+<p>For even better performance optimization, call this methods if there’s more than a 50% chance the user will open a certain URL.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      url
+      
+      
+    </td>
+    <td>
+      
+
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <!-- methods on the class -->
 <!-- related link -->
