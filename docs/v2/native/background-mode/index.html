@@ -12,11 +12,11 @@
 
 
 
-    <title>Base64 To Gallery - Class in module  -  Ionic Framework</title>
+    <title>Background Mode - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-base64-to-gallery"
-        class="v2 docs page-base64-to-gallery"
+  <body id="docs-page-background-mode"
+        class="v2 docs page-background-mode"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -277,7 +277,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/app-version">App Version</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/background-mode">Background Mode</a>
 </li>
 <li class="capitalize ">
@@ -289,7 +289,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/barcode-scanner">Barcode Scanner</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/base64-to gallery">Base64 To Gallery</a>
 </li>
 <li class="capitalize ">
@@ -590,7 +590,7 @@
         <h1 class="api-title">
 
   
-  Base64 To Gallery
+  Background Mode
   
 
   
@@ -599,22 +599,23 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/base64togallery.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/backgroundmode.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-base64-to-gallery</code></pre>
+<pre><code>$ ionic plugin add de.appplant.cordova.plugin.background-mode</code></pre>
 <p>Repo:
-  <a href="https://github.com/Nexxa/cordova-base64-to-gallery">
-    https://github.com/Nexxa/cordova-base64-to-gallery
+  <a href="https://github.com/katzer/cordova-plugin-background-mode">
+    https://github.com/katzer/cordova-plugin-background-mode
   </a>
 </p>
 
 <!-- description -->
 
-<p>This plugin allows you to save base64 data as a png image into the device</p>
+<p>Cordova plugin to prevent the app from going to sleep while in background.
+ Requires Cordova plugin: cordova-plugin-background-mode. For more info about plugin, vist: <a href="https://github.com/katzer/cordova-plugin-background-mode#android-customization">https://github.com/katzer/cordova-plugin-background-mode#android-customization</a></p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
@@ -633,30 +634,71 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-ts">import {Base64ToGallery} from &#39;ionic-native&#39;;
-
-
-Base64ToGallery.base64ToGallery(base64Data, &#39;img_&#39;).then(
-  res =&gt; console.log(&quot;Saved image to gallery &quot;, res),
-  err =&gt; console.log(&quot;Error saving image to gallery &quot;, err)
-);
-</code></pre>
+<p>```js
+import {BackgroundMode} from &#39;ionic-native&#39;;</p>
+<p>BackgroundMode.enable();</p>
 
 <!-- @property tags -->
-
-<!-- methods on the class -->
-
-<h2>Instance Methods</h2>
-
-<div id="base64ToGallery"></div>
-
-<h3>
-  <code>base64ToGallery(data,&nbsp;prefix)</code>
-
+<h2>Static Methods</h2>
+<div id="enable"></div>
+<h3><code>enable()</code>
 
 </h3>
 
-<p>Converts a base64 string to an image file in the device gallery</p>
+<p>Enable the background mode.
+Once called, prevents the app from being puased while in background.</p>
+
+<div id="disable"></div>
+<h3><code>disable()</code>
+
+</h3>
+
+<p>Disable the background mode.
+Once the background mode has been disabled, the app will be paused when in background.</p>
+
+<div id="isEnabled"></div>
+<h3><code>isEnabled()</code>
+
+</h3>
+
+<p>Checks if background mode is enabled or not.</p>
+
+<div id="isActive"></div>
+<h3><code>isActive()</code>
+
+</h3>
+
+<p>Can be used to get the information if the background mode is active.</p>
+
+<div id="setDefaults"></div>
+<h3><code>setDefaults()</code>
+
+</h3>
+
+<p><b>Platforms:</b>
+<code>Android</code> </p>
+
+<p>Override the default title, ticker and text.
+Available only for Android platform.</p>
+
+<div id="update"></div>
+<h3><code>update()</code>
+
+</h3>
+
+<p><b>Platforms:</b>
+<code>Android</code> </p>
+
+<p>Modify the displayed information.
+Available only for Android platform.</p>
+
+<div id="on"></div>
+<h3><code>on(eventName)</code>
+
+</h3>
+
+<p>Sets a callback for a specific event
+Can be used to get notified or run function when the background mode has been activated, deactivated or failed.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -670,7 +712,7 @@ Base64ToGallery.base64ToGallery(base64Data, &#39;img_&#39;).then(
   
   <tr>
     <td>
-      data
+      eventName
       
       
     </td>
@@ -679,23 +721,8 @@ Base64ToGallery.base64ToGallery(base64Data, &#39;img_&#39;).then(
 
     </td>
     <td>
-      
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      prefix
-      
-      
-    </td>
-    <td>
-      
+      <p>The name of the event. Available events: activate, deactivate, failure</p>
 
-    </td>
-    <td>
-      
       
     </td>
   </tr>
@@ -703,6 +730,7 @@ Base64ToGallery.base64ToGallery(base64Data, &#39;img_&#39;).then(
   </tbody>
 </table>
 
+<!-- methods on the class -->
 <!-- related link -->
 <!-- end content block -->
 
