@@ -12,11 +12,11 @@
 
 
 
-    <title>Ionic CLI Documentation -  Ionic Framework</title>
+    <title>Google Plus - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-cli-intro"
-        class="v2 docs page-cli-intro"
+  <body id="docs-page-google-plus"
+        class="v2 docs page-google-plus"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -255,9 +255,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a ng-click="showNative = !showNative">Native</a>
     <ul ng-show="showNative"
+        
+          ng-init="showNative = true"
         >
       
 <li class="capitalize ">
@@ -365,7 +367,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/google-maps">Google Maps</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/google-plus">Google Plus</a>
 </li>
 <li class="capitalize ">
@@ -507,13 +509,11 @@
   </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showCli = !showCli">CLI</a>
     <ul ng-show="showCli"
-        
-          ng-init="showCli = true"
         >
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/cli/">Intro</a>
       </li>
       <li class="">
@@ -596,47 +596,147 @@
       </nav>
       
       <main>
-        <h2 id="ionic-cli">Ionic CLI</h2>
+        <h1 class="api-title">
 
-<p>The Ionic CLI is the primary tool used during the process of developing an Ionic app. It’s like a Swiss Army Knife: It brings together a bunch of miscellaneous tools under a single interface. The CLI contains a number of commands crucial for Ionic development, such as <code class="highlighter-rouge">start</code>, <code class="highlighter-rouge">build</code>, <code class="highlighter-rouge">serve</code>, and <code class="highlighter-rouge">run</code>. It also contains commands like <code class="highlighter-rouge">emulate</code> and <code class="highlighter-rouge">info</code>, which can be helpful in certain situations.</p>
+  
+  Google Plus
+  
 
-<h3 id="installing-the-cli">Installing the CLI</h3>
+  
 
-<p>To install the CLI, you will need to first install <a href="../resources/what-is#node">node</a> and <a href="../resources/what-is#npm">npm</a>. Note: The CLI requires Node 4.X (Node 5.X has been know to cause a number of issues).  Once installed, run the following command to get the latest version of the Ionic CLI:</p>
+  
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g ionic@beta
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/google-plus.ts#L0">
+  Improve this doc
+</a></p>
+
+<!-- decorators -->
+
+<pre><code>$ ionic plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid</code></pre>
+<p>Repo:
+  <a href="https://github.com/EddyVerbruggen/cordova-plugin-googleplus">
+    https://github.com/EddyVerbruggen/cordova-plugin-googleplus
+  </a>
+</p>
+
+<!-- description -->
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Web</li>
+  
+  <li>Android</li>
+  
+  <li>iOS</li>
+  </ul>
+
+<!-- @platforms tag end -->
+
+<!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code>
 </code></pre>
-</div>
 
-<p>On Mac and Linux, you’ll need to add <code class="highlighter-rouge">sudo</code> to install Ionic globally:</p>
+<!-- @property tags -->
+<h2>Static Methods</h2>
+<div id="login"></div>
+<h3><code>login(options)</code>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g ionic@beta
-</code></pre>
-</div>
+</h3>
 
-<h3 id="basic-usage">Basic Usage</h3>
+<p>The login function walks the user through the Google Auth process.</p>
 
-<p>One of the most important commands is the <code class="highlighter-rouge">start</code> command, which creates a new Ionic project. Let’s try it out:</p>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      options
+      
+      
+    </td>
+    <td>
+      
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic start myAwesomeApp --v2
-</code></pre>
-</div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
-<p>This will create a new app named <code class="highlighter-rouge">myAwesomeApp</code>. Let’s <code class="highlighter-rouge">cd</code> in to that directory, and run another Ionic CLI command:</p>
+<div id="trySilentLogin"></div>
+<h3><code>trySilentLogin(options)</code>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic info
-</code></pre>
-</div>
+</h3>
 
-<p>This should print out details about your Ionic environment, which is useful for debugging. Finally, to view your app in the browser, you can use the <code class="highlighter-rouge">serve</code> command:</p>
+<p>You can call trySilentLogin to check if they’re already signed in to the app and sign them in silently if they are.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ionic serve
-</code></pre>
-</div>
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      options
+      
+      
+    </td>
+    <td>
+      
 
-<h3 id="next-steps">Next Steps</h3>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
-<p>Now that you’ve got the basics down, check out the menu on the left for a full list of commands. If you prefer to use the command line, you can see the full list of commands and options by simply typing <code class="highlighter-rouge">ionic</code>.</p>
+<div id="logout"></div>
+<h3><code>logout()</code>
+
+</h3>
+
+<p>This will clear the OAuth2 token.</p>
+
+<div id="disconnect"></div>
+<h3><code>disconnect()</code>
+
+</h3>
+
+<p>This will clear the OAuth2 token, forget which account was used to login, and disconnect that account from the app. This will require the user to allow the app access again next time they sign in. Be aware that this effect is not always instantaneous. It can take time to completely disconnect.</p>
+
+<!-- methods on the class -->
+<!-- related link -->
+<!-- end content block -->
+
+<!-- end body block -->
+
 
       </main>
     </div>
