@@ -743,10 +743,10 @@ function bytesToString(buffer) {
 <p>UUIDs are always strings and not numbers. Some 16-bit UUIDs, such as &#39;2220&#39; look like integers, but they&#39;re not. (The integer 2220 is 0x8AC in hex.) This isn&#39;t a problem with 128 bit UUIDs since they look like strings 82b9e6e1-593a-456f-be9b-9215160ebcac. All 16-bit UUIDs should also be passed to methods as strings.</p>
 
 <!-- @property tags -->
-<h2>Static Methods</h2>
+<h2>Static Members</h2>
 <div id="scan"></div>
 <h3><code>scan(services,&nbsp;seconds)</code>
-
+  
 </h3>
 
 <p>Scan and discover BLE peripherals for the specified amount of time.</p>
@@ -807,7 +807,7 @@ function bytesToString(buffer) {
 
 <div id="startScan"></div>
 <h3><code>startScan(services)</code>
-
+  
 </h3>
 
 <p>Scan and discover BLE peripherals until <code class="highlighter-rouge">stopScan</code> is called.</p>
@@ -851,7 +851,7 @@ function bytesToString(buffer) {
 
 <div id="stopScan"></div>
 <h3><code>stopScan()</code>
-
+  
 </h3>
 
 <p>Stop a scan started by <code class="highlighter-rouge">startScan</code>.</p>
@@ -865,7 +865,7 @@ function bytesToString(buffer) {
 
 <div id="connect"></div>
 <h3><code>connect(deviceId)</code>
-
+  
 </h3>
 
 <p>Connect to a peripheral.</p>
@@ -909,7 +909,7 @@ function bytesToString(buffer) {
 
 <div id="disconnect"></div>
 <h3><code>disconnect(deviceId)</code>
-
+  
 </h3>
 
 <p>Disconnect from a peripheral.</p>
@@ -953,7 +953,7 @@ function bytesToString(buffer) {
 
 <div id="read"></div>
 <h3><code>read(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
-
+  
 </h3>
 
 <p>Read the value of a characteristic.</p>
@@ -1031,7 +1031,7 @@ function bytesToString(buffer) {
 
 <div id="write"></div>
 <h3><code>write(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID,&nbsp;value)</code>
-
+  
 </h3>
 
 <p>Write the value of a characteristic.</p>
@@ -1126,7 +1126,7 @@ function bytesToString(buffer) {
 
 <div id="writeWithoutResponse"></div>
 <h3><code>writeWithoutResponse(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID,&nbsp;value)</code>
-
+  
 </h3>
 
 <p>Write the value of a characteristic without waiting for confirmation from the peripheral.</p>
@@ -1221,7 +1221,7 @@ function bytesToString(buffer) {
 
 <div id="startNotification"></div>
 <h3><code>startNotification(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
-
+  
 </h3>
 
 <p>Register to be notified when the value of a characteristic changes.</p>
@@ -1299,7 +1299,7 @@ function bytesToString(buffer) {
 
 <div id="stopNotification"></div>
 <h3><code>stopNotification(deviceId,&nbsp;serviceUUID,&nbsp;characteristicUUID)</code>
-
+  
 </h3>
 
 <p>Stop being notified when the value of a characteristic changes.</p>
@@ -1377,7 +1377,7 @@ function bytesToString(buffer) {
 
 <div id="isConnected"></div>
 <h3><code>isConnected(deviceId)</code>
-
+  
 </h3>
 
 <p>Report the connection status.</p>
@@ -1421,7 +1421,7 @@ function bytesToString(buffer) {
 
 <div id="isEnabled"></div>
 <h3><code>isEnabled()</code>
-
+  
 </h3>
 
 <p>Report if bluetooth is enabled.</p>
@@ -1435,7 +1435,7 @@ function bytesToString(buffer) {
 
 <div id="showBluetoothSettings"></div>
 <h3><code>showBluetoothSettings()</code>
-
+  
 </h3>
 
 <p>Open System Bluetooth settings (Android only).</p>
@@ -1449,7 +1449,7 @@ function bytesToString(buffer) {
 
 <div id="enable"></div>
 <h3><code>enable()</code>
-
+  
 </h3>
 
 <p>Enable Bluetooth on the device (Android only).</p>
