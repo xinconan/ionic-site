@@ -12,11 +12,11 @@
 
 
 
-    <title>Barcode Scanner - Class in module  -  Ionic Framework</title>
+    <title>Brightness - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-barcode-scanner"
-        class="v2 docs page-barcode-scanner"
+  <body id="docs-page-brightness"
+        class="v2 docs page-brightness"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -289,7 +289,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/badge">Badge</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/barcode-scanner">Barcode Scanner</a>
 </li>
 <li class="capitalize ">
@@ -304,7 +304,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/bluetooth-serial">Bluetooth Serial</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/brightness">Brightness</a>
 </li>
 <li class="capitalize ">
@@ -602,7 +602,7 @@
         <h1 class="api-title">
 
   
-  Barcode Scanner
+  Brightness
   
 
   
@@ -611,23 +611,20 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/barcodescanner.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/-native/src/plugins/brightness.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add phonegap-plugin-barcodescanner</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-brightness</code></pre>
 <p>Repo:
-  <a href="https://github.com/phonegap/phonegap-plugin-barcodescanner">
-    https://github.com/phonegap/phonegap-plugin-barcodescanner
+  <a href="https://github.com/mgcrea/cordova-plugin-brightness">
+    https://github.com/mgcrea/cordova-plugin-brightness
   </a>
 </p>
 
 <!-- description -->
-
-<p>The Barcode Scanner Plugin opens a camera view and automatically scans a barcode, returning the data back to you.</p>
-<p>Requires Cordova plugin: <code>phonegap-plugin-barcodescanner</code>. For more info, please see the <a href="https://github.com/phonegap/phonegap-plugin-barcodescanner">BarcodeScanner plugin docs</a>.</p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
@@ -636,49 +633,77 @@
   <li>Android</li>
   
   <li>iOS</li>
-  
-  <li>Windows Phone 8</li>
-  
-  <li>Windows 10</li>
-  
-  <li>Windows 8</li>
-  
-  <li>BlackBerry 10</li>
-  
-  <li>Browser</li>
   </ul>
 
 <!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
-<h2>Usage</h2>
-
-<pre><code class="lang-js">import {BarcodeScanner} from &#39;ionic-native&#39;;
-
-
-BarcodeScanner.scan().then((barcodeData) =&gt; {
- // Success! Barcode data is here
-}, (err) =&gt; {
-    // An error occurred
-});
-</code></pre>
-
 <!-- @property tags -->
-<h2>Static Methods</h2>
-<div id="scan"></div>
-<h3><code>scan()</code>
-
+<h2>Static Members</h2>
+<div id="setBrightness"></div>
+<h3><code>setBrightness(Floating)</code>
+  
 </h3>
 
-<p>Open the barcode scanner.</p>
+<p>Sets the brightness of the display.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      Floating
+      
+      
+    </td>
+    <td>
+      
+<code>value</code>
+    </td>
+    <td>
+      <p>number between 0 and 1 in which case 1 means 100% brightness and 0 means 0% brightness.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves with scanner data, or rejects with an error.</p>
-
+<code>Promise</code> Returns a Promise that resolves if setting brightness was successful.</p>
 </div>
+
+<div id="getBrightness"></div>
+<h3><code>getBrightness()</code>
+  
+</h3>
+
+<p>Reads the current brightness of the device display.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a Promise that resolves with the 
+brightness value of the device display (floating number between 0 and 1).</p>
+</div>
+
+<div id="setKeepScreenOn"></div>
+<h3><code>setKeepScreenOn()</code>
+  
+</h3>
+
+<p>Keeps the screen on. Prevents the device from setting the screen to sleep.</p>
 
 <!-- methods on the class -->
 <!-- related link -->
