@@ -2210,7 +2210,7 @@ export class HomePage{
   Demo Source
 </a></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-searchbar</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchQuery</span><span class="err">"</span> <span class="err">(</span><span class="na">ionInput</span><span class="err">)="</span><span class="na">getItems</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span><span class="nt">&gt;&lt;/ion-searchbar&gt;</span>
 <span class="nt">&lt;ion-list&gt;</span>
   <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"#item of items"</span><span class="nt">&gt;</span>
     {{ item }}
