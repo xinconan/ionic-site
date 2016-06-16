@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ionic makes it incredibly easy to build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<meta name="author" content="Drifty">
+<meta property="og:image" content="http://ionicframework.com/img/ionic-logo-blog.png"/>
+
+<link href="/css/v2.css?8" rel="stylesheet">
+
+
+
+    <title>Slides - Ionic API Documentation -  Ionic Framework</title>
+
+  </head>
+  <body id="docs-page-slides"
+        class="v2 docs page-slides"
+        data-spy="scroll"
+        data-offset="100"
+        data-target="#components-index"
+        ng-app="IonicDocs">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+              aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button"
+              class="sidebar-toggle collapsed"
+              id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand" href="/docs/v2">
+        <img src="/img/ionic-docs-logo-sm.png" id="ionic-docs-logo" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left"
+            role="search"
+            data-searchpos="header">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="header"
+                 ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/docs/v2/getting-started/installation/">Getting Started</a></li>
+        <li class="active"><a href="/docs/v2/">Docs</a></li>
+        <li><a href="http://blog.ionic.io/?utm_source=framework&utm_medium=navbar&utm_campaign=blog%20CTA">Blog</a></li>
+        <li class="hide-sm"><a href="https://forum.ionicframework.com/?utm_source=framework&utm_medium=navbar&utm_campaign=forum%20CTA">Forum</a></li>
+        <li><a target="_blank" href="http://ionic.io/enterprise?utm_source=framework&utm_medium=navbar&utm_campaign=enterprise%20CTA">Enterprise</a></li>
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-haspopup="true"
+             aria-expanded="false">
+            More <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="http://ionic.io/?utm_source=framework&utm_medium=navbar&utm_campaign=platform%20CTA">
+              Ionic Platform</a></li>
+            <li><a target="_blank" href="http://showcase.ionicframework.com/">
+              Showcase</a></li>
+            <li><a target="_blank" href="http://jobs.ionic.io/">
+              Job Board</a></li>
+            <li><a target="_blank" href="http://market.ionic.io/">
+              Market</a></li>
+            <li><a target="_blank" href="http://ionicworldwide.herokuapp.com/">
+              Ionic Worldwide</a></li>
+            <li><a target="_blank" href="http://play.ionic.io/">
+              Playground</a></li>
+            <li><a target="_blank" href="http://creator.ionic.io/">
+              Creator</a></li>
+            <li><a target="_blank" href="http://shop.ionic.io/">Shop</a></li>
+            <li><a target="_blank" href="https://ionic.io/trusted-partners">
+              Trusted Partners</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="docs-container"
+         
+           ng-controller="APIDemoCtrl"
+         >
+      <nav class="side-nav" id="side-nav">
+        <form class="form-group search" role="search">
+          <input type="text"
+                 class="form-control search-input"
+                 placeholder="Search"
+                 data-searchpos="sidebar"
+                 ng-model="searchTerm">
+        </form>
+        
+          <form class="form-group api-select">
+  <select name="version"
+        id="version-toggle"
+        onchange="window.location.href=this.options[this.selectedIndex].value">
+
+  <option
+   value="/docs/v2/api/"
+   selected>
+    2.0.0-nightly 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.9/api/"
+   >
+    2.0.0-beta.9 (latest)
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.8/api/"
+   >
+    2.0.0-beta.8 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.7/api/"
+   >
+    2.0.0-beta.7 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.6/api/"
+   >
+    2.0.0-beta.6 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.5/api/"
+   >
+    2.0.0-beta.5 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.4/api/"
+   >
+    2.0.0-beta.4 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.3/api/"
+   >
+    2.0.0-beta.3 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.2/api/"
+   >
+    2.0.0-beta.2 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.1/api/"
+   >
+    2.0.0-beta.1 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-beta.0/api/"
+   >
+    2.0.0-beta.0 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.57/api/"
+   >
+    2.0.0-alpha.57 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.56/api/"
+   >
+    2.0.0-alpha.56 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.55/api/"
+   >
+    2.0.0-alpha.55 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.54/api/"
+   >
+    2.0.0-alpha.54 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.53/api/"
+   >
+    2.0.0-alpha.53 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.44/api/"
+   >
+    2.0.0-alpha.44 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.43/api/"
+   >
+    2.0.0-alpha.43 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.42/api/"
+   >
+    2.0.0-alpha.42 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.40/api/"
+   >
+    2.0.0-alpha.40 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.38/api/"
+   >
+    2.0.0-alpha.38 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.37/api/"
+   >
+    2.0.0-alpha.37 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.36/api/"
+   >
+    2.0.0-alpha.36 
+  </option>
+
+  <option
+   value="/docs/v2/2.0.0-alpha.35/api/"
+   >
+    2.0.0-alpha.35 
+  </option>
+
+</select>
+
+</form>
+<ul ng-controller="DocsNavCtrl">
+  <li class="back-to-main">
+    <a href="/docs/v2">Back to Main Docs</a>
+  </li>
+  
+    
+
+    
+  
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/alert/Alert">Alert</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/app/App">App</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/badge/Badge">Badge</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/button/Button">Button</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/checkbox/Checkbox">Checkbox</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/Config">Config</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/content/Content">Content</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/datetime/DateTime">DateTime</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/util/Events">Events</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/show-hide-when/HideWhen">HideWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/icon/Icon">Icon</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/img/Img">Img</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/infinite-scroll/InfiniteScroll">InfiniteScroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/input/Input">Input</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/config/ionicBootstrap">ionicBootstrap</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/item/Item">Item</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/item/ItemSliding">ItemSliding</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/util/Keyboard">Keyboard</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/label/Label">Label</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/list/List">List</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/loading/Loading">Loading</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/menu/Menu">Menu</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/menu/MenuClose">MenuClose</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/menu/MenuController">MenuController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/menu/MenuToggle">MenuToggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/Modal">Modal</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalCmp">ModalCmp</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/Nav">Nav</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/navbar/Navbar">Navbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/NavController">NavController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/NavParams">NavParams</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/NavPop">NavPop</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/NavPush">NavPush</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/option/Option">Option</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/picker/Picker">Picker</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/platform/Platform">Platform</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/radio/RadioGroup">RadioGroup</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/range/Range">Range</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/scroll/Scroll">Scroll</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/searchbar/Searchbar">Searchbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/segment/Segment">Segment</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/segment/SegmentButton">SegmentButton</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/select/Select">Select</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/show-hide-when/ShowWhen">ShowWhen</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/slides/Slide">Slide</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideEdgeGesture">SlideEdgeGesture</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/gestures/SlideGesture">SlideGesture</a>
+</li>
+<li class="capitalize active">
+  <a href="/docs/v2/api/components/slides/Slides">Slides</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/spinner/Spinner">Spinner</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/platform/storage/SqlStorage">SqlStorage</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/tabs/Tab">Tab</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/tabs/Tabs">Tabs</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/input/TextArea">TextArea</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/toolbar/Title">Title</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/toast/Toast">Toast</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/toolbar/Toolbar">Toolbar</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/nav/ViewController">ViewController</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/virtual-scroll/VirtualScroll">VirtualScroll</a>
+</li>
+
+
+    
+
+
+</ul>
+
+        
+      </nav>
+      
+      <aside id="platform-preview" class="platform-preview">
+        <div class="platform-toggle">
+          <a ng-class="{active: iosActive}"
+             ng-click="setPlatform('ios')">iOS</a>
+          <a ng-class="{active: androidActive}"
+             ng-click="setPlatform('android')">Android</a>
+          <a ng-class="{active: windowsActive}"
+             ng-click="setPlatform('windows')">Windows</a>
+        </div>
+        <div id="demo-device-ios"
+             ng-class="previewPlatform"
+             ng-show="iosActive">
+          <iframe id="demo-ios"
+                
+                  src="/docs/v2/demos/slides/?production=true&ionicplatform=ios"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-android"
+             ng-class="previewPlatform"
+             ng-show="androidActive">
+          <iframe id="demo-android"
+                
+                  src="/docs/v2/demos/slides/?production=true&ionicplatform=android"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+        <div id="demo-device-windows"
+             ng-class="previewPlatform"
+             ng-show="windowsActive">
+          <iframe id="demo-windows"
+                
+                  src="/docs/v2/demos/slides/?production=true&ionicplatform=windows"
+                
+                  frameborder="0">
+          </iframe>
+        </div>
+      </aside>
+      
+      <main>
+        <h1 class="api-title">
+<a class="anchor" name="slides" href="#slides"></a>
+
+Slides
+<h3><code>ion-slides</code></h3>
+
+
+
+
+
+
+</h1>
+
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/slides/slides.ts#L12">
+Improve this doc
+</a></p>
+
+<p>The Slides component is a multi-section container. Each section can be swiped
+or dragged between. It contains any number of <a href="../Slide">Slide</a> components.</p>
+<h3 id="creating">Creating</h3>
+<p>You should use a template to create slides and listen to slide events. The template
+should contain the slide container, an <code>&lt;ion-slides&gt;</code> element, and any number of
+<a href="../Slide">Slide</a> components, written as <code>&lt;ion-slide&gt;</code>. Any configuration of the
+slides should be passed in the <code>options</code> property of the <code>&lt;ion-slides&gt;</code> element.
+You can listen to events such as the slide changing by placing the event on the
+<code>&lt;ion-slides&gt;</code> element. See <a href="#usage">Usage</a> below for more information on
+creating slides.</p>
+<h3 id="configuring">Configuring</h3>
+<p>There are several configuration options that can be passed to Slides. These should
+be passed in the <code>options</code> property of the <code>&lt;ion-slides&gt;</code> element upon creation.
+You can allow the slides to loop around from the last to the first, set autoplay
+on the slides so it will automatically switch between them, and more.</p>
+<p>Properties to pass in options:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td><code>number</code></td>
+<td>-</td>
+<td>Delay between transitions (in ms). If this parameter is not passed, autoplay is disabled.</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><code>string</code></td>
+<td>&#39;horizontal&#39;</td>
+<td>Swipe direction: &#39;horizontal&#39; or &#39;vertical&#39;.</td>
+</tr>
+<tr>
+<td>initialSlide</td>
+<td><code>number</code></td>
+<td>0</td>
+<td>Index number of initial slide</td>
+</tr>
+<tr>
+<td>loop</td>
+<td><code>boolean</code></td>
+<td>false</td>
+<td>Whether to continuously loop from the last slide to the first slide.</td>
+</tr>
+<tr>
+<td>pager</td>
+<td><code>boolean</code></td>
+<td>false</td>
+<td>Show the pagination bullets.</td>
+</tr>
+<tr>
+<td>speed</td>
+<td><code>number</code></td>
+<td>300</td>
+<td>Duration of transition between slides (in ms).</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="#usage">Usage</a> below for more information on configuring slides.</p>
+<h3 id="navigating">Navigating</h3>
+<p>After creating and configuring the slides, you can navigate between them
+by swiping or calling methods on the <code>Slides</code> instance. You can call <code>slideTo()</code> to
+navigate to a specific slide, or <code>slideNext()</code> to change to the slide that follows
+the active slide. All of the <a href="#instance-members">methods</a> provided by the <code>Slides</code>
+instance are listed below. See <a href="#usage">Usage</a> below for more information on
+navigating between slides.</p>
+<h3 id="limitations">Limitations</h3>
+<p>The Slides component wraps the <a href="http://www.idangero.us/swiper/">Swiper</a> component
+built by iDangero.us. This means that all of the Swiper API isn&#39;t exposed on the
+Slides component. See the <a href="#getSlider"><code>getSlider()</code></a> method for information on
+getting the <code>Swiper</code> instance and using its methods directly.</p>
+
+<!-- @usage tag -->
+
+<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
+
+<p>You can add slides to a <code>@Component</code> using the following template:</p>
+<pre><code class="lang-html">&lt;ion-slides&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 1&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 2&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+  &lt;ion-slide&gt;
+    &lt;h1&gt;Slide 3&lt;/h1&gt;
+  &lt;/ion-slide&gt;
+&lt;/ion-slides&gt;
+</code></pre>
+<p>To add <a href="#configuring">options</a>, we will define them in <code>mySlideOptions</code> in our class <code>MyPage</code>:</p>
+<pre><code class="lang-ts">import {Component} from &#39;@angular/core&#39;;
+import {Slides} from &#39;ionic-angular&#39;;
+
+@Component({
+  templateUrl: &#39;my-page.html&#39;
+})
+class MyPage {
+  mySlideOptions = {
+    initialSlide: 1,
+    loop: true
+  };
+}
+</code></pre>
+<p>This is setting the second slide as the initial slide on load, since
+the <code>initialSlide</code> begins at <code>0</code>. We are also setting <code>loop</code> to true which
+allows us to swipe from the last slide to the first continuously. Then,
+we will pass <code>mySlideOptions</code> in the <code>options</code> property of the <code>&lt;ion-slides&gt;</code>
+element. We are using <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#property-binding">property binding</a>
+on <code>options</code> because <code>mySlideOptions</code> is an expression:</p>
+<pre><code class="lang-html">&lt;ion-slides [options]=&quot;mySlideOptions&quot;&gt;
+</code></pre>
+<p>To grab a reference to the Slides, we will add a <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#local-vars">local template variable</a>
+to <code>&lt;ion-slides&gt;</code> called <code>mySlider</code>:</p>
+<pre><code class="lang-html">&lt;ion-slides #mySlider [options]=&quot;mySlideOptions&quot;&gt;
+</code></pre>
+<p>Next, we can use <code>ViewChild</code> to assign the Slides instance to <code>slider</code>:</p>
+<pre><code class="lang-ts">import {ViewChild} from &#39;@angular/core&#39;;
+
+class MyPage {
+  @ViewChild(&#39;mySlider&#39;) slider: Slides;
+
+  ...
+}
+</code></pre>
+<p>Now we can call any of the <code>Slider</code> <a href="(#instance-members">methods</a>),
+for example we can use the Slider&#39;s <code>slideTo()</code> method in order to
+navigate to a specific slide on a button click. Below we call the
+<code>goToSlide()</code> method and it navigates to the 3rd slide:</p>
+<pre><code class="lang-ts">class MyPage {
+  ...
+
+  goToSlide() {
+    this.slider.slideTo(2, 500);
+  }
+}
+</code></pre>
+<p>We can also add events to listen to on the <code>&lt;ion-slides&gt;</code> element.
+Let&#39;s add the <code>ionDidChange</code> event and call a method when the slide changes:</p>
+<pre><code class="lang-html">&lt;ion-slides #mySlider (ionDidChange)=&quot;onSlideChanged()&quot; [options]=&quot;mySlideOptions&quot;&gt;
+</code></pre>
+<p>In our class, we add the <code>onSlideChanged()</code> method which gets the active
+index and prints it:</p>
+<pre><code class="lang-ts">class MyPage {
+  ...
+
+  onSlideChanged() {
+    let currentIndex = this.slider.getActiveIndex();
+    console.log(&quot;Current index is&quot;, currentIndex);
+  }
+}
+</code></pre>
+<p>For all of the methods you can call on the <code>Slider</code> instance, see the
+<a href="#instance-members">Instance Members</a>.</p>
+
+<!-- @property tags -->
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="slideTo"></div>
+
+<h3>
+<a class="anchor" name="slideTo" href="#slideTo"></a>
+<code>slideTo(index,&nbsp;speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the specified slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        index
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>The index number of the slide.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms). Optional.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="slideNext"></div>
+
+<h3>
+<a class="anchor" name="slideNext" href="#slideNext"></a>
+<code>slideNext(speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the next slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms). Optional.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="slidePrev"></div>
+
+<h3>
+<a class="anchor" name="slidePrev" href="#slidePrev"></a>
+<code>slidePrev(speed,&nbsp;runCallbacks)</code>
+  
+
+</h3>
+
+<p>Transition to the previous slide.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        speed
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>Transition duration (in ms). Optional.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        runCallbacks
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>Whether or not to emit the <code>ionWillChange</code>/<code>ionDidChange</code> events. Optional. Default true.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div id="getActiveIndex"></div>
+
+<h3>
+<a class="anchor" name="getActiveIndex" href="#getActiveIndex"></a>
+<code>getActiveIndex()</code>
+  
+
+</h3>
+
+<p>Get the index of the active slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The index number of the current slide.</p>
+
+
+</div>
+
+<div id="getPreviousIndex"></div>
+
+<h3>
+<a class="anchor" name="getPreviousIndex" href="#getPreviousIndex"></a>
+<code>getPreviousIndex()</code>
+  
+
+</h3>
+
+<p>Get the index of the previous slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The index number of the previous slide.</p>
+
+
+</div>
+
+<div id="length"></div>
+
+<h3>
+<a class="anchor" name="length" href="#length"></a>
+<code>length()</code>
+  
+
+</h3>
+
+<p>Get the total number of slides.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>number</code> <p>The total number of slides.</p>
+
+
+</div>
+
+<div id="isEnd"></div>
+
+<h3>
+<a class="anchor" name="isEnd" href="#isEnd"></a>
+<code>isEnd()</code>
+  
+
+</h3>
+
+<p>Get whether or not the current slide is the last slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> <p>If the slide is the last slide or not.</p>
+
+
+</div>
+
+<div id="isBeginning"></div>
+
+<h3>
+<a class="anchor" name="isBeginning" href="#isBeginning"></a>
+<code>isBeginning()</code>
+  
+
+</h3>
+
+<p>Get whether or not the current slide is the first slide.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>boolean</code> <p>If the slide is the first slide or not.</p>
+
+
+</div>
+
+<div id="getSlider"></div>
+
+<h3>
+<a class="anchor" name="getSlider" href="#getSlider"></a>
+<code>getSlider()</code>
+  
+
+</h3>
+
+<p>Get the <code class="highlighter-rouge">Swiper</code> instance.</p>
+
+<p>The Slides component wraps the <code class="highlighter-rouge">Swiper</code> component built by iDangero.us. See the
+<a href="http://idangero.us/swiper/api/">Swiper API Docs</a> for information on using
+the <code class="highlighter-rouge">Swiper</code> instance directly.</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Swiper</code> 
+
+</div>
+
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>options</td>
+      <td><code>Object</code></td>
+      <td><p> Any configuration for the slides</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<!-- output events on the class -->
+<h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>ionWillChange</td>
+      <td><p> Expression to evaluate when a slide change starts.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionDidChange</td>
+      <td><p> Expression to evaluate when a slide change ends.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>ionDrag</td>
+      <td><p> Expression to evaluate when a slide moves.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- related link -->
+
+<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
+
+<p><a href="/docs/v2/components#slides">Slides Component Docs</a></p>
+
+<p>Swiper.js:
+The most modern mobile touch slider and framework with hardware accelerated transitions</p>
+
+<p>http://www.idangero.us/swiper/</p>
+
+<p>Copyright 2015, Vladimir Kharlampidi
+The iDangero.us
+http://www.idangero.us/</p>
+
+<p>Licensed under MIT<!-- end content block --></p>
+
+<!-- end body block -->
+
+
+      </main>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?5"></script>
+
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="/js/ionic-docs.js?5"></script>
+
+
+  </body>
+</html>
