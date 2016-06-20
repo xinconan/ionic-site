@@ -442,9 +442,9 @@ moment-timezone dt     http://momentjs.com/timezone/                    1       
 <p>There are different reasons this can happen. If you are unable to find a solution on the forums, make sure:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">@App</code> has a <code class="highlighter-rouge">template</code> or <code class="highlighter-rouge">templateUrl</code>.</li>
+  <li>Root <code class="highlighter-rouge">@Component</code> has a <code class="highlighter-rouge">template</code> or <code class="highlighter-rouge">templateUrl</code>.</li>
   <li>
-    <p><code class="highlighter-rouge">@App</code> template has an <code class="highlighter-rouge">&lt;ion-nav&gt;</code> with a <code class="highlighter-rouge">root</code> property:</p>
+    <p>Root <code class="highlighter-rouge">@Component</code> template has an <code class="highlighter-rouge">&lt;ion-nav&gt;</code> with a <code class="highlighter-rouge">root</code> property:</p>
 
     <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ion-nav</span> <span class="err">[</span><span class="na">root</span><span class="err">]="</span><span class="na">rootPage</span><span class="err">"</span><span class="nt">&gt;&lt;/ion-nav&gt;</span>
 </code></pre>
@@ -461,7 +461,7 @@ moment-timezone dt     http://momentjs.com/timezone/                    1       
 <p>There are a few things you can check. Make sure:</p>
 
 <ul>
-  <li>You include it in the <code class="highlighter-rouge">directives</code> array of the <code class="highlighter-rouge">@Page</code> or <code class="highlighter-rouge">@Component</code> you want to use it in.</li>
+  <li>You include it in the <code class="highlighter-rouge">directives</code> array of the <code class="highlighter-rouge">@Component</code> you want to use it in.</li>
   <li>Your selector doesn’t have any misspellings.</li>
   <li>You’re using the selector correctly as an attribute, element or class.</li>
   <li>Your selector has the <a href="http://learnangular2.com/components/">proper syntax</a>:
@@ -484,7 +484,7 @@ moment-timezone dt     http://momentjs.com/timezone/                    1       
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="c1">// We add my-dir as an attribute to match the directive's selector</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">my</span><span class="o">-</span><span class="nx">dir</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
 </span>
@@ -496,35 +496,6 @@ moment-timezone dt     http://momentjs.com/timezone/                    1       
   <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">MyDir</span><span class="p">]</span> <span class="c1">// &lt;-- Don't forget me!</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">MyPage</span> <span class="p">{}</span>
-</code></pre>
-</div>
-
-<h2 id="angular-components">Angular Components</h2>
-
-<blockquote>
-  <p>Why is an Ionic component not working in my custom Angular component?</p>
-</blockquote>
-
-<p>To include an Ionic component in your custom Angular component you need to import <code class="highlighter-rouge">IONIC_DIRECTIVES</code> and inject those into your component by placing them in the <code class="highlighter-rouge">directives</code> array. You will then be able to include Ionic components in your Angular component.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="s1">'custom-component'</span><span class="p">,</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
-    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">My</span> <span class="nx">awesome</span> <span class="nx">custom</span> <span class="nx">component</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">list</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">item</span><span class="o">&gt;</span>
-        <span class="nx">I</span> <span class="nx">am</span> <span class="nx">an</span> <span class="nx">awesome</span> <span class="nx">ionic</span> <span class="nx">component</span><span class="p">.</span>
-      <span class="o">&lt;</span><span class="sr">/ion-item</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="sr">/ion-list</span><span class="err">&gt;
-</span>  <span class="err">`</span><span class="p">,</span>
-
-  <span class="c1">// This is required to use Ionic components in a</span>
-  <span class="c1">// @Component or @Directive</span>
-  <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">IONIC_DIRECTIVES</span><span class="p">]</span>
-<span class="p">})</span>
-<span class="kr">class</span> <span class="nx">MyComponent</span> <span class="p">{</span>
-
-<span class="p">}</span>
 </code></pre>
 </div>
 
@@ -613,7 +584,7 @@ moment-timezone dt     http://momentjs.com/timezone/                    1       
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">MyService</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'my-service'</span><span class="p">;</span> <span class="c1">//Don't forget to import me!</span>
 
-<span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="nx">Hello</span> <span class="nx">World</span><span class="err">`</span>
 <span class="p">})</span>
 <span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
@@ -749,7 +720,7 @@ No MyComp to inject        +------+------+
 
 <p>This error is a more specific version of the <code class="highlighter-rouge">No provider</code> error above.  It happens when you use a form control like <a href="https://angular.io/docs/js/latest/api/core/NgControlName-class.html">NgControlName</a> without specifying a parent <a href="https://angular.io/docs/js/latest/api/core/NgForm-class.html">NgForm</a> or <a href="https://angular.io/docs/js/latest/api/core/NgFormModel-class.html">NgFormModel</a>.  In most cases, this can be resolved by making sure your form control is within an actual form element.  NgForm uses <code class="highlighter-rouge">form</code> as a selector so this will instantiate a new NgForm:</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Page</span><span class="p">({</span>
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span>
     <span class="s1">'&lt;form&gt;'</span> <span class="o">+</span>
       <span class="s1">'&lt;input ngControl="login"&gt;'</span> <span class="o">+</span>
