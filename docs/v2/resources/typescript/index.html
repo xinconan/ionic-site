@@ -12,11 +12,11 @@
 
 
 
-    <title>Sass Variables - Ionic Theming -  Ionic Framework</title>
+    <title>All In on TypeScript - Ionic Resources -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-sass-variables"
-        class="v2 docs page-sass-variables"
+  <body id="docs-page-all_in_on_typescript"
+        class="v2 docs page-all_in_on_typescript"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -262,11 +262,9 @@
    </li>
 
   
-  <li class="active">
+  <li class="">
     <a ng-click="showTheming = !showTheming">Theming</a>
     <ul ng-show="showTheming"
-        
-          ng-init="showTheming = true"
         >
       <li class="">
         <a href="/docs/v2/theming/">Intro</a>
@@ -274,7 +272,7 @@
       <li class="">
         <a href="/docs/v2/theming/theming-your-app/">Theming your App</a>
       </li>
-      <li class="active">
+      <li class="">
         <a href="/docs/v2/theming/sass-variables/">Sass Variables</a>
       </li>
       <li class="">
@@ -347,9 +345,11 @@
   </li>
 
   
-  <li class="">
+  <li class="active">
     <a href="/docs/v2/resources" >Resources</a>
     <ul ng-show="showResources"
+        
+          ng-init="showResources = true"
         >
       
       
@@ -366,7 +366,7 @@
       <li class="">
         <a href="/docs/v2/resources/progressive-web-apps/">Progressive Web Apps</a>
       </li>
-      <li class="">
+      <li class="active">
         <a href="/docs/v2/resources/typescript/">All In on TypeScript</a>
       </li>
 
@@ -390,61 +390,41 @@
       </nav>
       
       <main>
-        <h1 class="title">Sass Variables</h1>
+        <h1 id="going-all-in-on-typescript">Going all in on TypeScript</h1>
 
-<p><a class="improve-v2-docs" href="https://github.com/driftyco/ionic-site/edit/master/docs/v2/theming/sass-variables/index.md">
-  Improve this doc
-</a></p>
+<p>TypeScript is a superset of JavaScript that gives you nice advantages, including:</p>
 
-<p>Sass Variables allow you to define a value once and use it in multiple places. Variables begin with dollar signs and are set like CSS properties. You can change the value of the variable in one place, and all instances where it is used will be changed, too. For example, if you wanted to set the same height for two different selectors, you could create a variable called <code class="highlighter-rouge">$control-height</code>:</p>
+<ul>
+  <li>Optional static typing (the key here is optional)</li>
+  <li>Type Inference which gives some of the benefits of types without actually using them</li>
+  <li>Access to ES6 and ES7 features before they become supported by major browsers</li>
+  <li>The ability to compile down to a version of JavaScript that runs on all browsers</li>
+  <li>Great tooling support with IntelliSense</li>
+</ul>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$control-height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
-</code></pre>
-</div>
+<p>Because of these awesome features and the huge advantages it gives to you as a developer, Ionic 2 apps are written in TypeScript instead of ES6</p>
 
-<p>Then, you can use this variable in multiple places. For simplicity’s sake, let’s assign <code class="highlighter-rouge">$control-height</code> to the <code class="highlighter-rouge">height</code> attribute of two selectors:</p>
+<h3 id="optional-static-typing">Optional Static Typing</h3>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
-  <span class="nl">height</span><span class="p">:</span> <span class="nv">$control-height</span><span class="p">;</span>
-<span class="p">}</span>
+<p>Most likely, the first thing that comes to mind with TypeScript is the optional static type system that it provides.
+  Types can be added to variables, functions, properties, etc.
+  This will help the compiler and show warnings any potential errors in code before an app is ever run.
+  Types also help when using libraries and frameworks as they let developers know exactly what type of data APIs expects.
+  The key thing to remember about the type system is that it is optional.
+  TypeScript does not force developers to add types in they don’t want to.
+  But as an app gets larger and more complex, they can provide some great advantages.</p>
 
-<span class="nc">.sub-header</span> <span class="p">{</span>
-  <span class="nl">height</span><span class="p">:</span> <span class="nv">$control-height</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<h3 id="intellisense">Intellisense</h3>
 
-<p>When translated to CSS, it becomes the following:</p>
+<p>One of the biggest advantages TypeScript is its code completion and IntelliSense.
+  Intellisense provides active hints as code is added.
+  Since Ionic 2 it self is written in TypeScript as well, editors can present all the methods available and what they expect as arguments.
+  All the best IDE’s available today have support for code completion, including VScode, Atom, WebStorm, Sublime text, and even command line editors such as Vim/Neovim!</p>
 
-<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.header</span> <span class="p">{</span>
-  <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nc">.sub-header</span> <span class="p">{</span>
-  <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>This is extremely useful if you decide later on that you would like to change the value of <code class="highlighter-rouge">$control-height</code>, and it is being used by multiple selectors. Instead of sifting through all of your code to find the places to change, you only have to update the <code class="highlighter-rouge">$control-height</code> variable.</p>
-
-<p>Sass variables go hand in hand with Ionic. With some CSS frameworks, you have to create a new stylesheet and override their styles to change the look of your application. In Ionic, you can modify the Sass directly, so that the CSS file that gets generated has the customization you want.</p>
-
-<p>Learn how you can override Ionic’s Sass variables in order to get a custom style for your app in the <a href="../overriding-ionic-variables/">next section</a>.</p>
+<p>With all the benefits provided by TypeScript, developers can have a much better experience when creating their app.
+  With this, Ionic 2 is going “all in” on TypeScript instead of providing ES6 starters.</p>
 
       </main>
-    </div>
-    
-    <div class="footer-links">
-      <hr>
-      
-        <a class="footer-link prev" href="/docs/v2/theming/theming-your-app/">
-          Theming your app</a>
-      
-      
-        <a class="footer-link next" href="/docs/v2/theming/css-utilities/">
-          Utility Attributes</a>
-      
     </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
