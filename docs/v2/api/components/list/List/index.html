@@ -404,6 +404,9 @@
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/api/util/reorderArray">reorderArray</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/api/components/scroll/Scroll">Scroll</a>
 </li>
 <li class="capitalize ">
@@ -528,7 +531,7 @@ List
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/list/list.ts#L7">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/2.0//src/components/list/list.ts#L5">
 Improve this doc
 </a></p>
 
@@ -548,63 +551,6 @@ removing items.</p>
 <!-- instance methods on the class -->
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
-
-<div id="enableSlidingItems"></div>
-
-<h3>
-<a class="anchor" name="enableSlidingItems" href="#enableSlidingItems"></a>
-<code>enableSlidingItems(shouldEnable)</code>
-  
-
-</h3>
-
-<p>Enable the sliding items.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">ViewChild</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span><span class="nx">List</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
-
-<span class="err">@</span><span class="nx">Component</span><span class="p">({...})</span>
-<span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
-  <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">List</span><span class="p">)</span> <span class="nx">list</span><span class="err">:</span> <span class="nx">List</span><span class="p">;</span>
-
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-
-  <span class="nx">stopSliding</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">enableSlidingItems</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        shouldEnable
-        
-        
-      </td>
-      <td>
-        
-  <code>boolean</code>
-      </td>
-      <td>
-        <p>whether the item-sliding should be enabled or not</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
 
 <div id="closeSlidingItems"></div>
 
@@ -633,24 +579,6 @@ removing items.</p>
 </code></pre>
 </div>
 
-<div id="setCssClass"></div>
-
-<h3>
-<a class="anchor" name="setCssClass" href="#setCssClass"></a>
-<code>setCssClass()</code>
-  
-
-</h3>
-
-<div id="reorderStart"></div>
-
-<h3>
-<a class="anchor" name="reorderStart" href="#reorderStart"></a>
-<code>reorderStart()</code>
-  
-
-</h3>
-
 <!-- input methods on the class -->
 <h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
 <table class="table param-table" style="margin:0;">
@@ -664,27 +592,21 @@ removing items.</p>
   <tbody>
     
     <tr>
-      <td>reorder</td>
-      <td><code></code></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table>
-<!-- output events on the class -->
-<h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Attr</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>ionItemReorder</td>
-      <td></td>
+      <td>sliding</td>
+      <td><code>Component, ViewChild</code></td>
+      <td><p> from &#39;@angular/core&#39;;
+import {List} from &#39;ionic-angular&#39;;</p>
+<p>@Component({...})
+export class MyClass {
+  @ViewChild(List) list: List;</p>
+<p>  constructor() { }</p>
+<p>  stopSliding() {
+    this.list.enableSlidingItems(false);
+  }
+}
+```
+@param {boolean} shouldEnable whether the item-sliding should be enabled or not</p>
+</td>
     </tr>
     
   </tbody>
