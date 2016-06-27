@@ -1811,7 +1811,7 @@ navigation.</p>
   Demo Source
 </a></p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
   <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
     <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">menu</span> <span class="p">[</span><span class="nx">content</span><span class="p">]</span><span class="o">=</span><span class="s2">"content"</span><span class="o">&gt;</span>
       <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span><span class="o">&gt;</span>
@@ -1837,13 +1837,14 @@ navigation.</p>
 
 <p>The <code class="highlighter-rouge">&lt;ion-menu&gt;</code>s bound <code class="highlighter-rouge">[content]</code> property gets a <a href="https://angular.io/docs/ts/latest/guide/user-input.html#local-variables">reference</a> to the <code class="highlighter-rouge">&lt;ion-nav&gt;</code> in order to listen for drag events on the main content so it knows when to open/close.</p>
 
-<p>Then in our <a href="../api/config/App/">@App</a> component we have two buttons with click handlers that navigate to a new root page:</p>
+<p>Then in our root component we have two buttons with click handlers that navigate to a new root page:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">MenuController</span><span class="p">,</span> <span class="nx">IonicApp</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">MenuController</span><span class="p">,</span> <span class="nx">ionicBootstrap</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">LoginPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'login'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">SignupPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'signup'</span><span class="p">;</span>
 
-<span class="err">@</span><span class="nx">App</span><span class="p">({</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
 <span class="p">...</span>
 <span class="p">})</span>
 <span class="kr">class</span> <span class="nx">MyApp</span> <span class="p">{</span>
@@ -1865,6 +1866,8 @@ navigation.</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="nx">ionicBootstrap</span><span class="p">(</span><span class="nx">MyApp</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -2827,7 +2830,7 @@ export class HomePage{
     <span class="k">this</span><span class="p">.</span><span class="nx">initializeItems</span><span class="p">();</span>
 
     <span class="c1">// set q to the value of the searchbar</span>
-    <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">searchbar</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">searchbar</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
 
     <span class="c1">// if the value is an empty string don't filter the items</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">q</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="o">==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
