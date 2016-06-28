@@ -279,10 +279,10 @@
     
   
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
+  <a href="/docs/v2/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/alert/Alert">Alert</a>
+  <a href="/docs/v2/api/components/alert/AlertController">AlertController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/app/App">App</a>
@@ -345,7 +345,7 @@
   <a href="/docs/v2/api/components/list/List">List</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/loading/Loading">Loading</a>
+  <a href="/docs/v2/api/components/loading/LoadingController">LoadingController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -363,7 +363,7 @@
   <a href="/docs/v2/api/components/menu/MenuToggle">MenuToggle</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/modal/Modal">Modal</a>
+  <a href="/docs/v2/api/components/modal/ModalController">ModalController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
@@ -386,14 +386,14 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
-<li class="capitalize active">
-  <a href="/docs/v2/api/components/picker/Picker">Picker</a>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/picker/PickerController">PickerController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+  <a href="/docs/v2/api/components/popover/PopoverController">PopoverController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
@@ -456,7 +456,7 @@
   <a href="/docs/v2/api/components/input/TextArea">TextArea</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/toast/Toast">Toast</a>
+  <a href="/docs/v2/api/components/toast/ToastController">ToastController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
@@ -492,18 +492,13 @@ Picker
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/picker/picker.ts#L11">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/picker/picker.ts#L7">
 Improve this doc
 </a></p>
 
 <!-- @usage tag -->
 
 <!-- @property tags -->
-<h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
-<div id="create"></div>
-<h3><a class="anchor" name="create" href="#create"></a><code>create()</code>
-  
-</h3>
 
 <!-- instance methods on the class -->
 
@@ -643,6 +638,55 @@ Improve this doc
     
   </tbody>
 </table>
+
+<div id="present"></div>
+
+<h3>
+<a class="anchor" name="present" href="#present"></a>
+<code>present(opts)</code>
+  
+
+</h3>
+
+<p>Present the picker instance.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        opts
+        
+        
+      </td>
+      <td>
+        
+  <code>NavOptions</code>
+      </td>
+      <td>
+        <p>Nav options to go with this transition.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> <p>Returns a promise which is resolved when the transition has completed.</p>
+
+
+</div>
 
 <!-- output events on the class -->
 <h2><a class="anchor" name="output-events" href="#output-events"></a>Output Events</h2>

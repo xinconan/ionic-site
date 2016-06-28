@@ -279,10 +279,10 @@
     
   
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
+  <a href="/docs/v2/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/alert/Alert">Alert</a>
+  <a href="/docs/v2/api/components/alert/AlertController">AlertController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/app/App">App</a>
@@ -345,7 +345,7 @@
   <a href="/docs/v2/api/components/list/List">List</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/loading/Loading">Loading</a>
+  <a href="/docs/v2/api/components/loading/LoadingController">LoadingController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -363,7 +363,7 @@
   <a href="/docs/v2/api/components/menu/MenuToggle">MenuToggle</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/modal/Modal">Modal</a>
+  <a href="/docs/v2/api/components/modal/ModalController">ModalController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
@@ -387,13 +387,13 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/picker/Picker">Picker</a>
+  <a href="/docs/v2/api/components/picker/PickerController">PickerController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+  <a href="/docs/v2/api/components/popover/PopoverController">PopoverController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
@@ -456,7 +456,7 @@
   <a href="/docs/v2/api/components/input/TextArea">TextArea</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/toast/Toast">Toast</a>
+  <a href="/docs/v2/api/components/toast/ToastController">ToastController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
@@ -524,8 +524,8 @@ providers and dependency injection, see <a href="">Providers and DI</a>.</p>
 navigation controller for most situations (for more advanced situations, see
 <a href="../../Menu/Menu/">Menu</a> and <a href="../../Tab/Tab/">Tab</a>).</p>
 <pre><code class="lang-ts">class MyComponent {
-  constructor(nav: NavController) {
-    this.nav = nav;
+  constructor(private nav: NavController) {
+
   }
 }
 </code></pre>
@@ -836,8 +836,8 @@ last view.</p>
 <span class="k">import</span> <span class="p">{</span><span class="nx">Info</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../info/info'</span>
 
  <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([</span> <span class="p">{</span><span class="na">page</span><span class="p">:</span> <span class="nx">List</span><span class="p">},</span> <span class="p">{</span><span class="na">page</span><span class="p">:</span> <span class="nx">Detail</span><span class="p">},</span> <span class="p">{</span><span class="na">page</span><span class="p">:</span><span class="nx">Info</span><span class="p">}</span> <span class="p">]);</span>
@@ -857,8 +857,8 @@ options to the navigation controller.</p>
 <span class="k">import</span> <span class="p">{</span><span class="nx">Detail</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../detail/detail'</span>
 
  <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([</span> <span class="p">{</span><span class="na">page</span><span class="p">:</span> <span class="nx">List</span><span class="p">},</span> <span class="p">{</span><span class="na">page</span><span class="p">:</span> <span class="nx">Detail</span><span class="p">}</span> <span class="p">],</span> <span class="p">{</span>
@@ -878,8 +878,8 @@ the array.</p>
 <span class="k">import</span> <span class="p">{</span><span class="nx">Detail</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../detail/detail'</span><span class="p">;</span>
 
  <span class="k">export</span> <span class="kr">class</span> <span class="nx">Home</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">setPages</span><span class="p">()</span> <span class="p">{</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">setPages</span><span class="p">([{</span>
@@ -1000,8 +1000,8 @@ navParam docs.</p>
 <p>We can also pass any options to the transtion from that same method.</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">){</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">){</span>
+
    <span class="p">}</span>
 
    <span class="nx">pushPage</span><span class="p">(</span><span class="nx">user</span><span class="p">){</span>
@@ -1093,91 +1093,6 @@ navParam docs.</p>
 
 </div>
 
-<div id="present"></div>
-
-<h3>
-<a class="anchor" name="present" href="#present"></a>
-<code>present(enteringView,&nbsp;opts)</code>
-  
-
-</h3>
-
-<p>Present is how an app display overlays on top of the content, from within the
-root level <code class="highlighter-rouge">NavController</code>. The <code class="highlighter-rouge">present</code> method is used by overlays, such
-as <code class="highlighter-rouge">ActionSheet</code>, <code class="highlighter-rouge">Alert</code>, and <code class="highlighter-rouge">Modal</code>. The main difference between <code class="highlighter-rouge">push</code>
-and <code class="highlighter-rouge">present</code> is that <code class="highlighter-rouge">present</code> takes a <code class="highlighter-rouge">ViewController</code> instance, whereas
-<code class="highlighter-rouge">push</code> takes a component class which hasn’t been instantiated yet.
-Additionally, <code class="highlighter-rouge">present</code> will place the overlay in the root NavController’s
-stack.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
-   <span class="p">}</span>
-
-   <span class="nx">presentModal</span><span class="p">()</span> <span class="p">{</span>
-     <span class="kd">let</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">Modal</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">ProfilePage</span><span class="p">);</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">present</span><span class="p">(</span><span class="nx">modal</span><span class="p">);</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        enteringView
-        
-        
-      </td>
-      <td>
-        
-  <code>ViewController</code>
-      </td>
-      <td>
-        <p>The component you want to push on the navigation stack.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        opts
-        
-        
-      </td>
-      <td>
-        
-  <code>object</code>
-      </td>
-      <td>
-        <p>Nav options to go with this transition.</p>
-
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<div class="return-value">
-<i class="icon ion-arrow-return-left"></i>
-<b>Returns:</b> 
-  <code>Promise</code> <p>Returns a promise which is resolved when the transition has completed.</p>
-
-
-</div>
-
 <div id="insert"></div>
 
 <h3>
@@ -1191,8 +1106,8 @@ stack.</p>
 you need to add a view at any point in your navigation stack.</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Detail</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">insertPage</span><span class="p">(){</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">Info</span><span class="p">);</span>
@@ -1304,8 +1219,8 @@ you need to add a view at any point in your navigation stack.</p>
 <p>Inserts multiple pages into the nav stack at the specified index.</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Detail</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">insertPages</span><span class="p">(){</span>
      <span class="kd">let</span> <span class="nx">pages</span> <span class="o">=</span> <span class="p">[</span>
@@ -1585,8 +1500,8 @@ the stack, no matter how many pages back that is.</p>
 <p>Removes a page from the nav stack at the specified index.</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Detail</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">nav</span> <span class="o">=</span> <span class="nx">nav</span><span class="p">;</span>
+   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">nav</span><span class="err">:</span> <span class="nx">NavController</span><span class="p">)</span> <span class="p">{</span>
+
    <span class="p">}</span>
    <span class="nx">removePage</span><span class="p">(){</span>
      <span class="k">this</span><span class="p">.</span><span class="nx">nav</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>

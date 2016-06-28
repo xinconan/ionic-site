@@ -101,8 +101,6 @@
 </nav>
 
     <div class="docs-container"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <form class="form-group search" role="search">
@@ -281,10 +279,10 @@
     
   
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/action-sheet/ActionSheet">ActionSheet</a>
+  <a href="/docs/v2/api/components/action-sheet/ActionSheetController">ActionSheetController</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/alert/Alert">Alert</a>
+  <a href="/docs/v2/api/components/alert/AlertController">AlertController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/app/App">App</a>
@@ -347,7 +345,7 @@
   <a href="/docs/v2/api/components/list/List">List</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/loading/Loading">Loading</a>
+  <a href="/docs/v2/api/components/loading/LoadingController">LoadingController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/storage/LocalStorage">LocalStorage</a>
@@ -364,8 +362,8 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/menu/MenuToggle">MenuToggle</a>
 </li>
-<li class="capitalize active">
-  <a href="/docs/v2/api/components/modal/Modal">Modal</a>
+<li class="capitalize ">
+  <a href="/docs/v2/api/components/modal/ModalController">ModalController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/Nav">Nav</a>
@@ -389,13 +387,13 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/picker/Picker">Picker</a>
+  <a href="/docs/v2/api/components/picker/PickerController">PickerController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/popover/Popover">Popover</a>
+  <a href="/docs/v2/api/components/popover/PopoverController">PopoverController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/radio/RadioButton">RadioButton</a>
@@ -458,7 +456,7 @@
   <a href="/docs/v2/api/components/input/TextArea">TextArea</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/toast/Toast">Toast</a>
+  <a href="/docs/v2/api/components/toast/ToastController">ToastController</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/toggle/Toggle">Toggle</a>
@@ -482,47 +480,6 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-          <a ng-class="{active: windowsActive}"
-             ng-click="setPlatform('windows')">Windows</a>
-        </div>
-        <div id="demo-device-ios"
-             ng-class="previewPlatform"
-             ng-show="iosActive">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/modal/?production=true&ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android"
-             ng-class="previewPlatform"
-             ng-show="androidActive">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/modal/?production=true&ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-windows"
-             ng-class="previewPlatform"
-             ng-show="windowsActive">
-          <iframe id="demo-windows"
-                
-                  src="/docs/v2/demos/modal/?production=true&ionicplatform=windows"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
 <a class="anchor" name="modal" href="#modal"></a>
@@ -535,132 +492,28 @@ Modal
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/modal/modal.ts#L10">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/modal/modal.ts#L7">
 Improve this doc
 </a></p>
 
-<p>A Modal is a content pane that goes over the user&#39;s current page.
-Usually it is used for making a choice or editing an item. A modal uses the
-<code>NavController</code> to
-<a href="/docs/v2/api/components/nav/NavController/#present">present</a>
-itself in the root nav stack. It is added to the stack similar to how
-<a href="/docs/v2/api/components/nav/NavController/#push">NavController.push</a>
-works.</p>
-<p>When a modal (or any other overlay such as an alert or actionsheet) is
-&quot;presented&quot; to a nav controller, the overlay is added to the app&#39;s root nav.
-After the modal has been presented, from within the component instance The
-modal can later be closed or &quot;dismissed&quot; by using the ViewController&#39;s
-<code>dismiss</code> method. Additionally, you can dismiss any overlay by using <code>pop</code>
-on the root nav controller.</p>
-<p>Data can be passed to a new modal through <code>Modal.create()</code> as the second
-argument. The data can then be accessed from the opened page by injecting
-<code>NavParams</code>. Note that the page, which opened as a modal, has no special
-&quot;modal&quot; logic within it, but uses <code>NavParams</code> no differently than a
-standard page.</p>
-
 <!-- @usage tag -->
 
-<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
-
-<pre><code class="lang-ts">import { Modal, NavController, NavParams } from &#39;ionic-angular&#39;;
-
-@Component(...)
-class HomePage {
-
- constructor(nav: NavController) {
-   this.nav = nav;
- }
-
- presentProfileModal() {
-   let profileModal = Modal.create(Profile, { userId: 8675309 });
-   this.nav.present(profileModal);
- }
-
-}
-
-@Component(...)
-class Profile {
-
- constructor(params: NavParams) {
-   console.log(&#39;UserId&#39;, params.get(&#39;userId&#39;));
- }
-
-}
-</code></pre>
-<p>A modal can also emit data, which is useful when it is used to add or edit
-data. For example, a profile page could slide up in a modal, and on submit,
-the submit button could pass the updated profile data, then dismiss the
-modal.</p>
-<pre><code class="lang-ts">import { Component } from &#39;@angular/core&#39;;
-import { Modal, NavController, ViewController } from &#39;ionic-angular&#39;;
-
-@Component(...)
-class HomePage {
-
- constructor(nav: NavController) {
-   this.nav = nav;
- }
-
- presentContactModal() {
-   let contactModal = Modal.create(ContactUs);
-   this.nav.present(contactModal);
- }
-
- presentProfileModal() {
-   let profileModal = Modal.create(Profile, { userId: 8675309 });
-   profileModal.onDismiss(data =&gt; {
-     console.log(data);
-   });
-   this.nav.present(profileModal);
- }
-
-}
-
-@Component(...)
-class Profile {
-
- constructor(viewCtrl: ViewController) {
-   this.viewCtrl = viewCtrl;
- }
-
- dismiss() {
-   let data = { &#39;foo&#39;: &#39;bar&#39; };
-   this.viewCtrl.dismiss(data);
- }
-
-}
-</code></pre>
-
 <!-- @property tags -->
-<h2><a class="anchor" name="static-members" href="#static-members"></a>Static Members</h2>
-<div id="create"></div>
-<h3><a class="anchor" name="create" href="#create"></a><code>create(componentType,&nbsp;data,&nbsp;opts)</code>
+
+<!-- instance methods on the class -->
+
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="present"></div>
+
+<h3>
+<a class="anchor" name="present" href="#present"></a>
+<code>present(opts)</code>
   
+
 </h3>
 
-<p>Create a modal with the following options</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Option</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>showBackdrop</td>
-      <td><code class="highlighter-rouge">boolean</code></td>
-      <td>Whether to show the backdrop. Default true.</td>
-    </tr>
-    <tr>
-      <td>enableBackdropDismiss</td>
-      <td><code class="highlighter-rouge">boolean</code></td>
-      <td>Whether the popover should be dismissed by tapping the backdrop. Default true.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Present the action sheet instance.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -674,50 +527,16 @@ class Profile {
     
     <tr>
       <td>
-        componentType
-        
-        
-      </td>
-      <td>
-        
-  <code>object</code>
-      </td>
-      <td>
-        <p>The Modal view</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        data
-        
-        
-      </td>
-      <td>
-        
-  <code>object</code>
-      </td>
-      <td>
-        <p>Any data to pass to the Modal view</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
         opts
         
         
       </td>
       <td>
         
-  <code>object</code>
+  <code>NavOptions</code>
       </td>
       <td>
-        <p>Modal options</p>
+        <p>Nav options to go with this transition.</p>
 
         
       </td>
@@ -726,24 +545,16 @@ class Profile {
   </tbody>
 </table>
 
-<!-- instance methods on the class -->
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Promise</code> <p>Returns a promise which is resolved when the transition has completed.</p>
 
-<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="loaded"></div>
-
-<h3>
-<a class="anchor" name="loaded" href="#loaded"></a>
-<code>loaded()</code>
-  
-
-</h3>
+</div>
 
 <!-- related link -->
-
-<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
-
-<p><a href="/docs/v2/components#modals">Modal Component Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 
