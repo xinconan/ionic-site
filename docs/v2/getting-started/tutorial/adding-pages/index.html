@@ -407,7 +407,7 @@
 
 <p>Pay attention to the <code class="highlighter-rouge">[root]</code> property binding. This sets what is essentially the first, or “root” page for the <code class="highlighter-rouge">ion-nav</code> component. When <code class="highlighter-rouge">ion-nav</code> loads, the component referenced by the variable <code class="highlighter-rouge">rootPage</code> will be the root page.</p>
 
-<p>In <code class="highlighter-rouge">app/app.js</code>, the <code class="highlighter-rouge">MyApp</code> component specifies this in its constructor:</p>
+<p>In <code class="highlighter-rouge">app/app.ts</code>, the <code class="highlighter-rouge">MyApp</code> component specifies this in its constructor:</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">HelloIonicPage</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'./pages/hello-ionic/hello-ionic'</span><span class="p">;</span>
@@ -433,10 +433,10 @@
 
 <h3 id="creating-a-page">Creating a Page</h3>
 
-<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/pages/hello-ionic/</code> folder, go and open up <code class="highlighter-rouge">hello-ionic.js</code>.</p>
+<p>Next, let’s check out the <code class="highlighter-rouge">HelloIonicPage</code> that we are importing. Inside the <code class="highlighter-rouge">app/pages/hello-ionic/</code> folder, go and open up <code class="highlighter-rouge">hello-ionic.ts</code>.</p>
 
 <blockquote>
-  <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find <code class="highlighter-rouge">hello-ionic.js</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
+  <p>You may have noticed that each page has its own folder that is named after the page. Inside each folder, we also see a <code class="highlighter-rouge">.html</code> and a <code class="highlighter-rouge">.scss</code> file with the same name. For example, inside of <code class="highlighter-rouge">hello-ionic/</code> we will find <code class="highlighter-rouge">hello-ionic.ts</code>, <code class="highlighter-rouge">hello-ionic.html</code>, and <code class="highlighter-rouge">hello-ionic.scss</code>. Although using this pattern is not required, it can be helpful to keep things organized.</p>
 </blockquote>
 
 <p>Below, we see the <code class="highlighter-rouge">HelloIonicPage</code> class. This creates a Page - an Angular component with all Ionic directives already provided, to be loaded using Ionic’s navigation system.  Notice that because Pages are meant to be loaded dynamically, they don’t have a selector:</p>
@@ -488,7 +488,7 @@
 
 <p>To create an additional page, we don’t need to do much beyond making sure we correctly configure the title and anything else we want the navigation bar to display.</p>
 
-<p>Let’s check out the contents of <code class="highlighter-rouge">app/pages/list/list.js</code>. Inside, you will see a new page is defined:</p>
+<p>Let’s check out the contents of <code class="highlighter-rouge">app/pages/list/list.ts</code>. Inside, you will see a new page is defined:</p>
 
 <div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="k">from</span> <span class="s2">"@angular/core"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">NavController</span><span class="p">,</span> <span class="nx">NavParams</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'ionic-angular'</span><span class="p">;</span>
