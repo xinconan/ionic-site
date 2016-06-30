@@ -390,9 +390,6 @@
   <a href="/docs/v2/api/components/option/Option">Option</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/api/components/picker/PickerController">PickerController</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/api/platform/Platform">Platform</a>
 </li>
 <li class="capitalize ">
@@ -409,9 +406,6 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/refresher/Refresher">Refresher</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/util/reorderArray">reorderArray</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/scroll/Scroll">Scroll</a>
@@ -433,12 +427,6 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slide">Slide</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/gestures/SlideEdgeGesture">SlideEdgeGesture</a>
-</li>
-<li class="capitalize ">
-  <a href="/docs/v2/api/gestures/SlideGesture">SlideGesture</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/api/components/slides/Slides">Slides</a>
@@ -531,6 +519,16 @@ export class MyPage{
 
 </h3>
 
+<p>Observable to be subscribed to when the current component will become active</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
+
 <div id="didEnter"></div>
 
 <h3>
@@ -539,6 +537,16 @@ export class MyPage{
   
 
 </h3>
+
+<p>Observable to be subscribed to when the current component has become active</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
 
 <div id="willLeave"></div>
 
@@ -549,6 +557,16 @@ export class MyPage{
 
 </h3>
 
+<p>Observable to be subscribed to when the current component will no longer be active</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
+
 <div id="didLeave"></div>
 
 <h3>
@@ -557,6 +575,16 @@ export class MyPage{
   
 
 </h3>
+
+<p>Observable to be subscribed to when the current component is no long active</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
 
 <div id="willUnload"></div>
 
@@ -567,6 +595,16 @@ export class MyPage{
 
 </h3>
 
+<p>Observable to be subscribed to when the current component will be destroyed</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
+
 <div id="didUnload"></div>
 
 <h3>
@@ -575,6 +613,16 @@ export class MyPage{
   
 
 </h3>
+
+<p>Observable to be subscribed to when the current component has been destroyed</p>
+
+<div class="return-value">
+<i class="icon ion-arrow-return-left"></i>
+<b>Returns:</b> 
+  <code>Observable</code> <p>Returns an observable</p>
+
+
+</div>
 
 <div id="componentType"></div>
 
@@ -643,16 +691,7 @@ export class MyPage{
 
 </h3>
 
-<p>You can find out the index of the current view is in the current navigation stack.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code> <span class="k">export</span> <span class="kr">class</span> <span class="nx">Page1</span> <span class="p">{</span>
-   <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">view</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">){</span>
-     <span class="c1">// Just log out the index</span>
-     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
-   <span class="p">}</span>
- <span class="p">}</span>
-</code></pre>
-</div>
+<p>Get the index of the current component in the current navigation stack.</p>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -705,19 +744,9 @@ export class MyPage{
 
 </h3>
 
-<p>You can find out of the current view has a Navbar or not. Be sure
+<p>Find out if the current component has a NavBar or not. Be sure
 to wrap this in an <code class="highlighter-rouge">ionViewWillEnter</code> method in order to make sure
 the view has rendered fully.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Page1</span> <span class="p">{</span>
- <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">viewCtrl</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">)</span> <span class="p">{}</span>
-
- <span class="nx">ionViewWillEnter</span><span class="p">(){</span>
-   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Do we have a Navbar?'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">viewCtrl</span><span class="p">.</span><span class="nx">hasNavbar</span><span class="p">());</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
 
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
@@ -736,18 +765,8 @@ the view has rendered fully.</p>
 
 </h3>
 
-<p>You can change the text of the back button on a view-by-view basis.</p>
-
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">MyClass</span><span class="p">{</span>
- <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">viewCtrl</span><span class="err">:</span> <span class="nx">ViewController</span><span class="p">)</span> <span class="p">{}</span>
-
- <span class="nx">ionViewWillEnter</span><span class="p">()</span> <span class="p">{</span>
-   <span class="k">this</span><span class="p">.</span><span class="nx">viewCtrl</span><span class="p">.</span><span class="nx">setBackButtonText</span><span class="p">(</span><span class="s1">'Previous'</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<p>Make sure you use the view events when calling this method, otherwise the back-button will not have been created</p>
+<p>Change the title of the back-button. Be sure to call this
+after <code class="highlighter-rouge">ionViewWillEnter</code> to make sure the  DOM has been rendered.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -788,7 +807,8 @@ the view has rendered fully.</p>
 
 </h3>
 
-<p>Set if the back button for the current view is visible or not. Be sure to wrap this in <code class="highlighter-rouge">ionViewWillEnter</code> to make sure the has been compleltly rendered.</p>
+<p>Set if the back button for the current view is visible or not. Be sure to call this
+after <code class="highlighter-rouge">ionViewWillEnter</code> to make sure the  DOM has been rendered.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
