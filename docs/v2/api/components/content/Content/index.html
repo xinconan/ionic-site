@@ -1012,6 +1012,45 @@ adjusted, which could be by either padding or margin.</p>
 
 </div>
 
+<div id="resize"></div>
+
+<h3>
+<a class="anchor" name="resize" href="#resize"></a>
+<code>resize()</code>
+  
+
+</h3>
+
+<p>Tell the content to recalculate its dimensions. This should be called
+after dynamically adding headers, footers, or tabs.</p>
+
+<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">header</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">navbar</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Main</span> <span class="nx">Navbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ion-navbar</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">toolbar</span> <span class="o">*</span><span class="nx">ngIf</span><span class="o">=</span><span class="s2">"showToolbar"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Dynamic</span> <span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/ion-title</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ion-toolbar</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-header</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ion</span><span class="o">-</span><span class="nx">content</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"toggleToolbar()"</span><span class="o">&gt;</span><span class="nx">Toggle</span> <span class="nx">Toolbar</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ion-content</span><span class="err">&gt;
+`</span><span class="p">})</span>
+
+<span class="kr">class</span> <span class="nx">E2EPage</span> <span class="p">{</span>
+  <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">Content</span><span class="p">)</span> <span class="nx">content</span><span class="err">:</span> <span class="nx">Content</span><span class="p">;</span>
+  <span class="nl">showToolbar</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="nx">toggleToolbar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">showToolbar</span> <span class="o">=</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">showToolbar</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">resize</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
 <!-- input methods on the class -->
 <h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
 <table class="table param-table" style="margin:0;">
