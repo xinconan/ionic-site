@@ -382,6 +382,26 @@
 
 <!-- @usage tag -->
 
+<h2>Usage</h2>
+
+<pre><code class="lang-ts">// Write a string
+Bluetooth.write(&quot;hello world&quot;).then(success, failure);
+
+// Array of int or bytes
+Bluetooth.write([186, 220, 222]).then(success, failure);
+
+// Typed Array
+var data = new Uint8Array(4);
+data[0] = 0x41;
+data[1] = 0x42;
+data[2] = 0x43;
+data[3] = 0x44;
+Bluetooth.write(data).then(success, failure);
+
+// Array Buffer
+Bluetooth.write(data.buffer).then(success, failure);
+</code></pre>
+
 <!-- @property tags -->
 <h2>Static Members</h2>
 <div id="connect"></div>
@@ -389,15 +409,16 @@
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
-<p>Connect to a Bluetooth device
-Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
+<p>Connect to a Bluetooth device</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -417,7 +438,7 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       <p>Identifier of the remote device</p>
@@ -429,16 +450,23 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   </tbody>
 </table>
 
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable</code> Subscribe to connect, unsubscribe to disconnect.</p>
+</div>
+
 <div id="connectInsecure"></div>
 <h3><code>connectInsecure(macAddress)</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
+</p>
 
-<p>Connect insecurely to a Bluetooth device
-Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
+<p>Connect insecurely to a Bluetooth device</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -458,7 +486,7 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       <p>Identifier of the remote device</p>
@@ -470,17 +498,25 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   </tbody>
 </table>
 
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable</code> Subscribe to connect, unsubscribe to disconnect.</p>
+</div>
+
 <div id="write"></div>
 <h3><code>write(data)</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Writes data to the serial port</p>
 
@@ -502,7 +538,7 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>any</code>
     </td>
     <td>
       <p>ArrayBuffer of data</p>
@@ -514,45 +550,69 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   </tbody>
 </table>
 
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise when data has been written</p>
+</div>
+
 <div id="available"></div>
 <h3><code>available()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Gets the number of bytes of data available</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise that contains the available bytes</p>
+</div>
 
 <div id="read"></div>
 <h3><code>read()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Reads data from the buffer</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise with data from the buffer</p>
+</div>
 
 <div id="readUntil"></div>
 <h3><code>readUntil(delimiter)</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Reads data from the buffer until it reaches a delimiter</p>
 
@@ -574,10 +634,11 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
-      
+      <p>string that you want to search until</p>
+
       
     </td>
   </tr>
@@ -585,17 +646,25 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   </tbody>
 </table>
 
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
+
 <div id="subscribe"></div>
 <h3><code>subscribe(delimiter)</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Subscribe to be notified when data is received</p>
 
@@ -617,10 +686,11 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
-      
+      <p>the string you want to watch for</p>
+
       
     </td>
   </tr>
@@ -628,153 +698,241 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   </tbody>
 </table>
 
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable</code> returns an observable.</p>
+</div>
+
 <div id="subscribeRawData"></div>
 <h3><code>subscribeRawData()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Subscribe to be notified when data is received</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable</code> returns an observable</p>
+</div>
 
 <div id="clear"></div>
 <h3><code>clear()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Clears data in buffer</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise when completed</p>
+</div>
 
 <div id="list"></div>
 <h3><code>list()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Lists bonded devices</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="isEnabled"></div>
 <h3><code>isEnabled()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Reports if bluetooth is enabled</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="isConnected"></div>
 <h3><code>isConnected()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Reports the connection status</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="readRSSI"></div>
 <h3><code>readRSSI()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Reads the RSSI from the connected peripheral</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="showBluetoothSettings"></div>
 <h3><code>showBluetoothSettings()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Show the Bluetooth settings on the device</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="enable"></div>
 <h3><code>enable()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Enable Bluetooth on the device</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="discoverUnpaired"></div>
 <h3><code>discoverUnpaired()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Discover unpaired devices</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> returns a promise</p>
+</div>
 
 <div id="setDeviceDiscoveredListener"></div>
 <h3><code>setDeviceDiscoveredListener()</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
 
-<p><code>iOS</code> </p>
+<code>iOS</code>&nbsp;
 
-<p><code>Windows Phone</code> </p>
+<code>Windows Phone</code>&nbsp;
+</p>
 
 <p>Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the <code class="highlighter-rouge">discoverUnpaired</code> function.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Observable</code> Returns an observable</p>
+</div>
 
 <div id="setName"></div>
 <h3><code>setName(newName)</code>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
+</p>
 
 <p>Sets the human readable device name that is broadcasted to other devices</p>
 
@@ -796,7 +954,7 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       <p>Desired name of device</p>
@@ -813,8 +971,10 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
   
 </h3>
 
-<p><b>Platforms:</b>
-<code>Android</code> </p>
+<p>
+<b>Platforms:</b>
+<code>Android</code>&nbsp;
+</p>
 
 <p>Makes the device discoverable by other devices</p>
 
@@ -836,7 +996,7 @@ Returns an Observable. Subscribe to connect, unsubscribe to disconnect.</p>
     </td>
     <td>
       
-
+<code>number</code>
     </td>
     <td>
       <p>Desired number of seconds device should be discoverable for</p>
