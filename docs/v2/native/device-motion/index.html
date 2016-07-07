@@ -392,16 +392,6 @@ subscription.unsubscribe();
 
 <p>Watch the device acceleration. Clear the watch by unsubscribing from the observable.</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="c1">// Watch device acceleration</span>
-<span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">DeviceMotion</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">acceleration</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">acceleration</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="c1">// Stop watch</span>
-<span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span>
-</code></pre>
-</div>
-
 <table class="table param-table" style="margin:0;">
   <thead>
   <tr>
@@ -420,10 +410,11 @@ subscription.unsubscribe();
     </td>
     <td>
       
-
+<code>AccelerometerOptions</code>
     </td>
     <td>
-      
+      <p>list of options for the accelerometer.</p>
+
       
     </td>
   </tr>
@@ -434,7 +425,7 @@ subscription.unsubscribe();
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Observable&lt;AccelerationData&gt;</code></p>
+<code>Observable&lt;AccelerationData&gt;</code> Observable returns an observable that you can subscribe to</p>
 </div>
 
 <!-- methods on the class -->
