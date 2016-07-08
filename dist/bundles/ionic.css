@@ -911,6 +911,10 @@ ion-modal-inner {
 
 .item-range ion-range {
   width: 100%; }
+  .item-range ion-range ion-label {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center; }
 
 ion-range {
   position: relative;
@@ -6060,8 +6064,8 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .ios .item-label-stacked > ion-label,
-  .ios .item-label-floating > ion-label {
+  .ios .item-label-stacked ion-label,
+  .ios .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -6642,6 +6646,10 @@ ion-icon {
     flex-direction: column; }
   .ios .item-range ion-range {
     width: 100%; }
+    .ios .item-range ion-range ion-label {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      align-self: center; }
   .ios ion-range {
     position: relative;
     display: -webkit-box;
@@ -9612,8 +9620,8 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .md .item-label-stacked > ion-label,
-  .md .item-label-floating > ion-label {
+  .md .item-label-stacked ion-label,
+  .md .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -10178,6 +10186,10 @@ ion-icon {
     flex-direction: column; }
   .md .item-range ion-range {
     width: 100%; }
+    .md .item-range ion-range ion-label {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      align-self: center; }
   .md ion-range {
     position: relative;
     display: -webkit-box;
@@ -13482,8 +13494,8 @@ ion-icon {
     width: 100px;
     min-width: 100px;
     max-width: 200px; }
-  .wp .item-label-stacked > ion-label,
-  .wp .item-label-floating > ion-label {
+  .wp .item-label-stacked ion-label,
+  .wp .item-label-floating ion-label {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -14034,6 +14046,10 @@ ion-icon {
     flex-direction: column; }
   .wp .item-range ion-range {
     width: 100%; }
+    .wp .item-range ion-range ion-label {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      align-self: center; }
   .wp ion-range {
     position: relative;
     display: -webkit-box;
