@@ -174,9 +174,6 @@
   <a href="/docs/v2/native/clipboard">Clipboard</a>
 </li>
 <li class="capitalize ">
-  <a href="/docs/v2/native/connection">Connection</a>
-</li>
-<li class="capitalize ">
   <a href="/docs/v2/native/contacts">Contacts</a>
 </li>
 <li class="capitalize ">
@@ -237,6 +234,9 @@
   <a href="/docs/v2/native/httpd">Httpd</a>
 </li>
 <li class="capitalize ">
+  <a href="/docs/v2/native/ibeacon">IBeacon</a>
+</li>
+<li class="capitalize ">
   <a href="/docs/v2/native/image-picker">Image Picker</a>
 </li>
 <li class="capitalize ">
@@ -265,6 +265,9 @@
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/network">Network</a>
+</li>
+<li class="capitalize ">
+  <a href="/docs/v2/native/onesignal">OneSignal</a>
 </li>
 <li class="capitalize ">
   <a href="/docs/v2/native/printer">Printer</a>
@@ -422,10 +425,11 @@ Clipboard.paste().then(
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
-      
+      <p>Text that gets copied on the system clipboard</p>
+
       
     </td>
   </tr>
@@ -436,7 +440,7 @@ Clipboard.paste().then(
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;T&gt;</code></p>
+<code>Promise&lt;T&gt;</code> Returns a promise after the text has been copied</p>
 </div>
 
 <div id="paste"></div>
@@ -449,7 +453,7 @@ Clipboard.paste().then(
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;T&gt;</code></p>
+<code>Promise&lt;T&gt;</code> Returns a promise after the text has been pasted</p>
 </div>
 
 <!-- methods on the class -->

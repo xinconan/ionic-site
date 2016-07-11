@@ -12,11 +12,11 @@
 
 
 
-    <title>File - Class in module  -  Ionic Framework</title>
+    <title>IBeacon - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-file"
-        class="v2 docs page-file"
+  <body id="docs-page-ibeacon"
+        class="v2 docs page-ibeacon"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -206,7 +206,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/facebook">Facebook</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/file">File</a>
 </li>
 <li class="capitalize ">
@@ -233,7 +233,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/httpd">Httpd</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/ibeacon">IBeacon</a>
 </li>
 <li class="capitalize ">
@@ -324,7 +324,7 @@
         <h1 class="api-title">
 
   
-  File
+  IBeacon
   
 
   
@@ -333,41 +333,94 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/file.ts#L2">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/ibeacon.ts#L212">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-file</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-ibeacon</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-file">
-    https://github.com/apache/cordova-plugin-file
+  <a href="https://github.com/petermetz/cordova-plugin-ibeacon">
+    https://github.com/petermetz/cordova-plugin-ibeacon
   </a>
 </p>
 
 <!-- description -->
 
-<p>This plugin implements a File API allowing read/write access to files residing on the device.</p>
-<p> This plugin is based on several specs, including : The HTML5 File API <a href="http://www.w3.org/TR/FileAPI/">http://www.w3.org/TR/FileAPI/</a>
- The (now-defunct) Directories and System extensions Latest: <a href="http://www.w3.org/TR/2012/WD-file-system-api-20120417/">http://www.w3.org/TR/2012/WD-file-system-api-20120417/</a>
- Although most of the plugin code was written when an earlier spec was current: <a href="http://www.w3.org/TR/2011/WD-file-system-api-20110419/">http://www.w3.org/TR/2011/WD-file-system-api-20110419/</a>
- It also implements the FileWriter spec : <a href="http://dev.w3.org/2009/dap/file-system/file-writer.html">http://dev.w3.org/2009/dap/file-system/file-writer.html</a></p>
+<p>This plugin provides functions for working with iBeacons.</p>
+<p> The plugin&#39;s API closely mimics the one exposed through the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html">CLLocationManager</a> introduced in iOS 7.</p>
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Android</li>
+  
+  <li>iOS</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
+<h2>Usage</h2>
+
+<pre><code class="lang-ts">import {IBeacon} from &#39;ionic-native&#39;;
+
+
+// Request permission to use location on iOS
+IBeacon.requestAlwaysAuthorization();
+// create a new delegate and register it with the native layer
+let delegate = IBeacon.Delegate();
+
+// Subscribe to some of the delegate&#39;s event handlers
+delegate.didRangeBeaconsInRegion()
+  .subscribe(
+    data =&gt; {console.log(&#39;didRangeBeaconsInRegion: &#39;, data)},
+    error =&gt; console.error
+  );
+delegate.didStartMonitoringForRegion()
+  .subscribe(
+    data =&gt; {console.log(&#39;didStartMonitoringForRegion: &#39;, data)},
+    error =&gt; console.error
+  );
+delegate.didEnterRegion()
+  .subscribe(
+    data =&gt; {
+      console.log(&#39;didEnterRegion: &#39;, data);
+    }
+  );
+
+let beaconRegion = IBeacon.BeaconRegion(&#39;deskBeacon&#39;,&#39;F7826DA6-ASDF-ASDF-8024-BC5B71E0893E&#39;);
+
+IBeacon.startMonitoringForRegion(beaconRegion)
+  .then(
+    () =&gt; console.log(&#39;Native layer recieved the request to monitoring&#39;),
+    error =&gt; console.error(&#39;Native layer failed to begin monitoring: &#39;, error)
+  );
+</code></pre>
+
 <!-- @property tags -->
 <h2>Static Members</h2>
-<div id="cordovaFileError"></div>
-<h3><code>cordovaFileError()</code>
+<div id="Delegate"></div>
+<h3><code>Delegate()</code>
   
 </h3>
+<p>Instances of this class are delegates between the <a href="LocationManager">LocationManager</a> and
+the code that consumes the messages generated on in the native layer.</p>
 
-<div id="checkDir"></div>
-<h3><code>checkDir(path,&nbsp;dir)</code>
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Delegate</code> An instance of the type {@type Delegate}.</p>
+</div>
+
+<div id="BeaconRegion"></div>
+<h3><code>BeaconRegion(identifier,&nbsp;uuid,&nbsp;major,&nbsp;minor,&nbsp;notifyEntryStateOnDisplay)</code>
   
 </h3>
-<p>Check if a directory exists in a certain path, directory.</p>
+<p>Creates a new BeaconRegion</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -381,16 +434,16 @@
   
   <tr>
     <td>
-      path
+      identifier
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>String</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+      <p>@see {CLRegion}</p>
 
       
     </td>
@@ -398,17 +451,68 @@
   
   <tr>
     <td>
-      dir
+      uuid
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>String</code>
     </td>
     <td>
-      <p>Name of directory to check</p>
+      <p>The proximity ID of the beacon being targeted. 
+This value must not be blank nor invalid as a UUID.</p>
 
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      major
+      
+      
+    </td>
+    <td>
+      
+<code>Number</code>
+    </td>
+    <td>
+      <p>The major value that you use to identify one or more beacons.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      minor
+      
+      
+    </td>
+    <td>
+      
+<code>Number</code>
+    </td>
+    <td>
+      <p>The minor value that you use to identify a specific beacon.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      notifyEntryStateOnDisplay
+      
+      
+    </td>
+    <td>
+      
+<code>BOOL</code>
+    </td>
+    <td>
+      
       
     </td>
   </tr>
@@ -419,94 +523,26 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns the BeaconRegion that was created</p>
 
 </div>
 
-<div id="createDir"></div>
-<h3><code>createDir(path,&nbsp;dirName,&nbsp;replace)</code>
+<div id="getDelegate"></div>
+<h3><code>getDelegate()</code>
   
 </h3>
-<p>Creates a new directory in the specific path.
-The replace boolean value determines whether to replace an existing directory with the same name.
-If an existing directory exists and the replace value is false, the promise will fail and return an error.</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory to create</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      replace
-      
-      
-    </td>
-    <td>
-      
-<code>boolean</code>
-    </td>
-    <td>
-      <p>If true, replaces file with same name. If false returns error</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns the Delegate</p>
 
 </div>
 
-<div id="removeDir"></div>
-<h3><code>removeDir(path,&nbsp;dirName)</code>
+<div id="setDelegate"></div>
+<h3><code>setDelegate(delegate)</code>
   
 </h3>
-<p>Remove a directory at a given path.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -520,33 +556,16 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      delegate
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Delegate</code>
     </td>
     <td>
-      <p>The path to the directory</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>The directory name</p>
+      <p>An instance of a delegate to register with the native layer.</p>
 
       
     </td>
@@ -558,263 +577,97 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns the Delegate</p>
 
 </div>
 
-<div id="moveDir"></div>
-<h3><code>moveDir(path,&nbsp;dirName,&nbsp;newPath,&nbsp;newDirName)</code>
+<div id="onDomDelegateReady"></div>
+<h3><code>onDomDelegateReady()</code>
   
 </h3>
-<p>Move a directory to a given path.</p>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>The source path to the directory</p>
+<p>Signals the native layer that the client side is ready to consume messages.
+Readiness here means that it has a {Delegate} set by the consumer javascript
+code.</p>
 
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>The source directory name</p>
+<p>The {LocationManager.setDelegate()} will implicitly call this method as well,
+therefore the only case when you have to call this manually is if you don’t
+wish to specify a {Delegate} of yours.</p>
 
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>The destionation path to the directory</p>
+<p>The purpose of this signaling mechanism is to make the events work when the
+app is being woken up by the Operating System to give it a chance to handle
+region monitoring events for example.</p>
 
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newDirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>The destination directory name</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>If you don’t set a {Delegate} and don’t call this method manually, an error
+message get emitted in the native runtime and the DOM as well after a certain
+period of time.</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the request and started to send events.</p>
 
 </div>
 
-<div id="copyDir"></div>
-<h3><code>copyDir(path,&nbsp;dirName,&nbsp;newPath,&nbsp;newDirName)</code>
+<div id="isBluetoothEnabled"></div>
+<h3><code>isBluetoothEnabled()</code>
   
 </h3>
-<p>Copy a directory in various methods. If destination directory exists, will fail to copy.</p>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory to copy</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem of new location</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newDirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>New name of directory to copy to (leave blank to remain the same)</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>Determines if bluetooth is switched on, according to the native layer.</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+<code>Boolean</code> Returns a promise which is resolved with a 
+indicating whether bluetooth is active.</p>
+</div>
+
+<div id="enableBluetooth"></div>
+<h3><code>enableBluetooth()</code>
+  
+</h3>
+
+<p>Enables Bluetooth using the native Layer. (ANDROID ONLY)</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved when Bluetooth
+could be enabled. If not, the promise will be rejected with an error.</p>
 
 </div>
 
-<div id="listDir"></div>
-<h3><code>listDir(path,&nbsp;dirName)</code>
+<div id="disableBluetooth"></div>
+<h3><code>disableBluetooth()</code>
   
 </h3>
-<p>List files and directory from a given path.</p>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>Disables Bluetooth using the native Layer. (ANDROID ONLY)</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved when Bluetooth
+could be enabled. If not, the promise will be rejected with an error.</p>
 
 </div>
 
-<div id="removeRecursively"></div>
-<h3><code>removeRecursively(path,&nbsp;dirName)</code>
+<div id="startMonitoringForRegion"></div>
+<h3><code>startMonitoringForRegion(region)</code>
   
 </h3>
-<p>Removes all files and the directory from a desired location.</p>
+
+<p>Start monitoring the specified region.</p>
+
+<p>If a region of the same type with the same identifier is already being 
+monitored for this application,
+it will be removed from monitoring. For circular regions, the region 
+monitoring service will prioritize
+regions by their size, favoring smaller regions over larger regions.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in monitoredRegions.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -828,33 +681,17 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      dirName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of directory</p>
+      <p>An instance of {Region} which will be monitored
+by the operating system.</p>
 
       
     </td>
@@ -866,15 +703,22 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the monitoring request.</p>
 
 </div>
 
-<div id="checkFile"></div>
-<h3><code>checkFile(path,&nbsp;file)</code>
+<div id="stopMonitoringForRegion"></div>
+<h3><code>stopMonitoringForRegion(region)</code>
   
 </h3>
-<p>Check if a file exists in a certain path, directory.</p>
+
+<p>Stop monitoring the specified region.  It is valid to call 
+stopMonitoringForRegion: for a region that was registered for monitoring 
+with a different location manager object, during this or previous 
+launches of your application.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in monitoredRegions.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -888,33 +732,17 @@ If an existing directory exists and the replace value is false, the promise will
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      file
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to check</p>
+      <p>An instance of {Region} which will be monitored
+by the operating system.</p>
 
       
     </td>
@@ -926,17 +754,21 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the request to stop monitoring.</p>
 
 </div>
 
-<div id="createFile"></div>
-<h3><code>createFile(path,&nbsp;fileName,&nbsp;replace)</code>
+<div id="requestStateForRegion"></div>
+<h3><code>requestStateForRegion(region)</code>
   
 </h3>
-<p>Creates a new file in the specific path.
-The replace boolean value determines whether to replace an existing file with the same name.
-If an existing file exists and the replace value is false, the promise will fail and return an error.</p>
+
+<p>Request state the for specified region. When result is ready
+didDetermineStateForRegion is triggered. This can be any region, 
+also those which is not currently monitored.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in monitoredRegions.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -950,50 +782,17 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to create</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      replace
-      
-      
-    </td>
-    <td>
-      
-<code>boolean</code>
-    </td>
-    <td>
-      <p>If true, replaces file with same name. If false returns error</p>
+      <p>An instance of {Region} which will be monitored
+by the operating system.</p>
 
       
     </td>
@@ -1005,15 +804,22 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the request to stop monitoring.</p>
 
 </div>
 
-<div id="removeFile"></div>
-<h3><code>removeFile(path,&nbsp;fileName)</code>
+<div id="startRangingBeaconsInRegion"></div>
+<h3><code>startRangingBeaconsInRegion(region)</code>
   
 </h3>
-<p>Removes a file from a desired location.</p>
+
+<p>Start ranging the specified beacon region.</p>
+
+<p>If a region of the same type with the same identifier is already being
+monitored for this application, it will be removed from monitoring.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in rangedRegions.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1027,33 +833,17 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to remove</p>
+      <p>An instance of {BeaconRegion} which will be monitored
+by the operating system.</p>
 
       
     </td>
@@ -1065,15 +855,22 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the monitoring request.</p>
 
 </div>
 
-<div id="readAsText"></div>
-<h3><code>readAsText(path,&nbsp;fileName)</code>
+<div id="stopRangingBeaconsInRegion"></div>
+<h3><code>stopRangingBeaconsInRegion(region)</code>
   
 </h3>
-<p>Read a file as string.</p>
+
+<p>Stop ranging the specified region.  It is valid to call
+stopMonitoringForRegion: for a region that was registered for ranging
+with a different location manager object, during this or previous
+launches of your application.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in rangedRegions.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1087,33 +884,17 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to move</p>
+      <p>An instance of {BeaconRegion} which will be monitored
+by the operating system.</p>
 
       
     </td>
@@ -1125,109 +906,104 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the request to stop monitoring.</p>
 
 </div>
 
-<div id="moveFile"></div>
-<h3><code>moveFile(path,&nbsp;fileName,&nbsp;newPath,&nbsp;newFileName)</code>
+<div id="getAuthorizationStatus"></div>
+<h3><code>getAuthorizationStatus()</code>
   
 </h3>
-<p>Move a file to a given path.</p>
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      path
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to move</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem of new location</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newFileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>New name of file to move to (leave blank to remain the same)</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>Queries the native layer to determine the current authorization in effect.</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+ Returns a promise which is resolved with the 
+requested authorization status.</p>
 
 </div>
 
-<div id="copyFile"></div>
-<h3><code>copyFile(path,&nbsp;fileName,&nbsp;newPath,&nbsp;newFileName)</code>
+<div id="requestWhenInUseAuthorization"></div>
+<h3><code>requestWhenInUseAuthorization()</code>
   
 </h3>
-<p>Copy a file in various methods. If file exists, will fail to copy.</p>
+
+<p>For iOS 8 and above only. The permission model has changed by Apple in iOS 8, making it necessary for apps to
+explicitly request permissions via methods like these:
+<a href="https://developer.apple.com/library/prerelease/iOS/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instm/CLLocationManager/requestWhenInUseAuthorization">requestWhenInUseAuthorization</a>
+<a href="https://developer.apple.com/library/prerelease/iOS/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instm/CLLocationManager/requestAlwaysAuthorization">requestAlwaysAuthorization</a></p>
+
+<p>If you are using this plugin on Android devices only, you will never have to use this, nor {@code requestAlwaysAuthorization}</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise that is resolved when the request dialog is shown.</p>
+
+</div>
+
+<div id="requestAlwaysAuthorization"></div>
+<h3><code>requestAlwaysAuthorization()</code>
+  
+</h3>
+
+<p>See the docuemntation of {@code requestWhenInUseAuthorization} for further details.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved when the native layer
+shows the request dialog.</p>
+
+</div>
+
+<div id="getMonitoredRegions"></div>
+<h3><code>getMonitoredRegions()</code>
+  
+</h3>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Array</code> Returns a promise which is resolved with an 
+of {Region} instances that are being monitored by the native layer.</p>
+</div>
+
+<div id="getRangedRegions"></div>
+<h3><code>getRangedRegions()</code>
+  
+</h3>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Array</code> Returns a promise which is resolved with an 
+of {Region} instances that are being ranged by the native layer.</p>
+</div>
+
+<div id="isRangingAvailable"></div>
+<h3><code>isRangingAvailable()</code>
+  
+</h3>
+
+<p>Determines if ranging is available or not, according to the native layer.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Boolean</code> Returns a promise which is resolved with a 
+indicating whether ranging is available or not.</p>
+</div>
+
+<div id="isMonitoringAvailableForClass"></div>
+<h3><code>isMonitoringAvailableForClass(region)</code>
+  
+</h3>
+
+<p>Determines if region type is supported or not, according to the native layer.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1241,67 +1017,17 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      path
+      region
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>Region</code>
     </td>
     <td>
-      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      fileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Name of file to copy</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newPath
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Base FileSystem of new location</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      newFileName
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>New name of file to copy to (leave blank to remain the same)</p>
+      <p>An instance of {Region} which will be checked
+by the operating system.</p>
 
       
     </td>
@@ -1313,7 +1039,234 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.</p>
+<code>Boolean</code> Returns a promise which is resolved with a 
+indicating whether the region type is supported or not.</p>
+</div>
+
+<div id="startAdvertising"></div>
+<h3><code>startAdvertising(region,&nbsp;measuredPower:)</code>
+  
+</h3>
+
+<p>Start advertising the specified region.</p>
+
+<p>If a region a different identifier is already being advertised for
+this application, it will be replaced with the new identifier.</p>
+
+<p>This call will accept a valid beacon even when no BlueTooth is available,
+and will start when BlueTooth is powered on. See {Delegate.}</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      region
+      
+      
+    </td>
+    <td>
+      
+<code>Region</code>
+    </td>
+    <td>
+      <p>An instance of {Region} which will be advertised
+by the operating system.</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      measuredPower:
+      
+      
+    </td>
+    <td>
+      
+<code>Integer</code>
+    </td>
+    <td>
+      <p>Optional parameter, if left empty, the device will
+use it&#39;s own default value.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the advertising request.</p>
+
+</div>
+
+<div id="stopAdvertising"></div>
+<h3><code>stopAdvertising()</code>
+  
+</h3>
+
+<p>Stop advertising as a beacon.</p>
+
+<p>This is done asynchronously and may not be immediately reflected in isAdvertising.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer acknowledged the dispatch of the request to stop advertising.</p>
+
+</div>
+
+<div id="isAdvertisingAvailable"></div>
+<h3><code>isAdvertisingAvailable()</code>
+  
+</h3>
+
+<p>Determines if advertising is available or not, according to the native layer.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Boolean</code> Returns a promise which is resolved with a 
+indicating whether advertising is available or not.</p>
+</div>
+
+<div id="isAdvertising"></div>
+<h3><code>isAdvertising()</code>
+  
+</h3>
+
+<p>Determines if advertising is currently active, according to the native layer.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Boolean</code> Returns a promise which is resolved with a 
+indicating whether advertising is active.</p>
+</div>
+
+<div id="disableDebugLogs"></div>
+<h3><code>disableDebugLogs()</code>
+  
+</h3>
+
+<p>Disables debug logging in the native layer. Use this method if you want
+to prevent this plugin from writing to the device logs.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer has set the logging level accordingly.</p>
+
+</div>
+
+<div id="enableDebugNotifications"></div>
+<h3><code>enableDebugNotifications()</code>
+  
+</h3>
+
+<p>Enables the posting of debug notifications in the native layer. Use this method if you want
+to allow the plugin the posting local notifications.
+This can be very helpful when debugging how to apps behave when launched into the background.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer has set the flag to enabled.</p>
+
+</div>
+
+<div id="disableDebugNotifications"></div>
+<h3><code>disableDebugNotifications()</code>
+  
+</h3>
+
+<p>Disables the posting of debug notifications in the native layer. Use this method if you want
+to prevent the plugin from posting local notifications.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer has set the flag to disabled.</p>
+
+</div>
+
+<div id="enableDebugLogs"></div>
+<h3><code>enableDebugLogs()</code>
+  
+</h3>
+
+<p>Enables debug logging in the native layer. Use this method if you want
+a debug the inner workings of this plugin.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved as soon as the
+native layer has set the logging level accordingly.</p>
+
+</div>
+
+<div id="appendToDeviceLog"></div>
+<h3><code>appendToDeviceLog(message)</code>
+  
+</h3>
+
+<p>Appends the provided [message] to the device logs.
+Note: If debug logging is turned off, this won’t do anything.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      message
+      
+      
+    </td>
+    <td>
+      
+<code>String</code>
+    </td>
+    <td>
+      <p>The message to append to the device logs.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+ Returns a promise which is resolved with the log
+message received by the native layer for appending. The returned message
+is expected to be equivalent to the one provided in the original call.</p>
 
 </div>
 

@@ -12,11 +12,11 @@
 
 
 
-    <title>Hotspot - Class in module  -  Ionic Framework</title>
+    <title>OneSignal - Class in module  -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-hotspot"
-        class="v2 docs page-hotspot"
+  <body id="docs-page-onesignal"
+        class="v2 docs page-onesignal"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -227,7 +227,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/google-plus">Google Plus</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/hotspot">Hotspot</a>
 </li>
 <li class="capitalize ">
@@ -266,7 +266,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/network">Network</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/onesignal">OneSignal</a>
 </li>
 <li class="capitalize ">
@@ -324,7 +324,7 @@
         <h1 class="api-title">
 
   
-  Hotspot
+  OneSignal
   
 
   
@@ -333,26 +333,34 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/hotspot.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/onesignal.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-hotspot</code></pre>
+<pre><code>$ ionic plugin add onesignal-cordova-plugin</code></pre>
 <p>Repo:
-  <a href="https://github.com/hypery2k/cordova-hotspot-plugin">
-    https://github.com/hypery2k/cordova-hotspot-plugin
+  <a href="https://github.com/OneSignal/OneSignal-Cordova-SDK">
+    https://github.com/OneSignal/OneSignal-Cordova-SDK
   </a>
 </p>
 
 <!-- description -->
+
+<p>The OneSignal plugin is an client implementation for using the <a href="https://onesignal.com/">OneSignal</a> Service.
+OneSignal is a simple implementation for delivering push notifications.</p>
+<p>Requires Cordova plugin: <code>onesignal-cordova-plugin</code>. For more info, please see the <a href="https://documentation.onesignal.com/docs/phonegap-sdk-installation">OneSignal Cordova Docs</a>.</p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
 
 <ul>
   <li>Android</li>
+  
+  <li>iOS</li>
+  
+  <li>Windows Phone 8</li>
   </ul>
 
 <!-- @platforms tag end -->
@@ -361,33 +369,26 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {Hotspot, Network} from &#39;ionic-native&#39;;
+<pre><code class="lang-ts">import {OneSignal} from &#39;ionic-native&#39;;
 
-...
-    Hotspot.scanWifi().then((networks: Array&lt;Network&gt;) =&gt; {
-        console.log(networks);
-    });
-...
+let notificationOpenedCallback(jsonData: any) {
+  console.log(&#39;didReceiveRemoteNotificationCallBack: &#39; + JSON.stringify(jsonData));
+};
+OneSignal.init(&quot;b2f7f966-d8cc-11e4-bed1-df8f05be55ba&quot;,
+                               {googleProjectNumber: &quot;703322744261&quot;},
+                               notificationOpenedCallback);
+
+OneSignal.enableInAppAlertNotification(true);
 </code></pre>
 
 <!-- @property tags -->
 <h2>Static Members</h2>
-<div id="isAvailable"></div>
-<h3><code>isAvailable()</code>
+<div id="init"></div>
+<h3><code>init(Your,&nbsp;The)</code>
   
 </h3>
 
-<div id="toggleWifi"></div>
-<h3><code>toggleWifi()</code>
-  
-</h3>
-
-<div id="createHotspot"></div>
-<h3><code>createHotspot(SSID,&nbsp;mode,&nbsp;password)</code>
-  
-</h3>
-
-<p>Configures and starts hotspot with SSID and Password</p>
+<p>Only required method you need to call to setup OneSignal to receive push notifications. Call this from the <code class="highlighter-rouge">deviceready</code> event.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -401,16 +402,16 @@
   
   <tr>
     <td>
-      SSID
+      Your
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>appId</code>
     </td>
     <td>
-      <p>SSID of your new Access Point</p>
+      <p>AppId from your OneSignal app</p>
 
       
     </td>
@@ -418,33 +419,16 @@
   
   <tr>
     <td>
-      mode
+      The
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>options</code>
     </td>
     <td>
-      <p>encryption mode (Open, WEP, WPA, WPA_PSK)</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      password
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>password for your new Access Point</p>
+      <p>Google Project Number (which you can get from the Google Developer Potal) and the autoRegister option.</p>
 
       
     </td>
@@ -456,28 +440,24 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> - Promise to call once hotspot is started, or reject upon failure</p>
+<code>Promise</code> Returns a Promise that resolves when remote notification was recieved.</p>
 </div>
 
-<div id="startHotspot"></div>
-<h3><code>startHotspot()</code>
+<div id="registerForPushNotifications"></div>
+<h3><code>registerForPushNotifications()</code>
   
 </h3>
 
-<p>Turns on Access Point</p>
+<p>Call this when you would like to prompt an iOS user to accept push notifications with the default system prompt. 
+Only use if you passed false to autoRegister when calling init.</p>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> - true if AP is started</p>
-</div>
-
-<div id="configureHotspot"></div>
-<h3><code>configureHotspot(SSID,&nbsp;mode,&nbsp;password)</code>
+<div id="sendTag"></div>
+<h3><code>sendTag(Key,&nbsp;Value)</code>
   
 </h3>
 
-<p>Configures hotspot with SSID and Password</p>
+<p>Tag a user based on an app event of your choosing so later you can create segments on <a href="https://onesignal.com/">onesignal.com</a> to target these users. 
+Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -491,16 +471,16 @@
   
   <tr>
     <td>
-      SSID
+      Key
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>key</code>
     </td>
     <td>
-      <p>SSID of your new Access Point</p>
+      <p>of your choosing to create or update.</p>
 
       
     </td>
@@ -508,33 +488,16 @@
   
   <tr>
     <td>
-      mode
+      Value
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>value</code>
     </td>
     <td>
-      <p>encryption mode (Open, WEP, WPA, WPA_PSK)</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      password
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>password for your new Access Point</p>
+      <p>to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.</p>
 
       
     </td>
@@ -543,49 +506,13 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> - Promise to call when hotspot is configured, or reject upon failure</p>
-</div>
-
-<div id="stopHotspot"></div>
-<h3><code>stopHotspot()</code>
+<div id="sendTags"></div>
+<h3><code>sendTags(Pass)</code>
   
 </h3>
 
-<p>Turns off Access Point</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> - Promise to turn off the hotspot, true on success, false on failure</p>
-</div>
-
-<div id="isHotspotEnabled"></div>
-<h3><code>isHotspotEnabled()</code>
-  
-</h3>
-
-<p>Checks if hotspot is enabled</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> - Promise that hotspot is enabled, rejected if it is not enabled</p>
-</div>
-
-<div id="getAllHotspotDevices"></div>
-<h3><code>getAllHotspotDevices()</code>
-  
-</h3>
-
-<div id="connectToWifi"></div>
-<h3><code>connectToWifi(ssid,&nbsp;password)</code>
-  
-</h3>
-
-<p>Connect to a WiFi network</p>
+<p>Tag a user based on an app event of your choosing so later you can create segments on <a href="https://onesignal.com/">onesignal.com</a> to target these users. 
+Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -599,33 +526,16 @@
   
   <tr>
     <td>
-      ssid
+      Pass
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>json</code>
     </td>
     <td>
-      <p>SSID to connect</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      password
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>password to use</p>
+      <p>a json object with key/value pairs like: {key: &quot;value&quot;, key2: &quot;value2&quot;}</p>
 
       
     </td>
@@ -634,18 +544,25 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> Promise that connection to the WiFi network was successfull, rejected if unsuccessful</p>
-</div>
-
-<div id="connectToWifiAuthEncrypt"></div>
-<h3><code>connectToWifiAuthEncrypt(ssid,&nbsp;password,&nbsp;authentication,&nbsp;encryption)</code>
+<div id="getTags"></div>
+<h3><code>getTags()</code>
   
 </h3>
 
-<p>Connect to a WiFi network</p>
+<p>Retrieve a list of tags that have been set on the user from the OneSignal server.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a Promise that resolves when tags are recieved.</p>
+</div>
+
+<div id="deleteTag"></div>
+<h3><code>deleteTag(Key)</code>
+  
+</h3>
+
+<p>Deletes a tag that was previously set on a user with <code class="highlighter-rouge">sendTag</code> or <code class="highlighter-rouge">sendTags</code>. Use <code class="highlighter-rouge">deleteTags</code> if you need to delete more than one.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -659,67 +576,16 @@
   
   <tr>
     <td>
-      ssid
+      Key
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>key</code>
     </td>
     <td>
-      <p>SSID to connect</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      password
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Password to use</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      authentication
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Authentication modes to use (LEAP, SHARED, OPEN)</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      encryption
-      
-      
-    </td>
-    <td>
-      
-<code>string[]</code>
-    </td>
-    <td>
-      <p>Encryption modes to use (CCMP, TKIP, WEP104, WEP40)</p>
+      <p>to remove.</p>
 
       
     </td>
@@ -728,18 +594,12 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> Promise that connection to the WiFi network was successfull, rejected if unsuccessful</p>
-</div>
-
-<div id="addWifiNetwork"></div>
-<h3><code>addWifiNetwork(ssid,&nbsp;mode,&nbsp;password)</code>
+<div id="deleteTags"></div>
+<h3><code>deleteTags(Keys)</code>
   
 </h3>
 
-<p>Add a WiFi network</p>
+<p>Deletes tags that were previously set on a user with <code class="highlighter-rouge">sendTag</code> or <code class="highlighter-rouge">sendTags</code>.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -753,50 +613,16 @@
   
   <tr>
     <td>
-      ssid
+      Keys
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>keys</code>
     </td>
     <td>
-      <p>SSID of network</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      mode
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Authentication mode of (Open, WEP, WPA, WPA_PSK)</p>
-
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      password
-      
-      
-    </td>
-    <td>
-      
-<code>string</code>
-    </td>
-    <td>
-      <p>Password for network</p>
+      <p>to remove.</p>
 
       
     </td>
@@ -805,18 +631,31 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> Promise that adding the WiFi network was successfull, rejected if unsuccessful</p>
-</div>
-
-<div id="removeWifiNetwork"></div>
-<h3><code>removeWifiNetwork(ssid)</code>
+<div id="getIds"></div>
+<h3><code>getIds()</code>
   
 </h3>
 
-<p>Remove a WiFi network</p>
+<p>Lets you retrieve the OneSignal user id and device token. 
+Your handler is called after the device is successfully registered with OneSignal.</p>
+
+<div class="return-value">
+  <p><i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a Promise that reolves if the device was successfully registered.
+It returns a JSON with <code class="highlighter-rouge">userId</code>and <code class="highlighter-rouge">pushToken</code>.</p>
+</div>
+
+<div id="enableVibrate"></div>
+<h3><code>enableVibrate(false)</code>
+  
+</h3>
+
+<p>Warning:
+Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user’s options for your notifications.</p>
+
+<p>By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode. 
+Passing false means that the device will only vibrate lightly when the device is in it’s vibrate only mode.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -830,16 +669,16 @@
   
   <tr>
     <td>
-      ssid
+      false
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>enable</code>
     </td>
     <td>
-      <p>SSID of network</p>
+      <p>to disable vibrate, true to re-enable it.</p>
 
       
     </td>
@@ -848,78 +687,16 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;void&gt;</code> Promise that removing the WiFi network was successfull, rejected if unsuccessful</p>
-</div>
-
-<div id="isConnectedToInternet"></div>
-<h3><code>isConnectedToInternet()</code>
+<div id="enableSound"></div>
+<h3><code>enableSound(false)</code>
   
 </h3>
 
-<div id="isConnectedToInternetViaWifi"></div>
-<h3><code>isConnectedToInternetViaWifi()</code>
-  
-</h3>
+<p>Warning:
+Only applies to Android and Amazon. You can call this from your UI from a button press for example to give your user’s options for your notifications.</p>
 
-<div id="isWifiOn"></div>
-<h3><code>isWifiOn()</code>
-  
-</h3>
-
-<div id="isWifiSupported"></div>
-<h3><code>isWifiSupported()</code>
-  
-</h3>
-
-<div id="isWifiDirectSupported"></div>
-<h3><code>isWifiDirectSupported()</code>
-  
-</h3>
-
-<div id="scanWifi"></div>
-<h3><code>scanWifi()</code>
-  
-</h3>
-
-<div id="scanWifiByLevel"></div>
-<h3><code>scanWifiByLevel()</code>
-  
-</h3>
-
-<div id="startWifiPeriodicallyScan"></div>
-<h3><code>startWifiPeriodicallyScan()</code>
-  
-</h3>
-
-<div id="stopWifiPeriodicallyScan"></div>
-<h3><code>stopWifiPeriodicallyScan()</code>
-  
-</h3>
-
-<div id="getNetConfig"></div>
-<h3><code>getNetConfig()</code>
-  
-</h3>
-
-<div id="getConnectionInfo"></div>
-<h3><code>getConnectionInfo()</code>
-  
-</h3>
-
-<div id="pingHost"></div>
-<h3><code>pingHost()</code>
-  
-</h3>
-
-<div id="getMacAddressOfHost"></div>
-<h3><code>getMacAddressOfHost(ip)</code>
-  
-</h3>
-
-<p>Gets MAC Address associated with IP Address from ARP File</p>
+<p>By default OneSignal plays the system’s default notification sound when the device’s notification system volume is turned on. 
+Passing false means that the device will only vibrate unless the device is set to a total silent mode.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -933,16 +710,16 @@
   
   <tr>
     <td>
-      ip
+      false
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>enable</code>
     </td>
     <td>
-      <p>IP Address that you want the MAC Address of</p>
+      <p>to disable sound, true to re-enable it.</p>
 
       
     </td>
@@ -951,18 +728,16 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;string&gt;</code> - A Promise for the MAC Address</p>
-</div>
-
-<div id="isDnsLive"></div>
-<h3><code>isDnsLive(ip)</code>
+<div id="enableNotificationsWhenActive"></div>
+<h3><code>enableNotificationsWhenActive(enable)</code>
   
 </h3>
 
-<p>Checks if IP is live using DNS</p>
+<p>Warning:
+Only applies to Android and Amazon devices.</p>
+
+<p>By default this is false and notifications will not be shown when the user is in your app, instead the notificationOpenedCallback is fired. 
+If set to true notifications will always show in the notification area and notificationOpenedCallback will not fire until the user taps on the notification.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -976,17 +751,16 @@
   
   <tr>
     <td>
-      ip
+      enable
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>enable</code>
     </td>
     <td>
-      <p>IP Address you want to test</p>
-
+      
       
     </td>
   </tr>
@@ -994,18 +768,14 @@
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> - A Promise for whether the IP Address is reachable</p>
-</div>
-
-<div id="isPortLive"></div>
-<h3><code>isPortLive(ip)</code>
+<div id="enableInAppAlertNotification"></div>
+<h3><code>enableInAppAlertNotification(enable)</code>
   
 </h3>
 
-<p>Checks if IP is live using socket And PORT</p>
+<p>By default this is false and notifications will not be shown when the user is in your app, instead the notificationOpenedCallback is fired. 
+If set to true notifications will be shown as native alert boxes if a notification is received when the user is in your app. 
+The notificationOpenedCallback is then fired after the alert box is closed.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -1019,16 +789,87 @@
   
   <tr>
     <td>
-      ip
+      enable
       
       
     </td>
     <td>
       
-<code>string</code>
+<code>enable</code>
     </td>
     <td>
-      <p>IP Address you want to test</p>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="setSubscription"></div>
+<h3><code>setSubscription(enable)</code>
+  
+</h3>
+
+<p>You can call this method with false to opt users out of receiving all notifications through OneSignal. 
+You can pass true later to opt users back into notifications.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      enable
+      
+      
+    </td>
+    <td>
+      
+<code>enable</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="postNotification"></div>
+<h3><code>postNotification(Parameters)</code>
+  
+</h3>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      Parameters
+      
+      
+    </td>
+    <td>
+      
+<code>notificationObj</code>
+    </td>
+    <td>
+      <p>see POST <a href="https://documentation.onesignal.com/v2.0/docs/notifications-create-notification">documentation</a></p>
 
       
     </td>
@@ -1040,21 +881,55 @@
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> - A Promise for whether the IP Address is reachable</p>
+<code>Promise</code> Returns a Promise that resolves if the notification was send successfully.</p>
 </div>
 
-<div id="isRooted"></div>
-<h3><code>isRooted()</code>
+<div id="promptLocation"></div>
+<h3><code>promptLocation()</code>
   
 </h3>
 
-<p>Checks if device is rooted</p>
+<p>Prompts the user for location permission to allow geotagging based on the “Location radius” filter on the OneSignal dashboard.</p>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code> - A Promise for whether the device is rooted</p>
-</div>
+<div id="setLogLevel"></div>
+<h3><code>setLogLevel(contains)</code>
+  
+</h3>
+
+<p>Enable logging to help debug if you run into an issue setting up OneSignal. 
+The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose</p>
+
+<p>The higher the value the more information is shown.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      contains
+      
+      
+    </td>
+    <td>
+      
+<code>loglevel</code>
+    </td>
+    <td>
+      <p>two properties: logLevel (for console logging) and visualLevel (for dialog messages)</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <!-- methods on the class -->
 
