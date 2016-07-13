@@ -12,11 +12,11 @@
 
 
 
-    <title>NavPop - Ionic API Documentation -  Ionic Framework</title>
+    <title>GestureController - Ionic API Documentation -  Ionic Framework</title>
 
   </head>
-  <body id="docs-page-navpop"
-        class="v2 docs page-navpop"
+  <body id="docs-page-gesturecontroller"
+        class="v2 docs page-gesturecontroller"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -101,8 +101,6 @@
 </nav>
 
     <div class="docs-container"
-         
-           ng-controller="APIDemoCtrl"
          >
       <nav class="side-nav" id="side-nav">
         <form class="form-group search" role="search">
@@ -310,7 +308,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/util/Events">Events</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/api/gestures/GestureController">GestureController</a>
 </li>
 <li class="capitalize ">
@@ -388,7 +386,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/api/components/nav/NavParams">NavParams</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/api/components/nav/NavPop">NavPop</a>
 </li>
 <li class="capitalize ">
@@ -479,54 +477,11 @@
         
       </nav>
       
-      <aside id="platform-preview" class="platform-preview">
-        <div class="platform-toggle">
-          <a ng-class="{active: iosActive}"
-             ng-click="setPlatform('ios')">iOS</a>
-          <a ng-class="{active: androidActive}"
-             ng-click="setPlatform('android')">Android</a>
-          <a ng-class="{active: windowsActive}"
-             ng-click="setPlatform('windows')">Windows</a>
-        </div>
-        <div id="demo-device-ios"
-             ng-class="previewPlatform"
-             ng-show="iosActive">
-          <iframe id="demo-ios"
-                
-                  src="/docs/v2/demos/navigation/?production=true&ionicplatform=ios"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-android"
-             ng-class="previewPlatform"
-             ng-show="androidActive">
-          <iframe id="demo-android"
-                
-                  src="/docs/v2/demos/navigation/?production=true&ionicplatform=android"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-        <div id="demo-device-windows"
-             ng-class="previewPlatform"
-             ng-show="windowsActive">
-          <iframe id="demo-windows"
-                
-                  src="/docs/v2/demos/navigation/?production=true&ionicplatform=windows"
-                
-                  frameborder="0">
-          </iframe>
-        </div>
-      </aside>
-      
       <main>
         <h1 class="api-title">
-<a class="anchor" name="nav-pop" href="#nav-pop"></a>
+<a class="anchor" name="gesture-controller" href="#gesture-controller"></a>
 
-NavPop
-<h3><code>[nav-pop]</code></h3>
-
+GestureController
 
 
 
@@ -534,34 +489,182 @@ NavPop
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/nav/nav-pop.ts#L1">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/gestures/gesture-controller.ts#L24">
 Improve this doc
 </a></p>
 
-<p>Directive for declaratively pop the current page off from the navigation stack.</p>
-
 <!-- @usage tag -->
-
-<h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
-
-<pre><code class="lang-html">&lt;ion-content&gt;
-
- &lt;button navPop&gt;Go Back&lt;/button&gt;
-
-&lt;/ion-content&gt;
-</code></pre>
-<p>Similar to <a href="/docs/v2/api/components/nav/NavPush/"><code>NavPush</code></a></p>
 
 <!-- @property tags -->
 
 <!-- instance methods on the class -->
 
+<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="id"></div>
+
+<h3>
+<a class="anchor" name="id" href="#id"></a>
+<code>id</code>
+  
+
+</h3>
+
+<div id="requestedStart"></div>
+
+<h3>
+<a class="anchor" name="requestedStart" href="#requestedStart"></a>
+<code>requestedStart</code>
+  
+
+</h3>
+
+<div id="disabledGestures"></div>
+
+<h3>
+<a class="anchor" name="disabledGestures" href="#disabledGestures"></a>
+<code>disabledGestures</code>
+  
+
+</h3>
+
+<div id="disabledScroll"></div>
+
+<h3>
+<a class="anchor" name="disabledScroll" href="#disabledScroll"></a>
+<code>disabledScroll</code>
+  
+
+</h3>
+
+<div id="appRoot"></div>
+
+<h3>
+<a class="anchor" name="appRoot" href="#appRoot"></a>
+<code>appRoot</code>
+  
+
+</h3>
+
+<div id="capturedID"></div>
+
+<h3>
+<a class="anchor" name="capturedID" href="#capturedID"></a>
+<code>capturedID</code>
+  
+
+</h3>
+
+<div id="create"></div>
+
+<h3>
+<a class="anchor" name="create" href="#create"></a>
+<code>create()</code>
+  
+
+</h3>
+
+<div id="start"></div>
+
+<h3>
+<a class="anchor" name="start" href="#start"></a>
+<code>start()</code>
+  
+
+</h3>
+
+<div id="capture"></div>
+
+<h3>
+<a class="anchor" name="capture" href="#capture"></a>
+<code>capture()</code>
+  
+
+</h3>
+
+<div id="release"></div>
+
+<h3>
+<a class="anchor" name="release" href="#release"></a>
+<code>release()</code>
+  
+
+</h3>
+
+<div id="disableGesture"></div>
+
+<h3>
+<a class="anchor" name="disableGesture" href="#disableGesture"></a>
+<code>disableGesture()</code>
+  
+
+</h3>
+
+<div id="enableGesture"></div>
+
+<h3>
+<a class="anchor" name="enableGesture" href="#enableGesture"></a>
+<code>enableGesture()</code>
+  
+
+</h3>
+
+<div id="disableScroll"></div>
+
+<h3>
+<a class="anchor" name="disableScroll" href="#disableScroll"></a>
+<code>disableScroll()</code>
+  
+
+</h3>
+
+<div id="enableScroll"></div>
+
+<h3>
+<a class="anchor" name="enableScroll" href="#enableScroll"></a>
+<code>enableScroll()</code>
+  
+
+</h3>
+
+<div id="canStart"></div>
+
+<h3>
+<a class="anchor" name="canStart" href="#canStart"></a>
+<code>canStart()</code>
+  
+
+</h3>
+
+<div id="isCaptured"></div>
+
+<h3>
+<a class="anchor" name="isCaptured" href="#isCaptured"></a>
+<code>isCaptured()</code>
+  
+
+</h3>
+
+<div id="isScrollDisabled"></div>
+
+<h3>
+<a class="anchor" name="isScrollDisabled" href="#isScrollDisabled"></a>
+<code>isScrollDisabled()</code>
+  
+
+</h3>
+
+<div id="isDisabled"></div>
+
+<h3>
+<a class="anchor" name="isDisabled" href="#isDisabled"></a>
+<code>isDisabled()</code>
+  
+
+</h3>
+
 <!-- related link -->
-
-<h2><a class="anchor" name="related" href="#related"></a>Related</h2>
-
-<p><a href="/docs/v2/components#navigation">Navigation Component Docs</a>,
-<a href="../NavPush">NavPush API Docs</a><!-- end content block --></p>
+<!-- end content block -->
 
 <!-- end body block -->
 
