@@ -16,8 +16,8 @@
       <title>Ionic Native: Harness the power of Native APIs</title>
     
   </head>
-  <body id="docs-page-device-orientation"
-        class="v2 docs page-device-orientation"
+  <body id="docs-page-native-storage"
+        class="v2 docs page-native-storage"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -189,7 +189,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/device-motion">Device Motion</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/device-orientation">Device Orientation</a>
 </li>
 <li class="capitalize ">
@@ -267,7 +267,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/mediaplugin">MediaPlugin</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/native-storage">Native Storage</a>
 </li>
 <li class="capitalize ">
@@ -334,7 +334,7 @@
         <h1 class="api-title">
 
   
-  Device Orientation
+  Native Storage
   
 
   
@@ -343,69 +343,48 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/deviceorientation.ts#L39">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/nativestorage.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-device-orientation</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-nativestorage</code></pre>
 <p>Repo:
-  <a href="https://github.com/apache/cordova-plugin-device-orientation">
-    https://github.com/apache/cordova-plugin-device-orientation
+  <a href="https://github.com/TheCocoaProject/cordova-plugin-nativestorage">
+    https://github.com/TheCocoaProject/cordova-plugin-nativestorage
   </a>
 </p>
 
 <!-- description -->
 
-<p>Requires Cordova plugin: <code>cordova-plugin-device-orientation</code>. For more info, please see the <a href="https://github.com/apache/cordova-plugin-device-orientation">Device Orientation docs</a>.</p>
-
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-ts">import {DeviceOrientation} from &#39;ionic-native&#39;;
+<pre><code class="lang-typescript">import {NativeStorage} from &#39;ionic-native&#39;;
 
+NativeStorage.setItem(&#39;myitem&#39;, {property: &#39;value&#39;, anotherProperty: &#39;anotherValue&#39;})
+  .then(
+    () =&gt; console.log(&#39;Stored item!&#39;),
+    error =&gt; console.error(&#39;Error storing item&#39;, error)
+  );
 
-
-// Get the device current compass heading
-DeviceOrientation.getCurrentHeading().then(
-  data =&gt; console.log(data),
-  error =&gt; console.log(error)
-);
-
-// Watch the device compass heading change
-var subscription = DeviceOrientation.watchHeading().subscribe(
-  data =&gt; console.log(data)
-);
-
-// Stop watching heading change
-subscription.unsubscribe();
+NativeStorage.getItem(&#39;myitem&#39;)
+  .then(
+    data =&gt; console.log(data),
+    error =&gt; console.error(error)
+  );
 </code></pre>
 
 <!-- @property tags -->
-<h2>Static Methods</h2>
-<div id="getCurrentHeading"></div>
-<h3><code>getCurrentHeading()</code>
-
+<h2>Static Members</h2>
+<div id="setItem"></div>
+<h3><code>setItem(reference,&nbsp;value)</code>
+  
 </h3>
 
-<p>Get the current compass heading.</p>
-
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;CompassHeading&gt;</code></p>
-</div>
-
-<div id="watchHeading"></div>
-<h3><code>watchHeading(options)</code>
-
-</h3>
-
-<p>Get the device current heading at a regular interval</p>
-
-<p>Stop the watch by unsubscribing from the observable</p>
+<p>Stores a value</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -419,7 +398,23 @@ subscription.unsubscribe();
   
   <tr>
     <td>
-      options
+      reference
+      
+      
+    </td>
+    <td>
+      
+
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      value
       
       
     </td>
@@ -436,13 +431,87 @@ subscription.unsubscribe();
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Observable&lt;CompassHeading&gt;</code></p>
-</div>
+<div id="getItem"></div>
+<h3><code>getItem(reference)</code>
+  
+</h3>
+
+<p>Gets a stored item</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      reference
+      
+      
+    </td>
+    <td>
+      
+
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="remove"></div>
+<h3><code>remove(reference)</code>
+  
+</h3>
+
+<p>Removes a single stored item</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      reference
+      
+      
+    </td>
+    <td>
+      
+
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="clear"></div>
+<h3><code>clear()</code>
+  
+</h3>
+
+<p>Removes all stored values.</p>
 
 <!-- methods on the class -->
+
 <!-- related link -->
 <!-- end content block -->
 
