@@ -16,8 +16,8 @@
       <title>Ionic Native: Harness the power of Native APIs</title>
     
   </head>
-  <body id="docs-page-app-availability"
-        class="v2 docs page-app-availability"
+  <body id="docs-page-sim"
+        class="v2 docs page-sim"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -126,7 +126,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/admob">AdMob</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/app-availability">App Availability</a>
 </li>
 <li class="capitalize ">
@@ -294,7 +294,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/screenshot">Screenshot</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/sim">Sim</a>
 </li>
 <li class="capitalize ">
@@ -340,7 +340,7 @@
         <h1 class="api-title">
 
   
-  App Availability
+  Sim
   
 
   
@@ -349,23 +349,23 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/appavailability.ts#L0">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/sim.ts#L0">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-appavailability</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-sim</code></pre>
 <p>Repo:
-  <a href="https://github.com/ohh2ahh/AppAvailability">
-    https://github.com/ohh2ahh/AppAvailability
+  <a href="https://github.com/pbakondy/cordova-plugin-sim">
+    https://github.com/pbakondy/cordova-plugin-sim
   </a>
 </p>
 
 <!-- description -->
 
-<p>This plugin allows you to check if an app is installed on the user&#39;s device. It requires an URI Scheme (e.g. twitter://) on iOS or a Package Name (e.g com.twitter.android) on Android.</p>
-<p>Requires Cordova plugin: cordova-plugin-appavailability. For more info, please see the <a href="https://github.com/ohh2ahh/AppAvailability">AppAvailability plugin docs</a>.</p>
+<p>Gets info from the Sim card like the carrier name, mcc, mnc and country code and other system dependent info.</p>
+<p>Requires Cordova plugin: <code>cordova-plugin-sim</code>. For more info, please see the <a href="https://github.com/pbakondy/cordova-plugin-sim">Cordova Sim docs</a>.</p>
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
@@ -374,6 +374,8 @@
   <li>Android</li>
   
   <li>iOS</li>
+  
+  <li>Windows Phone</li>
   </ul>
 
 <!-- @platforms tag end -->
@@ -382,70 +384,32 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-js">import {AppAvailability} from &#39;ionic-native&#39;;
+<pre><code class="lang-js">import {Sim} from &#39;ionic-native&#39;;
 
 
-var app;
-
-if(device.platform === &#39;iOS&#39;) {
-  app = &#39;twitter://&#39;;
-}else if(device.platform === &#39;Android&#39;){
-  app = &#39;com.twitter.android&#39;;
-}
-
-AppAvailability.check(app)
-  .then(
-    yes =&gt; console.log(app + &quot; is available&quot;),
-    no =&gt; console.log(app + &quot; is NOT available&quot;)
-  );
+Sim.getSimInfo().then(
+  (info) =&gt; console.log(&#39;Sim info:&#39;, info),
+  (err) =&gt; console.log(&#39;Unable to get sim info:&#39;, err)
+);
 </code></pre>
 
 <!-- @property tags -->
-<h2>Static Methods</h2>
-<div id="check"></div>
-<h3><code>check(app)</code>
-
+<h2>Static Members</h2>
+<div id="getSimInfo"></div>
+<h3><code>getSimInfo()</code>
+  
 </h3>
 
-<p>Checks if an app is available on device</p>
-
-<table class="table param-table" style="margin:0;">
-  <thead>
-  <tr>
-    <th>Param</th>
-    <th>Type</th>
-    <th>Details</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-  <tr>
-    <td>
-      app
-      
-      
-    </td>
-    <td>
-      
-
-    </td>
-    <td>
-      <p>Package name on android, or URI scheme on iOS</p>
-
-      
-    </td>
-  </tr>
-  
-  </tbody>
-</table>
+<p>Returns info from the SIM card.</p>
 
 <div class="return-value">
   <p><i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
-<code>Promise&lt;boolean&gt;</code></p>
+<code>Promise</code></p>
 </div>
 
 <!-- methods on the class -->
+
 <!-- related link -->
 <!-- end content block -->
 
