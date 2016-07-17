@@ -16,8 +16,8 @@
       <title>Ionic Native: Harness the power of Native APIs</title>
     
   </head>
-  <body id="docs-page-connection"
-        class="v2 docs page-connection"
+  <body id="docs-page-camerapreview"
+        class="v2 docs page-camerapreview"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -168,7 +168,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/camera">Camera</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/camerapreview">CameraPreview</a>
 </li>
 <li class="capitalize ">
@@ -337,7 +337,7 @@
         <h1 class="api-title">
 
   
-  Connection
+  CameraPreview
   
 
   
@@ -346,54 +346,131 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/network.ts#L79">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/camera-preview.ts#L27">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
+
+<pre><code>$ ionic plugin add cordova-plugin-camera-preview</code></pre>
+<p>Repo:
+  <a href="https://github.com/westonganger/cordova-plugin-camera-preview">
+    https://github.com/westonganger/cordova-plugin-camera-preview
+  </a>
+</p>
+
+<!-- description -->
+
+<p>Showing camera preview in HTML</p>
+<p>Requires <a href="module:driftyco/ionic-native">ionic-native</a> and the Cordova plugin: <code>cordova-plugin-camera-preview</code>. For more info, please see the <a href="https://github.com/westonganger/cordova-plugin-camera-preview">Cordova Camera Preview Plugin Docs</a>.</p>
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Android</li>
+  
+  <li>iOS</li>
+  </ul>
+
+<!-- @platforms tag end -->
+
 <!-- @usage tag -->
 
 <!-- @property tags -->
 <h2>Static Members</h2>
-<div id="UNKNOWN"></div>
-<h3><code>UNKNOWN()</code>
+<div id="startCamera"></div>
+<h3><code>startCamera(options)</code>
   
 </h3>
 
-<div id="ETHERNET"></div>
-<h3><code>ETHERNET()</code>
+<p>Starts the camera preview instance.</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      options
+      
+      
+    </td>
+    <td>
+      
+<code>CameraPreviewOptions</code>
+    </td>
+    <td>
+      <p>for the preview</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="stopCamera"></div>
+<h3><code>stopCamera()</code>
   
 </h3>
 
-<div id="WIFI"></div>
-<h3><code>WIFI()</code>
+<p>Stops the camera preview instance.</p>
+
+<div id="takePicture"></div>
+<h3><code>takePicture()</code>
   
 </h3>
 
-<div id="CELL_2G"></div>
-<h3><code>CELL_2G()</code>
+<p>Take the picture, the parameter size is optional</p>
+
+<div id="setOnPictureTakenHandler"></div>
+<h3><code>setOnPictureTakenHandler()</code>
   
 </h3>
 
-<div id="CELL_3G"></div>
-<h3><code>CELL_3G()</code>
+<p>Register a callback function that receives the original picture and the image captured from the preview box.</p>
+
+<div id="switchCamera"></div>
+<h3><code>switchCamera()</code>
   
 </h3>
 
-<div id="CELL_4G"></div>
-<h3><code>CELL_4G()</code>
+<p>Switch from the rear camera and front camera, if available.</p>
+
+<div id="show"></div>
+<h3><code>show()</code>
   
 </h3>
 
-<div id="CELL"></div>
-<h3><code>CELL()</code>
+<p>Show the camera preview box.</p>
+
+<div id="hide"></div>
+<h3><code>hide()</code>
   
 </h3>
 
-<div id="NONE"></div>
-<h3><code>NONE()</code>
+<p>Hide the camera preview box.</p>
+
+<div id="setFlashMode"></div>
+<h3><code>setFlashMode()</code>
   
 </h3>
+
+<p>Set the default mode for the Flash.</p>
+
+<div id="setColorEffect"></div>
+<h3><code>setColorEffect()</code>
+  
+</h3>
+
+<p>Set camera color effect.</p>
 
 <!-- methods on the class -->
 
