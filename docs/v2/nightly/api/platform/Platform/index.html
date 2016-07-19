@@ -554,7 +554,7 @@ customize your app to fit any device.</p>
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
-<pre><code class="lang-ts">import {Platform} from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import { Platform } from &#39;ionic-angular&#39;;
 
 @Component({...})
 export MyPage {
@@ -596,7 +596,7 @@ an iPad would return <code class="highlighter-rouge">true</code> for the platfor
 from Cordova then <code class="highlighter-rouge">cordova</code> would be true, and if it was running
 from a web browser on the iPad then <code class="highlighter-rouge">mobileweb</code> would be <code class="highlighter-rouge">true</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
 
 @Component({...})
 export MyPage {
@@ -717,7 +717,7 @@ export MyPage {
 Each possible value is a hierarchy of platforms. For example, on an iPhone,
 it would return <code class="highlighter-rouge">mobile</code>, <code class="highlighter-rouge">ios</code>, and <code class="highlighter-rouge">iphone</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
 
 @Component({...})
 export MyPage {
@@ -750,7 +750,7 @@ export MyPage {
 
 <p>Returns an object containing version information about all of the platforms.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Platform} from 'ionic-angular';
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Platform } from 'ionic-angular';
 
 @Component({...})
 export MyPage {
@@ -795,8 +795,8 @@ source is <code class="highlighter-rouge">cordova</code>. The default ready sour
 platform the app is running from. For example, only Cordova can execute
 the status bar plugin, so the web should not run status bar plugin logic.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>import {Component} from '@angular/core';
-import {Platform} from 'ionic-angular';
+<div class="highlighter-rouge"><pre class="highlight"><code>import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 
 @Component({...})
 export MyApp {

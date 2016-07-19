@@ -51919,12 +51919,16 @@
 	    /**
 	     * @private
 	     */
-	    App.prototype.setScrollDisabled = function (disabled) {
+	    App.prototype.setScrollDisabled = function (disableScroll) {
+	        var enabled = this._config.get('canDisableScroll', true);
+	        if (!enabled) {
+	            return;
+	        }
 	        if (!this.appRoot) {
 	            console.error('appRoot is missing, scrolling can not be enabled/disabled');
 	            return;
 	        }
-	        this.appRoot.disableScroll = disabled;
+	        this.appRoot.disableScroll = disableScroll;
 	    };
 	    /**
 	     * @private
@@ -52481,7 +52485,7 @@
 	 * You can set the tab placement, icon mode, animations, and more here.
 	 *
 	 * ```ts
-	 * import {ionicBootstrap} from 'ionic-angular';
+	 * import { ionicBootstrap } from 'ionic-angular';
 	 *
 	 * ionicBootstrap(AppRoot, customProviders, {
 	 *   backButtonText: 'Go Back',
@@ -52498,7 +52502,7 @@
 	 * Below is an example where an app can override any setting we want based on a platform.
 	 *
 	 * ```ts
-	 * import {ionicBootstrap} from 'ionic-angular';
+	 * import { ionicBootstrap } from 'ionic-angular';
 	 *
 	 * ionicBootstrap(AppRoot, customProviders, {
 	 *   tabsPlacement: 'bottom',
@@ -52814,7 +52818,7 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {Platform} from 'ionic-angular';
+	 * import { Platform } from 'ionic-angular';
 	 *
 	 * @Component({...})
 	 * export MyPage {
@@ -52880,7 +52884,7 @@
 	     * from a web browser on the iPad then `mobileweb` would be `true`.
 	     *
 	     * ```
-	     * import {Platform} from 'ionic-angular';
+	     * import { Platform } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export MyPage {
@@ -52922,7 +52926,7 @@
 	     * it would return `mobile`, `ios`, and `iphone`.
 	     *
 	     * ```
-	     * import {Platform} from 'ionic-angular';
+	     * import { Platform } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export MyPage {
@@ -52944,7 +52948,7 @@
 	     * Returns an object containing version information about all of the platforms.
 	     *
 	     * ```
-	     * import {Platform} from 'ionic-angular';
+	     * import { Platform } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export MyPage {
@@ -52990,8 +52994,8 @@
 	     * the status bar plugin, so the web should not run status bar plugin logic.
 	     *
 	     * ```
-	     * import {Component} from '@angular/core';
-	     * import {Platform} from 'ionic-angular';
+	     * import { Component } from '@angular/core';
+	     * import { Platform } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export MyApp {
@@ -54932,7 +54936,7 @@
 	 * defined in any component type which is pushed/popped from a `NavController`.
 	 *
 	 * ```ts
-	 * import {Component } from '@angular/core';
+	 * import { Component } from '@angular/core';
 	 *
 	 * @Component({
 	 *   template: 'Hello World'
@@ -65961,7 +65965,7 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {ActionSheetController} from 'ionic-angular'
+	 * import { ActionSheetController } from 'ionic-angular'
 	 *
 	 * export class MyClass{
 	 *
@@ -67284,7 +67288,7 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {Events} from 'ionic-angular';
+	 * import { Events } from 'ionic-angular';
 	 *
 	 * constructor(public events: Events) {}
 	 *
@@ -68364,8 +68368,8 @@
 	 * toggling the menu.
 	 *
 	 * ```ts
-	 * import {Component} from '@angular/core';
-	 * import {MenuController} from 'ionic-angular';
+	 * import { Component } from '@angular/core';
+	 * import { MenuController } from 'ionic-angular';
 	 *
 	 * @Component({...})
 	 * export class MyPage {
@@ -69920,8 +69924,8 @@
 	 * you can use Angular's `@ViewChild` annotation:
 	 *
 	 * ```ts
-	 * import {Component, ViewChild} from '@angular/core';
-	 * import {Content} from 'ionic-angular';
+	 * import { Component, ViewChild } from '@angular/core';
+	 * import { Content } from 'ionic-angular';
 	 *
 	 * @Component({...})
 	 * export class MyPage{
@@ -70070,8 +70074,8 @@
 	     * Scroll to the specified position.
 	     *
 	     * ```ts
-	     * import {Component, ViewChild} from '@angular/core';
-	     * import {Content} from 'ionic-angular';
+	     * import { Component, ViewChild } from '@angular/core';
+	     * import { Content } from 'ionic-angular';
 	     *
 	     * @Component({
 	     *   template: `<ion-content>
@@ -70101,8 +70105,8 @@
 	     * Scroll to the top of the content component.
 	     *
 	     * ```ts
-	     * import {Component, ViewChild} from '@angular/core';
-	     * import {Content} from 'ionic-angular';
+	     * import { Component, ViewChild } from '@angular/core';
+	     * import { Content } from 'ionic-angular';
 	     *
 	     * @Component({
 	     *   template: `<ion-content>
@@ -71335,7 +71339,7 @@
 	 * Then, in your class you can set `chatRoot` to an imported class:
 	 *
 	 * ```ts
-	 * import {ChatPage} from '../chat/chat';
+	 * import { ChatPage } from '../chat/chat';
 	 *
 	 * export class Tabs {
 	 *   // here we'll set the property of chatRoot to
@@ -73270,8 +73274,8 @@
 	 * To add [options](#configuring), we will define them in `mySlideOptions` in our class `MyPage`:
 	 *
 	 * ```ts
-	 * import {Component} from '@angular/core';
-	 * import {Slides} from 'ionic-angular';
+	 * import { Component } from '@angular/core';
+	 * import { Slides } from 'ionic-angular';
 	 *
 	 * @Component({
 	 *   templateUrl: 'my-page.html'
@@ -73305,7 +73309,7 @@
 	 * Next, we can use `ViewChild` to assign the Slides instance to `slider`:
 	 *
 	 * ```ts
-	 * import {ViewChild} from '@angular/core';
+	 * import { ViewChild } from '@angular/core';
 	 *
 	 * class MyPage {
 	 *   @ViewChild('mySlider') slider: Slides;
@@ -80173,8 +80177,8 @@
 	         * Enable the sliding items.
 	         *
 	         * ```ts
-	         * import {Component, ViewChild} from '@angular/core';
-	         * import {List} from 'ionic-angular';
+	         * import { Component, ViewChild } from '@angular/core';
+	         * import { List } from 'ionic-angular';
 	         *
 	         * @Component({...})
 	         * export class MyClass {
@@ -80222,8 +80226,8 @@
 	     * Close the open sliding item.
 	     *
 	     * ```ts
-	     * import {Component, ViewChild} from '@angular/core';
-	     * import {List} from 'ionic-angular';
+	     * import { Component, ViewChild } from '@angular/core';
+	     * import { List } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export class MyClass {
@@ -81879,8 +81883,8 @@
 	     * ```
 	     *
 	     * ```ts
-	     * import {Component} from '@angular/core';
-	     * import {ItemSliding} from 'ionic-angular';
+	     * import { Component } from '@angular/core';
+	     * import { ItemSliding } from 'ionic-angular';
 	     *
 	     * @Component({...})
 	     * export class MyClass {
@@ -88747,9 +88751,9 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {Component} from '@angular/core';
-	 * import {ionicBootstrap} from 'ionic-angular';
-	 * import {GettingStartedPage} from './getting-started';
+	 * import { Component } from '@angular/core';
+	 * import { ionicBootstrap } from 'ionic-angular';
+	 * import { GettingStartedPage } from './getting-started';
 	 *
 	 * @Component({
 	 *   template: `<ion-nav [root]="root"></ion-nav>`
@@ -91586,7 +91590,7 @@
 	function Page(config) {
 	    return function (cls) {
 	        // deprecated warning: added beta.8 2016-05-27
-	        console.warn('@Page decorator has been deprecated. Please use Angular\'s @Component instead.\nimport {Component} from \'@angular/core\';');
+	        console.warn('@Page decorator has been deprecated. Please use Angular\'s @Component instead.\nimport { Component} from \'@angular/core\';');
 	        config.selector = 'ion-page';
 	        config.host = config.host || {};
 	        config.host['[hidden]'] = '_hidden';
@@ -92065,8 +92069,8 @@
 	 *
 	 * @usage
 	 * ```ts
-	 * import {Component} from '@angular/core';
-	 * import {Storage, LocalStorage} from 'ionic-angular';
+	 * import { Component } from '@angular/core';
+	 * import { Storage, LocalStorage } from 'ionic-angular';
 	 * @Component({
 	 *   template: `<ion-content></ion-content>`
 	 * });
@@ -92543,7 +92547,8 @@
 	        swipeBackEnabled: isIOSDevice,
 	        swipeBackThreshold: 40,
 	        tapPolyfill: isIOSDevice,
-	        virtualScrollEventAssist: !(win.indexedDB)
+	        virtualScrollEventAssist: !(win.indexedDB),
+	        canDisableScroll: !!(win.indexedDB),
 	    },
 	    isMatch: function (p) {
 	        return p.isPlatformMatch('ios', ['iphone', 'ipad', 'ipod'], ['windows phone']);
