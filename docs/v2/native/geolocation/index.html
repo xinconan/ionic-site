@@ -374,19 +374,18 @@
 
 <h2>Usage</h2>
 
-<pre><code class="lang-ts">import {Geolocation} from &#39;ionic-native&#39;;
-
+<pre><code class="lang-typescript">import { Geolocation } from &#39;ionic-native&#39;;
 
 
 Geolocation.getCurrentPosition().then((resp) =&gt; {
- //resp.coords.latitude
- //resp.coords.longitude
+ // resp.coords.latitude
+ // resp.coords.longitude
 })
 
 let watch = Geolocation.watchPosition();
 watch.subscribe((data) =&gt; {
- //data.coords.latitude
- //data.coords.longitude
+ // data.coords.latitude
+ // data.coords.longitude
 })
 </code></pre>
 
@@ -443,7 +442,7 @@ watch.subscribe((data) =&gt; {
 <p>Watch the current device’s position.  Clear the watch by unsubscribing from
 Observable changes.</p>
 
-<div class="language-ts highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">Geolocation</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">position</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">Geolocation</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">position</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">);</span>
 <span class="p">});</span>
 
