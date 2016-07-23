@@ -16,8 +16,8 @@
       <title>Ionic Native: Harness the power of Native APIs</title>
     
   </head>
-  <body id="docs-page-date-picker"
-        class="v2 docs page-date-picker"
+  <body id="docs-page-secure-storage"
+        class="v2 docs page-secure-storage"
         data-spy="scroll"
         data-offset="100"
         data-target="#components-index"
@@ -180,7 +180,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/contacts">Contacts</a>
 </li>
-<li class="capitalize active">
+<li class="capitalize ">
   <a href="/docs/v2/native/date-picker">Date Picker</a>
 </li>
 <li class="capitalize ">
@@ -294,7 +294,7 @@
 <li class="capitalize ">
   <a href="/docs/v2/native/screenshot">Screenshot</a>
 </li>
-<li class="capitalize ">
+<li class="capitalize active">
   <a href="/docs/v2/native/secure-storage">Secure Storage</a>
 </li>
 <li class="capitalize ">
@@ -346,7 +346,7 @@
         <h1 class="api-title">
 
   
-  Date Picker
+  Secure Storage
   
 
   
@@ -355,49 +355,86 @@
 
 </h1>
 
-<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/datepicker.ts#L64">
+<p><a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/securestorage.ts#L2">
   Improve this doc
 </a></p>
 
 <!-- decorators -->
 
-<pre><code>$ ionic plugin add cordova-plugin-datepicker</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-secure-storage</code></pre>
 <p>Repo:
-  <a href="https://github.com/VitaliiBlagodir/cordova-plugin-datepicker">
-    https://github.com/VitaliiBlagodir/cordova-plugin-datepicker
+  <a href="https://github.com/Crypho/cordova-plugin-secure-storage">
+    https://github.com/Crypho/cordova-plugin-secure-storage
   </a>
 </p>
 
 <!-- description -->
 
-<p>The DatePicker plugin allows the user to fetch date or time using native dialogs.</p>
-<p>Platforms supported: iOS, Android, Windows</p>
-<p>Requires Cordova plugin: <code>cordova-plugin-datepicker</code>. For more info, please see the <a href="https://github.com/VitaliiBlagodir/cordova-plugin-datepicker">DatePicker plugin docs</a>.</p>
+<p>This plugin gets, sets and removes key,value pairs from a device&#39;s secure storage.</p>
+<p>Requires Cordova plugin: <code>cordova-plugin-secure-storage</code>. For more info, please see the <a href="https://github.com/Crypho/cordova-plugin-secure-storage">Cordova Secure Storage docs</a>.</p>
+
+<!-- @platforms tag -->
+<h2>Supported platforms</h2>
+
+<ul>
+  <li>Android</li>
+  
+  <li>iOS</li>
+  
+  <li>Windows Phone</li>
+  
+  <li>Browser</li>
+  </ul>
+
+<!-- @platforms tag end -->
 
 <!-- @usage tag -->
 
 <h2>Usage</h2>
 
-<pre><code class="lang-typescript">import { DatePicker } from &#39;ionic-native&#39;;
+<pre><code class="lang-typescript">import { SecureStorage } from &#39;ionic-native&#39;;
 
+let secureStorage: SecureStorage = new SecureStorage();
+secureStorage.create(&#39;my_store_name&#39;)
+ .then(
+   () =&gt; console.log(&#39;Success&#39;), 
+   error =&gt; console.log(error);
+);
 
-DatePicker.show({
-  date: new Date(),
-  mode: &#39;date&#39;
-}).then(
-  date =&gt; console.log(&#39;Got date: &#39;, date),
-  err =&gt; console.log(&#39;Error occurred while getting date: &#39;, err)
+secureStorage.get(&#39;myitem&#39;)
+ .then(
+   data =&gt; console.log(data),
+   error =&gt; console.log(error)
+);
+
+secureStorage.set(&#39;myitem&#39;, &#39;myvalue&#39;)
+ .then(
+   data =&gt; console.log(data),
+   error =&gt; console.log(error)
+);
+
+secureStorage.remove(&#39;myitem&#39;)
+.then(
+   data =&gt; console.log(data),
+   error =&gt; console.log(error)
 );
 </code></pre>
 
 <!-- @property tags -->
-<h2>Static Members</h2>
-<div id="show"></div>
-<h3><code>show(options)</code>
+
+<!-- methods on the class -->
+
+<h2>Instance Members</h2>
+
+<div id="create"></div>
+
+<h3>
+  <code>create(store)</code>
   
+
 </h3>
 
-<p>Shows the date and/or time picker dialog(s)</p>
+<p>Creates a namespaced storage.</p>
 
 <table class="table param-table" style="margin:0;">
   <thead>
@@ -411,17 +448,16 @@ DatePicker.show({
   
   <tr>
     <td>
-      options
+      store
       
       
     </td>
     <td>
       
-<code>DatePickerOptions</code>
+<code>string</code>
     </td>
     <td>
-      <p>Options for the date picker.</p>
-
+      
       
     </td>
   </tr>
@@ -429,13 +465,138 @@ DatePicker.show({
   </tbody>
 </table>
 
-<div class="return-value">
-  <p><i class="icon ion-arrow-return-left"></i>
-  <b>Returns:</b> 
-<code>Promise&lt;Date&gt;</code> Returns a promise that resolves with the picked date and/or time, or rejects with an error.</p>
-</div>
+<div id="get"></div>
 
-<!-- methods on the class -->
+<h3>
+  <code>get(reference)</code>
+  
+
+</h3>
+
+<p>Gets a stored item</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      reference
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="set"></div>
+
+<h3>
+  <code>set(reference,&nbsp;value)</code>
+  
+
+</h3>
+
+<p>Stores a value</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      reference
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      value
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+<div id="remove"></div>
+
+<h3>
+  <code>remove(reference)</code>
+  
+
+</h3>
+
+<p>Removes a single stored item</p>
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      reference
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
 
 <!-- related link -->
 <!-- end content block -->
