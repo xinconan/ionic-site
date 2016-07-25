@@ -387,52 +387,58 @@ Note that Ionic Native is included by default with every Ionic 2 app.</p>
 <h4 id="Install_Plugins_Needed">Install The Needed Plugins</h4>
 <p>Ionic Native will <strong>not</strong> install plugins for you automatically. You still need to install the plugins you need using Cordova CLI or Ionic CLI. Ionic Native will notify you if you are missing a plugin, and will provide you with the plugin package name to install.</p>
 
-<p>It is recommended to follow the installation instruction on each plugin’s documentation.</p>
+<p>It is recommended to follow the installation instruction on each plugin’s documentation, as some plugins require additional steps to fully install.</p>
 
 <h4 id="Using_Ionic_Native_Wrappers">Examples</h4>
 
-<p>Ionic Native supports plain JavaScript usage, ES6/TypeScript Usage, and Angular 1. Here are examples demonstrating different implementations:</p>
+<p>Ionic Native will work with any Cordova app as long as you have Promise support. It can be used with ES5, ES6, or TypeScript. The library also generates Angular 1 services automatically if you are using it with Angular 1 / Ionic 1. Below are examples demonstrating different implementations.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// plain ES5 JavaScript</span>
-<span class="nx">IonicNative</span><span class="p">.</span><span class="nx">Camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
-    <span class="c1">// Run code to save the picture or use it elsewhere</span>
-  <span class="p">},</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking a picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">);</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// ES5 JavaScript</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ondeviceready'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">IonicNative</span><span class="p">.</span><span class="nx">Camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+      <span class="c1">// Run code to save the picture or use it elsewhere</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking a picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
 
-<span class="c1">// Angular 1</span>
+<span class="c1">// Angular 1 / Ionic 1</span>
 <span class="c1">// first we import 'ionic.native' module into our app</span>
 <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'MyApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ionic.native'</span><span class="p">])</span>
 <span class="c1">// then we import the service for the plugin we wish to use</span>
-<span class="c1">// the name of the service is the same name for ES6/TypeScript with a $cordova prefix</span>
+<span class="c1">// the name of the service is the same name for ES5/ES6/TypeScript with a $cordova prefix</span>
 <span class="c1">// for example, the Camera plugin becomes $cordovaCamera in Angular 1</span>
-<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MyController'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$cordovaCamera</span><span class="p">){</span>
-    <span class="c1">// now we can call any of the functionality as documented in Native docs</span>
-    <span class="nx">$cordovaCamera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
-        <span class="c1">// Run code to save the picture or use it elsewhere</span>
-      <span class="p">},</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking a picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">);</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'MyController'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$cordovaCamera</span><span class="p">,</span>  <span class="nx">$ionicPlatform</span><span class="p">){</span>
+    <span class="c1">// wait for ondeviceready, or use $ionicPlatform.ready() if you're using Ionic Framework 1</span>
+    <span class="nx">$ionicPlatform</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+       <span class="c1">// now we can call any of the functionality as documented in Native docs</span>
+      <span class="nx">$cordovaCamera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
+          <span class="c1">// Run code to save the picture or use it elsewhere</span>
+        <span class="p">},</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking a picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
 <span class="p">});</span>
-
 
 <span class="c1">// ES6 / TypeScript / Ionic 2 / Angular 2</span>
 <span class="c1">// Import the plugin you need to use from 'ionic-native' package</span>
 <span class="kr">import</span> <span class="p">{</span><span class="nx">Camera</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'ionic-native'</span><span class="p">;</span>
 
-<span class="c1">// Use it!</span>
-<span class="nx">Camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
-  <span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">),</span>
-  <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-<span class="p">);</span>
+<span class="c1">// wait for `ondeviceready` or use `platform.ready()` if you're using Ionic Framework 2</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">platform</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// we're assuming you injected platform in your constructor</span>
+  <span class="nx">Camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+    <span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"We have taken a picture!"</span><span class="p">),</span>
+    <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error taking picture"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 </div>
 
