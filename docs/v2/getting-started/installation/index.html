@@ -408,6 +408,10 @@
   <p>Unfamiliar with NPM? Learn more about it and what packages we use <a href="/docs/v2/resources/using-npm/">here</a></p>
 </blockquote>
 
+<blockquote>
+  <p>In case you get an <strong>EACCES</strong> error, it means node doesn’t have write permissions to the global packages folder. Follow the instructions <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">here</a> to set the correct folder permissions.</p>
+</blockquote>
+
 <p>Worried about your V1 Ionic projects? Don’t worry! The beta release has all the functionality to work with both V1 projects and V2 projects.</p>
 
 <p>Once that’s done, create your first Ionic app:</p>
@@ -431,7 +435,7 @@
 <h3 id="building-to-a-devicebuilding-to-a-device"><a href="#building-to-a-device">Building to a Device</a></h3>
 <p>After you have Ionic installed, you can build your app to a physical device. If you don’t have a physical device on hand, you can still build to a device emulator. Check out the <a href="../../resources/developer-tips/#using-ios-simulator">iOS simulator</a> docs if you are on a Mac, or the <a href="../../resources/developer-tips/#using-genymotion-android">Genymotion</a> docs if you are looking to emulate an Android device. You will also need <a href="../../resources/what-is/#cordova">Cordova</a> to run your app on a native device. To install Cordova, run:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo npm install -g cordova
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g cordova
 </code></pre>
 </div>
 
