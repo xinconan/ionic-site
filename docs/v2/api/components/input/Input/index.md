@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "input"
@@ -35,7 +35,7 @@ Input
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/input/input.ts#L12">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/input/input.ts#L13">
 Improve this doc
 </a>
 
@@ -53,7 +53,6 @@ interactivity.</p>
 <p>Similarily, <code>&lt;ion-textarea&gt;</code> should be used in place of <code>&lt;textarea&gt;</code>.</p>
 <p>An <code>ion-input</code> is <strong>not</strong> used for non-text type inputs, such as a
 <code>checkbox</code>, <code>radio</code>, <code>toggle</code>, <code>range</code>, <code>select</code>, etc.</p>
-
 
 
 
@@ -153,6 +152,8 @@ A clear icon will appear in the input when there is a value. Clicking it clears 
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link --><!-- end content block -->

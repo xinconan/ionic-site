@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "form"
@@ -31,10 +31,9 @@ Form
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/util/form.ts#L0">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/util/form.ts#L0">
 Improve this doc
 </a>
-
 
 
 
@@ -81,26 +80,6 @@ Improve this doc
 <h3>
 <a class="anchor" name="deregister" href="#deregister"></a>
 <code>deregister()</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="focusCtrl"></div>
-
-<h3>
-<a class="anchor" name="focusCtrl" href="#focusCtrl"></a>
-<code>focusCtrl()</code>
   
 
 </h3>
@@ -185,6 +164,8 @@ Focuses the next input element, if it exists.
   
 
 </h3>
+
+
 
 
 

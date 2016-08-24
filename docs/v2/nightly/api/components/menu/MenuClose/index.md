@@ -49,17 +49,16 @@ Improve this doc
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
 <p>A simple <code>menuClose</code> button can be added using the following markup:</p>
-<pre><code class="lang-html">&lt;button menuClose&gt;Close Menu&lt;/button&gt;
+<pre><code class="lang-html">&lt;button ion-button menuClose&gt;Close Menu&lt;/button&gt;
 </code></pre>
 <p>To close a certain menu by its id or side, give the <code>menuClose</code>
 directive a value.</p>
-<pre><code class="lang-html">&lt;button menuClose=&quot;left&quot;&gt;Close Left Menu&lt;/button&gt;
+<pre><code class="lang-html">&lt;button ion-button menuClose=&quot;left&quot;&gt;Close Left Menu&lt;/button&gt;
 </code></pre>
 
 
@@ -70,6 +69,8 @@ directive a value.</p>
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link -->

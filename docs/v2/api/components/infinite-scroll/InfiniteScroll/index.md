@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "infinitescroll"
@@ -35,7 +35,7 @@ InfiniteScroll
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/infinite-scroll/infinite-scroll.ts#L2">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/infinite-scroll/infinite-scroll.ts#L2">
 Improve this doc
 </a>
 
@@ -50,7 +50,6 @@ scrolls a specified distance from the bottom of the page.</p>
 the user scrolls to the specified distance. When this expression
 has finished its tasks, it should call the <code>complete()</code> method
 on the infinite scroll instance.</p>
-
 
 
 
@@ -283,6 +282,8 @@ your async operation has completed.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link --><!-- end content block -->

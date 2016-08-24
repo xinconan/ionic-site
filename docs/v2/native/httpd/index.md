@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -66,6 +66,23 @@ docType: "class"
 
 
 <!-- @usage tag -->
+
+<h2>Usage</h2>
+
+<pre><code class="lang-typescript">import {Httpd, HttpdOptions} from &#39;ionic-native&#39;;
+
+let options: HttpdOptions = {
+     www_root: &#39;httpd_root&#39;, // relative path to app&#39;s www directory
+     port: 80,
+     localhost_only: false
+ };
+
+Httpd.startServer(options).subscribe((data) =&gt; {
+ console.log(&#39;Server is live&#39;);
+});
+</code></pre>
+
+
 
 
 <!-- @property tags -->

@@ -45,7 +45,6 @@ Improve this doc
 
 
 
-
 <!-- @usage tag -->
 
 
@@ -56,146 +55,6 @@ Improve this doc
 <!-- instance methods on the class -->
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
-
-<div id="viewDidLoad"></div>
-
-<h3>
-<a class="anchor" name="viewDidLoad" href="#viewDidLoad"></a>
-<code>viewDidLoad</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewWillEnter"></div>
-
-<h3>
-<a class="anchor" name="viewWillEnter" href="#viewWillEnter"></a>
-<code>viewWillEnter</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewDidEnter"></div>
-
-<h3>
-<a class="anchor" name="viewDidEnter" href="#viewDidEnter"></a>
-<code>viewDidEnter</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewWillLeave"></div>
-
-<h3>
-<a class="anchor" name="viewWillLeave" href="#viewWillLeave"></a>
-<code>viewWillLeave</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewDidLeave"></div>
-
-<h3>
-<a class="anchor" name="viewDidLeave" href="#viewDidLeave"></a>
-<code>viewDidLeave</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewWillUnload"></div>
-
-<h3>
-<a class="anchor" name="viewWillUnload" href="#viewWillUnload"></a>
-<code>viewWillUnload</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="viewDidUnload"></div>
-
-<h3>
-<a class="anchor" name="viewDidUnload" href="#viewDidUnload"></a>
-<code>viewDidUnload</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
 
 <div id="setTitle"></div>
 
@@ -246,6 +105,128 @@ Sets the document title.
 
 
 
+<div id="setEnabled"></div>
+
+<h3>
+<a class="anchor" name="setEnabled" href="#setEnabled"></a>
+<code>setEnabled(isEnabled,&nbsp;duration)</code>
+  
+
+</h3>
+
+Sets if the app is currently enabled or not, meaning if it's
+available to accept new user commands. For example, this is set to `false`
+while views transition, a modal slides up, an action-sheet
+slides up, etc. After the transition completes it is set back to `true`.
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        isEnabled
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p><code>true</code> for enabled, <code>false</code> for disabled</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        duration
+        
+        
+      </td>
+      <td>
+        
+  <code>number</code>
+      </td>
+      <td>
+        <p>When <code>isEnabled</code> is set to <code>false</code>, this argument
+is used to set the maximum number of milliseconds that app will wait until
+it will automatically enable the app again. It&#39;s basically a fallback incase
+something goes wrong during a transition and the app wasn&#39;t re-enabled correctly.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<div id="setScrollDisabled"></div>
+
+<h3>
+<a class="anchor" name="setScrollDisabled" href="#setScrollDisabled"></a>
+<code>setScrollDisabled(disableScroll)</code>
+  
+
+</h3>
+
+Toggles whether an application can be scrolled
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        disableScroll
+        
+        
+      </td>
+      <td>
+        
+  <code>boolean</code>
+      </td>
+      <td>
+        <p>when set to <code>false</code>, the application&#39;s
+scrolling is enabled. When set to <code>true</code>, scrolling is disabled.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
 <div id="isScrolling"></div>
 
 <h3>
@@ -272,6 +253,27 @@ Boolean if the app is actively scrolling or not.
 
 
 
+<div id="getRootNav"></div>
+
+<h3>
+<a class="anchor" name="getRootNav" href="#getRootNav"></a>
+<code>getRootNav()</code>
+  
+
+</h3>
+
+retuns the root NavController
+
+
+
+
+
+
+
+
+
+
+
 <div id="getAppInjector"></div>
 
 <h3>
@@ -294,6 +296,8 @@ Get an instance of the global app injector that contains references to all of th
   <code>Injector</code> 
 
 </div>
+
+
 
 
 

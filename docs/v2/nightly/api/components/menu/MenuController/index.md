@@ -50,7 +50,6 @@ of these are passed to it, it will grab the first menu it finds.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -76,20 +75,20 @@ import { MenuController } from &#39;ionic-angular&#39;;
 @Component({...})
 export class MyPage {
 
- constructor(private menu: MenuController) {
+ constructor(public menuCtrl: MenuController) {
 
  }
 
  openMenu() {
-   this.menu.open();
+   this.menuCtrl.open();
  }
 
  closeMenu() {
-   this.menu.close();
+   this.menuCtrl.close();
  }
 
  toggleMenu() {
-   this.menu.toggle();
+   this.menuCtrl.toggle();
  }
 
 }
@@ -143,13 +142,43 @@ id will be disabled.</p>
 
 <h3>
 <a class="anchor" name="open" href="#open"></a>
-<code>open()</code>
+<code>open(menuId)</code>
   
 
 </h3>
 
 Progamatically open the Menu.
 
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        menuId
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Optionally get the menu by its id, or side.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 
 
@@ -421,13 +450,43 @@ Used to enable or disable the ability to swipe open the menu.
 
 <h3>
 <a class="anchor" name="isOpen" href="#isOpen"></a>
-<code>isOpen()</code>
+<code>isOpen(menuId)</code>
   
 
 </h3>
 
 
 
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        menuId
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Optionally get the menu by its id, or side.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 
 
@@ -448,13 +507,43 @@ Used to enable or disable the ability to swipe open the menu.
 
 <h3>
 <a class="anchor" name="isEnabled" href="#isEnabled"></a>
-<code>isEnabled()</code>
+<code>isEnabled(menuId)</code>
   
 
 </h3>
 
 
 
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        menuId
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>Optionally get the menu by its id, or side.<strong class="tag">Optional</strong></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 
 
@@ -582,6 +671,8 @@ property. If a menu is not found then it'll return `null`.
 
 
 </div>
+
+
 
 
 

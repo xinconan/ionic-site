@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "events"
@@ -33,7 +33,7 @@ Events
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/util/events.ts#L0">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/util/events.ts#L0">
 Improve this doc
 </a>
 
@@ -48,12 +48,11 @@ events across your app.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
-<pre><code class="lang-ts">import {Events} from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import { Events } from &#39;ionic-angular&#39;;
 
 constructor(public events: Events) {}
 
@@ -282,6 +281,8 @@ Publish an event to the given topic.
     
   </tbody>
 </table>
+
+
 
 
 

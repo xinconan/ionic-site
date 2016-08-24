@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -155,14 +155,17 @@ Toggles the flashlight
 
 
 Checks if the flashlight is turned on.
-Returns a boolean
 
 
 
 
 
 
-
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>boolean</code> 
+</div>
 
 
 

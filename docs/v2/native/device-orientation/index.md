@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -58,7 +58,8 @@ docType: "class"
 
 <h2>Usage</h2>
 
-<pre><code class="lang-typescript">import { DeviceOrientation } from &#39;ionic-native&#39;;
+<pre><code class="lang-typescript">// CompassHeading is an interface for compass
+import { DeviceOrientation, CompassHeading } from &#39;ionic-native&#39;;
 
 
 // Get the device current compass heading

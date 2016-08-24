@@ -81,7 +81,6 @@ to the <code>Menu</code> with <code>persistent</code> set to true, any other <co
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -127,7 +126,7 @@ ionicBootstrap(MyApp, customProviders, {
 <h3 id="displaying-the-menu">Displaying the Menu</h3>
 <p>To toggle a menu from the template, add a button with the <code>menuToggle</code>
 directive anywhere in the page&#39;s template:</p>
-<pre><code class="lang-html">&lt;button menuToggle&gt;Toggle Menu&lt;/button&gt;
+<pre><code class="lang-html">&lt;button ion-button menuToggle&gt;Toggle Menu&lt;/button&gt;
 </code></pre>
 <p>To close a menu, add the <code>menuClose</code> button. It can be added anywhere
 in the content, or even the menu itself. Below it is added to the menu&#39;s
@@ -135,7 +134,7 @@ content:</p>
 <pre><code class="lang-html">&lt;ion-menu [content]=&quot;mycontent&quot;&gt;
   &lt;ion-content&gt;
     &lt;ion-list&gt;
-      &lt;button menuClose ion-item detail-none&gt;Close Menu&lt;/button&gt;
+      &lt;button ion-button menuClose ion-item detail-none&gt;Close Menu&lt;/button&gt;
     &lt;/ion-list&gt;
   &lt;/ion-content&gt;
 &lt;/ion-menu&gt;
@@ -151,10 +150,10 @@ import { MenuController } from &#39;ionic-angular&#39;;
 
 @Component({...})
 export class MyPage {
- constructor(private menu: MenuController) {}
+ constructor(public menuCtrl: MenuController) {}
 
  openMenu() {
-   this.menu.open();
+   this.menuCtrl.open();
  }
 }
 </code></pre>
@@ -327,6 +326,8 @@ see the <code>menuType</code> in the <a href="../../config/Config">config</a>. A
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

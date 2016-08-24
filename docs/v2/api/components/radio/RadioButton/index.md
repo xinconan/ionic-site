@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "radiobutton"
@@ -35,7 +35,7 @@ RadioButton
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/radio/radio-button.ts#L5">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/radio/radio-button.ts#L5">
 Improve this doc
 </a>
 
@@ -53,7 +53,6 @@ in the group can be checked at any time. If a radio button is not placed in a gr
 they will all have the ability to be checked at the same time.</p>
 <p>See the <a href="https://angular.io/docs/ts/latest/guide/forms.html">Angular Forms Docs</a> for
 more information on forms and input.</p>
-
 
 
 
@@ -140,6 +139,8 @@ more information on forms and input.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

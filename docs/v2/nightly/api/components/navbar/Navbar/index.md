@@ -47,8 +47,9 @@ Improve this doc
 <p>Navbar acts as the navigational toolbar, which also comes with a back
 button. A navbar can contain a <code>ion-title</code>, any number of buttons,
 a segment, or a searchbar. Navbars must be placed within an
-<code>&lt;ion-header&gt;</code> in order for them to be placed above the content.</p>
-
+<code>&lt;ion-header&gt;</code> in order for them to be placed above the content.
+It&#39;s important to note that navbar&#39;s are part of the dynamica navigation
+stack. If you need a static toolbar, use ion-toolbar.</p>
 
 
 
@@ -60,7 +61,7 @@ a segment, or a searchbar. Navbars must be placed within an
 <pre><code class="lang-html">&lt;ion-header&gt;
 
   &lt;ion-navbar&gt;
-    &lt;button menuToggle&gt;
+    &lt;button ion-button menuToggle&gt;
       &lt;ion-icon name=&quot;menu&quot;&gt;&lt;/ion-icon&gt;
     &lt;/button&gt;
 
@@ -69,7 +70,7 @@ a segment, or a searchbar. Navbars must be placed within an
     &lt;/ion-title&gt;
 
     &lt;ion-buttons end&gt;
-      &lt;button (click)=&quot;openModal()&quot;&gt;
+      &lt;button ion-button (click)=&quot;openModal()&quot;&gt;
         &lt;ion-icon name=&quot;options&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
     &lt;/ion-buttons&gt;
@@ -99,6 +100,13 @@ a segment, or a searchbar. Navbars must be placed within an
   <tbody>
     
     <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
       <td>hideBackButton</td>
       <td><code>boolean</code></td>
       <td><p> whether the back button should be shown or not</p>
@@ -107,6 +115,8 @@ a segment, or a searchbar. Navbars must be placed within an
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

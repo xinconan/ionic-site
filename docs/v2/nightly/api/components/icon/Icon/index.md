@@ -57,7 +57,6 @@ markup once while Ionic applies the appropriate icon based on the mode.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -94,6 +93,13 @@ markup once while Ionic applies the appropriate icon based on the mode.</p>
   <tbody>
     
     <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
       <td>name</td>
       <td><code>string</code></td>
       <td><p> Icon to use. Will load the appropriate icon for each mode</p>
@@ -123,6 +129,8 @@ markup once while Ionic applies the appropriate icon based on the mode.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

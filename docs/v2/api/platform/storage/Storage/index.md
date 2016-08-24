@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "storage"
@@ -31,7 +31,7 @@ Storage
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/platform/storage/storage.ts#L0">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/platform/storage/storage.ts#L0">
 Improve this doc
 </a>
 
@@ -46,7 +46,6 @@ data in a way that uses a variety of storage engines underneath.</p>
 data in a file in the app&#39;s sandbox. LocalStorage should ONLY be used
 for temporary data as it may be &#39;cleaned up&#39; by the operation system
 during low disk space situations.</p>
-
 
 
 
@@ -190,6 +189,8 @@ during low disk space situations.</p>
   
 
 </h3>
+
+
 
 
 

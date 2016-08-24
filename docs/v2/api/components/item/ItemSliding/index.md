@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "itemsliding"
@@ -35,7 +35,7 @@ ItemSliding
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/item/item-sliding.ts#L91">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/item/item-sliding.ts#L91">
 Improve this doc
 </a>
 
@@ -47,7 +47,6 @@ Improve this doc
 <p>A sliding item is a list item that can be swiped to reveal buttons. It requires
 an <a href="../Item">Item</a> component as a child and a <a href="../../list/List">List</a> component as
 a parent. All buttons to reveal can be placed in the <code>&lt;ion-item-options&gt;</code> element.</p>
-
 
 
 
@@ -126,66 +125,6 @@ to the left of the text by setting <code>icon-left</code> as an attribute on the
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="item"></div>
-
-<h3>
-<a class="anchor" name="item" href="#item"></a>
-<code>item</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="fireSwipeEvent"></div>
-
-<h3>
-<a class="anchor" name="fireSwipeEvent" href="#fireSwipeEvent"></a>
-<code>fireSwipeEvent()</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="calculateOptsWidth"></div>
-
-<h3>
-<a class="anchor" name="calculateOptsWidth" href="#calculateOptsWidth"></a>
-<code>calculateOptsWidth()</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="close"></div>
 
 <h3>
@@ -215,8 +154,8 @@ and passed to the `share` method.
 ```
 
 ```ts
-import {Component} from '@angular/core';
-import {ItemSliding} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { ItemSliding } from 'ionic-angular';
 
 @Component({...})
 export class MyClass {
@@ -271,6 +210,8 @@ It reports the relative position.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

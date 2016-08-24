@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -50,16 +50,24 @@ docType: "class"
 
 <!-- description -->
 
+<p>Checks whether device hardware features are enabled or available to the app, e.g. camera, GPS, wifi</p>
 
 
 
 <!-- @usage tag -->
 
+<h2>Usage</h2>
+
+<pre><code class="lang-typescript">import { Diagnostic } from &#39;ionic-native&#39;;
+</code></pre>
+
+
+
 
 <!-- @property tags -->
 <h2>Static Members</h2>
-<div id="isLocationEnabled"></div>
-<h3><code>isLocationEnabled()</code>
+<div id="isLocationAvailable"></div>
+<h3><code>isLocationAvailable()</code>
   
 </h3>
 
@@ -74,8 +82,8 @@ Checks if app is able to access device location.
 
 
 
-<div id="isWifiEnabled"></div>
-<h3><code>isWifiEnabled()</code>
+<div id="isWifiAvailable"></div>
+<h3><code>isWifiAvailable()</code>
   
 </h3>
 
@@ -91,8 +99,8 @@ On Android this requires permission. `<uses-permission android:name="android.per
 
 
 
-<div id="isCameraEnabled"></div>
-<h3><code>isCameraEnabled()</code>
+<div id="isCameraAvailable"></div>
+<h3><code>isCameraAvailable()</code>
   
 </h3>
 
@@ -108,8 +116,8 @@ application is authorized to use it.
 
 
 
-<div id="isBluetoothEnabled"></div>
-<h3><code>isBluetoothEnabled()</code>
+<div id="isBluetoothAvailable"></div>
+<h3><code>isBluetoothAvailable()</code>
   
 </h3>
 

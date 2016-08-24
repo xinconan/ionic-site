@@ -125,7 +125,6 @@ getting the <code>Swiper</code> instance and using its methods directly.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -178,7 +177,7 @@ class MyPage {
   ...
 }
 </code></pre>
-<p>Now we can call any of the <code>Slider</code> <a href="(#instance-members">methods</a>),
+<p>Now we can call any of the <code>Slider</code> <a href="#instance-members">methods</a>,
 for example we can use the Slider&#39;s <code>slideTo()</code> method in order to
 navigate to a specific slide on a button click. Below we call the
 <code>goToSlide()</code> method and it navigates to the 3rd slide:</p>
@@ -659,6 +658,8 @@ the `Swiper` instance directly.
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

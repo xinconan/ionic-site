@@ -33,7 +33,7 @@ LoadingController
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/loading/loading.ts#L57">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/loading/loading.ts#L65">
 Improve this doc
 </a>
 
@@ -76,7 +76,6 @@ in the <code>usage</code> section below.</p>
 <p>The element is styled to appear on top of other content by setting its
 <code>z-index</code> property. You must ensure no element has a stacking context with
 a higher <code>z-index</code> than this element.</p>
-
 
 
 
@@ -218,7 +217,7 @@ Create a loading indicator. See below for options.
 <tr>
 <td>cssClass</td>
 <td><code>string</code></td>
-<td>An additional class for custom styles.</td>
+<td>Additional classes for custom styles, separated by spaces.</td>
 </tr>
 <tr>
 <td>showBackdrop</td>
@@ -237,6 +236,8 @@ Create a loading indicator. See below for options.
 </tr>
 </tbody>
 </table>
+
+
 
 
 

@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -68,7 +68,11 @@ docType: "class"
 <div id="hideKeyboardAccessoryBar"></div>
 <h3><code>hideKeyboardAccessoryBar(hide)</code>
   
-</h3>Hide the keyboard accessory bar with the next, previous and done buttons.
+</h3>
+
+
+
+Hide the keyboard accessory bar with the next, previous and done buttons.
 
 
 <table class="table param-table" style="margin:0;">

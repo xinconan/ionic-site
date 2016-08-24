@@ -44,7 +44,6 @@ Improve this doc
 
 
 
-
 <!-- @usage tag -->
 
 
@@ -55,6 +54,55 @@ Improve this doc
 <!-- instance methods on the class -->
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
+
+<div id="setContent"></div>
+
+<h3>
+<a class="anchor" name="setContent" href="#setContent"></a>
+<code>setContent(content)</code>
+  
+
+</h3>
+
+
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        content
+        
+        
+      </td>
+      <td>
+        
+  <code>string</code>
+      </td>
+      <td>
+        <p>loading message content</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
 
 <div id="present"></div>
 
@@ -110,6 +158,8 @@ Present the loading instance.
 
 
 </div>
+
+
 
 
 

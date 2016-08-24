@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -67,6 +67,10 @@ docType: "class"
 <h2>Usage</h2>
 
 <p>For usage information please refer to the plugin&#39;s Github repo.</p>
+<pre><code class="lang-typescript">import {WebIntent} from &#39;ionic-native&#39;;
+
+WebIntent.startActivity(options).then(onSuccess, onError);
+</code></pre>
 
 
 

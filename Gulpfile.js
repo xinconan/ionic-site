@@ -171,12 +171,18 @@ gulp.task('watch', ['server'], function() {
   gulp.watch(['_js/**/*.js', 'submit-issue/*/*.js'], ['server:js']);
   gulp.watch(['*.html', 'submit-issue/*.html', 'getting-started/*.html',
     '_layouts/*', '_layouts/*/*', '_posts/*', '_includes/**/*',
-    'docs/**/*.{md,html,js,css}', '!docs/v2/2*', '!docs/v2/nightly',
-    '!docs/1.*', 'dist/preview-app/www/**/*'
+    'docs/**/*.{md,html,js,css}', '!docs/v2/2*', '!docs/1.*',
+    'dist/preview-app/www/**/*'
   ], ['server:jekyll']);
 
 });
 
+gulp.task('watch.min', ['server'], function() {
+  gulp.watch(['_scss/*.scss', '_scss/docs/*.scss', '_scss/pages/*.scss'],
+             ['server:stylesv2']);
+  gulp.watch(['_layouts/*/*','_includes/**/*', 'docs/v2/**/*.{md,html}'], ['server:jekyll']);
+
+});
 gulp.task('cli-docs', function() {
   try {
     var fs = require('fs');

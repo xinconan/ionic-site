@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "hidewhen"
@@ -35,7 +35,7 @@ HideWhen
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/show-hide-when/show-hide-when.ts#L115">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/show-hide-when/show-hide-when.ts#L115">
 Improve this doc
 </a>
 
@@ -52,7 +52,6 @@ to <code>true</code> or <code>showWhen</code> evaluates to <code>false</code>. I
 will not show if <code>hidden</code> evaluates to <code>true</code>.</p>
 <p>View the <a href="../../../platform/Platform">Platform API docs</a> for more information on the different
 platforms you can use.</p>
-
 
 
 
@@ -90,6 +89,8 @@ platforms you can use.</p>
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link -->

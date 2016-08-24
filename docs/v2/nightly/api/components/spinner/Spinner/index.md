@@ -102,7 +102,6 @@ the appropriate spinner for the platform on which it’s running.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -149,6 +148,13 @@ of <code>background-color</code>.</p>
   <tbody>
     
     <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
       <td>name</td>
       <td><code>string</code></td>
       <td><p> SVG spinner name.</p>
@@ -171,6 +177,8 @@ of <code>background-color</code>.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link --><!-- end content block -->

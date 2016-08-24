@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "keyboard"
@@ -31,7 +31,7 @@ Keyboard
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/util/keyboard.ts#L5">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/util/keyboard.ts#L5">
 Improve this doc
 </a>
 
@@ -41,7 +41,6 @@ Improve this doc
 
 
 <p>The <code>Keyboard</code> class allows you to work with the keyboard events provided by the Ionic keyboard plugin.</p>
-
 
 
 
@@ -189,6 +188,8 @@ export class MyClass{
 </h3>
 
 Programmatically close the keyboard
+
+
 
 
 

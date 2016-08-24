@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "app"
@@ -31,7 +31,7 @@ App
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/app/app.ts#L7">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master/src/components/app/app.ts#L14">
 Improve this doc
 </a>
 
@@ -41,7 +41,6 @@ Improve this doc
 
 
 <p>Ionic App utility service.</p>
-
 
 
 
@@ -132,46 +131,19 @@ Boolean if the app is actively scrolling or not.
 
 
 
-<div id="setAppInjector"></div>
+<div id="getRootNav"></div>
 
 <h3>
-<a class="anchor" name="setAppInjector" href="#setAppInjector"></a>
-<code>setAppInjector(injector)</code>
+<a class="anchor" name="getRootNav" href="#getRootNav"></a>
+<code>getRootNav()</code>
   
 
 </h3>
 
-Set the global app injector that contains references to all of the instantiated providers
+retuns the root NavController
 
 
-<table class="table param-table" style="margin:0;">
-  <thead>
-    <tr>
-      <th>Param</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>
-        injector
-        
-        
-      </td>
-      <td>
-        
-  
-      </td>
-      <td>
-        
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
+
 
 
 
@@ -202,6 +174,8 @@ Get an instance of the global app injector that contains references to all of th
   <code>Injector</code> 
 
 </div>
+
+
 
 
 

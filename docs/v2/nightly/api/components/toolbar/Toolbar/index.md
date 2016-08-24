@@ -35,7 +35,7 @@ Toolbar
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/toolbar/toolbar.ts#L88">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/toolbar/toolbar.ts#L131">
 Improve this doc
 </a>
 
@@ -45,7 +45,7 @@ Improve this doc
 
 
 <p>A Toolbar is a generic bar that is positioned above or below content.
-Unlike a <a href="../../nav/Navbar">Navbar</a>, a toolbar can be used as a subheader.
+Unlike a <a href="../../navbar/Navbar">Navbar</a>, a toolbar can be used as a subheader.
 When toolbars are placed within an <code>&lt;ion-header&gt;</code> or <code>&lt;ion-footer&gt;</code>,
 the toolbars stay fixed in their respective location. When placed within
 <code>&lt;ion-content&gt;</code>, toolbars will scroll with the content.</p>
@@ -126,7 +126,6 @@ bottom. To hide both borders, the <code>no-border</code> attribute should be use
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -135,10 +134,10 @@ bottom. To hide both borders, the <code>no-border</code> attribute should be use
 
   &lt;ion-toolbar no-border-bottom&gt;
     &lt;ion-buttons start&gt;
-      &lt;button&gt;
+      &lt;button ion-button&gt;
         &lt;ion-icon name=&quot;contact&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
-      &lt;button&gt;
+      &lt;button ion-button&gt;
         &lt;ion-icon name=&quot;search&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
     &lt;/ion-buttons&gt;
@@ -166,7 +165,7 @@ bottom. To hide both borders, the <code>no-border</code> attribute should be use
   &lt;ion-toolbar no-border&gt;
     &lt;ion-title&gt;I&#39;m a subfooter&lt;/ion-title&gt;
     &lt;ion-buttons right&gt;
-      &lt;button&gt;
+      &lt;button ion-button&gt;
         &lt;ion-icon name=&quot;menu&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
     &lt;/ion-buttons&gt;
@@ -175,10 +174,10 @@ bottom. To hide both borders, the <code>no-border</code> attribute should be use
   &lt;ion-toolbar no-border-top&gt;
     &lt;ion-title&gt;I&#39;m a footer&lt;/ion-title&gt;
     &lt;ion-buttons end&gt;
-      &lt;button&gt;
+      &lt;button ion-button&gt;
         &lt;ion-icon name=&quot;more&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
-      &lt;button&gt;
+      &lt;button ion-button&gt;
         &lt;ion-icon name=&quot;options&quot;&gt;&lt;/ion-icon&gt;
       &lt;/button&gt;
     &lt;/ion-buttons&gt;
@@ -195,6 +194,29 @@ bottom. To hide both borders, the <code>no-border</code> attribute should be use
 
 
 <!-- instance methods on the class -->
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
 
 
 <!-- related link -->

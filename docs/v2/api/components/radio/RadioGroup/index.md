@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "radiogroup"
@@ -35,7 +35,7 @@ RadioGroup
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/radio/radio-group.ts#L8">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/radio/radio-group.ts#L8">
 Improve this doc
 </a>
 
@@ -50,7 +50,6 @@ button that belongs to a radio group unchecks any previous checked
 radio button within the same group.</p>
 <p>See the <a href="https://angular.io/docs/ts/latest/guide/forms.html">Angular Forms Docs</a>
 for more information on forms and inputs.</p>
-
 
 
 
@@ -120,6 +119,8 @@ for more information on forms and inputs.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

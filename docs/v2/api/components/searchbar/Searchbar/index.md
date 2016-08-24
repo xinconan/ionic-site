@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "searchbar"
@@ -35,7 +35,7 @@ Searchbar
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/searchbar/searchbar.ts#L5">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/searchbar/searchbar.ts#L6">
 Improve this doc
 </a>
 
@@ -45,7 +45,6 @@ Improve this doc
 
 
 <p>Manages the display of a Searchbar which can be used to search or filter items.</p>
-
 
 
 
@@ -190,6 +189,8 @@ Improve this doc
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

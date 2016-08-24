@@ -50,14 +50,13 @@ navigation stack.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
 <pre><code class="lang-html">&lt;ion-content&gt;
 
- &lt;button navPop&gt;Go Back&lt;/button&gt;
+ &lt;button ion-button navPop&gt;Go Back&lt;/button&gt;
 
 &lt;/ion-content&gt;
 </code></pre>
@@ -82,6 +81,8 @@ navigation stack.</p>
   
 
 </h3>
+
+
 
 
 

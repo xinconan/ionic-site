@@ -18399,19 +18399,19 @@
 	exports.ionicPostBootstrap = bootstrap_1.ionicPostBootstrap;
 	var config_1 = __webpack_require__(338);
 	exports.Config = config_1.Config;
-	var directives_1 = __webpack_require__(429);
+	var directives_1 = __webpack_require__(430);
 	exports.IONIC_DIRECTIVES = directives_1.IONIC_DIRECTIVES;
 	var providers_1 = __webpack_require__(362);
 	exports.ionicProviders = providers_1.ionicProviders;
-	__export(__webpack_require__(502));
-	__export(__webpack_require__(503));
+	__export(__webpack_require__(504));
+	__export(__webpack_require__(505));
 	__export(__webpack_require__(350));
-	__export(__webpack_require__(453));
+	__export(__webpack_require__(454));
 	__export(__webpack_require__(348));
 	__export(__webpack_require__(349));
 	__export(__webpack_require__(347));
 	__export(__webpack_require__(339));
-	__export(__webpack_require__(511));
+	__export(__webpack_require__(513));
 	__export(__webpack_require__(336));
 	__export(__webpack_require__(427));
 	__export(__webpack_require__(359));
@@ -18419,17 +18419,17 @@
 	var util_1 = __webpack_require__(340);
 	exports.reorderArray = util_1.reorderArray;
 	__export(__webpack_require__(356));
-	__export(__webpack_require__(493));
+	__export(__webpack_require__(495));
 	__export(__webpack_require__(355));
-	__export(__webpack_require__(501));
-	__export(__webpack_require__(515));
+	__export(__webpack_require__(503));
+	__export(__webpack_require__(517));
 	// these modules don't export anything
-	__webpack_require__(516);
-	__webpack_require__(517);
 	__webpack_require__(518);
 	__webpack_require__(519);
 	__webpack_require__(520);
 	__webpack_require__(521);
+	__webpack_require__(522);
+	__webpack_require__(523);
 
 /***/ },
 /* 117 */
@@ -18442,7 +18442,7 @@
 	var dom_1 = __webpack_require__(337);
 	var providers_1 = __webpack_require__(362);
 	var platform_1 = __webpack_require__(339);
-	var tap_click_1 = __webpack_require__(496);
+	var tap_click_1 = __webpack_require__(498);
 	var _reflect = Reflect;
 	/**
 	 * @name ionicBootstrap
@@ -51908,12 +51908,33 @@
 	        this._title = '';
 	        this._titleSrv = new platform_browser_1.Title();
 	        this._rootNav = null;
+	        /**
+	         * @private
+	         */
 	        this.viewDidLoad = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewWillEnter = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewDidEnter = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewWillLeave = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewDidLeave = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewWillUnload = new core_1.EventEmitter();
+	        /**
+	         * @private
+	         */
 	        this.viewDidUnload = new core_1.EventEmitter();
 	        // listen for hardware back button events
 	        // register this back button action with a default priority
@@ -51930,12 +51951,11 @@
 	        }
 	    };
 	    /**
-	     * @private
 	     * Sets if the app is currently enabled or not, meaning if it's
 	     * available to accept new user commands. For example, this is set to `false`
 	     * while views transition, a modal slides up, an action-sheet
 	     * slides up, etc. After the transition completes it is set back to `true`.
-	     * @param {boolean} isEnabled
+	     * @param {boolean} isEnabled `true` for enabled, `false` for disabled
 	     * @param {number} duration  When `isEnabled` is set to `false`, this argument
 	     * is used to set the maximum number of milliseconds that app will wait until
 	     * it will automatically enable the app again. It's basically a fallback incase
@@ -51956,7 +51976,9 @@
 	        }
 	    };
 	    /**
-	     * @private
+	     * Toggles whether an application can be scrolled
+	     * @param {boolean} disableScroll when set to `false`, the application's
+	     * scrolling is enabled. When set to `true`, scrolling is disabled.
 	     */
 	    App.prototype.setScrollDisabled = function (disableScroll) {
 	        var enabled = this._config.get('canDisableScroll', true);
@@ -52006,7 +52028,7 @@
 	        return nav;
 	    };
 	    /**
-	     * @private
+	     * retuns the root NavController
 	     */
 	    App.prototype.getRootNav = function () {
 	        return this._rootNav;
@@ -52277,6 +52299,19 @@
 	    }
 	}
 	exports.rafFrames = rafFrames;
+	// TODO: DRY rafFrames and zoneRafFrames
+	function zoneRafFrames(framesToWait, callback) {
+	    framesToWait = Math.ceil(framesToWait);
+	    if (framesToWait < 2) {
+	        exports.raf(callback);
+	    }
+	    else {
+	        setTimeout(function () {
+	            exports.raf(callback);
+	        }, (framesToWait - 1) * 16.6667);
+	    }
+	}
+	exports.zoneRafFrames = zoneRafFrames;
 	exports.CSS = {};
 	(function () {
 	    // transform
@@ -52607,9 +52642,11 @@
 	 * | `popoverLeave`           | `string`            | The name of the transition to use while a popover is dismissed.                                                                                  |
 	 * | `prodMode`               | `boolean`           | Disable development mode, which turns off assertions and other checks within the framework. One important assertion this disables verifies that a change detection pass does not result in additional changes to any bindings (also known as unidirectional data flow).
 	 * | `spinner`                | `string`            | The default spinner to use when a name is not defined.                                                                                           |
+	 * | `swipeBackEnabled`       | `boolean`           | Whether native iOS swipe to go back functionality is enabled.
 	 * | `tabsHighlight`          | `boolean`           | Whether to show a highlight line under the tab when it is selected.                                                                              |
 	 * | `tabsLayout`             | `string`            | The layout to use for all tabs. Available options: `"icon-top"`, `"icon-left"`, `"icon-right"`, `"icon-bottom"`, `"icon-hide"`, `"title-hide"`.  |
 	 * | `tabsPlacement`          | `string`            | The position of the tabs relative to the content. Available options: `"top"`, `"bottom"`                                                         |
+	 * | `tabsHideOnSubPages`     | `boolean`           | Whether to hide the tabs on child pages or not. If `true` it will not show the tabs on child pages.                                              |
 	 * | `toastEnter`             | `string`            | The name of the transition to use while a toast is presented.                                                                                    |
 	 * | `toastLeave`             | `string`            | The name of the transition to use while a toast is dismissed.                                                                                    |
 	 *
@@ -53905,6 +53942,13 @@
 	                    // return a promise and resolve when the transition has completed
 	                    // get the leaving view which the _insert() already set
 	                    var leavingView = this.getByState(exports.STATE_INIT_LEAVE);
+	                    if (!leavingView && this._isPortal) {
+	                        // if we didn't find an active view, and this is a portal
+	                        var activeNav = this._app.getActiveNav();
+	                        if (activeNav) {
+	                            leavingView = activeNav.getByState(exports.STATE_INIT_LEAVE);
+	                        }
+	                    }
 	                    // start the transition, fire resolve when done...
 	                    this._transition(enteringView, leavingView, opts, done);
 	                    return promise;
@@ -53931,6 +53975,13 @@
 	        }
 	        // first see if there's an active view
 	        var view = this.getActive();
+	        if (!view && this._isPortal) {
+	            // if we didn't find an active view, and this is a portal
+	            var activeNav = this._app.getActiveNav();
+	            if (activeNav) {
+	                view = activeNav.getActive();
+	            }
+	        }
 	        if (view) {
 	            // there's an active view, set that it's initialized to leave
 	            view.state = exports.STATE_INIT_LEAVE;
@@ -54028,6 +54079,16 @@
 	            // to happen and the previously active view is going to animate out
 	            // get the view thats ready to enter
 	            var enteringView = this.getByState(exports.STATE_INIT_ENTER);
+	            if (!enteringView && this._isPortal) {
+	                // if we didn't find an active view, and this is a portal
+	                var activeNav = this._app.getActiveNav();
+	                if (activeNav) {
+	                    enteringView = activeNav.last();
+	                    if (enteringView) {
+	                        enteringView.state = exports.STATE_INIT_ENTER;
+	                    }
+	                }
+	            }
 	            if (!enteringView && !this._isPortal) {
 	                // oh nos! no entering view to go to!
 	                // if there is no previous view that would enter in this nav stack
@@ -54915,9 +54976,6 @@
 	/**
 	 * @name NavController
 	 * @description
-	 * _For examples on the basic usage of NavController, check out the
-	 * [Navigation section](../../../../components/#navigation) of the Component
-	 * docs._
 	 *
 	 * NavController is the base class for navigation controller components like
 	 * [`Nav`](../Nav/) and [`Tab`](../../Tabs/Tab/). You use navigation controllers
@@ -54936,6 +54994,30 @@
 	 * specific NavController, most times you will inject and use a reference to the
 	 * nearest NavController to manipulate the navigation stack.
 	 *
+	 * ## Basic usage
+	 * The simplest way to navigate through an app is to create and initialize a new
+	 * nav controller using the `<ion-nav>` component.  `ion-nav` extends the `NavController`
+	 * class.
+	 *
+	 * ```typescript
+	 * import { Component } from `@angular/core`;
+	 * import { ionicBootstrap } from 'ionic-angular';
+	 * import { StartPage } from './start-page';
+	 *
+	 * @Component(
+	 *   template: `<ion-nav [root]="rootPage"></ion-nav>`
+	 * })
+	 * class MyApp {
+	 *   // set the rootPage to the first page we want displayed
+	 *   private rootPage: any = StartPage;
+	 *
+	 *   constructor(){
+	 *   }
+	 * }
+	 *
+	 * ionicBootstrap(MyApp);
+	 * ```
+	 *
 	 * ### Injecting NavController
 	 * Injecting NavController will always get you an instance of the nearest
 	 * NavController, regardless of whether it is a Tab or a Nav.
@@ -54950,16 +55032,48 @@
 	 * [Menu](../../Menu/Menu/) and [Tab](../../Tab/Tab/)).
 	 *
 	 * ```ts
+	 *  import { NavController } from 'ionic-angular';
+	 *
 	 *  class MyComponent {
-	 *    constructor(private nav: NavController) {
+	 *    constructor(public navCtrl: NavController) {
 	 *
 	 *    }
 	 *  }
 	 * ```
 	 *
+	 * ### Navigating from the Root component
+	 * What if you want to control navigation from your root app component?
+	 * You can't inject `NavController` because any components that are navigation
+	 * controllers are _children_ of the root component so they aren't available
+	 * to be injected.
 	 *
-	 * ## Page creation
-	 * Pages are created when they are added to the navigation stack.  For methods
+	 * By adding a reference variable to the `ion-nav`, you can use `@ViewChild` to
+	 * get an instance of the `Nav` component, which is a navigation controller
+	 * (it extends `NavController`):
+	 *
+	 * ```typescript
+	 *
+	 * import { App, ViewChild } from '@angular/core';
+	 * import { NavController } from 'ionic-angular';
+	 *
+	 * @App({
+	 *    template: '<ion-nav #myNav [root]="rootPage"></ion-nav>'
+	 * })
+	 * export class MyApp {
+	 *    @ViewChild('myNav') nav : NavController
+	 *    private rootPage = TabsPage;
+	 *
+	 *    // Wait for the components in MyApp's template to be initialized
+	 *    // In this case, we are waiting for the Nav with id="my-nav"
+	 *    ngAfterViewInit() {
+	 *       // Let's navigate from TabsPage to Page1
+	 *       this.nav.push(Page1);
+	 *    }
+	 * }
+	 * ```
+	 *
+	 * ## View creation
+	 * Views are created when they are added to the navigation stack.  For methods
 	 * like [push()](#push), the NavController takes any component class that is
 	 * decorated with `@Component` as its first argument.  The NavController then
 	 * compiles that component, adds it to the app and animates it into view.
@@ -54969,6 +55083,94 @@
 	 * example).  They are destroyed when removed from the navigation stack (on
 	 * [pop()](#pop) or [setRoot()](#setRoot)).
 	 *
+	 * ## Pushing a View
+	 * To push a new view on to the navigation stack, use the `push` method.
+	 * If the page has an [`<ion-navbar>`](../api/components/nav-bar/NavBar/),
+	 * a back button will automatically be added to the pushed view.
+	 *
+	 * Data can also be passed to a view by passing an object to the `push` method.
+	 * The pushed view can then receive the data by accessing it via the `NavParams`
+	 * class.
+	 *
+	 * ```typescript
+	 * import { Component } from '@angular/core';
+	 * import { NavController } from 'ionic-angular';
+	 * import { OtherPage } from './other-page';
+	 * @Component({
+	 *    template: `
+	 *    <ion-header>
+	 *      <ion-navbar>
+	 *        <ion-title>Login</ion-title>
+	 *      </ion-navbar>
+	 *    </ion-header>
+	 *
+	 *    <ion-content>
+	 *      <button ion-button (click)="pushPage()">
+	 *        Go to OtherPage
+	 *      </button>
+	 *    </ion-content>
+	 *    `
+	 * })
+	 * export class StartPage {
+	 *   constructor(public navCtrl: NavController) {
+	 *   }
+	 *
+	 *   pushPage(){
+	 *     // push another page on to the navigation stack
+	 *     // causing the nav controller to transition to the new page
+	 *     // optional data can also be passed to the pushed page.
+	 *     this.navCtrl.push(OtherPage, {
+	 *       id: "123",
+	 *       name: "Carl"
+	 *     });
+	 *   }
+	 * }
+	 *
+	 * import { NavParams } from 'ionic-angular';
+	 *
+	 * @Component({
+	 *   template: `
+	 *   <ion-header>
+	 *     <ion-navbar>
+	 *       <ion-title>Other Page</ion-title>
+	 *     </ion-navbar>
+	 *   </ion-header>
+	 *   <ion-content>I'm the other page!</ion-content>`
+	 * })
+	 * class OtherPage {
+	 *   constructor(private navParams: NavParams) {
+	 *      let id = navParams.get('id');
+	 *      let name = navParams.get('name');
+	 *   }
+	 * }
+	 * ```
+	 *
+	 * ## Removing a view
+	 * To remove a view from the stack, use the `pop` method.
+	 * Popping a view will transition to the previous view.
+	 *
+	 * ```ts
+	 * import { Component } from '@angular/core';
+	 * import { NavController } from 'ionic-angular';
+	 *
+	 * @Component({
+	 *   template: `
+	 *   <ion-header>
+	 *     <ion-navbar>
+	 *       <ion-title>Other Page</ion-title>
+	 *     </ion-navbar>
+	 *   </ion-header>
+	 *   <ion-content>I'm the other page!</ion-content>`
+	 * })
+	 * class OtherPage {
+	 *    constructor(private navController: NavController ){
+	 *    }
+	 *
+	 *    popView(){
+	 *      this.navController.pop();
+	 *    }
+	 * }
+	 * ```
 	 *
 	 * ## Lifecycle events
 	 * Lifecycle events are fired during various stages of navigation.  They can be
@@ -55001,47 +55203,38 @@
 	 *  | `ionViewDidUnload`  | Runs after the page has been destroyed and its elements have been removed.
 	 *
 	 *
-	 * ## Nav Transition Promises
+	 * ## Asynchronous Nav Transitions
 	 *
-	 * Navigation transitions are asynchronous, meaning they take a few moments to finish, and
-	 * the duration of a transition could be any number. In most cases the async nature of a
-	 * transition doesn't cause any problems and the nav controller is pretty good about handling
-	 * which transition was the most recent when multiple transitions have been kicked off.
-	 * However, when an app begins firing off many transitions, on the same stack at
-	 * *roughly* the same time, the nav controller can start to get lost as to which transition
-	 * should be finishing, and which transitions should not be animated.
+	 * Navigation transitions are asynchronous operations. When a transition is started,
+	 * the `push` or `pop` method will return immediately, before the transition is complete.
 	 *
-	 * In cases where an app's navigation can be altered by other async tasks, which may or
-	 * may not take a long time, it's best to rely on each nav transition's returned
-	 * promise. So instead of firing and forgetting multiple `push` or `pop` nav transitions,
-	 * it's better to fire the next nav transition when the previous one has finished.
+	 * Generally, the developer does not need to be concerned about this. In the event
+	 * multiple transitions need to be synchronized or transition timing is critical,
+	 * the best practice is to chain the transitions together using the return value
+	 * from the `push` and `pop` methods.
 	 *
-	 * In the example below, after the async operation has completed, we then want to transition
-	 * to another page. Where the potential problem comes in, is that if the async operation
-	 * completed 100ms after the first transition started, then kicking off another transition
-	 * halfway through the first transition ends up with a janky animation. Instead, it's best
-	 * to always ensure the first transition has already finished before starting the next.
+	 * The `push` and `pop` methods return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+	 * Promises are a way to represent and chain together multiple asynchronous
+	 * operations in order. Navigation actions can be chained together very easily using promises.
 	 *
-	 * ```ts
-	 * // begin the first transition
-	 * let navTransition = this.nav.push(SomePage);
-	 *
-	 * // start an async call, we're not sure how long it'll take
-	 * someAsyncOperation().then(() => {
-	 *   // incase the async operation completed faster than the time
-	 *   // it took to finish the first transition, this logic should
-	 *   // always ensure that the previous transition has resolved
-	 *   // first before kicking off the next transition
-	 *   navTransition.then(() => {
-	 *     this.nav.push(AnotherPage);
-	 *   });
-	 * });
+	 * ```typescript
+	 * let navTransitionPromise = this.navController.push(Page2);
+	 * navTransitionPromise.then( () => {
+	 *   // the transition has completed, so I can push another page now
+	 *   return this.navController.push(Page3);
+	 * }).then( () => {
+	 *   // the second transition has completed, so I can push yet another page
+	    return this.navController.push(Page4);
+	 * }).then( () => {
+	 *   console.log('The transitions are complete!');
+	 * })
 	 * ```
 	 *
 	 * ## NavOptions
 	 *
 	 * Some methods on `NavController` allow for customizing the current transition.
 	 * To do this, we can pass an object with the modified properites.
+	 *
 	 *
 	 * | Property  | Value     | Description                                                                                                |
 	 * |-----------|-----------|------------------------------------------------------------------------------------------------------------|
@@ -55085,7 +55278,7 @@
 	 * @usage
 	 * ```ts
 	 * export class MyClass{
-	 *  constructor(private params: NavParams){
+	 *  constructor(public params: NavParams){
 	 *    // userParams is an object we have in our nav-parameters
 	 *    this.params.get('userParams');
 	 *  }
@@ -55111,7 +55304,7 @@
 	     *
 	     * ```ts
 	     * export class MyClass{
-	     *  constructor(private params: NavParams){
+	     *  constructor(public params: NavParams){
 	     *    // userParams is an object we have in our nav-parameters
 	     *    this.params.get('userParams');
 	     *  }
@@ -55217,6 +55410,9 @@
 	    DisableScroll[DisableScroll["Always"] = 2] = "Always";
 	})(exports.DisableScroll || (exports.DisableScroll = {}));
 	var DisableScroll = exports.DisableScroll;
+	/**
+	* @private
+	*/
 	var GestureController = (function () {
 	    function GestureController(_app) {
 	        this._app = _app;
@@ -55329,6 +55525,9 @@
 	    var _a;
 	}());
 	exports.GestureController = GestureController;
+	/**
+	* @private
+	*/
 	var GestureDelegate = (function () {
 	    function GestureDelegate(name, id, controller, opts) {
 	        this.name = name;
@@ -56161,10 +56360,10 @@
 	            return;
 	        }
 	        if (!this.rmMouseMove) {
-	            this.rmMouseMove = listenEvent(window, 'mousemove', this.zone, this.option, this.pointerMove);
+	            this.rmMouseMove = listenEvent(document, 'mousemove', this.zone, this.option, this.pointerMove);
 	        }
 	        if (!this.rmMouseUp) {
-	            this.rmMouseUp = listenEvent(window, 'mouseup', this.zone, this.option, this.bindMouseUp);
+	            this.rmMouseUp = listenEvent(document, 'mouseup', this.zone, this.option, this.bindMouseUp);
 	        }
 	    };
 	    PointerEvents.prototype.handleTouchEnd = function (ev) {
@@ -57821,6 +58020,7 @@
 	    function NavPortal(app, config, keyboard, elementRef, zone, renderer, compiler, gestureCtrl, viewPort) {
 	        _super.call(this, null, app, config, keyboard, elementRef, zone, renderer, compiler, gestureCtrl);
 	        this._isPortal = true;
+	        this._init = true;
 	        this.setViewport(viewPort);
 	        app.setPortal(this);
 	        // on every page change make sure the portal has
@@ -57935,11 +58135,9 @@
 	        function checkKeyboard() {
 	            console.debug('keyboard isOpen', self.isOpen());
 	            if (!self.isOpen() || checks > pollingChecksMax) {
-	                dom_1.rafFrames(30, function () {
-	                    self._zone.run(function () {
-	                        console.debug('keyboard closed');
-	                        callback();
-	                    });
+	                dom_1.zoneRafFrames(30, function () {
+	                    console.debug('keyboard closed');
+	                    callback();
 	                });
 	            }
 	            else {
@@ -58124,6 +58322,7 @@
 	var core_1 = __webpack_require__(6);
 	var forms_1 = __webpack_require__(363);
 	var http_1 = __webpack_require__(400);
+	var platform_browser_1 = __webpack_require__(266);
 	var action_sheet_1 = __webpack_require__(421);
 	var alert_1 = __webpack_require__(425);
 	var app_1 = __webpack_require__(335);
@@ -58132,20 +58331,21 @@
 	var events_1 = __webpack_require__(427);
 	var feature_detect_1 = __webpack_require__(428);
 	var form_1 = __webpack_require__(360);
+	var ionic_gesture_config_1 = __webpack_require__(429);
 	var gesture_controller_1 = __webpack_require__(347);
-	var directives_1 = __webpack_require__(429);
+	var directives_1 = __webpack_require__(430);
 	var util_1 = __webpack_require__(340);
 	var keyboard_1 = __webpack_require__(359);
-	var loading_1 = __webpack_require__(489);
-	var menu_controller_1 = __webpack_require__(432);
-	var modal_1 = __webpack_require__(491);
-	var picker_1 = __webpack_require__(472);
+	var loading_1 = __webpack_require__(491);
+	var menu_controller_1 = __webpack_require__(433);
+	var modal_1 = __webpack_require__(493);
+	var picker_1 = __webpack_require__(473);
 	var platform_1 = __webpack_require__(339);
-	var popover_1 = __webpack_require__(494);
-	var scroll_view_1 = __webpack_require__(440);
-	var tap_click_1 = __webpack_require__(496);
-	var toast_1 = __webpack_require__(499);
-	var translate_1 = __webpack_require__(501);
+	var popover_1 = __webpack_require__(496);
+	var scroll_view_1 = __webpack_require__(441);
+	var tap_click_1 = __webpack_require__(498);
+	var toast_1 = __webpack_require__(501);
+	var translate_1 = __webpack_require__(503);
 	/**
 	 * @private
 	 */
@@ -58194,6 +58394,7 @@
 	        toast_1.ToastController,
 	        translate_1.Translate,
 	    ];
+	    providers.push({ provide: platform_browser_1.HAMMER_GESTURE_CONFIG, useClass: ionic_gesture_config_1.IonicGestureConfig });
 	    if (util_1.isPresent(customProviders)) {
 	        providers.push(customProviders);
 	    }
@@ -66009,7 +66210,7 @@
 	 *
 	 * export class MyClass{
 	 *
-	 *  constructor(private actionSheetCtrl: ActionSheetController) {}
+	 *  constructor(public actionSheetCtrl: ActionSheetController) {}
 	 *
 	 *  presentActionSheet() {
 	 *    let actionSheet = this.actionSheetCtrl.create({
@@ -66047,24 +66248,23 @@
 	 *
 	 * ActionSheet create options
 	 *
-	 * | Option                | Type       | Description                                                     |
-	 * |-----------------------|------------|-----------------------------------------------------------------|
-	 * | title                 |`string`    | The title for the actionsheet                                   |
-	 * | subTitle              |`string`    | The sub-title for the actionsheet                               |
-	 * | cssClass              |`string`    | An additional class for custom styles                           |
-	 * | enableBackdropDismiss |`boolean`   | If the actionsheet should close when the user taps the backdrop |
-	 * | buttons               |`array<any>`| An array of buttons to display                                  |
+	 * | Option                | Type       | Description                                                        |
+	 * |-----------------------|------------|--------------------------------------------------------------------|
+	 * | title                 |`string`    | The title for the Action Sheet.                                    |
+	 * | subTitle              |`string`    | The sub-title for the Action Sheet.                                |
+	 * | cssClass              |`string`    | Additional classes for custom styles, separated by spaces.         |
+	 * | enableBackdropDismiss |`boolean`   | If the Action Sheet should close when the user taps the backdrop.  |
+	 * | buttons               |`array<any>`| An array of buttons to display.                                    |
 	 *
 	 * ActionSheet button options
 	 *
 	 * | Option   | Type     | Description                                                                                                                                      |
 	 * |----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-	 * | text     | `string` | The buttons text                                                                                                                                 |
-	 * | icon     | `icon`   | The buttons icons                                                                                                                                |
-	 * | handler  | `any`    | An express the button should evaluate                                                                                                            |
-	 * | cssClass | `string` | An additional class for custom styles                                                                                                            |
-	 * | role     | `string` | How the button should be displayed, `destructive` or `cancel`. If not role is provided, it will display the button without any additional styles |
-	 *
+	 * | text     | `string` | The buttons text.                                                                                                                                |
+	 * | icon     | `icon`   | The buttons icons.                                                                                                                               |
+	 * | handler  | `any`    | An express the button should evaluate.                                                                                                           |
+	 * | cssClass | `string` | Additional classes for custom styles, separated by spaces.                                                                                       |
+	 * | role     | `string` | How the button should be displayed, `destructive` or `cancel`. If not role is provided, it will display the button without any additional styles.|
 	 *
 	 *
 	 * ### Dismissing And Async Navigation
@@ -66187,7 +66387,11 @@
 	        this._form = _form;
 	        this.d = params.data;
 	        if (this.d.cssClass) {
-	            renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	            this.d.cssClass.split(' ').forEach(function (cssClass) {
+	                // Make sure the class isn't whitespace, otherwise it throws exceptions
+	                if (cssClass.trim() !== '')
+	                    renderer.setElementClass(_elementRef.nativeElement, cssClass, true);
+	            });
 	        }
 	        this.id = (++actionSheetIds);
 	        if (this.d.title) {
@@ -66280,7 +66484,7 @@
 	    ActionSheetCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-action-sheet',
-	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"action-sheet-wrapper\">\n      <div class=\"action-sheet-container\">\n        <div class=\"action-sheet-group\">\n          <div class=\"action-sheet-title\" id=\"{{hdrId}}\" *ngIf=\"d.title\">{{d.title}}</div>\n          <div class=\"action-sheet-sub-title\" id=\"{{descId}}\" *ngIf=\"d.subTitle\">{{d.subTitle}}</div>\n          <button category=\"action-sheet-button\" (click)=\"click(b)\" *ngFor=\"let b of d.buttons\" class=\"disable-hover\" [ngClass]=\"b.cssClass\">\n            <ion-icon [name]=\"b.icon\" *ngIf=\"b.icon\" class=\"action-sheet-icon\"></ion-icon>\n            {{b.text}}\n          </button>\n        </div>\n        <div class=\"action-sheet-group\" *ngIf=\"d.cancelButton\">\n          <button category=\"action-sheet-button\" (click)=\"click(d.cancelButton)\" class=\"action-sheet-cancel disable-hover\" [ngClass]=\"d.cancelButton.cssClass\">\n            <ion-icon [name]=\"d.cancelButton.icon\" *ngIf=\"d.cancelButton.icon\" class=\"action-sheet-icon\"></ion-icon>\n            {{d.cancelButton.text}}\n          </button>\n        </div>\n      </div>\n    </div>\n    ",
+	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"action-sheet-wrapper\">\n      <div class=\"action-sheet-container\">\n        <div class=\"action-sheet-group\">\n          <div class=\"action-sheet-title\" id=\"{{hdrId}}\" *ngIf=\"d.title\">{{d.title}}</div>\n          <div class=\"action-sheet-sub-title\" id=\"{{descId}}\" *ngIf=\"d.subTitle\">{{d.subTitle}}</div>\n          <button ion-button=\"action-sheet-button\" (click)=\"click(b)\" *ngFor=\"let b of d.buttons\" class=\"disable-hover\" [ngClass]=\"b.cssClass\">\n            <ion-icon [name]=\"b.icon\" *ngIf=\"b.icon\" class=\"action-sheet-icon\"></ion-icon>\n            {{b.text}}\n          </button>\n        </div>\n        <div class=\"action-sheet-group\" *ngIf=\"d.cancelButton\">\n          <button ion-button=\"action-sheet-button\" (click)=\"click(d.cancelButton)\" class=\"action-sheet-cancel disable-hover\" [ngClass]=\"d.cancelButton.cssClass\">\n            <ion-icon [name]=\"d.cancelButton.icon\" *ngIf=\"d.cancelButton.icon\" class=\"action-sheet-icon\"></ion-icon>\n            {{d.cancelButton.text}}\n          </button>\n        </div>\n      </div>\n    </div>\n    ",
 	            directives: [backdrop_1.Backdrop, icon_1.Icon, common_1.NgClass, common_1.NgFor, common_1.NgIf],
 	            host: {
 	                'role': 'dialog',
@@ -66499,6 +66703,19 @@
 	        this._css = '';
 	        this.mode = config.get('iconMode');
 	    }
+	    Object.defineProperty(Icon.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
@@ -66601,6 +66818,26 @@
 	    Icon.prototype.addClass = function (className) {
 	        this._renderer.setElementClass(this._elementRef.nativeElement, className, true);
 	    };
+	    /**
+	    * @internal
+	    */
+	    Icon.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Icon.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "icon-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Icon.prototype, "color", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', String)
@@ -66870,35 +67107,36 @@
 	 *
 	 *  | Property              | Type      | Description                                                               |
 	 *  |-----------------------|-----------|---------------------------------------------------------------------------|
-	 *  | title                 | `string`  | The string for the alert (optional)                                       |
-	 *  | subTitle              | `string`  | The subtitle for the alert (optional)                                     |
-	 *  | message               | `string`  | The message for the alert (optional)                                      |
-	 *  | cssClass              | `string`  | Any additional class for the alert (optional)                             |
-	 *  | inputs                | `array`   | An array of inputs for the alert. See input options. (optional)           |
-	 *  | buttons               | `array`   | An array of buttons for the alert. See buttons options. (optional)        |
-	 *  | enableBackdropDismiss | `boolean` | Whether the alert should be dismissed by tapping the backdrop (optional)  |
+	 *  | title                 | `string`  | The title for the alert.                                                  |
+	 *  | subTitle              | `string`  | The subtitle for the alert.                                               |
+	 *  | message               | `string`  | The message for the alert.                                                |
+	 *  | cssClass              | `string`  | Additional classes for custom styles, separated by spaces.                |
+	 *  | inputs                | `array`   | An array of inputs for the alert. See input options.                      |
+	 *  | buttons               | `array`   | An array of buttons for the alert. See buttons options.                   |
+	 *  | enableBackdropDismiss | `boolean` | Whether the alert should be dismissed by tapping the backdrop.            |
 	 *
 	 *
 	 *  Input options
 	 *
 	 *  | Property    | Type      | Description                                                     |
 	 *  |-------------|-----------|-----------------------------------------------------------------|
-	 *  | type        | `string`  | The type the input should be, text, tel, number, etc (optional) |
-	 *  | name        | `string`  | The name for the input (optional)                               |
-	 *  | placeholder | `string`  | The input's placeholder (optional, for textual/numeric inputs)  |
-	 *  | value       | `string`  | The input's value (optional)                                    |
-	 *  | label       | `string`  | The input's label (optional, only for radio/checkbox inputs)    |
-	 *  | checked     | `boolean` | Whether or not the input is checked or not (optional)           |
-	 *  | id          | `string`  | The input's id (optional)                                       |
+	 *  | type        | `string`  | The type the input should be: text, tel, number, etc.           |
+	 *  | name        | `string`  | The name for the input.                                         |
+	 *  | placeholder | `string`  | The input's placeholder (for textual/numeric inputs)            |
+	 *  | value       | `string`  | The input's value.                                              |
+	 *  | label       | `string`  | The input's label (only for radio/checkbox inputs)              |
+	 *  | checked     | `boolean` | Whether or not the input is checked.                            |
+	 *  | id          | `string`  | The input's id.                                                 |
 	 *
 	 *  Button options
 	 *
-	 *  | Property | Type     | Description                                                    |
-	 *  |----------|----------|----------------------------------------------------------------|
-	 *  | text     | `string` | The buttons displayed text                                     |
-	 *  | handler  | `any`    | Expression that should be evaluated when the button is pressed |
-	 *  | cssClass | `string` | An additional CSS class for the button                         |
-	 *  | role     | `string` | The buttons role, null or `cancel`                             |
+	 *  | Property | Type     | Description                                                     |
+	 *  |----------|----------|-----------------------------------------------------------------|
+	 *  | text     | `string` | The buttons displayed text.                                     |
+	 *  | handler  | `any`    | Expression that should be evaluated when the button is pressed. |
+	 *  | cssClass | `string` | An additional CSS class for the button.                         |
+	 *  | role     | `string` | The buttons role, null or `cancel`.                             |
+	 *
 	 * ### Dismissing And Async Navigation
 	 *
 	 * After an alert has been dismissed, the app may need to also transition
@@ -67187,7 +67425,7 @@
 	    AlertCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-alert',
-	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"alert-wrapper\">\n      <div class=\"alert-head\">\n        <h2 id=\"{{hdrId}}\" class=\"alert-title\" *ngIf=\"d.title\" [innerHTML]=\"d.title\"></h2>\n        <h3 id=\"{{subHdrId}}\" class=\"alert-sub-title\" *ngIf=\"d.subTitle\" [innerHTML]=\"d.subTitle\"></h3>\n      </div>\n      <div id=\"{{msgId}}\" class=\"alert-message\" [innerHTML]=\"d.message\"></div>\n      <div *ngIf=\"d.inputs.length\" [ngSwitch]=\"inputType\">\n\n        <template ngSwitchCase=\"radio\">\n          <div class=\"alert-radio-group\" role=\"radiogroup\" [attr.aria-labelledby]=\"hdrId\" [attr.aria-activedescendant]=\"activeId\">\n            <button category=\"alert-radio-button\" *ngFor=\"let i of d.inputs\" (click)=\"rbClick(i)\" [attr.aria-checked]=\"i.checked\" [disabled]=\"i.disabled\" [attr.id]=\"i.id\" class=\"alert-tappable alert-radio\" role=\"radio\">\n              <div class=\"alert-radio-icon\"><div class=\"alert-radio-inner\"></div></div>\n              <div class=\"alert-radio-label\">\n                {{i.label}}\n              </div>\n            </button>\n          </div>\n        </template>\n\n        <template ngSwitchCase=\"checkbox\">\n          <div class=\"alert-checkbox-group\">\n            <button category=\"alert-checkbox-button\" *ngFor=\"let i of d.inputs\" (click)=\"cbClick(i)\" [attr.aria-checked]=\"i.checked\" [disabled]=\"i.disabled\" class=\"alert-tappable alert-checkbox\" role=\"checkbox\">\n              <div class=\"alert-checkbox-icon\"><div class=\"alert-checkbox-inner\"></div></div>\n              <div class=\"alert-checkbox-label\">\n                {{i.label}}\n              </div>\n            </button>\n          </div>\n        </template>\n\n        <template ngSwitchDefault>\n          <div class=\"alert-input-group\">\n            <div *ngFor=\"let i of d.inputs\" class=\"alert-input-wrapper\">\n              <input [placeholder]=\"i.placeholder\" [(ngModel)]=\"i.value\" [type]=\"i.type\" class=\"alert-input\">\n            </div>\n          </div>\n        </template>\n\n      </div>\n      <div class=\"alert-button-group\" [ngClass]=\"{vertical: d.buttons.length>2}\">\n        <button category=\"alert-button\" *ngFor=\"let b of d.buttons\" (click)=\"btnClick(b)\" [ngClass]=\"b.cssClass\">\n          {{b.text}}\n        </button>\n      </div>\n    </div>\n    ",
+	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"alert-wrapper\">\n      <div class=\"alert-head\">\n        <h2 id=\"{{hdrId}}\" class=\"alert-title\" *ngIf=\"d.title\" [innerHTML]=\"d.title\"></h2>\n        <h3 id=\"{{subHdrId}}\" class=\"alert-sub-title\" *ngIf=\"d.subTitle\" [innerHTML]=\"d.subTitle\"></h3>\n      </div>\n      <div id=\"{{msgId}}\" class=\"alert-message\" [innerHTML]=\"d.message\"></div>\n      <div *ngIf=\"d.inputs.length\" [ngSwitch]=\"inputType\">\n\n        <template ngSwitchCase=\"radio\">\n          <div class=\"alert-radio-group\" role=\"radiogroup\" [attr.aria-labelledby]=\"hdrId\" [attr.aria-activedescendant]=\"activeId\">\n            <button ion-button=\"alert-radio-button\" *ngFor=\"let i of d.inputs\" (click)=\"rbClick(i)\" [attr.aria-checked]=\"i.checked\" [disabled]=\"i.disabled\" [attr.id]=\"i.id\" class=\"alert-tappable alert-radio\" role=\"radio\">\n              <div class=\"alert-radio-icon\"><div class=\"alert-radio-inner\"></div></div>\n              <div class=\"alert-radio-label\">\n                {{i.label}}\n              </div>\n            </button>\n          </div>\n        </template>\n\n        <template ngSwitchCase=\"checkbox\">\n          <div class=\"alert-checkbox-group\">\n            <button ion-button=\"alert-checkbox-button\" *ngFor=\"let i of d.inputs\" (click)=\"cbClick(i)\" [attr.aria-checked]=\"i.checked\" [disabled]=\"i.disabled\" class=\"alert-tappable alert-checkbox\" role=\"checkbox\">\n              <div class=\"alert-checkbox-icon\"><div class=\"alert-checkbox-inner\"></div></div>\n              <div class=\"alert-checkbox-label\">\n                {{i.label}}\n              </div>\n            </button>\n          </div>\n        </template>\n\n        <template ngSwitchDefault>\n          <div class=\"alert-input-group\">\n            <div *ngFor=\"let i of d.inputs\" class=\"alert-input-wrapper\">\n              <input [placeholder]=\"i.placeholder\" [(ngModel)]=\"i.value\" [type]=\"i.type\" class=\"alert-input\">\n            </div>\n          </div>\n        </template>\n\n      </div>\n      <div class=\"alert-button-group\" [ngClass]=\"{vertical: d.buttons.length>2}\">\n        <button ion-button=\"alert-button\" *ngFor=\"let b of d.buttons\" (click)=\"btnClick(b)\" [ngClass]=\"b.cssClass\">\n          {{b.text}}\n        </button>\n      </div>\n    </div>\n    ",
 	            directives: [backdrop_1.Backdrop, common_1.NgClass, common_1.NgFor, common_1.NgIf, forms_1.NgModel, common_1.NgSwitch, common_1.NgSwitchCase, common_1.NgSwitchDefault],
 	            host: {
 	                'role': 'dialog',
@@ -67489,52 +67727,101 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(6);
+	var platform_browser_1 = __webpack_require__(266);
+	/* this class override the default angular gesture config.
+	 * The motivation for this is enabling pinch, rotate or
+	 * any other multi-touch gestures block scrolling.
+	 */
+	/**
+	 * @private
+	 */
+	var IonicGestureConfig = (function (_super) {
+	    __extends(IonicGestureConfig, _super);
+	    function IonicGestureConfig() {
+	        _super.apply(this, arguments);
+	    }
+	    IonicGestureConfig.prototype.buildHammer = function (element) {
+	        var mc = new window.Hammer(element);
+	        for (var eventName in this.overrides) {
+	            mc.get(eventName).set(this.overrides[eventName]);
+	        }
+	        return mc;
+	    };
+	    IonicGestureConfig = __decorate([
+	        core_1.Injectable(), 
+	        __metadata('design:paramtypes', [])
+	    ], IonicGestureConfig);
+	    return IonicGestureConfig;
+	}(platform_browser_1.HammerGestureConfig));
+	exports.IonicGestureConfig = IonicGestureConfig;
+
+/***/ },
+/* 430 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	var common_1 = __webpack_require__(119);
 	var forms_1 = __webpack_require__(363);
-	var menu_1 = __webpack_require__(430);
-	var menu_toggle_1 = __webpack_require__(433);
-	var menu_close_1 = __webpack_require__(436);
+	var menu_1 = __webpack_require__(431);
+	var menu_toggle_1 = __webpack_require__(434);
+	var menu_close_1 = __webpack_require__(437);
 	var backdrop_1 = __webpack_require__(423);
-	var badge_1 = __webpack_require__(437);
-	var button_1 = __webpack_require__(438);
-	var content_1 = __webpack_require__(439);
-	var img_1 = __webpack_require__(445);
-	var scroll_1 = __webpack_require__(446);
-	var infinite_scroll_1 = __webpack_require__(447);
-	var infinite_scroll_content_1 = __webpack_require__(448);
-	var refresher_1 = __webpack_require__(450);
-	var refresher_content_1 = __webpack_require__(451);
-	var slides_1 = __webpack_require__(452);
-	var tabs_1 = __webpack_require__(441);
-	var tab_1 = __webpack_require__(443);
-	var list_1 = __webpack_require__(456);
-	var item_1 = __webpack_require__(458);
-	var item_reorder_1 = __webpack_require__(459);
-	var item_sliding_1 = __webpack_require__(462);
-	var virtual_scroll_1 = __webpack_require__(463);
-	var virtual_item_1 = __webpack_require__(465);
-	var toolbar_1 = __webpack_require__(435);
-	var toolbar_item_1 = __webpack_require__(466);
-	var toolbar_title_1 = __webpack_require__(467);
+	var badge_1 = __webpack_require__(438);
+	var button_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
+	var img_1 = __webpack_require__(446);
+	var scroll_1 = __webpack_require__(447);
+	var infinite_scroll_1 = __webpack_require__(448);
+	var infinite_scroll_content_1 = __webpack_require__(449);
+	var refresher_1 = __webpack_require__(451);
+	var refresher_content_1 = __webpack_require__(452);
+	var slides_1 = __webpack_require__(453);
+	var tabs_1 = __webpack_require__(442);
+	var tab_1 = __webpack_require__(444);
+	var list_1 = __webpack_require__(457);
+	var item_1 = __webpack_require__(459);
+	var item_reorder_1 = __webpack_require__(460);
+	var item_sliding_1 = __webpack_require__(463);
+	var virtual_scroll_1 = __webpack_require__(464);
+	var virtual_item_1 = __webpack_require__(466);
+	var toolbar_1 = __webpack_require__(436);
+	var toolbar_item_1 = __webpack_require__(467);
+	var toolbar_title_1 = __webpack_require__(468);
 	var icon_1 = __webpack_require__(424);
-	var spinner_1 = __webpack_require__(449);
-	var checkbox_1 = __webpack_require__(468);
-	var select_1 = __webpack_require__(469);
-	var option_1 = __webpack_require__(470);
-	var datetime_1 = __webpack_require__(471);
-	var toggle_1 = __webpack_require__(475);
-	var input_1 = __webpack_require__(476);
-	var label_1 = __webpack_require__(461);
-	var segment_1 = __webpack_require__(479);
-	var radio_button_1 = __webpack_require__(480);
-	var radio_group_1 = __webpack_require__(481);
-	var range_1 = __webpack_require__(482);
-	var searchbar_1 = __webpack_require__(484);
-	var nav_1 = __webpack_require__(485);
-	var nav_pop_1 = __webpack_require__(486);
-	var nav_push_1 = __webpack_require__(487);
-	var navbar_1 = __webpack_require__(434);
-	var show_hide_when_1 = __webpack_require__(488);
+	var spinner_1 = __webpack_require__(450);
+	var checkbox_1 = __webpack_require__(469);
+	var select_1 = __webpack_require__(470);
+	var option_1 = __webpack_require__(471);
+	var datetime_1 = __webpack_require__(472);
+	var toggle_1 = __webpack_require__(476);
+	var input_1 = __webpack_require__(477);
+	var label_1 = __webpack_require__(462);
+	var segment_1 = __webpack_require__(480);
+	var radio_button_1 = __webpack_require__(481);
+	var radio_group_1 = __webpack_require__(482);
+	var range_1 = __webpack_require__(483);
+	var searchbar_1 = __webpack_require__(485);
+	var nav_1 = __webpack_require__(486);
+	var nav_pop_1 = __webpack_require__(487);
+	var nav_push_1 = __webpack_require__(488);
+	var navbar_1 = __webpack_require__(435);
+	var show_hide_when_1 = __webpack_require__(489);
+	var typography_1 = __webpack_require__(490);
 	/**
 	 * @private
 	 * @name IONIC_DIRECTIVES
@@ -67604,6 +67891,7 @@
 	 * - IdRef
 	 * - ShowWhen
 	 * - HideWhen
+	 * - Typography
 	 */
 	exports.IONIC_DIRECTIVES = [
 	    // Angular
@@ -67673,11 +67961,12 @@
 	    nav_push_1.NavPush,
 	    nav_pop_1.NavPop,
 	    show_hide_when_1.ShowWhen,
-	    show_hide_when_1.HideWhen
+	    show_hide_when_1.HideWhen,
+	    typography_1.Typography
 	];
 
 /***/ },
-/* 430 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67695,8 +67984,8 @@
 	var config_1 = __webpack_require__(338);
 	var util_1 = __webpack_require__(340);
 	var keyboard_1 = __webpack_require__(359);
-	var menu_gestures_1 = __webpack_require__(431);
-	var menu_controller_1 = __webpack_require__(432);
+	var menu_gestures_1 = __webpack_require__(432);
+	var menu_controller_1 = __webpack_require__(433);
 	var platform_1 = __webpack_require__(339);
 	var gesture_controller_1 = __webpack_require__(347);
 	/**
@@ -67812,7 +68101,7 @@
 	 * directive anywhere in the page's template:
 	 *
 	 * ```html
-	 * <button menuToggle>Toggle Menu</button>
+	 * <button ion-button menuToggle>Toggle Menu</button>
 	 * ```
 	 *
 	 * To close a menu, add the `menuClose` button. It can be added anywhere
@@ -67823,7 +68112,7 @@
 	 * <ion-menu [content]="mycontent">
 	 *   <ion-content>
 	 *     <ion-list>
-	 *       <button menuClose ion-item detail-none>Close Menu</button>
+	 *       <button ion-button menuClose ion-item detail-none>Close Menu</button>
 	 *     </ion-list>
 	 *   </ion-content>
 	 * </ion-menu>
@@ -67843,10 +68132,10 @@
 	 *
 	 * @Component({...})
 	 * export class MyPage {
-	 *  constructor(private menu: MenuController) {}
+	 *  constructor(public menuCtrl: MenuController) {}
 	 *
 	 *  openMenu() {
-	 *    this.menu.open();
+	 *    this.menuCtrl.open();
 	 *  }
 	 * }
 	 * ```
@@ -68276,7 +68565,7 @@
 	exports.Menu = Menu;
 
 /***/ },
-/* 431 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68371,7 +68660,7 @@
 	exports.MenuContentGesture = MenuContentGesture;
 
 /***/ },
-/* 432 */
+/* 433 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -68412,20 +68701,20 @@
 	 * @Component({...})
 	 * export class MyPage {
 	 *
-	 *  constructor(private menu: MenuController) {
+	 *  constructor(public menuCtrl: MenuController) {
 	 *
 	 *  }
 	 *
 	 *  openMenu() {
-	 *    this.menu.open();
+	 *    this.menuCtrl.open();
 	 *  }
 	 *
 	 *  closeMenu() {
-	 *    this.menu.close();
+	 *    this.menuCtrl.close();
 	 *  }
 	 *
 	 *  toggleMenu() {
-	 *    this.menu.toggle();
+	 *    this.menuCtrl.toggle();
 	 *  }
 	 *
 	 * }
@@ -68493,6 +68782,7 @@
 	    }
 	    /**
 	     * Progamatically open the Menu.
+	     * @param {string} [menuId]  Optionally get the menu by its id, or side.
 	     * @return {Promise} returns a promise when the menu is fully opened
 	     */
 	    MenuController.prototype.open = function (menuId) {
@@ -68573,6 +68863,7 @@
 	        }
 	    };
 	    /**
+	     * @param {string} [menuId]  Optionally get the menu by its id, or side.
 	     * @return {boolean} Returns true if the menu is currently open, otherwise false.
 	     */
 	    MenuController.prototype.isOpen = function (menuId) {
@@ -68580,6 +68871,7 @@
 	        return menu && menu.isOpen || false;
 	    };
 	    /**
+	     * @param {string} [menuId]  Optionally get the menu by its id, or side.
 	     * @return {boolean} Returns true if the menu is currently enabled, otherwise false.
 	     */
 	    MenuController.prototype.isEnabled = function (menuId) {
@@ -68665,7 +68957,7 @@
 	var menuTypes = {};
 
 /***/ },
-/* 433 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68682,8 +68974,8 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var menu_controller_1 = __webpack_require__(432);
-	var navbar_1 = __webpack_require__(434);
+	var menu_controller_1 = __webpack_require__(433);
+	var navbar_1 = __webpack_require__(435);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @name MenuToggle
@@ -68699,14 +68991,14 @@
 	 * A simple `menuToggle` button can be added using the following markup:
 	 *
 	 * ```html
-	 * <button menuToggle>Toggle Menu</button>
+	 * <button ion-button menuToggle>Toggle Menu</button>
 	 * ```
 	 *
 	 * To toggle a specific menu by its id or side, give the `menuToggle`
 	 * directive a value.
 	 *
 	 * ```html
-	 * <button menuToggle="right">Toggle Right Menu</button>
+	 * <button ion-button menuToggle="right">Toggle Right Menu</button>
 	 * ```
 	 *
 	 * If placing the `menuToggle` in a navbar or toolbar, it should be
@@ -68718,18 +69010,18 @@
 	 *
 	 *   <ion-navbar>
 	 *     <ion-buttons start>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="contact"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
-	 *     <button menuToggle>
+	 *     <button ion-button menuToggle>
 	 *       <ion-icon name="menu"></ion-icon>
 	 *     </button>
 	 *     <ion-title>
 	 *       Title
 	 *     </ion-title>
 	 *     <ion-buttons end>
-	 *       <button (click)="doClick()">
+	 *       <button ion-button (click)="doClick()">
 	 *         <ion-icon name="more"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
@@ -68743,14 +69035,14 @@
 	 *
 	 * ```html
 	 * <ion-toolbar>
-	 *   <button menuToggle right>
+	 *   <button ion-button menuToggle right>
 	 *     <ion-icon name="menu"></ion-icon>
 	 *   </button>
 	 *   <ion-title>
 	 *     Title
 	 *   </ion-title>
 	 *   <ion-buttons end>
-	 *     <button (click)="doClick()">
+	 *     <button ion-button (click)="doClick()">
 	 *       <ion-icon name="more"></ion-icon>
 	 *     </button>
 	 *   </ion-buttons>
@@ -68828,7 +69120,7 @@
 	exports.MenuToggle = MenuToggle;
 
 /***/ },
-/* 434 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68856,7 +69148,7 @@
 	var ion_1 = __webpack_require__(342);
 	var util_1 = __webpack_require__(340);
 	var nav_controller_1 = __webpack_require__(343);
-	var toolbar_1 = __webpack_require__(435);
+	var toolbar_1 = __webpack_require__(436);
 	var view_controller_1 = __webpack_require__(357);
 	var BackButton = (function (_super) {
 	    __extends(BackButton, _super);
@@ -68920,13 +69212,15 @@
 	 * button. A navbar can contain a `ion-title`, any number of buttons,
 	 * a segment, or a searchbar. Navbars must be placed within an
 	 * `<ion-header>` in order for them to be placed above the content.
+	 * It's important to note that navbar's are part of the dynamica navigation
+	 * stack. If you need a static toolbar, use ion-toolbar.
 	 *
 	 * @usage
 	 * ```html
 	 * <ion-header>
 	 *
 	 *   <ion-navbar>
-	 *     <button menuToggle>
+	 *     <button ion-button menuToggle>
 	 *       <ion-icon name="menu"></ion-icon>
 	 *     </button>
 	 *
@@ -68935,7 +69229,7 @@
 	 *     </ion-title>
 	 *
 	 *     <ion-buttons end>
-	 *       <button (click)="openModal()">
+	 *       <button ion-button (click)="openModal()">
 	 *         <ion-icon name="options"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
@@ -68949,9 +69243,11 @@
 	 */
 	var Navbar = (function (_super) {
 	    __extends(Navbar, _super);
-	    function Navbar(_app, viewCtrl, elementRef, config) {
-	        _super.call(this, elementRef);
+	    function Navbar(_app, viewCtrl, _elementRef, _renderer, config) {
+	        _super.call(this, _elementRef);
 	        this._app = _app;
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        this._hidden = false;
 	        this._hideBb = false;
 	        viewCtrl && viewCtrl.setNavbar(this);
@@ -68959,6 +69255,19 @@
 	        this._bbText = config.get('backButtonText');
 	        this._sbPadding = config.getBoolean('statusbarPadding', false);
 	    }
+	    Object.defineProperty(Navbar.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Navbar.prototype, "hideBackButton", {
 	        /**
 	         * @input {boolean} whether the back button should be shown or not
@@ -69032,6 +69341,26 @@
 	        // used to display none/block the navbar
 	        this._hidden = isHidden;
 	    };
+	    /**
+	     * @internal
+	     */
+	    Navbar.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Navbar.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "toolbar-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Navbar.prototype, "color", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Boolean)
@@ -69039,7 +69368,7 @@
 	    Navbar = __decorate([
 	        core_1.Component({
 	            selector: 'ion-navbar',
-	            template: "\n    <div class=\"toolbar-background\"></div>\n    <button category=\"bar-button\" class=\"back-button\" [hidden]=\"_hideBb\">\n      <span class=\"button-inner\">\n        <ion-icon class=\"back-button-icon\" [name]=\"_bbIcon\"></ion-icon>\n        <span class=\"back-button-text\">\n          <span class=\"back-default\">{{_bbText}}</span>\n        </span>\n      </span>\n    </button>\n    <ng-content select=\"[menuToggle],ion-buttons[left]\"></ng-content>\n    <ng-content select=\"ion-buttons[start]\"></ng-content>\n    <ng-content select=\"ion-buttons[end],ion-buttons[right]\"></ng-content>\n    <div class=\"toolbar-content\">\n      <ng-content></ng-content>\n    </div>\n  ",
+	            template: "\n    <div class=\"toolbar-background\"></div>\n    <button ion-button=\"bar-button\" class=\"back-button\" [hidden]=\"_hideBb\">\n      <span class=\"button-inner\">\n        <ion-icon class=\"back-button-icon\" [name]=\"_bbIcon\"></ion-icon>\n        <span class=\"back-button-text\">\n          <span class=\"back-default\">{{_bbText}}</span>\n        </span>\n      </span>\n    </button>\n    <ng-content select=\"[menuToggle],ion-buttons[left]\"></ng-content>\n    <ng-content select=\"ion-buttons[start]\"></ng-content>\n    <ng-content select=\"ion-buttons[end],ion-buttons[right]\"></ng-content>\n    <div class=\"toolbar-content\">\n      <ng-content></ng-content>\n    </div>\n  ",
 	            directives: [BackButton, BackButtonText, icon_1.Icon, ToolbarBackground],
 	            host: {
 	                '[hidden]': '_hidden',
@@ -69048,10 +69377,10 @@
 	            }
 	        }),
 	        __param(1, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof app_1.App !== 'undefined' && app_1.App) === 'function' && _a) || Object, (typeof (_b = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _d) || Object])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof app_1.App !== 'undefined' && app_1.App) === 'function' && _a) || Object, (typeof (_b = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _d) || Object, (typeof (_e = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _e) || Object])
 	    ], Navbar);
 	    return Navbar;
-	    var _a, _b, _c, _d;
+	    var _a, _b, _c, _d, _e;
 	}(toolbar_1.ToolbarBase));
 	exports.Navbar = Navbar;
 	/**
@@ -69078,7 +69407,7 @@
 	exports.NavbarTemplate = NavbarTemplate;
 
 /***/ },
-/* 435 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69104,7 +69433,31 @@
 	var ion_1 = __webpack_require__(342);
 	var view_controller_1 = __webpack_require__(357);
 	/**
-	 * @private
+	 * @name Header
+	 * @description
+	 * Header is a parent component that holds the navbar and toolbar component.
+	 * It's important to note that `ion-header` needs to be the one of the three root elements of a page
+	 *
+	 * @usage
+	 *
+	 * ```ts
+	 * @Component({
+	 *   template: `
+	 *      <ion-header>
+	 *        <ion-navbar>
+	 *          <ion-title>Page1</ion-title>
+	 *        </ion-navbar>
+	 *
+	 *        <ion-toolbar>
+	 *          <ion-title>Subheader</ion-title>
+	 *        </ion-toolbar>
+	 *      </ion-header>
+	 *
+	 *      <ion-content></ion-content>
+	 *   `
+	 * })
+	 * ```
+	 *
 	 */
 	var Header = (function () {
 	    function Header(viewCtrl) {
@@ -69122,7 +69475,26 @@
 	}());
 	exports.Header = Header;
 	/**
-	 * @private
+	 * @name Footer
+	 * @description
+	 * Footer is a root component of a page that sits at the bottom of the page.
+	 * Footer can be a wrapper for `ion-toolbar` to make sure the content area is sized correctly.
+	 *
+	 * @usage
+	 *
+	 * ```ts
+	 * @Component({
+	 *   template: `
+	 *      <ion-content></ion-content>
+	 *      <ion-footer>
+	 *        <ion-toolbar>
+	 *          <ion-title>Footer</ion-title>
+	 *        </ion-toolbar>
+	 *      </ion-footer>
+	 *   `
+	 * })
+	 * ```
+	 *
 	 */
 	var Footer = (function () {
 	    function Footer(viewCtrl) {
@@ -69190,7 +69562,7 @@
 	 * @name Toolbar
 	 * @description
 	 * A Toolbar is a generic bar that is positioned above or below content.
-	 * Unlike a [Navbar](../../nav/Navbar), a toolbar can be used as a subheader.
+	 * Unlike a [Navbar](../../navbar/Navbar), a toolbar can be used as a subheader.
 	 * When toolbars are placed within an `<ion-header>` or `<ion-footer>`,
 	 * the toolbars stay fixed in their respective location. When placed within
 	 * `<ion-content>`, toolbars will scroll with the content.
@@ -69265,10 +69637,10 @@
 	 *
 	 *   <ion-toolbar no-border-bottom>
 	 *     <ion-buttons start>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="contact"></ion-icon>
 	 *       </button>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="search"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
@@ -69296,7 +69668,7 @@
 	 *   <ion-toolbar no-border>
 	 *     <ion-title>I'm a subfooter</ion-title>
 	 *     <ion-buttons right>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="menu"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
@@ -69305,10 +69677,10 @@
 	 *   <ion-toolbar no-border-top>
 	 *     <ion-title>I'm a footer</ion-title>
 	 *     <ion-buttons end>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="more"></ion-icon>
 	 *       </button>
-	 *       <button>
+	 *       <button ion-button>
 	 *         <ion-icon name="options"></ion-icon>
 	 *       </button>
 	 *     </ion-buttons>
@@ -69322,16 +69694,51 @@
 	 */
 	var Toolbar = (function (_super) {
 	    __extends(Toolbar, _super);
-	    function Toolbar(viewCtrl, header, footer, config, elementRef) {
-	        _super.call(this, elementRef);
+	    function Toolbar(viewCtrl, header, footer, config, _elementRef, _renderer) {
+	        _super.call(this, _elementRef);
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        if (viewCtrl && (header || footer)) {
 	            // only toolbars within headers and footer are view toolbars
 	            // toolbars within the content are not view toolbars, since they
 	            // are apart of the content, and could be anywhere within the content
-	            viewCtrl.setToolbarRef(elementRef);
+	            viewCtrl.setToolbarRef(_elementRef);
 	        }
 	        this._sbPadding = config.getBoolean('statusbarPadding');
 	    }
+	    Object.defineProperty(Toolbar.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /**
+	     * @internal
+	     */
+	    Toolbar.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Toolbar.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "toolbar-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Toolbar.prototype, "color", null);
 	    Toolbar = __decorate([
 	        core_1.Component({
 	            selector: 'ion-toolbar',
@@ -69345,15 +69752,15 @@
 	        __param(0, core_1.Optional()),
 	        __param(1, core_1.Optional()),
 	        __param(2, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _a) || Object, Header, Footer, (typeof (_b = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _a) || Object, Header, Footer, (typeof (_b = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _d) || Object])
 	    ], Toolbar);
 	    return Toolbar;
-	    var _a, _b, _c;
+	    var _a, _b, _c, _d;
 	}(ToolbarBase));
 	exports.Toolbar = Toolbar;
 
 /***/ },
-/* 436 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69367,7 +69774,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var menu_controller_1 = __webpack_require__(432);
+	var menu_controller_1 = __webpack_require__(433);
 	/**
 	 * @name MenuClose
 	 * @description
@@ -69378,14 +69785,14 @@
 	 * A simple `menuClose` button can be added using the following markup:
 	 *
 	 * ```html
-	 * <button menuClose>Close Menu</button>
+	 * <button ion-button menuClose>Close Menu</button>
 	 * ```
 	 *
 	 * To close a certain menu by its id or side, give the `menuClose`
 	 * directive a value.
 	 *
 	 * ```html
-	 * <button menuClose="left">Close Left Menu</button>
+	 * <button ion-button menuClose="left">Close Left Menu</button>
 	 * ```
 	 *
 	 * @demo /docs/v2/demos/menu/
@@ -69425,7 +69832,7 @@
 	exports.MenuClose = MenuClose;
 
 /***/ },
-/* 437 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69446,37 +69853,45 @@
 	  * @description
 	  * Badges are simple components in Ionic containing numbers or text. You can display a badge to indicate that there is new information associated with the item it is on.
 	  * @see {@link /docs/v2/components/#badges Badges Component Docs}
-
 	 */
 	var Badge = (function () {
 	    function Badge(config, _elementRef, _renderer) {
 	        this._elementRef = _elementRef;
 	        this._renderer = _renderer;
-	        var element = _elementRef.nativeElement;
-	        this._readAttrs(element);
 	    }
+	    Object.defineProperty(Badge.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
-	     * @private
+	     * @internal
 	     */
-	    Badge.prototype._readAttrs = function (element) {
-	        var elementAttrs = element.attributes;
-	        var attrName;
-	        for (var i = 0, l = elementAttrs.length; i < l; i++) {
-	            if (elementAttrs[i].value !== '')
-	                continue;
-	            attrName = elementAttrs[i].name;
-	            // Ignore attributes item-left, item-right
-	            if (attrName.indexOf('item') === -1) {
-	                this._setClass(attrName);
-	            }
+	    Badge.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Badge.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "badge-" + color, isAdd);
 	        }
 	    };
-	    /**
-	     * @private
-	     */
-	    Badge.prototype._setClass = function (color) {
-	        this._renderer.setElementClass(this._elementRef.nativeElement, 'badge-' + color, true);
-	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Badge.prototype, "color", null);
 	    Badge = __decorate([
 	        core_1.Directive({
 	            selector: 'ion-badge'
@@ -69489,7 +69904,7 @@
 	exports.Badge = Badge;
 
 /***/ },
-/* 438 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69533,35 +69948,100 @@
 	  * @property [fab-fixed] - Makes a fab button have a fixed position.
 	  * @property [color] - Dynamically set which predefined color this button should use (e.g. primary, secondary, danger, etc).
 	  *
+	  * @usage
+	  *
+	  * ```html
+	  *
+	  *  <!-- Colors -->
+	  *  <button ion-button>Default</button>
+	  *
+	  *  <button ion-button color="secondary">Secondary</button>
+	  *
+	  *  <button ion-button color="danger">Danger</button>
+	  *
+	  *  <button ion-button color="light">Light</button>
+	  *
+	  *  <button ion-button color="dark">Dark</button>
+	  *
+	  *  <!-- Shapes -->
+	  *  <button ion-button full>Full Button</button>
+	  *
+	  *  <button ion-button block>Block Button</button>
+	  *
+	  *  <button ion-button round>Round Button</button>
+	  *
+	  *  <button ion-button fab>FAB</button>
+	  *
+	  *  <!-- Outline -->
+	  *  <button ion-button full outline>Outline + Full</button>
+	  *
+	  *  <button ion-button block outline>Outline + Block</button>
+	  *
+	  *  <button ion-button round outline>Outline + Round</button>
+	  *
+	  *  <button ion-button fab outline>FAB</button>
+	  *
+	  *  <!-- Icons -->
+	  *  <button ion-button icon-left>
+	  *    <ion-icon name="star"></ion-icon>
+	  *    Left Icon
+	  *  </button>
+	  *
+	  *  <button ion-button icon-right>
+	  *    Right Icon
+	  *    <ion-icon name="star"></ion-icon>
+	  *  </button>
+	  *
+	  *  <button ion-button icon-only>
+	  *    <ion-icon name="star"></ion-icon>
+	  *  </button>
+	  *
+	  *  <!-- Sizes -->
+	  *  <button ion-button large>Large</button>
+	  *
+	  *  <button ion-button>Default</button>
+	  *
+	  *  <button ion-button small>Small</button>
+	  * ```
+	  *
 	  * @demo /docs/v2/demos/button/
 	  * @see {@link /docs/v2/components#buttons Button Component Docs}
 	 */
 	var Button = (function () {
-	    function Button(config, _elementRef, _renderer, ionItem) {
+	    function Button(menuToggle, ionButton, config, _elementRef, _renderer) {
 	        this._elementRef = _elementRef;
 	        this._renderer = _renderer;
-	        this._role = 'button'; // bar-button/item-button
+	        /** @internal */
+	        this._role = 'button'; // bar-button
+	        /** @internal */
+	        this._mt = false; // menutoggle
+	        /** @internal */
 	        this._size = null; // large/small/default
+	        /** @internal */
 	        this._style = 'default'; // outline/clear/solid
+	        /** @internal */
 	        this._shape = null; // round/fab
+	        /** @internal */
 	        this._display = null; // block/full
-	        this._colors = []; // primary/secondary
-	        this._icon = null; // left/right/only
+	        /** @internal */
+	        this._color = null; // primary/secondary
+	        /** @internal */
 	        this._disabled = false; // disabled
-	        this.isItem = (ionItem === '');
 	        var element = _elementRef.nativeElement;
 	        if (config.get('hoverCSS') === false) {
-	            _renderer.setElementClass(_elementRef.nativeElement, 'disable-hover', true);
-	        }
-	        if (element.hasAttribute('ion-item')) {
-	            // no need to put on these classes for an ion-item
-	            this._role = null;
-	            return;
+	            _renderer.setElementClass(element, 'disable-hover', true);
 	        }
 	        if (element.hasAttribute('disabled')) {
 	            this._disabled = true;
 	        }
-	        this._readAttrs(element);
+	        if (ionButton.trim().length > 0) {
+	            this.setRole(ionButton);
+	        }
+	        // menuToggle can be added with or without a string
+	        // but if the attribute isn't added it will be null
+	        if (menuToggle !== null) {
+	            this._mt = true;
+	        }
 	    }
 	    Object.defineProperty(Button.prototype, "large", {
 	        /**
@@ -69633,6 +70113,16 @@
 	        enumerable: true,
 	        configurable: true
 	    });
+	    Object.defineProperty(Button.prototype, "fab", {
+	        /**
+	         * @input {string} A floating action button.
+	         */
+	        set: function (val) {
+	            this._attr('_shape', 'fab', val);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Button.prototype, "block", {
 	        /**
 	         * @input {string} A button that fills its parent container with a border-radius.
@@ -69654,6 +70144,9 @@
 	        configurable: true
 	    });
 	    Button.prototype._attr = function (type, attrName, attrValue) {
+	        if (type === '_style') {
+	            this._setColor(this._color, util_1.isTrueProperty(attrValue));
+	        }
 	        this._setClass(this[type], false);
 	        if (util_1.isTrueProperty(attrValue)) {
 	            this[type] = attrName;
@@ -69662,9 +70155,7 @@
 	        else {
 	            // Special handling for '_style' which defaults to 'default'.
 	            this[type] = (type === '_style' ? 'default' : null);
-	        }
-	        if (type === '_style') {
-	            this._setColor(attrName, util_1.isTrueProperty(attrValue));
+	            this._setClass(this[type], true);
 	        }
 	    };
 	    Object.defineProperty(Button.prototype, "color", {
@@ -69672,12 +70163,7 @@
 	         * @input {string} Dynamically set which predefined color this button should use (e.g. primary, secondary, danger, etc).
 	         */
 	        set: function (val) {
-	            // Clear the colors for all styles including the default one.
-	            this._setColor(BUTTON_STYLE_ATTRS.concat(['default']), false);
-	            // Support array input which is also supported via multiple attributes (e.g. primary, secondary, etc).
-	            this._colors = (val instanceof Array ? val : [val]);
-	            // Set the colors for the currently effective style.
-	            this._setColor(this._style, true);
+	            this._updateColor(val);
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -69685,26 +70171,17 @@
 	    /**
 	     * @private
 	     */
-	    Button.prototype.ngOnInit = function () {
-	        // If the button has a role applied to it
-	        if (this.category) {
-	            this.setRole(this.category);
-	        }
-	    };
-	    /**
-	     * @private
-	     */
 	    Button.prototype.ngAfterContentInit = function () {
 	        this._init = true;
-	        this._readIcon(this._elementRef.nativeElement);
 	        this._assignCss(true);
 	    };
 	    /**
-	     * @private
+	     * @internal
 	     */
-	    Button.prototype.ngAfterContentChecked = function () {
-	        this._readIcon(this._elementRef.nativeElement);
-	        this._assignCss(true);
+	    Button.prototype._updateColor = function (newColor) {
+	        this._setColor(this._color, false);
+	        this._setColor(newColor, true);
+	        this._color = newColor;
 	    };
 	    /**
 	     * @private
@@ -69718,97 +70195,25 @@
 	    Button.prototype.setRole = function (val) {
 	        this._assignCss(false);
 	        this._role = val;
-	        this._readIcon(this._elementRef.nativeElement);
 	        this._assignCss(true);
 	    };
 	    /**
-	     * @private
-	     */
-	    Button.prototype._readIcon = function (element) {
-	        // figure out if and where the icon lives in the button
-	        var childNodes = element.childNodes;
-	        if (childNodes.length > 0) {
-	            childNodes = childNodes[0].childNodes;
-	        }
-	        var childNode;
-	        var nodes = [];
-	        for (var i = 0, l = childNodes.length; i < l; i++) {
-	            childNode = childNodes[i];
-	            if (childNode.nodeType === 3) {
-	                // text node
-	                if (childNode.textContent.trim() !== '') {
-	                    nodes.push(TEXT);
-	                }
-	            }
-	            else if (childNode.nodeType === 1) {
-	                if (childNode.nodeName === 'ION-ICON') {
-	                    // icon element node
-	                    nodes.push(ICON);
-	                }
-	                else {
-	                    // element other than an <ion-icon>
-	                    nodes.push(TEXT);
-	                }
-	            }
-	        }
-	        // Remove any classes that are set already
-	        this._setClass(this._icon, false);
-	        if (nodes.length > 1) {
-	            if (nodes[0] === ICON && nodes[1] === TEXT) {
-	                this._icon = 'icon-left';
-	            }
-	            else if (nodes[0] === TEXT && nodes[1] === ICON) {
-	                this._icon = 'icon-right';
-	            }
-	        }
-	        else if (nodes.length === 1 && nodes[0] === ICON) {
-	            this._icon = 'icon-only';
-	        }
-	    };
-	    /**
-	     * @private
-	     */
-	    Button.prototype._readAttrs = function (element) {
-	        var elementAttrs = element.attributes;
-	        var attrName;
-	        for (var i = 0, l = elementAttrs.length; i < l; i++) {
-	            if (elementAttrs[i].value !== '')
-	                continue;
-	            attrName = elementAttrs[i].name;
-	            if (BUTTON_STYLE_ATTRS.indexOf(attrName) > -1) {
-	                this._style = attrName;
-	            }
-	            else if (BUTTON_DISPLAY_ATTRS.indexOf(attrName) > -1) {
-	                this._display = attrName;
-	            }
-	            else if (BUTTON_SHAPE_ATTRS.indexOf(attrName) > -1) {
-	                this._shape = attrName;
-	            }
-	            else if (BUTTON_SIZE_ATTRS.indexOf(attrName) > -1) {
-	                this._size = attrName;
-	            }
-	            else if (!(IGNORE_ATTRS.test(attrName))) {
-	                this._colors.push(attrName);
-	            }
-	        }
-	    };
-	    /**
-	     * @private
+	     * @internal
 	     */
 	    Button.prototype._assignCss = function (assignCssClass) {
 	        var role = this._role;
 	        if (role) {
 	            this._renderer.setElementClass(this._elementRef.nativeElement, role, assignCssClass); // button
+	            this._setClass('menutoggle', this._mt); // menutoggle
 	            this._setClass(this._style, assignCssClass); // button-clear
 	            this._setClass(this._shape, assignCssClass); // button-round
 	            this._setClass(this._display, assignCssClass); // button-full
 	            this._setClass(this._size, assignCssClass); // button-small
-	            this._setClass(this._icon, assignCssClass); // button-icon-left
-	            this._setColor(this._style, assignCssClass); // button-secondary, button-clear-secondary
+	            this._setColor(this._color, assignCssClass); // button-secondary, bar-button-secondary
 	        }
 	    };
 	    /**
-	     * @private
+	     * @internal
 	     */
 	    Button.prototype._setClass = function (type, assignCssClass) {
 	        if (type && this._init) {
@@ -69816,27 +70221,22 @@
 	        }
 	    };
 	    /**
-	     * @private
+	     * @internal
 	     */
-	    Button.prototype._setColor = function (type, assignCssClass) {
-	        var _this = this;
-	        if (type && this._init) {
-	            // Support array to allow removal of many styles at once.
-	            var styles = (type instanceof Array ? type : [type]);
-	            styles.forEach(function (styleName) {
-	                // If the role is not a bar-button, don't apply the solid style
-	                styleName = (_this._role !== 'bar-button' && styleName === 'solid' ? 'default' : styleName);
-	                var colorStyle = (styleName !== null && styleName !== 'default' ? styleName.toLowerCase() + '-' : '');
-	                _this._colors.forEach(function (colorName) {
-	                    _this._setClass(colorStyle + colorName, assignCssClass); // button-secondary, button-clear-secondary
-	                });
-	            });
+	    Button.prototype._setColor = function (color, isAdd) {
+	        if (color && this._init) {
+	            // The class should begin with the button role
+	            // button, bar-button
+	            var className = this._role;
+	            // If the role is not a bar-button, don't apply the solid style
+	            var style = this._style;
+	            style = (this._role !== 'bar-button' && style === 'solid' ? 'default' : style);
+	            className += (style !== null && style !== '' && style !== 'default' ? '-' + style.toLowerCase() : '');
+	            if (color !== null && color !== '') {
+	                this._renderer.setElementClass(this._elementRef.nativeElement, className + "-" + color, isAdd);
+	            }
 	        }
 	    };
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', String)
-	    ], Button.prototype, "category", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Boolean), 
@@ -69876,6 +70276,11 @@
 	        core_1.Input(), 
 	        __metadata('design:type', Boolean), 
 	        __metadata('design:paramtypes', [Boolean])
+	    ], Button.prototype, "fab", null);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean), 
+	        __metadata('design:paramtypes', [Boolean])
 	    ], Button.prototype, "block", null);
 	    __decorate([
 	        core_1.Input(), 
@@ -69884,34 +70289,28 @@
 	    ], Button.prototype, "full", null);
 	    __decorate([
 	        core_1.Input(), 
-	        __metadata('design:type', Object), 
-	        __metadata('design:paramtypes', [Object])
+	        __metadata('design:type', String), 
+	        __metadata('design:paramtypes', [String])
 	    ], Button.prototype, "color", null);
 	    Button = __decorate([
 	        core_1.Component({
-	            selector: 'button:not([ion-item]),[button]',
+	            selector: '[ion-button]',
 	            // NOTE: template must not contain spaces between elements
 	            template: '<span class="button-inner"><ng-content></ng-content></span><ion-button-effect></ion-button-effect>',
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
-	        __param(3, core_1.Attribute('ion-item')), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, (typeof (_c = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _c) || Object, String])
+	        __param(0, core_1.Attribute('menuToggle')),
+	        __param(1, core_1.Attribute('ion-button')), 
+	        __metadata('design:paramtypes', [String, String, (typeof (_a = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, (typeof (_c = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _c) || Object])
 	    ], Button);
 	    return Button;
 	    var _a, _b, _c;
 	}());
 	exports.Button = Button;
-	var BUTTON_SIZE_ATTRS = ['large', 'small', 'default'];
-	var BUTTON_STYLE_ATTRS = ['clear', 'outline', 'solid'];
-	var BUTTON_SHAPE_ATTRS = ['round', 'fab'];
-	var BUTTON_DISPLAY_ATTRS = ['block', 'full'];
-	var IGNORE_ATTRS = /_ng|button|left|right/;
-	var TEXT = 1;
-	var ICON = 2;
 
 /***/ },
-/* 439 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69938,8 +70337,8 @@
 	var config_1 = __webpack_require__(338);
 	var keyboard_1 = __webpack_require__(359);
 	var dom_1 = __webpack_require__(337);
-	var scroll_view_1 = __webpack_require__(440);
-	var tabs_1 = __webpack_require__(441);
+	var scroll_view_1 = __webpack_require__(441);
+	var tabs_1 = __webpack_require__(442);
 	var view_controller_1 = __webpack_require__(357);
 	var util_1 = __webpack_require__(340);
 	/**
@@ -69971,6 +70370,61 @@
 	 *
 	 *   scrollToTop() {
 	 *     this.content.scrollToTop();
+	 *   }
+	 * }
+	 * ```
+	 *
+	 * @advanced
+	 *
+	 * Resizing the content
+	 *
+	 *
+	 * ```ts
+	 * @Component({
+	 *   template: `
+	 *     <ion-header>
+	 *       <ion-navbar>
+	 *         <ion-title>Main Navbar</ion-title>
+	 *       </ion-navbar>
+	 *       <ion-toolbar *ngIf="showToolbar">
+	 *         <ion-title>Dynamic Toolbar</ion-title>
+	 *       </ion-toolbar>
+	 *     </ion-header>
+	 *     <ion-content>
+	 *       <button ion-button (click)="toggleToolbar()">Toggle Toolbar</button>
+	 *     </ion-content>
+	 * `})
+	 *
+	 * class E2EPage {
+	 *   @ViewChild(Content) content: Content;
+	 *   showToolbar: boolean = false;
+	 *
+	 *   toggleToolbar() {
+	 *     this.showToolbar = !this.showToolbar;
+	 *     this.content.resize();
+	 *   }
+	 * }
+	 * ```
+	 *
+	 *
+	 * Scroll to a specific position
+	 *
+	 * ```ts
+	 * import { Component, ViewChild } from '@angular/core';
+	 * import { Content } from 'ionic-angular';
+	 *
+	 * @Component({
+	 *   template: `<ion-content>
+	 *                <button ion-button (click)="scrollTo()">Down 500px</button>
+	 *              </ion-content>`
+	 * )}
+	 * export class MyPage{
+	 *   @ViewChild(Content) content: Content;
+	 *
+	 *   scrollTo() {
+	 *     // set the scrollLeft to 0px, and scrollTop to 500px
+	 *     // the scroll duration should take 200ms
+	 *     this.content.scrollTo(0, 500, 200);
 	 *   }
 	 * }
 	 * ```
@@ -70111,25 +70565,6 @@
 	    /**
 	     * Scroll to the specified position.
 	     *
-	     * ```ts
-	     * import { Component, ViewChild } from '@angular/core';
-	     * import { Content } from 'ionic-angular';
-	     *
-	     * @Component({
-	     *   template: `<ion-content>
-	     *                <button (click)="scrollTo()">Down 500px</button>
-	     *              </ion-content>`
-	     * )}
-	     * export class MyPage{
-	     *   @ViewChild(Content) content: Content;
-	     *
-	     *   scrollTo() {
-	     *     // set the scrollLeft to 0px, and scrollTop to 500px
-	     *     // the scroll duration should take 200ms
-	     *     this.content.scrollTo(0, 500, 200);
-	     *   }
-	     * }
-	     * ```
 	     * @param {number} x  The x-value to scroll to.
 	     * @param {number} y  The y-value to scroll to.
 	     * @param {number} [duration]  Duration of the scroll animation in milliseconds. Defaults to `300`.
@@ -70142,23 +70577,6 @@
 	    /**
 	     * Scroll to the top of the content component.
 	     *
-	     * ```ts
-	     * import { Component, ViewChild } from '@angular/core';
-	     * import { Content } from 'ionic-angular';
-	     *
-	     * @Component({
-	     *   template: `<ion-content>
-	     *                <button (click)="scrollToTop()">Scroll to top</button>
-	     *              </ion-content>`
-	     * )}
-	     * export class MyPage{
-	     *   @ViewChild(Content) content: Content;
-	     *
-	     *   scrollToTop() {
-	     *     this.content.scrollToTop();
-	     *   }
-	     * }
-	     * ```
 	     * @param {number} [duration]  Duration of the scroll animation in milliseconds. Defaults to `300`.
 	     * @returns {Promise} Returns a promise which is resolved when the scroll has completed.
 	     */
@@ -70301,33 +70719,6 @@
 	     * Tell the content to recalculate its dimensions. This should be called
 	     * after dynamically adding headers, footers, or tabs.
 	     *
-	     * ```ts
-	     * @Component({
-	     *   template: `
-	     *     <ion-header>
-	     *       <ion-navbar>
-	     *         <ion-title>Main Navbar</ion-title>
-	     *       </ion-navbar>
-	     *       <ion-toolbar *ngIf="showToolbar">
-	     *         <ion-title>Dynamic Toolbar</ion-title>
-	     *       </ion-toolbar>
-	     *     </ion-header>
-	     *     <ion-content>
-	     *       <button (click)="toggleToolbar()">Toggle Toolbar</button>
-	     *     </ion-content>
-	     * `})
-	     *
-	     * class E2EPage {
-	     *   @ViewChild(Content) content: Content;
-	     *   showToolbar: boolean = false;
-	     *
-	     *   toggleToolbar() {
-	     *     this.showToolbar = !this.showToolbar;
-	     *     this.content.resize();
-	     *   }
-	     * }
-	     * ```
-	     *
 	     */
 	    Content.prototype.resize = function () {
 	        var _this = this;
@@ -70374,7 +70765,7 @@
 	        }
 	        ele = parentEle;
 	        var tabbarEle;
-	        while (ele && ele.tagName !== 'ION-MODAL') {
+	        while (ele && ele.tagName !== 'ION-MODAL' && !ele.classList.contains('tab-subpage')) {
 	            if (ele.tagName === 'ION-TABS') {
 	                tabbarEle = ele.firstElementChild;
 	                this._tabbarHeight = tabbarEle.clientHeight;
@@ -70484,7 +70875,7 @@
 	}
 
 /***/ },
-/* 440 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70714,7 +71105,7 @@
 	var FRAME_MS = (1000 / 60);
 
 /***/ },
-/* 441 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70738,35 +71129,38 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(119);
 	var app_1 = __webpack_require__(335);
-	var badge_1 = __webpack_require__(437);
+	var badge_1 = __webpack_require__(438);
 	var config_1 = __webpack_require__(338);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	var icon_1 = __webpack_require__(424);
 	var ion_1 = __webpack_require__(342);
 	var util_1 = __webpack_require__(340);
 	var dom_1 = __webpack_require__(337);
 	var nav_controller_1 = __webpack_require__(343);
 	var platform_1 = __webpack_require__(339);
-	var tab_button_1 = __webpack_require__(442);
-	var tab_highlight_1 = __webpack_require__(444);
+	var tab_button_1 = __webpack_require__(443);
+	var tab_highlight_1 = __webpack_require__(445);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @name Tabs
 	 * @description
 	 * Tabs make it easy to navigate between different pages or functional
 	 * aspects of an app. The Tabs component, written as `<ion-tabs>`, is
-	 * a container of individual [Tab](../Tab/) components.
+	 * a container of individual [Tab](../Tab/) components. Each individual `ion-tab`
+	 * is a declarative component for a [NavController](../NavController/)
+
+	 * For more information on using nav controllers like Tab or [Nav](../../nav/Nav/),
+	 * take a look at the [NavController API Docs](../NavController/).
 	 *
 	 * ### Placement
 	 *
 	 * The position of the tabs relative to the content varies based on
-	 * the mode. By default, the tabs are placed at the bottom of the screen
-	 * for `ios` mode, and at the top for the `md` and `wp` modes. You can
-	 * configure the position using the `tabsPlacement` property on the
-	 * `<ion-tabs>` element, or in your app's [config](../../config/Config/).
+	 * the mode. The tabs are placed at the bottom of the screen
+	 * for iOS and Android, and at the top for Windows by default. The position can be configured using the `tabsPlacement` attribute
+	 * on the `<ion-tabs>` component, or in an app's [config](../../config/Config/).
 	 * See the [Input Properties](#input-properties) below for the available
 	 * values of `tabsPlacement`.
-	 *
+
 	 * ### Layout
 	 *
 	 * The layout for all of the tabs can be defined using the `tabsLayout`
@@ -70893,18 +71287,25 @@
 	        this.parent = parent;
 	        this.id = 't' + (++tabIds);
 	        this._sbPadding = _config.getBoolean('statusbarPadding');
-	        this._useHighlight = _config.getBoolean('tabsHighlight');
+	        this.subPages = _config.getBoolean('tabsHideOnSubPages');
+	        this.tabsHighlight = _config.getBoolean('tabsHighlight');
 	        // TODO deprecated 07-07-2016 beta.11
 	        if (_config.get('tabSubPages') !== null) {
-	            console.warn('Config option "tabSubPages" has been deprecated. The Material Design spec now supports Bottom Navigation: https://material.google.com/components/bottom-navigation.html');
+	            console.warn('Config option "tabSubPages" has been deprecated. Please use "tabsHideOnSubPages" instead.');
+	            this.subPages = _config.getBoolean('tabSubPages');
 	        }
 	        // TODO deprecated 07-07-2016 beta.11
 	        if (_config.get('tabbarHighlight') !== null) {
 	            console.warn('Config option "tabbarHighlight" has been deprecated. Please use "tabsHighlight" instead.');
-	            this._useHighlight = _config.getBoolean('tabbarHighlight');
+	            this.tabsHighlight = _config.getBoolean('tabbarHighlight');
 	        }
 	        if (this.parent) {
 	            // this Tabs has a parent Nav
+	            this.parent.registerChildNav(this);
+	        }
+	        else if (viewCtrl && viewCtrl.getNav()) {
+	            // this Nav was opened from a modal
+	            this.parent = viewCtrl.getNav();
 	            this.parent.registerChildNav(this);
 	        }
 	        else if (this._app) {
@@ -70922,6 +71323,19 @@
 	            };
 	        }
 	    }
+	    Object.defineProperty(Tabs.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
@@ -70929,6 +71343,7 @@
 	        var _this = this;
 	        this._setConfig('tabsPlacement', 'bottom');
 	        this._setConfig('tabsLayout', 'icon-top');
+	        this._setConfig('tabsHighlight', this.tabsHighlight);
 	        // TODO deprecated 07-07-2016 beta.11
 	        this._setConfig('tabbarPlacement', 'bottom');
 	        this._setConfig('tabbarLayout', 'icon-top');
@@ -70954,7 +71369,7 @@
 	            console.warn('Config option "tabbarLayout" has been deprecated. Please use "tabsLayout" instead.');
 	            this._renderer.setElementAttribute(this._elementRef.nativeElement, 'tabsLayout', this._config.get('tabsLayout'));
 	        }
-	        if (this._useHighlight) {
+	        if (this.tabsHighlight) {
 	            this._platform.onResize(function () {
 	                _this._highlight.select(_this.getSelected());
 	            });
@@ -70999,6 +71414,22 @@
 	            val = this._config.get(attrKey, fallback);
 	        }
 	        this._renderer.setElementAttribute(this._elementRef.nativeElement, attrKey, val);
+	    };
+	    /**
+	     * @internal
+	     */
+	    Tabs.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Tabs.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "tabs-" + color, isAdd);
+	        }
 	    };
 	    /**
 	     * @private
@@ -71047,7 +71478,7 @@
 	                _this._tabs.forEach(function (tab) {
 	                    tab.setSelected(tab === selectedTab);
 	                });
-	                if (_this._useHighlight) {
+	                if (_this.tabsHighlight) {
 	                    _this._highlight.select(selectedTab);
 	                }
 	            }
@@ -71183,6 +71614,10 @@
 	    };
 	    __decorate([
 	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Tabs.prototype, "color", null);
+	    __decorate([
+	        core_1.Input(), 
 	        __metadata('design:type', Object)
 	    ], Tabs.prototype, "selectedIndex", void 0);
 	    __decorate([
@@ -71206,6 +71641,10 @@
 	        __metadata('design:type', String)
 	    ], Tabs.prototype, "tabsPlacement", void 0);
 	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean)
+	    ], Tabs.prototype, "tabsHighlight", void 0);
+	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
 	    ], Tabs.prototype, "ionChange", void 0);
@@ -71217,25 +71656,29 @@
 	        core_1.ViewChild('tabbar'), 
 	        __metadata('design:type', (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object)
 	    ], Tabs.prototype, "_tabbar", void 0);
+	    __decorate([
+	        core_1.ViewChild('portal', { read: core_1.ViewContainerRef }), 
+	        __metadata('design:type', (typeof (_d = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _d) || Object)
+	    ], Tabs.prototype, "portal", void 0);
 	    Tabs = __decorate([
 	        core_1.Component({
 	            selector: 'ion-tabs',
-	            template: "\n    <ion-tabbar role=\"tablist\" #tabbar>\n      <a *ngFor=\"let t of _tabs\" [tab]=\"t\" class=\"tab-button\" [class.tab-disabled]=\"!t.enabled\" [class.tab-hidden]=\"!t.show\" role=\"tab\" href=\"#\" (ionSelect)=\"select($event)\">\n        <ion-icon *ngIf=\"t.tabIcon\" [name]=\"t.tabIcon\" [isActive]=\"t.isSelected\" class=\"tab-button-icon\"></ion-icon>\n        <span *ngIf=\"t.tabTitle\" class=\"tab-button-text\">{{t.tabTitle}}</span>\n        <ion-badge *ngIf=\"t.tabBadge\" class=\"tab-badge\" [ngClass]=\"'badge-' + t.tabBadgeStyle\">{{t.tabBadge}}</ion-badge>\n        <ion-button-effect></ion-button-effect>\n      </a>\n      <tab-highlight></tab-highlight>\n    </ion-tabbar>\n    <ng-content></ng-content>\n  ",
+	            template: "\n    <ion-tabbar role=\"tablist\" #tabbar>\n      <a *ngFor=\"let t of _tabs\" [tab]=\"t\" class=\"tab-button\" [class.tab-disabled]=\"!t.enabled\" [class.tab-hidden]=\"!t.show\" role=\"tab\" href=\"#\" (ionSelect)=\"select($event)\">\n        <ion-icon *ngIf=\"t.tabIcon\" [name]=\"t.tabIcon\" [isActive]=\"t.isSelected\" class=\"tab-button-icon\"></ion-icon>\n        <span *ngIf=\"t.tabTitle\" class=\"tab-button-text\">{{t.tabTitle}}</span>\n        <ion-badge *ngIf=\"t.tabBadge\" class=\"tab-badge\" [ngClass]=\"'badge-' + t.tabBadgeStyle\">{{t.tabBadge}}</ion-badge>\n        <ion-button-effect></ion-button-effect>\n      </a>\n      <tab-highlight></tab-highlight>\n    </ion-tabbar>\n    <ng-content></ng-content>\n    <div #portal tab-portal></div>\n  ",
 	            directives: [badge_1.Badge, icon_1.Icon, common_1.NgClass, common_1.NgFor, common_1.NgIf, tab_button_1.TabButton, tab_highlight_1.TabHighlight],
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
 	        __param(0, core_1.Optional()),
 	        __param(1, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_d = typeof nav_controller_1.NavController !== 'undefined' && nav_controller_1.NavController) === 'function' && _d) || Object, (typeof (_e = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _e) || Object, (typeof (_f = typeof app_1.App !== 'undefined' && app_1.App) === 'function' && _f) || Object, (typeof (_g = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _g) || Object, (typeof (_h = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _h) || Object, (typeof (_j = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _j) || Object, (typeof (_k = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _k) || Object])
+	        __metadata('design:paramtypes', [(typeof (_e = typeof nav_controller_1.NavController !== 'undefined' && nav_controller_1.NavController) === 'function' && _e) || Object, (typeof (_f = typeof view_controller_1.ViewController !== 'undefined' && view_controller_1.ViewController) === 'function' && _f) || Object, (typeof (_g = typeof app_1.App !== 'undefined' && app_1.App) === 'function' && _g) || Object, (typeof (_h = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _h) || Object, (typeof (_j = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _j) || Object, (typeof (_k = typeof platform_1.Platform !== 'undefined' && platform_1.Platform) === 'function' && _k) || Object, (typeof (_l = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _l) || Object])
 	    ], Tabs);
 	    return Tabs;
-	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 	}(ion_1.Ion));
 	exports.Tabs = Tabs;
 	var tabIds = -1;
 
 /***/ },
-/* 442 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71256,7 +71699,7 @@
 	var core_1 = __webpack_require__(6);
 	var config_1 = __webpack_require__(338);
 	var ion_1 = __webpack_require__(342);
-	var tab_1 = __webpack_require__(443);
+	var tab_1 = __webpack_require__(444);
 	/**
 	 * @private
 	 */
@@ -71322,7 +71765,7 @@
 	exports.TabButton = TabButton;
 
 /***/ },
-/* 443 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71350,14 +71793,15 @@
 	var util_1 = __webpack_require__(340);
 	var keyboard_1 = __webpack_require__(359);
 	var nav_controller_base_1 = __webpack_require__(341);
-	var tabs_1 = __webpack_require__(441);
+	var tabs_1 = __webpack_require__(442);
 	/**
 	 * @name Tab
 	 * @description
 	 * The Tab component, written `<ion-tab>`, is styled based on the mode and should
 	 * be used in conjunction with the [Tabs](../Tabs/) component.
 	 *
-	 * Each tab has a separate navigation controller. For more information on using
+	 * Each `ion-tab` is a declarative component for a [NavController](../NavController/).
+	 * Basically, each tab is a `NavController`. For more information on using
 	 * navigation controllers take a look at the [NavController API Docs](../../nav/NavController/).
 	 *
 	 * See the [Tabs API Docs](../Tabs/) for more details on configuring Tabs.
@@ -71565,7 +72009,19 @@
 	     * @private
 	     */
 	    Tab.prototype.loadPage = function (viewCtrl, viewport, opts, done) {
+	        var _this = this;
+	        var isTabSubPage = (this.parent.subPages && viewCtrl.index > 0);
+	        if (isTabSubPage) {
+	            viewport = this.parent.portal;
+	        }
 	        _super.prototype.loadPage.call(this, viewCtrl, viewport, opts, function () {
+	            if (isTabSubPage) {
+	                // add the .tab-subpage css class to tabs pages that should act like subpages
+	                var pageEleRef = viewCtrl.pageRef();
+	                if (pageEleRef) {
+	                    _this._renderer.setElementClass(pageEleRef.nativeElement, 'tab-subpage', true);
+	                }
+	            }
 	            done();
 	        });
 	    };
@@ -71666,7 +72122,7 @@
 	exports.Tab = Tab;
 
 /***/ },
-/* 444 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71714,7 +72170,7 @@
 	exports.TabHighlight = TabHighlight;
 
 /***/ },
-/* 445 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71731,6 +72187,9 @@
 	var dom_1 = __webpack_require__(337);
 	var util_1 = __webpack_require__(340);
 	var platform_1 = __webpack_require__(339);
+	/**
+	 * @private
+	 */
 	var Img = (function () {
 	    function Img(_elementRef, _platform, _zone) {
 	        this._elementRef = _elementRef;
@@ -71906,7 +72365,7 @@
 	}
 
 /***/ },
-/* 446 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71942,7 +72401,7 @@
 	 * </ion-scroll>
 	 * ```
 	 *@property {boolean} [scrollX] - whether to enable scrolling along the X axis
-	 *@property {boolean} [scrollY] - whether to enable scrolling along the Y axis
+	 *@property {boolean} [scrollY] - whether to enable scrolling along the Y axis; requires the following CSS declaration: ion-scroll { white-space: nowrap; }
 	 *@property {boolean} [zoom] - whether to enable zooming
 	 *@property {number} [maxZoom] - set the max zoom amount for ion-scroll
 	 * @demo /docs/v2/demos/scroll/
@@ -72009,7 +72468,7 @@
 	exports.Scroll = Scroll;
 
 /***/ },
-/* 447 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72026,7 +72485,7 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	/**
 	 * @name InfiniteScroll
 	 * @description
@@ -72279,7 +72738,7 @@
 	var STATE_LOADING = 'loading';
 
 /***/ },
-/* 448 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72295,8 +72754,8 @@
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(119);
 	var config_1 = __webpack_require__(338);
-	var infinite_scroll_1 = __webpack_require__(447);
-	var spinner_1 = __webpack_require__(449);
+	var infinite_scroll_1 = __webpack_require__(448);
+	var spinner_1 = __webpack_require__(450);
 	/**
 	 * @private
 	 */
@@ -72344,7 +72803,7 @@
 	exports.InfiniteScrollContent = InfiniteScrollContent;
 
 /***/ },
-/* 449 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72454,14 +72913,29 @@
 	 * ```
 	 */
 	var Spinner = (function () {
-	    function Spinner(_config) {
+	    function Spinner(_config, _elementRef, _renderer) {
 	        this._config = _config;
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        this._dur = null;
 	        /**
 	         * @input {string} If the animation is paused or not. Defaults to `false`.
 	         */
 	        this.paused = false;
 	    }
+	    Object.defineProperty(Spinner.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Spinner.prototype, "name", {
 	        /**
 	         * @input {string} SVG spinner name.
@@ -72518,6 +72992,7 @@
 	                        this._c.push(this._loadEle(spinner, i, l));
 	                    }
 	                }
+	                this._renderer.setElementClass(this._elementRef.nativeElement, this._applied, true);
 	            }
 	        }
 	    };
@@ -72527,6 +73002,26 @@
 	        data.style.animationDuration = duration + 'ms';
 	        return data;
 	    };
+	    /**
+	     * @internal
+	     */
+	    Spinner.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Spinner.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "spinner-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Spinner.prototype, "color", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', String)
@@ -72545,16 +73040,15 @@
 	            template: "\n    <svg viewBox=\"0 0 64 64\" *ngFor=\"let i of _c\" [ngStyle]=\"i.style\">\n     <circle [attr.r]=\"i.r\" transform=\"translate(32,32)\"></circle>\n    </svg>\n    <svg viewBox=\"0 0 64 64\" *ngFor=\"let i of _l\" [ngStyle]=\"i.style\">\n     <line [attr.y1]=\"i.y1\" [attr.y2]=\"i.y2\" transform=\"translate(32,32)\"></line>\n    </svg>\n  ",
 	            directives: [common_1.NgFor, common_1.NgStyle],
 	            host: {
-	                '[class]': '_applied',
 	                '[class.spinner-paused]': 'paused'
 	            },
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _a) || Object])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object, (typeof (_d = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _d) || Object])
 	    ], Spinner);
 	    return Spinner;
-	    var _a;
+	    var _a, _b, _d;
 	}());
 	exports.Spinner = Spinner;
 	var SPINNERS = {
@@ -72640,7 +73134,7 @@
 	};
 
 /***/ },
-/* 450 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -72657,7 +73151,7 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	var dom_1 = __webpack_require__(337);
 	var gesture_controller_1 = __webpack_require__(347);
 	var util_1 = __webpack_require__(340);
@@ -73137,7 +73631,7 @@
 	var STATE_COMPLETING = 'completing';
 
 /***/ },
-/* 451 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73154,8 +73648,8 @@
 	var common_1 = __webpack_require__(119);
 	var config_1 = __webpack_require__(338);
 	var icon_1 = __webpack_require__(424);
-	var refresher_1 = __webpack_require__(450);
-	var spinner_1 = __webpack_require__(449);
+	var refresher_1 = __webpack_require__(451);
+	var spinner_1 = __webpack_require__(450);
 	/**
 	 * @private
 	 */
@@ -73209,7 +73703,7 @@
 	exports.RefresherContent = RefresherContent;
 
 /***/ },
-/* 452 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73232,12 +73726,12 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var animation_1 = __webpack_require__(356);
-	var gesture_1 = __webpack_require__(453);
+	var gesture_1 = __webpack_require__(454);
 	var dom_1 = __webpack_require__(337);
 	var util_1 = __webpack_require__(340);
 	var util_2 = __webpack_require__(351);
 	var ion_1 = __webpack_require__(342);
-	var swiper_widget_1 = __webpack_require__(455);
+	var swiper_widget_1 = __webpack_require__(456);
 	/**
 	 * @name Slides
 	 * @description
@@ -73356,7 +73850,7 @@
 	 * }
 	 * ```
 	 *
-	 * Now we can call any of the `Slider` [methods]((#instance-members)),
+	 * Now we can call any of the `Slider` [methods](#instance-members),
 	 * for example we can use the Slider's `slideTo()` method in order to
 	 * navigate to a specific slide on a button click. Below we call the
 	 * `goToSlide()` method and it navigates to the 3rd slide:
@@ -73965,12 +74459,12 @@
 	var slidesId = -1;
 
 /***/ },
-/* 453 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var util_1 = __webpack_require__(351);
-	var hammer_1 = __webpack_require__(454);
+	var hammer_1 = __webpack_require__(455);
 	/**
 	 * @private
 	 * A gesture recognizer class.
@@ -74036,7 +74530,7 @@
 	exports.Gesture = Gesture;
 
 /***/ },
-/* 454 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -76193,7 +76687,7 @@
 	win.Hammer = Hammer;
 
 /***/ },
-/* 455 */
+/* 456 */
 /***/ function(module, exports) {
 
 	/**
@@ -80153,7 +80647,7 @@
 
 
 /***/ },
-/* 456 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -80177,7 +80671,7 @@
 	var core_1 = __webpack_require__(6);
 	var ion_1 = __webpack_require__(342);
 	var util_1 = __webpack_require__(340);
-	var item_sliding_gesture_1 = __webpack_require__(457);
+	var item_sliding_gesture_1 = __webpack_require__(458);
 	var gesture_controller_1 = __webpack_require__(347);
 	/**
 	 * The List is a widely used interface element in almost any mobile app,
@@ -80193,14 +80687,33 @@
 	 *
 	 * @demo /docs/v2/demos/list/
 	 * @see {@link /docs/v2/components#lists List Component Docs}
+	 * @advanced
+	 *
+	 * Enable the sliding items.
+	 *
+	 * ```ts
+	 * import { Component, ViewChild } from '@angular/core';
+	 * import { List } from 'ionic-angular';
+	 *
+	 * @Component({...})
+	 * export class MyClass {
+	 *   @ViewChild(List) list: List;
+	 *
+	 *   constructor() { }
+	 *
+	 *   stopSliding() {
+	 *     this.list.enableSlidingItems(false);
+	 *   }
+	 * }
+	 * ```
 	 *
 	 */
 	var List = (function (_super) {
 	    __extends(List, _super);
-	    function List(elementRef, _rendered, gestureCtrl) {
+	    function List(elementRef, _rendered, _gestureCtrl) {
 	        _super.call(this, elementRef);
 	        this._rendered = _rendered;
-	        this.gestureCtrl = gestureCtrl;
+	        this._gestureCtrl = _gestureCtrl;
 	        this._enableSliding = true;
 	        this._containsSlidingItems = false;
 	    }
@@ -80212,24 +80725,7 @@
 	    };
 	    Object.defineProperty(List.prototype, "sliding", {
 	        /**
-	         * Enable the sliding items.
-	         *
-	         * ```ts
-	         * import { Component, ViewChild } from '@angular/core';
-	         * import { List } from 'ionic-angular';
-	         *
-	         * @Component({...})
-	         * export class MyClass {
-	         *   @ViewChild(List) list: List;
-	         *
-	         *   constructor() { }
-	         *
-	         *   stopSliding() {
-	         *     this.list.enableSlidingItems(false);
-	         *   }
-	         * }
-	         * ```
-	         * @param {boolean} shouldEnable whether the item-sliding should be enabled or not
+	         * @input {boolean} shouldEnable whether the item-sliding should be enabled or not
 	         */
 	        get: function () {
 	            return this._enableSliding;
@@ -80261,23 +80757,7 @@
 	        }
 	    };
 	    /**
-	     * Close the open sliding item.
-	     *
-	     * ```ts
-	     * import { Component, ViewChild } from '@angular/core';
-	     * import { List } from 'ionic-angular';
-	     *
-	     * @Component({...})
-	     * export class MyClass {
-	     *   @ViewChild(List) list: List;
-	     *
-	     *   constructor() { }
-	     *
-	     *   closeItems() {
-	     *     this.list.closeSlidingItems();
-	     *   }
-	     * }
-	     * ```
+	     * Close any sliding items that are open.
 	     */
 	    List.prototype.closeSlidingItems = function () {
 	        this._slidingGesture && this._slidingGesture.closeOpened();
@@ -80329,7 +80809,7 @@
 	exports.ListHeader = ListHeader;
 
 /***/ },
-/* 457 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -80349,7 +80829,7 @@
 	        _super.call(this, list.getNativeElement(), {
 	            maxAngle: MAX_ATTACK_ANGLE,
 	            threshold: DRAG_THRESHOLD,
-	            gesture: list.gestureCtrl.create('item-sliding', {
+	            gesture: list._gestureCtrl.create('item-sliding', {
 	                priority: gesture_controller_1.GesturePriority.SlidingItem,
 	            })
 	        });
@@ -80430,7 +80910,7 @@
 	}
 
 /***/ },
-/* 458 */
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -80445,11 +80925,11 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var common_1 = __webpack_require__(119);
-	var button_1 = __webpack_require__(438);
+	var button_1 = __webpack_require__(439);
 	var form_1 = __webpack_require__(360);
 	var icon_1 = __webpack_require__(424);
-	var item_reorder_1 = __webpack_require__(459);
-	var label_1 = __webpack_require__(461);
+	var item_reorder_1 = __webpack_require__(460);
+	var label_1 = __webpack_require__(462);
 	/**
 	 * @name Item
 	 * @description
@@ -80623,9 +81103,9 @@
 	 *
 	 *   <!-- List header with buttons on each side -->
 	 *   <ion-list-header>
-	 *     <button item-left (click)="buttonClick()">Button</button>
+	 *     <button ion-button item-left (click)="buttonClick()">Button</button>
 	 *     List Header
-	 *     <button outline item-right (click)="buttonClick()">Outline</button>
+	 *     <button ion-button outline item-right (click)="buttonClick()">Outline</button>
 	 *   </ion-list-header>
 	 *
 	 *   <!-- Loops through and creates multiple items -->
@@ -80651,25 +81131,25 @@
 	 *
 	 *   <!-- Item with left and right buttons -->
 	 *   <ion-item>
-	 *     <button item-left (click)="buttonClick()">Button</button>
+	 *     <button ion-button item-left (click)="buttonClick()">Button</button>
 	 *     Item
-	 *     <button outline item-right (click)="buttonClick()">Outline</button>
+	 *     <button ion-button outline item-right (click)="buttonClick()">Outline</button>
 	 *   </ion-item>
 	 *
 	 *   <!-- Item divider with a right button -->
 	 *   <ion-item-divider>
 	 *     Item Divider
-	 *     <button item-right>Button</button>
+	 *     <button ion-button item-right>Button</button>
 	 *   </ion-item-divider>
 	 *
 	 *   <!-- Disabled button item with left and right buttons -->
 	 *   <button ion-item disabled>
-	 *     <button item-left (click)="buttonClick()">
+	 *     <button ion-button item-left (click)="buttonClick()">
 	 *       <ion-icon name="home"></ion-icon>
 	 *       Left Icon
 	 *     </button>
 	 *     Disabled Button Item
-	 *     <button outline item-right (click)="buttonClick()">
+	 *     <button ion-button outline item-right (click)="buttonClick()">
 	 *       <ion-icon name="star"></ion-icon>
 	 *       Left Icon
 	 *     </button>
@@ -80681,7 +81161,7 @@
 	 *       <img src="img/my-avatar.png">
 	 *     </ion-avatar>
 	 *     Avatar Item
-	 *     <button outline item-right>View</button>
+	 *     <button ion-button outline item-right>View</button>
 	 *   </ion-item>
 	 *
 	 *   <!-- Item with a thumbnail on the right -->
@@ -80699,7 +81179,7 @@
 	 *       Item
 	 *     </ion-item>
 	 *     <ion-item-options>
-	 *       <button primary (click)="archive()">Archive</button>
+	 *       <button ion-button color="primary" (click)="archive()">Archive</button>
 	 *     </ion-item-options>
 	 *   </ion-item-sliding>
 	 *
@@ -80725,6 +81205,19 @@
 	        this.labelId = null;
 	        this.id = form.nextId().toString();
 	    }
+	    Object.defineProperty(Item.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
@@ -80820,11 +81313,32 @@
 	        this._renderer.setElementStyle(this._elementRef.nativeElement, property, value);
 	    };
 	    /**
+	     * @internal
+	     */
+	    Item.prototype._updateColor = function (newColor, colorClass) {
+	        this._setElementColor(this._color, false, colorClass);
+	        this._setElementColor(newColor, true, colorClass);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Item.prototype._setElementColor = function (color, isAdd, colorClass) {
+	        colorClass = colorClass || 'item'; // item-radio
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, colorClass + "-" + color, isAdd);
+	        }
+	    };
+	    /**
 	     * @private
 	     */
 	    Item.prototype.getNativeElement = function () {
 	        return this._elementRef.nativeElement;
 	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Item.prototype, "color", null);
 	    __decorate([
 	        core_1.ContentChild(label_1.Label), 
 	        __metadata('design:type', (typeof (_a = typeof label_1.Label !== 'undefined' && label_1.Label) === 'function' && _a) || Object), 
@@ -80879,7 +81393,7 @@
 	exports.ItemContent = ItemContent;
 
 /***/ },
-/* 459 */
+/* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -80896,10 +81410,10 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	var dom_1 = __webpack_require__(337);
-	var item_1 = __webpack_require__(458);
-	var item_reorder_gesture_1 = __webpack_require__(460);
+	var item_1 = __webpack_require__(459);
+	var item_reorder_gesture_1 = __webpack_require__(461);
 	var util_1 = __webpack_require__(340);
 	/**
 	 * @name ItemReorder
@@ -81019,6 +81533,7 @@
 	        this._zone = _zone;
 	        this._content = _content;
 	        this._enableReorder = false;
+	        this._visibleReorder = false;
 	        this._lastToIndex = -1;
 	        /**
 	         * @output {object} The expression to evaluate when the item is reordered. Emits an object
@@ -81042,14 +81557,19 @@
 	            return this._enableReorder;
 	        },
 	        set: function (val) {
-	            this._enableReorder = util_1.isTrueProperty(val);
-	            if (!this._enableReorder) {
-	                this._reorderGesture && this._reorderGesture.destroy();
+	            var _this = this;
+	            var enabled = util_1.isTrueProperty(val);
+	            if (!enabled && this._reorderGesture) {
+	                this._reorderGesture.destroy();
 	                this._reorderGesture = null;
+	                this._visibleReorder = false;
+	                setTimeout(function () { return _this._enableReorder = false; }, 400);
 	            }
-	            else if (!this._reorderGesture) {
+	            else if (enabled && !this._reorderGesture) {
 	                console.debug('enableReorderItems');
 	                this._reorderGesture = new item_reorder_gesture_1.ItemReorderGesture(this);
+	                this._enableReorder = true;
+	                dom_1.zoneRafFrames(2, function () { return _this._visibleReorder = true; });
 	            }
 	        },
 	        enumerable: true,
@@ -81166,6 +81686,7 @@
 	            selector: 'ion-list[reorder],ion-item-group[reorder]',
 	            host: {
 	                '[class.reorder-enabled]': '_enableReorder',
+	                '[class.reorder-visible]': '_visibleReorder',
 	            }
 	        }),
 	        __param(3, core_1.Optional()), 
@@ -81191,7 +81712,7 @@
 	    Reorder = __decorate([
 	        core_1.Component({
 	            selector: 'ion-reorder',
-	            template: "<ion-icon name=\"menu\"></ion-icon>"
+	            template: "<ion-icon name=\"reorder\"></ion-icon>"
 	        }),
 	        __param(0, core_1.Inject(core_1.forwardRef(function () { return item_1.Item; }))), 
 	        __metadata('design:paramtypes', [(typeof (_a = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _b) || Object])
@@ -81224,11 +81745,11 @@
 	exports.indexForItem = indexForItem;
 
 /***/ },
-/* 460 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var item_reorder_1 = __webpack_require__(459);
+	var item_reorder_1 = __webpack_require__(460);
 	var ui_event_manager_1 = __webpack_require__(353);
 	var dom_1 = __webpack_require__(337);
 	var AUTO_SCROLL_MARGIN = 60;
@@ -81362,7 +81883,7 @@
 	}
 
 /***/ },
-/* 461 */
+/* 462 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -81434,6 +81955,19 @@
 	        this._renderer = _renderer;
 	        this.type = (isFloating === '' ? 'floating' : (isStacked === '' ? 'stacked' : (isFixed === '' ? 'fixed' : (isInset === '' ? 'inset' : null))));
 	    }
+	    Object.defineProperty(Label.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Label.prototype, "id", {
 	        /**
 	         * @private
@@ -81467,6 +82001,26 @@
 	    Label.prototype.addClass = function (className) {
 	        this._renderer.setElementClass(this._elementRef.nativeElement, className, true);
 	    };
+	    /**
+	     * @internal
+	     */
+	    Label.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Label.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "label-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Label.prototype, "color", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', String)
@@ -81487,7 +82041,7 @@
 	exports.Label = Label;
 
 /***/ },
-/* 462 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -81505,9 +82059,9 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var dom_1 = __webpack_require__(337);
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	var util_1 = __webpack_require__(340);
-	var list_1 = __webpack_require__(456);
+	var list_1 = __webpack_require__(457);
 	var SWIPE_MARGIN = 30;
 	var ELASTIC_FACTOR = 0.55;
 	(function (ItemSideFlags) {
@@ -81521,7 +82075,7 @@
 	 * @name ItemOptions
 	 * @description
 	 * The option buttons for an `ion-item-sliding`. These buttons can be placed either on the left or right side.
-	 * You can combind the `(ionSiwpe)` event plus the `expandable` directive to create a full swipe action for the item.
+	 * You can combine the `(ionSwipe)` event plus the `expandable` directive to create a full swipe action for the item.
 	 *
 	 * @usage
 	 *
@@ -81531,7 +82085,7 @@
 	 *     Item 1
 	 *   </ion-item>
 	 *   <ion-item-options side="right" (ionSwipe)="saveItem(item)">
-	 *     <button expandable (click)="saveItem(item)">
+	 *     <button ion-button expandable (click)="saveItem(item)">
 	 *       <ion-icon name="star"></ion-icon>
 	 *     </button>
 	 *   </ion-item-options>
@@ -81612,12 +82166,12 @@
 	 *       Item
 	 *     </ion-item>
 	 *     <ion-item-options side="left">
-	 *       <button (click)="favorite(item)">Favorite</button>
-	 *       <button danger (click)="share(item)">Share</button>
+	 *       <button ion-button (click)="favorite(item)">Favorite</button>
+	 *       <button ion-button color="danger" (click)="share(item)">Share</button>
 	 *     </ion-item-options>
 
 	 *     <ion-item-options side="right">
-	 *       <button (click)="unread(item)">Unread</button>
+	 *       <button ion-button (click)="unread(item)">Unread</button>
 	 *     </ion-item-options>
 	 *   </ion-item-sliding>
 	 * </ion-list>
@@ -81632,14 +82186,14 @@
 	 *
 	 * ```html
 	 * <ion-item-options side="right">
-	 *   <button (click)="archive(item)">
+	 *   <button ion-button (click)="archive(item)">
 	 *     <ion-icon name="archive"></ion-icon>
 	 *     Archive
 	 *   </button>
 	 * </ion-item-options>
 
 	 * <ion-item-options side="left">
-	 *   <button (click)="archive(item)">
+	 *   <button ion-button (click)="archive(item)">
 	 *     <ion-icon name="archive"></ion-icon>
 	 *     Archive
 	 *   </button>
@@ -81654,7 +82208,7 @@
 	 * <ion-item-sliding (ionDrag)="logDrag($event)">
 	 *   <ion-item>Item</ion-item>
 	 *   <ion-item-options>
-	 *     <button>Favorite</button>
+	 *     <button ion-button>Favorite</button>
 	 *   </ion-item-options>
 	 * </ion-item-sliding>
 	 * ```
@@ -81667,7 +82221,7 @@
 	 *
 	 * ```html
 	 * <ion-item-options icon-left>
-	 *    <button (click)="archive(item)">
+	 *    <button ion-button (click)="archive(item)">
 	 *      <ion-icon name="archive"></ion-icon>
 	 *      Archive
 	 *    </button>
@@ -81914,7 +82468,7 @@
 	     *       Item
 	     *     </ion-item>
 	     *     <ion-item-options>
-	     *       <button (click)="share(slidingItem)">Share</button>
+	     *       <button ion-button (click)="share(slidingItem)">Share</button>
 	     *     </ion-item-options>
 	     *   </ion-item-sliding>
 	     * </ion-list>
@@ -81996,7 +82550,7 @@
 	}
 
 /***/ },
-/* 463 */
+/* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -82013,15 +82567,15 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var virtual_util_1 = __webpack_require__(464);
+	var virtual_util_1 = __webpack_require__(465);
 	var dom_1 = __webpack_require__(337);
 	var config_1 = __webpack_require__(338);
-	var content_1 = __webpack_require__(439);
-	var img_1 = __webpack_require__(445);
+	var content_1 = __webpack_require__(440);
+	var img_1 = __webpack_require__(446);
 	var util_1 = __webpack_require__(340);
 	var platform_1 = __webpack_require__(339);
 	var view_controller_1 = __webpack_require__(357);
-	var virtual_item_1 = __webpack_require__(465);
+	var virtual_item_1 = __webpack_require__(466);
 	/**
 	 * @name VirtualScroll
 	 * @description
@@ -82096,6 +82650,11 @@
 	 *
 	 * ### Approximate Widths and Heights
 	 *
+	 * If the height of items in the virtual scroll are not close to the
+	 * default size of 40px, it is extremely important to provide an value for
+	 * approxItemHeight height. An exact pixel-perfect size is not necessary,
+	 * but without an estimate the virtual scroll will not render correctly.
+	 *
 	 * The approximate width and height of each template is used to help
 	 * determine how many cells should be created, and to help calculate
 	 * the height of the scrollable area. Note that the actual rendered size
@@ -82104,10 +82663,7 @@
 	 *
 	 * It's also important to know that Ionic's default item sizes have
 	 * slightly different heights between platforms, which is perfectly fine.
-	 * An exact pixel-perfect size is not necessary, but a good estimation
-	 * is important. Basically if each item is roughly 500px tall, rather than
-	 * the default of 40px tall, it's extremely important to know for virtual
-	 * scroll to calculate a good height.
+	 *
 	 *
 	 *
 	 * ### Images Within Virtual Scroll
@@ -82125,6 +82681,9 @@
 	 * makes a HTTP request for the image file. HTTP requests, image
 	 * decoding, and image rendering can cause issues while scrolling. For virtual
 	 * scrolling, the natural effects of the `<img>` are not desirable features.
+	 *
+	 * Note: `<ion-img>` should only be used with Virtual Scroll. If you are using
+	 * an image outside of Virtual Scroll you should use the standard `<img>` tag.
 	 *
 	 * ```html
 	 * <ion-list [virtualScroll]="items">
@@ -82196,16 +82755,6 @@
 	         * initial dimensions. Default is `100%`.
 	         */
 	        this.approxItemWidth = '100%';
-	        /**
-	         * @input {string} The approximate height of each item template's cell.
-	         * This dimension is used to help determine how many cells should
-	         * be created when initialized, and to help calculate the height of
-	         * the scrollable area. This height value can only use `px` units.
-	         * Note that the actual rendered size of each cell comes from the
-	         * app's CSS, whereas this approximation is used to help calculate
-	         * initial dimensions. Default is `40px`.
-	         */
-	        this.approxItemHeight = '40px';
 	        /**
 	         * @input {string} The approximate width of each header template's cell.
 	         * This dimension is used to help determine how many cells should
@@ -82332,6 +82881,10 @@
 	                console.debug('VirtualScroll, onResize');
 	                _this.update(false);
 	            });
+	            if (!this.approxItemHeight) {
+	                this.approxItemHeight = '40px';
+	                console.warn('approxItemHeight set to default: Provide approxItemHeight to ensure proper virtual scroll rendering');
+	            }
 	        }
 	    };
 	    /**
@@ -82605,7 +83158,7 @@
 	var QUEUE_CHANGE_DETECTION = 0;
 
 /***/ },
-/* 464 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83141,7 +83694,7 @@
 	var REQUIRED_DOM_READS = 2;
 
 /***/ },
-/* 465 */
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83203,7 +83756,7 @@
 	exports.VirtualItem = VirtualItem;
 
 /***/ },
-/* 466 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83220,9 +83773,9 @@
 	    return function (target, key) { decorator(target, key, paramIndex); }
 	};
 	var core_1 = __webpack_require__(6);
-	var button_1 = __webpack_require__(438);
-	var navbar_1 = __webpack_require__(434);
-	var toolbar_1 = __webpack_require__(435);
+	var button_1 = __webpack_require__(439);
+	var navbar_1 = __webpack_require__(435);
+	var toolbar_1 = __webpack_require__(436);
 	/**
 	 * @private
 	 */
@@ -83263,7 +83816,7 @@
 	exports.ToolbarItem = ToolbarItem;
 
 /***/ },
-/* 467 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83286,8 +83839,8 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var ion_1 = __webpack_require__(342);
-	var navbar_1 = __webpack_require__(434);
-	var toolbar_1 = __webpack_require__(435);
+	var navbar_1 = __webpack_require__(435);
+	var toolbar_1 = __webpack_require__(436);
 	/**
 	 * @name Title
 	 * @description
@@ -83357,7 +83910,7 @@
 	exports.ToolbarTitle = ToolbarTitle;
 
 /***/ },
-/* 468 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83376,8 +83929,8 @@
 	var core_1 = __webpack_require__(6);
 	var forms_1 = __webpack_require__(363);
 	var form_1 = __webpack_require__(360);
-	var item_1 = __webpack_require__(458);
 	var util_1 = __webpack_require__(340);
+	var item_1 = __webpack_require__(459);
 	exports.CHECKBOX_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Checkbox; }), multi: true });
 	/**
 	 * @name Checkbox
@@ -83418,9 +83971,11 @@
 	 * @see {@link /docs/v2/components#checkbox Checkbox Component Docs}
 	 */
 	var Checkbox = (function () {
-	    function Checkbox(_form, _item) {
+	    function Checkbox(_form, _item, _elementRef, _renderer) {
 	        this._form = _form;
 	        this._item = _item;
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        this._checked = false;
 	        this._disabled = false;
 	        /**
@@ -83434,6 +83989,35 @@
 	            this._item.setCssClass('item-checkbox', true);
 	        }
 	    }
+	    Object.defineProperty(Checkbox.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /**
+	     * @internal
+	     */
+	    Checkbox.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Checkbox.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "checkbox-" + color, isAdd);
+	        }
+	    };
 	    /**
 	     * @private
 	     */
@@ -83532,6 +84116,10 @@
 	        this._form.deregister(this);
 	    };
 	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Checkbox.prototype, "color", null);
+	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
 	    ], Checkbox.prototype, "ionChange", void 0);
@@ -83552,7 +84140,7 @@
 	    Checkbox = __decorate([
 	        core_1.Component({
 	            selector: 'ion-checkbox',
-	            template: "\n    <div class=\"checkbox-icon\" [class.checkbox-checked]=\"_checked\">\n      <div class=\"checkbox-inner\"></div>\n    </div>\n    <button role=\"checkbox\"\n            type=\"button\"\n            category=\"item-cover\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\"\n            class=\"item-cover\">\n    </button>\n  ",
+	            template: "\n    <div class=\"checkbox-icon\" [class.checkbox-checked]=\"_checked\">\n      <div class=\"checkbox-inner\"></div>\n    </div>\n    <button ion-button=\"item-cover\"\n            role=\"checkbox\"\n            type=\"button\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\">\n    </button>\n  ",
 	            host: {
 	                '[class.checkbox-disabled]': '_disabled'
 	            },
@@ -83560,15 +84148,15 @@
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
 	        __param(1, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_b = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _b) || Object, (typeof (_c = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _c) || Object])
+	        __metadata('design:paramtypes', [(typeof (_b = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _b) || Object, (typeof (_c = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _c) || Object, (typeof (_d = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _d) || Object, (typeof (_e = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _e) || Object])
 	    ], Checkbox);
 	    return Checkbox;
-	    var _a, _b, _c;
+	    var _a, _b, _c, _d, _e;
 	}());
 	exports.Checkbox = Checkbox;
 
 /***/ },
-/* 469 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -83592,9 +84180,9 @@
 	var app_1 = __webpack_require__(335);
 	var form_1 = __webpack_require__(360);
 	var util_1 = __webpack_require__(340);
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	var nav_controller_1 = __webpack_require__(343);
-	var option_1 = __webpack_require__(470);
+	var option_1 = __webpack_require__(471);
 	exports.SELECT_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Select; }), multi: true });
 	/**
 	 * @name Select
@@ -83610,10 +84198,10 @@
 	 *
 	 * ### Interfaces
 	 *
-	 * By default, the `ion-select` uses the {@link ../../alert/Alert Alert API} to
-	 * open up the overlay of options in an alert. The interface can be changed to use the
-	 * {@link ../../action-sheet/ActionSheet ActionSheet API} by passing `action-sheet` to
-	 * the `interface` property. Read the other sections for the limitations of the
+	 * By default, the `ion-select` uses the {@link ../../alert/AlertController AlertController API}
+	 * to open up the overlay of options in an alert. The interface can be changed to use the
+	 * {@link ../../action-sheet/ActionSheetController ActionSheetController API} by passing
+	 * `action-sheet` to the `interface` property. Read the other sections for the limitations of the
 	 * action sheet interface.
 	 *
 	 * ### Single Value: Radio Buttons
@@ -83629,7 +84217,7 @@
 	 * <ion-item>
 	 *   <ion-label>Gender</ion-label>
 	 *   <ion-select [(ngModel)]="gender">
-	 *     <ion-option value="f" checked="true">Female</ion-option>
+	 *     <ion-option value="f" selected="true">Female</ion-option>
 	 *     <ion-option value="m">Male</ion-option>
 	 *   </ion-select>
 	 * </ion-item>
@@ -83674,21 +84262,23 @@
 	 * on any of the options will automatically close the overlay and select
 	 * that value.
 	 *
-	 * ### Alert Options
+	 * ### Select Options
 	 *
-	 * Since `ion-select` is a wrapper to `Alert`, by default, it can be
-	 * passed options in the `alertOptions` property. This can be used to
-	 * pass a custom alert title, subtitle or message. See the {@link ../../alert/Alert Alert API docs}
-	 * for more properties.
+	 * Since `ion-select` uses the `Alert` and `Action Sheet` interfaces, options can be
+	 * passed to these components through the `selectOptions` property. This can be used
+	 * to pass a custom title, subtitle, css class, and more. See the
+	 * {@link ../../alert/AlertController/#create AlertController API docs} and
+	 * {@link ../../action-sheet/ActionSheetController/#create ActionSheetController API docs}
+	 * for the properties that each interface accepts.
 	 *
 	 * ```html
-	 * <ion-select [alertOptions]="alertOptions">
+	 * <ion-select [selectOptions]="selectOptions">
 	 *   ...
 	 * </ion-select>
 	 * ```
 	 *
 	 * ```ts
-	 * this.alertOptions = {
+	 * this.selectOptions = {
 	 *   title: 'Pizza Toppings',
 	 *   subTitle: 'Select your toppings'
 	 * };
@@ -83719,18 +84309,20 @@
 	         */
 	        this.okText = 'OK';
 	        /**
-	         * @input {any} Any addition options that the alert interface can take.
-	         * See the [Alert API docs](../../alert/Alert) for the create options.
+	         * @input {any} Any additional options that the `alert` or `action-sheet` interface can take.
+	         * See the [AlertController API docs](../../alert/AlertController/#create) and the
+	         * [ActionSheetController API docs](../../action-sheet/ActionSheetController/#create) for the
+	         * create options for each interface.
 	         */
-	        this.alertOptions = {};
-	        /**
-	         * @private
-	         */
-	        this.checked = false;
+	        this.selectOptions = {};
 	        /**
 	         * @input {string} The interface the select should use: `action-sheet` or `alert`. Default: `alert`.
 	         */
 	        this.interface = '';
+	        /**
+	         * @input {string} The text to display instead of the selected option's value.
+	         */
+	        this.selectedText = '';
 	        /**
 	         * @output {any} Any expression you want to evaluate when the selection has changed.
 	         */
@@ -83770,19 +84362,19 @@
 	        }
 	        console.debug('select, open alert');
 	        // the user may have assigned some options specifically for the alert
-	        var alertOptions = util_1.merge({}, this.alertOptions);
+	        var selectOptions = util_1.merge({}, this.selectOptions);
 	        // make sure their buttons array is removed from the options
 	        // and we create a new array for the alert's two buttons
-	        alertOptions.buttons = [{
+	        selectOptions.buttons = [{
 	                text: this.cancelText,
 	                role: 'cancel',
 	                handler: function () {
 	                    _this.ionCancel.emit(null);
 	                }
 	            }];
-	        // if the alertOptions didn't provide an title then use the label's text
-	        if (!alertOptions.title && this._item) {
-	            alertOptions.title = this._item.getLabelText();
+	        // if the selectOptions didn't provide a title then use the label's text
+	        if (!selectOptions.title && this._item) {
+	            selectOptions.title = this._item.getLabelText();
 	        }
 	        var options = this._options.toArray();
 	        if (this.interface === 'action-sheet' && options.length > 6) {
@@ -83795,9 +84387,9 @@
 	        }
 	        var overlay;
 	        if (this.interface === 'action-sheet') {
-	            alertOptions.buttons = alertOptions.buttons.concat(options.map(function (input) {
+	            selectOptions.buttons = selectOptions.buttons.concat(options.map(function (input) {
 	                return {
-	                    role: (input.checked ? 'selected' : ''),
+	                    role: (input.selected ? 'selected' : ''),
 	                    text: input.text,
 	                    handler: function () {
 	                        _this.onChange(input.value);
@@ -83805,26 +84397,29 @@
 	                    }
 	                };
 	            }));
-	            alertOptions.cssClass = 'select-action-sheet';
-	            overlay = new action_sheet_1.ActionSheet(this._app, alertOptions);
+	            var selectCssClass = 'select-action-sheet';
+	            // If the user passed a cssClass for the select, add it
+	            selectCssClass += selectOptions.cssClass ? ' ' + selectOptions.cssClass : '';
+	            selectOptions.cssClass = selectCssClass;
+	            overlay = new action_sheet_1.ActionSheet(this._app, selectOptions);
 	        }
 	        else {
 	            // default to use the alert interface
 	            this.interface = 'alert';
-	            // user cannot provide inputs from alertOptions
+	            // user cannot provide inputs from selectOptions
 	            // alert inputs must be created by ionic from ion-options
-	            alertOptions.inputs = this._options.map(function (input) {
+	            selectOptions.inputs = this._options.map(function (input) {
 	                return {
 	                    type: (_this._multi ? 'checkbox' : 'radio'),
 	                    label: input.text,
 	                    value: input.value,
-	                    checked: input.checked,
+	                    checked: input.selected,
 	                    disabled: input.disabled
 	                };
 	            });
 	            var selectCssClass = 'select-alert';
-	            // create the alert instance from our built up alertOptions
-	            overlay = new alert_1.Alert(this._app, alertOptions);
+	            // create the alert instance from our built up selectOptions
+	            overlay = new alert_1.Alert(this._app, selectOptions);
 	            if (this._multi) {
 	                // use checkboxes
 	                selectCssClass += ' multiple-select-alert';
@@ -83834,7 +84429,7 @@
 	                selectCssClass += ' single-select-alert';
 	            }
 	            // If the user passed a cssClass for the select, add it
-	            selectCssClass += alertOptions.cssClass ? ' ' + alertOptions.cssClass : '';
+	            selectCssClass += selectOptions.cssClass ? ' ' + selectOptions.cssClass : '';
 	            overlay.setCssClass(selectCssClass);
 	            overlay.addButton({
 	                text: this.okText,
@@ -83844,7 +84439,7 @@
 	                }
 	            });
 	        }
-	        overlay.present(alertOptions);
+	        overlay.present(selectOptions);
 	        this._isOpen = true;
 	        overlay.onDidDismiss(function () {
 	            _this._isOpen = false;
@@ -83881,8 +84476,8 @@
 	            this._options = val;
 	            if (!this._values.length) {
 	                // there are no values set at this point
-	                // so check to see who should be checked
-	                this._values = val.filter(function (o) { return o.checked; }).map(function (o) { return o.value; });
+	                // so check to see who should be selected
+	                this._values = val.filter(function (o) { return o.selected; }).map(function (o) { return o.value; });
 	            }
 	            this._updOpts();
 	        },
@@ -83898,10 +84493,10 @@
 	        if (this._options) {
 	            this._options.forEach(function (option) {
 	                // check this option if the option's value is in the values array
-	                option.checked = _this._values.some(function (selectValue) {
+	                option.selected = _this._values.some(function (selectValue) {
 	                    return util_1.isCheckedProperty(selectValue, option.value);
 	                });
-	                if (option.checked) {
+	                if (option.selected) {
 	                    _this._texts.push(option.text);
 	                }
 	            });
@@ -83989,15 +84584,15 @@
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
-	    ], Select.prototype, "alertOptions", void 0);
-	    __decorate([
-	        core_1.Input(), 
-	        __metadata('design:type', Object)
-	    ], Select.prototype, "checked", void 0);
+	    ], Select.prototype, "selectOptions", void 0);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', String)
 	    ], Select.prototype, "interface", void 0);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Select.prototype, "selectedText", void 0);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
@@ -84034,7 +84629,7 @@
 	    Select = __decorate([
 	        core_1.Component({
 	            selector: 'ion-select',
-	            template: "\n    <div *ngIf=\"!_text\" class=\"select-placeholder select-text\">{{placeholder}}</div>\n    <div *ngIf=\"_text\" class=\"select-text\">{{_text}}</div>\n    <div class=\"select-icon\">\n      <div class=\"select-icon-inner\"></div>\n    </div>\n    <button aria-haspopup=\"true\"\n            [id]=\"id\"\n            category=\"item-cover\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\"\n            class=\"item-cover\">\n    </button>\n  ",
+	            template: "\n    <div *ngIf=\"!_text\" class=\"select-placeholder select-text\">{{placeholder}}</div>\n    <div *ngIf=\"_text\" class=\"select-text\">{{selectedText || _text}}</div>\n    <div class=\"select-icon\">\n      <div class=\"select-icon-inner\"></div>\n    </div>\n    <button ion-button=\"item-cover\"\n            aria-haspopup=\"true\"\n            [id]=\"id\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\">\n    </button>\n  ",
 	            directives: [common_1.NgIf],
 	            host: {
 	                '[class.select-disabled]': '_disabled'
@@ -84052,7 +84647,7 @@
 	exports.Select = Select;
 
 /***/ },
-/* 470 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -84070,29 +84665,29 @@
 	/**
 	 * @name Option
 	 * @description
-	 * `ion-option` is a child component of `ion-select`. Similar to the native option element, `ion-option` can take a value and a checked property.
+	 * `ion-option` is a child component of `ion-select`. Similar to the native option element, `ion-option` can take a value and a selected property.
 	 *
-	 * @demo /docs/v2/demos/item-sliding/
+	 * @demo /docs/v2/demos/select/
 	 */
 	var Option = (function () {
 	    function Option(_elementRef) {
 	        this._elementRef = _elementRef;
-	        this._checked = false;
+	        this._selected = false;
 	        this._disabled = false;
 	        /**
 	         * @input {any} Event to evaluate when option is selected
 	         */
 	        this.ionSelect = new core_1.EventEmitter();
 	    }
-	    Object.defineProperty(Option.prototype, "checked", {
+	    Object.defineProperty(Option.prototype, "selected", {
 	        /**
-	         * @input {boolean} Whether or not the option is already checked and selected
+	         * @input {boolean} Whether or not the option is already selected
 	         */
 	        get: function () {
-	            return this._checked;
+	            return this._selected;
 	        },
 	        set: function (val) {
-	            this._checked = util_1.isTrueProperty(val);
+	            this._selected = util_1.isTrueProperty(val);
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -84143,7 +84738,7 @@
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
-	    ], Option.prototype, "checked", null);
+	    ], Option.prototype, "selected", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', Object)
@@ -84164,7 +84759,7 @@
 	exports.Option = Option;
 
 /***/ },
-/* 471 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -84183,9 +84778,9 @@
 	var core_1 = __webpack_require__(6);
 	var forms_1 = __webpack_require__(363);
 	var config_1 = __webpack_require__(338);
-	var picker_1 = __webpack_require__(472);
+	var picker_1 = __webpack_require__(473);
 	var form_1 = __webpack_require__(360);
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	var util_1 = __webpack_require__(340);
 	var datetime_util_1 = __webpack_require__(352);
 	exports.DATETIME_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return DateTime; }), multi: true });
@@ -84912,7 +85507,7 @@
 	    DateTime = __decorate([
 	        core_1.Component({
 	            selector: 'ion-datetime',
-	            template: "\n    <div class=\"datetime-text\">{{_text}}</div>\n    <button aria-haspopup=\"true\"\n            type=\"button\"\n            [id]=\"id\"\n            category=\"item-cover\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\"\n            class=\"item-cover\">\n    </button>\n  ",
+	            template: "\n    <div class=\"datetime-text\">{{_text}}</div>\n    <button ion-button=\"item-cover\" \n            aria-haspopup=\"true\"\n            type=\"button\"\n            [id]=\"id\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\">\n    </button>\n  ",
 	            host: {
 	                '[class.datetime-disabled]': '_disabled'
 	            },
@@ -84983,7 +85578,7 @@
 	}
 
 /***/ },
-/* 472 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -85004,7 +85599,7 @@
 	var core_1 = __webpack_require__(6);
 	var app_1 = __webpack_require__(335);
 	var util_1 = __webpack_require__(340);
-	var picker_component_1 = __webpack_require__(473);
+	var picker_component_1 = __webpack_require__(474);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -85109,7 +85704,7 @@
 	exports.PickerController = PickerController;
 
 /***/ },
-/* 473 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -85137,7 +85732,7 @@
 	var config_1 = __webpack_require__(338);
 	var key_1 = __webpack_require__(361);
 	var nav_params_1 = __webpack_require__(345);
-	var picker_options_1 = __webpack_require__(474);
+	var picker_options_1 = __webpack_require__(475);
 	var transition_1 = __webpack_require__(355);
 	var ui_event_manager_1 = __webpack_require__(353);
 	var view_controller_1 = __webpack_require__(357);
@@ -85392,7 +85987,7 @@
 	    PickerColumnCmp = __decorate([
 	        core_1.Component({
 	            selector: '.picker-col',
-	            template: "\n    <div *ngIf=\"col.prefix\" class=\"picker-prefix\" [style.width]=\"col.prefixWidth\">{{col.prefix}}</div>\n    <div class=\"picker-opts\" #colEle [style.width]=\"col.optionsWidth\">\n      <button *ngFor=\"let o of col.options; let i=index\" [style.transform]=\"o._trans\" [style.transitionDuration]=\"o._dur\" [style.webkitTransform]=\"o._trans\" [style.webkitTransitionDuration]=\"o._dur\" [class.picker-opt-selected]=\"col.selectedIndex === i\" [class.picker-opt-disabled]=\"o.disabled\" (click)=\"optClick($event, i)\" type=\"button\" category=\"picker-opt\">\n        {{o.text}}\n      </button>\n    </div>\n    <div *ngIf=\"col.suffix\" class=\"picker-suffix\" [style.width]=\"col.suffixWidth\">{{col.suffix}}</div>\n  ",
+	            template: "\n    <div *ngIf=\"col.prefix\" class=\"picker-prefix\" [style.width]=\"col.prefixWidth\">{{col.prefix}}</div>\n    <div class=\"picker-opts\" #colEle [style.width]=\"col.optionsWidth\">\n      <button ion-button=\"picker-opt\" *ngFor=\"let o of col.options; let i=index\" [style.transform]=\"o._trans\" [style.transitionDuration]=\"o._dur\" [style.webkitTransform]=\"o._trans\" [style.webkitTransitionDuration]=\"o._dur\" [class.picker-opt-selected]=\"col.selectedIndex === i\" [class.picker-opt-disabled]=\"o.disabled\" (click)=\"optClick($event, i)\" type=\"button\">\n        {{o.text}}\n      </button>\n    </div>\n    <div *ngIf=\"col.suffix\" class=\"picker-suffix\" [style.width]=\"col.suffixWidth\">{{col.suffix}}</div>\n  ",
 	            directives: [common_1.NgFor, common_1.NgIf],
 	            host: {
 	                '[style.min-width]': 'col.columnWidth',
@@ -85559,7 +86154,7 @@
 	    PickerCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-picker-cmp',
-	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"picker-wrapper\">\n      <div class=\"picker-toolbar\">\n        <div *ngFor=\"let b of d.buttons\" class=\"picker-toolbar-button\" [ngClass]=\"b.cssRole\">\n          <button (click)=\"btnClick(b)\" [ngClass]=\"b.cssClass\" class=\"picker-button\" clear>\n            {{b.text}}\n          </button>\n        </div>\n      </div>\n      <div class=\"picker-columns\">\n        <div class=\"picker-above-highlight\"></div>\n        <div *ngFor=\"let c of d.columns\" [col]=\"c\" class=\"picker-col\" (ionChange)=\"_colChange($event)\"></div>\n        <div class=\"picker-below-highlight\"></div>\n      </div>\n    </div>\n  ",
+	            template: "\n    <ion-backdrop (click)=\"bdClick()\"></ion-backdrop>\n    <div class=\"picker-wrapper\">\n      <div class=\"picker-toolbar\">\n        <div *ngFor=\"let b of d.buttons\" class=\"picker-toolbar-button\" [ngClass]=\"b.cssRole\">\n          <button ion-button (click)=\"btnClick(b)\" [ngClass]=\"b.cssClass\" class=\"picker-button\" clear>\n            {{b.text}}\n          </button>\n        </div>\n      </div>\n      <div class=\"picker-columns\">\n        <div class=\"picker-above-highlight\"></div>\n        <div *ngFor=\"let c of d.columns\" [col]=\"c\" class=\"picker-col\" (ionChange)=\"_colChange($event)\"></div>\n        <div class=\"picker-below-highlight\"></div>\n      </div>\n    </div>\n  ",
 	            directives: [backdrop_1.Backdrop, common_1.NgClass, common_1.NgFor, PickerColumnCmp],
 	            host: {
 	                'role': 'dialog'
@@ -85608,13 +86203,13 @@
 	var FRAME_MS = (1000 / 60);
 
 /***/ },
-/* 474 */
+/* 475 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 475 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -85634,7 +86229,7 @@
 	var forms_1 = __webpack_require__(363);
 	var form_1 = __webpack_require__(360);
 	var util_1 = __webpack_require__(340);
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	var dom_1 = __webpack_require__(337);
 	var ui_event_manager_1 = __webpack_require__(353);
 	exports.TOGGLE_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Toggle; }), multi: true });
@@ -85684,7 +86279,6 @@
 	        this._checked = false;
 	        this._disabled = false;
 	        this._activated = false;
-	        this._msPrv = 0;
 	        this._events = new ui_event_manager_1.UIEventManager();
 	        /**
 	         * @output {Toggle} expression to evaluate when the toggle value changes
@@ -85697,6 +86291,19 @@
 	            this._item.setCssClass('item-toggle', true);
 	        }
 	    }
+	    Object.defineProperty(Toggle.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * @private
 	     */
@@ -85759,7 +86366,7 @@
 	        configurable: true
 	    });
 	    Toggle.prototype._setChecked = function (isChecked) {
-	        if (isChecked !== this._checked) {
+	        if (!this._disabled && isChecked !== this._checked) {
 	            this._checked = isChecked;
 	            if (this._init) {
 	                this.ionChange.emit(this);
@@ -85805,6 +86412,22 @@
 	        configurable: true
 	    });
 	    /**
+	     * @internal
+	     */
+	    Toggle.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Toggle.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "toggle-" + color, isAdd);
+	        }
+	    };
+	    /**
 	     * @private
 	     */
 	    Toggle.prototype.onChange = function (isChecked) {
@@ -85837,6 +86460,10 @@
 	        this._events.unlistenAll();
 	    };
 	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Toggle.prototype, "color", null);
+	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
 	    ], Toggle.prototype, "ionChange", void 0);
@@ -85851,7 +86478,7 @@
 	    Toggle = __decorate([
 	        core_1.Component({
 	            selector: 'ion-toggle',
-	            template: "\n    <div class=\"toggle-icon\" [class.toggle-checked]=\"_checked\" [class.toggle-activated]=\"_activated\">\n      <div class=\"toggle-inner\"></div>\n    </div>\n    <button role=\"checkbox\"\n            type=\"button\"\n            category=\"item-cover\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\"\n            class=\"item-cover\">\n    </button>\n  ",
+	            template: "\n    <div class=\"toggle-icon\" [class.toggle-checked]=\"_checked\" [class.toggle-activated]=\"_activated\">\n      <div class=\"toggle-inner\"></div>\n    </div>\n    <button ion-button=\"item-cover\"\n            role=\"checkbox\"\n            type=\"button\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\">\n    </button>\n  ",
 	            host: {
 	                '[class.toggle-disabled]': '_disabled'
 	            },
@@ -85867,7 +86494,7 @@
 	exports.Toggle = Toggle;
 
 /***/ },
-/* 476 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -85893,11 +86520,11 @@
 	var forms_1 = __webpack_require__(363);
 	var app_1 = __webpack_require__(335);
 	var config_1 = __webpack_require__(338);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	var form_1 = __webpack_require__(360);
-	var input_base_1 = __webpack_require__(477);
-	var item_1 = __webpack_require__(458);
-	var native_input_1 = __webpack_require__(478);
+	var input_base_1 = __webpack_require__(478);
+	var item_1 = __webpack_require__(459);
+	var native_input_1 = __webpack_require__(479);
 	var nav_controller_1 = __webpack_require__(343);
 	var platform_1 = __webpack_require__(339);
 	/**
@@ -85923,12 +86550,12 @@
 	 * ```html
 	 * <ion-list>
 	 *   <ion-item>
-	 *     <ion-label primary>Inline Label</ion-label>
+	 *     <ion-label color="primary">Inline Label</ion-label>
 	 *     <ion-input placeholder="Text Input"></ion-input>
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
-	 *     <ion-label primary fixed>Fixed Label</ion-label>
+	 *     <ion-label color="primary" fixed>Fixed Label</ion-label>
 	 *     <ion-input type="tel" placeholder="Tel Input"></ion-input>
 	 *   </ion-item>
 	 *
@@ -85937,17 +86564,17 @@
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
-	 *     <ion-label primary stacked>Stacked Label</ion-label>
+	 *     <ion-label color="primary" stacked>Stacked Label</ion-label>
 	 *     <ion-input type="email" placeholder="Email Input"></ion-input>
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
-	 *     <ion-label primary stacked>Stacked Label</ion-label>
+	 *     <ion-label color="primary" stacked>Stacked Label</ion-label>
 	 *     <ion-input type="password" placeholder="Password Input"></ion-input>
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
-	 *     <ion-label primary floating>Floating Label</ion-label>
+	 *     <ion-label color="primary" floating>Floating Label</ion-label>
 	 *     <ion-input></ion-input>
 	 *   </ion-item>
 	 *
@@ -85988,7 +86615,7 @@
 	    TextInput = __decorate([
 	        core_1.Component({
 	            selector: 'ion-input',
-	            template: "\n    <input [type]=\"type\" [(ngModel)]=\"_value\" (blur)=\"inputBlurred($event)\" (focus)=\"inputFocused($event)\" [placeholder]=\"placeholder\" class=\"text-input\">\n    <input [type]=\"type\" aria-hidden=\"true\" next-input *ngIf=\"_useAssist\">\n    <button clear [hidden]=\"!clearInput\" type=\"button\" class=\"text-input-clear-icon\" (click)=\"clearTextInput()\" (mousedown)=\"clearTextInput()\"></button>\n    <div (touchstart)=\"pointerStart($event)\" (touchend)=\"pointerEnd($event)\" (mousedown)=\"pointerStart($event)\" (mouseup)=\"pointerEnd($event)\" class=\"input-cover\" tappable *ngIf=\"_useAssist\"></div>\n  ",
+	            template: "\n    <input [type]=\"type\" [(ngModel)]=\"_value\" (blur)=\"inputBlurred($event)\" (focus)=\"inputFocused($event)\" [placeholder]=\"placeholder\" class=\"text-input\">\n    <input [type]=\"type\" aria-hidden=\"true\" next-input *ngIf=\"_useAssist\">\n    <button ion-button clear [hidden]=\"!clearInput\" type=\"button\" class=\"text-input-clear-icon\" (click)=\"clearTextInput()\" (mousedown)=\"clearTextInput()\"></button>\n    <div (touchstart)=\"pointerStart($event)\" (touchend)=\"pointerEnd($event)\" (mousedown)=\"pointerStart($event)\" (mouseup)=\"pointerEnd($event)\" class=\"input-cover\" tappable *ngIf=\"_useAssist\"></div>\n  ",
 	            directives: [native_input_1.NativeInput, native_input_1.NextInput, common_1.NgIf, forms_1.NgModel],
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
@@ -86011,7 +86638,7 @@
 	 * however, with Ionic wrapping the native HTML text area element, Ionic
 	 * is able to better handle the user experience and interactivity.
 	 *
-	 * Not that `<ion-textarea>` must load its value from the `value` or
+	 * Note that `<ion-textarea>` must load its value from the `value` or
 	 * `[(ngModel)]` attribute. Unlike the native `<textarea>` element,
 	 * `<ion-textarea>` does not support loading its value from the
 	 * textarea's inner content.
@@ -86091,7 +86718,7 @@
 	exports.TextArea = TextArea;
 
 /***/ },
-/* 477 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -86107,7 +86734,7 @@
 	var core_1 = __webpack_require__(6);
 	var dom_1 = __webpack_require__(337);
 	var util_1 = __webpack_require__(340);
-	var native_input_1 = __webpack_require__(478);
+	var native_input_1 = __webpack_require__(479);
 	var InputBase = (function () {
 	    function InputBase(config, _form, _item, _app, _platform, _elementRef, _scrollView, nav, ngControl) {
 	        this._form = _form;
@@ -86644,7 +87271,7 @@
 	}
 
 /***/ },
-/* 478 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -86878,7 +87505,7 @@
 	exports.NextInput = NextInput;
 
 /***/ },
-/* 479 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -86907,7 +87534,7 @@
 	 * ```html
 	 * <ion-content>
 	 *   <!-- Segment buttons with icons -->
-	 *   <ion-segment [(ngModel)]="icons" secondary>
+	 *   <ion-segment [(ngModel)]="icons" color="secondary">
 	 *     <ion-segment-button value="camera">
 	 *       <ion-icon name="camera"></ion-icon>
 	 *     </ion-segment-button>
@@ -86917,7 +87544,7 @@
 	 *   </ion-segment>
 	 *
 	 *   <!-- Segment buttons with text -->
-	 *   <ion-segment [(ngModel)]="relationship" primary>
+	 *   <ion-segment [(ngModel)]="relationship" color="primary">
 	 *     <ion-segment-button value="friends" (ionSelect)="selectedFriends()">
 	 *       Friends
 	 *     </ion-segment-button>
@@ -87037,7 +87664,7 @@
 	 * <!-- Segment in a header -->
 	 * <ion-header>
 	 *   <ion-toolbar>
-	 *     <ion-segment [(ngModel)]="icons" secondary>
+	 *     <ion-segment [(ngModel)]="icons" color="secondary">
 	 *       <ion-segment-button value="camera">
 	 *         <ion-icon name="camera"></ion-icon>
 	 *       </ion-segment-button>
@@ -87050,7 +87677,7 @@
 	 *
 	 * <ion-content>
 	 *   <!-- Segment in content -->
-	 *   <ion-segment [(ngModel)]="relationship" primary>
+	 *   <ion-segment [(ngModel)]="relationship" color="primary">
 	 *     <ion-segment-button value="friends" (ionSelect)="selectedFriends()">
 	 *       Friends
 	 *     </ion-segment-button>
@@ -87061,7 +87688,7 @@
 	 *
 	 *   <!-- Segment in a form -->
 	 *   <form [formGroup]="myForm">
-	 *     <ion-segment formControlName="mapStyle" danger>
+	 *     <ion-segment formControlName="mapStyle" color="danger">
 	 *       <ion-segment-button value="standard">
 	 *         Standard
 	 *       </ion-segment-button>
@@ -87082,7 +87709,9 @@
 	 * @see [Angular 2 Forms](http://learnangular2.com/forms/)
 	 */
 	var Segment = (function () {
-	    function Segment(ngControl) {
+	    function Segment(_elementRef, _renderer, ngControl) {
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        this._disabled = false;
 	        /**
 	         * @output {Any}  expression to evaluate when a segment button has been changed
@@ -87100,6 +87729,19 @@
 	            ngControl.valueAccessor = this;
 	        }
 	    }
+	    Object.defineProperty(Segment.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Segment.prototype, "disabled", {
 	        /**
 	         * @private
@@ -87120,6 +87762,22 @@
 	        enumerable: true,
 	        configurable: true
 	    });
+	    /**
+	     * @internal
+	     */
+	    Segment.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Segment.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "segment-" + color, isAdd);
+	        }
+	    };
 	    /**
 	     * @private
 	     * Write a new value to the element.
@@ -87166,6 +87824,10 @@
 	     */
 	    Segment.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
 	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Segment.prototype, "color", null);
+	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
 	    ], Segment.prototype, "ionChange", void 0);
@@ -87181,16 +87843,16 @@
 	        core_1.Directive({
 	            selector: 'ion-segment'
 	        }),
-	        __param(0, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_c = typeof forms_1.NgControl !== 'undefined' && forms_1.NgControl) === 'function' && _c) || Object])
+	        __param(2, core_1.Optional()), 
+	        __metadata('design:paramtypes', [(typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _d) || Object, (typeof (_e = typeof forms_1.NgControl !== 'undefined' && forms_1.NgControl) === 'function' && _e) || Object])
 	    ], Segment);
 	    return Segment;
-	    var _a, _b, _c;
+	    var _a, _b, _c, _d, _e;
 	}());
 	exports.Segment = Segment;
 
 /***/ },
-/* 480 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -87209,8 +87871,8 @@
 	var core_1 = __webpack_require__(6);
 	var form_1 = __webpack_require__(360);
 	var util_1 = __webpack_require__(340);
-	var item_1 = __webpack_require__(458);
-	var radio_group_1 = __webpack_require__(481);
+	var item_1 = __webpack_require__(459);
+	var radio_group_1 = __webpack_require__(482);
 	/**
 	 * @description
 	 * A radio button is a button that can be either checked or unchecked. A user can tap
@@ -87247,8 +87909,10 @@
 	 * @see {@link ../RadioGroup RadioGroup API Docs}
 	 */
 	var RadioButton = (function () {
-	    function RadioButton(_form, _item, _group) {
+	    function RadioButton(_form, _elementRef, _renderer, _item, _group) {
 	        this._form = _form;
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
 	        this._item = _item;
 	        this._group = _group;
 	        this._checked = false;
@@ -87271,6 +87935,19 @@
 	            this._item.setCssClass('item-radio', true);
 	        }
 	    }
+	    Object.defineProperty(RadioButton.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(RadioButton.prototype, "value", {
 	        /**
 	         * @input {any} The value of the radio button. Defaults to the generated id.
@@ -87340,6 +88017,29 @@
 	        this._form.deregister(this);
 	        this._group && this._group.remove(this);
 	    };
+	    /**
+	     * @internal
+	     */
+	    RadioButton.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    RadioButton.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "radio-" + color, isAdd);
+	            if (this._item) {
+	                this._item._updateColor(color, 'item-radio');
+	            }
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], RadioButton.prototype, "color", null);
 	    __decorate([
 	        core_1.Output(), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
@@ -87365,23 +88065,23 @@
 	    RadioButton = __decorate([
 	        core_1.Component({
 	            selector: 'ion-radio',
-	            template: "\n    <div class=\"radio-icon\" [class.radio-checked]=\"_checked\">\n      <div class=\"radio-inner\"></div>\n    </div>\n    <button role=\"radio\"\n            type=\"button\"\n            category=\"item-cover\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\"\n            class=\"item-cover\">\n    </button>\n  ",
+	            template: "\n    <div class=\"radio-icon\" [class.radio-checked]=\"_checked\">\n      <div class=\"radio-inner\"></div>\n    </div>\n    <button ion-button=\"item-cover\" \n            role=\"radio\"\n            type=\"button\"\n            [id]=\"id\"\n            [attr.aria-checked]=\"_checked\"\n            [attr.aria-labelledby]=\"_labelId\"\n            [attr.aria-disabled]=\"_disabled\">\n    </button>\n  ",
 	            host: {
 	                '[class.radio-disabled]': '_disabled'
 	            },
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
-	        __param(1, core_1.Optional()),
-	        __param(2, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_b = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _b) || Object, (typeof (_c = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _c) || Object, (typeof (_d = typeof radio_group_1.RadioGroup !== 'undefined' && radio_group_1.RadioGroup) === 'function' && _d) || Object])
+	        __param(3, core_1.Optional()),
+	        __param(4, core_1.Optional()), 
+	        __metadata('design:paramtypes', [(typeof (_b = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object, (typeof (_d = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _d) || Object, (typeof (_e = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _e) || Object, (typeof (_f = typeof radio_group_1.RadioGroup !== 'undefined' && radio_group_1.RadioGroup) === 'function' && _f) || Object])
 	    ], RadioButton);
 	    return RadioButton;
-	    var _a, _b, _c, _d;
+	    var _a, _b, _c, _d, _e, _f;
 	}());
 	exports.RadioButton = RadioButton;
 
 /***/ },
-/* 481 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -87396,7 +88096,7 @@
 	};
 	var core_1 = __webpack_require__(6);
 	var forms_1 = __webpack_require__(363);
-	var list_1 = __webpack_require__(456);
+	var list_1 = __webpack_require__(457);
 	var util_1 = __webpack_require__(340);
 	exports.RADIO_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return RadioGroup; }), multi: true });
 	/**
@@ -87609,7 +88309,7 @@
 	var radioGroupIds = -1;
 
 /***/ },
-/* 482 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -87630,9 +88330,9 @@
 	var forms_1 = __webpack_require__(363);
 	var util_1 = __webpack_require__(340);
 	var dom_1 = __webpack_require__(337);
-	var debouncer_1 = __webpack_require__(483);
+	var debouncer_1 = __webpack_require__(484);
 	var form_1 = __webpack_require__(360);
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	var ui_event_manager_1 = __webpack_require__(353);
 	exports.RANGE_VALUE_ACCESSOR = new core_1.Provider(forms_1.NG_VALUE_ACCESSOR, { useExisting: core_1.forwardRef(function () { return Range; }), multi: true });
 	/**
@@ -87768,11 +88468,11 @@
 	 * ```html
 	 * <ion-list>
 	 *   <ion-item>
-	 *     <ion-range [(ngModel)]="singleValue" danger pin="true"></ion-range>
+	 *     <ion-range [(ngModel)]="singleValue" color="danger" pin="true"></ion-range>
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
-	 *     <ion-range min="-200" max="200" [(ngModel)]="saturation" secondary>
+	 *     <ion-range min="-200" max="200" [(ngModel)]="saturation" color="secondary">
 	 *       <ion-label range-left>-200</ion-label>
 	 *       <ion-label range-right>200</ion-label>
 	 *     </ion-range>
@@ -87787,7 +88487,7 @@
 	 *
 	 *   <ion-item>
 	 *     <ion-label>step=100, snaps, {{singleValue4}}</ion-label>
-	 *     <ion-range min="1000" max="2000" step="100" snaps="true" secondary [(ngModel)]="singleValue4"></ion-range>
+	 *     <ion-range min="1000" max="2000" step="100" snaps="true" color="secondary" [(ngModel)]="singleValue4"></ion-range>
 	 *   </ion-item>
 	 *
 	 *   <ion-item>
@@ -87801,13 +88501,15 @@
 	 * @demo /docs/v2/demos/range/
 	 */
 	var Range = (function () {
-	    function Range(_form, _item, _renderer) {
+	    function Range(_form, _item, _elementRef, _renderer) {
 	        this._form = _form;
 	        this._item = _item;
+	        this._elementRef = _elementRef;
 	        this._renderer = _renderer;
 	        this._dual = false;
 	        this._disabled = false;
 	        this._start = null;
+	        this._ticks = [];
 	        this._min = 0;
 	        this._max = 100;
 	        this._step = 1;
@@ -87825,6 +88527,19 @@
 	            _item.setCssClass('item-range', true);
 	        }
 	    }
+	    Object.defineProperty(Range.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Range.prototype, "min", {
 	        /**
 	         * @input {number} Minimum integer value of the range. Defaults to `0`.
@@ -88134,6 +88849,22 @@
 	        return (value - this._min) / (this._max - this._min);
 	    };
 	    /**
+	     * @internal
+	     */
+	    Range.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Range.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "range-" + color, isAdd);
+	        }
+	    };
+	    /**
 	     * @private
 	     */
 	    Range.prototype.writeValue = function (val) {
@@ -88230,6 +88961,10 @@
 	        this._events.unlistenAll();
 	    };
 	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Range.prototype, "color", null);
+	    __decorate([
 	        core_1.ViewChild('bar'), 
 	        __metadata('design:type', (typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object)
 	    ], Range.prototype, "_bar", void 0);
@@ -88291,15 +89026,15 @@
 	            encapsulation: core_1.ViewEncapsulation.None,
 	        }),
 	        __param(1, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_e = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _e) || Object, (typeof (_f = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _f) || Object, (typeof (_g = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _g) || Object])
+	        __metadata('design:paramtypes', [(typeof (_e = typeof form_1.Form !== 'undefined' && form_1.Form) === 'function' && _e) || Object, (typeof (_f = typeof item_1.Item !== 'undefined' && item_1.Item) === 'function' && _f) || Object, (typeof (_g = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _g) || Object, (typeof (_h = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _h) || Object])
 	    ], Range);
 	    return Range;
-	    var _a, _b, _c, _d, _e, _f, _g;
+	    var _a, _b, _c, _d, _e, _f, _g, _h;
 	}());
 	exports.Range = Range;
 
 /***/ },
-/* 483 */
+/* 484 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -88329,7 +89064,7 @@
 	exports.Debouncer = Debouncer;
 
 /***/ },
-/* 484 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -88350,7 +89085,7 @@
 	var config_1 = __webpack_require__(338);
 	var icon_1 = __webpack_require__(424);
 	var util_1 = __webpack_require__(340);
-	var debouncer_1 = __webpack_require__(483);
+	var debouncer_1 = __webpack_require__(484);
 	/**
 	 * @name Searchbar
 	 * @module ionic
@@ -88371,9 +89106,10 @@
 	 * @see {@link /docs/v2/components#searchbar Searchbar Component Docs}
 	 */
 	var Searchbar = (function () {
-	    function Searchbar(_elementRef, _config, ngControl) {
+	    function Searchbar(_elementRef, _config, _renderer, ngControl) {
 	        this._elementRef = _elementRef;
 	        this._config = _config;
+	        this._renderer = _renderer;
 	        this._value = '';
 	        this._shouldBlur = true;
 	        this._isActive = false;
@@ -88427,6 +89163,19 @@
 	            ngControl.valueAccessor = this;
 	        }
 	    }
+	    Object.defineProperty(Searchbar.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    Object.defineProperty(Searchbar.prototype, "debounce", {
 	        /**
 	         * @input {number} How long, in milliseconds, to wait to trigger the `input` event after each keystroke. Default `250`.
@@ -88622,6 +89371,22 @@
 	        this._isActive = false;
 	    };
 	    /**
+	     * @internal
+	     */
+	    Searchbar.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Searchbar.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "searchbar-" + color, isAdd);
+	        }
+	    };
+	    /**
 	     * @private
 	     * Write a new value to the element.
 	     */
@@ -88643,6 +89408,10 @@
 	    Searchbar.prototype.registerOnTouched = function (fn) {
 	        this.onTouched = fn;
 	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Searchbar.prototype, "color", null);
 	    __decorate([
 	        core_1.Input(), 
 	        __metadata('design:type', String)
@@ -88720,14 +89489,14 @@
 	        core_1.Component({
 	            selector: 'ion-searchbar',
 	            template: '<div class="searchbar-input-container">' +
-	                '<button (click)="cancelSearchbar($event)" (mousedown)="cancelSearchbar($event)" clear dark class="searchbar-md-cancel">' +
+	                '<button ion-button (click)="cancelSearchbar($event)" (mousedown)="cancelSearchbar($event)" clear color="dark" class="searchbar-md-cancel">' +
 	                '<ion-icon name="arrow-back"></ion-icon>' +
 	                '</button>' +
 	                '<div #searchbarIcon class="searchbar-search-icon"></div>' +
 	                '<input #searchbarInput [(ngModel)]="_value" [attr.placeholder]="placeholder" (input)="inputChanged($event)" (blur)="inputBlurred($event)" (focus)="inputFocused($event)" class="searchbar-input">' +
-	                '<button clear class="searchbar-clear-icon" (click)="clearInput($event)" (mousedown)="clearInput($event)"></button>' +
+	                '<button ion-button clear class="searchbar-clear-icon" (click)="clearInput($event)" (mousedown)="clearInput($event)"></button>' +
 	                '</div>' +
-	                '<button #cancelButton [tabindex]="_isActive ? 1 : -1" clear (click)="cancelSearchbar($event)" (mousedown)="cancelSearchbar($event)" class="searchbar-ios-cancel">{{cancelButtonText}}</button>',
+	                '<button ion-button #cancelButton [tabindex]="_isActive ? 1 : -1" clear (click)="cancelSearchbar($event)" (mousedown)="cancelSearchbar($event)" class="searchbar-ios-cancel">{{cancelButtonText}}</button>',
 	            directives: [icon_1.Icon, forms_1.NgModel],
 	            host: {
 	                '[class.searchbar-has-value]': '_value',
@@ -88737,16 +89506,16 @@
 	            },
 	            encapsulation: core_1.ViewEncapsulation.None
 	        }),
-	        __param(2, core_1.Optional()), 
-	        __metadata('design:paramtypes', [(typeof (_k = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _k) || Object, (typeof (_l = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _l) || Object, (typeof (_m = typeof forms_1.NgControl !== 'undefined' && forms_1.NgControl) === 'function' && _m) || Object])
+	        __param(3, core_1.Optional()), 
+	        __metadata('design:paramtypes', [(typeof (_k = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _k) || Object, (typeof (_l = typeof config_1.Config !== 'undefined' && config_1.Config) === 'function' && _l) || Object, (typeof (_m = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _m) || Object, (typeof (_o = typeof forms_1.NgControl !== 'undefined' && forms_1.NgControl) === 'function' && _o) || Object])
 	    ], Searchbar);
 	    return Searchbar;
-	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+	    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 	}());
 	exports.Searchbar = Searchbar;
 
 /***/ },
-/* 485 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -88778,21 +89547,17 @@
 	/**
 	 * @name Nav
 	 * @description
-	 * _For a quick walkthrough of navigation in Ionic, check out the
-	 * [Navigation section](../../../../components/#navigation) of the Component
-	 * docs._
 	 *
-	 * Nav is a basic navigation controller component.  As a subclass of NavController
-	 * you use it to navigate to pages in your app and manipulate the navigation stack.
-	 * Nav automatically animates transitions between pages for you.
+	 * `ion-nav` is the declarative component for a [NavController](../NavController/).
 	 *
-	 * For more information on using navigation controllers like Nav or [Tab](../../Tabs/Tab/),
+	 * For more information on using nav controllers like Nav or [Tab](../../Tabs/Tab/),
 	 * take a look at the [NavController API Docs](../NavController/).
 	 *
+	 *
+	 * @usage
 	 * You must set a root page to be loaded initially by any Nav you create, using
 	 * the 'root' property:
 	 *
-	 * @usage
 	 * ```ts
 	 * import { Component } from '@angular/core';
 	 * import { ionicBootstrap } from 'ionic-angular';
@@ -88802,73 +89567,15 @@
 	 *   template: `<ion-nav [root]="root"></ion-nav>`
 	 * })
 	 * class MyApp {
-	 *   root = GettingStartedPage;
+	 *   private root: any = GettingStartedPage;
+	 *
+	 *   constructor(){
+	 *   }
 	 * }
 	 *
 	 * ionicBootstrap(MyApp);
 	 * ```
 	 *
-	 * ### Back Navigation
-	 *
-	 * If a [page](../NavController/#creating_pages) you navigate to has a [NavBar](../NavBar/),
-	 * Nav will automatically add a back button to it if there is a page
-	 * before the one you are navigating to in the navigation stack.
-	 *
-	 * Additionally, specifying the `swipeBackEnabled` property will allow you to
-	 * swipe to go back:
-	 * ```html
-	 * <ion-nav swipeBackEnabled="false" [root]="rootPage"></ion-nav>
-	 * ```
-	 *
-	 * Here is a diagram of how Nav animates smoothly between pages:
-	 *
-	 * <div class="highlight less-margin">
-	 *   <pre>
-	 *                           +-------+
-	 *                           |  App  |
-	 *                           +---+---+
-	 *                           &lt;ion-app&gt;
-	 *                               |
-	 *                  +------------+-------------+
-	 *                  |   Ionic Nav Controller   |
-	 *                  +------------+-------------+
-	 *                           &lt;ion-nav&gt;
-	 *                               |
-	 *                               |
-	 *             Page 3  +--------------------+                     LoginPage
-	 *           Page 2  +--------------------+ |
-	 *         Page 1  +--------------------+ | |              +--------------------+
-	 *                 | | Header           |&lt;-----------------|       Login        |
-	 *                 +--------------------+ | |              +--------------------+
-	 *                 | | |                | | |              | Username:          |
-	 *                 | | |                | | |              | Password:          |
-	 *                 | | |  Page 3 is     | | |              |                    |
-	 *                 | | |  only content  | | |              |                    |
-	 *                 | | |                |&lt;-----------------|                    |
-	 *                 | | |                | | |              |                    |
-	 *                 | | |                | | |              |                    |
-	 *                 | +------------------|-+ |              |                    |
-	 *                 | | Footer           |-|-+              |                    |
-	 *                 | +------------------|-+                |                    |
-	 *                 +--------------------+                  +--------------------+
-	 *
-	 *           +--------------------+    +--------------------+    +--------------------+
-	 *           | Header             |    | Content            |    | Content            |
-	 *           +--------------------+    |                    |    |                    |
-	 *           | Content            |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    |                    |    |                    |
-	 *           |                    |    +--------------------+    |                    |
-	 *           |                    |    | Footer             |    |                    |
-	 *           +--------------------+    +--------------------+    +--------------------+
-	 *
-	 *   </pre>
-	 * </div>
 	 *
 	 * @demo /docs/v2/demos/navigation/
 	 * @see {@link /docs/v2/components#navigation Navigation Component Docs}
@@ -88888,9 +89595,15 @@
 	            // this Nav has a parent Nav
 	            parent.registerChildNav(this);
 	        }
-	        else if (app) {
+	        else if (viewCtrl && viewCtrl.getNav()) {
+	            // this Nav was opened from a modal
+	            this.parent = viewCtrl.getNav();
+	            this.parent.registerChildNav(this);
+	        }
+	        else if (app && !app.getRootNav()) {
+	            // a root nav has not been registered yet with the app
 	            // this is the root navcontroller for the entire app
-	            this._app.setRootNav(this);
+	            app.setRootNav(this);
 	        }
 	    }
 	    Object.defineProperty(Nav.prototype, "_vp", {
@@ -88970,7 +89683,7 @@
 	exports.Nav = Nav;
 
 /***/ },
-/* 486 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -88999,7 +89712,7 @@
 	 * ```html
 	 * <ion-content>
 	 *
-	 *  <button navPop>Go Back</button>
+	 *  <button ion-button navPop>Go Back</button>
 	 *
 	 * </ion-content>
 	 * ```
@@ -89043,7 +89756,7 @@
 	exports.NavPop = NavPop;
 
 /***/ },
-/* 487 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89070,25 +89783,25 @@
 	 *
 	 * @usage
 	 * ```html
-	 * <button [navPush]="pushPage"></button>
+	 * <button ion-button [navPush]="pushPage"></button>
 	 * ```
 	 *
 	 * To specify parameters you can use array syntax or the `navParams`
 	 * property:
 	 *
 	 * ```html
-	 * <button [navPush]="pushPage" [navParams]="params">Go</button>
+	 * <button ion-button [navPush]="pushPage" [navParams]="params">Go</button>
 	 * ```
 	 *
 	 * Where `pushPage` and `params` are specified in your component,
 	 * and `pushPage` contains a reference to a
-	 * [@Page component](../../../config/Page/):
+	 * component you would like to push:
 	 *
 	 * ```ts
 	 * import { LoginPage } from './login';
 	 *
 	 * @Component({
-	 *   template: `<button [navPush]="pushPage" [navParams]="params">Go</button>`
+	 *   template: `<button ion-button [navPush]="pushPage" [navParams]="params">Go</button>`
 	 * })
 	 * class MyPage {
 	 *   constructor(){
@@ -89145,7 +89858,7 @@
 	exports.NavPush = NavPush;
 
 /***/ },
-/* 488 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89334,7 +90047,75 @@
 	exports.HideWhen = HideWhen;
 
 /***/ },
-/* 489 */
+/* 490 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(6);
+	/**
+	  * @private
+	  * Select all of the HTML text elements with the color attribute to apply the text-color class.
+	 */
+	var Typography = (function () {
+	    function Typography(_elementRef, _renderer) {
+	        this._elementRef = _elementRef;
+	        this._renderer = _renderer;
+	    }
+	    Object.defineProperty(Typography.prototype, "color", {
+	        /**
+	         * @input {string} The predefined color to use. For example: `"primary"`, `"secondary"`, `"danger"`.
+	         */
+	        get: function () {
+	            return this._color;
+	        },
+	        set: function (value) {
+	            this._updateColor(value);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    /**
+	     * @internal
+	     */
+	    Typography.prototype._updateColor = function (newColor) {
+	        this._setElementColor(this._color, false);
+	        this._setElementColor(newColor, true);
+	        this._color = newColor;
+	    };
+	    /**
+	     * @internal
+	     */
+	    Typography.prototype._setElementColor = function (color, isAdd) {
+	        if (color !== null && color !== '') {
+	            this._renderer.setElementClass(this._elementRef.nativeElement, "text-" + color, isAdd);
+	        }
+	    };
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', String)
+	    ], Typography.prototype, "color", null);
+	    Typography = __decorate([
+	        core_1.Directive({
+	            selector: 'h1[color], h2[color], h3[color], h4[color], h5[color], h6[color], a[color], p[color], span[color], b[color], i[color], strong[color], em[color], small[color], sub[color], sup[color]'
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.Renderer !== 'undefined' && core_1.Renderer) === 'function' && _b) || Object])
+	    ], Typography);
+	    return Typography;
+	    var _a, _b;
+	}());
+	exports.Typography = Typography;
+
+/***/ },
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89355,7 +90136,7 @@
 	var core_1 = __webpack_require__(6);
 	var app_1 = __webpack_require__(335);
 	var util_1 = __webpack_require__(340);
-	var loading_component_1 = __webpack_require__(490);
+	var loading_component_1 = __webpack_require__(492);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -89380,6 +90161,12 @@
 	    Loading.prototype.getTransitionName = function (direction) {
 	        var key = (direction === 'back' ? 'loadingLeave' : 'loadingEnter');
 	        return this._nav && this._nav.config.get(key);
+	    };
+	    /**
+	     * @param {string} content  loading message content
+	     */
+	    Loading.prototype.setContent = function (content) {
+	        this.data.content = content;
 	    };
 	    /**
 	     * Present the loading instance.
@@ -89502,7 +90289,7 @@
 	 * |-----------------------|------------|------------------------------------------------------------------------------------------------------------------|
 	 * | spinner               |`string`    | The name of the SVG spinner for the loading indicator.                                                           |
 	 * | content               |`string`    | The html content for the loading indicator.                                                                      |
-	 * | cssClass              |`string`    | An additional class for custom styles.                                                                           |
+	 * | cssClass              |`string`    | Additional classes for custom styles, separated by spaces.                                                       |
 	 * | showBackdrop          |`boolean`   | Whether to show the backdrop. Default true.                                                                      |
 	 * | dismissOnPageChange   |`boolean`   | Whether to dismiss the indicator when navigating to a new page. Default false.                                   |
 	 * | duration              |`number`    | How many milliseconds to wait before hiding the indicator. By default, it will show until `dismiss()` is called. |
@@ -89532,7 +90319,7 @@
 	exports.LoadingController = LoadingController;
 
 /***/ },
-/* 490 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89557,7 +90344,7 @@
 	var config_1 = __webpack_require__(338);
 	var util_1 = __webpack_require__(340);
 	var nav_params_1 = __webpack_require__(345);
-	var spinner_1 = __webpack_require__(449);
+	var spinner_1 = __webpack_require__(450);
 	var transition_1 = __webpack_require__(355);
 	var view_controller_1 = __webpack_require__(357);
 	/**
@@ -89570,7 +90357,11 @@
 	        this._elementRef = _elementRef;
 	        this.d = params.data;
 	        if (this.d.cssClass) {
-	            renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	            this.d.cssClass.split(' ').forEach(function (cssClass) {
+	                // Make sure the class isn't whitespace, otherwise it throws exceptions
+	                if (cssClass.trim() !== '')
+	                    renderer.setElementClass(_elementRef.nativeElement, cssClass, true);
+	            });
 	        }
 	        this.id = (++loadingIds);
 	    }
@@ -89728,7 +90519,7 @@
 	var loadingIds = -1;
 
 /***/ },
-/* 491 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89749,7 +90540,7 @@
 	var core_1 = __webpack_require__(6);
 	var app_1 = __webpack_require__(335);
 	var util_1 = __webpack_require__(340);
-	var modal_component_1 = __webpack_require__(492);
+	var modal_component_1 = __webpack_require__(494);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -89841,7 +90632,7 @@
 	 * @Component(...)
 	 * class HomePage {
 	 *
-	 *  constructor(private modalCtrl: ModalController) {
+	 *  constructor(public modalCtrl: ModalController) {
 	 *
 	 *  }
 	 *
@@ -89881,7 +90672,7 @@
 	 * @Component(...)
 	 * class HomePage {
 	 *
-	 *  constructor(private modalCtrl: ModalController) {
+	 *  constructor(public modalCtrl: ModalController) {
 	 *
 	 *  }
 	 *
@@ -89903,7 +90694,7 @@
 	 * @Component(...)
 	 * class Profile {
 	 *
-	 *  constructor(private viewCtrl: ViewController) {
+	 *  constructor(public viewCtrl: ViewController) {
 	 *
 	 *  }
 	 *
@@ -89943,7 +90734,7 @@
 	exports.ModalController = ModalController;
 
 /***/ },
-/* 492 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -89968,7 +90759,7 @@
 	var key_1 = __webpack_require__(361);
 	var nav_params_1 = __webpack_require__(345);
 	var util_1 = __webpack_require__(340);
-	var page_transition_1 = __webpack_require__(493);
+	var page_transition_1 = __webpack_require__(495);
 	var view_controller_1 = __webpack_require__(357);
 	var dom_1 = __webpack_require__(337);
 	/**
@@ -90135,7 +90926,7 @@
 	page_transition_1.PageTransition.register('modal-md-slide-out', ModalMDSlideOut);
 
 /***/ },
-/* 493 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90145,7 +90936,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var animation_1 = __webpack_require__(356);
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	var transition_1 = __webpack_require__(355);
 	/**
 	 * @private
@@ -90190,7 +90981,7 @@
 	}
 
 /***/ },
-/* 494 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90211,7 +91002,7 @@
 	var core_1 = __webpack_require__(6);
 	var app_1 = __webpack_require__(335);
 	var util_1 = __webpack_require__(340);
-	var popover_component_1 = __webpack_require__(495);
+	var popover_component_1 = __webpack_require__(497);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -90279,12 +91070,11 @@
 	 * below for all available options.
 	 *
 	 * ### Presenting
-	 * To present a popover, call the `present` method on the [NavController](../../nav/NavController).
-	 * The first argument passed to the `present` should be the popover. In order
-	 * to position the popover relative to the element clicked, the event needs to be
-	 * passed as the second argument. If the event is not passed, the popover will be
-	 * positioned in the center of the current view. See the [usage](#usage) section for
-	 * an example of passing this event.
+	 * To present a popover, call the `present` method on a [PopoverController](../../nav/PopoverConroller) instance.
+	 * In order to position the popover relative to the element clicked, a click event
+	 * needs to be passed into the options of the the `present method. If the event
+	 * is not passed, the popover will be positioned in the center of the current
+	 * view. See the [usage](#usage) section for an example of passing this event.
 	 *
 	 * ### Dismissing
 	 * To dismiss the popover after creation, call the `dismiss()` method on the
@@ -90306,7 +91096,7 @@
 	 * which creates and presents the popover:
 	 *
 	 * ```html
-	 * <button (click)="presentPopover($event)">
+	 * <button ion-button (click)="presentPopover($event)">
 	 *   <ion-icon name="more"></ion-icon>
 	 * </button>
 	 * ```
@@ -90354,7 +91144,7 @@
 	 *
 	 * | Option                | Type       | Description                                                                                                      |
 	 * |-----------------------|------------|------------------------------------------------------------------------------------------------------------------|
-	 * | cssClass              |`string`    | An additional class for custom styles.                                                                           |
+	 * | cssClass              |`string`    | Additional classes for custom styles, separated by spaces.                                                       |
 	 * | showBackdrop          |`boolean`   | Whether to show the backdrop. Default true.                                                                      |
 	 * | enableBackdropDismiss |`boolean`   | Whether the popover should be dismissed by tapping the backdrop. Default true.                                   |
 	 *
@@ -90387,7 +91177,7 @@
 	exports.PopoverController = PopoverController;
 
 /***/ },
-/* 495 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90413,7 +91203,7 @@
 	var dom_1 = __webpack_require__(337);
 	var key_1 = __webpack_require__(361);
 	var nav_params_1 = __webpack_require__(345);
-	var page_transition_1 = __webpack_require__(493);
+	var page_transition_1 = __webpack_require__(495);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -90428,7 +91218,11 @@
 	        this._viewCtrl = _viewCtrl;
 	        this.d = _navParams.data.opts;
 	        if (this.d.cssClass) {
-	            _renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	            this.d.cssClass.split(' ').forEach(function (cssClass) {
+	                // Make sure the class isn't whitespace, otherwise it throws exceptions
+	                if (cssClass.trim() !== '')
+	                    _renderer.setElementClass(_elementRef.nativeElement, cssClass, true);
+	            });
 	        }
 	        this.id = (++popoverIds);
 	    }
@@ -90705,7 +91499,7 @@
 	var POPOVER_MD_BODY_PADDING = 12;
 
 /***/ },
-/* 496 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90719,11 +91513,11 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var activator_1 = __webpack_require__(497);
+	var activator_1 = __webpack_require__(499);
 	var app_1 = __webpack_require__(335);
 	var config_1 = __webpack_require__(338);
 	var dom_1 = __webpack_require__(337);
-	var ripple_1 = __webpack_require__(498);
+	var ripple_1 = __webpack_require__(500);
 	/**
 	 * @private
 	 */
@@ -90905,7 +91699,7 @@
 	var DISABLE_NATIVE_CLICK_AMOUNT = 2500;
 
 /***/ },
-/* 497 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90990,7 +91784,7 @@
 	var CLEAR_STATE_DEFERS = 5;
 
 /***/ },
-/* 498 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -90999,7 +91793,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var activator_1 = __webpack_require__(497);
+	var activator_1 = __webpack_require__(499);
 	var dom_1 = __webpack_require__(337);
 	/**
 	 * @private
@@ -91100,7 +91894,7 @@
 	var TOUCH_DOWN_ACCEL = 300;
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -91121,7 +91915,7 @@
 	var core_1 = __webpack_require__(6);
 	var app_1 = __webpack_require__(335);
 	var util_1 = __webpack_require__(340);
-	var toast_component_1 = __webpack_require__(500);
+	var toast_component_1 = __webpack_require__(502);
 	var view_controller_1 = __webpack_require__(357);
 	/**
 	 * @private
@@ -91239,7 +92033,7 @@
 	 * | message               | `string`  | -               | The message for the toast. Long strings will wrap and the toast container will expand.                        |
 	 * | duration              | `number`  | -               | How many milliseconds to wait before hiding the toast. By default, it will show until `dismiss()` is called.  |
 	 * | position              | `string`  | "bottom"        | The position of the toast on the screen. Accepted values: "top", "middle", "bottom".                          |
-	 * | cssClass              | `string`  | -               | Any additional class for custom styles.                                                                       |
+	 * | cssClass              | `string`  | -               | Additional classes for custom styles, separated by spaces.                                                    |
 	 * | showCloseButton       | `boolean` | false           | Whether or not to show a button to close the toast.                                                           |
 	 * | closeButtonText       | `string`  | "Close"         | Text to display in the close button.                                                                          |
 	 * | dismissOnPageChange   | `boolean` | false           | Whether to dismiss the toast when navigating to a new page.                                                   |
@@ -91271,7 +92065,7 @@
 	var TOAST_POSITION_BOTTOM = 'bottom';
 
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -91307,7 +92101,11 @@
 	        this.dismissTimeout = undefined;
 	        this.d = params.data;
 	        if (this.d.cssClass) {
-	            renderer.setElementClass(_elementRef.nativeElement, this.d.cssClass, true);
+	            this.d.cssClass.split(' ').forEach(function (cssClass) {
+	                // Make sure the class isn't whitespace, otherwise it throws exceptions
+	                if (cssClass.trim() !== '')
+	                    renderer.setElementClass(_elementRef.nativeElement, cssClass, true);
+	            });
 	        }
 	        this.id = (++toastIds);
 	        if (this.d.message) {
@@ -91348,7 +92146,7 @@
 	    ToastCmp = __decorate([
 	        core_1.Component({
 	            selector: 'ion-toast',
-	            template: "\n    <div class=\"toast-wrapper\"\n      [class.toast-bottom]=\"d.position === 'bottom'\"\n      [class.toast-middle]=\"d.position === 'middle'\"\n      [class.toast-top]=\"d.position === 'top'\">\n      <div class=\"toast-container\">\n        <div class=\"toast-message\" id=\"{{hdrId}}\" *ngIf=\"d.message\">{{d.message}}</div>\n        <button clear class=\"toast-button\" *ngIf=\"d.showCloseButton\" (click)=\"cbClick()\">\n          {{ d.closeButtonText || 'Close' }}\n         </button>\n      </div>\n    </div>\n  ",
+	            template: "\n    <div class=\"toast-wrapper\"\n      [class.toast-bottom]=\"d.position === 'bottom'\"\n      [class.toast-middle]=\"d.position === 'middle'\"\n      [class.toast-top]=\"d.position === 'top'\">\n      <div class=\"toast-container\">\n        <div class=\"toast-message\" id=\"{{hdrId}}\" *ngIf=\"d.message\">{{d.message}}</div>\n        <button ion-button clear class=\"toast-button\" *ngIf=\"d.showCloseButton\" (click)=\"cbClick()\">\n          {{ d.closeButtonText || 'Close' }}\n         </button>\n      </div>\n    </div>\n  ",
 	            directives: [common_1.NgIf],
 	            host: {
 	                'role': 'dialog',
@@ -91553,7 +92351,7 @@
 	var TOAST_POSITION_BOTTOM = 'bottom';
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -91621,7 +92419,7 @@
 	exports.Translate = Translate;
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -91637,6 +92435,7 @@
 	        config.selector = 'ion-page';
 	        config.host = config.host || {};
 	        config.host['[hidden]'] = '_hidden';
+	        config.host['[class.tab-subpage]'] = '_tabSubPage';
 	        var annotations = _reflect.getMetadata('annotations', cls) || [];
 	        annotations.push(new core_1.Component(config));
 	        _reflect.defineMetadata('annotations', annotations, cls);
@@ -91646,80 +92445,80 @@
 	exports.Page = Page;
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var action_sheet_1 = __webpack_require__(421);
 	exports.ActionSheet = action_sheet_1.ActionSheet;
 	exports.ActionSheetController = action_sheet_1.ActionSheetController;
-	var action_sheet_options_1 = __webpack_require__(504);
+	var action_sheet_options_1 = __webpack_require__(506);
 	exports.ActionSheetOptions = action_sheet_options_1.ActionSheetOptions;
 	var alert_1 = __webpack_require__(425);
 	exports.Alert = alert_1.Alert;
 	exports.AlertController = alert_1.AlertController;
-	var alert_options_1 = __webpack_require__(505);
+	var alert_options_1 = __webpack_require__(507);
 	exports.AlertOptions = alert_options_1.AlertOptions;
 	exports.AlertInputOptions = alert_options_1.AlertInputOptions;
 	var app_1 = __webpack_require__(335);
 	exports.App = app_1.App;
 	var backdrop_1 = __webpack_require__(423);
 	exports.Backdrop = backdrop_1.Backdrop;
-	var badge_1 = __webpack_require__(437);
+	var badge_1 = __webpack_require__(438);
 	exports.Badge = badge_1.Badge;
-	var button_1 = __webpack_require__(438);
+	var button_1 = __webpack_require__(439);
 	exports.Button = button_1.Button;
-	var checkbox_1 = __webpack_require__(468);
+	var checkbox_1 = __webpack_require__(469);
 	exports.Checkbox = checkbox_1.Checkbox;
-	var content_1 = __webpack_require__(439);
+	var content_1 = __webpack_require__(440);
 	exports.Content = content_1.Content;
-	var datetime_1 = __webpack_require__(471);
+	var datetime_1 = __webpack_require__(472);
 	exports.DateTime = datetime_1.DateTime;
 	var icon_1 = __webpack_require__(424);
 	exports.Icon = icon_1.Icon;
-	var img_1 = __webpack_require__(445);
+	var img_1 = __webpack_require__(446);
 	exports.Img = img_1.Img;
-	var infinite_scroll_1 = __webpack_require__(447);
+	var infinite_scroll_1 = __webpack_require__(448);
 	exports.InfiniteScroll = infinite_scroll_1.InfiniteScroll;
-	var infinite_scroll_content_1 = __webpack_require__(448);
+	var infinite_scroll_content_1 = __webpack_require__(449);
 	exports.InfiniteScrollContent = infinite_scroll_content_1.InfiniteScrollContent;
-	var input_1 = __webpack_require__(476);
+	var input_1 = __webpack_require__(477);
 	exports.TextArea = input_1.TextArea;
 	exports.TextInput = input_1.TextInput;
-	var item_1 = __webpack_require__(458);
+	var item_1 = __webpack_require__(459);
 	exports.Item = item_1.Item;
-	var item_reorder_1 = __webpack_require__(459);
+	var item_reorder_1 = __webpack_require__(460);
 	exports.ItemReorder = item_reorder_1.ItemReorder;
-	var item_sliding_1 = __webpack_require__(462);
+	var item_sliding_1 = __webpack_require__(463);
 	exports.ItemSliding = item_sliding_1.ItemSliding;
 	exports.ItemOptions = item_sliding_1.ItemOptions;
 	exports.ItemSideFlags = item_sliding_1.ItemSideFlags;
-	var label_1 = __webpack_require__(461);
+	var label_1 = __webpack_require__(462);
 	exports.Label = label_1.Label;
-	var list_1 = __webpack_require__(456);
+	var list_1 = __webpack_require__(457);
 	exports.List = list_1.List;
 	exports.ListHeader = list_1.ListHeader;
-	var loading_1 = __webpack_require__(489);
+	var loading_1 = __webpack_require__(491);
 	exports.Loading = loading_1.Loading;
 	exports.LoadingController = loading_1.LoadingController;
-	var loading_options_1 = __webpack_require__(506);
+	var loading_options_1 = __webpack_require__(508);
 	exports.LoadingOptions = loading_options_1.LoadingOptions;
-	var menu_1 = __webpack_require__(430);
+	var menu_1 = __webpack_require__(431);
 	exports.Menu = menu_1.Menu;
-	var menu_close_1 = __webpack_require__(436);
+	var menu_close_1 = __webpack_require__(437);
 	exports.MenuClose = menu_close_1.MenuClose;
-	var menu_controller_1 = __webpack_require__(432);
+	var menu_controller_1 = __webpack_require__(433);
 	exports.MenuController = menu_controller_1.MenuController;
-	var menu_toggle_1 = __webpack_require__(433);
+	var menu_toggle_1 = __webpack_require__(434);
 	exports.MenuToggle = menu_toggle_1.MenuToggle;
-	var menu_types_1 = __webpack_require__(507);
+	var menu_types_1 = __webpack_require__(509);
 	exports.MenuType = menu_types_1.MenuType;
-	var modal_1 = __webpack_require__(491);
+	var modal_1 = __webpack_require__(493);
 	exports.Modal = modal_1.Modal;
 	exports.ModalController = modal_1.ModalController;
-	var modal_options_1 = __webpack_require__(508);
+	var modal_options_1 = __webpack_require__(510);
 	exports.ModalOptions = modal_options_1.ModalOptions;
-	var nav_1 = __webpack_require__(485);
+	var nav_1 = __webpack_require__(486);
 	exports.Nav = nav_1.Nav;
 	var nav_controller_1 = __webpack_require__(343);
 	exports.NavController = nav_controller_1.NavController;
@@ -91727,91 +92526,83 @@
 	exports.NavOptions = nav_interfaces_1.NavOptions;
 	var nav_params_1 = __webpack_require__(345);
 	exports.NavParams = nav_params_1.NavParams;
-	var nav_pop_1 = __webpack_require__(486);
+	var nav_pop_1 = __webpack_require__(487);
 	exports.NavPop = nav_pop_1.NavPop;
-	var nav_push_1 = __webpack_require__(487);
+	var nav_push_1 = __webpack_require__(488);
 	exports.NavPush = nav_push_1.NavPush;
 	var view_controller_1 = __webpack_require__(357);
 	exports.ViewController = view_controller_1.ViewController;
-	var navbar_1 = __webpack_require__(434);
+	var navbar_1 = __webpack_require__(435);
 	exports.Navbar = navbar_1.Navbar;
 	exports.NavbarTemplate = navbar_1.NavbarTemplate;
-	var option_1 = __webpack_require__(470);
+	var option_1 = __webpack_require__(471);
 	exports.Option = option_1.Option;
-	var picker_1 = __webpack_require__(472);
+	var picker_1 = __webpack_require__(473);
 	exports.Picker = picker_1.Picker;
 	exports.PickerController = picker_1.PickerController;
-	var picker_options_1 = __webpack_require__(474);
+	var picker_options_1 = __webpack_require__(475);
 	exports.PickerOptions = picker_options_1.PickerOptions;
-	var popover_1 = __webpack_require__(494);
+	exports.PickerColumn = picker_options_1.PickerColumn;
+	exports.PickerColumnOption = picker_options_1.PickerColumnOption;
+	var popover_1 = __webpack_require__(496);
 	exports.Popover = popover_1.Popover;
 	exports.PopoverController = popover_1.PopoverController;
-	var popover_options_1 = __webpack_require__(509);
+	var popover_options_1 = __webpack_require__(511);
 	exports.PopoverOptions = popover_options_1.PopoverOptions;
-	var radio_button_1 = __webpack_require__(480);
+	var radio_button_1 = __webpack_require__(481);
 	exports.RadioButton = radio_button_1.RadioButton;
-	var radio_group_1 = __webpack_require__(481);
+	var radio_group_1 = __webpack_require__(482);
 	exports.RadioGroup = radio_group_1.RadioGroup;
-	var range_1 = __webpack_require__(482);
+	var range_1 = __webpack_require__(483);
 	exports.Range = range_1.Range;
 	exports.RangeKnob = range_1.RangeKnob;
 	exports.ClientRect = range_1.ClientRect;
-	var refresher_1 = __webpack_require__(450);
+	var refresher_1 = __webpack_require__(451);
 	exports.Refresher = refresher_1.Refresher;
-	var refresher_content_1 = __webpack_require__(451);
+	var refresher_content_1 = __webpack_require__(452);
 	exports.RefresherContent = refresher_content_1.RefresherContent;
-	var scroll_1 = __webpack_require__(446);
+	var scroll_1 = __webpack_require__(447);
 	exports.Scroll = scroll_1.Scroll;
-	var searchbar_1 = __webpack_require__(484);
+	var searchbar_1 = __webpack_require__(485);
 	exports.Searchbar = searchbar_1.Searchbar;
-	var segment_1 = __webpack_require__(479);
+	var segment_1 = __webpack_require__(480);
 	exports.Segment = segment_1.Segment;
 	exports.SegmentButton = segment_1.SegmentButton;
-	var select_1 = __webpack_require__(469);
+	var select_1 = __webpack_require__(470);
 	exports.Select = select_1.Select;
-	var show_hide_when_1 = __webpack_require__(488);
+	var show_hide_when_1 = __webpack_require__(489);
 	exports.ShowWhen = show_hide_when_1.ShowWhen;
 	exports.HideWhen = show_hide_when_1.HideWhen;
 	exports.DisplayWhen = show_hide_when_1.DisplayWhen;
-	var slides_1 = __webpack_require__(452);
+	var slides_1 = __webpack_require__(453);
 	exports.Slides = slides_1.Slides;
 	exports.Slide = slides_1.Slide;
 	exports.SlideLazy = slides_1.SlideLazy;
-	var spinner_1 = __webpack_require__(449);
+	var spinner_1 = __webpack_require__(450);
 	exports.Spinner = spinner_1.Spinner;
-	var tab_1 = __webpack_require__(443);
+	var tab_1 = __webpack_require__(444);
 	exports.Tab = tab_1.Tab;
-	var tabs_1 = __webpack_require__(441);
+	var tabs_1 = __webpack_require__(442);
 	exports.Tabs = tabs_1.Tabs;
-	var tap_click_1 = __webpack_require__(496);
+	var tap_click_1 = __webpack_require__(498);
 	exports.TapClick = tap_click_1.TapClick;
 	exports.isActivatable = tap_click_1.isActivatable;
-	var toast_1 = __webpack_require__(499);
+	var toast_1 = __webpack_require__(501);
 	exports.Toast = toast_1.Toast;
 	exports.ToastController = toast_1.ToastController;
-	var toast_options_1 = __webpack_require__(510);
+	var toast_options_1 = __webpack_require__(512);
 	exports.ToastOptions = toast_options_1.ToastOptions;
-	var toggle_1 = __webpack_require__(475);
+	var toggle_1 = __webpack_require__(476);
 	exports.Toggle = toggle_1.Toggle;
-	var toolbar_1 = __webpack_require__(435);
+	var toolbar_1 = __webpack_require__(436);
 	exports.Toolbar = toolbar_1.Toolbar;
 	exports.ToolbarBase = toolbar_1.ToolbarBase;
 	exports.Header = toolbar_1.Header;
 	exports.Footer = toolbar_1.Footer;
-	var virtual_scroll_1 = __webpack_require__(463);
+	var typography_1 = __webpack_require__(490);
+	exports.Typography = typography_1.Typography;
+	var virtual_scroll_1 = __webpack_require__(464);
 	exports.VirtualScroll = virtual_scroll_1.VirtualScroll;
-
-/***/ },
-/* 504 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 505 */
-/***/ function(module, exports) {
-
-	"use strict";
 
 /***/ },
 /* 506 */
@@ -91821,6 +92612,18 @@
 
 /***/ },
 /* 507 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 508 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -91830,7 +92633,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var animation_1 = __webpack_require__(356);
-	var menu_controller_1 = __webpack_require__(432);
+	var menu_controller_1 = __webpack_require__(433);
 	/**
 	 * @private
 	 * Menu Type
@@ -91974,18 +92777,6 @@
 	menu_controller_1.MenuController.registerType('overlay', MenuOverlayType);
 
 /***/ },
-/* 508 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 509 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
 /* 510 */
 /***/ function(module, exports) {
 
@@ -91993,18 +92784,30 @@
 
 /***/ },
 /* 511 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 512 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(512));
-	__export(__webpack_require__(513));
 	__export(__webpack_require__(514));
+	__export(__webpack_require__(515));
+	__export(__webpack_require__(516));
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -92088,7 +92891,7 @@
 	exports.StorageEngine = StorageEngine;
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92097,7 +92900,7 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(512);
+	var storage_1 = __webpack_require__(514);
 	/**
 	 * @name LocalStorage
 	 * @description
@@ -92202,7 +93005,7 @@
 	exports.LocalStorage = LocalStorage;
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92211,13 +93014,14 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var storage_1 = __webpack_require__(512);
+	var storage_1 = __webpack_require__(514);
 	var util_1 = __webpack_require__(340);
 	var DB_NAME = '__ionicstorage';
 	var win = window;
 	/**
-	 * SqlStorage uses SQLite or WebSQL (development only!) to store data in a
-	 * persistent SQL store on the filesystem.
+	 * SqlStorage is a wrapper that uses SQLite when running natively (if available)
+	 * to store data in a persistent SQL store on the filesystem
+	 * or uses WebSQL when serving the app to the browser.
 	 *
 	 * This is the preferred storage engine, as data will be stored in appropriate
 	 * app storage, unlike Local Storage which is treated differently by the OS.
@@ -92354,7 +93158,7 @@
 	exports.SqlStorage = SqlStorage;
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92368,7 +93172,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var translate_1 = __webpack_require__(501);
+	var translate_1 = __webpack_require__(503);
 	/**
 	 * @private
 	 * The Translate pipe makes it easy to translate strings.
@@ -92404,7 +93208,7 @@
 	exports.TranslatePipe = TranslatePipe;
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92434,6 +93238,7 @@
 	    spinner: 'ios',
 	    tabsHighlight: false,
 	    tabsPlacement: 'bottom',
+	    tabsHideOnSubPages: false,
 	    toastEnter: 'toast-slide-in',
 	    toastLeave: 'toast-slide-out',
 	});
@@ -92460,8 +93265,9 @@
 	    popoverEnter: 'popover-md-pop-in',
 	    popoverLeave: 'popover-md-pop-out',
 	    spinner: 'crescent',
-	    tabsHighlight: true,
+	    tabsHighlight: false,
 	    tabsPlacement: 'bottom',
+	    tabsHideOnSubPages: false,
 	    toastEnter: 'toast-md-slide-in',
 	    toastLeave: 'toast-md-slide-out',
 	});
@@ -92490,12 +93296,13 @@
 	    spinner: 'circles',
 	    tabsHighlight: false,
 	    tabsPlacement: 'top',
+	    tabsHideOnSubPages: true,
 	    toastEnter: 'toast-wp-slide-in',
 	    toastLeave: 'toast-wp-slide-out',
 	});
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92688,7 +93495,7 @@
 	}
 
 /***/ },
-/* 518 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92748,7 +93555,7 @@
 	animation_1.Animation.register('fade-out', FadeOut);
 
 /***/ },
-/* 519 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92758,7 +93565,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var animation_1 = __webpack_require__(356);
-	var page_transition_1 = __webpack_require__(493);
+	var page_transition_1 = __webpack_require__(495);
 	var DURATION = 500;
 	var EASING = 'cubic-bezier(0.36,0.66,0.04,1)';
 	var OPACITY = 'opacity';
@@ -92921,7 +93728,7 @@
 	page_transition_1.PageTransition.register('ios-transition', IOSTransition);
 
 /***/ },
-/* 520 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92931,7 +93738,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var animation_1 = __webpack_require__(356);
-	var page_transition_1 = __webpack_require__(493);
+	var page_transition_1 = __webpack_require__(495);
 	var TRANSLATEY = 'translateY';
 	var OFF_BOTTOM = '40px';
 	var CENTER = '0px';
@@ -92981,7 +93788,7 @@
 	page_transition_1.PageTransition.register('md-transition', MDTransition);
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -92991,7 +93798,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var animation_1 = __webpack_require__(356);
-	var page_transition_1 = __webpack_require__(493);
+	var page_transition_1 = __webpack_require__(495);
 	var SHOW_BACK_BTN_CSS = 'show-back-button';
 	var SCALE_SMALL = .95;
 	var WPTransition = (function (_super) {

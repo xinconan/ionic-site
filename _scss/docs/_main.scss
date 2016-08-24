@@ -24,14 +24,14 @@ body {
 
 .improve-v2-docs {
   display: block;
-  margin-top: -3.9em;
   float: right;
+  margin-top: -7em;
 }
 
 .component-doc-demo {
   display: block;
-  margin-top: -3.1em;
   float: right;
+  margin-top: -3.1em;
 }
 
 .docs-container {
@@ -767,30 +767,83 @@ a.footer-link {
     position: fixed;
     top: 0;
   }
+}
 
-  .platform-toggle {
-    padding: 8px 10px 4px;
+.platform-preview .platform-toggle, .docs-container .sass-platform-toggle {
 
-    a {
-      cursor: pointer;
-      display: inline-block;
-      padding: 4px 16px;
-      border-radius: 16px;
-      color: $grey;
-      font-size: 14px;
-      font-weight: 500;
-      -webkit-font-smoothing: antialiased;
-      transition: .2s color, .2s background-color;
+  a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 16px;
+    color: $grey;
+    font-size: 14px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    transition: .2s color, .2s background-color;
 
-      &.active,
-      &.active:hover {
-        background-color: $blue;
-        color: white;
+    &.active,
+    &.active:hover {
+      background-color: $blue;
+      color: white;
+    }
+
+    &:hover {
+      color: $blue;
+      text-decoration: none;
+    }
+  }
+}
+
+.platform-preview  .platform-toggle {
+  padding: 8px 10px 4px;
+}
+
+.docs-container .sass-platform-toggle {
+  padding-top: 0px 10px 4px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+#sass-variable-header {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+#sass-variables {
+  margin-bottom: 0px;
+  position: relative;
+  bottom: 15px;
+
+  .table.param-table {
+    td,
+    th {
+      white-space: nowrap;
+
+      &:last-child, &:nth-last-child(2) {
+        white-space: normal;
       }
 
-      &:hover {
-        color: $blue;
-        text-decoration: none;
+      &:nth-last-child(2) {
+        width: 10%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) and (min-width: $screen-xs) {
+  #sass-variables {
+    bottom: -10px;
+  }
+}
+
+@media (max-width: $screen-xs) {
+  #sass-variables {
+    bottom: -25px;
+
+    .table.param-table {
+      tr,td {
+        white-space: normal;
       }
     }
   }

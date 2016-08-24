@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "button"
@@ -35,7 +35,7 @@ Button
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/button/button.ts#L4">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/button/button.ts#L4">
 Improve this doc
 </a>
 
@@ -46,7 +46,6 @@ Improve this doc
 
 <p>Buttons are simple components in Ionic. They can consist of text and icons
 and be enhanced by a wide range of attributes.</p>
-
 
 
 
@@ -393,6 +392,8 @@ Dynamically set which predefined color this button should use (e.g. primary, sec
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

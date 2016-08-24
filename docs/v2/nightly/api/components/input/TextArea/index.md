@@ -48,13 +48,12 @@ Improve this doc
 uses an actual <code>&lt;textarea&gt;</code> HTML element within the component;
 however, with Ionic wrapping the native HTML text area element, Ionic
 is able to better handle the user experience and interactivity.</p>
-<p>Not that <code>&lt;ion-textarea&gt;</code> must load its value from the <code>value</code> or
+<p>Note that <code>&lt;ion-textarea&gt;</code> must load its value from the <code>value</code> or
 <code>[(ngModel)]</code> attribute. Unlike the native <code>&lt;textarea&gt;</code> element,
 <code>&lt;ion-textarea&gt;</code> does not support loading its value from the
 textarea&#39;s inner content.</p>
 <p>When requiring only a single-line text input, we recommend using
 <code>&lt;ion-input&gt;</code> instead.</p>
-
 
 
 
@@ -92,6 +91,8 @@ textarea&#39;s inner content.</p>
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link --><!-- end content block -->

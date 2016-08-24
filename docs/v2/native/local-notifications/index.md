@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -65,7 +65,7 @@ docType: "class"
 LocalNotifications.schedule({
   id: 1,
   text: &#39;Single Notification&#39;,
-  sound: isAndroid? &#39;file://sound.mp3&#39;: &#39;file://beep.caf&#39;
+  sound: isAndroid? &#39;file://sound.mp3&#39;: &#39;file://beep.caf&#39;,
   data: { secret: key }
 });
 

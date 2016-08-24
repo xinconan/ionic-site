@@ -64,7 +64,6 @@ standard page.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -74,7 +73,7 @@ standard page.</p>
 @Component(...)
 class HomePage {
 
- constructor(private modalCtrl: ModalController) {
+ constructor(public modalCtrl: ModalController) {
 
  }
 
@@ -220,7 +219,7 @@ import { ModalController, ViewController } from &#39;ionic-angular&#39;;
 @Component(...)
 class HomePage {
 
- constructor(private modalCtrl: ModalController) {
+ constructor(public modalCtrl: ModalController) {
 
  }
 
@@ -242,7 +241,7 @@ class HomePage {
 @Component(...)
 class Profile {
 
- constructor(private viewCtrl: ViewController) {
+ constructor(public viewCtrl: ViewController) {
 
  }
 
@@ -253,6 +252,8 @@ class Profile {
 
 }
 </code></pre>
+
+
 
 
 

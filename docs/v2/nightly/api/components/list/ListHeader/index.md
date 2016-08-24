@@ -33,10 +33,9 @@ ListHeader
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/list/list.ts#L121">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/list/list.ts#L107">
 Improve this doc
 </a>
-
 
 
 
@@ -66,6 +65,8 @@ Improve this doc
   
 
 </h3>
+
+
 
 
 

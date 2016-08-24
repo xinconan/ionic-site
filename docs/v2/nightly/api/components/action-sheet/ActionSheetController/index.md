@@ -67,7 +67,6 @@ instance has methods to add options, like <code>setTitle()</code> or <code>addBu
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -76,7 +75,7 @@ instance has methods to add options, like <code>setTitle()</code> or <code>addBu
 
 export class MyClass{
 
- constructor(private actionSheetCtrl: ActionSheetController) {}
+ constructor(public actionSheetCtrl: ActionSheetController) {}
 
  presentActionSheet() {
    let actionSheet = this.actionSheetCtrl.create({
@@ -182,27 +181,27 @@ Open an action sheet with a title, subTitle, and an array of buttons
 <tr>
 <td>title</td>
 <td><code>string</code></td>
-<td>The title for the actionsheet</td>
+<td>The title for the Action Sheet.</td>
 </tr>
 <tr>
 <td>subTitle</td>
 <td><code>string</code></td>
-<td>The sub-title for the actionsheet</td>
+<td>The sub-title for the Action Sheet.</td>
 </tr>
 <tr>
 <td>cssClass</td>
 <td><code>string</code></td>
-<td>An additional class for custom styles</td>
+<td>Additional classes for custom styles, separated by spaces.</td>
 </tr>
 <tr>
 <td>enableBackdropDismiss</td>
 <td><code>boolean</code></td>
-<td>If the actionsheet should close when the user taps the backdrop</td>
+<td>If the Action Sheet should close when the user taps the backdrop.</td>
 </tr>
 <tr>
 <td>buttons</td>
 <td><code>array&lt;any&gt;</code></td>
-<td>An array of buttons to display</td>
+<td>An array of buttons to display.</td>
 </tr>
 </tbody>
 </table>
@@ -219,27 +218,27 @@ Open an action sheet with a title, subTitle, and an array of buttons
 <tr>
 <td>text</td>
 <td><code>string</code></td>
-<td>The buttons text</td>
+<td>The buttons text.</td>
 </tr>
 <tr>
 <td>icon</td>
 <td><code>icon</code></td>
-<td>The buttons icons</td>
+<td>The buttons icons.</td>
 </tr>
 <tr>
 <td>handler</td>
 <td><code>any</code></td>
-<td>An express the button should evaluate</td>
+<td>An express the button should evaluate.</td>
 </tr>
 <tr>
 <td>cssClass</td>
 <td><code>string</code></td>
-<td>An additional class for custom styles</td>
+<td>Additional classes for custom styles, separated by spaces.</td>
 </tr>
 <tr>
 <td>role</td>
 <td><code>string</code></td>
-<td>How the button should be displayed, <code>destructive</code> or <code>cancel</code>. If not role is provided, it will display the button without any additional styles</td>
+<td>How the button should be displayed, <code>destructive</code> or <code>cancel</code>. If not role is provided, it will display the button without any additional styles.</td>
 </tr>
 </tbody>
 </table>
@@ -291,6 +290,8 @@ the handler returns <code>false</code>, then the action sheet does not automatic
 itself. Instead, you now have complete control of when the action sheet has finished
 transitioning, and the ability to wait for the action sheet to finish transitioning
 out before starting a new transition.</p>
+
+
 
 
 

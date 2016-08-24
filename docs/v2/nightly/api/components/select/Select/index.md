@@ -52,10 +52,10 @@ for users.</p>
 <p>The select component takes child <code>ion-option</code> components. If <code>ion-option</code> is not
 given a <code>value</code> attribute then it will use its text as the value.</p>
 <h3 id="interfaces">Interfaces</h3>
-<p>By default, the <code>ion-select</code> uses the <a href='../../alert/Alert'>Alert API</a> to
-open up the overlay of options in an alert. The interface can be changed to use the
-<a href='../../action-sheet/ActionSheet'>ActionSheet API</a> by passing <code>action-sheet</code> to
-the <code>interface</code> property. Read the other sections for the limitations of the
+<p>By default, the <code>ion-select</code> uses the <a href='../../alert/AlertController'>AlertController API</a>
+to open up the overlay of options in an alert. The interface can be changed to use the
+<a href='../../action-sheet/ActionSheetController'>ActionSheetController API</a> by passing
+<code>action-sheet</code> to the <code>interface</code> property. Read the other sections for the limitations of the
 action sheet interface.</p>
 <h3 id="single-value-radio-buttons">Single Value: Radio Buttons</h3>
 <p>The standard <code>ion-select</code> component allows the user to select only one
@@ -67,7 +67,7 @@ component&#39;s value receives the value of the selected option&#39;s value.</p>
 <pre><code class="lang-html">&lt;ion-item&gt;
   &lt;ion-label&gt;Gender&lt;/ion-label&gt;
   &lt;ion-select [(ngModel)]=&quot;gender&quot;&gt;
-    &lt;ion-option value=&quot;f&quot; checked=&quot;true&quot;&gt;Female&lt;/ion-option&gt;
+    &lt;ion-option value=&quot;f&quot; selected=&quot;true&quot;&gt;Female&lt;/ion-option&gt;
     &lt;ion-option value=&quot;m&quot;&gt;Male&lt;/ion-option&gt;
   &lt;/ion-select&gt;
 &lt;/ion-item&gt;
@@ -102,21 +102,22 @@ can be customized using the <code>cancelText</code> and <code>okText</code> attr
 <p>The action sheet interface does not have an <code>OK</code> button, clicking
 on any of the options will automatically close the overlay and select
 that value.</p>
-<h3 id="alert-options">Alert Options</h3>
-<p>Since <code>ion-select</code> is a wrapper to <code>Alert</code>, by default, it can be
-passed options in the <code>alertOptions</code> property. This can be used to
-pass a custom alert title, subtitle or message. See the <a href='../../alert/Alert'>Alert API docs</a>
-for more properties.</p>
-<pre><code class="lang-html">&lt;ion-select [alertOptions]=&quot;alertOptions&quot;&gt;
+<h3 id="select-options">Select Options</h3>
+<p>Since <code>ion-select</code> uses the <code>Alert</code> and <code>Action Sheet</code> interfaces, options can be
+passed to these components through the <code>selectOptions</code> property. This can be used
+to pass a custom title, subtitle, css class, and more. See the
+<a href='../../alert/AlertController/#create'>AlertController API docs</a> and
+<a href='../../action-sheet/ActionSheetController/#create'>ActionSheetController API docs</a>
+for the properties that each interface accepts.</p>
+<pre><code class="lang-html">&lt;ion-select [selectOptions]=&quot;selectOptions&quot;&gt;
   ...
 &lt;/ion-select&gt;
 </code></pre>
-<pre><code class="lang-ts">this.alertOptions = {
+<pre><code class="lang-ts">this.selectOptions = {
   title: &#39;Pizza Toppings&#39;,
   subTitle: &#39;Select your toppings&#39;
 };
 </code></pre>
-
 
 
 
@@ -186,10 +187,12 @@ Open the select interface.
     </tr>
     
     <tr>
-      <td>alertOptions</td>
+      <td>selectOptions</td>
       <td><code>any</code></td>
-      <td><p> Any addition options that the alert interface can take.
-See the <a href="../../alert/Alert">Alert API docs</a> for the create options.</p>
+      <td><p> Any additional options that the <code>alert</code> or <code>action-sheet</code> interface can take.
+See the <a href="../../alert/AlertController/#create">AlertController API docs</a> and the
+<a href="../../action-sheet/ActionSheetController/#create">ActionSheetController API docs</a> for the
+create options for each interface.</p>
 </td>
     </tr>
     
@@ -197,6 +200,13 @@ See the <a href="../../alert/Alert">Alert API docs</a> for the create options.</
       <td>interface</td>
       <td><code>string</code></td>
       <td><p> The interface the select should use: <code>action-sheet</code> or <code>alert</code>. Default: <code>alert</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>selectedText</td>
+      <td><code>string</code></td>
+      <td><p> The text to display instead of the selected option&#39;s value.</p>
 </td>
     </tr>
     
@@ -241,6 +251,8 @@ See the <a href="../../alert/Alert">Alert API docs</a> for the create options.</
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link --><!-- end content block -->

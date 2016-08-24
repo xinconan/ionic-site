@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "datetime"
@@ -35,7 +35,7 @@ DateTime
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/datetime/datetime.ts#L12">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/datetime/datetime.ts#L12">
 Improve this doc
 </a>
 
@@ -316,7 +316,7 @@ if the app needs to use names other than the default English version of month an
 names. The month names and day names can be either configured at the app level, or
 individual <code>ion-datetime</code> level.</p>
 <h3 id="app-config-level">App Config Level</h3>
-<pre><code class="lang-ts">import {ionicBootstrap} from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import { ionicBootstrap } from &#39;ionic-angular&#39;;
 
 ionicBootstrap(MyApp, customProviders, {
   monthNames: [&#39;janeiro&#39;, &#39;fevereiro&#39;, &#39;mar\u00e7o&#39;, ... ],
@@ -348,7 +348,6 @@ display dates in JavaScript&quot;. <a href="http://momentjs.com/">Moment.js</a> 
 our goto standard when dealing with datetimes within JavaScript, but Ionic does not
 prepackage this dependency since most apps will not require it, and its locale
 configuration should be decided by the end-developer.</p>
-
 
 
 
@@ -575,6 +574,8 @@ See the <a href="../../picker/Picker">Picker API docs</a> for the picker options
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link --><!-- end content block -->

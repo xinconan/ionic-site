@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "label"
@@ -35,7 +35,7 @@ Label
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/label/label.ts#L0">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/label/label.ts#L0">
 Improve this doc
 </a>
 
@@ -46,7 +46,6 @@ Improve this doc
 
 <p>Labels are placed inside of an <code>ion-item</code> element and can be used
 to describe an <code>ion-input</code>, <code>ion-toggle</code>, <code>ion-checkbox</code>, and more.</p>
-
 
 
 
@@ -132,7 +131,7 @@ floating
 
 
 <td>
-A label that will float about the input if the input is empty or loses focus.
+A label that will float above the input if the input is empty or loses focus.
 </td>
 </tr>
 
@@ -156,6 +155,8 @@ A stacked label will always appear on top of the input.
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link -->

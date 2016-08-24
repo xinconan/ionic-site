@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "spinner"
@@ -33,7 +33,7 @@ Spinner
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/spinner/spinner.ts#L2">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/spinner/spinner.ts#L3">
 Improve this doc
 </a>
 
@@ -99,7 +99,6 @@ the appropriate spinner for the platform on which it’s running.</p>
    </td>
  </tr>
 </table>
-
 
 
 
@@ -171,6 +170,8 @@ of <code>background-color</code>.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link --><!-- end content block -->

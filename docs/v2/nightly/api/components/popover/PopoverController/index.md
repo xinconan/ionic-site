@@ -53,12 +53,11 @@ the second argument. Options for the popover can optionally be
 passed in the third argument. See the <a href="#create">create</a> method
 below for all available options.</p>
 <h3 id="presenting">Presenting</h3>
-<p>To present a popover, call the <code>present</code> method on the <a href="../../nav/NavController">NavController</a>.
-The first argument passed to the <code>present</code> should be the popover. In order
-to position the popover relative to the element clicked, the event needs to be
-passed as the second argument. If the event is not passed, the popover will be
-positioned in the center of the current view. See the <a href="#usage">usage</a> section for
-an example of passing this event.</p>
+<p>To present a popover, call the <code>present</code> method on a <a href="../../nav/PopoverConroller">PopoverController</a> instance.
+In order to position the popover relative to the element clicked, a click event
+needs to be passed into the options of the the `present method. If the event
+is not passed, the popover will be positioned in the center of the current
+view. See the <a href="#usage">usage</a> section for an example of passing this event.</p>
 <h3 id="dismissing">Dismissing</h3>
 <p>To dismiss the popover after creation, call the <code>dismiss()</code> method on the
 <code>Popover</code> instance. The popover can also be dismissed from within the popover&#39;s
@@ -77,14 +76,13 @@ section below.</p>
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
 
 <p>To open a popover on the click of a button, pass <code>$event</code> to the method
 which creates and presents the popover:</p>
-<pre><code class="lang-html">&lt;button (click)=&quot;presentPopover($event)&quot;&gt;
+<pre><code class="lang-html">&lt;button ion-button (click)=&quot;presentPopover($event)&quot;&gt;
   &lt;ion-icon name=&quot;more&quot;&gt;&lt;/ion-icon&gt;
 &lt;/button&gt;
 </code></pre>
@@ -229,7 +227,7 @@ Present a popover. See below for options
 <tr>
 <td>cssClass</td>
 <td><code>string</code></td>
-<td>An additional class for custom styles.</td>
+<td>Additional classes for custom styles, separated by spaces.</td>
 </tr>
 <tr>
 <td>showBackdrop</td>
@@ -243,6 +241,8 @@ Present a popover. See below for options
 </tr>
 </tbody>
 </table>
+
+
 
 
 

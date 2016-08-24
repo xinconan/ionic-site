@@ -49,7 +49,6 @@ Improve this doc
 
 
 
-
 <!-- @usage tag -->
 
 <h2><a class="anchor" name="usage" href="#usage"></a>Usage</h2>
@@ -81,6 +80,13 @@ Improve this doc
     </tr>
   </thead>
   <tbody>
+    
+    <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
     
     <tr>
       <td>cancelButtonText</td>
@@ -190,6 +196,8 @@ Improve this doc
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

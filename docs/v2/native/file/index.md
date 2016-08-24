@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.9"
+version: "1.3.17"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -30,7 +30,7 @@ docType: "class"
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/file.ts#L3">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/file.ts#L336">
   Improve this doc
 </a>
 
@@ -51,6 +51,14 @@ docType: "class"
 <!-- description -->
 
 <p>This plugin implements a File API allowing read/write access to files residing on the device.</p>
+<p>The File class implements static convenience functions to access files and directories.</p>
+<p>Example:</p>
+<pre><code>import { File } from &#39;ionic-native&#39;;
+
+declare var cordova: any;
+const fs:string = cordova.file.dataDirectory;
+File.checkDir(this.fs, &#39;mydir&#39;).then(_ =&gt; console.log(&#39;yay&#39;)).catch(err =&gt; console.log(&#39;boooh&#39;));
+</code></pre>
 <p> This plugin is based on several specs, including : The HTML5 File API <a href="http://www.w3.org/TR/FileAPI/">http://www.w3.org/TR/FileAPI/</a>
  The (now-defunct) Directories and System extensions Latest: <a href="http://www.w3.org/TR/2012/WD-file-system-api-20120417/">http://www.w3.org/TR/2012/WD-file-system-api-20120417/</a>
  Although most of the plugin code was written when an earlier spec was current: <a href="http://www.w3.org/TR/2011/WD-file-system-api-20110419/">http://www.w3.org/TR/2011/WD-file-system-api-20110419/</a>
@@ -67,6 +75,21 @@ docType: "class"
 <h3><code>cordovaFileError()</code>
   
 </h3>
+
+
+
+
+
+
+
+
+
+<div id="getFreeDiskSpace"></div>
+<h3><code>getFreeDiskSpace()</code>
+  
+</h3>
+
+
 
 
 
@@ -137,9 +160,7 @@ docType: "class"
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;boolean|FileError&gt;</code> Returns a Promise that resolves to true if the directory exists or rejects with an error.
 </div>
 
 
@@ -224,9 +245,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;DirectoryEntry|FileError&gt;</code> Returns a Promise that resolves with a DirectoryEntry or rejects with an error.
 </div>
 
 
@@ -292,9 +311,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;RemoveResult|FileError&gt;</code> Returns a Promise that resolves to a RemoveResult or rejects with an error.
 </div>
 
 
@@ -394,9 +411,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;DirectoryEntry|Entry|FileError&gt;</code> Returns a Promise that resolves to the new DirectoryEntry object or rejects with an error.
 </div>
 
 
@@ -496,9 +511,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;Entry|FileError&gt;</code> Returns a Promise that resolves to the new Entry object or rejects with an error.
 </div>
 
 
@@ -564,9 +577,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;Entry[]&gt;</code> Returns a Promise that resolves to an array of Entry objects or rejects with an error.
 </div>
 
 
@@ -632,9 +643,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;RemoveResult&gt;</code> Returns a Promise that resolves with a RemoveResult or rejects with an error.
 </div>
 
 
@@ -700,9 +709,7 @@ If an existing directory exists and the replace value is false, the promise will
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;boolean|FileError&gt;</code> Returns a Promise that resolves with a boolean or rejects with an error.
 </div>
 
 
@@ -787,9 +794,7 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;FileEntry|FileError&gt;</code> Returns a Promise that resolves to a FileEntry or rejects with an error.
 </div>
 
 
@@ -855,17 +860,198 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
+<code>Promise&lt;RemoveResult|FileError&gt;</code> Returns a Promise that resolves to a RemoveResult or rejects with an error.
+</div>
 
 
+
+<div id="writeFile"></div>
+<h3><code>writeFile(path,&nbsp;fileName,&nbsp;text,&nbsp;replaceOrOptions)</code>
+  
+</h3>Write a new file to the desired location.
+
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      path
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      fileName
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>path relative to base path</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      text
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>content to write</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      replaceOrOptions
+      
+      
+    </td>
+    <td>
+      
+<code>boolean</code>|<code>WriteOptions</code>
+    </td>
+    <td>
+      <p>replace file if set to true. See WriteOptions for more information.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise&lt;void&gt;</code> Returns a Promise that resolves or rejects with an error.
+</div>
+
+
+
+<div id="writeExistingFile"></div>
+<h3><code>writeExistingFile(path,&nbsp;fileName,&nbsp;text)</code>
+  
+</h3>Write to an existing file.
+
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      path
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      fileName
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>path relative to base path</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      text
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>content to write</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise&lt;void&gt;</code> Returns a Promise that resolves or rejects with an error.
 </div>
 
 
 
 <div id="readAsText"></div>
-<h3><code>readAsText(uri)</code>
+<h3><code>readAsText(path,&nbsp;file)</code>
   
-</h3>Read a file as string.
+</h3>Read the contents of a file as text.
 
 
 
@@ -881,7 +1067,7 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      uri
+      path
       
       
     </td>
@@ -891,6 +1077,23 @@ If an existing file exists and the replace value is false, the promise will fail
     </td>
     <td>
       <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      file
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of file, relative to path.</p>
 
       
     </td>
@@ -906,17 +1109,17 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;string|FileError&gt;</code> Returns a Promise that resolves with the contents of the file as string or rejects with an error.
 </div>
 
 
 
 <div id="readAsDataURL"></div>
-<h3><code>readAsDataURL(uri)</code>
+<h3><code>readAsDataURL(path,&nbsp;file)</code>
   
-</h3>Read a file as string.
+</h3>Read file and return data as a base64 encoded data url.
+A data url is of the form:
+     data:[<mediatype>][;base64],<data>
 
 
 
@@ -932,7 +1135,7 @@ If an existing file exists and the replace value is false, the promise will fail
   
   <tr>
     <td>
-      uri
+      path
       
       
     </td>
@@ -942,6 +1145,23 @@ If an existing file exists and the replace value is false, the promise will fail
     </td>
     <td>
       <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      file
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of file, relative to path.</p>
 
       
     </td>
@@ -957,9 +1177,139 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
+<code>Promise&lt;string|FileError&gt;</code> Returns a Promise that resolves with the contents of the file as data URL or rejects with an error.
+</div>
 
 
+
+<div id="readAsBinaryString"></div>
+<h3><code>readAsBinaryString(path,&nbsp;file)</code>
+  
+</h3>Read file and return data as a binary data.
+
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      path
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      file
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of file, relative to path.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise&lt;string|FileError&gt;</code> Returns a Promise that resolves with the contents of the file as string rejects with an error.
+</div>
+
+
+
+<div id="readAsArrayBuffer"></div>
+<h3><code>readAsArrayBuffer(path,&nbsp;file)</code>
+  
+</h3>Read file and return data as an ArrayBuffer.
+
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      path
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Base FileSystem. Please refer to the iOS and Android filesystems above</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      file
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>Name of file, relative to path.</p>
+
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise&lt;ArrayBuffer|FileError&gt;</code> Returns a Promise that resolves with the contents of the file as ArrayBuffer or rejects with an error.
 </div>
 
 
@@ -1059,9 +1409,7 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;Entry|FileError&gt;</code> Returns a Promise that resolves to the new Entry or rejects with an error.
 </div>
 
 
@@ -1161,10 +1509,164 @@ If an existing file exists and the replace value is false, the promise will fail
 <div class="return-value" markdown="1">
   <i class="icon ion-arrow-return-left"></i>
   <b>Returns:</b> 
- Returns a Promise that resolves or rejects with an error.
-
-
+<code>Promise&lt;Entry|FileError&gt;</code> Returns a Promise that resolves to an Entry or rejects with an error.
 </div>
+
+
+
+<div id="fillErrorMessage"></div>
+<h3><code>fillErrorMessage()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="resolveLocalFilesystemUrl"></div>
+<h3><code>resolveLocalFilesystemUrl()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="resolveDirectoryUrl"></div>
+<h3><code>resolveDirectoryUrl()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="getDirectory"></div>
+<h3><code>getDirectory()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="getFile"></div>
+<h3><code>getFile()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="remove"></div>
+<h3><code>remove()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="move"></div>
+<h3><code>move()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="copy"></div>
+<h3><code>copy()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="readEntries"></div>
+<h3><code>readEntries()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="rimraf"></div>
+<h3><code>rimraf()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="createWriter"></div>
+<h3><code>createWriter()</code>
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div id="write"></div>
+<h3><code>write()</code>
+  
+</h3>
+
+
+
+
+
+
 
 
 

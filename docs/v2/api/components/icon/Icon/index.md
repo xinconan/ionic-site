@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "icon"
@@ -35,7 +35,7 @@ Icon
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/icon/icon.ts#L2">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/icon/icon.ts#L2">
 Improve this doc
 </a>
 
@@ -53,7 +53,6 @@ running from. For example, by setting the icon name of <code>alarm</code>, on iO
 icon will automatically apply <code>ios-alarm</code>, and on Material Design it will
 automatically apply <code>md-alarm</code>. This allows the developer to write the
 markup once while Ionic applies the appropriate icon based on the mode.</p>
-
 
 
 
@@ -123,6 +122,8 @@ markup once while Ionic applies the appropriate icon based on the mode.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "transition"
@@ -31,10 +31,9 @@ Transition
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/transitions/transition.ts#L4">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/transitions/transition.ts#L4">
 Improve this doc
 </a>
-
 
 
 
@@ -94,6 +93,8 @@ Improve this doc
   
 
 </h3>
+
+
 
 
 

@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.10"
-versionHref: "/docs/v2"
+version: "2.0.0-beta.11"
+versionHref: "/docs/v2/2.0.0-beta-11"
 path: ""
 category: api
 id: "toggle"
@@ -35,7 +35,7 @@ Toggle
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/toggle/toggle.ts#L11">
+<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/toggle/toggle.ts#L11">
 Improve this doc
 </a>
 
@@ -50,7 +50,6 @@ Toggles can also have colors assigned to them, by adding any color
 attribute.</p>
 <p>See the <a href="https://angular.io/docs/ts/latest/guide/forms.html">Angular 2 Docs</a>
 for more info on forms and inputs.</p>
-
 
 
 
@@ -134,6 +133,8 @@ for more info on forms and inputs.</p>
     
   </tbody>
 </table>
+
+
 
 
 <!-- related link -->

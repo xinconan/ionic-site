@@ -31,10 +31,9 @@ ionicProviders
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/config/providers.ts#L25">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/config/providers.ts#L27">
 Improve this doc
 </a>
-
 
 
 
@@ -53,6 +52,8 @@ Improve this doc
 
 
 <!-- instance methods on the class -->
+
+
 
 
 <!-- related link --><!-- end content block -->
