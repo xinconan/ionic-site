@@ -31,7 +31,7 @@ App
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/app/app.ts#L14">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/app/app.ts#L9">
 Improve this doc
 </a>
 
@@ -40,7 +40,7 @@ Improve this doc
 
 
 
-<p>Ionic App utility service.</p>
+<p>App is a utility class used in Ionic to get information about various aspects of an app</p>
 
 
 
@@ -246,7 +246,8 @@ Boolean if the app is actively scrolling or not.
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>boolean</code> 
+  <code>boolean</code> <p>returns true or false</p>
+
 
 </div>
 
@@ -262,28 +263,7 @@ Boolean if the app is actively scrolling or not.
 
 </h3>
 
-retuns the root NavController
 
-
-
-
-
-
-
-
-
-
-
-<div id="getAppInjector"></div>
-
-<h3>
-<a class="anchor" name="getAppInjector" href="#getAppInjector"></a>
-<code>getAppInjector()</code>
-  
-
-</h3>
-
-Get an instance of the global app injector that contains references to all of the instantiated providers
 
 
 
@@ -293,7 +273,8 @@ Get an instance of the global app injector that contains references to all of th
 <div class="return-value">
 <i class="icon ion-arrow-return-left"></i>
 <b>Returns:</b> 
-  <code>Injector</code> 
+  <code>NavController</code> <p>Retuns the root NavController</p>
+
 
 </div>
 

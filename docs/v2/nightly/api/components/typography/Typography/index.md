@@ -24,7 +24,7 @@ docType: "class"
 <a class="anchor" name="typography" href="#typography"></a>
 
 Typography
-<h3><code>h1[color], h2[color], h3[color], h4[color], h5[color], h6[color], a[color], p[color], span[color], b[color], i[color], strong[color], em[color], small[color], sub[color], sup[color]</code></h3>
+<h3><code>h1[color], h2[color], h3[color], h4[color], h5[color], h6[color], a[color]:not([ion-button]), p[color], span[color], b[color], i[color], strong[color], em[color], small[color], sub[color], sup[color]</code></h3>
 
 
 
@@ -33,7 +33,7 @@ Typography
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/typography/typography.ts#L0">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/typography/typography.ts#L3">
 Improve this doc
 </a>
 
@@ -70,6 +70,13 @@ Improve this doc
       <td>color</td>
       <td><code>string</code></td>
       <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>mode</td>
+      <td><code>string</code></td>
+      <td><p> The mode to apply to this component.</p>
 </td>
     </tr>
     

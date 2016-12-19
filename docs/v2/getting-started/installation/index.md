@@ -14,22 +14,17 @@ next_page_link: /docs/v2/getting-started/tutorial
 
 <a class="improve-v2-docs" href='https://github.com/driftyco/ionic-site/edit/master/docs/v2/getting-started/installation/index.md'>Improve this doc</a>
 
-Like Ionic 1, Ionic 2 apps can be quickly created from the Ionic CLI or GUI tool or built and tested right in the browser.
+Ionic 2 apps are created and developed primarily through the Ionic command line utility (the "CLI"), and use Cordova to build and deploy as a native app. This means we need to install a few utilities to get developing.
 
-To install the Ionic SDK and create Ionic 2 projects, you'll need to install the latest beta release:
+### Ionic CLI and Cordova
+
+To create Ionic 2 projects, you'll need to install the latest version of the CLI and Cordova. Before you do that, you'll need a recent version of Node.js. [Download the installer](https://nodejs.org/) for Node.js 6 or greater and then proceed to install the Ionic CLI and Cordova for native app development:
 
 ```bash
-$ npm install -g ionic@beta
+$ npm install -g ionic cordova
 ```
 
-Make sure you have NodeJS installed. Download the installer [here](https://nodejs.org/dist/latest-v5.x/) or use your favorite package manager. It's best to get the 5x version of node along with the 3x version of npm. This offers the best in stability and speed for building.
-
-
-> Unfamiliar with NPM? Learn more about it and what packages we use [here](/docs/v2/resources/using-npm/)
-
-> In case you get an **EACCES** error, it means node doesn't have write permissions to the global packages folder. Follow the instructions [here](https://docs.npmjs.com/getting-started/fixing-npm-permissions) to set the correct folder permissions.
-
-Worried about your V1 Ionic projects? Don't worry! The beta release has all the functionality to work with both V1 projects and V2 projects.
+> You may need to add "sudo" in front of these commands to install the utilities globally
 
 Once that's done, create your first Ionic app:
 
@@ -37,51 +32,38 @@ Once that's done, create your first Ionic app:
 $ ionic start cutePuppyPics --v2
 ```
 
-To run your app, `cd` into the directory that was created and then run the `ionic serve` command:
+Omit --v2 if you'd like to use Ionic 1. To run your app, `cd` into the directory that was created and then run the `ionic serve` command to test your app right in the browser!
 
 ```bash
 $ cd cutePuppyPics
 $ ionic serve
 ```
-> Having issues with your app building? Make sure your package.json matches [our app base](https://github.com/driftyco/ionic2-app-base/blob/master/package.json)
 
-You can play with it right in the browser!
+<!--
+### [Basic Ionic workflow](#basic-workflow)
 
+There is a basic workflow for building and testing Ionic apps:
 
-### [Building to a Device](#building-to-a-device)
-After you have Ionic installed, you can build your app to a physical device. If you don't have a physical device on hand, you can still build to a device emulator. Check out the <a href="../../resources/developer-tips/#using-ios-simulator">iOS simulator</a> docs if you are on a Mac, or the <a href="../../resources/developer-tips/#using-genymotion-android">Genymotion</a> docs if you are looking to emulate an Android device. You will also need <a href="../../resources/what-is/#cordova">Cordova</a> to run your app on a native device. To install Cordova, run:
+First, we build the app code that is primarily written in TypeScript/JavaScript with our HTML templates and Sass files for styling. To do this, we
+can either build our app code manually each time it changes with `npm run build`, or we can "watch" for changes and rebuild automatically with `npm run watch`.
 
-```bash
-$ npm install -g cordova
-```
+Once our app code is built and ready to be deployed and tested, we bundle that code with Cordova into a device project for X Code and/or Android Studio. We use the command `ionic build [android,ios]` to tell Cordova to package our app code into a device project and do a full build. For those that prefer to do the build from the platform-specific IDE like X Code or Android Studio, it's faster to run `ionic prepare [android,ios]` which copies all the files needed to do the build, but doesn't actually do the full build.
 
-Once you have Cordova installed and a device or emulator ready to go, you can move on and begin building your app!
+Third, we tell Cordova to run the actual device app code on a device, simulator/emulator, or in the browser as a Progressive Web App. We do this by running `ionic run` to run on-device, or `ionic emulate` to run in a simulator or emulator.
 
+### [Browser testing](#browser-testing)
 
-### [Building for iOS](#building-for-ios)
-<p>To build for iOS, we need to add the iOS platform module to Cordova:</p>
-{% highlight bash %}
-$ ionic platform add ios
-{% endhighlight %}
+As a bonus, since Ionic is built on standard web technologies, we can develop and test much of our app directly in the web browser as long as we aren't relying on native plugins for functionality, or if we are building a Progressive Web App.
 
-Next, you'll need to install <a href="../../resources/what-is/#xcode">Xcode</a>. Xcode allows you to build compile to a target device running iOS.
+To do this, run `ionic serve` which will start a local web server and launch your browser of choice. This is great for rapid app development and testing.
 
-From there, you should be able to run the iOS emulator using the following command:
+We also have a fun side-by-side development tool called Lab that you can run with `ionic serve --lab`. This runs your app with iOS styles and Android styles side-by-side. It's a great way to see what your app will look like on all platforms while you develop and test!
+-->
 
-```bash
-$ ionic emulate ios
-```
+### [Platform Guides](#platform-guides)
 
+For those building native apps for iOS and Android (most of you!), each platform has certain features and installation requirements before you can get the most out of your Ionic and Cordova development.
 
-### [Building for Android](#building-for-android)
-To build for Android, you'll need to add the Android platform module to Cordova:
+For iOS developers, take a look at the [Cordova iOS Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/) and follow the instructions to install or upgrade Xcode, and possibly register for a developer account to start building apps for iOS.
 
-```bash
-$ ionic platform add android
-```
-
-Next, you'll need to install the <a href="../../resources/what-is/#android-sdk">Android SDK</a>. The Android SDK allows you to build compile to a target device running Android. Although the Android SDK comes with a stock emulator, <a href="../../resources/what-is/#genymotion">Genymotion</a> is recommended, since it's much faster. Once installed, start an Android image and run:
-
-```bash
-$ ionic run android
-```
+For Android developers, take a look at the [Cordova Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/) and follow the instructions to install the SDK and/or Android Studio to start building apps for Android.

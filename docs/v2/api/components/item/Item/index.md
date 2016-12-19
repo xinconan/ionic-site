@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "item"
@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "Item"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/item/"
+preview_device_url: "/docs/v2/demos/src/item/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -35,7 +35,7 @@ Item
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/item/item.ts#L7">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/components/item/item.ts#L7">
 Improve this doc
 </a>
 
@@ -86,7 +86,7 @@ as they are already items and their styling will be changed to look like a basic
 <h2 id="detail-arrows">Detail Arrows</h2>
 <p>By default, <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements with the <code>ion-item</code> attribute will display a right arrow icon
 on <code>ios</code> mode. To hide the right arrow icon on either of these elements, add the <code>detail-none</code> attribute
-to the item. To show the right arrow icon on an element that doesn&#39;t display is naturally, add the
+to the item. To show the right arrow icon on an element that doesn&#39;t display it naturally, add the
 <code>detail-push</code> attribute to the item.</p>
 <pre><code class="lang-html">&lt;ion-item detail-push&gt;
   Item with Detail Arrow
@@ -207,14 +207,42 @@ be added to <code>ion-item</code> to transform the text.</p>
 
 
 
-<!-- instance methods on the class --><h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<!-- instance methods on the class -->
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>mode</td>
+      <td><code>string</code></td>
+      <td><p> The mode to apply to this component.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table><h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
 <pre><code class="lang-html">&lt;ion-list&gt;
 
   &lt;!-- List header with buttons on each side --&gt;
   &lt;ion-list-header&gt;
-    &lt;button item-left (click)=&quot;buttonClick()&quot;&gt;Button&lt;/button&gt;
+    &lt;button ion-button item-left (click)=&quot;buttonClick()&quot;&gt;Button&lt;/button&gt;
     List Header
-    &lt;button outline item-right (click)=&quot;buttonClick()&quot;&gt;Outline&lt;/button&gt;
+    &lt;button ion-button outline item-right (click)=&quot;buttonClick()&quot;&gt;Outline&lt;/button&gt;
   &lt;/ion-list-header&gt;
 
   &lt;!-- Loops through and creates multiple items --&gt;
@@ -240,25 +268,25 @@ be added to <code>ion-item</code> to transform the text.</p>
 
   &lt;!-- Item with left and right buttons --&gt;
   &lt;ion-item&gt;
-    &lt;button item-left (click)=&quot;buttonClick()&quot;&gt;Button&lt;/button&gt;
+    &lt;button ion-button item-left (click)=&quot;buttonClick()&quot;&gt;Button&lt;/button&gt;
     Item
-    &lt;button outline item-right (click)=&quot;buttonClick()&quot;&gt;Outline&lt;/button&gt;
+    &lt;button ion-button outline item-right (click)=&quot;buttonClick()&quot;&gt;Outline&lt;/button&gt;
   &lt;/ion-item&gt;
 
   &lt;!-- Item divider with a right button --&gt;
   &lt;ion-item-divider&gt;
     Item Divider
-    &lt;button item-right&gt;Button&lt;/button&gt;
+    &lt;button ion-button item-right&gt;Button&lt;/button&gt;
   &lt;/ion-item-divider&gt;
 
   &lt;!-- Disabled button item with left and right buttons --&gt;
   &lt;button ion-item disabled&gt;
-    &lt;button item-left (click)=&quot;buttonClick()&quot;&gt;
+    &lt;button ion-button item-left (click)=&quot;buttonClick()&quot;&gt;
       &lt;ion-icon name=&quot;home&quot;&gt;&lt;/ion-icon&gt;
       Left Icon
     &lt;/button&gt;
     Disabled Button Item
-    &lt;button outline item-right (click)=&quot;buttonClick()&quot;&gt;
+    &lt;button ion-button outline item-right (click)=&quot;buttonClick()&quot;&gt;
       &lt;ion-icon name=&quot;star&quot;&gt;&lt;/ion-icon&gt;
       Left Icon
     &lt;/button&gt;
@@ -270,7 +298,7 @@ be added to <code>ion-item</code> to transform the text.</p>
       &lt;img src=&quot;img/my-avatar.png&quot;&gt;
     &lt;/ion-avatar&gt;
     Avatar Item
-    &lt;button outline item-right&gt;View&lt;/button&gt;
+    &lt;button ion-button outline item-right&gt;View&lt;/button&gt;
   &lt;/ion-item&gt;
 
   &lt;!-- Item with a thumbnail on the right --&gt;
@@ -288,7 +316,7 @@ be added to <code>ion-item</code> to transform the text.</p>
       Item
     &lt;/ion-item&gt;
     &lt;ion-item-options&gt;
-      &lt;button primary (click)=&quot;archive()&quot;&gt;Archive&lt;/button&gt;
+      &lt;button ion-button color=&quot;primary&quot; (click)=&quot;archive()&quot;&gt;Archive&lt;/button&gt;
     &lt;/ion-item-options&gt;
   &lt;/ion-item-sliding&gt;
 
@@ -296,6 +324,447 @@ be added to <code>ion-item</code> to transform the text.</p>
 </code></pre>
 
 
+
+  <h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+  <div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+      
+      
+      <a ng-init="setSassPlatform('ios')" ng-class="{ active: active === 'ios' }" ng-click="setSassPlatform('ios')" >iOS</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'md' }" ng-click="setSassPlatform('md')">Material Design</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'wp' }" ng-click="setSassPlatform('wp')">Windows Platform</a>
+      
+      
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$item-ios-body-text-font-size</code></td>
+        
+          <td><code>1.6rem</code></td>
+        
+        <td><p>Font size of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-paragraph-text-color</code></td>
+        
+          <td><code>#666</code></td>
+        
+        <td><p>Color of the item paragraph</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-avatar-size</code></td>
+        
+          <td><code>3.6rem</code></td>
+        
+        <td><p>Size of the avatar in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-thumbnail-size</code></td>
+        
+          <td><code>5.6rem</code></td>
+        
+        <td><p>Size of the thumbnail in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-note-color</code></td>
+        
+          <td><code>darken($list-ios-border-color, 10%)</code></td>
+        
+        <td><p>Color of the note in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-detail-push-show</code></td>
+        
+          <td><code>true</code></td>
+        
+        <td><p>Shows the detail arrow icon on an item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-detail-push-color</code></td>
+        
+          <td><code>$list-ios-border-color</code></td>
+        
+        <td><p>Color of the detail arrow icon</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-detail-push-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 12 20&#39;&gt;&lt;path d=&#39;M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z&#39; fill=&#39;#{$item-ios-detail-push-color}&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon for the detail arrow</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-divider-background</code></td>
+        
+          <td><code>#f7f7f7</code></td>
+        
+        <td><p>Background for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-divider-color</code></td>
+        
+          <td><code>#222</code></td>
+        
+        <td><p>Color for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-divider-padding</code></td>
+        
+          <td><code>5px 15px</code></td>
+        
+        <td><p>Padding for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-ios-sliding-content-background</code></td>
+        
+          <td><code>$list-ios-background-color</code></td>
+        
+        <td><p>Background for the sliding content</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'md'" id="sass-md" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$item-md-body-text-font-size</code></td>
+        
+          <td><code>1.4rem</code></td>
+        
+        <td><p>Font size of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-body-text-line-height</code></td>
+        
+          <td><code>1.5</code></td>
+        
+        <td><p>line height of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-paragraph-text-color</code></td>
+        
+          <td><code>#666</code></td>
+        
+        <td><p>Color of the item paragraph</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-font-size</code></td>
+        
+          <td><code>1.6rem</code></td>
+        
+        <td><p>Font size of the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-avatar-size</code></td>
+        
+          <td><code>4rem</code></td>
+        
+        <td><p>Size of the avatar in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-thumbnail-size</code></td>
+        
+          <td><code>8rem</code></td>
+        
+        <td><p>Size of the thumbnail in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-note-color</code></td>
+        
+          <td><code>darken($list-md-border-color, 10%)</code></td>
+        
+        <td><p>Color of the note in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-detail-push-show</code></td>
+        
+          <td><code>false</code></td>
+        
+        <td><p>Shows the detail arrow icon on an item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-detail-push-color</code></td>
+        
+          <td><code>$list-md-border-color</code></td>
+        
+        <td><p>Color of the detail arrow icon</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-detail-push-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 12 20&#39;&gt;&lt;path d=&#39;M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z&#39; fill=&#39;#{$item-md-detail-push-color}&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon for the detail arrow</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-divider-background</code></td>
+        
+          <td><code>#fff</code></td>
+        
+        <td><p>Background for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-divider-color</code></td>
+        
+          <td><code>#222</code></td>
+        
+        <td><p>Color for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-divider-padding</code></td>
+        
+          <td><code>5px 15px</code></td>
+        
+        <td><p>Padding for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-md-sliding-content-background</code></td>
+        
+          <td><code>$list-md-background-color</code></td>
+        
+        <td><p>Background for the sliding content</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'wp'" id="sass-wp" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$item-wp-body-text-font-size</code></td>
+        
+          <td><code>1.4rem</code></td>
+        
+        <td><p>Font size of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-body-text-line-height</code></td>
+        
+          <td><code>1.5</code></td>
+        
+        <td><p>line height of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-body-background-color</code></td>
+        
+          <td><code>$list-wp-background-color</code></td>
+        
+        <td><p>Background color of the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-body-text-color</code></td>
+        
+          <td><code>$list-wp-text-color</code></td>
+        
+        <td><p>Color of the item text</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-paragraph-text-color</code></td>
+        
+          <td><code>#666</code></td>
+        
+        <td><p>Color of the item paragraph</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-font-size</code></td>
+        
+          <td><code>1.6rem</code></td>
+        
+        <td><p>Font size of the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-avatar-size</code></td>
+        
+          <td><code>4rem</code></td>
+        
+        <td><p>Size of the avatar in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-thumbnail-size</code></td>
+        
+          <td><code>8rem</code></td>
+        
+        <td><p>Size of the thumbnail in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-note-color</code></td>
+        
+          <td><code>$input-wp-border-color</code></td>
+        
+        <td><p>Color of the note in the item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-detail-push-show</code></td>
+        
+          <td><code>false</code></td>
+        
+        <td><p>Shows the detail arrow icon on an item</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-detail-push-color</code></td>
+        
+          <td><code>$input-wp-border-color</code></td>
+        
+        <td><p>Color of the detail arrow icon</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-detail-push-svg</code></td>
+        
+          <td><code>&quot;&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 12 20&#39;&gt;&lt;path d=&#39;M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z&#39; fill=&#39;#{$item-wp-detail-push-color}&#39;/&gt;&lt;/svg&gt;&quot;</code></td>
+        
+        <td><p>Icon for the detail arrow</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-divider-background</code></td>
+        
+          <td><code>#fff</code></td>
+        
+        <td><p>Background for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-divider-color</code></td>
+        
+          <td><code>#222</code></td>
+        
+        <td><p>Color for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-divider-padding</code></td>
+        
+          <td><code>5px 15px</code></td>
+        
+        <td><p>Padding for the divider</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$item-wp-sliding-content-background</code></td>
+        
+          <td><code>$list-wp-background-color</code></td>
+        
+        <td><p>Background for the sliding content</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
 
 
 

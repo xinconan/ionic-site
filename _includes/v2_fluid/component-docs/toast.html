@@ -4,12 +4,12 @@
   Improve this Doc
 </a>
 
-Toast is a subtle notification that appears on top of an app's content. Typically, Toasts are displayed for a short duration of time than automatically dismiss.
+Toast is a subtle notification that appears on top of an app's content. Typically, Toasts are displayed for a short duration of time then automatically dismiss.
 
 _For more information, Check out the [API docs](../api/components/toast/ToastController)._
 
 <h3 class="section-nav">Basic Usage</h3>
-<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/toast/basic">
+<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/src/pages/toast/basic">
   Demo Source
 </a>
 
@@ -18,11 +18,11 @@ _For more information, Check out the [API docs](../api/components/toast/ToastCon
 import { ToastController } from 'ionic-angular';
 
 export class MyPage {
-  constructor ( private toastController : ToastController ){
+  constructor(public toastCtrl: ToastController) {
   }
 
   presentToast() {
-    let toast = this.toastController.create({
+    let toast = this.toastCtrl.create({
       message: 'User was added successfully',
       duration: 3000
     });

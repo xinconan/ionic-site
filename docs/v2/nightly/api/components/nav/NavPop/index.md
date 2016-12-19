@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "NavPop"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/navigation/"
+preview_device_url: "/docs/v2/demos/src/navigation/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -35,7 +35,7 @@ NavPop
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/nav/nav-pop.ts#L2">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/nav/nav-pop.ts#L4">
 Improve this doc
 </a>
 
@@ -70,28 +70,6 @@ navigation stack.</p>
 
 
 <!-- instance methods on the class -->
-
-<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
-
-<div id="onClick"></div>
-
-<h3>
-<a class="anchor" name="onClick" href="#onClick"></a>
-<code>onClick()</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

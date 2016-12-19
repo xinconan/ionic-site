@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "pangesture"
@@ -31,7 +31,7 @@ PanGesture
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/gestures/drag-gesture.ts#L15">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/gestures/drag-gesture.ts#L18">
 Improve this doc
 </a>
 
@@ -55,11 +55,11 @@ Improve this doc
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="dragging"></div>
+<div id="debouncer"></div>
 
 <h3>
-<a class="anchor" name="dragging" href="#dragging"></a>
-<code>dragging</code>
+<a class="anchor" name="debouncer" href="#debouncer"></a>
+<code>debouncer</code>
   
 
 </h3>
@@ -220,6 +220,26 @@ Improve this doc
 <h3>
 <a class="anchor" name="direction" href="#direction"></a>
 <code>direction</code>
+  
+
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="eventsConfig"></div>
+
+<h3>
+<a class="anchor" name="eventsConfig" href="#eventsConfig"></a>
+<code>eventsConfig</code>
   
 
 </h3>

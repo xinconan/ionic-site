@@ -6,18 +6,22 @@
 
 Menu is a side-menu navigation that can be dragged out or toggled to show. The content of a menu will be hidden when the menu is closed.
 
+Menu adapts to the appropriate style based on the platform.
+
 _For more information, Check out the [API docs](../api/components/menu/Menu)._
 
 <h3 class="section-nav">Basic Usage</h3>
-<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/menus/basic">
+<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/src/pages/menus/basic">
   Demo Source
 </a>
 
 ```html
 <ion-menu [content]="content">
-  <ion-toolbar>
-    <ion-title>Pages</ion-title>
-  </ion-toolbar>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Pages</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-content>
     <ion-list>
       <button ion-item (click)="openPage(loginPage)">

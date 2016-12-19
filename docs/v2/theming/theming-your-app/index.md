@@ -15,7 +15,7 @@ next_page_link: /docs/v2/theming/sass-variables/
   Improve this doc
 </a>
 
-Theme support is baked right in to your Ionic apps. To change the theme, just tweak the `$colors` [map](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps) in your `app/theme/app.variables.scss` file:
+Theme support is baked right in to your Ionic apps. To change the theme, just tweak the `$colors` [map](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps) in your `src/theme/variables.scss` file:
 
 ```scss
 $colors: (
@@ -61,7 +61,7 @@ Base normally acts as the background color for elements and contrast acts as the
 Ionic makes the `$colors` keys available as a property to many components. For example, to use our `twitter` color, add the key as a property:
 
 ```html
-<button twitter>I'm a button</button>
+<button color="twitter">I'm a button</button>
 ```
 
 For any custom components, you can use the `color` function to get the right colors.

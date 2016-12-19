@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   Screen Orientation
   
@@ -33,8 +31,6 @@ docType: "class"
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/screen-orientation.ts#L2">
   Improve this doc
 </a>
-
-
 
 
 
@@ -59,12 +55,8 @@ This plugin is based on an early version of Screen Orientation API so the api do
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
-  <li>iOS</li>
-  
-  <li>Windows Phone 8</li>
-  </ul>
+  <li>Android</li><li>iOS</li><li>Windows Phone 8</li>
+</ul>
 
 <!-- @platforms tag end -->
 
@@ -87,11 +79,15 @@ ScreenOrientation.unlockOrientation();
 
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="lockOrientation"></div>
 <h3><code>lockOrientation(The)</code>
   
 </h3>
+
 
 
 
@@ -120,7 +116,7 @@ See below for accepted values
 <code>orientation</code>
     </td>
     <td>
-      <p>orientation which should be locked. Accepted values see table above.</p>
+      <p>orientation which should be locked. Accepted values see table below.</p>
 
       
     </td>
@@ -139,6 +135,7 @@ See below for accepted values
 <h3><code>unlockOrientation()</code>
   
 </h3>
+
 
 
 
@@ -169,17 +166,54 @@ Unlock and allow all orientations.
 
 
 
-<!-- methods on the class --><h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
-<p>Accepted orientation values:
-| Value                         | Description                                                                  |
-|-------------------------------|------------------------------------------------------------------------------|
-| portrait-primary              | The orientation is in the primary portrait mode.                             |
-| portrait-secondary            | The orientation is in the secondary portrait mode.                           |
-| landscape-primary             | The orientation is in the primary landscape mode.                            |
-| landscape-secondary           | The orientation is in the secondary landscape mode.                          |
-| portrait                      | The orientation is either portrait-primary or portrait-secondary (sensor).   |
-| landscape                     | The orientation is either landscape-primary or landscape-secondary (sensor). |</p>
 
+<!-- methods on the class -->
+
+<h2><a class="anchor" name="advanced" href="#advanced"></a>Advanced</h2>
+<p>Accepted orientation values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>portrait-primary</td>
+<td>The orientation is in the primary portrait mode.</td>
+</tr>
+<tr>
+<td>portrait-secondary</td>
+<td>The orientation is in the secondary portrait mode.</td>
+</tr>
+<tr>
+<td>landscape-primary</td>
+<td>The orientation is in the primary landscape mode.</td>
+</tr>
+<tr>
+<td>landscape-secondary</td>
+<td>The orientation is in the secondary landscape mode.</td>
+</tr>
+<tr>
+<td>portrait</td>
+<td>The orientation is either portrait-primary or portrait-secondary (sensor).</td>
+</tr>
+<tr>
+<td>landscape</td>
+<td>The orientation is either landscape-primary or landscape-secondary (sensor).</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   CameraPreview
   
@@ -36,45 +34,92 @@ docType: "class"
 
 
 
-
-
 <!-- decorators -->
 
 
 <pre><code>$ ionic plugin add cordova-plugin-camera-preview</code></pre>
 <p>Repo:
-  <a href="https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview">
-    https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview
+  <a href="https://github.com/westonganger/cordova-plugin-camera-preview">
+    https://github.com/westonganger/cordova-plugin-camera-preview
   </a>
 </p>
 
 <!-- description -->
 
 <p>Showing camera preview in HTML</p>
-<p>For more info, please see the <a href="https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview">Cordova Camera Preview Plugin Docs</a>.</p>
+<p>For more info, please see the <a href="https://github.com/westonganger/cordova-plugin-camera-preview">Cordova Camera Preview Plugin Docs</a>.</p>
 
 
 <!-- @platforms tag -->
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
-  <li>iOS</li>
-  </ul>
+  <li>Android</li><li>iOS</li>
+</ul>
 
 <!-- @platforms tag end -->
 
 
 <!-- @usage tag -->
 
+<h2>Usage</h2>
+
+<pre><code>import { CameraPreview } from &#39;ionic-native&#39;;
+
+// camera options (Size and location)
+let cameraRect: CameraPreviewRect = {
+  x: 100,
+  y: 100,
+  width: 200,
+  height: 200
+};
+
+
+// start camera
+CameraPreview.startCamera(
+  cameraRect, // position and size of preview
+  &#39;front&#39;, // default camera
+  true, // tape to take picture
+  false, // disable drag
+  true // send the preview to the back of the screen so we can add overlaying elements
+);
+
+// Set the handler to run every time we take a picture
+CameraPreview.setOnPictureTakenHandler().subscribe((result) =&gt; {
+  console.log(result);
+  // do something with the result
+});
+
+
+// take a picture
+CameraPreview.takePicture({
+  maxWidth: 640,
+  maxHeight: 640
+});
+
+// Switch camera
+CameraPreview.switchCamera();
+
+// set color effect to negative
+CameraPreview.setColorEffect(&#39;negative&#39;);
+
+// Stop the camera preview
+CameraPreview.stopCamera();
+</code></pre>
+
+
+
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="startCamera"></div>
 <h3><code>startCamera(position,&nbsp;which,&nbsp;enable,&nbsp;enable,&nbsp;send,&nbsp;alpha)</code>
   
 </h3>
+
 
 
 
@@ -209,6 +254,7 @@ Starts the camera preview instance.
 
 
 
+
 Stops the camera preview instance.
 
 
@@ -224,6 +270,7 @@ Stops the camera preview instance.
 <h3><code>takePicture(optional)</code>
   
 </h3>
+
 
 
 
@@ -273,6 +320,7 @@ Take the picture, the parameter size is optional
 
 
 
+
 Register a callback function that receives the original picture and the image captured from the preview box.
 
 
@@ -288,6 +336,7 @@ Register a callback function that receives the original picture and the image ca
 <h3><code>switchCamera()</code>
   
 </h3>
+
 
 
 
@@ -309,6 +358,7 @@ Switch from the rear camera and front camera, if available.
 
 
 
+
 Show the camera preview box.
 
 
@@ -324,6 +374,7 @@ Show the camera preview box.
 <h3><code>hide()</code>
   
 </h3>
+
 
 
 
@@ -345,7 +396,7 @@ Hide the camera preview box.
 
 
 
-Set the default mode for the Flash.
+
 Set camera color effect.
 
 
@@ -359,6 +410,16 @@ Set camera color effect.
 
 
 <!-- methods on the class -->
+
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

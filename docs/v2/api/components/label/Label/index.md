@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "label"
@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "Label"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/label/"
+preview_device_url: "/docs/v2/demos/src/label/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -35,7 +35,7 @@ Label
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/label/label.ts#L0">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/components/label/label.ts#L3">
 Improve this doc
 </a>
 
@@ -155,7 +155,161 @@ A stacked label will always appear on top of the input.
 
 
 <!-- instance methods on the class -->
+<!-- input methods on the class -->
+<h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
+<table class="table param-table" style="margin:0;">
+  <thead>
+    <tr>
+      <th>Attr</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>color</td>
+      <td><code>string</code></td>
+      <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>mode</td>
+      <td><code>string</code></td>
+      <td><p> The mode to apply to this component.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
 
+
+  <h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+  <div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+      
+      
+      <a ng-init="setSassPlatform('ios')" ng-class="{ active: active === 'ios' }" ng-click="setSassPlatform('ios')" >iOS</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'md' }" ng-click="setSassPlatform('md')">Material Design</a>
+      
+      
+      
+      <a ng-class="{ active: active === 'wp' }" ng-click="setSassPlatform('wp')">Windows Platform</a>
+      
+      
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$label-ios-text-color</code></td>
+        
+          <td><code>#7f7f7f</code></td>
+        
+        <td><p>Text color of the label</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$label-ios-margin</code></td>
+        
+          <td><code>$item-ios-padding-top ($item-ios-padding-right / 2) $item-ios-padding-bottom 0</code></td>
+        
+        <td><p>Margin of the label</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'md'" id="sass-md" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$label-md-text-color</code></td>
+        
+          <td><code>#999</code></td>
+        
+        <td><p>Text color of the label</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$label-md-text-color-focused</code></td>
+        
+          <td><code>color($colors-md, primary)</code></td>
+        
+        <td><p>Text color of the label when it has focused</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$label-md-margin</code></td>
+        
+          <td><code>$item-md-padding-top ($item-md-padding-right / 2) $item-md-padding-bottom 0</code></td>
+        
+        <td><p>Margin of the label</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table ng-show="active === 'wp'" id="sass-wp" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$label-wp-text-color</code></td>
+        
+          <td><code>#999</code></td>
+        
+        <td><p>Text color of the label</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$label-wp-text-color-focused</code></td>
+        
+          <td><code>color($colors-wp, primary)</code></td>
+        
+        <td><p>Text color of the label when it has focused</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
 
 
 

@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   Toast
   
@@ -33,8 +31,6 @@ docType: "class"
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/toast.ts#L36">
   Improve this doc
 </a>
-
-
 
 
 
@@ -58,12 +54,8 @@ docType: "class"
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
-  <li>iOS</li>
-  
-  <li>Windows Phone 8</li>
-  </ul>
+  <li>Android</li><li>iOS</li><li>Windows Phone 8</li>
+</ul>
 
 <!-- @platforms tag end -->
 
@@ -86,11 +78,15 @@ Toast.show(&quot;I&#39;m a toast&quot;, &#39;5000&#39;, &#39;center&#39;).subscr
 
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="show"></div>
 <h3><code>show(message,&nbsp;duration,&nbsp;position)</code>
   
 </h3>
+
 
 
 
@@ -179,6 +175,7 @@ Show a native toast for the given duration at the specified position.
   
 </h3>
 
+
 Manually hide any currently visible toast.
 
 
@@ -198,6 +195,7 @@ Manually hide any currently visible toast.
 <h3><code>showWithOptions(options)</code>
   
 </h3>
+
 
 
 
@@ -258,6 +256,7 @@ Show a native toast with the given options.
 
 
 
+
 Shorthand for `show(message, 'short', 'top')`.
 
 
@@ -277,6 +276,7 @@ Shorthand for `show(message, 'short', 'top')`.
 <h3><code>showShortCenter()</code>
   
 </h3>
+
 
 
 
@@ -302,6 +302,7 @@ Shorthand for `show(message, 'short', 'center')`.
 
 
 
+
 Shorthand for `show(message, 'short', 'bottom')`.
 
 
@@ -321,6 +322,7 @@ Shorthand for `show(message, 'short', 'bottom')`.
 <h3><code>showLongTop()</code>
   
 </h3>
+
 
 
 
@@ -346,6 +348,7 @@ Shorthand for `show(message, 'long', 'top')`.
 
 
 
+
 Shorthand for `show(message, 'long', 'center')`.
 
 
@@ -368,6 +371,7 @@ Shorthand for `show(message, 'long', 'center')`.
 
 
 
+
 Shorthand for `show(message, 'long', 'bottom')`.
 
 
@@ -385,6 +389,130 @@ Shorthand for `show(message, 'long', 'bottom')`.
 
 
 <!-- methods on the class -->
+
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<h2><a class="anchor" name="interfaces" href="#interfaces"></a>Interfaces</h2>
+
+
+<h3><a class="anchor" name="ToastOptions" href="#ToastOptions"></a>ToastOptions</h3>
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      message
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      string
+    </td>
+    <td>
+      <p>Message to display</p>
+
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      duration
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      number
+    </td>
+    <td>
+      <p>Duration in ms to show</p>
+
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      position
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      string
+    </td>
+    <td>
+      <p>Position</p>
+
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      addPixelsY
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      number
+    </td>
+    <td>
+      <p>Add negative value to move it up a bit</p>
+
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      data
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      any
+    </td>
+    <td>
+      <p>Pass JSON object to be sent back in success callback</p>
+
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      styling
+      <div><em>(optional)</em></div>
+    </td>
+    <td>
+      {
+    opacity?: number;
+    backgroundColor?: string;
+    textColor?: string;
+    cornerRadius?: number;
+    horizontalPadding?: number;
+    verticalPadding?: number;
+  }
+    </td>
+    <td>
+      <p>Styling</p>
+
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

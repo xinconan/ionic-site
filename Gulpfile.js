@@ -2,8 +2,10 @@ var gulp        = require('gulp');
 var $           = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var cache       = require('gulp-cache');
+var cachebust   = require('gulp-cache-bust');
 var concat      = require('gulp-concat');
 var cp          = require('child_process');
+var es          = require('event-stream');
 var footer      = require('gulp-footer');
 var header      = require('gulp-header');
 var minifyCss   = require('gulp-minify-css');
@@ -39,6 +41,31 @@ var closureStart =
   '(function() {\n';
 var closureEnd = '\n})();\n';
 var version = pkg.version;
+
+function bustCacheAndReload(done) {
+
+  function cacheBust(path, fileName) {
+    return gulp.src(path + fileName)
+      .pipe(cachebust({
+        basePath: "./"
+      }))
+      .pipe(gulp.dest('./' + path))
+  }
+
+  var bustArray = function() {
+    return [
+      cacheBust('_includes/', 'head_includes.html'),
+      cacheBust('_includes/v2_fluid/','header_tags.html')
+    ]
+  }
+
+  es.concat(bustArray()).on('end', function() {
+    browserSync.reload();
+    done();
+    // apply the template change in the background
+    gulp.start('jekyll-build');
+  });
+}
 
 gulp.task('styles:v2', function() {
   // For best performance, don't add Sass partials to `gulp.src`
@@ -117,6 +144,14 @@ gulp.task('jekyll-build', [], function(done) {
            .on('close', done);
 });
 
+gulp.task('jekyll-build.incremental', [], function(done) {
+  browserSync.notify(messages.jekyllBuild);
+  return cp.spawn('jekyll',
+                  ['build', '-I', '--config', '_config_development.yml'],
+                  {stdio: 'inherit'})
+           .on('close', done);
+});
+
 /**
  * Run Generate linkchecker page
  */
@@ -127,7 +162,7 @@ gulp.task('linkchecker', ['build'],
 /**
  * Rebuild Jekyll & do page reload
  */
-gulp.task('jekyll-rebuild', ['jekyll-build'], function() {
+gulp.task('jekyll-rebuild', ['jekyll-build.incremental'], function() {
   browserSync.reload();
 });
 
@@ -144,24 +179,12 @@ gulp.task('server', ['server:ionicons','server:stylesv1', 'server:stylesv2', 'im
   });
 });
 
-gulp.task('server:ionicons', ['ionicons'], function() {
-  browserSync.reload();
-});
-gulp.task('server:stylesv1', ['styles:v1'], function() {
-  browserSync.reload();
-});
-gulp.task('server:stylesv2', ['styles:v2'], function() {
-  browserSync.reload();
-});
-gulp.task('server:jekyll', ['jekyll-build'], function() {
-  browserSync.reload();
-});
-gulp.task('server:images', ['images'], function() {
-  browserSync.reload();
-});
-gulp.task('server:js', ['js'], function() {
-  browserSync.reload();
-});
+gulp.task('server:ionicons', ['ionicons'], bustCacheAndReload);
+gulp.task('server:stylesv1', ['styles:v1'], bustCacheAndReload);
+gulp.task('server:stylesv2', ['styles:v2'], bustCacheAndReload);
+gulp.task('server:jekyll', ['jekyll-build.incremental'], bustCacheAndReload);
+gulp.task('server:images', ['images'], bustCacheAndReload);
+gulp.task('server:js', ['js'], bustCacheAndReload);
 
 gulp.task('watch', ['server'], function() {
   gulp.watch('scss/**.scss', ['server:stylesv1']);
@@ -174,12 +197,11 @@ gulp.task('watch', ['server'], function() {
     'docs/**/*.{md,html,js,css}', '!docs/v2/2*', '!docs/1.*',
     'dist/preview-app/www/**/*'
   ], ['server:jekyll']);
-
 });
 
 gulp.task('watch.min', ['server'], function() {
-  gulp.watch(['_scss/*.scss', '_scss/docs/*.scss', '_scss/pages/*.scss'],
-             ['server:stylesv2']);
+  gulp.watch(['_js/**/*.js', 'submit-issue/*/*.js'], ['server:js']);
+  gulp.watch(['_scss/*.scss', '_scss/docs/*.scss', '_scss/pages/*.scss'], ['server:stylesv2']);
   gulp.watch(['_layouts/*/*','_includes/**/*', 'docs/v2/**/*.{md,html}'], ['server:jekyll']);
 
 });
@@ -353,5 +375,5 @@ gulp.task('ionicons', function() {
     .pipe(gulp.dest('./docs/v2/resources/ionicons/data/'));
 });
 
-gulp.task('build', ['ionicons', 'cli-docs', 'styles:v1', 'styles:v2', 'jekyll-build', 'images', 'js']);
+gulp.task('build', ['ionicons', 'cli-docs', 'styles:v1', 'styles:v2', 'jekyll-build', 'images', 'js'], bustCacheAndReload);
 gulp.task('default', ['build']);

@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "content"
@@ -33,7 +33,7 @@ Content
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/content/content.ts#L10">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/components/content/content.ts#L10">
 Improve this doc
 </a>
 
@@ -664,7 +664,7 @@ seen under the header as the user scrolls.</p>
       &lt;/ion-toolbar&gt;
     &lt;/ion-header&gt;
     &lt;ion-content&gt;
-      &lt;button (click)=&quot;toggleToolbar()&quot;&gt;Toggle Toolbar&lt;/button&gt;
+      &lt;button ion-button (click)=&quot;toggleToolbar()&quot;&gt;Toggle Toolbar&lt;/button&gt;
     &lt;/ion-content&gt;
 `})
 
@@ -684,7 +684,7 @@ import { Content } from &#39;ionic-angular&#39;;
 
 @Component({
   template: `&lt;ion-content&gt;
-               &lt;button (click)=&quot;scrollTo()&quot;&gt;Down 500px&lt;/button&gt;
+               &lt;button ion-button (click)=&quot;scrollTo()&quot;&gt;Down 500px&lt;/button&gt;
              &lt;/ion-content&gt;`
 )}
 export class MyPage{
@@ -699,6 +699,49 @@ export class MyPage{
 </code></pre>
 
 
+
+  <h2 id="sass-variable-header"><a class="anchor" name="sass-variables" href="#sass-variables"></a>Sass Variables</h2>
+  <div id="sass-variables" ng-controller="SassToggleCtrl">
+  <div class="sass-platform-toggle">
+    
+    <h3 ng-init="setSassPlatform('ios')">iOS</h3>
+    
+  </div>
+
+
+  
+  <table ng-show="active === 'ios'" id="sass-ios" class="table param-table" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><code>$content-ios-outer-background</code></td>
+        
+          <td><code>#efeff4</code></td>
+        
+        <td><p>Background color of the outer content</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><code>$content-ios-transition-background</code></td>
+        
+          <td><code>#000</code></td>
+        
+        <td><p>Background color of the content when making transition</p>
+</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</div>
 
 
 

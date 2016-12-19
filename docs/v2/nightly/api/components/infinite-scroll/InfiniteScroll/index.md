@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "InfiniteScroll"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/infinite-scroll/"
+preview_device_url: "/docs/v2/demos/src/infinite-scroll/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -131,26 +131,6 @@ You could replace our default content with custom SVG or CSS animations.</p>
 
 <h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
 
-<div id="state"></div>
-
-<h3>
-<a class="anchor" name="state" href="#state"></a>
-<code>state</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="complete"></div>
 
 <h3>
@@ -255,6 +235,15 @@ output event to get called when the user has scrolled 10%
 from the bottom of the page. Use the value <code>100px</code> when the
 scroll is within 100 pixels from the bottom of the page.
 Default is <code>15%</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>enabled</td>
+      <td><code>boolean</code></td>
+      <td><p> Whether or not the infinite scroll should be
+enabled or not. Setting to <code>false</code> will remove scroll event listeners
+and hide the display.</p>
 </td>
     </tr>
     

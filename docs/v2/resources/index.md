@@ -38,11 +38,11 @@ title: Ionic Resources
       </li>
       <li>
         <a target="_blank" href="http://www.joshmorony.com/ionic-2-how-to-use-google-maps-geolocation-video-tutorial/"  class="title">Google Maps in Ionic 2</a>
-        <p>Add Google maps to your Ionic 2 App.</p>
+        <p>Add Google Maps to your Ionic 2 app.</p>
       </li>
       <li>
         <a target="_blank" href="http://blog.ionic.io/ionic-and-typings/" class="title">Ionic &amp; Typings</a>
-        <p>Learn how to add typings for libraries you are using in your Ionic 2 app</p>
+        <p>Learn how to add typings for libraries you are using in your Ionic 2 app.</p>
       </li>
     </ul>
   </section>
@@ -53,7 +53,7 @@ title: Ionic Resources
     <ul>
       <li>
         <a target="_blank" href="http://www.joshmorony.com/beginners-guide-to-getting-started-with-ionic-2/" class="title">Getting started with Ionic 2</a>
-        <p>Learn how to add performant animations to your Ionic 2 App.</p>
+        <p>Learn how to add performant animations to your Ionic 2 app.</p>
       </li>
       <li>
         <a target="_blank" href="http://www.joshmorony.com/ionic-2-first-look-series-new-angular-2-concepts-syntax/" class="title">Ionic2 and Angular 2 Concepts</a>
@@ -79,23 +79,23 @@ title: Ionic Resources
       <ul>
         <li>
           <a target="_blank" href="http://blog.ionic.io/ionic-native-accessing-ios-photos-and-android-gallery-part-2/" class="title">Accessing Photos</a>
-          <p>Select multiple images from your photos on iOS and Android</p>
+          <p>Select multiple images from your photos on iOS and Android.</p>
         </li>
         <li>
           <a target="_blank" href="http://blog.ionic.io/ionic-native-accessing-ios-photos-and-android-gallery-part-i/" class="title">Using the Camera</a>
-          <p>Take and access photos on iOS and Android</p>
+          <p>Take and access photos on iOS and Android.</p>
         </li>
         <li>
           <a target="_blank" href="http://blog.ionic.io/ionic-native-enabling-login-with-touch-id-for-ios/" class="title">Using TouchID</a>
-          <p>Secure logins and improve user experience with the TouchID plugin</p>
+          <p>Secure logins and improve user experience with the TouchID plugin.</p>
         </li>
         <li>
           <a target="_blank" href="http://blog.ionic.io/ionic-native-working-with-the-device-motion-plugin/" class="title">Using the Device Motion Plugin</a>
-          <p>Respond to accelerometer changes with Device Motion</p>
+          <p>Respond to accelerometer changes with Device Motion.</p>
         </li>
         <li>
-          <a target="_blank" href="http://blog.ionic.io/ionic-native-native-powers-for-your-app/" class="title">Ionic Native: Super Powers for your App</a>
-          <p>Learn all about Ionic Native and how to access powerful native features in your apps</p>
+          <a target="_blank" href="http://blog.ionic.io/ionic-native-native-powers-for-your-app/" class="title">Ionic Native: Superpowers for your App</a>
+          <p>Learn all about Ionic Native and how to access powerful native features in your apps.</p>
         </li>
       </ul>
   </section>
@@ -109,12 +109,8 @@ title: Ionic Resources
         <p>Check out the best options in editors for your project.</p>
       </li>
       <li>
-        <a target="_blank" href="http://browserify.org/" class="title">Bundling with Browserify</a>
-        <p>Learn about how Browserify bundles your apps code into one single file</p>
-      </li>
-      <li>
-        <a target="_blank" href="https://webpack.github.io/" class="title">Working with Webpack</a>
-        <p>Ever wonder how Webpack really works? Learn about it!</p>
+        <a target="_blank" href="http://rollupjs.org" class="title">RollupJs</a>
+        <p>Learn about Rollup, the next-generation JavaScript module bundler.</p>
       </li>
       <li>
         <a target="_blank" href="https://www.visualstudio.com/en-us/features/cordova-vs.aspx" class="title">Visual Studio Tools for Apache Cordova</a>
@@ -132,6 +128,22 @@ title: Ionic Resources
     <h3>How To's</h3>
     <ul>
       <li>
+        <a href="./app-scripts" class="title">App Scripts</a>
+        <p>Learn how to automate tasks in your development process.</p>
+      </li>
+      <li>
+        <a href="./third-party-libs" class="title">Third Party Libs</a>
+        <p>Learn how to incorporate third party libraries in to your Ionic 2 project.</p>
+      </li>
+      <li>
+        <a href="./ng2-translate/">Using NG2-Translate</a>
+        <p>Learn how to manage multiple languages in a single project with NG2-Translate</p>
+      </li>
+      <li>
+        <a target="_blank" href="http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html" class="title">Taking Advantage of Observables</a>
+        <p>Learn how to use observables in your Ionic 2 app.</p>
+      </li>
+      <li>
         <a target="_blank" href="http://www.joshmorony.com/adding-background-geolocation-to-an-ionic-2-application/" class="title">Background Geolocation</a>
         <p>Learn how to add geolocation that can run in the background of your app.</p>
       </li>
@@ -141,7 +153,7 @@ title: Ionic Resources
       </li>
       <li>
         <a target="_blank" href="http://www.joshmorony.com/creating-an-advanced-google-maps-component-in-ionic-2/" class="title">Advanced Google Maps</a>
-        <p>Go beyond adding a simple map, to handling offline conditions and complex maps.</p>
+        <p>Go beyond adding a simple map to handling offline conditions and complex maps.</p>
       </li>
       <li>
         <a target="_blank" href="http://gonehybrid.com/how-to-use-pouchdb-sqlite-for-local-storage-in-ionic-2/" class="title">Ionic, PouchDB, &amp; SQLite For Storage</a>
@@ -150,10 +162,6 @@ title: Ionic Resources
       <li>
         <a target="_blank" href="http://www.nikola-breznjak.com/blog/javascript/ionic2/posting-data-from-ionic-2-app/" class="title">Posting data to a PHP server</a>
         <p>Learn how to use the SQLite plugin for Cordova in your Ionic 2 app.</p>
-      </li>
-      <li>
-        <a target="_blank" href="http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html" class="title">Taking advantage of observables</a>
-        <p>Learn how to use observables in your Ionic 2 app.</p>
       </li>
     </ul>
   </section>

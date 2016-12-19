@@ -80,7 +80,7 @@ There are different reasons this can happen. If you are unable to find a solutio
 
 There are a few things you can check. Make sure:
 
-- You include it in the `directives` array of the `@Component` you want to use it in.
+- You include it in the `directives` array of the `@Component` you want to use it in (only if your ionic-angular version is below RC0).
 - Your selector doesn't have any misspellings.
 - You're using the selector correctly as an attribute, element or class.
 - Your selector has the [proper syntax](http://learnangular2.com/components/):
@@ -109,7 +109,7 @@ class MyDir {
   // and if you were attaching by class the template would be:
   // template: `<div class="my-dir">Hello World</div>`
 
-  directives: [MyDir] // <-- Don't forget me!
+  directives: [MyDir] // <-- Don't forget me! (only if your ionic-angular version is below RC0)
 })
 class MyPage {}
 ```
@@ -127,6 +127,44 @@ However, you may need to add a `(click)` event to an element that is not normall
 ```
 
 ## Common mistakes
+### Page components acting odd
+
+Page components that are loaded with NavController do not need selectors added to them.
+If you place a selector on a page component, chances are it will animate incorrectly and have the wrong styles applied to it.
+
+**Wrong**
+
+```typescript
+@Component({
+  selector: 'my-page',
+  template: `
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Login</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>Hello World</ion-content>`
+})
+export class StartPage {}
+```
+
+**Correct**
+
+```typescript
+@Component({
+  template: `
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Login</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>Hello World</ion-content>`
+})
+export class StartPage {}
+```
+
 
 ### Forgetting Parentheses on a Decorator
 
@@ -352,7 +390,7 @@ This happens when you try and bind a property on an element that doesn't have th
 
 ### No provider for ControlContainer! (NgControlName -> ControlContainer)
 
-This error is a more specific version of the `No provider` error above.  It happens when you use a form control like [NgControlName](https://angular.io/docs/js/latest/api/core/NgControlName-class.html) without specifying a parent [NgForm](https://angular.io/docs/js/latest/api/core/NgForm-class.html) or [NgFormModel](https://angular.io/docs/js/latest/api/core/NgFormModel-class.html).  In most cases, this can be resolved by making sure your form control is within an actual form element.  NgForm uses `form` as a selector so this will instantiate a new NgForm:
+This error is a more specific version of the `No provider` error above.  It happens when you use a form control like NgControlName without specifying a parent [NgForm](https://angular.io/docs/ts/latest/api/forms/index/NgForm-directive.html) or NgFormModel.  In most cases, this can be resolved by making sure your form control is within an actual form element.  NgForm uses `form` as a selector so this will instantiate a new NgForm:
 
 ```ts
 @Component({
@@ -362,4 +400,3 @@ This error is a more specific version of the `No provider` error above.  It happ
     '</form>'
 })
 ```
-

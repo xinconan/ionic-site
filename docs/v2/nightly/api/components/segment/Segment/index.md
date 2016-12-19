@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "Segment"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/segment/"
+preview_device_url: "/docs/v2/demos/src/segment/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -35,7 +35,7 @@ Segment
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/segment/segment.ts#L117">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//src/components/segment/segment.ts#L118">
 Improve this doc
 </a>
 
@@ -46,7 +46,7 @@ Improve this doc
 
 <p>A Segment is a group of buttons, sometimes known as Segmented Controls, that allow the user to interact with a compact group of a number of controls.
 Segments provide functionality similar to tabs, selecting one will unselect all others. You should use a tab bar instead of a segmented control when you want to let the user move back and forth between distinct pages in your app.
-You could use Angular 2&#39;s <code>ngModel</code> or <code>FormBuilder</code> API. For an overview on how <code>FormBuilder</code> works, checkout <a href="http://learnangular2.com/forms/">Angular 2 Forms</a>, or <a href="https://angular.io/docs/ts/latest/api/common/FormBuilder-class.html">Angular FormBuilder</a></p>
+You could use Angular 2&#39;s <code>ngModel</code> or <code>FormBuilder</code> API. For an overview on how <code>FormBuilder</code> works, checkout <a href="http://learnangular2.com/forms/">Angular 2 Forms</a>, or <a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html">Angular FormBuilder</a></p>
 <pre><code class="lang-html">&lt;!-- Segment in a header --&gt;
 &lt;ion-header&gt;
   &lt;ion-toolbar&gt;
@@ -116,6 +116,13 @@ You could use Angular 2&#39;s <code>ngModel</code> or <code>FormBuilder</code> A
       <td>color</td>
       <td><code>string</code></td>
       <td><p> The predefined color to use. For example: <code>&quot;primary&quot;</code>, <code>&quot;secondary&quot;</code>, <code>&quot;danger&quot;</code>.</p>
+</td>
+    </tr>
+    
+    <tr>
+      <td>mode</td>
+      <td><code>string</code></td>
+      <td><p> The mode to apply to this component.</p>
 </td>
     </tr>
     

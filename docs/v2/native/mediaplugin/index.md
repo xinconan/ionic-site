@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   MediaPlugin
   
@@ -30,11 +28,9 @@ docType: "class"
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/media.ts#L9">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/media.ts#L7">
   Improve this doc
 </a>
-
-
 
 
 
@@ -113,121 +109,6 @@ newFile.stopRecord();
 
 
 <!-- @property tags -->
-<h2>Static Members</h2>
-<div id="MEDIA_NONE"></div>
-<h3><code>MEDIA_NONE()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_STARTING"></div>
-<h3><code>MEDIA_STARTING()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_RUNNING"></div>
-<h3><code>MEDIA_RUNNING()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_PAUSED"></div>
-<h3><code>MEDIA_PAUSED()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_STOPPED"></div>
-<h3><code>MEDIA_STOPPED()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_ERR_ABORTED"></div>
-<h3><code>MEDIA_ERR_ABORTED()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_ERR_NETWORK"></div>
-<h3><code>MEDIA_ERR_NETWORK()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_ERR_DECODE"></div>
-<h3><code>MEDIA_ERR_DECODE()</code>
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div id="MEDIA_ERR_NONE_SUPPORTED"></div>
-<h3><code>MEDIA_ERR_NONE_SUPPORTED()</code>
-  
-</h3>
-
-
-
-
-
-
 
 
 
@@ -235,28 +116,7 @@ newFile.stopRecord();
 <!-- methods on the class -->
 
 <h2>Instance Members</h2>
-
-<div id="status"></div>
-
-<h3>
-  <code>status</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="init"></div>
-
 <h3>
   <code>init</code>
   
@@ -266,145 +126,85 @@ newFile.stopRecord();
 
 
 
-
-
-
-
-
-
-
-
 <div id="getCurrentAmplitude"></div>
-
 <h3>
   <code>getCurrentAmplitude()</code>
   
 
 </h3>
-
-Returns the current amplitude of the current recording.
-
+Get the current amplitude of the current recording.
 
 
-
-
-
-
-
-
-
-
-<div id="getCurrentPosition"></div>
-
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a promise with the amplitude of the current recording
+</div><div id="getCurrentPosition"></div>
 <h3>
   <code>getCurrentPosition()</code>
   
 
 </h3>
-
-Returns the current position within an audio file. Also updates the Media object's position parameter.
-
+Get the current position within an audio file. Also updates the Media object's position parameter.
 
 
-
-
-
-
-
-
-
-
-<div id="getDuration"></div>
-
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a promise with the position of the current recording
+</div><div id="getDuration"></div>
 <h3>
   <code>getDuration()</code>
   
 
 </h3>
-
-Returns the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
-
+Get the duration of an audio file in seconds. If the duration is unknown, it returns a value of -1.
 
 
-
-
-
-
-
-
-
-
-<div id="play"></div>
-
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> Returns a promise with the duration of the current recording
+</div><div id="play"></div>
 <h3>
   <code>play()</code>
   
 
 </h3>
-
 Starts or resumes playing an audio file.
 
 
 
 
-
-
-
-
-
-
-
 <div id="pause"></div>
-
 <h3>
   <code>pause()</code>
   
 
 </h3>
-
 Pauses playing an audio file.
 
 
 
 
-
-
-
-
-
-
-
 <div id="release"></div>
-
 <h3>
   <code>release()</code>
   
 
 </h3>
-
 Releases the underlying operating system's audio resources. This is particularly important for Android, since there are a finite amount of OpenCore instances for media playback. Applications should call the release function for any Media resource that is no longer needed.
 
 
 
 
-
-
-
-
-
-
-
 <div id="seekTo"></div>
-
 <h3>
   <code>seekTo(milliseconds)</code>
   
 
 </h3>
-
 Sets the current position within an audio file.
-
-
 <table class="table param-table" style="margin:0;">
   <thead>
   <tr>
@@ -423,10 +223,11 @@ Sets the current position within an audio file.
     </td>
     <td>
       
-
+<code>number</code>
     </td>
     <td>
-      
+      <p>The time position you want to set for the current audio file</p>
+
       
     </td>
   </tr>
@@ -434,24 +235,13 @@ Sets the current position within an audio file.
   </tbody>
 </table>
 
-
-
-
-
-
-
-
 <div id="setVolume"></div>
-
 <h3>
   <code>setVolume(volume)</code>
   
 
 </h3>
-
 Set the volume for an audio file.
-
-
 <table class="table param-table" style="margin:0;">
   <thead>
   <tr>
@@ -482,61 +272,34 @@ Set the volume for an audio file.
   </tbody>
 </table>
 
-
-
-
-
-
-
-
 <div id="startRecord"></div>
-
 <h3>
   <code>startRecord()</code>
   
 
 </h3>
-
 Starts recording an audio file.
 
 
 
 
-
-
-
-
-
-
-
 <div id="stopRecord"></div>
-
 <h3>
   <code>stopRecord()</code>
   
 
 </h3>
-
 Stops recording
 
 
 
 
-
-
-
-
-
-
-
 <div id="stop"></div>
-
 <h3>
   <code>stop()</code>
   
 
 </h3>
-
 Stops playing an audio file.
 
 
@@ -546,8 +309,13 @@ Stops playing an audio file.
 
 
 
+<!-- other classes -->
 
+<!-- end other classes -->
 
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

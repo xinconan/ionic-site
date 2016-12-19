@@ -9,7 +9,7 @@ A Searchbar binds to a model, and emits an input event when the model is changed
 _For more information, Check out the [API docs](../api/components/searchbar/Searchbar)._
 
 <h3 class="section-nav">Basic Usage</h3>
-<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/app/pages/searchbars">
+<a target="_blank" class="component-doc-demo" href="https://github.com/driftyco/ionic-preview-app/tree/master/src/pages/searchbars">
   Demo Source
 </a>
 
@@ -30,8 +30,8 @@ Note that in this example, the `getItems()` function is called when the input ch
 })
 class SearchPage {
 
-  private searchQuery: string = '';
-  private items: string[];
+  searchQuery: string = '';
+  items: string[];
 
   constructor() {
     this.initializeItems();

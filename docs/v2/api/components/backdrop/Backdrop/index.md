@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "backdrop"
@@ -33,7 +33,7 @@ Backdrop
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/components/backdrop/backdrop.ts#L3">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/components/backdrop/backdrop.ts#L3">
 Improve this doc
 </a>
 
@@ -102,6 +102,26 @@ Improve this doc
 <h3>
 <a class="anchor" name="getNativeElement" href="#getNativeElement"></a>
 <code>getNativeElement()</code>
+  
+
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="setElementClass"></div>
+
+<h3>
+<a class="anchor" name="setElementClass" href="#setElementClass"></a>
+<code>setElementClass()</code>
   
 
 </h3>

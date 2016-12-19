@@ -4,8 +4,8 @@ category: theming
 id: platform-specific-styles
 title: Platform Specific Styles
 header_sub_title: Ionic Theming
-prev_page_title: Platform Specific Theming
-prev_page_link: /docs/v2/theming/platform-specific-styles/
+prev_page_title: Utility Attributes
+prev_page_link: /docs/v2/theming/css-utilities/
 next_page_title: Overriding Ionic Variables
 next_page_link: /docs/v2/theming/overriding-ionic-variables/
 ---
@@ -16,10 +16,10 @@ next_page_link: /docs/v2/theming/overriding-ionic-variables/
 </a>
 
 
-Ionic uses **modes** to customize the look of components. Each **platform** has a default **mode**, but this can be overridden. For example, an app being viewed on an Android platform will use the `md` (Material Design) mode. The `<body>` will have `class="md"` added to it by default and all of the components will use Material Design styles:
+Ionic uses **modes** to customize the look of components. Each **platform** has a default **mode**, but this can be overridden. For example, an app being viewed on an Android platform will use the `md` (Material Design) mode. The `<ion-app>` will have `class="md"` added to it by default and all of the components will use Material Design styles:
 
 ```html
-<body class="md">
+<ion-app class="md">
 ```
 
 The following chart displays the default **mode** that is added to each **platform**:

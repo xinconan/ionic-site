@@ -1,7 +1,7 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "2.0.0-beta.11"
-versionHref: "/docs/v2/2.0.0-beta-11"
+version: "2.0.0-rc.2"
+versionHref: "/docs/v2"
 path: ""
 category: api
 id: "config"
@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "Config"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/config/"
+preview_device_url: "/docs/v2/demos/src/config/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -33,7 +33,7 @@ Config
 
 </h1>
 
-<a class="improve-v2-docs" href="https://github.com/driftyco/ionic/edit/master/src/config/config.ts#L9">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic/edit/master//Users/briandennis/Ionic/ionic/src/config/config.ts#L10">
 Improve this doc
 </a>
 
@@ -44,28 +44,43 @@ Improve this doc
 
 <p>The Config lets you configure your entire app or specific platforms.
 You can set the tab placement, icon mode, animations, and more here.</p>
-<pre><code class="lang-ts">import { ionicBootstrap } from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import { IonicApp, IonicModule } from &#39;ionic-angular&#39;;
 
-ionicBootstrap(AppRoot, customProviders, {
-  backButtonText: &#39;Go Back&#39;,
-  iconMode: &#39;ios&#39;,
-  modalEnter: &#39;modal-slide-in&#39;,
-  modalLeave: &#39;modal-slide-out&#39;,
-  tabsPlacement: &#39;bottom&#39;,
-  pageTransition: &#39;ios&#39;,
-});
+@NgModule({
+  declarations: [ MyApp ],
+  imports: [
+    IonicModule.forRoot(MyApp, {
+      backButtonText: &#39;Go Back&#39;,
+      iconMode: &#39;ios&#39;,
+      modalEnter: &#39;modal-slide-in&#39;,
+      modalLeave: &#39;modal-slide-out&#39;,
+      tabsPlacement: &#39;bottom&#39;,
+      pageTransition: &#39;ios&#39;
+    }, {}
+  )],
+  bootstrap: [IonicApp],
+  entryComponents: [ MyApp ],
+  providers: []
+})
 </code></pre>
 <p>Config can be overwritten at multiple levels allowing for more granular configuration.
 Below is an example where an app can override any setting we want based on a platform.</p>
-<pre><code class="lang-ts">import { ionicBootstrap } from &#39;ionic-angular&#39;;
+<pre><code class="lang-ts">import { IonicModule } from &#39;ionic-angular&#39;;
 
-ionicBootstrap(AppRoot, customProviders, {
-  tabsPlacement: &#39;bottom&#39;,
-  platforms: {
-  ios: {
-    tabsPlacement: &#39;top&#39;,
-  }
-});
+@NgModule({
+  ...
+  imports: [
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: &#39;bottom&#39;,
+      platforms: {
+        ios: {
+          tabsPlacement: &#39;top&#39;,
+        }
+      }
+    }, {}
+  )],
+  ...
+})
 </code></pre>
 <p>We could also configure these values at a component level. Take <code>tabsPlacement</code>,
 we can configure this as a property on our <code>ion-tabs</code>.</p>
@@ -162,6 +177,11 @@ chart displays each property with a description of what it controls.</p>
 <td>The name of the transition to use while a modal is dismiss.</td>
 </tr>
 <tr>
+<td><code>mode</code></td>
+<td><code>string</code></td>
+<td>The mode to use throughout the application.</td>
+</tr>
+<tr>
 <td><code>pageTransition</code></td>
 <td><code>string</code></td>
 <td>The name of the transition to use while changing pages.</td>
@@ -192,14 +212,14 @@ chart displays each property with a description of what it controls.</p>
 <td>The name of the transition to use while a popover is dismissed.</td>
 </tr>
 <tr>
-<td><code>prodMode</code></td>
-<td><code>boolean</code></td>
-<td>Disable development mode, which turns off assertions and other checks within the framework. One important assertion this disables verifies that a change detection pass does not result in additional changes to any bindings (also known as unidirectional data flow).</td>
-</tr>
-<tr>
 <td><code>spinner</code></td>
 <td><code>string</code></td>
 <td>The default spinner to use when a name is not defined.</td>
+</tr>
+<tr>
+<td><code>swipeBackEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Whether native iOS swipe to go back functionality is enabled.</td>
 </tr>
 <tr>
 <td><code>tabsHighlight</code></td>

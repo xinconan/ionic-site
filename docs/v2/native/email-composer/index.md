@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   Email Composer
   
@@ -36,21 +34,19 @@ docType: "class"
 
 
 
-
-
 <!-- decorators -->
 
 
-<pre><code>$ ionic plugin add cordova-plugin-email-composer</code></pre>
+<pre><code>$ ionic plugin add cordova-plugin-email</code></pre>
 <p>Repo:
-  <a href="https://github.com/katzer/cordova-plugin-email-composer.git">
-    https://github.com/katzer/cordova-plugin-email-composer.git
+  <a href="https://github.com/hypery2k/cordova-email-plugin">
+    https://github.com/hypery2k/cordova-email-plugin
   </a>
 </p>
 
 <!-- description -->
 
-<p>Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the <a href="https://github.com/katzer/cordova-plugin-email-composer">Email Composer plugin docs</a>.</p>
+<p>Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the <a href="https://github.com/hypery2k/cordova-email-plugin">Email Composer plugin docs</a>.</p>
 <p>DISCLAIMER: This plugin is experiencing issues with the latest versions of Cordova. Use at your own risk. Functionality is not guaranteed. Please stay tuned for a more stable version.
 A good alternative to this plugin is the social sharing plugin.</p>
 
@@ -59,12 +55,8 @@ A good alternative to this plugin is the social sharing plugin.</p>
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
-  <li>iOS</li>
-  
-  <li>Windows Phone 8</li>
-  </ul>
+  <li>Android</li><li>iOS</li>
+</ul>
 
 <!-- @platforms tag end -->
 
@@ -105,11 +97,16 @@ EmailComposer.open(email);
 
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="isAvailable"></div>
 <h3><code>isAvailable(app)</code>
   
-</h3>Verifies if sending emails is supported on the device.
+</h3>
+
+Verifies if sending emails is supported on the device.
 
 
 
@@ -159,6 +156,7 @@ EmailComposer.open(email);
 <h3><code>addAlias(alias,&nbsp;packageName)</code>
   
 </h3>
+
 
 Adds a new mail app alias.
 
@@ -221,6 +219,7 @@ Adds a new mail app alias.
 <h3><code>open(email,&nbsp;scope)</code>
   
 </h3>
+
 
 
 
@@ -289,6 +288,16 @@ Displays the email composer pre-filled with data.
 
 
 <!-- methods on the class -->
+
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

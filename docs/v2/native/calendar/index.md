@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   Calendar
   
@@ -30,11 +28,9 @@ docType: "class"
 
 </h1>
 
-<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/calendar.ts#L15">
+<a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/calendar.ts#L16">
   Improve this doc
 </a>
-
-
 
 
 
@@ -58,10 +54,8 @@ docType: "class"
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>Android</li>
-  
-  <li>iOS</li>
-  </ul>
+  <li>Android</li><li>iOS</li>
+</ul>
 
 <!-- @platforms tag end -->
 
@@ -84,11 +78,15 @@ Calendar.createCalendar(&#39;MyCalendar&#39;).then(
 
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="hasReadWritePermission"></div>
 <h3><code>hasReadWritePermission()</code>
   
 </h3>
+
 
 This function checks if we have permission to read/write from/to the calendar.
 The promise will resolve with `true` when:
@@ -97,7 +95,7 @@ The promise will resolve with `true` when:
 - You're using Android < 6, or
 - You've already granted permission
 
-If this returns false, you should call `requestReadWritePermissions` function
+If this returns false, you should call the `requestReadWritePermission` function
 
 
 
@@ -116,6 +114,7 @@ If this returns false, you should call `requestReadWritePermissions` function
 <h3><code>hasReadPermission()</code>
   
 </h3>
+
 
 Check if we have read permission
 
@@ -137,6 +136,7 @@ Check if we have read permission
   
 </h3>
 
+
 Check if we have write permission
 
 
@@ -156,6 +156,7 @@ Check if we have write permission
 <h3><code>requestWritePermission()</code>
   
 </h3>
+
 
 Request write permission
 
@@ -177,6 +178,7 @@ Request write permission
   
 </h3>
 
+
 Request read permission
 
 
@@ -197,6 +199,7 @@ Request read permission
   
 </h3>
 
+
 Requests read/write permissions
 
 
@@ -216,6 +219,7 @@ Requests read/write permissions
 <h3><code>createCalendar(nameOrOptions)</code>
   
 </h3>
+
 
 Create a calendar. (iOS only)
 
@@ -267,6 +271,7 @@ Create a calendar. (iOS only)
 <h3><code>deleteCalendar(name)</code>
   
 </h3>
+
 
 Delete a calendar. (iOS only)
 
@@ -322,6 +327,7 @@ Delete a calendar. (iOS only)
 
 
 
+
 Returns the default calendar options.
 
 
@@ -352,6 +358,7 @@ Returns the default calendar options.
 <h3><code>createEvent(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate)</code>
   
 </h3>
+
 
 Silently create an event.
 
@@ -472,6 +479,7 @@ Silently create an event.
 <h3><code>createEventWithOptions(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;options)</code>
   
 </h3>
+
 
 Silently create an event with additional options.
 
@@ -611,6 +619,7 @@ Silently create an event with additional options.
   
 </h3>
 
+
 Interactively create an event.
 
 
@@ -731,6 +740,7 @@ Interactively create an event.
 <h3><code>createEventInteractivelyWithOptions(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;options)</code>
   
 </h3>
+
 
 Interactively create an event with additional options.
 
@@ -870,6 +880,7 @@ Interactively create an event with additional options.
   
 </h3>
 
+
 Find an event.
 
 
@@ -990,6 +1001,7 @@ Find an event.
 <h3><code>findEventWithOptions(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;options)</code>
   
 </h3>
+
 
 Find an event with additional options.
 
@@ -1128,6 +1140,7 @@ Find an event with additional options.
   
 </h3>
 
+
 Find a list of events within the specified date range. (Android only)
 
 
@@ -1198,6 +1211,7 @@ Find a list of events within the specified date range. (Android only)
   
 </h3>
 
+
 Get a list of all calendars.
 
 
@@ -1220,6 +1234,7 @@ Get a list of all calendars.
   
 </h3>
 
+
 Get a list of all future events in the specified calendar. (iOS only)
 
 
@@ -1241,6 +1256,7 @@ Get a list of all future events in the specified calendar. (iOS only)
 <h3><code>modifyEvent(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;newTitle,&nbsp;newLocation,&nbsp;newNotes,&nbsp;newStartDate,&nbsp;newEndDate)</code>
   
 </h3>
+
 
 Modify an event. (iOS only)
 
@@ -1444,9 +1460,10 @@ Modify an event. (iOS only)
 
 
 <div id="modifyEventWithOptions"></div>
-<h3><code>modifyEventWithOptions(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;newTitle,&nbsp;newLocation,&nbsp;newNotes,&nbsp;newStartDate,&nbsp;newEndDate,&nbsp;options)</code>
+<h3><code>modifyEventWithOptions(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;newTitle,&nbsp;newLocation,&nbsp;newNotes,&nbsp;newStartDate,&nbsp;newEndDate,&nbsp;filterOptions,&nbsp;newOptions)</code>
   
 </h3>
+
 
 Modify an event with additional options. (iOS only)
 
@@ -1634,7 +1651,7 @@ Modify an event with additional options. (iOS only)
   
   <tr>
     <td>
-      options
+      filterOptions
       
       
     </td>
@@ -1643,7 +1660,24 @@ Modify an event with additional options. (iOS only)
 <code>CalendarOptions</code>
     </td>
     <td>
-      <p>Additional options, see <code>getCalendarOptions</code></p>
+      <p>Event Options, see <code>getCalendarOptions</code></p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      newOptions
+      
+      
+    </td>
+    <td>
+      
+<code>CalendarOptions</code>
+    </td>
+    <td>
+      <p>New event options, see <code>getCalendarOptions</code></p>
 
       
     </td>
@@ -1670,6 +1704,7 @@ Modify an event with additional options. (iOS only)
 <h3><code>deleteEvent(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate)</code>
   
 </h3>
+
 
 Delete an event.
 
@@ -1791,6 +1826,7 @@ Delete an event.
 <h3><code>deleteEventFromNamedCalendar(title,&nbsp;location,&nbsp;notes,&nbsp;startDate,&nbsp;endDate,&nbsp;calendarName)</code>
   
 </h3>
+
 
 Delete an event from the specified Calendar. (iOS only)
 
@@ -1929,6 +1965,7 @@ Delete an event from the specified Calendar. (iOS only)
   
 </h3>
 
+
 Open the calendar at the specified date.
 
 
@@ -1976,6 +2013,16 @@ Open the calendar at the specified date.
 
 
 <!-- methods on the class -->
+
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

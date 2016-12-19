@@ -1,6 +1,6 @@
 ---
 layout: "v2_fluid/docs_base"
-version: "1.3.17"
+version: "2.2.6"
 versionHref: "/docs/v2/native"
 path: ""
 category: native
@@ -17,9 +17,7 @@ docType: "class"
 
 
 
-
 <h1 class="api-title">
-
   
   Social Sharing
   
@@ -33,8 +31,6 @@ docType: "class"
 <a class="improve-v2-docs" href="http://github.com/driftyco/ionic-native/edit/master/src/plugins/socialsharing.ts#L0">
   Improve this doc
 </a>
-
-
 
 
 
@@ -57,12 +53,8 @@ docType: "class"
 <h2>Supported platforms</h2>
 
 <ul>
-  <li>iOS</li>
-  
-  <li>Android</li>
-  
-  <li>Windows Phone</li>
-  </ul>
+  <li>iOS</li><li>Android</li><li>Windows Phone</li>
+</ul>
 
 <!-- @platforms tag end -->
 
@@ -92,11 +84,15 @@ SocialSharing.shareViaEmail(&#39;Body&#39;, &#39;Subject&#39;, &#39;recipient@ex
 
 
 <!-- @property tags -->
+
+
 <h2>Static Members</h2>
+
 <div id="share"></div>
 <h3><code>share(message,&nbsp;subject,&nbsp;file,&nbsp;url)</code>
   
 </h3>
+
 
 Shares using the share sheet
 
@@ -186,6 +182,12 @@ Shares using the share sheet
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareWithOptions"></div>
@@ -195,11 +197,12 @@ Shares using the share sheet
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares using the share sheet with additional options and returns a result object or an error message (requires plugin version 5.1.0+)
@@ -239,20 +242,27 @@ Shares using the share sheet with additional options and returns a result object
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="canShareVia"></div>
-<h3><code>canShareVia(appName)</code>
+<h3><code>canShareVia(appName,&nbsp;message,&nbsp;subject,&nbsp;image,&nbsp;url)</code>
   
 </h3>
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Checks if you can share via a specific app.
@@ -276,11 +286,75 @@ Checks if you can share via a specific app.
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       <p>App name or package name. Examples: instagram or com.apple.social.facebook</p>
 
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      message
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      subject
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      image
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      url
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
       
     </td>
   </tr>
@@ -292,6 +366,12 @@ Checks if you can share via a specific app.
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaTwitter"></div>
@@ -301,11 +381,12 @@ Checks if you can share via a specific app.
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to Twitter
@@ -329,7 +410,7 @@ Shares directly to Twitter
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       
@@ -345,7 +426,7 @@ Shares directly to Twitter
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       
@@ -361,7 +442,7 @@ Shares directly to Twitter
     </td>
     <td>
       
-
+<code>string</code>
     </td>
     <td>
       
@@ -376,6 +457,12 @@ Shares directly to Twitter
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaFacebook"></div>
@@ -385,11 +472,12 @@ Shares directly to Twitter
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to Facebook
@@ -460,6 +548,12 @@ Shares directly to Facebook
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaFacebookWithPasteMessageHint"></div>
@@ -469,11 +563,12 @@ Shares directly to Facebook
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to Facebook with a paste message hint
@@ -560,6 +655,12 @@ Shares directly to Facebook with a paste message hint
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaInstagram"></div>
@@ -569,11 +670,12 @@ Shares directly to Facebook with a paste message hint
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to Instagram
@@ -628,6 +730,12 @@ Shares directly to Instagram
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaWhatsApp"></div>
@@ -637,11 +745,12 @@ Shares directly to Instagram
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to WhatsApp
@@ -712,6 +821,12 @@ Shares directly to WhatsApp
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaWhatsAppToReceiver"></div>
@@ -721,11 +836,12 @@ Shares directly to WhatsApp
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Shares directly to a WhatsApp Contact
@@ -816,6 +932,12 @@ Shares directly to a WhatsApp Contact
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="shareViaSMS"></div>
@@ -825,11 +947,12 @@ Shares directly to a WhatsApp Contact
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Share via SMS
@@ -886,6 +1009,12 @@ Share via SMS
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 <div id="canShareViaEmail"></div>
@@ -895,11 +1024,12 @@ Share via SMS
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Checks if you can share via email
@@ -909,7 +1039,11 @@ Checks if you can share via email
 
 
 
-
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
 
 
 
@@ -920,11 +1054,12 @@ Checks if you can share via email
 
 
 <p>
-<b>Platforms:</b>
-<code>iOS</code>&nbsp;
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
 
-<code>Android</code>&nbsp;
-</p>
 
 
 Share via Email
@@ -999,7 +1134,8 @@ Share via Email
 <code>string[]</code>
     </td>
     <td>
-      
+      <p>Optional</p>
+
       
     </td>
   </tr>
@@ -1015,7 +1151,8 @@ Share via Email
 <code>string[]</code>
     </td>
     <td>
-      
+      <p>Optional</p>
+
       
     </td>
   </tr>
@@ -1031,7 +1168,7 @@ Share via Email
 <code>string</code>|<code>Array.&lt;string&gt;</code>
     </td>
     <td>
-      <p>URL or local path to file(s) to attach</p>
+      <p>Optional URL or local path to file(s) to attach</p>
 
       
     </td>
@@ -1044,10 +1181,150 @@ Share via Email
 
 
 
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
+
+
+<div id="shareVia"></div>
+<h3><code>shareVia(appName,&nbsp;message,&nbsp;subject,&nbsp;image,&nbsp;url)</code>
+  
+</h3>
+
+
+<p>
+  <b>Platforms:</b>
+  <code>iOS</code>&nbsp;
+  
+  <code>Android</code>&nbsp;
+  </p>
+
+
+
+Share via AppName
+
+
+<table class="table param-table" style="margin:0;">
+  <thead>
+  <tr>
+    <th>Param</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <tr>
+    <td>
+      appName
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      <p>App name or package name. Examples: instagram or com.apple.social.facebook</p>
+
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      message
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      subject
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      image
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      url
+      
+      
+    </td>
+    <td>
+      
+<code>string</code>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+<div class="return-value" markdown="1">
+  <i class="icon ion-arrow-return-left"></i>
+  <b>Returns:</b> 
+<code>Promise</code> 
+</div>
+
 
 
 
 <!-- methods on the class -->
+
+
+
+<!-- other classes -->
+
+<!-- end other classes -->
+
+<!-- interfaces -->
+
+<!-- end interfaces -->
 
 <!-- related link --><!-- end content block -->
 

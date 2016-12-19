@@ -10,7 +10,7 @@ header_sub_title: "Ionic API Documentation"
 doc: "NavPush"
 docType: "class"
 show_preview_device: true
-preview_device_url: "/docs/v2/demos/navigation/"
+preview_device_url: "/docs/v2/demos/src/navigation/"
 angular_controller: APIDemoCtrl 
 ---
 
@@ -84,28 +84,6 @@ class MyPage {
 
 
 <!-- instance methods on the class -->
-
-<h2><a class="anchor" name="instance-members" href="#instance-members"></a>Instance Members</h2>
-
-<div id="onClick"></div>
-
-<h3>
-<a class="anchor" name="onClick" href="#onClick"></a>
-<code>onClick()</code>
-  
-
-</h3>
-
-
-
-
-
-
-
-
-
-
-
 <!-- input methods on the class -->
 <h2><a class="anchor" name="input-properties" href="#input-properties"></a>Input Properties</h2>
 <table class="table param-table" style="margin:0;">
